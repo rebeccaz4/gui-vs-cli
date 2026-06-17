@@ -1,0 +1,74 @@
+{
+  "id": "freecad_gap_partdesign_pad_bracket",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/bracket_start.FCStd (empty document). Switch to the PartDesign workbench and create a new Body named exactly 'BracketBody'. Inside the Body, create a Sketch on the XY plane containing a closed L-shaped profile: the L has an overall bounding rectangle of 60 mm (X) by 40 mm (Y), with a leg thickness of 10 mm \u2014 so the profile has 6 corners forming an L. Then create a Pad from this sketch with Length = 30 mm and Midplane enabled so the pad extrudes symmetrically along Z. Rename the Pad to exactly 'LBracket'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "bracket_start.FCStd",
+        "sandbox_path": "/home/user/Documents/bracket_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/bracket_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/bracket_start.FCStd BracketBody",
+      "key": "exists",
+      "expected": true,
+      "description": "BracketBody exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/bracket_start.FCStd BracketBody PartDesign::Body",
+      "key": "match",
+      "expected": true,
+      "description": "BracketBody is a PartDesign::Body"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/bracket_start.FCStd LBracket",
+      "key": "exists",
+      "expected": true,
+      "description": "LBracket Pad exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/bracket_start.FCStd LBracket PartDesign::Pad",
+      "key": "match",
+      "expected": true,
+      "description": "LBracket is a PartDesign::Pad"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/bracket_start.FCStd LBracket Length 30",
+      "key": "match",
+      "expected": true,
+      "description": "Pad Length = 30"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/bracket_start.FCStd LBracket Midplane true",
+      "key": "match",
+      "expected": true,
+      "description": "Pad Midplane enabled"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/bracket_start.FCStd Sketcher::SketchObject 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Sketch in document"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: body pad operation",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: body pad operation"
+  }
+}

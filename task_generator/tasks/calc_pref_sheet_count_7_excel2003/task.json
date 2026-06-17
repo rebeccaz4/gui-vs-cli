@@ -1,0 +1,20 @@
+{
+  "id": "calc_pref_sheet_count_7_excel2003",
+  "app": "libreoffice_calc",
+  "task": "Open LibreOffice Calc and change two user preferences so that they persist in the user profile:\n\n1. Set 'Number of worksheets in new document' to 7.\n2. Set 'Always save as' for 'Spreadsheet' documents to 'Excel 97-2003 (*.xls)'.\n\nSave the settings, and make sure the preferences flush to ~/.config/libreoffice/4/user/registrymodifications.xcu.",
+  "env": {
+    "files": [
+      {"filename": "contacts.xlsx", "sandbox_path": "/home/user/Documents/contacts.xlsx"}
+    ]
+  },
+  "verification": [
+    {"command": "check-calc-pref default_sheet_count 7", "key": "match", "expected": true, "description": "Default sheet count for new workbooks = 7"},
+    {"command": "check-calc-pref default_save_filter_calc \"Excel 97-2003\"", "key": "match", "expected": true, "description": "Default save format for Calc is Excel 97-2003 (.xls)"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

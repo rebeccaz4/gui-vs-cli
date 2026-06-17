@@ -1,0 +1,82 @@
+{
+  "id": "libreoffice_writer_newsletter",
+  "app": "libreoffice_writer",
+  "task": "Create a company newsletter in LibreOffice Writer. Add a Heading 1 'TechCorp Monthly Newsletter - April 2026' and make it bold. Add a Heading 2 'Company Updates'. Add a paragraph: 'We are excited to announce the opening of our new office in Austin, Texas. The new facility will house 200 employees and features state-of-the-art research labs.' Add a Heading 2 'Employee Spotlight'. Add a paragraph: 'This month we celebrate Sarah Chen, who has been with TechCorp for 10 years. Sarah leads our AI research division and has published over 30 papers.' Add a Heading 2 'Upcoming Events'. Insert a table named 'Table1' with 4 rows and 3 columns. Header: 'Event', 'Date', 'Location'. Row 2: 'Tech Summit', 'April 15', 'Main Auditorium'. Row 3: 'Team Building', 'April 22', 'City Park'. Row 4: 'Board Meeting', 'April 30', 'Conference Room A'. Save as /home/user/Documents/newsletter.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/newsletter.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"TechCorp Monthly Newsletter - April 2026\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 exists"
+    },
+    {
+      "command": "check-paragraph-formatted 0 true",
+      "key": "match",
+      "expected": true,
+      "description": "Heading 1 is bold"
+    },
+    {
+      "command": "check-heading-exists \"Company Updates\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Company Updates'"
+    },
+    {
+      "command": "check-text-contains \"Austin, Texas\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains Austin, Texas"
+    },
+    {
+      "command": "check-heading-exists \"Employee Spotlight\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Employee Spotlight'"
+    },
+    {
+      "command": "check-text-contains \"Sarah Chen\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains Sarah Chen"
+    },
+    {
+      "command": "check-heading-exists \"Upcoming Events\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Upcoming Events'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/newsletter.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 4",
+      "description": "Table has 4 rows"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/newsletter.odt",
+      "eval": "any(len(t.get('data', [])) >= 2 and t['data'][1][0] == 'Tech Summit' for t in result.get('tables', []))",
+      "description": "Row 2: Tech Summit"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/newsletter.odt",
+      "eval": "any(len(t.get('data', [])) >= 4 and t['data'][3][0] == 'Board Meeting' for t in result.get('tables', []))",
+      "description": "Row 4: Board Meeting"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/newsletter.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "cloudcompare_gap_csf_ground_filter",
+  "app": "cloudcompare",
+  "task": "Apply CSF (Cloth Simulation Filter) ground segmentation to /home/user/Documents/scene.ply (2500 points, ASCII). Classify points into ground and non-ground using default CSF parameters. Export only the ground points as an ASCII PLY at /home/user/Documents/ground.ply. The output should contain only points classified as ground.",
+  "task_grounding": "Open /home/user/Documents/scene.ply in CloudCompare. It is an ASCII PLY with 2500 points: ~1500 points forming a gently-sloped ground plane (Z near 0-1) and ~1000 elevated points representing objects above the ground (Z in roughly 3-8). Use the CSF (Cloth Simulation Filter) plugin (Plugins > CSF Filter, or Tools > Segmentation > CSF Filter, depending on the build) with default parameters to separate ground points from off-ground points. Select the resulting ground-points cloud and export it as an ASCII PLY at /home/user/Documents/ground.ply. Do not export the off-ground cloud and do not export the original scene. The ground output must have between 1000 and 2000 points and its bounding box must lie within Z in [-1, 2.5] (i.e., only ground-level points).",
+  "env": {
+    "files": [
+      {
+        "filename": "scene.ply",
+        "sandbox_path": "/home/user/Documents/scene.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/ground.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Ground cloud exists"
+    },
+    {
+      "command": "check-point-count-at-least /home/user/Documents/ground.ply 1000",
+      "key": "match",
+      "expected": true,
+      "description": "At least 1000 ground points"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/ground.ply",
+      "eval": "result.get('vertex_count', 0) <= 2000",
+      "description": "At most 2000 ground points (off-ground excluded)"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/ground.ply -100 -100 -1 100 100 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "All ground points are low-Z"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

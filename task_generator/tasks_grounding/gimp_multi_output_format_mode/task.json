@@ -1,0 +1,64 @@
+{
+  "id": "gimp_multi_output_format_mode",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/source_multi.png (500x500 RGB image with four colored quadrants: red, green, blue, yellow) in GIMP. Export this image in three different formats with specific mode conversions: (1) As RGB PNG to /home/user/Documents/output_rgb.png, (2) Convert to grayscale mode then export as grayscale JPG to /home/user/Documents/output_gray.jpg, (3) Convert to indexed mode with 8 colors then export as GIF to /home/user/Documents/output_indexed.gif.",
+  "task_grounding": "Open /home/user/Documents/source_multi.png (500x500 RGB image with four colored quadrants: red, green, blue, yellow) in GIMP. Export this image in three different formats with specific mode conversions: (1) As RGB PNG to /home/user/Documents/output_rgb.png, (2) Convert to grayscale mode then export as grayscale JPG to /home/user/Documents/output_gray.jpg, (3) Convert to indexed mode with 8 colors then export as GIF to /home/user/Documents/output_indexed.gif.",
+  "env": {
+    "files": [
+      {
+        "filename": "source_multi.png",
+        "sandbox_path": "/home/user/Documents/source_multi.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/output_gray.jpg",
+      "key": "exists",
+      "expected": true,
+      "description": "Grayscale JPEG exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/output_gray.jpg JPEG",
+      "key": "match",
+      "expected": true,
+      "description": "output_gray.jpg is JPEG format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/output_gray.jpg 500 500",
+      "key": "match",
+      "expected": true,
+      "description": "output_gray.jpg is 500x500"
+    },
+    {
+      "command": "check-file-mode /home/user/Documents/output_gray.jpg L",
+      "key": "match",
+      "expected": true,
+      "description": "output_gray.jpg is grayscale (mode L)"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/output_rgb.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Indexed GIF exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/output_indexed.gif GIF",
+      "key": "match",
+      "expected": true,
+      "description": "output_indexed.gif is GIF format"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use ImageMagick: convert input.png output.jpg && convert input.png output.bmp && convert input.png output.tiff",
+    "reason": "Multiple format exports are simple with multiple convert commands"
+  }
+}

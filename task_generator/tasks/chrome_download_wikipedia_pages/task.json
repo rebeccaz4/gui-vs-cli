@@ -1,0 +1,40 @@
+{
+  "id": "chrome_download_wikipedia_pages",
+  "app": "chrome",
+  "task": "Open the following 2 Wikipedia pages and save them to the Downloads folder: (1) https://en.wikipedia.org/wiki/Linux - save as /home/user/Downloads/linux.html, (2) https://en.wikipedia.org/wiki/Open-source_software - save as /home/user/Downloads/open-source.html. The saved pages should be complete HTML files that can be opened in a browser.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Downloads/linux.html",
+      "key": "exists",
+      "expected": true,
+      "description": "Linux Wikipedia page saved as linux.html"
+    },
+    {
+      "command": "check-file-contains /home/user/Downloads/linux.html \"Linux\"",
+      "key": "contains",
+      "expected": true,
+      "description": "linux.html contains 'Linux' keyword"
+    },
+    {
+      "command": "check-file-exists /home/user/Downloads/open-source.html",
+      "key": "exists",
+      "expected": true,
+      "description": "Open-source Wikipedia page saved as open-source.html"
+    },
+    {
+      "command": "check-file-contains /home/user/Downloads/open-source.html \"open-source\"",
+      "key": "contains",
+      "expected": true,
+      "description": "open-source.html contains 'open-source' keyword"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

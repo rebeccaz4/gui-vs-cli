@@ -1,0 +1,51 @@
+{
+  "id": "zotero_bulk_tag_multiple_items",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Perform two tagging operations: (1) Create a new tag named exactly 'transformer-arch' (lowercase, with hyphen) and add it to BOTH 'Attention Is All You Need' and 'BERT: Pre-training of Deep Bidirectional Transformers'. After adding it on the first item it will appear in autocomplete for the second. (2) Add the existing tag 'important' to the BERT item (it currently has 'nlp' but not 'important'). Use the Tags tab on the right-hand pane for each item. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-tag-exists transformer-arch",
+      "key": "exists",
+      "expected": true,
+      "description": "Tag 'transformer-arch' exists"
+    },
+    {
+      "command": "check-item-tag 'Attention Is All You Need' transformer-arch",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Attention has transformer-arch tag"
+    },
+    {
+      "command": "check-item-tag 'BERT: Pre-training' transformer-arch",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BERT has transformer-arch tag"
+    },
+    {
+      "command": "check-item-tag 'BERT: Pre-training' important",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BERT has important tag"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Python script using SQLite: 1) Create new 'transformer-arch' tag, 2) Find items by title, 3) Link both items to new tag via itemTags table, 4) Find existing 'important' tag and link to BERT item",
+    "reason": "Zotero's tagging system is fully accessible via SQLite. The script can create new tags, find existing tags, and create item-tag relationships. Both creating new tags and adding existing tags to items are straightforward SQL operations."
+  }
+}

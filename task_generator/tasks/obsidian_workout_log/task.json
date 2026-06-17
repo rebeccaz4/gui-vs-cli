@@ -1,0 +1,111 @@
+{
+  "id": "obsidian_workout_log",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/FitnessVault. Create a workout tracking system:\n\n1. Create folders: 'Workouts', 'Exercises', 'Programs'.\n2. Create 'Exercises/Squat.md' with frontmatter 'muscle_group: legs', 'type: strength', 'difficulty: intermediate' and body containing heading 'Squat', description, form tips, and tags #exercise #compound #legs\n3. Create 'Exercises/BenchPress.md' with frontmatter 'muscle_group: chest', 'equipment: barbell', 'difficulty: intermediate' and body containing heading 'Bench Press', description, form tips, and tags #exercise #compound #chest\n4. Create 'Programs/StrongLifts.md' with frontmatter 'frequency: 3x_per_week', 'level: beginner', 'duration: 12_weeks' and body containing heading 'StrongLifts 5x5', program description, links to [[Squat]] and [[BenchPress]], and tags #program #beginner #strength\n5. Create 'Workouts/2025-03-10.md' with frontmatter 'program: StrongLifts', 'duration: 60', 'mood: good' and body containing heading 'Workout - March 10, 2025', exercise log with sets/reps, links to [[Squat]] and [[BenchPress]], and tags #workout #stronglifts\n6. Create 'Workouts/2025-03-12.md' with frontmatter 'program: StrongLifts', 'duration: 55', 'mood: great' and body containing heading 'Workout - March 12, 2025', exercise log with sets/reps, links to [[Squat]] and [[BenchPress]], and tags #workout #stronglifts",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/FitnessVault Workouts",
+      "key": "exists",
+      "expected": true,
+      "description": "Workouts folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/FitnessVault Exercises",
+      "key": "exists",
+      "expected": true,
+      "description": "Exercises folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/FitnessVault Programs",
+      "key": "exists",
+      "expected": true,
+      "description": "Programs folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FitnessVault Squat muscle_group legs",
+      "key": "match",
+      "expected": true,
+      "description": "Squat has muscle_group=legs"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FitnessVault Squat compound",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Squat has #compound tag"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FitnessVault BenchPress equipment barbell",
+      "key": "match",
+      "expected": true,
+      "description": "BenchPress has equipment=barbell"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FitnessVault StrongLifts Squat",
+      "key": "links_to",
+      "expected": true,
+      "description": "StrongLifts links to Squat"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FitnessVault StrongLifts BenchPress",
+      "key": "links_to",
+      "expected": true,
+      "description": "StrongLifts links to BenchPress"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FitnessVault StrongLifts beginner",
+      "key": "has_tag",
+      "expected": true,
+      "description": "StrongLifts has #beginner tag"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FitnessVault 2025-03-10 program StrongLifts",
+      "key": "match",
+      "expected": true,
+      "description": "2025-03-10 has program=StrongLifts"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FitnessVault 2025-03-10 Squat",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-10 links to Squat"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FitnessVault 2025-03-10 BenchPress",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-10 links to BenchPress"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FitnessVault 2025-03-12 Squat",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-12 links to Squat"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FitnessVault 2025-03-12 workout",
+      "key": "has_tag",
+      "expected": true,
+      "description": "2025-03-12 has #workout tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/FitnessVault",
+      "eval": "result.get('count') == 5",
+      "description": "Vault has exactly 5 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Workouts/, Exercises/, Programs/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa\u6240\u6709notes\uff0c\u5305\u542bexercise logs",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

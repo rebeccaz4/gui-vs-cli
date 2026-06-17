@@ -1,0 +1,45 @@
+{
+  "id": "cloudcompare_export_big_endian_ply",
+  "app": "cloudcompare",
+  "task": "Convert /home/user/Documents/source.ply to big-endian binary PLY format at /home/user/Documents/source_be.ply. The input is an ASCII PLY with exactly 450 points. The output must preserve all 450 points without modification and use binary big-endian encoding.",
+  "env": {
+    "files": [
+      {
+        "filename": "source.ply",
+        "sandbox_path": "/home/user/Documents/source.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/source_be.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Big-endian PLY exists"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/source_be.ply binary_big_endian",
+      "key": "match",
+      "expected": true,
+      "description": "Output is binary big-endian PLY"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/source_be.ply 450",
+      "key": "match",
+      "expected": true,
+      "description": "Output has 450 points"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "zotero_gap_multi_pdf_attach",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "attention.pdf",
+      "sandbox_path": "/home/user/Documents/attention.pdf",
+      "type": "pdf"
+    },
+    {
+      "filename": "bert.pdf",
+      "sandbox_path": "/home/user/Documents/bert.pdf",
+      "type": "pdf"
+    },
+    {
+      "filename": "deep_learning.pdf",
+      "sandbox_path": "/home/user/Documents/deep_learning.pdf",
+      "type": "pdf"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "renderdoc_set_dark_theme",
+  "app": "renderdoc",
+  "task": "The RenderDoc UI configuration file is at /home/user/.local/share/qrenderdoc/UI.config. It is a plain JSON document (despite the .config extension). Open it in a text editor (for example with `gedit /home/user/.local/share/qrenderdoc/UI.config`) and make exactly these two changes, leaving every other key unchanged:\n\n1. Set the key \"UIStyle\" to the exact string \"Dark\" (case-sensitive).\n2. Set the key \"Font_GlobalScale\" to the number 1.25 (not \"1.25\" \u2014 a JSON number, not a string).\n\nThe top-level key \"rdocConfigData\" must remain present with the value 1 \u2014 do not delete it. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-theme Dark",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle is Dark"
+    },
+    {
+      "command": "check-font-scale 1.25",
+      "key": "match",
+      "expected": true,
+      "description": "Font_GlobalScale is 1.25"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

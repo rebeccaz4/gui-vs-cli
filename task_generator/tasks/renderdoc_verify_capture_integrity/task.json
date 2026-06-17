@@ -1,0 +1,73 @@
+{
+  "id": "renderdoc_verify_capture_integrity",
+  "app": "renderdoc",
+  "task": "The directory /home/user/captures contains two files:\n\n  good_frame.rdc  -- a real RenderDoc capture\n  bad_frame.rdc   -- a corrupted file whose first bytes are NOT the RenderDoc magic\n\nDo the following:\n\n1. Rename /home/user/captures/good_frame.rdc to /home/user/captures/verified.rdc (keep its contents byte-identical).\n2. Delete /home/user/captures/bad_frame.rdc entirely.\n3. Create a new subdirectory /home/user/captures/backup and copy verified.rdc into it, so that /home/user/captures/backup/verified.rdc also exists with the same contents.\n\nWhen finished, both /home/user/captures/verified.rdc and /home/user/captures/backup/verified.rdc must be valid RenderDoc captures, and bad_frame.rdc and good_frame.rdc must no longer exist anywhere.",
+  "env": {
+    "files": [
+      {
+        "filename": "good_frame.rdc",
+        "sandbox_path": "/home/user/captures/good_frame.rdc"
+      },
+      {
+        "filename": "bad_frame.rdc",
+        "sandbox_path": "/home/user/captures/bad_frame.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/verified.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "verified.rdc exists"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/verified.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "verified.rdc is a valid capture"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/good_frame.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "good_frame.rdc was renamed away"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/bad_frame.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "bad_frame.rdc was deleted"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/backup",
+      "key": "is_dir",
+      "expected": true,
+      "description": "backup/ subdirectory exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/backup/verified.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "verified.rdc was copied into backup/"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/backup/verified.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "backup copy is a valid capture"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash: test -f file.rdc; or CLI-Anything: cli-anything-renderdoc -c file.rdc capture info",
+    "reason": "Task only requires verifying .rdc file existence or validity, not editing binary content. Can use bash test commands or CLI-Anything RenderDoc skill: 'cli-anything-renderdoc -c file.rdc capture info'"
+  }
+}

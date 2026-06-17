@@ -1,0 +1,62 @@
+{
+  "id": "audacity_mix_two_files_export",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/base.wav already loaded as the first track (a 3-second stereo 44.1 kHz WAV). Import /home/user/Music/overlay.wav (a 3-second mono 44.1 kHz WAV) as a second track. Mix the two tracks together and export the result to /home/user/Music/mixed.wav as a stereo 44100 Hz 16-bit PCM WAV file.",
+  "task_grounding": "Audacity is open with /home/user/Music/base.wav already loaded as the first track (a 3-second stereo 44.1 kHz WAV).\n\nImport a second file into the same project as an additional track: use File > Import > Audio... and select /home/user/Music/overlay.wav. After importing, the project should have two stereo audio tracks.\n\nNow export the full mixed audio using File > Export > Export as WAV... to /home/user/Music/mixed.wav. Keep the default WAV (Microsoft) signed 16-bit PCM settings. If a metadata-tag dialog appears, click OK to accept the defaults.",
+  "env": {
+    "files": [
+      {
+        "filename": "base.wav",
+        "sandbox_path": "/home/user/Music/base.wav"
+      },
+      {
+        "filename": "overlay.wav",
+        "sandbox_path": "/home/user/Music/overlay.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/mixed.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Mixed WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/mixed.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/mixed.wav 2",
+      "key": "match",
+      "expected": true,
+      "description": "Mixed file has 2 channels (stereo)"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/mixed.wav 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "Duration is at least 2.5 seconds"
+    },
+    {
+      "command": "check-export-format /home/user/Music/mixed.wav wav",
+      "key": "match",
+      "expected": true,
+      "description": "Container format is wav"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track add operation → clip import/add → metadata tag settings → export render operation → preference/setting configuration → multi-track mix operations",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track add operation, clip import/add, metadata tag settings, export render operation, preference/setting configuration, multi-track mix operations"
+  }
+}

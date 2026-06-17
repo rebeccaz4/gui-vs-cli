@@ -1,0 +1,62 @@
+{
+  "id": "krita_flatten_and_export_png",
+  "app": "krita",
+  "task": "Open /home/user/Documents/multilayer.kra in Krita. It has 5 paint layers. Flatten all layers into a single merged paint layer and rename that resulting layer exactly 'Flattened'. Then export the flattened image to /home/user/Pictures/multilayer_flat.png as a PNG. Save the .kra file in place so that /home/user/Documents/multilayer.kra contains exactly one layer named 'Flattened'.",
+  "env": {
+    "files": [
+      {
+        "filename": "multilayer.kra",
+        "sandbox_path": "/home/user/Documents/multilayer.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/multilayer.kra",
+      "key": "exists",
+      "expected": true,
+      "description": ".kra saved"
+    },
+    {
+      "command": "check-layer-count /home/user/Documents/multilayer.kra 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one layer remains"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/multilayer.kra Flattened",
+      "key": "exists",
+      "expected": true,
+      "description": "Layer named Flattened exists"
+    },
+    {
+      "command": "check-image-size /home/user/Documents/multilayer.kra 1024 768",
+      "key": "match",
+      "expected": true,
+      "description": "Canvas dimensions preserved"
+    },
+    {
+      "command": "check-file-exists /home/user/Pictures/multilayer_flat.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported PNG exists"
+    },
+    {
+      "command": "check-file-exists /home/user/Pictures/multilayer_flat.png",
+      "eval": "result.get('size_bytes',0) > 500",
+      "expected": true,
+      "description": "Exported PNG non-trivial"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Flatten all layers into 'Flattened' layer and export to PNG",
+    "reason": "⚠️ CLI supports export render but not layer flattening or renaming merged layers"
+  }
+}

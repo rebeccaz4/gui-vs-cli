@@ -1,0 +1,28 @@
+{
+  "id": "audacity_preference_default_sample_format",
+  "app": "audacity",
+  "task": "Audacity is already running. Change the Default Sample Format setting to '32-bit float'. Save the preference so it persists to the configuration file.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-preference Quality DefaultSampleFormat 524293",
+      "key": "match",
+      "expected": true,
+      "description": "Default sample format is 524293 (32-bit float)"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: preference/setting configuration",
+    "reason": "CLI-Anything-Audacity supports all required operations: preference/setting configuration"
+  }
+}

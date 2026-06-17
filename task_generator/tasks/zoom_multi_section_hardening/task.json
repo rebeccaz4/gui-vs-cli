@@ -1,0 +1,33 @@
+{
+  "id": "zoom_multi_section_hardening",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Perform a comprehensive Zoom hardening pass that touches six keys across four sections. Update ALL of the following in /home/user/.config/zoomus.conf: (1) autoMuteMic = true, (2) autoTurnOffVideo = true, (3) SuppressBackgroundNoise = 2, (4) HDVideo = true, (5) Theme = dark, (6) ConfirmLeaveMeeting = true. Save the file in-place at the same path. Do not modify any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config General autoMuteMic true", "key": "match", "expected": true, "description": "[General]autoMuteMic == true"},
+    {"command": "check-config General autoTurnOffVideo true", "key": "match", "expected": true, "description": "[General]autoTurnOffVideo == true"},
+    {"command": "check-config Audio SuppressBackgroundNoise 2", "key": "match", "expected": true, "description": "[Audio]SuppressBackgroundNoise == 2"},
+    {"command": "check-config Video HDVideo true", "key": "match", "expected": true, "description": "[Video]HDVideo == true"},
+    {"command": "check-config chat.client Theme dark", "key": "match", "expected": true, "description": "[chat.client]Theme == dark"},
+    {"command": "check-config General.Meetings ConfirmLeaveMeeting true", "key": "match", "expected": true, "description": "[General.Meetings]ConfirmLeaveMeeting == true"},
+    {"command": "check-config General language en-US", "key": "match", "expected": true, "description": "Unrelated keys untouched"},
+    {"command": "check-config Audio MicrophoneLevel 50", "key": "match", "expected": true, "description": "Audio level untouched"}
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [General] autoMuteMic=true, autoTurnOffVideo=true; [Audio] SuppressBackgroundNoise=2; [Video] HDVideo=true; [chat.client] Theme=dark; [General.Meetings] ConfirmLeaveMeeting=true",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. Multi-section edits are more complex but still straightforward for CLI with proper sed patterns or Python configparser."
+  }
+}

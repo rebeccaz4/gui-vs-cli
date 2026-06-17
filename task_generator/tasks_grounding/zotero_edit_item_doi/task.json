@@ -1,0 +1,40 @@
+{
+  "id": "zotero_edit_item_doi",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' in the middle pane and click it. Set the 'DOI' field to exactly this value: 10.1234/rl-survey-2020. Do not wrap it in quotes or add anything else. Press Enter / click away so Zotero saves the new DOI. Leave Zotero running so the edit persists.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' in the middle pane and click it. In the right-hand Info pane, find the 'DOI' field (it currently has no value) and enter exactly this DOI: 10.1234/rl-survey-2020. Do not wrap it in quotes or add anything else. Press Enter / click away so Zotero saves the new DOI. Leave Zotero running so the edit persists.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-item-field 'Survey of RL Methods' DOI 10.1234/rl-survey-2020",
+      "key": "match",
+      "expected": true,
+      "description": "Survey item DOI matches expected"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find item by title, 2) Find DOI fieldID, 3) Insert/update value in itemDataValues table, 4) Link via itemData table",
+    "reason": "Zotero stores item metadata in itemData and itemDataValues tables. A Python script can update field values by finding the correct fieldID and inserting a new value record, then linking it to the item. This is how Zotero itself stores metadata changes."
+  }
+}

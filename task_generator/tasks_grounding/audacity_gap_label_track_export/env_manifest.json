@@ -1,0 +1,6 @@
+{
+  "task_id": "audacity_gap_label_track_export",
+  "files": [
+    {"filename": "podcast.wav", "sandbox_path": "/home/user/Music/podcast.wav", "type": "wav"}
+  ]
+}

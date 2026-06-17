@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_contacts_dedup_split_name",
+  "files": [
+    {"filename": "contacts.xlsx", "sandbox_path": "/home/user/Documents/contacts.xlsx", "type": "xlsx"}
+  ]
+}

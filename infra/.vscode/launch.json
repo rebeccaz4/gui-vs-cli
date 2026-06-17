@@ -1,0 +1,125 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "buildID",
+      "type": "promptString",
+      "description": "Build ID",
+      "default": "9dc30023-c2e5-4cb7-8f4d-5ae196627abd"
+    },
+    {
+      "id": "templateID",
+      "type": "promptString",
+      "description": "Template ID",
+      "default": "0x5brrleaeg0pxeon4uh"
+    },
+    {
+      "id": "sandboxID",
+      "type": "promptString",
+      "description": "Sandbox ID",
+      "default": "test-instance-1"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug NBD test",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "buildFlags": "-race",
+      "program": "${workspaceFolder}/packages/block-storage/cmd/mock-nbd-overlay/main.go",
+      "console": "integratedTerminal",
+      "asRoot": true,
+      "args": [
+        "-file",
+        "${workspaceFolder}/packages/block-storage/.test/test.ext4"
+      ],
+    },
+    {
+      "name": "Debug orchestrastor test",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "buildFlags": "-race",
+      "program": "${workspaceFolder}/packages/orchestrator/cmd/mock-sandbox/mock.go",
+      "env": {
+        "NODE_ID": "test-client",
+        "TEMPLATE_BUCKET_NAME": "e2b-dev-fc-templates"
+      },
+      "args": [
+        "-template",
+        "${input:templateID}",
+        "-sandbox",
+        "${input:sandboxID}",
+        "-build",
+        "${input:buildID}",
+        "-alive",
+        "5",
+        "-count",
+        "2"
+      ],
+      "console": "integratedTerminal",
+      "asRoot": true
+    },
+    {
+      "name": "Debug api",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "buildFlags": "-race",
+      "program": "${workspaceFolder}/packages/api/main.go",
+      "args": [
+        "--port",
+        "3000"
+      ],
+      "console": "integratedTerminal",
+      "asRoot": true,
+      "envFile": "${workspaceFolder}/packages/api/.env"
+    },
+    {
+      "name": "Attach to Process",
+      "type": "go",
+      "request": "attach",
+      "mode": "local",
+      "processId": "${command:pickProcess}",
+      "apiVersion": 2,
+      "showLog": true,
+      "console": "integratedTerminal",
+      "asRoot": true
+    },
+    {
+      "name": "Launch Package",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${fileDirname}"
+    },
+    {
+      "preLaunchTask": "prepare-debug",
+      "postDebugTask": "stop-debug-docker",
+      "name": "Debug envd",
+      "type": "go",
+      "request": "attach",
+      "mode": "remote",
+      "remotePath": "",
+      "port": 2345,
+      "host": "127.0.0.1",
+      "showLog": true,
+      "stopOnEntry": true,
+      "trace": "log",
+      "logOutput": "rpc"
+    },
+    {
+      "name": "Attach to Docker",
+      "type": "go",
+      "request": "attach",
+      "mode": "remote",
+      "remotePath": "",
+      "port": 2345,
+      "host": "127.0.0.1",
+      "showLog": true,
+      "trace": "log",
+      "logOutput": "rpc"
+    }
+  ]
+}

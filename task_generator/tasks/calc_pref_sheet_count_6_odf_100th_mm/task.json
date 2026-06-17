@@ -1,0 +1,20 @@
+{
+  "id": "calc_pref_sheet_count_6_odf_100th_mm",
+  "app": "libreoffice_calc",
+  "task": "Open LibreOffice Calc and change two user preferences so that they persist in the user profile:\n\n1. Set 'Number of worksheets in new document' to 6.\n2. Set 'Always save as' for 'Spreadsheet' documents to 'ODF Spreadsheet (*.ods)'.\n\nSave the settings, and make sure the preferences flush to ~/.config/libreoffice/4/user/registrymodifications.xcu.",
+  "env": {
+    "files": [
+      {"filename": "employees.xlsx", "sandbox_path": "/home/user/Documents/employees.xlsx"}
+    ]
+  },
+  "verification": [
+    {"command": "check-calc-pref default_sheet_count 6", "key": "match", "expected": true, "description": "Default sheet count for new workbooks = 6"},
+    {"command": "check-calc-pref default_save_filter_calc \"ODF Spreadsheet\"", "key": "match", "expected": true, "description": "Default save format for Calc is ODF Spreadsheet (.ods)"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

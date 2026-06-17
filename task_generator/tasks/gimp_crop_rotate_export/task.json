@@ -1,0 +1,45 @@
+{
+  "id": "gimp_crop_rotate_export",
+  "app": "gimp",
+  "task": "Crop the image to the top-left 400x300 region (starting at origin 0,0), rotate it 90 degrees clockwise, and export the result to /home/user/Documents/photo_cropped_rotated.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "photo.png",
+        "sandbox_path": "/home/user/Documents/photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/photo_cropped_rotated.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG file exists at /home/user/Documents/photo_cropped_rotated.png"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/photo_cropped_rotated.png 300 400",
+      "key": "match",
+      "expected": true,
+      "description": "Output image has dimensions 300x400 (400x300 crop rotated 90 degrees CW)"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/photo_cropped_rotated.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "Output file is in PNG format"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: convert input.png -rotate 180 output.tiff",
+    "reason": "Rotation is standard ImageMagick operation"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_draft_wire_polygon",
+  "files": [
+    {
+      "filename": "draft_start.FCStd",
+      "sandbox_path": "/home/user/Documents/draft_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

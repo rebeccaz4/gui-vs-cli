@@ -1,0 +1,76 @@
+{
+  "id": "obsidian_toggle_core_features",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/ToggleVault. Make the following changes:\n\nIn Settings > Core plugins:\n1. Disable 'Graph view' (graph)\n2. Disable 'Tag pane' (tag-pane)\n3. Enable 'Outgoing links' (outgoing-link)\n4. Enable 'Page preview' (page-preview)\n5. Disable 'Starred' (starred)\n\nIn Settings > Editor:\n6. Enable 'Spell check' (spellcheck)\n7. Enable 'Show line number' (showLineNumber)\n\nAfter making all changes, create a note 'Changes.md' with body:\n\n# Changes Made\n## Plugins Disabled\n- Graph view\n- Tag pane\n- Starred\n## Plugins Enabled\n- Outgoing links\n- Page preview\n## Editor Settings\n- Spell check: on\n- Line numbers: on\n#changelog",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-plugin-enabled /home/user/Documents/ToggleVault graph core",
+      "key": "enabled",
+      "expected": false,
+      "description": "Graph view disabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/ToggleVault tag-pane core",
+      "key": "enabled",
+      "expected": false,
+      "description": "Tag pane disabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/ToggleVault outgoing-link core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Outgoing links enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/ToggleVault page-preview core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Page preview enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/ToggleVault starred core",
+      "key": "enabled",
+      "expected": false,
+      "description": "Starred disabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/ToggleVault spellcheck true",
+      "key": "match",
+      "expected": true,
+      "description": "Spellcheck enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/ToggleVault showLineNumber true",
+      "key": "match",
+      "expected": true,
+      "description": "Show line number enabled"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/ToggleVault Changes",
+      "key": "exists",
+      "expected": true,
+      "description": "Changes note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/ToggleVault Changes changelog",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Changes has #changelog tag"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1) \u4fee\u6539 .obsidian/core-plugins.json \u542f\u7528/\u7981\u7528plugins; 2) \u4fee\u6539 .obsidian/app.json \u8bbe\u7f6eeditor\u9009\u9879; 3) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa Changes.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'In Settings > Core plugins'\u3001'In Settings > Editor'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u4fee\u6539\u914d\u7f6e\u6587\u4ef6"
+  }
+}

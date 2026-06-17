@@ -1,0 +1,50 @@
+{
+  "id": "krita_add_transparency_mask",
+  "app": "krita",
+  "task": "Open /home/user/Documents/portrait_mask.kra in Krita. The file contains a single paint layer named 'Portrait'. Add a Transparency Mask as a child of the 'Portrait' layer and name the mask exactly 'FadeEdges'. Do not rename or delete the Portrait layer. Save the file in place (Ctrl+S) so the result is written back to /home/user/Documents/portrait_mask.kra.",
+  "env": {
+    "files": [
+      {
+        "filename": "portrait_mask.kra",
+        "sandbox_path": "/home/user/Documents/portrait_mask.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/portrait_mask.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "portrait_mask.kra still exists"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/portrait_mask.kra Portrait",
+      "key": "exists",
+      "expected": true,
+      "description": "Portrait layer preserved"
+    },
+    {
+      "command": "check-mask-of /home/user/Documents/portrait_mask.kra Portrait FadeEdges",
+      "key": "exists",
+      "expected": true,
+      "description": "FadeEdges mask is a child of Portrait"
+    },
+    {
+      "command": "check-layer-node-type /home/user/Documents/portrait_mask.kra FadeEdges transparencymask",
+      "key": "match",
+      "expected": true,
+      "description": "FadeEdges node type is transparencymask"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Add transparency mask 'FadeEdges' to Portrait layer",
+    "reason": "❌ CLI doesn't support adding masks to layers"
+  }
+}

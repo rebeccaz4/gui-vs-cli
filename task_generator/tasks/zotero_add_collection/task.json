@@ -1,0 +1,45 @@
+{
+  "id": "zotero_add_collection",
+  "app": "zotero",
+  "task": "Zotero is installed on this machine and a pre-seeded library has been placed at /home/user/Zotero/zotero.sqlite. Launch Zotero (for example by running `zotero` from a terminal, or via the Applications menu) and wait for the library to load. In the left-hand collections pane, under 'My Library', create a new top-level collection named exactly 'Literature Review' (no quotes, exactly that spelling and capitalization). Do not create it as a subcollection of any existing collection. Leave Zotero running after the collection has been created so the new collection is saved.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists on disk"
+    },
+    {
+      "command": "check-collection-exists 'Literature Review'",
+      "key": "exists",
+      "expected": true,
+      "description": "Collection 'Literature Review' exists"
+    },
+    {
+      "command": "check-collection-exists 'AI Research'",
+      "key": "exists",
+      "expected": true,
+      "description": "Original 'AI Research' collection still present"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "cli-anything-zotero --json collection create 'Literature Review' --experimental",
+    "reason": "CLI-Anything supports creating collections via the experimental 'collection create' command. This requires Zotero to be closed and uses direct SQLite writes with automatic backup protection."
+  }
+}

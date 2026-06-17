@@ -1,0 +1,42 @@
+{
+  "id": "impress_webinar_followup_deck",
+  "app": "libreoffice_impress",
+  "task": "Create a new presentation from scratch in LibreOffice Impress with exactly 6 slides for an 'AI in Finance' webinar follow-up deck.\n\nSlide 1 (Title Slide): Title 'AI in Finance Webinar Recap'. Subtitle 'Follow-Up Resources'.\nSlide 2: Title 'Webinar Highlights'. Body bullets: 'Fraud detection breakthroughs', 'Regulatory updates', 'Panel Q&A themes'.\nSlide 3: Title 'Attendee Statistics'. Body bullets: '1,450 live attendees', '68% from banks', '22% from insurance'.\nSlide 4: Title 'Key Takeaways'. Body bullets: 'Start with explainable models', 'Audit training data quarterly', 'Engage compliance early'.\nSlide 5: Title 'Next Steps'. Body bullets: 'Book a follow-up demo', 'Join the monthly newsletter', 'Download the white paper'.\nSlide 6: Title 'Q&A'. Body 'Reach out: team@aifin.example'.\n\nAdd speaker notes:\n- On Slide 2 (index 1): 'Highlight the panel moderator and the fraud live demo'.\n- On Slide 5 (index 4): 'Promote the upcoming executive roundtable'.\n\nSave the presentation as /home/user/Documents/webinar_followup.odp (ODF Presentation format).",
+  "env": {
+    "files": [],
+    "reload_files": ["/home/user/Documents/webinar_followup.odp"]
+  },
+  "verification": [
+    {"command": "check-slide-count 6", "key": "match", "expected": true, "description": "Deck has exactly 6 slides"},
+    {"command": "check-slide-title 0 \"AI in Finance Webinar Recap\"", "key": "match", "expected": true, "description": "Slide 1 title"},
+    {"command": "check-slide-contains 0 \"Follow-Up Resources\"", "key": "contains", "expected": true, "description": "Slide 1 subtitle"},
+    {"command": "check-slide-title 1 \"Webinar Highlights\"", "key": "match", "expected": true, "description": "Slide 2 title"},
+    {"command": "check-slide-contains 1 \"Fraud detection breakthroughs\"", "key": "contains", "expected": true, "description": "Slide 2 bullet 1"},
+    {"command": "check-slide-contains 1 \"Regulatory updates\"", "key": "contains", "expected": true, "description": "Slide 2 bullet 2"},
+    {"command": "check-slide-contains 1 \"Panel\"", "key": "contains", "expected": true, "description": "Slide 2 bullet 3"},
+    {"command": "check-slide-title 2 \"Attendee Statistics\"", "key": "match", "expected": true, "description": "Slide 3 title"},
+    {"command": "check-slide-contains 2 \"1,450 live attendees\"", "key": "contains", "expected": true, "description": "Slide 3 bullet 1"},
+    {"command": "check-slide-contains 2 \"68%\"", "key": "contains", "expected": true, "description": "Slide 3 bullet 2"},
+    {"command": "check-slide-contains 2 \"22%\"", "key": "contains", "expected": true, "description": "Slide 3 bullet 3"},
+    {"command": "check-slide-title 3 \"Key Takeaways\"", "key": "match", "expected": true, "description": "Slide 4 title"},
+    {"command": "check-slide-contains 3 \"explainable models\"", "key": "contains", "expected": true, "description": "Slide 4 bullet 1"},
+    {"command": "check-slide-contains 3 \"Audit training data quarterly\"", "key": "contains", "expected": true, "description": "Slide 4 bullet 2"},
+    {"command": "check-slide-contains 3 \"Engage compliance early\"", "key": "contains", "expected": true, "description": "Slide 4 bullet 3"},
+    {"command": "check-slide-title 4 \"Next Steps\"", "key": "match", "expected": true, "description": "Slide 5 title"},
+    {"command": "check-slide-contains 4 \"Book a follow-up demo\"", "key": "contains", "expected": true, "description": "Slide 5 bullet 1"},
+    {"command": "check-slide-contains 4 \"monthly newsletter\"", "key": "contains", "expected": true, "description": "Slide 5 bullet 2"},
+    {"command": "check-slide-contains 4 \"white paper\"", "key": "contains", "expected": true, "description": "Slide 5 bullet 3"},
+    {"command": "check-slide-title 5 \"Q&A\"", "key": "match", "expected": true, "description": "Slide 6 title"},
+    {"command": "check-slide-contains 5 \"team@aifin.example\"", "key": "contains", "expected": true, "description": "Slide 6 contact email"},
+    {"command": "check-notes-contain 1 \"panel moderator\"", "key": "contains", "expected": true, "description": "Slide 2 notes mention panel moderator"},
+    {"command": "check-notes-contain 1 \"fraud live demo\"", "key": "contains", "expected": true, "description": "Slide 2 notes mention fraud live demo"},
+    {"command": "check-notes-contain 4 \"executive roundtable\"", "key": "contains", "expected": true, "description": "Slide 5 notes mention executive roundtable"},
+    {"command": "check-file-exists /home/user/Documents/webinar_followup.odp", "key": "exists", "expected": true, "description": "Output ODP file exists"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

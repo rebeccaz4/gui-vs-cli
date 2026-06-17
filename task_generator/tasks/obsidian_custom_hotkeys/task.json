@@ -1,0 +1,64 @@
+{
+  "id": "obsidian_custom_hotkeys",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/HotkeyVault. Set up the following custom keyboard shortcuts:\n\n1. Set 'Toggle bold' (editor:toggle-bold) to Ctrl+B\n2. Set 'Toggle italic' (editor:toggle-italic) to Ctrl+I\n3. Set 'Toggle strikethrough' (editor:toggle-strikethrough) to Ctrl+Shift+X\n4. Set 'Toggle highlight' (editor:toggle-highlight) to Ctrl+Shift+H\n5. Set 'Insert template' (insert-template) to Ctrl+T\n\nAfter setting all hotkeys, close Settings and create a note 'HotkeyCheatsheet.md' with body:\n\n# Hotkey Cheatsheet\n## Formatting\n- Bold: Ctrl+B\n- Italic: Ctrl+I\n- Strikethrough: Ctrl+Shift+X\n- Highlight: Ctrl+Shift+H\n## Templates\n- Insert: Ctrl+T\n#hotkeys #cheatsheet",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-bold",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Bold hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-italic",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Italic hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-strikethrough",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Strikethrough hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-highlight",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Highlight hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault insert-template",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Insert template hotkey set"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/HotkeyVault HotkeyCheatsheet",
+      "key": "exists",
+      "expected": true,
+      "description": "HotkeyCheatsheet note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/HotkeyVault HotkeyCheatsheet hotkeys",
+      "key": "has_tag",
+      "expected": true,
+      "description": "HotkeyCheatsheet has #hotkeys tag"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1) \u4fee\u6539 .obsidian/hotkeys.json \u8bbe\u7f6e\u81ea\u5b9a\u4e49\u5feb\u6377\u952e; 2) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa HotkeyCheatsheet.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Using Settings > Hotkeys'\u3001'Set hotkeys'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u4fee\u6539hotkeys.json\u914d\u7f6e\u6587\u4ef6"
+  }
+}

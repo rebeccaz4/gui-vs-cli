@@ -1,0 +1,58 @@
+{
+  "id": "zotero_gap_csv_import_via_ris_conversion",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Two companion bibliography files are provided: /home/user/Documents/bibliography.csv (human-readable source) and /home/user/Documents/bibliography.ris (the Zotero-importable conversion, 3 entries). Launch Zotero. Create a new top-level collection named exactly 'Imported Bibliography'. Then import /home/user/Documents/bibliography.ris into Zotero, ensuring the imported items end up inside the 'Imported Bibliography' collection. After completion the 'Imported Bibliography' collection must exist and contain at least 3 items. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "bibliography.csv",
+        "sandbox_path": "/home/user/Documents/bibliography.csv"
+      },
+      {
+        "filename": "bibliography.ris",
+        "sandbox_path": "/home/user/Documents/bibliography.ris"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-collection-exists 'Imported Bibliography'",
+      "key": "exists",
+      "expected": true,
+      "description": "Collection exists"
+    },
+    {
+      "command": "check-collection-count 'Imported Bibliography' 3",
+      "key": "match",
+      "expected": true,
+      "description": "Collection has at least 3 items"
+    },
+    {
+      "command": "check-item-exists 'Efficient Estimation of Word Representations'",
+      "key": "exists",
+      "expected": true,
+      "description": "Mikolov item imported"
+    },
+    {
+      "command": "check-item-exists 'GloVe'",
+      "key": "exists",
+      "expected": true,
+      "description": "GloVe item imported"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json collection create 'Imported Bibliography' --experimental && cli-anything-zotero --json import file /home/user/Documents/bibliography.ris --collection <collection_key>",
+    "reason": "CLI-Anything supports both creating collections (experimental) and importing RIS files. First create the collection, get its key, then import the RIS file into that specific collection. Requires Zotero to be running for import."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_sphere_stl_export_high_res",
+  "files": [
+    {
+      "filename": "ball.FCStd",
+      "sandbox_path": "/home/user/Documents/ball.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

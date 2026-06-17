@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_sketch_constrained_rectangle",
+  "files": [
+    {
+      "filename": "sketch_start.FCStd",
+      "sandbox_path": "/home/user/Documents/sketch_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

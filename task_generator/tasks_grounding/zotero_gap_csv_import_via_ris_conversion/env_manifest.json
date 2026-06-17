@@ -1,0 +1,20 @@
+{
+  "task_id": "zotero_gap_csv_import_via_ris_conversion",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "bibliography.csv",
+      "sandbox_path": "/home/user/Documents/bibliography.csv",
+      "type": "csv"
+    },
+    {
+      "filename": "bibliography.ris",
+      "sandbox_path": "/home/user/Documents/bibliography.ris",
+      "type": "ris"
+    }
+  ]
+}

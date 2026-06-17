@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_wrap_around_and_mirror",
+  "files": [
+    {
+      "filename": "pattern.kra",
+      "sandbox_path": "/home/user/Documents/pattern.kra",
+      "type": "kra"
+    }
+  ]
+}

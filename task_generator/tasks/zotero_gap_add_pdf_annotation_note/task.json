@@ -1,0 +1,54 @@
+{
+  "id": "zotero_gap_add_pdf_annotation_note",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. A PDF is provided at /home/user/Documents/deep_learning.pdf. Launch Zotero. First attach the PDF /home/user/Documents/deep_learning.pdf to the existing item 'Deep Learning'. Then add a child note to the 'Deep Learning' item whose body contains EXACTLY the phrases 'Chapter 1: Introduction' and 'key definitions'. Save by clicking elsewhere. After saving, 'Deep Learning' must have at least one child PDF attachment AND at least one child note mentioning both phrases. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "deep_learning.pdf",
+        "sandbox_path": "/home/user/Documents/deep_learning.pdf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-attachment 'Deep Learning'",
+      "key": "has_attachment",
+      "expected": true,
+      "description": "Deep Learning has an attachment"
+    },
+    {
+      "command": "check-item-note 'Deep Learning'",
+      "key": "has_note",
+      "expected": true,
+      "description": "Deep Learning has a child note"
+    },
+    {
+      "command": "check-note-contains 'Chapter 1: Introduction'",
+      "key": "contains",
+      "expected": true,
+      "description": "A note contains 'Chapter 1: Introduction'"
+    },
+    {
+      "command": "check-note-contains 'key definitions'",
+      "key": "contains",
+      "expected": true,
+      "description": "A note contains 'key definitions'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite + file operations: 1) Attach PDF: copy to storage, insert attachment item with parentItemID, 2) Add note: insert note item with parentItemID and note body in itemDataValues table",
+    "reason": "Both PDF attachment and note addition are feasible. PDF attachment creates an item record with parentItemID and copies the file. Note addition creates a note-type item with parentItemID and stores the note text. A single Python script can perform both operations."
+  }
+}

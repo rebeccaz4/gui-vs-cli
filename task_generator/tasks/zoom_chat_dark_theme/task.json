@@ -1,0 +1,26 @@
+{
+  "id": "zoom_chat_dark_theme",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Theme is currently set to light. Change Theme to dark so that Zoom's chat client uses the dark theme. Save the file in-place at /home/user/.config/zoomus.conf. Do not modify any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config chat.client Theme dark", "key": "match", "expected": true, "description": "[chat.client]Theme == dark"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [chat.client] Theme=dark",
+    "reason": "CLI agent can directly edit the config file using sed. Single key-value change is trivial for CLI."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_class_roster_grade_band",
+  "files": [
+    {"filename": "roster.xlsx", "sandbox_path": "/home/user/Documents/roster.xlsx", "type": "xlsx"}
+  ]
+}

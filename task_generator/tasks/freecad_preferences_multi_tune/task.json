@@ -1,0 +1,51 @@
+{
+  "id": "freecad_preferences_multi_tune",
+  "app": "freecad",
+  "task": "Configure multiple FreeCAD preferences in ~/.config/FreeCAD/user.cfg: (1) Set the Theme to exactly 'Dark', (2) Ensure auto-save is enabled and set its interval to 180 seconds, (3) Set the User system to 'Imperial from SI (in, in/s^2)' which corresponds to schema index 2.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty_prefs.FCStd",
+        "sandbox_path": "/home/user/Documents/empty_prefs.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-preference BaseApp/Preferences/General/ThemeName Dark",
+      "key": "match",
+      "expected": true,
+      "description": "Theme set to Dark"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/General/AutoSaveEnabled true",
+      "key": "match",
+      "expected": true,
+      "description": "Auto-save enabled"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/General/AutoSaveInterval 180",
+      "key": "match",
+      "expected": true,
+      "description": "Auto-save interval == 180"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/Units/UserSchema 2",
+      "key": "match",
+      "expected": true,
+      "description": "Units schema set to 2 (Imperial from SI)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → preference/theme settings",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, preference/theme settings"
+  }
+}

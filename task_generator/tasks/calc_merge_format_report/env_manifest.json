@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_merge_format_report",
+  "files": [
+    {"filename": "report_data.xlsx", "sandbox_path": "/home/user/Documents/report_data.xlsx", "type": "xlsx"}
+  ]
+}

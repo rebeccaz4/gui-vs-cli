@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_split_deck_with_sections",
+  "files": [
+    {"filename": "marketing_plan.odp", "sandbox_path": "/home/user/Documents/marketing_plan.odp", "type": "odp"}
+  ]
+}

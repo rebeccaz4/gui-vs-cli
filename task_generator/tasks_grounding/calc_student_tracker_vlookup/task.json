@@ -1,0 +1,73 @@
+{
+  "id": "calc_student_tracker_vlookup",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/students.xlsx in LibreOffice Calc. It contains two sheets:\n- 'Roster' with columns: Student ID (A), Name (B), Major (C). Row 1 has headers, rows 2-13 have 12 students with IDs 1001-1012.\n- 'Scores' with columns: Student ID (A), Test 1 (B), Test 2 (C), Test 3 (D). Row 1 has headers, rows 2-13 have the same 12 students' test scores.\n\n1. Go to the 'Scores' sheet.\n2. In cell E1, enter 'Student Name' and make it bold.\n3. In cell E2, enter the formula =VLOOKUP(A2,Roster.$A$1:$B$13,2,0) to look up the student's name from the Roster sheet based on the Student ID in column A. Copy this formula down through E3:E13 for all students.\n4. In cell F1, enter 'Average' and make it bold.\n5. In cell F2, enter the formula =AVERAGE(B2:D2) to compute the average of the three test scores. Copy this formula down through F3:F13.\n6. Sort the entire data range A1:F13 by column F (Average) in descending order, so the highest-scoring student appears at the top. Make sure headers stay in row 1.\n7. Save the file .",
+  "task_grounding": "Open the file /home/user/Documents/students.xlsx in LibreOffice Calc. It contains two sheets:\n- 'Roster' with columns: Student ID (A), Name (B), Major (C). Row 1 has headers, rows 2-13 have 12 students with IDs 1001-1012.\n- 'Scores' with columns: Student ID (A), Test 1 (B), Test 2 (C), Test 3 (D). Row 1 has headers, rows 2-13 have the same 12 students' test scores.\n\n1. Go to the 'Scores' sheet.\n2. In cell E1, type 'Student Name' and make it bold.\n3. In cell E2, enter the formula =VLOOKUP(A2,Roster.$A$1:$B$13,2,0) to look up the student's name from the Roster sheet based on the Student ID in column A. Copy this formula down through E3:E13 for all students.\n4. In cell F1, type 'Average' and make it bold.\n5. In cell F2, enter the formula =AVERAGE(B2:D2) to compute the average of the three test scores. Copy this formula down through F3:F13.\n6. Sort the entire data range A1:F13 by column F (Average) in descending order, so the highest-scoring student appears at the top. Make sure headers stay in row 1.\n7. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "students.xlsx",
+        "sandbox_path": "/home/user/Documents/students.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value E1 \"Student Name\" Scores",
+      "key": "match",
+      "expected": true,
+      "description": "Scores E1 = 'Student Name'"
+    },
+    {
+      "command": "check-cell-formatted E1 true Scores",
+      "key": "match",
+      "expected": true,
+      "description": "Scores E1 is bold"
+    },
+    {
+      "command": "check-cell-value F1 Average Scores",
+      "key": "match",
+      "expected": true,
+      "description": "Scores F1 = 'Average'"
+    },
+    {
+      "command": "check-cell-formatted F1 true Scores",
+      "key": "match",
+      "expected": true,
+      "description": "Scores F1 is bold"
+    },
+    {
+      "command": "cell-value E2 Scores",
+      "eval": "result.get('formula') is not None and 'VLOOKUP' in result.get('formula','').upper()",
+      "description": "Scores E2 contains a VLOOKUP formula"
+    },
+    {
+      "command": "check-cell-value E2 \"Irene Taylor\" Scores",
+      "key": "match",
+      "expected": true,
+      "description": "Scores E2 = 'Irene Taylor' (highest avg student after sort)"
+    },
+    {
+      "command": "cell-value F2 Scores",
+      "eval": "result.get('formula') is not None and 'AVERAGE' in result.get('formula','').upper()",
+      "description": "Scores F2 contains an AVERAGE formula"
+    },
+    {
+      "command": "cell-value F2 Scores",
+      "eval": "abs(float(result.get('value', 0)) - 94.6667) < 0.5",
+      "description": "Scores F2 value is approximately 94.67 (Irene Taylor's average after sort)"
+    },
+    {
+      "command": "check-column-sorted F desc 2",
+      "key": "sorted",
+      "expected": true,
+      "description": "Column F is sorted descending from row 2"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

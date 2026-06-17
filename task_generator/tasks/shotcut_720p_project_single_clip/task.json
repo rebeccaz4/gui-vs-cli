@@ -1,0 +1,55 @@
+{
+  "id": "shotcut_720p_project_single_clip",
+  "app": "shotcut",
+  "task": "A Shotcut project exists at /home/user/Documents/travel.mlt with 1280x720 resolution and 25 fps. A video file beach.mp4 is located at /home/user/Videos/beach.mp4.\n\nActions required:\n1. Add beach.mp4 to the project.\n2. Place beach.mp4 on the V1 timeline track as the only clip.\n3. Save the project.\n\nThe saved travel.mlt must maintain the 1280x720 25 fps profile and contain a single clip referencing beach.mp4.",
+  "env": {
+    "files": [
+      {
+        "filename": "travel.mlt",
+        "sandbox_path": "/home/user/Documents/travel.mlt"
+      },
+      {
+        "filename": "beach.mp4",
+        "sandbox_path": "/home/user/Videos/beach.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/travel.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/travel.mlt 1280 720",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1280x720"
+    },
+    {
+      "command": "check-fps /home/user/Documents/travel.mlt 25",
+      "key": "match",
+      "expected": true,
+      "description": "Project frame rate is 25 fps"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/travel.mlt beach.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "Clip beach.mp4 is referenced in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open travel.mlt, timeline add-clip beach.mp4 --track 1, project save",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, timeline add-clip, project save. Simple single-clip addition workflow."
+  }
+}

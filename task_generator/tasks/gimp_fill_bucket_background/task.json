@@ -1,0 +1,63 @@
+{
+  "id": "gimp_fill_bucket_background",
+  "app": "gimp",
+  "task": "An image is available at: /home/user/Documents/transparent_black_square.png. Open it in GIMP. Replace all transparent pixels with solid cyan (RGB 0,255,255) and save the result as: /home/user/Documents/cyan_bg.png. Preserve all non-transparent pixels exactly and keep the image dimensions unchanged.",
+  "env": {
+    "files": [
+      {
+        "filename": "transparent_black_square.png",
+        "sandbox_path": "/home/user/Documents/transparent_black_square.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/cyan_bg.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/cyan_bg.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "Output is PNG format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/cyan_bg.png 400 400",
+      "key": "match",
+      "expected": true,
+      "description": "Output dimensions are 400x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/cyan_bg.png 10 10 0 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "Corner pixel is cyan (was transparent)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/cyan_bg.png 200 200 0 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "Center pixel is still black (inside the square)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/cyan_bg.png 350 350 0 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "Opposite corner pixel is cyan"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python with PIL: Create new cyan image, paste original on top, flatten",
+    "reason": "Bucket fill on transparent areas requires creating a background layer manually"
+  }
+}

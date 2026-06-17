@@ -1,0 +1,45 @@
+{
+  "id": "zotero_move_item_to_trash",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' in the middle pane and move it to Trash. Do NOT empty the trash. After the action, the item should still exist in Zotero's Trash folder but should no longer be counted among the 4 regular library items - only 3 regular items should remain. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-item-in-trash 'Survey of RL Methods'",
+      "key": "in_trash",
+      "expected": true,
+      "description": "Survey item is in trash"
+    },
+    {
+      "command": "check-item-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Non-deleted item count is 3"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find item by title, 2) Insert itemID into deletedItems table",
+    "reason": "Zotero's trash functionality is implemented via the deletedItems table - items in this table are considered 'in trash'. A Python script can insert the itemID into deletedItems to move it to trash. This is exactly how Zotero implements deletion."
+  }
+}

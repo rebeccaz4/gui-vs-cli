@@ -1,0 +1,32 @@
+{
+  "id": "writer_multi_table_inventory",
+  "app": "libreoffice_writer",
+  "task": "Create a new document in LibreOffice Writer and build a warehouse inventory report with multiple tables.\n\n1. Type 'Warehouse Inventory Report' as the first paragraph and set it to Heading 1 style.\n2. Type 'Electronics' as the next paragraph and set it to Heading 2 style.\n3. Insert a table with 4 rows and 3 columns (Table > Insert Table, set Name to 'Table1', Rows=4, Columns=3).\n4. Fill in the table as follows:\n   - Row 0 (header): 'Product', 'Quantity', 'Price'\n   - Row 1: 'Laptop', '120', '$899'\n   - Row 2: 'Monitor', '85', '$349'\n   - Row 3: 'Keyboard', '200', '$79'\n5. After the table, type 'Furniture' as the next paragraph and set it to Heading 2 style.\n6. Insert a second table with 4 rows and 3 columns (Table > Insert Table, set Name to 'Table2', Rows=4, Columns=3).\n7. Fill in the second table as follows:\n   - Row 0 (header): 'Product', 'Quantity', 'Price'\n   - Row 1: 'Desk', '45', '$450'\n   - Row 2: 'Chair', '60', '$299'\n   - Row 3: 'Bookshelf', '30', '$189'\n8. Save the file as /home/user/Documents/inventory_report.odt (File > Save As, navigate to /home/user/Documents/, enter filename 'inventory_report', select ODF Text format).",
+  "env": {
+    "files": [],
+    "reload_files": ["/home/user/Documents/inventory_report.odt"]
+  },
+  "verification": [
+    {"command": "check-heading-exists \"Warehouse Inventory Report\" 1", "key": "exists", "expected": true, "description": "'Warehouse Inventory Report' is Heading 1"},
+    {"command": "check-heading-exists \"Electronics\" 2", "key": "exists", "expected": true, "description": "'Electronics' is Heading 2"},
+    {"command": "check-heading-exists \"Furniture\" 2", "key": "exists", "expected": true, "description": "'Furniture' is Heading 2"},
+    {"command": "check-table-exists Table1", "key": "exists", "expected": true, "description": "Table 'Table1' exists"},
+    {"command": "check-table-cell Table1 0 0 Product", "key": "match", "expected": true, "description": "Table1 (0,0) is 'Product'"},
+    {"command": "check-table-cell Table1 0 1 Quantity", "key": "match", "expected": true, "description": "Table1 (0,1) is 'Quantity'"},
+    {"command": "check-table-cell Table1 0 2 Price", "key": "match", "expected": true, "description": "Table1 (0,2) is 'Price'"},
+    {"command": "check-table-cell Table1 1 0 Laptop", "key": "match", "expected": true, "description": "Table1 (1,0) is 'Laptop'"},
+    {"command": "check-table-cell Table1 2 1 85", "key": "match", "expected": true, "description": "Table1 (2,1) is '85'"},
+    {"command": "check-table-cell Table1 3 2 \"$79\"", "key": "match", "expected": true, "description": "Table1 (3,2) is '$79'"},
+    {"command": "check-table-exists Table2", "key": "exists", "expected": true, "description": "Table 'Table2' exists"},
+    {"command": "check-table-cell Table2 1 0 Desk", "key": "match", "expected": true, "description": "Table2 (1,0) is 'Desk'"},
+    {"command": "check-table-cell Table2 2 1 60", "key": "match", "expected": true, "description": "Table2 (2,1) is '60'"},
+    {"command": "check-table-cell Table2 3 2 \"$189\"", "key": "match", "expected": true, "description": "Table2 (3,2) is '$189'"},
+    {"command": "check-file-exists /home/user/Documents/inventory_report.odt", "key": "exists", "expected": true, "description": "File saved at /home/user/Documents/inventory_report.odt"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "shotcut_multi_track_audio_video",
+  "files": [
+    {
+      "filename": "multi_track.mlt",
+      "sandbox_path": "/home/user/Documents/multi_track.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "video1.mp4",
+      "sandbox_path": "/home/user/Videos/video1.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "video2.mp4",
+      "sandbox_path": "/home/user/Videos/video2.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "audio1.mp3",
+      "sandbox_path": "/home/user/Music/audio1.mp3",
+      "type": "mp3"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "cloudcompare_gap_delaunay_2_5d",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/terrain.ply in CloudCompare. It is an ASCII PLY with 1000 points forming a terrain heightmap (X,Y in 0..10, Z a smooth function). Mesh this cloud using Delaunay 2.5D (best-fitting plane or XY plane, default options). The resulting mesh has a vertex per input point and a triangulated surface. Export the mesh as a PLY at /home/user/Documents/terrain_mesh.ply. Do not export the original cloud. The output must be a mesh with exactly 1000 vertices and at least 1500 triangular faces.",
+  "env": {
+    "files": [
+      {
+        "filename": "terrain.ply",
+        "sandbox_path": "/home/user/Documents/terrain.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/terrain_mesh.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Output exists"
+    },
+    {
+      "command": "check-is-mesh /home/user/Documents/terrain_mesh.ply",
+      "key": "is_mesh",
+      "expected": true,
+      "description": "Output is a mesh"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/terrain_mesh.ply 1000",
+      "key": "match",
+      "expected": true,
+      "description": "1000 vertices match input cloud"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/terrain_mesh.ply",
+      "eval": "result.get('face_count', 0) >= 1500",
+      "description": "At least 1500 triangular faces"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare cloud mesh-delaunay -o mesh.obj [--best-fit] [--max-edge-length VALUE]",
+    "reason": "CLI has 'cloud mesh-delaunay' command for 2.5D Delaunay triangulation with optional best-fit plane and edge length constraints."
+  }
+}

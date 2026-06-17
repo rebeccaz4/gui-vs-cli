@@ -1,0 +1,75 @@
+{
+  "id": "shotcut_three_clip_sequence",
+  "app": "shotcut",
+  "task": "Shotcut is already open with the empty project /home/user/Documents/sequence.mlt (1920x1080, 30 fps). Three short video files exist at /home/user/Videos/shot1.mp4, /home/user/Videos/shot2.mp4 and /home/user/Videos/shot3.mp4.\n\nActions required:\n1. Add shot1.mp4, shot2.mp4 and shot3.mp4 to the project.\n2. Place them on the V1 timeline track in this exact order: shot1 first, then shot2, then shot3.\n3. Save the project.\n\nThe saved project at /home/user/Documents/sequence.mlt must still be 1920x1080 30 fps and reference all three clips.",
+  "env": {
+    "files": [
+      {
+        "filename": "sequence.mlt",
+        "sandbox_path": "/home/user/Documents/sequence.mlt"
+      },
+      {
+        "filename": "shot1.mp4",
+        "sandbox_path": "/home/user/Videos/shot1.mp4"
+      },
+      {
+        "filename": "shot2.mp4",
+        "sandbox_path": "/home/user/Videos/shot2.mp4"
+      },
+      {
+        "filename": "shot3.mp4",
+        "sandbox_path": "/home/user/Videos/shot3.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/sequence.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/sequence.mlt 1920 1080",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1920x1080"
+    },
+    {
+      "command": "check-fps /home/user/Documents/sequence.mlt 30",
+      "key": "match",
+      "expected": true,
+      "description": "Project frame rate is 30 fps"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/sequence.mlt shot1.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "shot1.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/sequence.mlt shot2.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "shot2.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/sequence.mlt shot3.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "shot3.mp4 is referenced in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open sequence.mlt, timeline add-clip shot1.mp4 --track 1, timeline add-clip shot2.mp4 --track 1, timeline add-clip shot3.mp4 --track 1, project save",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, timeline add-clip (multiple sequential calls), project save. Sequential clip placement on single track."
+  }
+}

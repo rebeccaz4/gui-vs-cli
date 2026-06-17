@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_change_unit_schema",
+  "files": [
+    {"filename": "empty.FCStd", "sandbox_path": "/home/user/Documents/empty.FCStd", "type": "fcstd"}
+  ]
+}

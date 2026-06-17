@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_boolean_cut_hole",
+  "files": [
+    {"filename": "bolted.FCStd", "sandbox_path": "/home/user/Documents/bolted.FCStd", "type": "fcstd"}
+  ]
+}

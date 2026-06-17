@@ -1,0 +1,80 @@
+{
+  "id": "freecad_gap_partdesign_circular_pattern_lugs",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/disk_start.FCStd. The document contains a PartDesign Body 'DiskBody' with a circular Pad 'Lug1' (10 mm diameter, 5 mm high) at position (30, 0, 0). Switch to the PartDesign workbench. Make the Body active. Create a circular polar pattern of 'Lug1': 6 instances, angle=360°, axis=Z axis. The pattern should create 6 evenly-spaced lugs around the disk. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "disk_start.FCStd",
+        "sandbox_path": "/home/user/Documents/disk_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/disk_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/disk_start.FCStd Disk",
+      "key": "exists",
+      "expected": true,
+      "description": "Disk preserved"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/disk_start.FCStd Lug",
+      "key": "exists",
+      "expected": true,
+      "description": "Lug pad exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/disk_start.FCStd Lug PartDesign::Pad",
+      "key": "match",
+      "expected": true,
+      "description": "Lug is PartDesign::Pad"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/disk_start.FCStd Lug Length 5",
+      "key": "match",
+      "expected": true,
+      "description": "Lug Length = 5"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/disk_start.FCStd LugPattern",
+      "key": "exists",
+      "expected": true,
+      "description": "LugPattern exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/disk_start.FCStd LugPattern PartDesign::PolarPattern",
+      "key": "match",
+      "expected": true,
+      "description": "LugPattern is PartDesign::PolarPattern"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/disk_start.FCStd LugPattern Occurrences 6",
+      "key": "match",
+      "expected": true,
+      "description": "Occurrences = 6"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/disk_start.FCStd LugPattern Angle 360",
+      "key": "match",
+      "expected": true,
+      "description": "Angle = 360"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: body polar-pattern",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: body polar-pattern"
+  }
+}

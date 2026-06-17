@@ -1,0 +1,45 @@
+{
+  "id": "freecad_export_cylinder_to_step",
+  "app": "freecad",
+  "task": "Export the Part::Cylinder object named 'Cylinder' from /home/user/Documents/pipe.FCStd to a STEP file at /home/user/exports/pipe.step.",
+  "env": {
+    "files": [
+      {
+        "filename": "pipe.FCStd",
+        "sandbox_path": "/home/user/Documents/pipe.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/exports/pipe.step",
+      "key": "exists",
+      "expected": true,
+      "description": "STEP file was written"
+    },
+    {
+      "command": "check-step-valid /home/user/exports/pipe.step",
+      "key": "valid",
+      "expected": true,
+      "description": "STEP file has ISO-10303-21 header and entities"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/pipe.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "FCStd source still exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add cylinder → export render STEP",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add cylinder, export render STEP"
+  }
+}

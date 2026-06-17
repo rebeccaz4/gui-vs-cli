@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_pdf_and_color_tag",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "bert_paper.pdf",
+      "sandbox_path": "/home/user/Documents/bert_paper.pdf",
+      "type": "pdf"
+    }
+  ]
+}

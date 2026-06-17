@@ -1,0 +1,202 @@
+{
+  "current_scene": "Live",
+  "scene_order": [
+    {
+      "name": "Live"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Camera A",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Camera B",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Screen",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Title Text",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Logo",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Alert Box",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Live",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Camera A",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Camera B",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Screen",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Title Text",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Logo",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Alert Box",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    }
+  ],
+  "name": "Untitled"
+}

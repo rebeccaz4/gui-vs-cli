@@ -1,0 +1,68 @@
+{
+  "id": "krita_create_new_canvas",
+  "app": "krita",
+  "task": "In Krita, create a new document with these exact properties: width 1500 pixels, height 1500 pixels, resolution 300 DPI, color model RGBA 8-bit. The initial background/paint layer should be filled with solid color hex #2E86AB. Add a second paint layer named exactly 'Overlay' above the background, set its blending mode to 'Multiply' and its opacity to 50% (≈128/255). Save the document as /home/user/Documents/new_canvas.kra. You may close and ignore the template file that is pre-opened.",
+  "env": {
+    "files": [
+      {
+        "filename": "template.kra",
+        "sandbox_path": "/home/user/Documents/template.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/new_canvas.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "new_canvas.kra was saved"
+    },
+    {
+      "command": "check-image-size /home/user/Documents/new_canvas.kra 1500 1500",
+      "key": "match",
+      "expected": true,
+      "description": "Canvas is 1500x1500"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/new_canvas.kra 300",
+      "key": "match",
+      "expected": true,
+      "description": "Resolution is 300 DPI"
+    },
+    {
+      "command": "check-color-space /home/user/Documents/new_canvas.kra RGBA",
+      "key": "match",
+      "expected": true,
+      "description": "Color space is RGBA"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/new_canvas.kra Overlay",
+      "key": "exists",
+      "expected": true,
+      "description": "Overlay layer present"
+    },
+    {
+      "command": "layer-info /home/user/Documents/new_canvas.kra Overlay",
+      "eval": "result.get('composite_op') == 'multiply'",
+      "expected": true,
+      "description": "Overlay blend mode = multiply"
+    },
+    {
+      "command": "layer-info /home/user/Documents/new_canvas.kra Overlay",
+      "eval": "110 <= int(result.get('opacity',0)) <= 145",
+      "expected": true,
+      "description": "Overlay opacity ≈ 50% (128±)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Create 1500x1500 canvas at 300 DPI RGBA, add Overlay layer with multiply blend mode",
+    "reason": "⚠️ CLI supports project new and layer add, but not solid fill color or blend mode setting"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "cloudcompare_obj_to_mesh_xyz_asc",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/gear.obj in CloudCompare. It is an OBJ mesh with exactly 48 vertices and 80 triangular faces. Produce two output files: 1) A PLY mesh at /home/user/Documents/gear.ply preserving all 48 vertices and all 80 triangular faces (export the mesh, not the vertices-only cloud). 2) An ASCII XYZ point cloud at /home/user/Documents/gear.xyz containing only the 48 mesh vertices, with no color or extra columns (just X Y Z).",
+  "task_grounding": "Open /home/user/Documents/gear.obj in CloudCompare. It is an OBJ mesh with exactly 48 vertices and 80 triangular faces. Produce two output files:\n1. A PLY mesh at /home/user/Documents/gear.ply preserving all 48 vertices and all 80 triangular faces (export the mesh, not the vertices-only cloud).\n2. An ASCII XYZ point cloud at /home/user/Documents/gear.xyz containing only the 48 mesh vertices, with no color or extra columns (just X Y Z). Use File > Save As on the mesh for the first output, and then extract the vertices (e.g., right-click 'Mesh > Sample points' is NOT what we want — instead use 'Edit > Mesh > Sample Points on a Mesh' only if it is exact; simpler: in the DB Tree right-click the mesh's 'Vertices' sub-item and save it as an ASCII cloud).",
+  "env": {
+    "files": [
+      {
+        "filename": "gear.obj",
+        "sandbox_path": "/home/user/Documents/gear.obj"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/gear.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "PLY mesh exists"
+    },
+    {
+      "command": "check-is-mesh /home/user/Documents/gear.ply",
+      "key": "is_mesh",
+      "expected": true,
+      "description": "PLY output is a mesh"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/gear.ply 48",
+      "key": "match",
+      "expected": true,
+      "description": "PLY has 48 vertices"
+    },
+    {
+      "command": "check-face-count /home/user/Documents/gear.ply 80",
+      "key": "match",
+      "expected": true,
+      "description": "PLY has 80 triangular faces"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/gear.xyz",
+      "key": "exists",
+      "expected": true,
+      "description": "XYZ cloud exists"
+    },
+    {
+      "command": "check-format /home/user/Documents/gear.xyz ascii",
+      "key": "match",
+      "expected": true,
+      "description": "XYZ is detected as ASCII cloud"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/gear.xyz 48",
+      "key": "match",
+      "expected": true,
+      "description": "XYZ has 48 points"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/gear.xyz",
+      "key": "has_color",
+      "expected": false,
+      "description": "XYZ has no color columns"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

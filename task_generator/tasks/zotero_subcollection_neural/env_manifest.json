@@ -1,0 +1,6 @@
+{
+  "task_id": "zotero_subcollection_neural",
+  "files": [
+    {"filename": "zotero.sqlite", "sandbox_path": "/home/user/Zotero/zotero.sqlite", "type": "sqlite"}
+  ]
+}

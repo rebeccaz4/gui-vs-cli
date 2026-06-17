@@ -1,0 +1,10 @@
+{
+  "task_id": "shotcut_set_theme_dark",
+  "files": [
+    {
+      "filename": "empty.mlt",
+      "sandbox_path": "/home/user/Documents/empty.mlt",
+      "type": "mlt"
+    }
+  ]
+}

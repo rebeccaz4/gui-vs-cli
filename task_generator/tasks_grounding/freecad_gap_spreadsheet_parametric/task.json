@@ -1,0 +1,75 @@
+{
+  "id": "freecad_gap_spreadsheet_parametric",
+  "app": "freecad",
+  "task": "Create a Spreadsheet object named 'Params' in /home/user/Documents/spreadsheet_start.FCStd. Set cell B1=100 with alias 'length', B2=50 with alias 'width', B3=20 with alias 'height'. Create a Part::Box named 'DrivenBox' and bind its Length, Width, and Height properties to the spreadsheet values via expressions. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/spreadsheet_start.FCStd (empty document). Create a Spreadsheet named exactly 'Params' (Spreadsheet workbench > New sheet). In 'Params', enter the following values and aliases: cell B1 = 100 with alias 'length'; cell B2 = 50 with alias 'width'; cell B3 = 20 with alias 'height'. (Column A may contain the label text 'length', 'width', 'height' for readability but is not required.) Then switch to the Part workbench, create a Part::Box named exactly 'DrivenBox', and bind its Length, Width, and Height properties to the spreadsheet via expressions: Length = Params.length, Width = Params.width, Height = Params.height (so the box evaluates to 100 x 50 x 20 mm). Save the file with Ctrl+S.",
+  "env": {
+    "files": [
+      {
+        "filename": "spreadsheet_start.FCStd",
+        "sandbox_path": "/home/user/Documents/spreadsheet_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/spreadsheet_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/spreadsheet_start.FCStd Params",
+      "key": "exists",
+      "expected": true,
+      "description": "Params sheet exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/spreadsheet_start.FCStd Params Spreadsheet::Sheet",
+      "key": "match",
+      "expected": true,
+      "description": "Params is Spreadsheet::Sheet"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/spreadsheet_start.FCStd DrivenBox",
+      "key": "exists",
+      "expected": true,
+      "description": "DrivenBox exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/spreadsheet_start.FCStd DrivenBox Part::Box",
+      "key": "match",
+      "expected": true,
+      "description": "DrivenBox is Part::Box"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/spreadsheet_start.FCStd DrivenBox Length 100",
+      "key": "match",
+      "expected": true,
+      "description": "Length evaluates to 100"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/spreadsheet_start.FCStd DrivenBox Width 50",
+      "key": "match",
+      "expected": true,
+      "description": "Width evaluates to 50"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/spreadsheet_start.FCStd DrivenBox Height 20",
+      "key": "match",
+      "expected": true,
+      "description": "Height evaluates to 20"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → spreadsheet new + set-cell + set-alias",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, spreadsheet new + set-cell + set-alias"
+  }
+}

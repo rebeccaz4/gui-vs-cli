@@ -1,0 +1,10 @@
+{
+  "task_id": "zotero_bulk_tag_multiple_items",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "drawio_fix_and_color_workflow",
+  "app": "drawio",
+  "task": "Modify the workflow at /home/user/Documents/wf_fix.drawio. The file contains 5 connected shapes: Input (id 2), Clean (id 3), Transform (id 4), Check (id 5, diamond), Save (id 6). Change fills: Input to #dae8fc (blue), Clean to #d5e8d4 (green), Transform to #d5e8d4 (green), Check to #fff2cc (yellow), Save to #f8cecc (red). Add shape labeled Reject. Connect Check to Reject. Final diagram must have 6 vertices. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "wf_fix.drawio",
+        "sandbox_path": "/home/user/Documents/wf_fix.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/wf_fix.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/wf_fix.drawio 6 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 6 vertices (5 original + Reject)"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Input",
+      "key": "exists",
+      "expected": true,
+      "description": "Input label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Clean",
+      "key": "exists",
+      "expected": true,
+      "description": "Clean label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Transform",
+      "key": "exists",
+      "expected": true,
+      "description": "Transform label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Check",
+      "key": "exists",
+      "expected": true,
+      "description": "Check label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Save",
+      "key": "exists",
+      "expected": true,
+      "description": "Save label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/wf_fix.drawio Reject",
+      "key": "exists",
+      "expected": true,
+      "description": "Reject added"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/wf_fix.drawio 2 fillColor \"#dae8fc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Input (id 2) fill is blue #dae8fc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/wf_fix.drawio 3 fillColor \"#d5e8d4\"",
+      "key": "match",
+      "expected": true,
+      "description": "Clean (id 3) fill is green #d5e8d4"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/wf_fix.drawio 4 fillColor \"#d5e8d4\"",
+      "key": "match",
+      "expected": true,
+      "description": "Transform (id 4) fill is green #d5e8d4"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/wf_fix.drawio 5 fillColor \"#fff2cc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Check (id 5) fill is yellow #fff2cc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/wf_fix.drawio 6 fillColor \"#f8cecc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Save (id 6) fill is red #f8cecc"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Using the connections list (source/target IDs) and the vertices list (IDs to labels), verify that there is an edge whose source label is 'Check' and target label is 'Reject'. Answer yes only if this edge exists.",
+      "command": "connections /home/user/Documents/wf_fix.drawio 0",
+      "context": "command_output",
+      "description": "Connection Check -> Reject exists"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: diamond"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "renderdoc_organize_capture_folder",
+  "files": [
+    {
+      "filename": "raw_dump.rdc",
+      "sandbox_path": "/home/user/captures/raw_dump.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "raw_dump2.rdc",
+      "sandbox_path": "/home/user/captures/raw_dump2.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "triangle.rdc",
+      "sandbox_path": "/home/user/captures/triangle.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "notes.txt",
+      "sandbox_path": "/home/user/captures/notes.txt",
+      "type": "txt"
+    }
+  ]
+}

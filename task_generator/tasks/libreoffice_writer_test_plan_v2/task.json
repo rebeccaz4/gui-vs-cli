@@ -1,0 +1,81 @@
+{
+  "id": "libreoffice_writer_test_plan_v2",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/test_plan_draft.odt in LibreOffice Writer. At the very top of the document add a Heading 1 with the text 'Login Module Test Plan'. Convert the four section-label paragraphs 'Scope', 'Approach', 'Test Cases', 'Exit Criteria' to Heading 2 style. Under the 'Test Cases' heading, replace the placeholder paragraph with a table named Table1 that has 6 rows and 4 columns. Header row: 'ID', 'Description', 'Steps', 'Expected'. Row 2: 'TC-01', 'Valid login', 'Enter valid credentials and submit', 'Dashboard is shown'. Row 3: 'TC-02', 'Invalid password', 'Enter wrong password and submit', 'Error message displayed'. Row 4: 'TC-03', 'Empty username', 'Leave username empty and submit', 'Field validation error'. Row 5: 'TC-04', 'Locked account', 'Submit credentials for locked user', 'Account locked message'. Row 6: 'TC-05', 'Session timeout', 'Idle for 30 minutes', 'Redirected to login'. Enable the page header with text 'QA Test Plan - Login' and page footer with text 'Document Version 1.0'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "test_plan_draft.odt",
+        "sandbox_path": "/home/user/Documents/test_plan_draft.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"Login Module Test Plan\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1"
+    },
+    {
+      "command": "check-heading-exists Scope 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Scope"
+    },
+    {
+      "command": "check-heading-exists Approach 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Approach"
+    },
+    {
+      "command": "check-heading-exists \"Test Cases\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Test Cases"
+    },
+    {
+      "command": "check-heading-exists \"Exit Criteria\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Exit Criteria"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/test_plan_draft.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 6 and result['tables'][0].get('cols', 0) == 4",
+      "description": "Table is 6x4"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/test_plan_draft.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['ID', 'Description', 'Steps', 'Expected'] for t in result.get('tables', []))",
+      "description": "Header row correct"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/test_plan_draft.odt",
+      "eval": "any(len(t.get('data', [])) >= 6 and t['data'][1][0] == 'TC-01' and t['data'][5][0] == 'TC-05' for t in result.get('tables', []))",
+      "description": "Test case IDs span TC-01 to TC-05"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/test_plan_draft.odt",
+      "eval": "any(len(t.get('data', [])) >= 6 and 'Dashboard' in t['data'][1][3] for t in result.get('tables', []))",
+      "description": "TC-01 expected mentions Dashboard"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('header_text', '').strip() == 'QA Test Plan - Login'",
+      "description": "Header text correct"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Document Version 1.0'",
+      "description": "Footer text correct"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

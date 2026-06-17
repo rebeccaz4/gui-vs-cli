@@ -1,0 +1,75 @@
+{
+  "id": "obs_multi_source_scene",
+  "app": "obs",
+  "task": "Create a scene with multiple source types. 1. Delete any existing default scenes so you start fresh. 2. Create a scene named exactly 'Presentation'. 3. With 'Presentation' selected, add the following three sources: a. A 'Display Capture' source named exactly 'Screen'. b. An 'Image' source named exactly 'Logo'. Point it to the file /home/user/Pictures/logo.png. c. A 'Text (FreeType 2)' source (or 'Text' source) named exactly 'Title'. Set the text content to anything you like. 4. Make sure all three sources are visible in the scene. 5. The scene collection should contain exactly 1 scene ('Presentation') with all 3 sources. 6. Remove any other scenes besides 'Presentation'.",
+  "env": {
+    "files": [
+      {
+        "filename": "logo.png",
+        "sandbox_path": "/home/user/Pictures/logo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Presentation",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Presentation' exists"
+    },
+    {
+      "command": "check-scene-count 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 1 scene in the collection"
+    },
+    {
+      "command": "check-source-in-scene Screen Presentation",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Screen' exists in 'Presentation' scene"
+    },
+    {
+      "command": "check-source-in-scene Logo Presentation",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Logo' exists in 'Presentation' scene"
+    },
+    {
+      "command": "check-source-in-scene Title Presentation",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Title' exists in 'Presentation' scene"
+    },
+    {
+      "command": "check-source-visible Screen",
+      "key": "visible",
+      "expected": true,
+      "description": "Source 'Screen' is visible"
+    },
+    {
+      "command": "check-source-visible Logo",
+      "key": "visible",
+      "expected": true,
+      "description": "Source 'Logo' is visible"
+    },
+    {
+      "command": "check-source-visible Title",
+      "key": "visible",
+      "expected": true,
+      "description": "Source 'Title' is visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

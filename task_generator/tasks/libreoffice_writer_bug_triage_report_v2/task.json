@@ -1,0 +1,91 @@
+{
+  "id": "libreoffice_writer_bug_triage_report_v2",
+  "app": "libreoffice_writer",
+  "task": "Create a new LibreOffice Writer document for a sprint bug triage report. The document must begin exactly in this order: paragraph index 0 is Heading 1 'Sprint 42 Bug Triage Report'; paragraph index 1 is Heading 2 'Summary'; paragraph index 2 is a bold body paragraph (at least 25 words) summarizing the overall bug status for Sprint 42. After that, add three more Heading 2 sections in order: 'Severity Breakdown', 'Top Bugs', 'Action Items'. Under 'Severity Breakdown' insert a table named Table1 with 5 rows and 3 columns. Header row: 'Severity', 'Open', 'Closed'. Row 2: 'Critical', '1', '3'. Row 3: 'High', '4', '7'. Row 4: 'Medium', '8', '12'. Row 5: 'Low', '6', '15'. Under 'Top Bugs' insert a second table with 6 rows and 3 columns. Header: 'ID', 'Title', 'Owner'. Row 2: 'BUG-101', 'Login loop on mobile', 'Alice'. Row 3: 'BUG-115', 'Checkout timeout', 'Bob'. Row 4: 'BUG-122', 'Cart total rounding', 'Carol'. Row 5: 'BUG-130', 'Search returns empty', 'Dan'. Row 6: 'BUG-140', 'Profile image upload fails', 'Eve'. Under 'Action Items' add a paragraph listing at least three next steps (at least 20 words). Add bookmarks named 'sev_critical', 'sev_high', and 'sev_medium' anchored at paragraphs within the Severity Breakdown area. Save the document to /home/user/Documents/bug_triage.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/bug_triage.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/bug_triage.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "bug_triage.odt exists"
+    },
+    {
+      "command": "check-heading-exists \"Sprint 42 Bug Triage Report\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1"
+    },
+    {
+      "command": "check-heading-exists Summary 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Summary"
+    },
+    {
+      "command": "check-heading-exists \"Severity Breakdown\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Severity Breakdown"
+    },
+    {
+      "command": "check-heading-exists \"Top Bugs\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Top Bugs"
+    },
+    {
+      "command": "check-heading-exists \"Action Items\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Action Items"
+    },
+    {
+      "command": "check-paragraph-formatted 2 true",
+      "key": "match",
+      "expected": true,
+      "description": "Summary body paragraph (index 2) is bold"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/bug_triage.odt",
+      "eval": "len(result.get('tables', [])) >= 2",
+      "description": "At least 2 tables"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/bug_triage.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Severity', 'Open', 'Closed'] for t in result.get('tables', []))",
+      "description": "Severity table header"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/bug_triage.odt",
+      "eval": "any(len(t.get('data', [])) >= 5 and t['data'][1][0] == 'Critical' and t['data'][1][1] == '1' for t in result.get('tables', []))",
+      "description": "Critical severity row correct"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/bug_triage.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['ID', 'Title', 'Owner'] for t in result.get('tables', []))",
+      "description": "Top Bugs header"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/bug_triage.odt",
+      "eval": "any(len(t.get('data', [])) >= 6 and t['data'][5][0] == 'BUG-140' and t['data'][5][2] == 'Eve' for t in result.get('tables', []))",
+      "description": "BUG-140 row correct"
+    },
+    {
+      "command": "bookmarks",
+      "eval": "'sev_critical' in result.get('bookmarks', []) and 'sev_high' in result.get('bookmarks', []) and 'sev_medium' in result.get('bookmarks', [])",
+      "description": "Severity bookmarks exist"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

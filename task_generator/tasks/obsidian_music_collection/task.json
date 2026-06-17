@@ -1,0 +1,111 @@
+{
+  "id": "obsidian_music_collection",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/MusicVault. Create a music collection:\n\n1. Create folders: 'Artists', 'Albums', 'Playlists'.\n2. Create 'Artists/Radiohead.md' with frontmatter 'type: artist', 'genre: alternative rock' and body with heading 'Radiohead', description, links to [[OK Computer]] and [[Kid A]], and tags #artist #alternative-rock\n3. Create 'Artists/Daft Punk.md' with frontmatter 'type: artist', 'genre: electronic' and body with heading 'Daft Punk', description, a link to [[Discovery]], and tags #artist #electronic\n4. Create 'Albums/OK Computer.md' with frontmatter 'type: album', 'year: 1997', 'rating: 10' and body with heading 'OK Computer', description, a link to [[Radiohead]], track list, and tags #album #alternative-rock\n5. Create 'Albums/Kid A.md' with frontmatter 'type: album', 'year: 2000', 'rating: 9' and body with heading 'Kid A', description, a link to [[Radiohead]], track list, and tags #album #experimental\n6. Create 'Albums/Discovery.md' with frontmatter 'type: album', 'year: 2001', 'rating: 9' and body with heading 'Discovery', description, a link to [[Daft Punk]], track list, and tags #album #electronic\n7. Create 'Playlists/Late Night Coding.md' with frontmatter 'type: playlist' and body with heading 'Late Night Coding', description, links to [[OK Computer]], [[Kid A]], and [[Discovery]], and tags #playlist #coding #latenight",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/MusicVault Artists",
+      "key": "exists",
+      "expected": true,
+      "description": "Artists folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/MusicVault Albums",
+      "key": "exists",
+      "expected": true,
+      "description": "Albums folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/MusicVault Playlists",
+      "key": "exists",
+      "expected": true,
+      "description": "Playlists folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/MusicVault Radiohead genre 'alternative rock'",
+      "key": "match",
+      "expected": true,
+      "description": "Radiohead has genre=alternative rock"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault Radiohead 'OK Computer'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Radiohead links to OK Computer"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault Radiohead 'Kid A'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Radiohead links to Kid A"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault 'Daft Punk' Discovery",
+      "key": "links_to",
+      "expected": true,
+      "description": "Daft Punk links to Discovery"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/MusicVault 'OK Computer' rating 10",
+      "key": "match",
+      "expected": true,
+      "description": "OK Computer has rating=10"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault 'OK Computer' Radiohead",
+      "key": "links_to",
+      "expected": true,
+      "description": "OK Computer links to Radiohead"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault Discovery 'Daft Punk'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Discovery links to Daft Punk"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault 'Late Night Coding' 'OK Computer'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Late Night Coding links to OK Computer"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault 'Late Night Coding' 'Kid A'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Late Night Coding links to Kid A"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/MusicVault 'Late Night Coding' Discovery",
+      "key": "links_to",
+      "expected": true,
+      "description": "Late Night Coding links to Discovery"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/MusicVault 'Late Night Coding' playlist",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Late Night Coding has #playlist tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/MusicVault",
+      "eval": "result.get('count') == 7",
+      "description": "Vault has exactly 7 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Artists/, Albums/, Playlists/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa\u6240\u6709notes\uff0c\u5305\u542btrack lists\u548cwikilinks",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

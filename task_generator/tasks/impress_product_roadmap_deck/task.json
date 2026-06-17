@@ -1,0 +1,38 @@
+{
+  "id": "impress_product_roadmap_deck",
+  "app": "libreoffice_impress",
+  "task": "Create a new presentation from scratch in LibreOffice Impress with exactly 6 slides for a quarterly product roadmap.\n\nSlide 1 (Title Slide): Title 'NovaCore Product Roadmap 2026', subtitle 'Prepared by Product Team'.\nSlide 2: Title 'Q1 2026'. Body: 'Beta release of collaboration mode', 'Migrate auth service to v2', 'Public API v3 preview'.\nSlide 3: Title 'Q2 2026'. Body: 'Mobile app public launch', 'Template gallery', 'Integration with Slack and Teams'.\nSlide 4: Title 'Q3 2026'. Body: 'Enterprise SSO support', 'Audit log export', 'Granular role permissions'.\nSlide 5: Title 'Q4 2026'. Body: 'AI assistant general availability', 'Offline mode', 'Zero-downtime upgrades'.\nSlide 6: Title 'Open Questions'. Body: 'Pricing tiers still under review', 'Hardware partner TBD'.\n\nAdd a slide transition effect to every slide (any non-None transition is fine - for example Fade or Push).\n\nAdd speaker notes to Slide 2: 'check engineering capacity before committing'.\nAdd speaker notes to Slide 5: 'schedule a GA readiness review in early December'.\n\nSave the presentation as /home/user/Documents/novacore_roadmap.pptx.",
+  "env": {
+    "files": [],
+    "reload_files": ["/home/user/Documents/novacore_roadmap.pptx"]
+  },
+  "verification": [
+    {"command": "check-slide-count 6", "key": "match", "expected": true, "description": "Exactly 6 slides"},
+    {"command": "check-slide-title 0 \"NovaCore Product Roadmap 2026\"", "key": "match", "expected": true, "description": "Slide 1 title"},
+    {"command": "check-slide-contains 0 \"Prepared by Product Team\"", "key": "contains", "expected": true, "description": "Slide 1 subtitle"},
+    {"command": "check-slide-title 1 \"Q1 2026\"", "key": "match", "expected": true, "description": "Slide 2 title"},
+    {"command": "check-slide-contains 1 \"Beta release of collaboration mode\"", "key": "contains", "expected": true, "description": "Slide 2 body"},
+    {"command": "check-slide-title 2 \"Q2 2026\"", "key": "match", "expected": true, "description": "Slide 3 title"},
+    {"command": "check-slide-contains 2 \"Mobile app public launch\"", "key": "contains", "expected": true, "description": "Slide 3 body"},
+    {"command": "check-slide-title 3 \"Q3 2026\"", "key": "match", "expected": true, "description": "Slide 4 title"},
+    {"command": "check-slide-contains 3 \"Enterprise SSO support\"", "key": "contains", "expected": true, "description": "Slide 4 body"},
+    {"command": "check-slide-title 4 \"Q4 2026\"", "key": "match", "expected": true, "description": "Slide 5 title"},
+    {"command": "check-slide-contains 4 \"AI assistant general availability\"", "key": "contains", "expected": true, "description": "Slide 5 body"},
+    {"command": "check-slide-title 5 \"Open Questions\"", "key": "match", "expected": true, "description": "Slide 6 title"},
+    {"command": "check-has-transition 0", "key": "has_transition", "expected": true, "description": "Slide 1 has transition"},
+    {"command": "check-has-transition 1", "key": "has_transition", "expected": true, "description": "Slide 2 has transition"},
+    {"command": "check-has-transition 2", "key": "has_transition", "expected": true, "description": "Slide 3 has transition"},
+    {"command": "check-has-transition 3", "key": "has_transition", "expected": true, "description": "Slide 4 has transition"},
+    {"command": "check-has-transition 4", "key": "has_transition", "expected": true, "description": "Slide 5 has transition"},
+    {"command": "check-has-transition 5", "key": "has_transition", "expected": true, "description": "Slide 6 has transition"},
+    {"command": "check-notes-contain 1 \"engineering capacity\"", "key": "contains", "expected": true, "description": "Slide 2 notes"},
+    {"command": "check-notes-contain 4 \"GA readiness review\"", "key": "contains", "expected": true, "description": "Slide 5 notes"},
+    {"command": "check-file-exists /home/user/Documents/novacore_roadmap.pptx", "key": "exists", "expected": true, "description": "File saved"}
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

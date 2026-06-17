@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_multi_track_project_setup",
+  "files": [
+    {
+      "filename": "empty.aup",
+      "sandbox_path": "/home/user/Music/empty.aup",
+      "type": "aup"
+    }
+  ]
+}

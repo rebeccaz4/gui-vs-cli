@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_add_document_metadata",
+  "files": [
+    {
+      "filename": "artwork.kra",
+      "sandbox_path": "/home/user/Documents/artwork.kra",
+      "type": "kra"
+    }
+  ]
+}

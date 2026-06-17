@@ -1,0 +1,57 @@
+{
+  "id": "impress_configure_autorecover_3min",
+  "app": "libreoffice_impress",
+  "task": "Open LibreOffice Impress.\n\nSet 'Always save as' for 'Presentation' to 'PowerPoint 2007-365 (.pptx)', enable 'Always create backup copy', enable 'Save AutoRecovery information every', and set the AutoRecovery interval to 3 minutes. Change 'Measurement unit' to 'Inch'.\n\nAfter confirming all dialogs, make sure the preferences are flushed to ~/.config/libreoffice/4/user/registrymodifications.xcu. The verifier cannot read the preferences until LibreOffice has exited cleanly.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-registry-prop-exists /org.openoffice.Office.Common/Save/Document AutoSaveTimeIntervall",
+      "key": "exists",
+      "expected": true,
+      "description": "AutoSave interval property has been written to the LibreOffice registry"
+    },
+    {
+      "command": "check-registry-value /org.openoffice.Office.Common/Save/Document AutoSaveTimeIntervall 3",
+      "key": "match",
+      "expected": true,
+      "description": "AutoSave interval is set to 3 minutes"
+    },
+    {
+      "command": "check-registry-value /org.openoffice.Office.Common/Save/Document AutoSave true",
+      "key": "match",
+      "expected": true,
+      "description": "AutoSave is enabled"
+    },
+    {
+      "command": "check-registry-value /org.openoffice.Office.Common/Save/Document CreateBackup true",
+      "key": "match",
+      "expected": true,
+      "description": "'Always create backup copy' is enabled"
+    },
+    {
+      "command": "check-registry-prop-exists /org.openoffice.Office.Common/Save/Document/Impress ooSetupFactoryDefaultFilter",
+      "key": "exists",
+      "expected": true,
+      "description": "Default save filter for Impress has been set"
+    },
+    {
+      "command": "check-registry-value /org.openoffice.Office.Common/Save/Document/Impress ooSetupFactoryDefaultFilter \"Impress MS PowerPoint 2007 XML\"",
+      "key": "match",
+      "expected": true,
+      "description": "Default save filter for Impress is PowerPoint 2007-365 (.pptx)"
+    },
+    {
+      "command": "check-registry-value /org.openoffice.Office.Impress/Layout/Other/MeasureUnit Metric 8",
+      "key": "match",
+      "expected": true,
+      "description": "Impress measurement unit set to Inch (enum value 8)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  }
+}

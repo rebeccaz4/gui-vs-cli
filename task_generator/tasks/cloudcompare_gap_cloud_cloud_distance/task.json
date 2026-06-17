@@ -1,0 +1,53 @@
+{
+  "id": "cloudcompare_gap_cloud_cloud_distance",
+  "app": "cloudcompare",
+  "task": "Compute cloud-to-cloud distances between /home/user/Documents/compared.ply and /home/user/Documents/reference.ply. Both are ASCII PLYs with 1000 points each; reference.ply is the same planar patch as compared.ply shifted by +2 units along Z. Attach the per-point distances to compared.ply as a scalar field and export the result as an ASCII PLY at /home/user/Documents/compared_c2c.ply with all 1000 points and the distance scalar field.",
+  "env": {
+    "files": [
+      {
+        "filename": "compared.ply",
+        "sandbox_path": "/home/user/Documents/compared.ply"
+      },
+      {
+        "filename": "reference.ply",
+        "sandbox_path": "/home/user/Documents/reference.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/compared_c2c.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/compared_c2c.ply 1000",
+      "key": "match",
+      "expected": true,
+      "description": "Point count preserved"
+    },
+    {
+      "command": "ply-header /home/user/Documents/compared_c2c.ply",
+      "eval": "len(result['elements'][0]['properties']) >= 4",
+      "description": "Scalar field property present beyond x,y,z"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/compared_c2c.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "ASCII PLY"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

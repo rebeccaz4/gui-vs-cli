@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_pref_default_sheets_and_save_format",
+  "files": [
+    {"filename": "blank.xlsx", "sandbox_path": "/home/user/Documents/blank.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "id": "renderdoc_rename_project_captures",
+  "app": "renderdoc",
+  "task": "The directory /home/user/captures contains five capture files with ad-hoc per-developer names:\n\n  john_ok.rdc\n  unnamed.rdc\n  snapshot_final2.rdc\n  backup_old.rdc\n  wip_trial.rdc\n\nRename them to the canonical project convention (frame_001.rdc through frame_005.rdc), using this exact mapping:\n\n  john_ok.rdc         -> frame_001.rdc\n  unnamed.rdc         -> frame_002.rdc\n  snapshot_final2.rdc -> frame_003.rdc\n  backup_old.rdc      -> frame_004.rdc\n  wip_trial.rdc       -> frame_005.rdc\n\nKeep file contents byte-identical. Do not touch any other file in the directory. When finished, /home/user/captures must contain exactly 5 .rdc files, all valid.",
+  "env": {
+    "files": [
+      {
+        "filename": "john_ok.rdc",
+        "sandbox_path": "/home/user/captures/john_ok.rdc"
+      },
+      {
+        "filename": "unnamed.rdc",
+        "sandbox_path": "/home/user/captures/unnamed.rdc"
+      },
+      {
+        "filename": "snapshot_final2.rdc",
+        "sandbox_path": "/home/user/captures/snapshot_final2.rdc"
+      },
+      {
+        "filename": "backup_old.rdc",
+        "sandbox_path": "/home/user/captures/backup_old.rdc"
+      },
+      {
+        "filename": "wip_trial.rdc",
+        "sandbox_path": "/home/user/captures/wip_trial.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/captures 5",
+      "key": "match",
+      "expected": true,
+      "description": "5 captures total"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_001.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frame_001 exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_002.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frame_002 exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_003.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frame_003 exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_004.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frame_004 exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_005.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frame_005 exists"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frame_001.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_001 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frame_002.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_002 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frame_003.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_003 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frame_004.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_004 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frame_005.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_005 valid"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/john_ok.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "original john_ok removed"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/unnamed.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "original unnamed removed"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/snapshot_final2.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "original snapshot_final2 removed"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/backup_old.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "original backup_old removed"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/wip_trial.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "original wip_trial removed"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash: test -f file.rdc; or CLI-Anything: cli-anything-renderdoc -c file.rdc capture info",
+    "reason": "Task only requires verifying .rdc file existence or validity, not editing binary content. Can use bash test commands or CLI-Anything RenderDoc skill: 'cli-anything-renderdoc -c file.rdc capture info'"
+  }
+}

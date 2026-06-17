@@ -1,0 +1,6 @@
+{
+  "task_id": "cloudcompare_gap_label_connected_components",
+  "files": [
+    {"filename": "two_clusters.ply", "sandbox_path": "/home/user/Documents/two_clusters.ply", "type": "ply"}
+  ]
+}

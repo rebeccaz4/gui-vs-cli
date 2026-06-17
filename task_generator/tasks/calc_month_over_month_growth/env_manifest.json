@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_month_over_month_growth",
+  "files": [
+    {
+      "filename": "revenue.xlsx",
+      "sandbox_path": "/home/user/Documents/revenue.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

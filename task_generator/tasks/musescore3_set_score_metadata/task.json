@@ -1,0 +1,51 @@
+{
+  "id": "musescore3_set_score_metadata",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/prelude.mscz. The current Work Title is 'Untitled Score' and the Composer is 'Anonymous'.\n\nPerform these steps:\n1. Open File > Score Properties.\n2. Set Work Title to exactly: Morning Prelude\n3. Set Composer to exactly: Ada Lovelace\n4. Set Copyright to exactly: 2024 Public Domain\n5. Click OK to close the dialog.\n6. Save the file with Ctrl+S so the .mscz file on disk is updated.\n\nDo not rename or move the file. It must still be at /home/user/Documents/prelude.mscz when you are done.",
+  "env": {
+    "files": [
+      {
+        "filename": "prelude.mscz",
+        "sandbox_path": "/home/user/Documents/prelude.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/prelude.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "prelude.mscz still exists at the original path"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/prelude.mscz workTitle Morning Prelude",
+      "key": "match",
+      "expected": true,
+      "description": "Work Title is 'Morning Prelude'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/prelude.mscz composer Ada Lovelace",
+      "key": "match",
+      "expected": true,
+      "description": "Composer is 'Ada Lovelace'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/prelude.mscz copyright 2024 Public Domain",
+      "key": "match",
+      "expected": true,
+      "description": "Copyright is '2024 Public Domain'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse inner .mscx XML, find and modify <metaTag> elements (workTitle, composer, copyright), repackage into .mscz",
+    "reason": "Metadata editing is straightforward XML manipulation - .mscz is a ZIP file containing XML that can be edited with Python stdlib (zipfile + ElementTree)"
+  }
+}

@@ -1,0 +1,84 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '*/agent-harness/**'
+      - 'registry.json'
+      - 'public_registry.json'
+      - 'cli-hub/**'
+      - 'docs/hub/**'
+      - '.github/workflows/deploy-pages.yml'
+      - '.github/scripts/update_registry_dates.py'
+      - '.github/scripts/generate_meta_skill.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate registry dates
+        run: python3 .github/scripts/update_registry_dates.py
+
+      - name: Generate meta-skill
+        run: python3 .github/scripts/generate_meta_skill.py
+
+      - name: Install AWS CLI
+        run: pip install awscli
+
+      - name: Upload SKILL.md to DO Spaces
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DO_SPACES_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SPACES_SECRET }}
+        run: |
+          aws s3 cp cli-hub-skill/SKILL.md \
+            s3://${{ secrets.DO_SPACES_BUCKET }}/SKILL.md \
+            --endpoint-url ${{ secrets.DO_SPACES_ENDPOINT }} \
+            --acl public-read \
+            --content-type text/markdown
+
+      - name: Copy registry.json to hub for cli-hub access
+        run: cp registry.json docs/hub/registry.json
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./docs/hub
+          destination: ./docs/_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs/_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

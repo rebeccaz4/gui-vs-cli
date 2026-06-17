@@ -1,0 +1,29 @@
+{
+  "id": "writer_meeting_minutes_formatting",
+  "app": "libreoffice_writer",
+  "task": "Open the file /home/user/Documents/meeting_notes.odt in LibreOffice Writer. It contains raw unformatted meeting minutes with all paragraphs in Default Paragraph Style.\n\nPerform the following formatting and editing tasks:\n\n1. Set the first paragraph 'Project Alpha Meeting Minutes' to Heading 1 style and make it bold.\n2. Find the paragraphs that contain exactly the text 'Attendees', 'Agenda', 'Discussion', and 'Action Items' and set each of them to Heading 2 style.\n3. Use Find & Replace (Ctrl+H) to replace ALL occurrences of 'TBD' with 'To Be Determined'. There are 5 occurrences in the document.\n4. Add a page header with the text 'Project Alpha - Confidential' (via Format > Page Style > Header tab, enable header, then type the text).\n5. Add a page footer with the text 'Page' (via Format > Page Style > Footer tab, enable footer, then type the text).\n6. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {"filename": "meeting_notes.odt", "sandbox_path": "/home/user/Documents/meeting_notes.odt"}
+    ]
+  },
+  "verification": [
+    {"command": "check-paragraph-style 0 \"Heading 1\"", "key": "match", "expected": true, "description": "First paragraph has Heading 1 style"},
+    {"command": "check-paragraph-formatted 0 true", "key": "match", "expected": true, "description": "First paragraph is bold"},
+    {"command": "check-heading-exists \"Attendees\" 2", "key": "exists", "expected": true, "description": "'Attendees' is a Heading 2"},
+    {"command": "check-heading-exists \"Agenda\" 2", "key": "exists", "expected": true, "description": "'Agenda' is a Heading 2"},
+    {"command": "check-heading-exists \"Discussion\" 2", "key": "exists", "expected": true, "description": "'Discussion' is a Heading 2"},
+    {"command": "check-heading-exists \"Action Items\" 2", "key": "exists", "expected": true, "description": "'Action Items' is a Heading 2"},
+    {"command": "search TBD", "eval": "result.get('count', 1) == 0", "description": "No occurrences of 'TBD' remain"},
+    {"command": "check-text-contains \"To Be Determined\"", "key": "contains", "expected": true, "description": "Document contains 'To Be Determined'"},
+    {"command": "search \"To Be Determined\"", "eval": "result.get('count', 0) == 5", "description": "Exactly 5 occurrences of 'To Be Determined'"},
+    {"command": "headers-footers", "eval": "'Project Alpha - Confidential' in result.get('header_text', '')", "description": "Header contains 'Project Alpha - Confidential'"},
+    {"command": "headers-footers", "eval": "'Page' in result.get('footer_text', '')", "description": "Footer contains 'Page'"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

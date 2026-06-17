@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_annual_report_insert_sections",
+  "files": [
+    {"filename": "annual_draft.pptx", "sandbox_path": "/home/user/Documents/annual_draft.pptx", "type": "pptx"}
+  ]
+}

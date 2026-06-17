@@ -1,0 +1,106 @@
+{
+  "id": "calc_index_match_lookup",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/quotes.xlsx in LibreOffice Calc. It has two sheets. 'Catalog' has columns SKU (A), Product (B), Unit Price (C) for 10 products (rows 2-11). 'Quotes' has columns SKU (A) and Qty (B) for 10 quote lines (rows 2-11).\n\n1. Go to the Quotes sheet. In C1 type 'Product Name' and make it bold. In D1 type 'Unit Price' and make it bold. In E1 type 'Line Total' and make it bold.\n2. In C2 enter a formula that uses INDEX and MATCH to pull the product name from Catalog based on the SKU in A2. Example: =INDEX(Catalog.B$2:B$11,MATCH(A2,Catalog.A$2:A$11,0)). Fill down through C11.\n3. In D2 enter a formula that uses INDEX and MATCH to pull the unit price. Example: =INDEX(Catalog.C$2:C$11,MATCH(A2,Catalog.A$2:A$11,0)). Fill down through D11.\n4. In E2 enter =B2*D2 and fill down through E11.\n5. In A12 type 'Grand Total' and make it bold.\n6. In E12 enter =SUM(E2:E11).\n7. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/quotes.xlsx in LibreOffice Calc. It has two sheets. 'Catalog' has columns SKU (A), Product (B), Unit Price (C) for 10 products (rows 2-11). 'Quotes' has columns SKU (A) and Qty (B) for 10 quote lines (rows 2-11).\n\n1. Go to the Quotes sheet. In C1 type 'Product Name' and make it bold. In D1 type 'Unit Price' and make it bold. In E1 type 'Line Total' and make it bold.\n2. In C2 enter a formula that uses INDEX and MATCH to pull the product name from Catalog based on the SKU in A2. Example: =INDEX(Catalog.B$2:B$11,MATCH(A2,Catalog.A$2:A$11,0)). Fill down through C11.\n3. In D2 enter a formula that uses INDEX and MATCH to pull the unit price. Example: =INDEX(Catalog.C$2:C$11,MATCH(A2,Catalog.A$2:A$11,0)). Fill down through D11.\n4. In E2 enter =B2*D2 and fill down through E11.\n5. In A12 type 'Grand Total' and make it bold.\n6. In E12 enter =SUM(E2:E11).\n7. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "quotes.xlsx",
+        "sandbox_path": "/home/user/Documents/quotes.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value C1 \"Product Name\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "Quotes C1 = Product Name"
+    },
+    {
+      "command": "check-cell-formatted C1 true Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "C1 bold"
+    },
+    {
+      "command": "check-cell-value D1 \"Unit Price\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = Unit Price"
+    },
+    {
+      "command": "check-cell-value E1 \"Line Total\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = Line Total"
+    },
+    {
+      "command": "cell-value C2 Quotes",
+      "eval": "result.get('formula') is not None and 'INDEX' in result.get('formula','').upper() and 'MATCH' in result.get('formula','').upper()",
+      "description": "C2 uses INDEX/MATCH"
+    },
+    {
+      "command": "check-cell-value C2 \"Gadget X\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "C2 = Gadget X (SKU P003)"
+    },
+    {
+      "command": "check-cell-value C3 \"Widget A\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "C3 = Widget A (SKU P001)"
+    },
+    {
+      "command": "check-cell-value C4 Contraption Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "C4 = Contraption (SKU P008)"
+    },
+    {
+      "command": "cell-value D2 Quotes",
+      "eval": "result.get('formula') is not None and 'INDEX' in result.get('formula','').upper()",
+      "description": "D2 uses INDEX"
+    },
+    {
+      "command": "cell-value D2 Quotes",
+      "eval": "abs((result.get('value') or 0) - 22.75) < 0.001",
+      "description": "D2 unit price = 22.75"
+    },
+    {
+      "command": "cell-value E2 Quotes",
+      "eval": "abs((result.get('value') or 0) - 113.75) < 0.01",
+      "description": "E2 line total = 113.75"
+    },
+    {
+      "command": "cell-value E3 Quotes",
+      "eval": "abs((result.get('value') or 0) - 125.0) < 0.01",
+      "description": "E3 line total = 125.00 (Widget A x10)"
+    },
+    {
+      "command": "check-cell-value A12 \"Grand Total\" Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "A12 = Grand Total"
+    },
+    {
+      "command": "check-cell-formatted A12 true Quotes",
+      "key": "match",
+      "expected": true,
+      "description": "A12 bold"
+    },
+    {
+      "command": "cell-value E12 Quotes",
+      "eval": "abs((result.get('value') or 0) - 1427.37) < 0.02",
+      "description": "E12 grand total = 1427.37"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

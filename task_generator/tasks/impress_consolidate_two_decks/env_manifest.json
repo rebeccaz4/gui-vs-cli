@@ -1,0 +1,7 @@
+{
+  "task_id": "impress_consolidate_two_decks",
+  "files": [
+    {"filename": "main_deck.pptx", "sandbox_path": "/home/user/Documents/main_deck.pptx", "type": "pptx"},
+    {"filename": "appendix_deck.pptx", "sandbox_path": "/home/user/Documents/appendix_deck.pptx", "type": "pptx"}
+  ]
+}

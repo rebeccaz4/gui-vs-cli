@@ -1,0 +1,64 @@
+{
+  "id": "chrome_httpbin_query_params_chain",
+  "app": "chrome",
+  "task": "Google Chrome is open. Open three separate tabs and navigate each to a different httpbin.org GET endpoint with query parameters: (1) https://httpbin.org/get?project=atlas&env=prod, (2) https://httpbin.org/get?user=claude&role=admin, (3) https://httpbin.org/get?city=tokyo&year=2026. The page body for each is a JSON document that echoes the query parameters you sent, so the parameter values will be visible on the page. Bookmark each of the three response pages. When done you should have three tabs open, all three URLs should be in your browsing history, and all three should be bookmarked.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-url-visited user=claude",
+      "key": "visited",
+      "expected": true,
+      "description": "Second GET URL with user=claude query was visited"
+    },
+    {
+      "command": "check-url-visited city=tokyo",
+      "key": "visited",
+      "expected": true,
+      "description": "Third GET URL with city=tokyo query was visited"
+    },
+    {
+      "command": "check-tab-open project=atlas",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with project=atlas query is open"
+    },
+    {
+      "command": "check-tab-open user=claude",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with user=claude query is open"
+    },
+    {
+      "command": "check-tab-open city=tokyo",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with city=tokyo query is open"
+    },
+    {
+      "command": "check-bookmark project=atlas",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for the project=atlas response page exists"
+    },
+    {
+      "command": "check-bookmark user=claude",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for the user=claude response page exists"
+    },
+    {
+      "command": "check-bookmark city=tokyo",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for the city=tokyo response page exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "godot4_configure_physics_2d",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/physics_game/project.godot. Make these changes in the INI-like text: (1) change the [application] section so that config/name is exactly \"Gravity Game\"; (2) add a [physics] section (if missing) and set the following keys: physics/2d/default_gravity=1200, physics/2d/default_gravity_vector=Vector2(0, 1), and physics/2d/sleep_threshold_linear=2.5. Leave the rest of the file intact and save. You can edit the file in gedit or Sublime Text.",
+  "env": {
+    "files": [
+      {"filename": "project.godot", "sandbox_path": "/home/user/godot_projects/physics_game/project.godot"},
+      {"filename": "main.tscn", "sandbox_path": "/home/user/godot_projects/physics_game/main.tscn"},
+      {"filename": "icon.svg", "sandbox_path": "/home/user/godot_projects/physics_game/icon.svg"}
+    ]
+  },
+  "verification": [
+    {"command": "file-exists /home/user/godot_projects/physics_game/project.godot", "key": "exists", "expected": true, "description": "project.godot still exists"},
+    {"command": "check-project-setting /home/user/godot_projects/physics_game/project.godot application/config/name '\"Gravity Game\"'", "key": "match", "expected": true, "description": "config/name is 'Gravity Game'"},
+    {"command": "check-project-setting /home/user/godot_projects/physics_game/project.godot physics/2d/default_gravity 1200", "key": "match", "expected": true, "description": "2D default gravity is 1200"},
+    {"command": "check-project-setting /home/user/godot_projects/physics_game/project.godot physics/2d/default_gravity_vector 'Vector2(0, 1)'", "key": "match", "expected": true, "description": "Gravity vector is Vector2(0, 1)"},
+    {"command": "check-project-setting /home/user/godot_projects/physics_game/project.godot physics/2d/sleep_threshold_linear 2.5", "key": "match", "expected": true, "description": "Sleep threshold linear is 2.5"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python to edit project.godot: modify config/name in [application], add [physics] section with 2D gravity settings",
+    "reason": "INI-style configuration editing. CLI agent can parse and modify project settings with Python. No GUI required."
+  }
+}

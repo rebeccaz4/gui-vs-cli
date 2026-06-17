@@ -1,0 +1,83 @@
+{
+  "id": "libreoffice_writer_technical_spec_v2",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/requirements_draft.odt in LibreOffice Writer. The document currently contains only plain paragraphs. Restructure it into a formal technical specification. At the very top, add a Heading 1 with the text 'Technical Specification'. Convert the section label paragraphs 'Overview', 'Functional Requirements', 'Non-Functional Requirements', 'System Architecture', and 'Revision History' to Heading 2 style. Under the 'Revision History' heading, insert a table named Table1 with 4 rows and 3 columns. Row 1 (header): 'Version', 'Date', 'Author'. Row 2: '0.1', '2026-01-15', 'Alice'. Row 3: '0.2', '2026-02-10', 'Bob'. Row 4: '1.0', '2026-03-01', 'Carol'. Add bookmarks named 'sec_overview', 'sec_functional', 'sec_nonfunctional', and 'sec_architecture' anchored at each of the corresponding Heading 2 paragraphs. Save the file (keep the .odt format at the original path).",
+  "env": {
+    "files": [
+      {
+        "filename": "requirements_draft.odt",
+        "sandbox_path": "/home/user/Documents/requirements_draft.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/requirements_draft.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "requirements_draft.odt exists on disk"
+    },
+    {
+      "command": "check-heading-exists \"Technical Specification\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 'Technical Specification' exists"
+    },
+    {
+      "command": "check-heading-exists Overview 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Overview' exists"
+    },
+    {
+      "command": "check-heading-exists \"Functional Requirements\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Functional Requirements' exists"
+    },
+    {
+      "command": "check-heading-exists \"Non-Functional Requirements\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Non-Functional Requirements' exists"
+    },
+    {
+      "command": "check-heading-exists \"System Architecture\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'System Architecture' exists"
+    },
+    {
+      "command": "check-heading-exists \"Revision History\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Revision History' exists"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/requirements_draft.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 4 and result['tables'][0].get('cols', 0) == 3",
+      "description": "Table has 4 rows and 3 columns"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/requirements_draft.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Version', 'Date', 'Author'] for t in result.get('tables', []))",
+      "description": "Header row is Version, Date, Author"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/requirements_draft.odt",
+      "eval": "any(len(t.get('data', [])) >= 4 and t['data'][3][2] == 'Carol' for t in result.get('tables', []))",
+      "description": "Row 4 author is Carol"
+    },
+    {
+      "command": "bookmarks",
+      "eval": "'sec_overview' in result.get('bookmarks', []) and 'sec_functional' in result.get('bookmarks', []) and 'sec_nonfunctional' in result.get('bookmarks', []) and 'sec_architecture' in result.get('bookmarks', [])",
+      "description": "All four section bookmarks exist"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  }
+}

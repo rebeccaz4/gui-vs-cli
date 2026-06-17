@@ -1,0 +1,68 @@
+{
+  "id": "krita_group_and_reorder_layers",
+  "app": "krita",
+  "task": "Open /home/user/Documents/illustration.kra in Krita. It contains four paint layers named 'Sky', 'Mountains', 'Trees', and 'Character'. Group 'Sky' and 'Mountains' into a new group layer named 'Background_Elements'. Group 'Trees' and 'Character' into a new group layer named 'Foreground_Elements'. Reorder the two groups so that 'Foreground_Elements' sits above 'Background_Elements' in the layer stack. Do not delete or rename any of the four original paint layers. Save the file in place at /home/user/Documents/illustration.kra.",
+  "env": {
+    "files": [
+      {
+        "filename": "illustration.kra",
+        "sandbox_path": "/home/user/Documents/illustration.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-layer-exists /home/user/Documents/illustration.kra Background_Elements",
+      "key": "exists",
+      "expected": true,
+      "description": "Background_Elements group exists"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/illustration.kra Foreground_Elements",
+      "key": "exists",
+      "expected": true,
+      "description": "Foreground_Elements group exists"
+    },
+    {
+      "command": "layer-info /home/user/Documents/illustration.kra Background_Elements",
+      "eval": "result.get('node_type') == 'grouplayer'",
+      "expected": true,
+      "description": "Background_Elements is a group layer"
+    },
+    {
+      "command": "layer-info /home/user/Documents/illustration.kra Foreground_Elements",
+      "eval": "result.get('node_type') == 'grouplayer'",
+      "expected": true,
+      "description": "Foreground_Elements is a group layer"
+    },
+    {
+      "command": "layers /home/user/Documents/illustration.kra",
+      "eval": "any(l.get('full_path')=='Background_Elements/Sky' for l in result) and any(l.get('full_path')=='Background_Elements/Mountains' for l in result)",
+      "expected": true,
+      "description": "Sky and Mountains nested under Background_Elements"
+    },
+    {
+      "command": "layers /home/user/Documents/illustration.kra",
+      "eval": "any(l.get('full_path')=='Foreground_Elements/Trees' for l in result) and any(l.get('full_path')=='Foreground_Elements/Character' for l in result)",
+      "expected": true,
+      "description": "Trees and Character nested under Foreground_Elements"
+    },
+    {
+      "command": "layers /home/user/Documents/illustration.kra",
+      "eval": "[l['name'] for l in result if l.get('node_type')=='grouplayer'][:2] == ['Foreground_Elements','Background_Elements']",
+      "expected": true,
+      "description": "Foreground_Elements ordered above Background_Elements"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Group layers and reorder - requires GUI drag-and-drop",
+    "reason": "❌ CLI doesn't support grouping layers or reordering layer hierarchy"
+  }
+}

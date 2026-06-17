@@ -1,0 +1,94 @@
+{
+  "id": "writer_course_syllabus_formatting",
+  "app": "libreoffice_writer",
+  "task": "Open the file /home/user/Documents/syllabus_draft.odt in LibreOffice Writer. The document contains a plain-text course syllabus with all paragraphs in Default Paragraph Style and no formatting.\n\nPerform the following formatting and editing tasks:\n\n1. Set the first paragraph 'Introduction to Computer Science - CS101' to Heading 1 style and make it bold.\n2. Set the following paragraphs to Heading 2 style: 'Course Description', 'Prerequisites', 'Grading Policy', and 'Weekly Schedule'.\n3. Set the following paragraphs to Heading 3 style: 'Midterm Exam' and 'Final Project'.\n4. Use Find & Replace (Ctrl+H) to replace ALL occurrences of 'Prof.' with 'Professor'. There are 3 occurrences in the document.\n5. Use Find & Replace (Ctrl+H) to replace ALL occurrences of 'TBA' with 'To Be Announced'. There are 4 occurrences in the document.\n6. Add a page header with the text 'CS101 - Spring 2026' (Format > Page Style > Header tab, enable header, then type the text).\n7. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "syllabus_draft.odt",
+        "sandbox_path": "/home/user/Documents/syllabus_draft.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-paragraph-style 0 \"Heading 1\"",
+      "key": "match",
+      "expected": true,
+      "description": "First paragraph has Heading 1 style"
+    },
+    {
+      "command": "check-paragraph-formatted 0 true",
+      "key": "match",
+      "expected": true,
+      "description": "First paragraph is bold"
+    },
+    {
+      "command": "check-heading-exists \"Course Description\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Course Description' is Heading 2"
+    },
+    {
+      "command": "check-heading-exists \"Prerequisites\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Prerequisites' is Heading 2"
+    },
+    {
+      "command": "check-heading-exists \"Grading Policy\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Grading Policy' is Heading 2"
+    },
+    {
+      "command": "check-heading-exists \"Weekly Schedule\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Weekly Schedule' is Heading 2"
+    },
+    {
+      "command": "check-heading-exists \"Midterm Exam\" 3",
+      "key": "exists",
+      "expected": true,
+      "description": "'Midterm Exam' is Heading 3"
+    },
+    {
+      "command": "check-heading-exists \"Final Project\" 3",
+      "key": "exists",
+      "expected": true,
+      "description": "'Final Project' is Heading 3"
+    },
+    {
+      "command": "search \"Prof.\"",
+      "eval": "result.get('count', 1) == 0",
+      "description": "No occurrences of 'Prof.' remain"
+    },
+    {
+      "command": "search Professor",
+      "eval": "result.get('count', 0) == 3",
+      "description": "3 occurrences of 'Professor' in document"
+    },
+    {
+      "command": "search TBA",
+      "eval": "result.get('count', 1) == 0",
+      "description": "No occurrences of 'TBA' remain"
+    },
+    {
+      "command": "search \"To Be Announced\"",
+      "eval": "result.get('count', 0) == 4",
+      "description": "4 occurrences of 'To Be Announced' in document"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "'CS101 - Spring 2026' in result.get('header_text', '')",
+      "description": "Header contains 'CS101 - Spring 2026'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

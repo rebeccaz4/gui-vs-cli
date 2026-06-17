@@ -1,0 +1,10 @@
+{
+  "task_id": "renderdoc_shader_debug_profile",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    }
+  ]
+}

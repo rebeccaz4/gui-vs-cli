@@ -1,0 +1,64 @@
+{
+  "id": "calc_merge_format_report",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/report_data.xlsx in LibreOffice Calc. It contains a sheet called 'Data' with columns: Month (A), Revenue (B), Expenses (C). Row 1 has headers, rows 2-7 have data for January through June.\n\n1. Select cells A1:C1 and merge them (Format > Merge Cells > Merge Cells). Type 'Financial Report H1 2025' in the merged cell. Make it bold.\n2. The data should now be in rows 2-8 (headers shifted to row 2, data in rows 3-8). Note: if the merge replaced the headers, re-enter 'Month' in A2, 'Revenue' in B2, 'Expenses' in C2.\n3. In cell A9 (or the row after the last data row), type 'TOTAL' and make it bold.\n4. In B9, enter the formula =SUM(B3:B8) for total revenue.\n5. In C9, enter the formula =SUM(C3:C8) for total expenses.\n6. In cell D2, type 'Profit'.\n7. In cells D3 through D8, enter formulas =B3-C3 (Revenue minus Expenses) for each month.\n8. In D9, enter the formula =SUM(D3:D8) for total profit.\n9. Save the file .\n\nNote: The exact row numbers depend on how the merge affects the layout. The key is: merged title in row 1, headers in row 2, data in rows 3-8, totals in row 9.",
+  "task_grounding": "Open the file /home/user/Documents/report_data.xlsx in LibreOffice Calc. It contains a sheet called 'Data' with columns: Month (A), Revenue (B), Expenses (C). Row 1 has headers, rows 2-7 have data for January through June.\n\n1. Select cells A1:C1 and merge them (Format > Merge Cells > Merge Cells). Type 'Financial Report H1 2025' in the merged cell. Make it bold.\n2. The data should now be in rows 2-8 (headers shifted to row 2, data in rows 3-8). Note: if the merge replaced the headers, re-enter 'Month' in A2, 'Revenue' in B2, 'Expenses' in C2.\n3. In cell A9 (or the row after the last data row), type 'TOTAL' and make it bold.\n4. In B9, enter the formula =SUM(B3:B8) for total revenue.\n5. In C9, enter the formula =SUM(C3:C8) for total expenses.\n6. In cell D2, type 'Profit'.\n7. In cells D3 through D8, enter formulas =B3-C3 (Revenue minus Expenses) for each month.\n8. In D9, enter the formula =SUM(D3:D8) for total profit.\n9. Save the file (Ctrl+S).\n\nNote: The exact row numbers depend on how the merge affects the layout. The key is: merged title in row 1, headers in row 2, data in rows 3-8, totals in row 9.",
+  "env": {
+    "files": [
+      {
+        "filename": "report_data.xlsx",
+        "sandbox_path": "/home/user/Documents/report_data.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-merged-cells A1:C1 Data",
+      "key": "merged",
+      "expected": true,
+      "description": "A1:C1 is merged"
+    },
+    {
+      "command": "cell-value A1 Data",
+      "eval": "'Financial Report H1 2025' in str(result.get('display','')) or 'Financial Report H1 2025' in str(result.get('value',''))",
+      "description": "A1 contains 'Financial Report H1 2025'"
+    },
+    {
+      "command": "check-cell-formatted A1 true Data",
+      "key": "match",
+      "expected": true,
+      "description": "A1 is bold"
+    },
+    {
+      "command": "cell-value D2 Data",
+      "eval": "str(result.get('value','')).strip() == 'Profit' or str(result.get('display','')).strip() == 'Profit'",
+      "description": "D2 = 'Profit'"
+    },
+    {
+      "command": "sheet-data Data",
+      "eval": "any('TOTAL' in str(row) for row in result.get('data',[]) if row)",
+      "description": "Sheet contains a 'TOTAL' row"
+    },
+    {
+      "command": "sheet-data Data",
+      "eval": "any(337000 == val or 337000.0 == val for row in result.get('data',[]) if row for val in row if isinstance(val,(int,float)))",
+      "description": "Total revenue = 337000 appears in the sheet"
+    },
+    {
+      "command": "sheet-data Data",
+      "eval": "any(271000 == val or 271000.0 == val for row in result.get('data',[]) if row for val in row if isinstance(val,(int,float)))",
+      "description": "Total expenses = 271000 appears in the sheet"
+    },
+    {
+      "command": "sheet-data Data",
+      "eval": "any(66000 == val or 66000.0 == val for row in result.get('data',[]) if row for val in row if isinstance(val,(int,float)))",
+      "description": "Total profit = 66000 appears in the sheet"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

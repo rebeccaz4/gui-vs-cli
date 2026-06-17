@@ -1,0 +1,117 @@
+{
+  "id": "obsidian_interview_prep",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/InterviewPrep. Create a technical interview preparation vault:\n\n1. Create folders: 'Topics', 'Problems', 'Companies'.\n2. Create 'Topics/Arrays.md' with frontmatter 'type: topic', 'difficulty: easy-medium' and body with heading 'Arrays', key concepts (two pointer, sliding window, prefix sums), links to [[Two Sum]] and [[Maximum Subarray]], and tags #topic #arrays #fundamentals\n3. Create 'Topics/DynamicProgramming.md' with frontmatter 'type: topic', 'difficulty: medium-hard' and body with heading 'Dynamic Programming', patterns list, link to [[Climbing Stairs]], link to [[Arrays]], and tags #topic #dp #advanced\n4. Create 'Problems/Two Sum.md' with frontmatter 'type: problem', 'difficulty: easy', 'pattern: hash-map' and body with heading, topic link to [[Arrays]], solution description, complexity analysis, and tags #problem #easy #arrays\n5. Create 'Problems/Maximum Subarray.md' with frontmatter 'type: problem', 'difficulty: medium', 'pattern: kadane' and body with heading, topic links to [[Arrays]] and [[DynamicProgramming]], solution, and tags #problem #medium #arrays #dp\n6. Create 'Problems/Climbing Stairs.md' with frontmatter 'type: problem', 'difficulty: easy', 'pattern: fibonacci' and body with heading, link to [[DynamicProgramming]], solution, and tags #problem #easy #dp\n7. Create 'Companies/Google.md' with frontmatter 'type: company', 'focus: algorithms' and body with heading, focus areas linking to [[Arrays]] and [[DynamicProgramming]], key problems linking to [[Two Sum]] and [[Maximum Subarray]], and tags #company #faang",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/InterviewPrep Topics",
+      "key": "exists",
+      "expected": true,
+      "description": "Topics folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/InterviewPrep Problems",
+      "key": "exists",
+      "expected": true,
+      "description": "Problems folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/InterviewPrep Companies",
+      "key": "exists",
+      "expected": true,
+      "description": "Companies folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/InterviewPrep Arrays type topic",
+      "key": "match",
+      "expected": true,
+      "description": "Arrays has type=topic"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep Arrays 'Two Sum'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Arrays links to Two Sum"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep Arrays 'Maximum Subarray'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Arrays links to Maximum Subarray"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/InterviewPrep DynamicProgramming dp",
+      "key": "has_tag",
+      "expected": true,
+      "description": "DynamicProgramming has #dp tag"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep DynamicProgramming Arrays",
+      "key": "links_to",
+      "expected": true,
+      "description": "DynamicProgramming links to Arrays"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/InterviewPrep 'Two Sum' difficulty easy",
+      "key": "match",
+      "expected": true,
+      "description": "Two Sum has difficulty=easy"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep 'Maximum Subarray' Arrays",
+      "key": "links_to",
+      "expected": true,
+      "description": "Maximum Subarray links to Arrays"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep 'Maximum Subarray' DynamicProgramming",
+      "key": "links_to",
+      "expected": true,
+      "description": "Maximum Subarray links to DynamicProgramming"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep 'Climbing Stairs' DynamicProgramming",
+      "key": "links_to",
+      "expected": true,
+      "description": "Climbing Stairs links to DynamicProgramming"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep Google Arrays",
+      "key": "links_to",
+      "expected": true,
+      "description": "Google links to Arrays"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/InterviewPrep Google DynamicProgramming",
+      "key": "links_to",
+      "expected": true,
+      "description": "Google links to DynamicProgramming"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/InterviewPrep Google faang",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Google has #faang tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/InterviewPrep",
+      "eval": "result.get('count') == 7",
+      "description": "Vault has exactly 7 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Topics/, Problems/, Companies/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa\u6240\u6709notes\uff0c\u5305\u542bYAML frontmatter\u548cwikilinks",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

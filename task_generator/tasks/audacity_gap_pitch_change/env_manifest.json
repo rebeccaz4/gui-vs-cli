@@ -1,0 +1,6 @@
+{
+  "task_id": "audacity_gap_pitch_change",
+  "files": [
+    {"filename": "source_a4.wav", "sandbox_path": "/home/user/Music/source_a4.wav", "type": "wav"}
+  ]
+}

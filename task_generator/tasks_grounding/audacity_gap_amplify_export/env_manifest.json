@@ -1,0 +1,6 @@
+{
+  "task_id": "audacity_gap_amplify_export",
+  "files": [
+    {"filename": "quiet.wav", "sandbox_path": "/home/user/Music/quiet.wav", "type": "wav"}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "freecad_boolean_cut_hole",
+  "app": "freecad",
+  "task": "Perform a Boolean Cut operation on the document at /home/user/Documents/bolted.FCStd. Use the existing Part::Box named 'Box' as the base object and the Part::Cylinder named 'Cylinder' as the tool object. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/bolted.FCStd. It contains a Part::Box named 'Box' and a Part::Cylinder named 'Cylinder' already positioned so that the cylinder passes through the box. Switch to the Part workbench. In the Model tree, first click on 'Box' (it becomes the base) and then Ctrl+click on 'Cylinder' (it becomes the tool). Then run Part > Boolean > Cut (or use the Cut toolbar button). FreeCAD will create a new Part::Cut object named 'Cut'. Save the file with Ctrl+S.",
+  "env": {
+    "files": [
+      {
+        "filename": "bolted.FCStd",
+        "sandbox_path": "/home/user/Documents/bolted.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/bolted.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/bolted.FCStd Cut",
+      "key": "exists",
+      "expected": true,
+      "description": "Cut object exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/bolted.FCStd Cut Part::Cut",
+      "key": "match",
+      "expected": true,
+      "description": "Cut object is of type Part::Cut"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/bolted.FCStd Part::Cut 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Cut object"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → part boolean cut → PartDesign operations",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, part boolean cut, PartDesign operations"
+  }
+}

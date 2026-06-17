@@ -1,0 +1,58 @@
+{
+  "id": "freecad_document_metadata_bundle",
+  "app": "freecad",
+  "task": "Set multiple metadata fields for the document at /home/user/Documents/report.FCStd. Set Comment='Revision A release candidate', Company='Acme Robotics', CreatedBy='Jordan Lee', and License='CC-BY-4.0'. Save the file.",
+  "task_grounding": "FreeCAD is open with the empty document /home/user/Documents/report.FCStd. Click on the top-level document node in the Model tree (the node labeled 'report'). In the Data tab of the Property panel, set the following document-level string properties to exactly these values: Comment = 'Revision A release candidate', Company = 'Acme Robotics', CreatedBy = 'Jordan Lee', License = 'CC-BY-4.0'. Press Enter after each change to commit, then save the file with Ctrl+S so the metadata is written back to /home/user/Documents/report.FCStd.",
+  "env": {
+    "files": [
+      {
+        "filename": "report.FCStd",
+        "sandbox_path": "/home/user/Documents/report.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/report.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-document-property /home/user/Documents/report.FCStd Comment 'Revision A release candidate'",
+      "key": "match",
+      "expected": true,
+      "description": "Document Comment set"
+    },
+    {
+      "command": "check-document-property /home/user/Documents/report.FCStd Company 'Acme Robotics'",
+      "key": "match",
+      "expected": true,
+      "description": "Document Company set"
+    },
+    {
+      "command": "check-document-property /home/user/Documents/report.FCStd CreatedBy 'Jordan Lee'",
+      "key": "match",
+      "expected": true,
+      "description": "Document CreatedBy set"
+    },
+    {
+      "command": "check-document-property /home/user/Documents/report.FCStd License CC-BY-4.0",
+      "key": "match",
+      "expected": true,
+      "description": "Document License set"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: document metadata settings",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: document metadata settings"
+  }
+}

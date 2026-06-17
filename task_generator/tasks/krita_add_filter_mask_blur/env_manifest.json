@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_add_filter_mask_blur",
+  "files": [
+    {
+      "filename": "scene.kra",
+      "sandbox_path": "/home/user/Documents/scene.kra",
+      "type": "kra"
+    }
+  ]
+}

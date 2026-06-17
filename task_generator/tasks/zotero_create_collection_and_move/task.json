@@ -1,0 +1,45 @@
+{
+  "id": "zotero_create_collection_and_move",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Perform two actions: (1) Create a new top-level collection under 'My Library' named exactly 'Key Papers'. (2) Add the existing item titled 'Attention Is All You Need' to the 'Key Papers' collection (you can drag it from the main item list onto the new collection). The item should continue to belong to its existing collections as well. Leave Zotero running so the changes are saved.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-collection-exists 'Key Papers'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Key Papers' collection exists"
+    },
+    {
+      "command": "check-collection-contains 'Key Papers' 'Attention Is All You Need'",
+      "key": "contains",
+      "expected": true,
+      "description": "'Key Papers' contains the Attention paper"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "cli-anything-zotero --json collection create 'Key Papers' --experimental && cli-anything-zotero --json item find \"Attention Is All You Need\" && cli-anything-zotero --json item add-to-collection <item_key> 'Key Papers' --experimental",
+    "reason": "CLI-Anything supports both creating collections (experimental) and adding items to collections (experimental). Requires Zotero to be closed for both operations. First create the collection, then find the item key, then add the item to the collection."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "calc_export_contacts_multi_format",
+  "app": "libreoffice_calc",
+  "task": "Open /home/user/Documents/contacts.xlsx in LibreOffice Calc. The workbook contains a sheet with contact information including names and email addresses. Export the contact data to two different formats in the /home/user/Documents/ directory:\n\n1. contacts_export.csv - CSV format with comma separator\n2. contacts_export.html - HTML format as a table\n\nEnsure both files are created with the complete contact data. Save any changes to the original workbook before closing.",
+  "env": {
+    "files": [
+      {"filename": "contacts.xlsx", "sandbox_path": "/home/user/Documents/contacts.xlsx"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Documents/contacts_export.csv", "key": "exists", "expected": true, "description": "CSV export file exists"},
+    {"command": "check-file-format /home/user/Documents/contacts_export.csv csv", "key": "match", "expected": true, "description": "CSV file is in correct format"},
+    {"command": "check-csv-rows /home/user/Documents/contacts_export.csv 15 true", "key": "match", "expected": true, "description": "CSV has 15 data rows plus header"},
+    {"command": "check-file-exists /home/user/Documents/contacts_export.html", "key": "exists", "expected": true, "description": "HTML export file exists"},
+    {"command": "check-file-format /home/user/Documents/contacts_export.html html", "key": "match", "expected": true, "description": "HTML file is in correct format"},
+    {"command": "check-html-contains /home/user/Documents/contacts_export.html Smith", "key": "contains", "expected": true, "description": "HTML contains contact data"},
+    {"command": "check-file-exists /home/user/Documents/contacts.xlsx", "key": "exists", "expected": true, "description": "Original xlsx file still exists"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

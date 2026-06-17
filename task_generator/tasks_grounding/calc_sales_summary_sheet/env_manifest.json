@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_sales_summary_sheet",
+  "files": [
+    {"filename": "sales_data.xlsx", "sandbox_path": "/home/user/Documents/sales_data.xlsx", "type": "xlsx"}
+  ]
+}

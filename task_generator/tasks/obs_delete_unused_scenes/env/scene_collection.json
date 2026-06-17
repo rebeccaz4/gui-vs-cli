@@ -1,0 +1,272 @@
+{
+  "current_scene": "Intro",
+  "scene_order": [
+    {
+      "name": "Intro"
+    },
+    {
+      "name": "Main"
+    },
+    {
+      "name": "BRB"
+    },
+    {
+      "name": "Outro"
+    },
+    {
+      "name": "Debug"
+    },
+    {
+      "name": "Archive"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Intro Card",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Main Cam",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "BRB Text",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Outro Roll",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Debug Console",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Archive Stamp",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Intro",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Intro Card",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "Main",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Main Cam",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "BRB",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "BRB Text",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "Outro",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Outro Roll",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "Debug",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Debug Console",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "Archive",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Archive Stamp",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    }
+  ],
+  "name": "Untitled"
+}

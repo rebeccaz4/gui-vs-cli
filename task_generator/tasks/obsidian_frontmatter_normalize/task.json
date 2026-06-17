@@ -1,0 +1,156 @@
+{
+  "id": "obsidian_frontmatter_normalize",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/NormalizeVault. The vault contains 6 pre-existing notes with inconsistent or missing YAML frontmatter. Rewrite the frontmatter of EACH note so that every note has exactly these three keys at the top: 'type', 'status', 'priority'. Do NOT delete the existing level-1 heading or body paragraphs. Remove any unrelated frontmatter keys (like 'title', 'name', 'randomkey', 'foo', 'x') so only the three required keys remain.\n\nUse these exact values:\n\n- 'Task-Launch.md': type=task, status=inprogress, priority=high\n- 'Idea-DarkMode.md': type=idea, status=new, priority=medium\n- 'Meeting-Kickoff.md': type=meeting, status=done, priority=high\n- 'Reference-Style.md': type=reference, status=done, priority=low\n- 'Project-Alpha.md': type=project, status=active, priority=high\n- 'Log-Sprint3.md': type=log, status=done, priority=low\n\nEach note must still have its original level-1 heading after the frontmatter. The vault must end up with exactly 6 notes (do not add any new notes).",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/.obsidian/app.json"
+      },
+      {
+        "filename": "Task-Launch.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Task-Launch.md"
+      },
+      {
+        "filename": "Idea-DarkMode.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Idea-DarkMode.md"
+      },
+      {
+        "filename": "Meeting-Kickoff.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Meeting-Kickoff.md"
+      },
+      {
+        "filename": "Reference-Style.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Reference-Style.md"
+      },
+      {
+        "filename": "Project-Alpha.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Project-Alpha.md"
+      },
+      {
+        "filename": "Log-Sprint3.md",
+        "sandbox_path": "/home/user/Documents/NormalizeVault/Log-Sprint3.md"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Task-Launch type task",
+      "key": "match",
+      "expected": true,
+      "description": "Task-Launch type=task"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Task-Launch status inprogress",
+      "key": "match",
+      "expected": true,
+      "description": "Task-Launch status=inprogress"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Task-Launch priority high",
+      "key": "match",
+      "expected": true,
+      "description": "Task-Launch priority=high"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Idea-DarkMode type idea",
+      "key": "match",
+      "expected": true,
+      "description": "Idea-DarkMode type=idea"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Idea-DarkMode status new",
+      "key": "match",
+      "expected": true,
+      "description": "Idea-DarkMode status=new"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Idea-DarkMode priority medium",
+      "key": "match",
+      "expected": true,
+      "description": "Idea-DarkMode priority=medium"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Meeting-Kickoff type meeting",
+      "key": "match",
+      "expected": true,
+      "description": "Meeting-Kickoff type=meeting"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Meeting-Kickoff status done",
+      "key": "match",
+      "expected": true,
+      "description": "Meeting-Kickoff status=done"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Meeting-Kickoff priority high",
+      "key": "match",
+      "expected": true,
+      "description": "Meeting-Kickoff priority=high"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Reference-Style type reference",
+      "key": "match",
+      "expected": true,
+      "description": "Reference-Style type=reference"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Reference-Style priority low",
+      "key": "match",
+      "expected": true,
+      "description": "Reference-Style priority=low"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Project-Alpha type project",
+      "key": "match",
+      "expected": true,
+      "description": "Project-Alpha type=project"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Project-Alpha status active",
+      "key": "match",
+      "expected": true,
+      "description": "Project-Alpha status=active"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Log-Sprint3 type log",
+      "key": "match",
+      "expected": true,
+      "description": "Log-Sprint3 type=log"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/NormalizeVault Log-Sprint3 priority low",
+      "key": "match",
+      "expected": true,
+      "description": "Log-Sprint3 priority=low"
+    },
+    {
+      "command": "get-note-frontmatter /home/user/Documents/NormalizeVault Meeting-Kickoff",
+      "eval": "set((result.get('frontmatter') or {}).keys()) == {'type', 'status', 'priority'}",
+      "description": "Meeting-Kickoff frontmatter has exactly type/status/priority"
+    },
+    {
+      "command": "get-note-frontmatter /home/user/Documents/NormalizeVault Task-Launch",
+      "eval": "set((result.get('frontmatter') or {}).keys()) == {'type', 'status', 'priority'}",
+      "description": "Task-Launch frontmatter has exactly type/status/priority"
+    },
+    {
+      "command": "list-notes /home/user/Documents/NormalizeVault",
+      "eval": "result.get('count') == 6",
+      "description": "Vault has exactly 6 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian vault update \u6216 Python \u811a\u672c\u4fee\u65396\u4e2aexisting notes\uff0c\u89c4\u8303\u5316YAML frontmatter\u4e3a\u4ec5\u5305\u542b type, status, priority \u4e09\u4e2akeys",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'rewrite the frontmatter'\u3001'edit each note'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u89e3\u6790\u5e76\u4fee\u6539.md\u6587\u4ef6\u7684frontmatter"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_reorganize_slides",
+  "files": [
+    {"filename": "project_plan.pptx", "sandbox_path": "/home/user/Documents/project_plan.pptx", "type": "pptx"}
+  ]
+}

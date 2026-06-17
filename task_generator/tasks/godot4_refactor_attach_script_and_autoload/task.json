@@ -1,0 +1,85 @@
+{
+  "id": "godot4_refactor_attach_script_and_autoload",
+  "app": "godot4",
+  "task": "Perform a two-file refactor inside /home/user/godot_projects/refactor_game/.\n\n(1) Edit main.tscn to attach the pre-existing script res://scripts/enemy.gd to the Enemy node. Add an ext_resource line near the top of the file, and reference it from the Enemy node block:\n\n[ext_resource type=\"Script\" path=\"res://scripts/enemy.gd\" id=\"1_enemy\"]\n\n... and inside the [node name=\"Enemy\" ...] block add:\n\nscript = ExtResource(\"1_enemy\")\n\n(2) Edit project.godot to add an [autoload] section (if missing) that registers GameManager pointing at the pre-existing script:\n\n[autoload]\n\nGameManager=\"*res://scripts/game_manager.gd\"\n\nDo not modify the contents of enemy.gd or game_manager.gd. Save both files.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/refactor_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/refactor_game/main.tscn"
+      },
+      {
+        "filename": "scripts/enemy.gd",
+        "sandbox_path": "/home/user/godot_projects/refactor_game/scripts/enemy.gd"
+      },
+      {
+        "filename": "scripts/game_manager.gd",
+        "sandbox_path": "/home/user/godot_projects/refactor_game/scripts/game_manager.gd"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/refactor_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-node-exists /home/user/godot_projects/refactor_game/main.tscn Enemy",
+      "key": "exists",
+      "expected": true,
+      "description": "Enemy node still exists"
+    },
+    {
+      "command": "check-scene-has-script /home/user/godot_projects/refactor_game/main.tscn enemy.gd",
+      "key": "found",
+      "expected": true,
+      "description": "Scene references enemy.gd via ext_resource"
+    },
+    {
+      "command": "check-file-contains /home/user/godot_projects/refactor_game/main.tscn ExtResource",
+      "key": "contains",
+      "expected": true,
+      "description": "main.tscn uses ExtResource"
+    },
+    {
+      "command": "check-autoload /home/user/godot_projects/refactor_game/project.godot GameManager",
+      "key": "exists",
+      "expected": true,
+      "description": "GameManager autoload is registered"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/refactor_game/project.godot autoload/GameManager '\"*res://scripts/game_manager.gd\"'",
+      "key": "match",
+      "expected": true,
+      "description": "GameManager points to game_manager.gd (enabled)"
+    },
+    {
+      "command": "check-script-class-name /home/user/godot_projects/refactor_game/scripts/enemy.gd Enemy",
+      "key": "match",
+      "expected": true,
+      "description": "enemy.gd class_name preserved"
+    },
+    {
+      "command": "file-exists /home/user/godot_projects/refactor_game/scripts/game_manager.gd",
+      "key": "exists",
+      "expected": true,
+      "description": "game_manager.gd still exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash/Python to edit project.godot INI file directly",
+    "reason": "project.godot is a text INI file - trivial to edit with CLI tools"
+  }
+}

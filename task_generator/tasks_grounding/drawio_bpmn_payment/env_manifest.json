@@ -1,0 +1,10 @@
+{
+  "task_id": "drawio_bpmn_payment",
+  "files": [
+    {
+      "filename": "payment_bpmn.drawio",
+      "sandbox_path": "/home/user/Documents/payment_bpmn.drawio",
+      "type": "drawio"
+    }
+  ]
+}

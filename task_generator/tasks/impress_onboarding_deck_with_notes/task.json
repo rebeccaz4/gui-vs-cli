@@ -1,0 +1,42 @@
+{
+  "id": "impress_onboarding_deck_with_notes",
+  "app": "libreoffice_impress",
+  "task": "Create a new presentation from scratch in LibreOffice Impress with exactly 8 slides for a new employee onboarding deck at a company called Helix Labs.\n\nSlide 1 (Title): Title 'Welcome to Helix Labs', subtitle 'Day 1 Orientation'.\nSlide 2: Title 'Engineering'. Body: 'Platform, Product, Infrastructure', 'Led by the CTO'.\nSlide 3: Title 'Design'. Body: 'Research, Visual, Systems', 'Led by the VP of Design'.\nSlide 4: Title 'Operations'. Body: 'People, Finance, Legal', 'Led by the COO'.\nSlide 5: Title 'Marketing'. Body: 'Brand, Growth, Content', 'Led by the CMO'.\nSlide 6: Title 'Benefits'. Body: '401k match up to 6%', 'Unlimited PTO', 'Health, dental, vision'.\nSlide 7: Title 'Resources'. Body: 'wiki.helixlabs.internal', 'help desk at ext 1200'.\nSlide 8: Title 'Questions'. Body: 'Ask anything'.\n\nEvery single slide (slides 1 through 8) must have non-empty speaker notes. Suggested notes - but any non-empty text works:\n- Slide 1: 'orient new hires and set the tone'\n- Slide 2: 'walk through engineering org chart'\n- Slide 3: 'show the design portfolio'\n- Slide 4: 'introduce key operations contacts'\n- Slide 5: 'share marketing wins'\n- Slide 6: 'explain benefits enrollment window'\n- Slide 7: 'demo the wiki search'\n- Slide 8: 'encourage open discussion'\n\nSave the presentation as /home/user/Documents/helix_onboarding.pptx.",
+  "env": {
+    "files": [],
+    "reload_files": ["/home/user/Documents/helix_onboarding.pptx"]
+  },
+  "verification": [
+    {"command": "check-slide-count 8", "key": "match", "expected": true, "description": "Exactly 8 slides"},
+    {"command": "check-slide-title 0 \"Welcome to Helix Labs\"", "key": "match", "expected": true, "description": "Slide 1 title"},
+    {"command": "check-slide-contains 0 \"Day 1 Orientation\"", "key": "contains", "expected": true, "description": "Slide 1 subtitle"},
+    {"command": "check-slide-title 1 \"Engineering\"", "key": "match", "expected": true, "description": "Slide 2 title"},
+    {"command": "check-slide-contains 1 \"Platform, Product, Infrastructure\"", "key": "contains", "expected": true, "description": "Slide 2 body"},
+    {"command": "check-slide-title 2 \"Design\"", "key": "match", "expected": true, "description": "Slide 3 title"},
+    {"command": "check-slide-contains 2 \"Research, Visual, Systems\"", "key": "contains", "expected": true, "description": "Slide 3 body"},
+    {"command": "check-slide-title 3 \"Operations\"", "key": "match", "expected": true, "description": "Slide 4 title"},
+    {"command": "check-slide-contains 3 \"People, Finance, Legal\"", "key": "contains", "expected": true, "description": "Slide 4 body"},
+    {"command": "check-slide-title 4 \"Marketing\"", "key": "match", "expected": true, "description": "Slide 5 title"},
+    {"command": "check-slide-contains 4 \"Brand, Growth, Content\"", "key": "contains", "expected": true, "description": "Slide 5 body"},
+    {"command": "check-slide-title 5 \"Benefits\"", "key": "match", "expected": true, "description": "Slide 6 title"},
+    {"command": "check-slide-contains 5 \"401k match up to 6%\"", "key": "contains", "expected": true, "description": "Slide 6 body"},
+    {"command": "check-slide-title 6 \"Resources\"", "key": "match", "expected": true, "description": "Slide 7 title"},
+    {"command": "check-slide-contains 6 \"wiki.helixlabs.internal\"", "key": "contains", "expected": true, "description": "Slide 7 body"},
+    {"command": "check-slide-title 7 \"Questions\"", "key": "match", "expected": true, "description": "Slide 8 title"},
+    {"command": "notes 0", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 1 has non-empty notes"},
+    {"command": "notes 1", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 2 has non-empty notes"},
+    {"command": "notes 2", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 3 has non-empty notes"},
+    {"command": "notes 3", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 4 has non-empty notes"},
+    {"command": "notes 4", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 5 has non-empty notes"},
+    {"command": "notes 5", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 6 has non-empty notes"},
+    {"command": "notes 6", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 7 has non-empty notes"},
+    {"command": "notes 7", "eval": "len(result.get('notes','').strip()) > 0", "description": "Slide 8 has non-empty notes"},
+    {"command": "check-file-exists /home/user/Documents/helix_onboarding.pptx", "key": "exists", "expected": true, "description": "File saved"}
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

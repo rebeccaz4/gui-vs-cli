@@ -1,0 +1,10 @@
+{
+  "task_id": "shotcut_v2_default_profile_uhd_2160p_30",
+  "files": [
+    {
+      "filename": "prefs_uhd.mlt",
+      "sandbox_path": "/home/user/Documents/prefs_uhd.mlt",
+      "type": "mlt"
+    }
+  ]
+}

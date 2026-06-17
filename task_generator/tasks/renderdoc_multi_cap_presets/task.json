@@ -1,0 +1,120 @@
+{
+  "id": "renderdoc_multi_cap_presets",
+  "app": "renderdoc",
+  "task": "Create three capture presets: /home/user/captures/vk_game.cap (--renderer vulkan, APIValidation=true, autoStart=false), /home/user/captures/gl_demo.cap (--opengl, HookIntoChildren=true, autoStart=false), /home/user/captures/tool_sim.cap (--batch, CaptureCallstacks=true, autoStart=true). Register all three in UI.config RecentCaptureSettings, preserve rdocConfigData.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/vk_game.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "vk_game.cap exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/gl_demo.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "gl_demo.cap exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/tool_sim.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "tool_sim.cap exists"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/vk_game.cap /usr/local/games/vk_game",
+      "key": "match",
+      "expected": true,
+      "description": "vk_game.cap points at vk_game"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/gl_demo.cap /usr/local/games/gl_demo",
+      "key": "match",
+      "expected": true,
+      "description": "gl_demo.cap points at gl_demo"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/tool_sim.cap /usr/local/bin/tool_sim",
+      "key": "match",
+      "expected": true,
+      "description": "tool_sim.cap points at tool_sim"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/vk_game.cap --renderer",
+      "key": "match",
+      "expected": true,
+      "description": "vk_game.cap commandLine has --renderer"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/gl_demo.cap --opengl",
+      "key": "match",
+      "expected": true,
+      "description": "gl_demo.cap commandLine has --opengl"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/tool_sim.cap --batch",
+      "key": "match",
+      "expected": true,
+      "description": "tool_sim.cap commandLine has --batch"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/vk_game.cap APIValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "vk_game.cap APIValidation true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/gl_demo.cap HookIntoChildren true",
+      "key": "match",
+      "expected": true,
+      "description": "gl_demo.cap HookIntoChildren true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/tool_sim.cap CaptureCallstacks true",
+      "key": "match",
+      "expected": true,
+      "description": "tool_sim.cap CaptureCallstacks true"
+    },
+    {
+      "command": "cap-parse /home/user/captures/tool_sim.cap",
+      "eval": "result.get('autoStart') is True",
+      "description": "tool_sim.cap autoStart is true"
+    },
+    {
+      "command": "cap-parse /home/user/captures/vk_game.cap",
+      "eval": "result.get('autoStart') is False",
+      "description": "vk_game.cap autoStart is false"
+    },
+    {
+      "command": "recent-settings",
+      "eval": "result.get('settings') == ['/home/user/captures/vk_game.cap', '/home/user/captures/gl_demo.cap', '/home/user/captures/tool_sim.cap']",
+      "description": "RecentCaptureSettings is the ordered list of three preset paths"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "UI.config rdocConfigData marker preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_sumifs_multi_store",
+  "files": [
+    {
+      "filename": "transactions.xlsx",
+      "sandbox_path": "/home/user/Documents/transactions.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

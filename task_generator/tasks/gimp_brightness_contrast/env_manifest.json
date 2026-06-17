@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_brightness_contrast",
+  "files": [
+    {"filename": "dark_photo.png", "sandbox_path": "/home/user/Documents/dark_photo.png", "type": "png"}
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "id": "renderdoc_triage_by_version",
+  "app": "renderdoc",
+  "task": "Create /home/user/captures/current/ and /home/user/captures/legacy/. Move alpha.rdc, beta.rdc, gamma.rdc (version 0x102) to current/. Move delta.rdc, epsilon.rdc, zeta.rdc (version 0x101) to legacy/. Delete bogus.rdc. Edit UI.config RecentCaptureFiles to ['/home/user/captures/current/alpha.rdc','/home/user/captures/current/beta.rdc','/home/user/captures/current/gamma.rdc'], preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "alpha.rdc",
+        "sandbox_path": "/home/user/captures/alpha.rdc"
+      },
+      {
+        "filename": "beta.rdc",
+        "sandbox_path": "/home/user/captures/beta.rdc"
+      },
+      {
+        "filename": "gamma.rdc",
+        "sandbox_path": "/home/user/captures/gamma.rdc"
+      },
+      {
+        "filename": "delta.rdc",
+        "sandbox_path": "/home/user/captures/delta.rdc"
+      },
+      {
+        "filename": "epsilon.rdc",
+        "sandbox_path": "/home/user/captures/epsilon.rdc"
+      },
+      {
+        "filename": "zeta.rdc",
+        "sandbox_path": "/home/user/captures/zeta.rdc"
+      },
+      {
+        "filename": "bogus.rdc",
+        "sandbox_path": "/home/user/captures/bogus.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/current",
+      "key": "is_dir",
+      "expected": true,
+      "description": "current/ subdir exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/legacy",
+      "key": "is_dir",
+      "expected": true,
+      "description": "legacy/ subdir exists"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/current 3",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 3 .rdc in current/"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/legacy 3",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 3 .rdc in legacy/"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/current/alpha.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "alpha.rdc valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/current/beta.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "beta.rdc valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/current/gamma.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "gamma.rdc valid"
+    },
+    {
+      "command": "check-rdc-version /home/user/captures/current/alpha.rdc 0x102",
+      "key": "match",
+      "expected": true,
+      "description": "alpha version 0x102"
+    },
+    {
+      "command": "check-rdc-version /home/user/captures/legacy/delta.rdc 0x101",
+      "key": "match",
+      "expected": true,
+      "description": "delta version 0x101"
+    },
+    {
+      "command": "check-rdc-version /home/user/captures/legacy/epsilon.rdc 0x101",
+      "key": "match",
+      "expected": true,
+      "description": "epsilon version 0x101"
+    },
+    {
+      "command": "check-rdc-version /home/user/captures/legacy/zeta.rdc 0x101",
+      "key": "match",
+      "expected": true,
+      "description": "zeta version 0x101"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/bogus.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "bogus.rdc deleted"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/current/alpha.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "alpha in recents"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/current/beta.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "beta in recents"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/current/gamma.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "gamma in recents"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

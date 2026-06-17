@@ -1,0 +1,112 @@
+{
+  "id": "obs_scene_split_refactor",
+  "app": "obs",
+  "task": "The scene collection already contains one scene named 'Everything' with 6 sources: 'Webcam', 'Desktop', 'Game Capture', 'Intro Logo', 'BRB Text', 'End Card'. Your task is to refactor this monolithic scene into three focused scenes: 1. Create a new scene named exactly 'Playing'. Add sources named exactly 'Webcam', 'Desktop', 'Game Capture' to it. 2. Create a new scene named exactly 'BRB'. Add a source named exactly 'BRB Text' to it. 3. Create a new scene named exactly 'End'. Add sources named exactly 'End Card' and 'Intro Logo' to it. 4. Delete the original 'Everything' scene. 5. The final collection must have exactly 3 scenes: 'Playing', 'BRB', 'End'. All sources must be visible. 6. You may use any source type from the Add Source menu when re-creating sources; only the names matter. 7.",
+  "task_grounding": "Open OBS Studio. The scene collection already contains one scene named 'Everything' with 6 sources: 'Webcam', 'Desktop', 'Game Capture', 'Intro Logo', 'BRB Text', 'End Card'.\n\nYour task is to refactor this monolithic scene into three focused scenes:\n\n1. Create a new scene named exactly 'Playing'. Add sources named exactly 'Webcam', 'Desktop', 'Game Capture' to it.\n2. Create a new scene named exactly 'BRB'. Add a source named exactly 'BRB Text' to it.\n3. Create a new scene named exactly 'End'. Add sources named exactly 'End Card' and 'Intro Logo' to it.\n4. Delete the original 'Everything' scene.\n5. The final collection must have exactly 3 scenes: 'Playing', 'BRB', 'End'. All sources must be visible.\n6. You may use any source type from the Add Source menu when re-creating sources; only the names matter.\n7. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Playing",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Playing' exists"
+    },
+    {
+      "command": "check-scene-exists BRB",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'BRB' exists"
+    },
+    {
+      "command": "check-scene-exists End",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'End' exists"
+    },
+    {
+      "command": "check-scene-exists Everything",
+      "key": "exists",
+      "expected": false,
+      "description": "Original 'Everything' scene deleted"
+    },
+    {
+      "command": "check-scene-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 scenes"
+    },
+    {
+      "command": "check-source-in-scene Webcam Playing",
+      "key": "exists",
+      "expected": true,
+      "description": "'Webcam' in 'Playing'"
+    },
+    {
+      "command": "check-source-in-scene Desktop Playing",
+      "key": "exists",
+      "expected": true,
+      "description": "'Desktop' in 'Playing'"
+    },
+    {
+      "command": "check-source-in-scene 'Game Capture' Playing",
+      "key": "exists",
+      "expected": true,
+      "description": "'Game Capture' in 'Playing'"
+    },
+    {
+      "command": "check-source-in-scene 'BRB Text' BRB",
+      "key": "exists",
+      "expected": true,
+      "description": "'BRB Text' in 'BRB'"
+    },
+    {
+      "command": "check-source-in-scene 'End Card' End",
+      "key": "exists",
+      "expected": true,
+      "description": "'End Card' in 'End'"
+    },
+    {
+      "command": "check-source-in-scene 'Intro Logo' End",
+      "key": "exists",
+      "expected": true,
+      "description": "'Intro Logo' in 'End'"
+    },
+    {
+      "command": "check-source-visible Webcam",
+      "key": "visible",
+      "expected": true,
+      "description": "'Webcam' visible"
+    },
+    {
+      "command": "check-source-visible 'BRB Text'",
+      "key": "visible",
+      "expected": true,
+      "description": "'BRB Text' visible"
+    },
+    {
+      "command": "check-source-visible 'End Card'",
+      "key": "visible",
+      "expected": true,
+      "description": "'End Card' visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

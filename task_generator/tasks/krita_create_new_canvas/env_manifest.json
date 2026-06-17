@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_create_new_canvas",
+  "files": [
+    {
+      "filename": "template.kra",
+      "sandbox_path": "/home/user/Documents/template.kra",
+      "type": "kra"
+    }
+  ]
+}

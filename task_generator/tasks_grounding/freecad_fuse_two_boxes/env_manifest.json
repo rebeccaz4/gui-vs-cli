@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_fuse_two_boxes",
+  "files": [
+    {
+      "filename": "twin.FCStd",
+      "sandbox_path": "/home/user/Documents/twin.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

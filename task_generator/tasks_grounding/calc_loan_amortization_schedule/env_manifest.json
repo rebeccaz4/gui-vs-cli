@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_loan_amortization_schedule",
+  "files": [
+    {
+      "filename": "loan.xlsx",
+      "sandbox_path": "/home/user/Documents/loan.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

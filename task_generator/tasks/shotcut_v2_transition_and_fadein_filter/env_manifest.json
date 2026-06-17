@@ -1,0 +1,20 @@
+{
+  "task_id": "shotcut_v2_transition_and_fadein_filter",
+  "files": [
+    {
+      "filename": "combo.mlt",
+      "sandbox_path": "/home/user/Documents/combo.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "intro.mp4",
+      "sandbox_path": "/home/user/Videos/intro.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "outro.mp4",
+      "sandbox_path": "/home/user/Videos/outro.mp4",
+      "type": "mp4"
+    }
+  ]
+}

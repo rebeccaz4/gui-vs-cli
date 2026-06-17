@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_add_alpha_transparent",
+  "files": [
+    {"filename": "icon_bg.png", "sandbox_path": "/home/user/Documents/icon_bg.png", "type": "png"}
+  ]
+}

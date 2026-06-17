@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_spreadsheet_parametric",
+  "files": [
+    {
+      "filename": "spreadsheet_start.FCStd",
+      "sandbox_path": "/home/user/Documents/spreadsheet_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "shotcut_v2_transition_and_fadein_filter",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/combo.mlt (1920x1080 30 fps, empty timeline). Two source videos exist: /home/user/Videos/intro.mp4 and /home/user/Videos/outro.mp4.\n\nImport both clips and place them on the V1 timeline track so outro.mp4 overlaps the end of intro.mp4 by approximately half a second (this creates a luma dissolve transition). Add a Fade In Video filter to the intro.mp4 clip with default parameters. Save the project.",
+  "env": {
+    "files": [
+      {
+        "filename": "combo.mlt",
+        "sandbox_path": "/home/user/Documents/combo.mlt"
+      },
+      {
+        "filename": "intro.mp4",
+        "sandbox_path": "/home/user/Videos/intro.mp4"
+      },
+      {
+        "filename": "outro.mp4",
+        "sandbox_path": "/home/user/Videos/outro.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/combo.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/combo.mlt intro.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "intro.mp4 is referenced"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/combo.mlt outro.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "outro.mp4 is referenced"
+    },
+    {
+      "command": "check-transition-exists /home/user/Documents/combo.mlt luma",
+      "key": "exists",
+      "expected": true,
+      "description": "A luma (dissolve) transition is present"
+    },
+    {
+      "command": "check-filter-exists /home/user/Documents/combo.mlt fade",
+      "key": "exists",
+      "expected": true,
+      "description": "A fade filter is present (Fade In Video)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CLI: project open combo.mlt, media probe intro.mp4, timeline add-clip intro.mp4 --track 1 --in 00:00:00.000, timeline add-clip outro.mp4 --track 1 --at [overlap_time], transition add luma --track-a 0 --track-b 1, filter add fadein-video --track 1 --clip 0, project save",
+    "reason": "⚠️ Complex but feasible. Requires: 1) media probe to get clip duration, 2) calculate overlap timecode, 3) place clips with overlap, 4) add transition, 5) add filter. CLI-Anything supports all operations but requires manual timing calculation. Task mentions GUI concepts but CLI can achieve same result."
+  }
+}

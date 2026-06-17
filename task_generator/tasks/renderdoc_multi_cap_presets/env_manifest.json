@@ -1,0 +1,6 @@
+{
+  "task_id": "renderdoc_multi_cap_presets",
+  "files": [
+    {"filename": "UI.config", "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config", "type": "json"}
+  ]
+}

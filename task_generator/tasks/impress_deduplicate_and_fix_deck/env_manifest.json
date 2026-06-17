@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_deduplicate_and_fix_deck",
+  "files": [
+    {"filename": "messy_deck.odp", "sandbox_path": "/home/user/Documents/messy_deck.odp", "type": "odp"}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "obs_create_scene_collection",
+  "app": "obs",
+  "task": "Set up a scene collection with multiple scenes and sources. 1. OBS may start with a default 'Scene' --. 2. Create three scenes with the exact names: 'Intro', 'Main Content', 'Outro'. 3. Select the 'Intro' scene. Add a new source of type 'Color Source' and name it exactly 'Background'. 4. Select the 'Main Content' scene. Add a new source of type 'Display Capture' and name it exactly 'Desktop'. 5. The 'Outro' scene can remain empty (no sources needed). 6. All sources must be visible. 7. The final scene collection should have exactly 3 scenes: 'Intro', 'Main Content', and 'Outro'. Remove any extra default scenes if present.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Intro",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Intro' exists"
+    },
+    {
+      "command": "check-scene-exists 'Main Content'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Main Content' exists"
+    },
+    {
+      "command": "check-scene-exists Outro",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Outro' exists"
+    },
+    {
+      "command": "check-scene-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 scenes in the collection"
+    },
+    {
+      "command": "check-source-in-scene Background Intro",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Background' exists in 'Intro' scene"
+    },
+    {
+      "command": "check-source-in-scene Desktop 'Main Content'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Desktop' exists in 'Main Content' scene"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'scene list' to find index, then 'source set --name new-name' to rename",
+    "reason": "CLI can rename scenes and sources using 'source set --name new-name' command"
+  }
+}

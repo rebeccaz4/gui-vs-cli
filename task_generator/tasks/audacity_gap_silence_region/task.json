@@ -1,0 +1,68 @@
+{
+  "id": "audacity_gap_silence_region",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/voiceover.wav loaded (a 6-second 330 Hz tone at amplitude 0.6). Silence the audio from 2.0s to 4.0s. Export the result to /home/user/Music/silenced.wav as a mono 44100 Hz 16-bit PCM WAV file.",
+  "env": {
+    "files": [
+      {
+        "filename": "voiceover.wav",
+        "sandbox_path": "/home/user/Music/voiceover.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/silenced.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Silenced WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/silenced.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/silenced.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/silenced.wav 5.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration >= 5.9s (unchanged)"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/silenced.wav 2.1 3.9 -40",
+      "key": "match",
+      "expected": true,
+      "description": "Region 2.1-3.9s is silent (<-40 dB RMS)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/silenced.wav 0.5 1.5 -10 -3",
+      "key": "match",
+      "expected": true,
+      "description": "Region before the silence retains original tone"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/silenced.wav 4.5 5.5 -10 -3",
+      "key": "match",
+      "expected": true,
+      "description": "Region after the silence retains original tone"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: clip import/add → selection set + clip remove → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: clip import/add, selection set + clip remove, metadata tag settings, export render operation"
+  }
+}

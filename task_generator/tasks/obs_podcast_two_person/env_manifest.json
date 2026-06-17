@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_podcast_two_person",
+  "files": [
+    {
+      "filename": "break.png",
+      "sandbox_path": "/home/user/Pictures/break.png",
+      "type": "png"
+    }
+  ]
+}

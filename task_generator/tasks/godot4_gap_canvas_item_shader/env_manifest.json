@@ -1,0 +1,25 @@
+{
+  "task_id": "godot4_gap_canvas_item_shader",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/shader_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/shader_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "scripts/grayscale.gdshader",
+      "sandbox_path": "/home/user/godot_projects/shader_game/scripts/grayscale.gdshader",
+      "type": "gdshader"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/shader_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

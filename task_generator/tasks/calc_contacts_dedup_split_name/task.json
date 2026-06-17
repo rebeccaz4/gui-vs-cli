@@ -1,0 +1,167 @@
+{
+  "id": "calc_contacts_dedup_split_name",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/contacts.xlsx in LibreOffice Calc. The sheet 'Contacts' has bold headers in row 1 (A='Full Name', B='Email', C='Phone') and 25 contact rows in rows 2-26. Several emails have mixed case or trailing whitespace, and some are duplicates of each other.\n\nClean and annotate the list:\n\n1. In D1 type 'First Name' (bold). In E1 type 'Last Name' (bold). In F1 type 'Clean Email' (bold). In G1 type 'Is Duplicate' (bold).\n2. In D2:D26 extract the first name using =TRIM(LEFT(A2,FIND(\" \",A2)-1)).\n3. In E2:E26 extract the last name using =TRIM(MID(A2,FIND(\" \",A2)+1,100)).\n4. In F2:F26 produce a clean email with =LOWER(TRIM(B2)).\n5. In G2:G26 mark duplicates of the cleaned email with =IF(COUNTIF($F$2:$F$26,F2)>1,\"Yes\",\"No\").\n6. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "contacts.xlsx",
+        "sandbox_path": "/home/user/Documents/contacts.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 \"First Name\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = 'First Name'"
+    },
+    {
+      "command": "check-cell-value E1 \"Last Name\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = 'Last Name'"
+    },
+    {
+      "command": "check-cell-value F1 \"Clean Email\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = 'Clean Email'"
+    },
+    {
+      "command": "check-cell-value G1 \"Is Duplicate\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = 'Is Duplicate'"
+    },
+    {
+      "command": "check-cell-formatted D1 true Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D1 bold"
+    },
+    {
+      "command": "check-cell-formatted G1 true Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G1 bold"
+    },
+    {
+      "command": "cell-value D2 Contacts",
+      "eval": "result.get('formula') is not None and 'LEFT' in result.get('formula','').upper()",
+      "description": "D2 uses LEFT()"
+    },
+    {
+      "command": "cell-value E2 Contacts",
+      "eval": "result.get('formula') is not None and 'MID' in result.get('formula','').upper()",
+      "description": "E2 uses MID()"
+    },
+    {
+      "command": "cell-value F2 Contacts",
+      "eval": "result.get('formula') is not None and 'LOWER' in result.get('formula','').upper()",
+      "description": "F2 uses LOWER()"
+    },
+    {
+      "command": "cell-value G2 Contacts",
+      "eval": "result.get('formula') is not None and 'COUNTIF' in result.get('formula','').upper()",
+      "description": "G2 uses COUNTIF()"
+    },
+    {
+      "command": "check-cell-value D2 John Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D2 first name = John"
+    },
+    {
+      "command": "check-cell-value E2 Smith Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E2 last name = Smith"
+    },
+    {
+      "command": "check-cell-value F2 john@example.com Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "F2 clean email = john@example.com"
+    },
+    {
+      "command": "check-cell-value G2 No Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G2 = No (John not duplicate)"
+    },
+    {
+      "command": "check-cell-value D3 Jane Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D3 = Jane"
+    },
+    {
+      "command": "check-cell-value E3 Doe Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E3 = Doe"
+    },
+    {
+      "command": "check-cell-value F3 jane@example.com Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "F3 = jane@example.com"
+    },
+    {
+      "command": "check-cell-value G3 Yes Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G3 = Yes (Jane is duplicated)"
+    },
+    {
+      "command": "check-cell-value F4 bob@example.com Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "F4 = bob@example.com"
+    },
+    {
+      "command": "check-cell-value G4 Yes Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G4 = Yes (Bob Smith is duplicated)"
+    },
+    {
+      "command": "check-cell-value G22 Yes Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G22 = Yes (second Jane Doe row)"
+    },
+    {
+      "command": "check-cell-value G23 Yes Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G23 = Yes (second Bob Smith row)"
+    },
+    {
+      "command": "check-cell-value G26 Yes Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G26 = Yes (third Jane Doe row)"
+    },
+    {
+      "command": "check-cell-value G24 No Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "G24 = No (Sam King not duplicate)"
+    },
+    {
+      "command": "check-cell-value F16 owen@example.com Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "F16 = owen@example.com (lowercased)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

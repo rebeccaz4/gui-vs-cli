@@ -1,0 +1,170 @@
+{
+  "id": "calc_inventory_reorder_flags",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/stock.xlsx in LibreOffice Calc. Sheet 'Stock' has columns SKU (A), Item (B), On Hand (C), Daily Usage (D), Reorder Point (E), Max Stock (F) with 15 items in rows 2-16.\n\n1. In G1 type 'Days of Supply' and make it bold. In H1 type 'Status' and make it bold. In I1 type 'Reorder Qty' and make it bold.\n2. In G2 enter =C2/D2 and fill down through G16.\n3. In H2 enter a nested-IF formula: =IF(C2<E2/2,\"Critical\",IF(C2<E2,\"Low\",\"OK\")). Fill down through H16.\n4. In I2 enter =IF(OR(H2=\"Critical\",H2=\"Low\"),F2-C2,0). Fill down through I16.\n5. Create a new sheet named 'StatusSummary'.\n6. On StatusSummary, enter: A1='Status' (bold), B1='Count' (bold), A2='Critical', A3='Low', A4='OK'.\n7. In StatusSummary B2 enter =COUNTIF(Stock.H2:H16,A2). In B3 enter =COUNTIF(Stock.H2:H16,A3). In B4 enter =COUNTIF(Stock.H2:H16,A4).\n8. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/stock.xlsx in LibreOffice Calc. Sheet 'Stock' has columns SKU (A), Item (B), On Hand (C), Daily Usage (D), Reorder Point (E), Max Stock (F) with 15 items in rows 2-16.\n\n1. In G1 type 'Days of Supply' and make it bold. In H1 type 'Status' and make it bold. In I1 type 'Reorder Qty' and make it bold.\n2. In G2 enter =C2/D2 and fill down through G16.\n3. In H2 enter a nested-IF formula: =IF(C2<E2/2,\"Critical\",IF(C2<E2,\"Low\",\"OK\")). Fill down through H16.\n4. In I2 enter =IF(OR(H2=\"Critical\",H2=\"Low\"),F2-C2,0). Fill down through I16.\n5. Create a new sheet named 'StatusSummary'.\n6. On StatusSummary, enter: A1='Status' (bold), B1='Count' (bold), A2='Critical', A3='Low', A4='OK'.\n7. In StatusSummary B2 enter =COUNTIF(Stock.H2:H16,A2). In B3 enter =COUNTIF(Stock.H2:H16,A3). In B4 enter =COUNTIF(Stock.H2:H16,A4).\n8. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "stock.xlsx",
+        "sandbox_path": "/home/user/Documents/stock.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value G1 \"Days of Supply\" Stock",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = Days of Supply"
+    },
+    {
+      "command": "check-cell-value H1 Status Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H1 = Status"
+    },
+    {
+      "command": "check-cell-value I1 \"Reorder Qty\" Stock",
+      "key": "match",
+      "expected": true,
+      "description": "I1 = Reorder Qty"
+    },
+    {
+      "command": "check-cell-formatted G1 true Stock",
+      "key": "match",
+      "expected": true,
+      "description": "G1 bold"
+    },
+    {
+      "command": "check-cell-value G2 6 Stock",
+      "key": "match",
+      "expected": true,
+      "description": "G2 Bolts days = 6"
+    },
+    {
+      "command": "check-cell-value G3 2.5 Stock",
+      "key": "match",
+      "expected": true,
+      "description": "G3 Nuts days = 2.5"
+    },
+    {
+      "command": "check-cell-value H2 Low Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H2 Bolts = Low"
+    },
+    {
+      "command": "check-cell-value H3 Critical Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H3 Nuts = Critical"
+    },
+    {
+      "command": "check-cell-value H4 OK Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H4 Washers = OK"
+    },
+    {
+      "command": "check-cell-value H5 Critical Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H5 Screws = Critical"
+    },
+    {
+      "command": "check-cell-value H13 Critical Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H13 Springs = Critical"
+    },
+    {
+      "command": "check-cell-value H16 Critical Stock",
+      "key": "match",
+      "expected": true,
+      "description": "H16 Valves = Critical"
+    },
+    {
+      "command": "check-cell-value I2 170 Stock",
+      "key": "match",
+      "expected": true,
+      "description": "I2 Bolts reorder = 170"
+    },
+    {
+      "command": "check-cell-value I4 0 Stock",
+      "key": "match",
+      "expected": true,
+      "description": "I4 Washers reorder = 0 (OK)"
+    },
+    {
+      "command": "check-cell-value I5 145 Stock",
+      "key": "match",
+      "expected": true,
+      "description": "I5 Screws reorder = 145"
+    },
+    {
+      "command": "cell-value H2 Stock",
+      "eval": "result.get('formula') is not None and result.get('formula','').upper().count('IF') >= 2",
+      "description": "H2 is nested IF"
+    },
+    {
+      "command": "check-sheet-exists StatusSummary",
+      "key": "exists",
+      "expected": true,
+      "description": "StatusSummary sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Status StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary A1 = Status"
+    },
+    {
+      "command": "check-cell-value B1 Count StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary B1 = Count"
+    },
+    {
+      "command": "check-cell-formatted A1 true StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary A1 bold"
+    },
+    {
+      "command": "check-cell-value A2 Critical StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary A2 = Critical"
+    },
+    {
+      "command": "check-cell-value B2 6 StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary B2 (Critical count) = 6"
+    },
+    {
+      "command": "check-cell-value B3 4 StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary B3 (Low count) = 4"
+    },
+    {
+      "command": "check-cell-value B4 5 StatusSummary",
+      "key": "match",
+      "expected": true,
+      "description": "StatusSummary B4 (OK count) = 5"
+    },
+    {
+      "command": "cell-value B2 StatusSummary",
+      "eval": "result.get('formula') is not None and 'COUNTIF' in result.get('formula','').upper()",
+      "description": "StatusSummary B2 uses COUNTIF"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

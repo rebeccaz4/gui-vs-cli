@@ -1,0 +1,50 @@
+{
+  "id": "cloudcompare_gap_label_connected_components",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/two_clusters.ply in CloudCompare. It is an ASCII PLY with 1500 points split into two clearly-separated clusters: a large cluster (~1000 points) near the origin and a small cluster (~500 points) near (20, 20, 20). Segment the cloud into clusters. Identify the larger of the two clusters and export only that cluster as an ASCII PLY at /home/user/Documents/largest_cluster.ply. Do not export the smaller cluster. The output must have between 800 and 1200 points and its bounding box must lie within [-5, -5, -5]-[5, 5, 5].",
+  "task_grounding": "Open /home/user/Documents/two_clusters.ply in CloudCompare. It is an ASCII PLY with 1500 points split into two clearly-separated clusters: a large cluster (~1000 points) near the origin and a small cluster (~500 points) near (20, 20, 20). Use Tools > Segmentation > Label Connected Components (default octree level, min points per component 10) to segment the cloud into clusters. Identify the larger of the two clusters and export only that cluster as an ASCII PLY at /home/user/Documents/largest_cluster.ply. Do not export the smaller cluster. The output must have between 800 and 1200 points and its bounding box must lie within [-5, -5, -5]-[5, 5, 5].",
+  "env": {
+    "files": [
+      {
+        "filename": "two_clusters.ply",
+        "sandbox_path": "/home/user/Documents/two_clusters.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/largest_cluster.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Largest cluster exists"
+    },
+    {
+      "command": "check-point-count-at-least /home/user/Documents/largest_cluster.ply 800",
+      "key": "match",
+      "expected": true,
+      "description": "At least 800 points"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/largest_cluster.ply",
+      "eval": "result.get('vertex_count', 0) <= 1200",
+      "description": "At most 1200 points (small cluster excluded)"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/largest_cluster.ply -5 -5 -5 5 5 5",
+      "key": "match",
+      "expected": true,
+      "description": "Cluster bbox is near origin (not the distant cluster)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

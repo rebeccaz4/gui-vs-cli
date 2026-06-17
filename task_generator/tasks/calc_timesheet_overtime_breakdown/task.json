@@ -1,0 +1,185 @@
+{
+  "id": "calc_timesheet_overtime_breakdown",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/timesheet.xlsx in LibreOffice Calc. The sheet 'Timesheet' has bold headers in row 1 (A='Employee', B='Mon', C='Tue', D='Wed', E='Thu', F='Fri', G='Hourly Rate') and 10 employees in rows 2-11 with their daily hours and hourly rate.\n\nExtend the timesheet with computed columns and a totals row:\n\n1. In H1 enter 'Total Hours' (bold). In I1 enter 'Regular Hours' (bold). In J1 enter 'Overtime Hours' (bold). In K1 enter 'Gross Pay' (bold).\n2. In H2:H11 enter =SUM(B2:F2)-style formulas (fill down).\n3. In I2:I11 enter =MIN(H2,40).\n4. In J2:J11 enter =MAX(0,H2-40).\n5. In K2:K11 enter =I2*G2+J2*G2*1.5 (regular pay plus overtime at 1.5x).\n6. In A12 type 'Totals' and make it bold. In H12, I12, J12, K12 put SUM formulas that sum rows 2-11 of that column (e.g. H12=SUM(H2:H11)).\n7. Save the file .",
+  "env": {
+    "files": [
+      {
+        "filename": "timesheet.xlsx",
+        "sandbox_path": "/home/user/Documents/timesheet.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value H1 \"Total Hours\" Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H1 = 'Total Hours'"
+    },
+    {
+      "command": "check-cell-value I1 \"Regular Hours\" Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "I1 = 'Regular Hours'"
+    },
+    {
+      "command": "check-cell-value J1 \"Overtime Hours\" Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "J1 = 'Overtime Hours'"
+    },
+    {
+      "command": "check-cell-value K1 \"Gross Pay\" Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K1 = 'Gross Pay'"
+    },
+    {
+      "command": "check-cell-formatted H1 true Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H1 bold"
+    },
+    {
+      "command": "check-cell-formatted K1 true Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K1 bold"
+    },
+    {
+      "command": "cell-value H2 Timesheet",
+      "eval": "result.get('formula') is not None and 'SUM' in result.get('formula','').upper()",
+      "description": "H2 uses SUM"
+    },
+    {
+      "command": "check-cell-value H2 40 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H2 total hours (Alice) = 40"
+    },
+    {
+      "command": "check-cell-value H3 50 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H3 total hours (Bob) = 50"
+    },
+    {
+      "command": "check-cell-value H4 38 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H4 total hours (Carol) = 38"
+    },
+    {
+      "command": "check-cell-value H7 52 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H7 total hours (Frank) = 52"
+    },
+    {
+      "command": "cell-value I2 Timesheet",
+      "eval": "result.get('formula') is not None and 'MIN' in result.get('formula','').upper()",
+      "description": "I2 uses MIN"
+    },
+    {
+      "command": "check-cell-value I2 40 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "I2 regular hours (Alice) = 40"
+    },
+    {
+      "command": "check-cell-value I4 38 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "I4 regular hours (Carol, <40) = 38"
+    },
+    {
+      "command": "cell-value J2 Timesheet",
+      "eval": "result.get('formula') is not None and 'MAX' in result.get('formula','').upper()",
+      "description": "J2 uses MAX"
+    },
+    {
+      "command": "check-cell-value J2 0 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "J2 overtime (Alice=40h) = 0"
+    },
+    {
+      "command": "check-cell-value J3 10 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "J3 overtime (Bob=50h) = 10"
+    },
+    {
+      "command": "check-cell-value J7 12 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "J7 overtime (Frank=52h) = 12"
+    },
+    {
+      "command": "check-cell-value K2 800 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K2 gross pay (Alice) = 800"
+    },
+    {
+      "command": "check-cell-value K3 1375 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K3 gross pay (Bob) = 1375"
+    },
+    {
+      "command": "check-cell-value K7 1392 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K7 gross pay (Frank) = 1392"
+    },
+    {
+      "command": "check-cell-value A12 Totals Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "A12 = 'Totals'"
+    },
+    {
+      "command": "check-cell-formatted A12 true Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "A12 bold"
+    },
+    {
+      "command": "check-cell-value H12 430 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "H12 total of all total-hours = 430"
+    },
+    {
+      "command": "check-cell-value I12 389 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "I12 total regular hours = 389"
+    },
+    {
+      "command": "check-cell-value J12 41 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "J12 total overtime hours = 41"
+    },
+    {
+      "command": "check-cell-value K12 11097 Timesheet",
+      "key": "match",
+      "expected": true,
+      "description": "K12 total gross pay = 11097"
+    },
+    {
+      "command": "cell-value H12 Timesheet",
+      "eval": "result.get('formula') is not None and 'SUM' in result.get('formula','').upper()",
+      "description": "H12 uses SUM"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

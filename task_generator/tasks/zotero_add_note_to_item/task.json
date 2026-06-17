@@ -1,0 +1,45 @@
+{
+  "id": "zotero_add_note_to_item",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Find the book item titled 'Deep Learning' (by Goodfellow and Bengio) in the middle pane and select it. Add a child note to this item with the following text: 'foundational textbook on deep learning'. Save the note. Leave Zotero running so the note is persisted.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-item-note 'Deep Learning'",
+      "key": "has_note",
+      "expected": true,
+      "description": "Deep Learning item has a child note"
+    },
+    {
+      "command": "check-note-contains 'foundational textbook on deep learning'",
+      "key": "contains",
+      "expected": true,
+      "description": "A note contains the required phrase"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json item find \"Deep Learning\" && cli-anything-zotero --json note add <item_key> --text \"foundational textbook on deep learning\"",
+    "reason": "CLI-Anything supports adding child notes to items via the 'note add' command. First find the item to get its key, then add the note with the exact text. Requires Zotero to be running (uses connector endpoint)."
+  }
+}

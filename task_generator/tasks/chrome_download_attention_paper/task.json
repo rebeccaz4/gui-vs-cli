@@ -1,0 +1,28 @@
+{
+  "id": "chrome_download_attention_paper",
+  "app": "chrome",
+  "task": "Search for the paper 'Attention Is All You Need' (the famous Transformer architecture paper) in Google Chrome and download it as a PDF. Save the PDF to /home/user/Downloads/attention_paper.pdf.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Downloads/attention_paper.pdf",
+      "key": "exists",
+      "expected": true,
+      "description": "PDF file saved as attention_paper.pdf"
+    },
+    {
+      "command": "check-file-contains /home/user/Downloads/attention_paper.pdf \"Attention Is All You Need\"",
+      "key": "contains",
+      "expected": true,
+      "description": "PDF contains 'Attention Is All You Need' in the title"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

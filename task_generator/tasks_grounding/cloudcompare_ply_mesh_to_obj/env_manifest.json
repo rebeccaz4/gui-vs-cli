@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_ply_mesh_to_obj",
+  "files": [
+    {
+      "filename": "tetra.ply",
+      "sandbox_path": "/home/user/Documents/tetra.ply",
+      "type": "ply"
+    }
+  ]
+}

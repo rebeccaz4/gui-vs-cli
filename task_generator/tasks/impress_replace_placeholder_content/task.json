@@ -1,0 +1,99 @@
+{
+  "id": "impress_replace_placeholder_content",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/research_draft.odp in LibreOffice Impress. This 6-slide deck contains TODO placeholder text on every slide. Replace every placeholder with real content as specified below. Do not add or remove slides.\n\nSlide 1 ('Phase III Study Results'): replace the TODO body with 'Final Results: primary endpoint achieved'.\nSlide 2 ('Sample Characteristics'): replace the TODO body with 'Sample size: 2413 participants across 14 sites'.\nSlide 3 ('Primary Endpoint'): replace the TODO body with 'Primary endpoint met at p<0.001 versus control'.\nSlide 4 ('Safety'): replace the TODO body with 'Safety profile consistent with prior phases, no new signals'.\nSlide 5 ('Regulatory Plan'): replace the TODO body with 'Submission planned for Q3 2026 to FDA and EMA'.\nSlide 6 ('Acknowledgements'): replace the TODO body with 'Thank you to the study coordinators and participating sites'.\n\nNo slide should still contain the word TODO anywhere. Save the file (Ctrl+S) keeping the same /home/user/Documents/research_draft.odp path and ODP format.",
+  "env": {
+    "files": [
+      {
+        "filename": "research_draft.odp",
+        "sandbox_path": "/home/user/Documents/research_draft.odp"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-count 6",
+      "key": "match",
+      "expected": true,
+      "description": "Still exactly 6 slides"
+    },
+    {
+      "command": "check-slide-contains 0 \"Final Results\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 updated"
+    },
+    {
+      "command": "check-slide-contains 1 \"Sample size: 2413 participants\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 updated"
+    },
+    {
+      "command": "check-slide-contains 2 \"Primary endpoint met at p\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 updated"
+    },
+    {
+      "command": "check-slide-contains 3 \"Safety profile consistent with prior phases\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 updated"
+    },
+    {
+      "command": "check-slide-contains 4 \"Submission planned for Q3 2026\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 updated"
+    },
+    {
+      "command": "check-slide-contains 5 \"Thank you to the study coordinators\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 6 updated"
+    },
+    {
+      "command": "slide-text 0",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 1 no TODO"
+    },
+    {
+      "command": "slide-text 1",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 2 no TODO"
+    },
+    {
+      "command": "slide-text 2",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 3 no TODO"
+    },
+    {
+      "command": "slide-text 3",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 4 no TODO"
+    },
+    {
+      "command": "slide-text 4",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 5 no TODO"
+    },
+    {
+      "command": "slide-text 5",
+      "eval": "'TODO' not in result.get('full_text','')",
+      "description": "Slide 6 no TODO"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/research_draft.odp",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

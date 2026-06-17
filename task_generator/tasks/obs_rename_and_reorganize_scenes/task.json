@@ -1,0 +1,63 @@
+{
+  "id": "obs_rename_and_reorganize_scenes",
+  "app": "obs",
+  "task": "A scene collection has already been set up with three scenes: 'Scene 1', 'Scene 2', and 'Scene 3', each with a basic source. Your task is to rename the scenes and add new sources: 1. Rename 'Scene 1' to exactly 'Main View'. (Right-click the scene name and select Rename.) 2. Rename 'Scene 2' to exactly 'Closeup'. 3. Rename 'Scene 3' to exactly 'Wide Shot'. 4. Select the 'Main View' scene. Add a Text (FreeType 2) source named exactly 'Overlay Text'. 5. Select the 'Wide Shot' scene. Add a Color Source named exactly 'Stage Light'. 6. Make sure all sources (old and new) are visible. 7. Do NOT create or delete any scenes. The collection should still have exactly 3 scenes. 8.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists 'Main View'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Main View' exists (renamed from 'Scene 1')"
+    },
+    {
+      "command": "check-scene-exists Closeup",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Closeup' exists (renamed from 'Scene 2')"
+    },
+    {
+      "command": "check-scene-exists 'Wide Shot'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Wide Shot' exists (renamed from 'Scene 3')"
+    },
+    {
+      "command": "check-scene-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 scenes in the collection"
+    },
+    {
+      "command": "check-source-in-scene 'Overlay Text' 'Main View'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Overlay Text' exists in 'Main View' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Stage Light' 'Wide Shot'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Stage Light' exists in 'Wide Shot' scene"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'scene list' to find index, then 'source set --name new-name' to rename",
+    "reason": "CLI can rename scenes and sources using 'source set --name new-name' command"
+  }
+}

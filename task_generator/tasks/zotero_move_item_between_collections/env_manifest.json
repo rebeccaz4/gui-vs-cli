@@ -1,0 +1,10 @@
+{
+  "task_id": "zotero_move_item_between_collections",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    }
+  ]
+}

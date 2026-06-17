@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_export_multi_format",
+  "files": [
+    {
+      "filename": "widget.FCStd",
+      "sandbox_path": "/home/user/Documents/widget.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

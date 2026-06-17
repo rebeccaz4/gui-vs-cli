@@ -1,0 +1,52 @@
+{
+  "id": "cloudcompare_colorize_add_rgb",
+  "app": "cloudcompare",
+  "task": "Colorize the point cloud /home/user/Documents/plain.ply (350 ASCII points, no color) by assigning an RGB color value to every point. Export the colored cloud as a binary little-endian PLY at /home/user/Documents/plain_colored.ply with RGB color columns included. The output must still contain all 350 points and carry RGB color.",
+  "task_grounding": "Open /home/user/Documents/plain.ply in CloudCompare. It is an ASCII PLY with 350 points and no color. Use Edit > Colors (for example 'Set unique...', 'Colorize', or 'Height Ramp') to give every point an RGB color. Then export the now-colored cloud as a binary little-endian PLY at /home/user/Documents/plain_colored.ply with the RGB color columns included in the export. The output must still contain all 350 points and carry RGB color.",
+  "env": {
+    "files": [
+      {
+        "filename": "plain.ply",
+        "sandbox_path": "/home/user/Documents/plain.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/plain_colored.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Colored PLY exists"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/plain_colored.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "Output is binary little-endian PLY"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/plain_colored.ply 350",
+      "key": "match",
+      "expected": true,
+      "description": "Output has 350 points"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/plain_colored.ply",
+      "key": "has_color",
+      "expected": true,
+      "description": "Output carries RGB color"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CloudCompare CLI: 1) Create scalar field from coordinates (cloud sf-from-coord), 2) Convert to RGB (cloud sf-to-rgb), 3) Export with RGB (export cloud --preset ply)",
+    "reason": "CLI supports colorization through scalar field manipulation: create SF from coordinates, convert SF to RGB colors, then export with color preservation."
+  }
+}

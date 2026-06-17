@@ -1,0 +1,69 @@
+{
+  "id": "gimp_multi_format_export",
+  "app": "gimp",
+  "task": "Open the image /home/user/Documents/source.png in GIMP. Export the image in three different formats, maintaining the original 500x400 dimensions: (1) /home/user/Documents/output.jpg (JPEG), (2) /home/user/Documents/output.bmp (BMP), and (3) /home/user/Documents/output.tiff (TIFF).",
+  "env": {
+    "files": [
+      {
+        "filename": "source.png",
+        "sandbox_path": "/home/user/Documents/source.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/output.jpg",
+      "key": "exists",
+      "expected": true,
+      "description": "JPEG output file exists at /home/user/Documents/output.jpg"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/output.jpg JPEG",
+      "key": "match",
+      "expected": true,
+      "description": "output.jpg is in JPEG format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/output.jpg 500 400",
+      "key": "match",
+      "expected": true,
+      "description": "JPEG output maintains original 500x400 dimensions"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/output.bmp",
+      "key": "exists",
+      "expected": true,
+      "description": "BMP output file exists at /home/user/Documents/output.bmp"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/output.bmp BMP",
+      "key": "match",
+      "expected": true,
+      "description": "output.bmp is in BMP format"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/output.tiff",
+      "key": "exists",
+      "expected": true,
+      "description": "TIFF output file exists at /home/user/Documents/output.tiff"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/output.tiff TIFF",
+      "key": "match",
+      "expected": true,
+      "description": "output.tiff is in TIFF format"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use ImageMagick: convert input.png output.jpg && convert input.png output.bmp && convert input.png output.tiff",
+    "reason": "Multiple format exports are simple with multiple convert commands"
+  }
+}

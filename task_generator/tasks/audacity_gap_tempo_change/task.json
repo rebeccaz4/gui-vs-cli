@@ -1,0 +1,61 @@
+{
+  "id": "audacity_gap_tempo_change",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/beat.wav loaded (a 4-second 440 Hz sine tone, amplitude 0.5, mono 44.1 kHz). Select all audio and apply a tempo change with Percent Change = +100.000 percent so the tempo is doubled and the audio is compressed to roughly 2.0 seconds. The pitch should be preserved (still 440 Hz). Export the result to /home/user/Music/faster.wav using 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono.",
+  "env": {
+    "files": [
+      {
+        "filename": "beat.wav",
+        "sandbox_path": "/home/user/Music/beat.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/faster.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Tempo-changed WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/faster.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/faster.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/faster.wav 1.85",
+      "key": "match",
+      "expected": true,
+      "description": "Duration >= 1.85s (compressed from 4s)"
+    },
+    {
+      "command": "export-info /home/user/Music/faster.wav",
+      "eval": "float(result['format']['duration']) <= 2.2",
+      "description": "Duration <= 2.2s (confirms tempo was doubled, not left unchanged)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/faster.wav 0.3 1.5 440 5",
+      "key": "match",
+      "expected": true,
+      "description": "Dominant frequency still 440 Hz (tempo change preserves pitch)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: clip import/add → effect add pitch/tempo change → metadata tag settings → export render operation → project settings --rate",
+    "reason": "CLI-Anything-Audacity supports all required operations: clip import/add, effect add pitch/tempo change, metadata tag settings, export render operation, project settings --rate"
+  }
+}

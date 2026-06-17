@@ -1,0 +1,63 @@
+{
+  "id": "freecad_create_parametric_box",
+  "app": "freecad",
+  "task": "Create a Part::Box object in the document at /home/user/Documents/part.FCStd. Set its dimensions to Length=40 mm, Width=30 mm, Height=20 mm. Set its Label to 'MainBlock'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "part.FCStd",
+        "sandbox_path": "/home/user/Documents/part.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/part.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved at expected path"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/part.FCStd Part::Box 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Box object exists"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/part.FCStd Box Length 40",
+      "key": "match",
+      "expected": true,
+      "description": "Box Length == 40"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/part.FCStd Box Width 30",
+      "key": "match",
+      "expected": true,
+      "description": "Box Width == 30"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/part.FCStd Box Height 20",
+      "key": "match",
+      "expected": true,
+      "description": "Box Height == 20"
+    },
+    {
+      "command": "check-label /home/user/Documents/part.FCStd Box MainBlock",
+      "key": "match",
+      "expected": true,
+      "description": "Box Label == 'MainBlock'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → spreadsheet new + set-cell + set-alias",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, spreadsheet new + set-cell + set-alias"
+  }
+}

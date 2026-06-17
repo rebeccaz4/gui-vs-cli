@@ -1,0 +1,141 @@
+{
+  "id": "drawio_multipage_microservices",
+  "app": "drawio",
+  "task": "Create a 4-page microservices diagram at /home/user/Documents/microservices.drawio. Rename pages to: Overview, Services, Data, Deployment. Page 1 (Overview): Client, Gateway, Backend connected sequentially (2 edges). Page 2 (Services): 4 shapes labeled UserService, OrderService, PaymentService, NotificationService. Page 3 (Data): 3 shapes labeled UsersDB, OrdersDB, Cache. Page 4 (Deployment): Kubernetes and Monitoring. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/microservices.drawio in draw.io Desktop. Create a multi-page microservices documentation diagram with exactly 4 pages (tabs). Rename the pages in order to: 'Overview', 'Services', 'Data', 'Deployment'. Contents per page: Page 1 ('Overview') must have exactly 3 shapes labeled 'Client', 'Gateway', 'Backend' connected in that order with 2 edges (Client->Gateway->Backend). Page 2 ('Services') must have exactly 4 shapes labeled 'UserService', 'OrderService', 'PaymentService', 'NotificationService'. Page 3 ('Data') must have exactly 3 shapes labeled 'UsersDB', 'OrdersDB', 'Cache'. Page 4 ('Deployment') must have exactly 2 shapes labeled 'Kubernetes' and 'Monitoring'. Save at /home/user/Documents/microservices.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "microservices.drawio",
+        "sandbox_path": "/home/user/Documents/microservices.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/microservices.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-page-count /home/user/Documents/microservices.drawio 4",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 4 pages"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/microservices.drawio 3 0",
+      "key": "match",
+      "expected": true,
+      "description": "Page 0 (Overview) has exactly 3 vertices"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/microservices.drawio 4 1",
+      "key": "match",
+      "expected": true,
+      "description": "Page 1 (Services) has exactly 4 vertices"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/microservices.drawio 3 2",
+      "key": "match",
+      "expected": true,
+      "description": "Page 2 (Data) has exactly 3 vertices"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/microservices.drawio 2 3",
+      "key": "match",
+      "expected": true,
+      "description": "Page 3 (Deployment) has exactly 2 vertices"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Client",
+      "key": "exists",
+      "expected": true,
+      "description": "Client label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Gateway",
+      "key": "exists",
+      "expected": true,
+      "description": "Gateway label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Backend",
+      "key": "exists",
+      "expected": true,
+      "description": "Backend label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio UserService",
+      "key": "exists",
+      "expected": true,
+      "description": "UserService label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio OrderService",
+      "key": "exists",
+      "expected": true,
+      "description": "OrderService label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio PaymentService",
+      "key": "exists",
+      "expected": true,
+      "description": "PaymentService label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio NotificationService",
+      "key": "exists",
+      "expected": true,
+      "description": "NotificationService label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio UsersDB",
+      "key": "exists",
+      "expected": true,
+      "description": "UsersDB label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio OrdersDB",
+      "key": "exists",
+      "expected": true,
+      "description": "OrdersDB label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Cache",
+      "key": "exists",
+      "expected": true,
+      "description": "Cache label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Kubernetes",
+      "key": "exists",
+      "expected": true,
+      "description": "Kubernetes label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/microservices.drawio Monitoring",
+      "key": "exists",
+      "expected": true,
+      "description": "Monitoring label exists"
+    },
+    {
+      "command": "diagrams /home/user/Documents/microservices.drawio",
+      "eval": "[p.get('name') for p in result] == ['Overview','Services','Data','Deployment']",
+      "description": "Page names in order: Overview, Services, Data, Deployment"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

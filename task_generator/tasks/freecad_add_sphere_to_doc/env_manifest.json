@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_add_sphere_to_doc",
+  "files": [
+    {"filename": "shapes.FCStd", "sandbox_path": "/home/user/Documents/shapes.FCStd", "type": "fcstd"}
+  ]
+}

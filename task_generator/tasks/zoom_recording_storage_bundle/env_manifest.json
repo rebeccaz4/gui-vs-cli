@@ -1,0 +1,6 @@
+{
+  "task_id": "zoom_recording_storage_bundle",
+  "files": [
+    {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf", "type": "ini"}
+  ]
+}

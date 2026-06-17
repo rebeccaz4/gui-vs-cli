@@ -1,0 +1,68 @@
+{
+  "id": "audacity_gap_cut_middle_export",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/long.wav already loaded as a single mono 44.1 kHz audio track - a 10-second sine tone at 440 Hz. Select exactly the region from 3.0 seconds to 7.0 seconds and remove it (cut), so the selected 4-second region is removed entirely, leaving a continuous 6-second track. Export the result to /home/user/Music/trimmed.wav using 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono.",
+  "task_grounding": "Audacity is open with /home/user/Music/long.wav already loaded as a single mono 44.1 kHz audio track — a 10-second sine tone at 440 Hz.\n\nSelect exactly the region from 3.0 seconds to 7.0 seconds (use the Selection Toolbar at the bottom to set Start = 00h00m03.000s and End = 00h00m07.000s, or drag on the waveform). Then use Edit > Cut (Ctrl+X) so the selected 4-second region is removed entirely, leaving a continuous 6-second track.\n\nExport the result to /home/user/Music/trimmed.wav using File > Export > Export as WAV... with 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono. Accept any metadata dialog defaults.",
+  "env": {
+    "files": [
+      {
+        "filename": "long.wav",
+        "sandbox_path": "/home/user/Music/long.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/trimmed.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Trimmed WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/trimmed.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/trimmed.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/trimmed.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/trimmed.wav 5.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration >= 5.9s (after 4s cut)"
+    },
+    {
+      "command": "export-info /home/user/Music/trimmed.wav",
+      "eval": "float(result['format']['duration']) <= 6.15",
+      "description": "Duration <= 6.15s (the cut really happened — not still 10s)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/trimmed.wav 1.0 3.0 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "Retained audio still 440 Hz"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: track management → clip import/add → selection set + clip remove → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: track management, clip import/add, selection set + clip remove, metadata tag settings, export render operation"
+  }
+}

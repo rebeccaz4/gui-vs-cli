@@ -1,0 +1,20 @@
+{
+  "task_id": "audacity_export_with_project_metadata",
+  "files": [
+    {
+      "filename": "song.aup",
+      "sandbox_path": "/home/user/Music/song.aup",
+      "type": "aup"
+    },
+    {
+      "filename": "song_data/e00/d00/e000001.au",
+      "sandbox_path": "/home/user/Music/song_data/e00/d00/e000001.au",
+      "type": "au"
+    },
+    {
+      "filename": "song_data/e00/d00/e000002.au",
+      "sandbox_path": "/home/user/Music/song_data/e00/d00/e000002.au",
+      "type": "au"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "task_id": "cloudcompare_gap_icp_fine_registration",
+  "files": [
+    {"filename": "misaligned.ply", "sandbox_path": "/home/user/Documents/misaligned.ply", "type": "ply"},
+    {"filename": "reference.ply", "sandbox_path": "/home/user/Documents/reference.ply", "type": "ply"}
+  ]
+}

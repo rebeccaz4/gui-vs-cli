@@ -1,0 +1,6 @@
+{
+  "task_id": "zotero_tag_item_to_read",
+  "files": [
+    {"filename": "zotero.sqlite", "sandbox_path": "/home/user/Zotero/zotero.sqlite", "type": "sqlite"}
+  ]
+}

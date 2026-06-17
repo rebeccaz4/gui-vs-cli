@@ -1,0 +1,50 @@
+{
+  "id": "krita_change_colorspace_grayscale",
+  "app": "krita",
+  "task": "Open /home/user/Documents/photo_rgba.kra in Krita. The document is currently RGBA 8-bit with an sRGB profile. Convert the image to the Grayscale/Alpha (8-bit) color space, using any standard Grayscale profile.  Keep the 'Photo' layer. Save the file in place \u2014 the saved .kra must have colorspace GRAYA.",
+  "env": {
+    "files": [
+      {
+        "filename": "photo_rgba.kra",
+        "sandbox_path": "/home/user/Documents/photo_rgba.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/photo_rgba.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "photo_rgba.kra still exists"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/photo_rgba.kra Photo",
+      "key": "exists",
+      "expected": true,
+      "description": "Photo layer preserved"
+    },
+    {
+      "command": "check-color-space /home/user/Documents/photo_rgba.kra GRAYA",
+      "key": "match",
+      "expected": true,
+      "description": "Document color space is GRAYA"
+    },
+    {
+      "command": "color-profile /home/user/Documents/photo_rgba.kra",
+      "eval": "'gray' in (result.get('profile_name','').lower()) or 'gray' in (result.get('colorspacename','').lower())",
+      "expected": true,
+      "description": "Color profile references a Gray profile"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Convert color space to grayscale by modifying maindoc.xml and converting pixel data in .kra file",
+    "reason": "✅ CLI supports color space conversion by extracting .kra, modifying colorspacename attribute in maindoc.xml, converting pixel data from RGBA to GRAYA, and repacking the ZIP file (complex but feasible)"
+  }
+}

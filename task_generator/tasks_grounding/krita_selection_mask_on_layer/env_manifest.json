@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_selection_mask_on_layer",
+  "files": [
+    {
+      "filename": "mask_demo.kra",
+      "sandbox_path": "/home/user/Documents/mask_demo.kra",
+      "type": "kra"
+    }
+  ]
+}

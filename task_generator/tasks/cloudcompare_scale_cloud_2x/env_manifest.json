@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_scale_cloud_2x",
+  "files": [
+    {
+      "filename": "small.ply",
+      "sandbox_path": "/home/user/Documents/small.ply",
+      "type": "ply"
+    }
+  ]
+}

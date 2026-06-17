@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_student_tracker_vlookup",
+  "files": [
+    {"filename": "students.xlsx", "sandbox_path": "/home/user/Documents/students.xlsx", "type": "xlsx"}
+  ]
+}

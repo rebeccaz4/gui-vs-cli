@@ -1,0 +1,163 @@
+{
+  "id": "calc_payroll_tax_brackets",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/payroll.xlsx in LibreOffice Calc. Sheet 'Payroll' has Employee (A), Hourly Rate (B), Hours Worked (C) with 12 employees in rows 2-13.\n\n1. Fill row 1 cells D1 'Regular Pay', E1 'Overtime Pay', F1 'Gross', G1 'Tax', H1 'Net' and make all of them bold.\n2. In D2 enter =MIN(C2,40)*B2 to compute regular pay (hours up to 40 at the base rate). Fill down through D13.\n3. In E2 enter =MAX(0,C2-40)*B2*1.5 to compute overtime pay (hours over 40 at 1.5x). Fill down through E13.\n4. In F2 enter =D2+E2 for gross. Fill down through F13.\n5. In G2 enter a nested-IF progressive tax formula: =IF(F2<500,0,IF(F2<=1500,(F2-500)*0.1,100+(F2-1500)*0.2)). Fill down through G13.\n6. In H2 enter =F2-G2 for net pay. Fill down through H13.\n7. In A14 type 'Totals' and make it bold. In D14 enter =SUM(D2:D13). In E14 enter =SUM(E2:E13). In F14 enter =SUM(F2:F13). In G14 enter =SUM(G2:G13). In H14 enter =SUM(H2:H13).\n8. Save the file .",
+  "task_grounding": "Open the file /home/user/Documents/payroll.xlsx in LibreOffice Calc. Sheet 'Payroll' has Employee (A), Hourly Rate (B), Hours Worked (C) with 12 employees in rows 2-13.\n\n1. Fill row 1 cells D1 'Regular Pay', E1 'Overtime Pay', F1 'Gross', G1 'Tax', H1 'Net' and make all of them bold.\n2. In D2 enter =MIN(C2,40)*B2 to compute regular pay (hours up to 40 at the base rate). Fill down through D13.\n3. In E2 enter =MAX(0,C2-40)*B2*1.5 to compute overtime pay (hours over 40 at 1.5x). Fill down through E13.\n4. In F2 enter =D2+E2 for gross. Fill down through F13.\n5. In G2 enter a nested-IF progressive tax formula: =IF(F2<500,0,IF(F2<=1500,(F2-500)*0.1,100+(F2-1500)*0.2)). Fill down through G13.\n6. In H2 enter =F2-G2 for net pay. Fill down through H13.\n7. In A14 type 'Totals' and make it bold. In D14 enter =SUM(D2:D13). In E14 enter =SUM(E2:E13). In F14 enter =SUM(F2:F13). In G14 enter =SUM(G2:G13). In H14 enter =SUM(H2:H13).\n8. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "payroll.xlsx",
+        "sandbox_path": "/home/user/Documents/payroll.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 \"Regular Pay\" Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = Regular Pay"
+    },
+    {
+      "command": "check-cell-formatted D1 true Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "D1 bold"
+    },
+    {
+      "command": "check-cell-value E1 \"Overtime Pay\" Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = Overtime Pay"
+    },
+    {
+      "command": "check-cell-value F1 Gross Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = Gross"
+    },
+    {
+      "command": "check-cell-value G1 Tax Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = Tax"
+    },
+    {
+      "command": "check-cell-value H1 Net Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "H1 = Net"
+    },
+    {
+      "command": "check-cell-value D2 800 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "D2 Alice regular = 800"
+    },
+    {
+      "command": "check-cell-value E2 150 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "E2 Alice overtime = 150"
+    },
+    {
+      "command": "check-cell-value F2 950 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F2 Alice gross = 950"
+    },
+    {
+      "command": "check-cell-value G2 45 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G2 Alice tax = 45"
+    },
+    {
+      "command": "check-cell-value H2 905 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "H2 Alice net = 905"
+    },
+    {
+      "command": "cell-value G2 Payroll",
+      "eval": "result.get('formula') is not None and result.get('formula','').upper().count('IF') >= 2",
+      "description": "G2 is a nested IF (has >=2 IF tokens)"
+    },
+    {
+      "command": "check-cell-value F3 600 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F3 Bob gross = 600"
+    },
+    {
+      "command": "check-cell-value G3 10 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G3 Bob tax = 10"
+    },
+    {
+      "command": "check-cell-value F4 1375 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F4 Carol gross = 1375"
+    },
+    {
+      "command": "check-cell-value G4 87.5 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G4 Carol tax = 87.5"
+    },
+    {
+      "command": "check-cell-value F7 1875 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F7 Frank gross = 1875"
+    },
+    {
+      "command": "check-cell-value G7 175 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G7 Frank tax = 175"
+    },
+    {
+      "command": "check-cell-value G8 0 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "G8 Grace tax = 0 (gross 420 below bracket)"
+    },
+    {
+      "command": "check-cell-value A14 Totals Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "A14 = Totals"
+    },
+    {
+      "command": "check-cell-formatted A14 true Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "A14 bold"
+    },
+    {
+      "command": "check-cell-value F14 11887 Payroll",
+      "key": "match",
+      "expected": true,
+      "description": "F14 total gross = 11887"
+    },
+    {
+      "command": "cell-value G14 Payroll",
+      "eval": "abs((result.get('value') or 0) - 634.2) < 0.05",
+      "description": "G14 total tax approx 634.2"
+    },
+    {
+      "command": "cell-value H14 Payroll",
+      "eval": "abs((result.get('value') or 0) - 11252.8) < 0.05",
+      "description": "H14 total net approx 11252.8"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

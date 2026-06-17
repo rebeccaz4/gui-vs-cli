@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_set_score_metadata",
+  "files": [
+    {
+      "filename": "prelude.mscz",
+      "sandbox_path": "/home/user/Documents/prelude.mscz",
+      "type": "mscz"
+    }
+  ]
+}

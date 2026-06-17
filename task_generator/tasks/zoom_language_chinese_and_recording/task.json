@@ -1,0 +1,31 @@
+{
+  "id": "zoom_language_chinese_and_recording",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Localize Zoom to Simplified Chinese and relocate local recordings. Do ALL of the following: (1) Change language from en-US to zh-CN. (2) Change localRecordingPath to exactly /home/user/Videos/ZoomCN. (3) Create the directory /home/user/Videos/ZoomCN on disk so that it exists. Save the updated config file in-place at /home/user/.config/zoomus.conf. Do not modify any other config keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-language zh-CN", "key": "match", "expected": true, "description": "UI language is zh-CN"},
+    {"command": "check-config General language zh-CN", "key": "match", "expected": true, "description": "[General]language == zh-CN"},
+    {"command": "check-recording-path /home/user/Videos/ZoomCN", "key": "match", "expected": true, "description": "Recording path is /home/user/Videos/ZoomCN"},
+    {"command": "check-config General localRecordingPath /home/user/Videos/ZoomCN", "key": "match", "expected": true, "description": "[General]localRecordingPath matches"},
+    {"command": "check-directory-exists /home/user/Videos/ZoomCN", "key": "exists", "expected": true, "description": "Recording directory exists"},
+    {"command": "check-config General autoMuteMic false", "key": "match", "expected": true, "description": "autoMuteMic untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [General] language=zh-CN, localRecordingPath=/home/user/Videos/ZoomCN, then run mkdir -p /home/user/Videos/ZoomCN",
+    "reason": "CLI agent can edit the config file with sed and create directories with mkdir. Both are core CLI capabilities."
+  }
+}

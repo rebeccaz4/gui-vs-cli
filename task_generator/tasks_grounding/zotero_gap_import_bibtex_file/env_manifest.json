@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_import_bibtex_file",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "citations.bib",
+      "sandbox_path": "/home/user/Documents/citations.bib",
+      "type": "bibtex"
+    }
+  ]
+}

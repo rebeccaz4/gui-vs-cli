@@ -1,0 +1,169 @@
+{
+  "id": "impress_nonprofit_pitch_deck",
+  "app": "libreoffice_impress",
+  "task": "Create a new presentation from scratch in LibreOffice Impress with exactly 7 slides for a nonprofit fundraising pitch deck.\n\nSlide 1 (Title Slide): Title 'CleanWaters Initiative', subtitle 'Annual Fundraiser 2026'.\nSlide 2: Title 'The Problem'. Body: '2 billion people lack safe drinking water', 'Disease, missed school, lost wages'.\nSlide 3: Title 'Our Mission'. Body: 'Deliver low-cost filtration to rural communities', 'Train local technicians', 'Measure health outcomes'.\nSlide 4: Title 'Impact So Far'. Body: '412 villages served in 2025', '68 local technicians trained', '250k liters of clean water daily'.\nSlide 5: Title 'Programs for 2026'. Body: 'School filtration program', 'Women-led technician cohorts', 'Mobile water testing lab'.\nSlide 6: Title 'How You Can Help'. Body: 'Donate at cleanwaters.org/give', 'Sponsor a village', 'Volunteer for field trips'.\nSlide 7: Title 'Thank You'. Body: 'Together we can end the water crisis'.\n\nAdd a slide transition effect to every slide (any non-None transition, for example Fade).\n\nAdd speaker notes:\n- Slide 1: 'welcome donors and thank them for attending'\n- Slide 4: 'highlight Kerala region success story'\n- Slide 7: 'invite everyone to the afterparty reception'\n\nSave the presentation as /home/user/Documents/cleanwaters_pitch.pptx.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/cleanwaters_pitch.pptx"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-count 7",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 7 slides"
+    },
+    {
+      "command": "check-slide-title 0 \"CleanWaters Initiative\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 1 title"
+    },
+    {
+      "command": "check-slide-contains 0 \"Annual Fundraiser 2026\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 subtitle"
+    },
+    {
+      "command": "check-slide-title 1 \"The Problem\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 title"
+    },
+    {
+      "command": "check-slide-contains 1 \"2 billion people lack safe drinking water\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 body"
+    },
+    {
+      "command": "check-slide-title 2 \"Our Mission\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 3 title"
+    },
+    {
+      "command": "check-slide-contains 2 \"Deliver low-cost filtration to rural communities\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 body"
+    },
+    {
+      "command": "check-slide-title 3 \"Impact So Far\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 4 title"
+    },
+    {
+      "command": "check-slide-contains 3 \"412 villages served in 2025\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 body"
+    },
+    {
+      "command": "check-slide-title 4 \"Programs for 2026\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 5 title"
+    },
+    {
+      "command": "check-slide-contains 4 \"School filtration program\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 body"
+    },
+    {
+      "command": "check-slide-title 5 \"How You Can Help\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 6 title"
+    },
+    {
+      "command": "check-slide-contains 5 \"Donate at cleanwaters.org/give\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 6 body"
+    },
+    {
+      "command": "check-slide-title 6 \"Thank You\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 7 title"
+    },
+    {
+      "command": "check-has-transition 0",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 1 transition"
+    },
+    {
+      "command": "check-has-transition 1",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 2 transition"
+    },
+    {
+      "command": "check-has-transition 2",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 3 transition"
+    },
+    {
+      "command": "check-has-transition 3",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 4 transition"
+    },
+    {
+      "command": "check-has-transition 4",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 5 transition"
+    },
+    {
+      "command": "check-has-transition 5",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 6 transition"
+    },
+    {
+      "command": "check-has-transition 6",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 7 transition"
+    },
+    {
+      "command": "check-notes-contain 0 \"welcome donors\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 notes"
+    },
+    {
+      "command": "check-notes-contain 3 \"Kerala region\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 notes"
+    },
+    {
+      "command": "check-notes-contain 6 \"afterparty\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 7 notes"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/cleanwaters_pitch.pptx",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

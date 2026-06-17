@@ -1,0 +1,84 @@
+{
+  "id": "obs_gap_color_correction_lut",
+  "app": "obs",
+  "task": "Open OBS Studio and build a color-graded Image source with two stacked filters.\n\n1. OBS may start with a default 'Scene' \u2014 delete it.\n2. Create a scene named exactly 'Color Grade'.\n3. Add an Image source named exactly 'Footage' pointing at /home/user/Pictures/raw_footage.png.\n4. Apply a Color Correction filter to 'Footage' named exactly 'Grade'. Use settings: Saturation = 0.4, Contrast = 0.15, Brightness = -0.05, Gamma = 0.1.\n5. Apply an Apply LUT filter to 'Footage' named exactly 'Warm LUT'. Use LUT file /home/user/Pictures/warm_lut.png and amount = 1.0.\n6. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "raw_footage.png",
+        "sandbox_path": "/home/user/Pictures/raw_footage.png"
+      },
+      {
+        "filename": "warm_lut.png",
+        "sandbox_path": "/home/user/Pictures/warm_lut.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists 'Color Grade'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Color Grade' exists"
+    },
+    {
+      "command": "check-source-in-scene Footage 'Color Grade'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Footage' is in the 'Color Grade' scene"
+    },
+    {
+      "command": "check-source-has-filter Footage Grade",
+      "key": "exists",
+      "expected": true,
+      "description": "Filter 'Grade' exists on 'Footage'"
+    },
+    {
+      "command": "source-filter-info Footage Grade",
+      "eval": "'color_filter' in (result.get('type') or '')",
+      "expected": true,
+      "description": "'Grade' filter is a color correction filter"
+    },
+    {
+      "command": "source-filter-info Footage Grade",
+      "eval": "abs(float(result.get('settings', {}).get('saturation', 0)) - 0.4) < 0.01 and abs(float(result.get('settings', {}).get('contrast', 0)) - 0.15) < 0.01 and abs(float(result.get('settings', {}).get('brightness', 0)) - (-0.05)) < 0.01 and abs(float(result.get('settings', {}).get('gamma', 0)) - 0.1) < 0.01",
+      "expected": true,
+      "description": "Color correction saturation/contrast/brightness/gamma match"
+    },
+    {
+      "command": "check-source-has-filter Footage 'Warm LUT'",
+      "key": "exists",
+      "expected": true,
+      "description": "Filter 'Warm LUT' exists on 'Footage'"
+    },
+    {
+      "command": "source-filter-info Footage 'Warm LUT'",
+      "eval": "'clut' in (result.get('type') or '') or 'lut' in (result.get('type') or '').lower()",
+      "expected": true,
+      "description": "'Warm LUT' filter is an Apply LUT filter"
+    },
+    {
+      "command": "source-filter-info Footage 'Warm LUT'",
+      "eval": "'warm_lut.png' in str(result.get('settings', {}).get('image_path', ''))",
+      "expected": true,
+      "description": "Apply LUT references warm_lut.png"
+    },
+    {
+      "command": "source-filter-info Footage 'Warm LUT'",
+      "eval": "abs(float(result.get('settings', {}).get('clut_amount', result.get('settings', {}).get('amount', 0))) - 1.0) < 0.01",
+      "expected": true,
+      "description": "Apply LUT amount = 1.0"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use 'filter add --type <type>' then 'filter set --param value'",
+    "reason": "CLI can add and configure filters using 'filter add' and 'filter set' commands"
+  }
+}

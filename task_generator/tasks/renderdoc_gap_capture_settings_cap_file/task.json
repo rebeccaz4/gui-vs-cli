@@ -1,0 +1,56 @@
+{
+  "id": "renderdoc_gap_capture_settings_cap_file",
+  "app": "renderdoc",
+  "task": "Create /home/user/captures/game.cap with executable='/usr/local/bin/my_game', a RenderDoc capture-settings file existing at /home/user/captures/game.cap, workingDir='/home/user/games/shipping', options APIValidation=true, CaptureCallstacks=true, VerifyBufferAccess=true. Register in UI.config, preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/game.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "game.cap exists"
+    },
+    {
+      "command": "file-info /home/user/captures/game.cap",
+      "eval": "result.get('size', 0) >= 150",
+      "description": "game.cap is at least 150 bytes"
+    },
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-setting RecentCaptureSettings '[\"/home/user/captures/game.cap\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureSettings references game.cap"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

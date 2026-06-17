@@ -1,0 +1,50 @@
+{
+  "id": "krita_selection_mask_on_layer",
+  "app": "krita",
+  "task": "Open /home/user/Documents/mask_demo.kra in Krita. It contains one paint layer named 'Foreground'. With the 'Foreground' layer selected, make any rectangular selection on the canvas, then convert that selection into a Local Selection Mask named exactly 'LocalSel'. Save the file in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "mask_demo.kra",
+        "sandbox_path": "/home/user/Documents/mask_demo.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/mask_demo.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "mask_demo.kra still exists"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/mask_demo.kra Foreground",
+      "key": "exists",
+      "expected": true,
+      "description": "Foreground layer preserved"
+    },
+    {
+      "command": "check-mask-of /home/user/Documents/mask_demo.kra Foreground LocalSel",
+      "key": "exists",
+      "expected": true,
+      "description": "LocalSel mask is a child of Foreground"
+    },
+    {
+      "command": "check-layer-node-type /home/user/Documents/mask_demo.kra LocalSel selectionmask",
+      "key": "match",
+      "expected": true,
+      "description": "LocalSel node type is selectionmask"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Create selection and convert to Local Selection mask 'LocalSel'",
+    "reason": "❌ CLI doesn't support selection creation or local selection masks"
+  }
+}

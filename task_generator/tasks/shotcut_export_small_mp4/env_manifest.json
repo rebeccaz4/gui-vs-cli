@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_export_small_mp4",
+  "files": [
+    {
+      "filename": "export_me.mlt",
+      "sandbox_path": "/home/user/Documents/export_me.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "source.mp4",
+      "sandbox_path": "/home/user/Videos/source.mp4",
+      "type": "mp4"
+    }
+  ]
+}

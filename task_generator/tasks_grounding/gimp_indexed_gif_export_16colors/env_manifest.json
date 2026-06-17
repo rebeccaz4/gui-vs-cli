@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_indexed_gif_export_16colors",
+  "files": [
+    {"filename": "rainbow_gradient.png", "sandbox_path": "/home/user/Documents/rainbow_gradient.png", "type": "png"}
+  ]
+}

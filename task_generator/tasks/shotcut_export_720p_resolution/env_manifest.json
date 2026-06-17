@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_export_720p_resolution",
+  "files": [
+    {
+      "filename": "hd_export.mlt",
+      "sandbox_path": "/home/user/Documents/hd_export.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "master.mp4",
+      "sandbox_path": "/home/user/Videos/master.mp4",
+      "type": "mp4"
+    }
+  ]
+}

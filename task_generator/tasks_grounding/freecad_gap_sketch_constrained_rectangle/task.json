@@ -1,0 +1,51 @@
+{
+  "id": "freecad_gap_sketch_constrained_rectangle",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/sketch_start.FCStd (empty document). Switch to the Sketcher workbench, create a new sketch attached to the XY plane, and draw a rectangle centered on the origin that is exactly 80 mm wide (along X) and 50 mm tall (along Y). Add geometric constraints so the rectangle is fully constrained: horizontal constraints on the top/bottom edges, vertical constraints on the left/right edges, and a symmetry constraint that places the centroid of the rectangle exactly on the origin. Add two dimensional constraints: a horizontal distance constraint of 80 mm and a vertical distance constraint of 50 mm. Rename the sketch to 'MainSketch'. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/sketch_start.FCStd (empty document). Switch to the Sketcher workbench, create a new sketch attached to the XY plane, and draw a rectangle centered on the origin that is exactly 80 mm wide (along X) and 50 mm tall (along Y). Add geometric constraints so the rectangle is fully constrained: horizontal constraints on the top/bottom edges, vertical constraints on the left/right edges, and a symmetry constraint that places the centroid of the rectangle exactly on the origin. Add two dimensional constraints: a horizontal distance constraint of 80 mm and a vertical distance constraint of 50 mm. Rename the sketch to 'MainSketch'. Save the file with Ctrl+S.",
+  "env": {
+    "files": [
+      {
+        "filename": "sketch_start.FCStd",
+        "sandbox_path": "/home/user/Documents/sketch_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/sketch_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/sketch_start.FCStd MainSketch",
+      "key": "exists",
+      "expected": true,
+      "description": "MainSketch exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/sketch_start.FCStd MainSketch Sketcher::SketchObject",
+      "key": "match",
+      "expected": true,
+      "description": "MainSketch is a Sketcher::SketchObject"
+    },
+    {
+      "command": "check-label /home/user/Documents/sketch_start.FCStd MainSketch MainSketch",
+      "key": "match",
+      "expected": true,
+      "description": "Label is 'MainSketch'"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: sketch new + add geometry + constraints",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: sketch new + add geometry + constraints"
+  }
+}

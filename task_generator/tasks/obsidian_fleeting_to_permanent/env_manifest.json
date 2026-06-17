@@ -1,0 +1,11 @@
+{
+  "task_id": "obsidian_fleeting_to_permanent",
+  "files": [
+    {"filename": "app.json", "sandbox_path": "/home/user/Documents/FleetingVault/.obsidian/app.json", "type": "json"},
+    {"filename": "Fleeting-Habits.md", "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Habits.md", "type": "markdown"},
+    {"filename": "Fleeting-Focus.md", "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Focus.md", "type": "markdown"},
+    {"filename": "Fleeting-Writing.md", "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Writing.md", "type": "markdown"},
+    {"filename": "Fleeting-Learning.md", "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Learning.md", "type": "markdown"},
+    {"filename": "Fleeting-Systems.md", "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Systems.md", "type": "markdown"}
+  ]
+}

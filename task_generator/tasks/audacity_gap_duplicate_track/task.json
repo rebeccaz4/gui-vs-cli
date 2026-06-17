@@ -1,0 +1,74 @@
+{
+  "id": "audacity_gap_duplicate_track",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/single.wav loaded (a 3-second 440 Hz sine tone at amplitude 0.3, mono 44.1 kHz - peak around -10 dBFS). Duplicate the track so there are two identical tracks at the same time offset. Save the project to /home/user/Music/single.aup. Export the full mix (both tracks playing simultaneously) to /home/user/Music/doubled.wav using 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono.",
+  "env": {
+    "files": [
+      {
+        "filename": "single.wav",
+        "sandbox_path": "/home/user/Music/single.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/single.aup",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file saved"
+    },
+    {
+      "command": "check-track-count /home/user/Music/single.aup 2",
+      "key": "match",
+      "expected": true,
+      "description": "Project has exactly 2 wavetracks (duplicate created)"
+    },
+    {
+      "command": "check-file-exists /home/user/Music/doubled.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Doubled mix WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/doubled.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/doubled.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono mix"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/doubled.wav 2.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration ~3s"
+    },
+    {
+      "command": "check-export-peak-db /home/user/Music/doubled.wav -5.5 -2.5",
+      "key": "match",
+      "expected": true,
+      "description": "Peak is ~6 dB above original (two identical tracks sum to ~2x amplitude)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/doubled.wav 0.5 2.5 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "Dominant frequency still 440 Hz"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track duplicate operation → clip import/add → metadata tag settings → export render operation → multi-track mix operations",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track duplicate operation, clip import/add, metadata tag settings, export render operation, multi-track mix operations"
+  }
+}

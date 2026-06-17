@@ -1,0 +1,33 @@
+{
+  "id": "impress_remove_and_rebrand_deck",
+  "app": "libreoffice_impress",
+  "task": "Open /home/user/Documents/legacy_sales.pptx in LibreOffice Impress. The deck currently has 8 slides with titles (in order): 'Acme CRM 2021 Edition', 'Problem Landscape', 'Legacy Architecture', 'Features', 'Old Pricing', 'Case Study: BrightCorp', 'Competitor Comparison', 'Call to Action'.\n\nClean up and rebrand the deck to match the 2026 edition:\n\n1. Delete the two obsolete slides: 'Legacy Architecture' and 'Old Pricing'.\n2. Rename the title of slide 1 from 'Acme CRM 2021 Edition' to 'Acme CRM 2026 Edition'.\n3. On the 'Features' slide, replace its body so that the bullets are exactly: 'AI-powered pipeline scoring', 'Unified inbox', 'GDPR-ready audit logs'.\n4. Add a new slide at the END of the deck titled 'Contact' with body bullets: 'sales@acmecrm.example', '+1 415 555 0142', 'acmecrm.example/book-demo'.\n\nFinal deck must have exactly 7 slides in this order: 'Acme CRM 2026 Edition', 'Problem Landscape', 'Features', 'Case Study: BrightCorp', 'Competitor Comparison', 'Call to Action', 'Contact'.\n\nSave the file (Ctrl+S) back to /home/user/Documents/legacy_sales.pptx.",
+  "env": {
+    "files": [
+      {"filename": "legacy_sales.pptx", "sandbox_path": "/home/user/Documents/legacy_sales.pptx"}
+    ]
+  },
+  "verification": [
+    {"command": "check-slide-count 7", "key": "match", "expected": true, "description": "Deck has 7 slides"},
+    {"command": "check-slide-title 0 \"Acme CRM 2026 Edition\"", "key": "match", "expected": true, "description": "Slide 1 rebranded title"},
+    {"command": "check-slide-title 1 \"Problem Landscape\"", "key": "match", "expected": true, "description": "Slide 2 title"},
+    {"command": "check-slide-title 2 Features", "key": "match", "expected": true, "description": "Slide 3 title"},
+    {"command": "check-slide-contains 2 \"AI-powered pipeline scoring\"", "key": "contains", "expected": true, "description": "Features bullet 1"},
+    {"command": "check-slide-contains 2 \"Unified inbox\"", "key": "contains", "expected": true, "description": "Features bullet 2"},
+    {"command": "check-slide-contains 2 \"GDPR-ready audit logs\"", "key": "contains", "expected": true, "description": "Features bullet 3"},
+    {"command": "check-slide-title 3 \"Case Study: BrightCorp\"", "key": "match", "expected": true, "description": "Slide 4 title"},
+    {"command": "check-slide-title 4 \"Competitor Comparison\"", "key": "match", "expected": true, "description": "Slide 5 title"},
+    {"command": "check-slide-title 5 \"Call to Action\"", "key": "match", "expected": true, "description": "Slide 6 title"},
+    {"command": "check-slide-title 6 Contact", "key": "match", "expected": true, "description": "Slide 7 title"},
+    {"command": "check-slide-contains 6 \"sales@acmecrm.example\"", "key": "contains", "expected": true, "description": "Contact email"},
+    {"command": "check-slide-contains 6 \"+1 415 555 0142\"", "key": "contains", "expected": true, "description": "Contact phone"},
+    {"command": "check-slide-contains 6 \"acmecrm.example/book-demo\"", "key": "contains", "expected": true, "description": "Contact demo URL"},
+    {"command": "check-file-exists /home/user/Documents/legacy_sales.pptx", "key": "exists", "expected": true, "description": "File still exists on disk"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "shotcut_apply_brightness_filter",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/filter_project.mlt (1920x1080, 30 fps). The project already contains one clip on the V1 timeline track referencing /home/user/Videos/source.mp4.\n\nSteps:\n1. Click the clip on the V1 timeline so it is selected.\n2. Open the Filters panel (top toolbar or via the Filters menu).\n3. Click the '+' button in the Filters panel to add a new filter.\n4. Choose the VIDEO category and pick the 'Brightness' filter.\n5. Leave the default brightness value; press Ctrl+S to save.\n\nAfter saving, the project must still contain the existing clip and have a Brightness video filter applied to it.",
+  "env": {
+    "files": [
+      {
+        "filename": "filter_project.mlt",
+        "sandbox_path": "/home/user/Documents/filter_project.mlt"
+      },
+      {
+        "filename": "source.mp4",
+        "sandbox_path": "/home/user/Videos/source.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/filter_project.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/filter_project.mlt 1920 1080",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1920x1080"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/filter_project.mlt source.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "The source.mp4 clip is still in the project"
+    },
+    {
+      "command": "check-filter-exists /home/user/Documents/filter_project.mlt brightness",
+      "key": "exists",
+      "expected": true,
+      "description": "A Brightness filter is present in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CLI: project open filter_project.mlt, filter add brightness --track 1 --clip 0, project save",
+    "reason": "✅ CLI-Anything shotcut supports filter add with --track and --clip parameters. The CLI can add filters to specific clips on tracks. Task mentions GUI steps (click, Filters panel) but CLI can accomplish the same outcome."
+  }
+}

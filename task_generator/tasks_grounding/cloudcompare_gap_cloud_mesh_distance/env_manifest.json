@@ -1,0 +1,7 @@
+{
+  "task_id": "cloudcompare_gap_cloud_mesh_distance",
+  "files": [
+    {"filename": "cloud.ply", "sandbox_path": "/home/user/Documents/cloud.ply", "type": "ply"},
+    {"filename": "plane.obj", "sandbox_path": "/home/user/Documents/plane.obj", "type": "obj"}
+  ]
+}

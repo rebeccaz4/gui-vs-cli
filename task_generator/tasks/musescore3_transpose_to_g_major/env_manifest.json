@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_transpose_to_g_major",
+  "files": [
+    {
+      "filename": "etude_c.mscz",
+      "sandbox_path": "/home/user/Documents/etude_c.mscz",
+      "type": "mscz"
+    }
+  ]
+}

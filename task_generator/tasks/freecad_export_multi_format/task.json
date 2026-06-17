@@ -1,0 +1,69 @@
+{
+  "id": "freecad_export_multi_format",
+  "app": "freecad",
+  "task": "Export the Part::Box object named 'Box' from /home/user/Documents/widget.FCStd to three formats: STL at /home/user/exports/box.stl, STEP at /home/user/exports/box.step, and OBJ at /home/user/exports/box.obj.",
+  "env": {
+    "files": [
+      {
+        "filename": "widget.FCStd",
+        "sandbox_path": "/home/user/Documents/widget.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/widget.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "FCStd source still exists"
+    },
+    {
+      "command": "check-file-exists /home/user/exports/box.stl",
+      "key": "exists",
+      "expected": true,
+      "description": "STL export exists"
+    },
+    {
+      "command": "check-stl-min-triangles /home/user/exports/box.stl 12",
+      "key": "match",
+      "expected": true,
+      "description": "STL has >= 12 triangles (closed box has 12)"
+    },
+    {
+      "command": "check-file-exists /home/user/exports/box.step",
+      "key": "exists",
+      "expected": true,
+      "description": "STEP export exists"
+    },
+    {
+      "command": "check-step-valid /home/user/exports/box.step",
+      "key": "valid",
+      "expected": true,
+      "description": "STEP file is valid"
+    },
+    {
+      "command": "check-file-exists /home/user/exports/box.obj",
+      "key": "exists",
+      "expected": true,
+      "description": "OBJ export exists"
+    },
+    {
+      "command": "check-obj-min-vertices /home/user/exports/box.obj 8",
+      "key": "match",
+      "expected": true,
+      "description": "OBJ has >= 8 vertices (a box has 8 corners)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → export render STL",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, export render STL"
+  }
+}

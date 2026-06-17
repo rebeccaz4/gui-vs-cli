@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_product_catalog_price_tiers",
+  "files": [
+    {"filename": "catalog.xlsx", "sandbox_path": "/home/user/Documents/catalog.xlsx", "type": "xlsx"}
+  ]
+}

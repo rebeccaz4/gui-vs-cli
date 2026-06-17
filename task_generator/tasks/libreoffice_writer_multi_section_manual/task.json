@@ -1,0 +1,75 @@
+{
+  "id": "libreoffice_writer_multi_section_manual",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/user_guide.odt in LibreOffice Writer. The document already has a Heading 1 'Product X User Guide'. Add a Heading 2 'Getting Started'. Add a paragraph explaining initial setup (at least 30 words). Add a Heading 2 'Configuration'. Add a paragraph about configuration options (at least 30 words). Add a Heading 2 'Troubleshooting'. Insert a table named 'Table1' with 4 rows and 2 columns. Header: 'Problem', 'Solution'. Row 2: 'App crashes on startup', 'Clear cache and restart'. Row 3: 'Slow performance', 'Check system requirements'. Row 4: 'Connection timeout', 'Verify network settings'. Add a header with text 'User Guide v2.0'. Add a footer with text 'Internal Use Only'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "user_guide.odt",
+        "sandbox_path": "/home/user/Documents/user_guide.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"Getting Started\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Getting Started'"
+    },
+    {
+      "command": "check-heading-exists Configuration 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Configuration'"
+    },
+    {
+      "command": "check-heading-exists Troubleshooting 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Troubleshooting'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/user_guide.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 4",
+      "description": "Table has 4 rows"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/user_guide.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Problem', 'Solution'] for t in result.get('tables', []))",
+      "description": "Header: Problem, Solution"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/user_guide.odt",
+      "eval": "any(len(t.get('data', [])) >= 2 and t['data'][1][1] == 'Clear cache and restart' for t in result.get('tables', []))",
+      "description": "Row 2 solution: Clear cache and restart"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/user_guide.odt",
+      "eval": "any(len(t.get('data', [])) >= 4 and t['data'][3][1] == 'Verify network settings' for t in result.get('tables', []))",
+      "description": "Row 4 solution: Verify network settings"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('header_text', '').strip() == 'User Guide v2.0'",
+      "description": "Header text correct"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Internal Use Only'",
+      "description": "Footer text correct"
+    },
+    {
+      "command": "check-word-count 60",
+      "key": "in_range",
+      "expected": true,
+      "description": "Word count at least 60"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

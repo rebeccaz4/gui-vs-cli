@@ -1,0 +1,20 @@
+{
+  "task_id": "godot4_build_three_node_scene",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/build_scene_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/build_scene_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/build_scene_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

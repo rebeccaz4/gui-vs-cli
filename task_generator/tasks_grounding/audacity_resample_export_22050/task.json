@@ -1,0 +1,52 @@
+{
+  "id": "audacity_resample_export_22050",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/tone44.wav already loaded (a 2-second mono 44.1 kHz WAV). Change the project rate to 22050 Hz (which will resample the audio). Export the result to /home/user/Music/tone22.wav as a mono 22050 Hz 16-bit PCM WAV file.",
+  "task_grounding": "Audacity is open with /home/user/Music/tone44.wav already loaded (a 2-second mono 44.1 kHz WAV).\n\nResample the audio down to 22050 Hz:\n1. Change the 'Project Rate (Hz)' control in the bottom-left corner of the Audacity window to 22050.\n2. Use Tracks > Resample... and enter 22050 in the dialog, then click OK.\n\nOnce the track and project sample rate are both 22050 Hz, export as WAV to /home/user/Music/tone22.wav using File > Export > Export as WAV. Keep the default 'WAV (Microsoft) signed 16-bit PCM' format; Audacity will automatically export at the current project rate of 22050 Hz.",
+  "env": {
+    "files": [
+      {
+        "filename": "tone44.wav",
+        "sandbox_path": "/home/user/Music/tone44.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/tone22.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Resampled WAV exists"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/tone22.wav 22050",
+      "key": "match",
+      "expected": true,
+      "description": "Sample rate is 22050 Hz"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/tone22.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Channel count is 1 (mono)"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/tone22.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is pcm_s16le"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → clip import/add → export render operation → project settings --rate",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, clip import/add, export render operation, project settings --rate"
+  }
+}

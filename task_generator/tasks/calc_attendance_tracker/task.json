@@ -1,0 +1,158 @@
+{
+  "id": "calc_attendance_tracker",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/attendance.xlsx in LibreOffice Calc. It contains a sheet called 'Attendance' with 20 students (rows 2-21) and 20 class dates (columns B-U). Row 1 has headers: Student Name (A), then date headers (B1 through U1). Each cell in the attendance grid contains 'P' (present), 'A' (absent), or 'L' (late).\n\n1. In cell V1, type 'Days Present' and make it bold.\n2. In cell W1, type 'Days Absent' and make it bold.\n3. In cell X1, type 'Days Late' and make it bold.\n4. In cell Y1, type 'Attendance %' and make it bold.\n5. In V2, enter the formula =COUNTIF(B2:U2,\"P\") to count how many days Olivia Parker was present.\n6. In W2, enter the formula =COUNTIF(B2:U2,\"A\") to count absent days.\n7. In X2, enter the formula =COUNTIF(B2:U2,\"L\") to count late days.\n8. In Y2, enter the formula =V2/20*100 to calculate attendance percentage.\n9. Copy all four formulas (V2:Y2) down through rows 3-21 for all 20 students.\n10. In cell A22, type 'Class Average' and make it bold.\n11. In V22, enter the formula =AVERAGE(V2:V21) to compute the average days present across all students.\n12. In Y22, enter the formula =AVERAGE(Y2:Y21) to compute the average attendance percentage.\n13. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "attendance.xlsx",
+        "sandbox_path": "/home/user/Documents/attendance.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value V1 \"Days Present\" Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V1 = 'Days Present'"
+    },
+    {
+      "command": "check-cell-formatted V1 true Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V1 is bold"
+    },
+    {
+      "command": "check-cell-value W1 \"Days Absent\" Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "W1 = 'Days Absent'"
+    },
+    {
+      "command": "check-cell-formatted W1 true Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "W1 is bold"
+    },
+    {
+      "command": "check-cell-value X1 \"Days Late\" Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "X1 = 'Days Late'"
+    },
+    {
+      "command": "check-cell-formatted X1 true Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "X1 is bold"
+    },
+    {
+      "command": "check-cell-value Y1 \"Attendance %\" Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y1 = 'Attendance %'"
+    },
+    {
+      "command": "check-cell-formatted Y1 true Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y1 is bold"
+    },
+    {
+      "command": "cell-value V2 Attendance",
+      "eval": "result.get('formula') is not None and 'COUNTIF' in result.get('formula','').upper()",
+      "description": "V2 contains a COUNTIF formula"
+    },
+    {
+      "command": "check-cell-value V2 18 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V2 = 18 (Olivia Parker present days)"
+    },
+    {
+      "command": "check-cell-value W2 1 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "W2 = 1 (Olivia Parker absent days)"
+    },
+    {
+      "command": "check-cell-value X2 1 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "X2 = 1 (Olivia Parker late days)"
+    },
+    {
+      "command": "check-cell-value Y2 90 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y2 = 90 (Olivia Parker 90% attendance)"
+    },
+    {
+      "command": "check-cell-value V3 12 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V3 = 12 (Liam Johnson present days)"
+    },
+    {
+      "command": "check-cell-value W3 2 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "W3 = 2 (Liam Johnson absent days)"
+    },
+    {
+      "command": "check-cell-value Y3 60 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y3 = 60 (Liam Johnson 60% attendance)"
+    },
+    {
+      "command": "check-cell-value V6 19 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V6 = 19 (Ava Jones present days)"
+    },
+    {
+      "command": "check-cell-value Y6 95 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y6 = 95 (Ava Jones 95% attendance)"
+    },
+    {
+      "command": "check-cell-value V21 17 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V21 = 17 (Benjamin Lewis present days)"
+    },
+    {
+      "command": "check-cell-value A22 \"Class Average\" Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "A22 = 'Class Average'"
+    },
+    {
+      "command": "check-cell-formatted A22 true Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "A22 is bold"
+    },
+    {
+      "command": "check-cell-value V22 14.95 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "V22 = 14.95 (average days present)"
+    },
+    {
+      "command": "check-cell-value Y22 74.75 Attendance",
+      "key": "match",
+      "expected": true,
+      "description": "Y22 = 74.75 (average attendance %)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

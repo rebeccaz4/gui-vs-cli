@@ -1,0 +1,10 @@
+{
+  "task_id": "zotero_restore_from_trash",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    }
+  ]
+}

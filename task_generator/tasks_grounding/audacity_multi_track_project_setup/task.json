@@ -1,0 +1,69 @@
+{
+  "id": "audacity_multi_track_project_setup",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/empty.aup loaded. The project currently has zero audio tracks. Create three new mono audio tracks and give each a specific name, in this exact top-to-bottom order: 'Drums' (top-most track), 'Bass' (middle), 'Synth' (bottom). Save the project so the changes are persisted to /home/user/Music/empty.aup.",
+  "task_grounding": "Audacity is open with /home/user/Music/empty.aup loaded. The project currently has zero audio tracks.\n\nCreate three new mono audio tracks and give each a specific name, in this exact top-to-bottom order:\n\n1. Drums (top-most track)\n2. Bass (middle)\n3. Synth (bottom)\n\nHow to create each track:\n- Use Tracks > Add New > Mono Track. A new empty mono wavetrack will appear at the bottom of the track list. Repeat three times so the project has three empty mono tracks.\n\nHow to rename each track:\n- Click the small drop-down arrow on the track's control panel (next to the default track name 'Audio Track') and choose 'Name...', or double-click the track name label.\n- Type the desired name and press Enter.\n- Rename the first added track to 'Drums', the second to 'Bass', and the third to 'Synth'.\n\nOnce there are exactly three mono wavetracks named Drums/Bass/Synth in that order, save the project with Ctrl+S so the changes are persisted to /home/user/Music/empty.aup. Do not rename the project file, and do not add any label or time tracks.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.aup",
+        "sandbox_path": "/home/user/Music/empty.aup"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/empty.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "empty.aup is still valid"
+    },
+    {
+      "command": "check-track-count /home/user/Music/empty.aup 3",
+      "key": "match",
+      "expected": true,
+      "description": "Project has exactly 3 wavetracks"
+    },
+    {
+      "command": "check-track-name /home/user/Music/empty.aup Drums",
+      "key": "match",
+      "expected": true,
+      "description": "A track named 'Drums' exists"
+    },
+    {
+      "command": "check-track-name /home/user/Music/empty.aup Bass",
+      "key": "match",
+      "expected": true,
+      "description": "A track named 'Bass' exists"
+    },
+    {
+      "command": "check-track-name /home/user/Music/empty.aup Synth",
+      "key": "match",
+      "expected": true,
+      "description": "A track named 'Synth' exists"
+    },
+    {
+      "command": "tracks /home/user/Music/empty.aup",
+      "eval": "[t.get('name') for t in result] == ['Drums', 'Bass', 'Synth']",
+      "description": "Track order is Drums, Bass, Synth top-to-bottom"
+    },
+    {
+      "command": "check-labeltrack-count /home/user/Music/empty.aup 0",
+      "key": "match",
+      "expected": true,
+      "description": "No label tracks were added"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track add operation → clip import/add → label add operations",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track add operation, clip import/add, label add operations"
+  }
+}

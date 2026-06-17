@@ -1,0 +1,79 @@
+{
+  "id": "audacity_add_chapter_labels",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/audiobook.aup loaded. The project contains a single wavetrack (5 seconds of narration) and no label tracks. Add a label track and place four chapter labels on it, in this order from earliest to latest: 'Intro', 'Chapter 1', 'Chapter 2', 'Outro'. Save the project so the label track and its four labels are persisted to /home/user/Music/audiobook.aup. Exact timestamps do not matter — only that there are exactly four labels with those exact titles on one label track.",
+  "env": {
+    "files": [
+      {
+        "filename": "audiobook.aup",
+        "sandbox_path": "/home/user/Music/audiobook.aup"
+      },
+      {
+        "filename": "audiobook_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/audiobook_data/e00/d00/e000001.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/audiobook.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "audiobook.aup is still valid"
+    },
+    {
+      "command": "check-labeltrack-count /home/user/Music/audiobook.aup 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 1 label track exists"
+    },
+    {
+      "command": "check-label-count /home/user/Music/audiobook.aup 4",
+      "key": "match",
+      "expected": true,
+      "description": "Label track has exactly 4 labels"
+    },
+    {
+      "command": "check-label-exists /home/user/Music/audiobook.aup Intro",
+      "key": "match",
+      "expected": true,
+      "description": "Label 'Intro' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Music/audiobook.aup 'Chapter 1'",
+      "key": "match",
+      "expected": true,
+      "description": "Label 'Chapter 1' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Music/audiobook.aup 'Chapter 2'",
+      "key": "match",
+      "expected": true,
+      "description": "Label 'Chapter 2' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Music/audiobook.aup Outro",
+      "key": "match",
+      "expected": true,
+      "description": "Label 'Outro' exists"
+    },
+    {
+      "command": "check-track-count /home/user/Music/audiobook.aup 1",
+      "key": "match",
+      "expected": true,
+      "description": "Original wavetrack count preserved (1)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1. cli-anything-audacity project new -o /home/user/Music/audiobook.json 2. cli-anything-audacity --project /home/user/Music/audiobook.json label add 0.5 Intro 3. cli-anything-audacity --project /home/user/Music/audiobook.json label add 1.5 'Chapter 1' 4. cli-anything-audacity --project /home/user/Music/audiobook.json label add 2.5 'Chapter 2' 5. cli-anything-audacity --project /home/user/Music/audiobook.json label add 4.0 Outro 6. cli-anything-audacity --project /home/user/Music/audiobook.json project save",
+    "reason": "CLI-Anything-Audacity supports label management via 'label add' command which can add labels at specific time positions with titles. Project operations are fully supported."
+  }
+}

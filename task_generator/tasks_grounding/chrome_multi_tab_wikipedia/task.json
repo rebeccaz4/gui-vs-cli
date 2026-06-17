@@ -1,0 +1,53 @@
+{
+  "id": "chrome_multi_tab_wikipedia",
+  "app": "chrome",
+  "task": "Google Chrome is open. Open the following 4 pages, each in its own tab: (1) https://en.wikipedia.org/wiki/Linux, (2) https://en.wikipedia.org/wiki/Open-source_software, (3) https://en.wikipedia.org/wiki/Ubuntu, (4) https://en.wikipedia.org/wiki/Linus_Torvalds. After all tabs are open, bookmark the Linux page (https://en.wikipedia.org/wiki/Linux) and the Linus Torvalds page (https://en.wikipedia.org/wiki/Linus_Torvalds). All 4 tabs must remain open when done.",
+  "task_grounding": "Open Google Chrome. Open the following 4 pages, each in its own tab: (1) https://en.wikipedia.org/wiki/Linux, (2) https://en.wikipedia.org/wiki/Open-source_software, (3) https://en.wikipedia.org/wiki/Ubuntu, (4) https://en.wikipedia.org/wiki/Linus_Torvalds. After all tabs are open, bookmark the Linux page (https://en.wikipedia.org/wiki/Linux) and the Linus Torvalds page (https://en.wikipedia.org/wiki/Linus_Torvalds). All 4 tabs must remain open when done.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-tab-open en.wikipedia.org/wiki/Linux",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Linux Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open Open-source_software",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Open-source_software Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open en.wikipedia.org/wiki/Ubuntu",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Ubuntu Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open Linus_Torvalds",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Linus Torvalds Wikipedia page is open"
+    },
+    {
+      "command": "check-bookmark wiki/Linux",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Linux Wikipedia page exists"
+    },
+    {
+      "command": "check-bookmark Linus_Torvalds",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Linus Torvalds Wikipedia page exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

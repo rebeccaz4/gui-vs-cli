@@ -1,0 +1,45 @@
+{
+  "id": "cloudcompare_ply_binary_to_ascii",
+  "app": "cloudcompare",
+  "task": "Open the point cloud /home/user/Documents/scan_binary.ply in CloudCompare. Create an ASCII-encoded PLY version of this point cloud and save it as: /home/user/Documents/scan_ascii.ply. The output must represent the same point cloud, preserving all 500 points and associated attributes. ",
+  "env": {
+    "files": [
+      {
+        "filename": "scan_binary.ply",
+        "sandbox_path": "/home/user/Documents/scan_binary.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/scan_ascii.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "ASCII PLY output exists"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/scan_ascii.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "Output PLY is ASCII encoded"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/scan_ascii.ply 500",
+      "key": "match",
+      "expected": true,
+      "description": "Output has exactly 500 points"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

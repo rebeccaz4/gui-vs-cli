@@ -1,0 +1,20 @@
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+.pytest_cache/
+
+# Coverage / type-checker caches
+.coverage
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

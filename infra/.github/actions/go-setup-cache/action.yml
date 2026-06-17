@@ -1,0 +1,25 @@
+name: "Go Setup"
+description: |
+  Sets up go and gets modules from the cache. A complete cache is over 1 GB, so we want this to cache only what is 
+  necessary for each job.
+
+inputs:
+  cache-dependency-paths:
+    description: Paths to the package directory
+    required: true
+    default: |
+      go.work
+      packages/*/go.mod
+      packages/*/go.sum
+      tests/integration/go.mod
+      tests/integration/go.sum
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: go.work
+        cache-dependency-path: |
+          ${{ inputs.cache-dependency-paths }}

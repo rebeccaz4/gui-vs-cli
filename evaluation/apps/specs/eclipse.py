@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from ..base import AppContext, AppSpec
+from ..utils import build_command, check_process_ready, with_log_redirect
+
+
+def build_eclipse_spec(verifier_local, verifier_remote) -> AppSpec:
+    def build_launch_command(ctx: AppContext) -> str:
+        command = build_command("eclipse")
+        return with_log_redirect(command, ctx.log_path("eclipse"))
+
+    return AppSpec(
+        app_id="eclipse",
+        verifier_local=verifier_local,
+        verifier_remote=verifier_remote,
+        canonical_launcher="eclipse",
+        build_launch_command=build_launch_command,
+        ready_check=lambda sandbox: check_process_ready(sandbox, "eclipse"),
+    )

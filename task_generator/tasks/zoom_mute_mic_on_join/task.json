@@ -1,0 +1,27 @@
+{
+  "id": "zoom_mute_mic_on_join",
+  "app": "zoom",
+  "task": "A baseline Zoom configuration file exists at /home/user/.config/zoomus.conf. Change autoMuteMic to true so that Zoom will automatically mute the microphone whenever the user joins a meeting. Save the file in-place at /home/user/.config/zoomus.conf — do not write to any other path. Do not change any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config General autoMuteMic true", "key": "match", "expected": true, "description": "[General]autoMuteMic is true"},
+    {"command": "check-config General language en-US", "key": "match", "expected": true, "description": "[General]language was not changed"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [General] autoMuteMic=true",
+    "reason": "CLI agent can directly edit the config file using sed. Single boolean value change is trivial for CLI. Task mentions GUI Settings > Audio but CLI is equally viable."
+  }
+}

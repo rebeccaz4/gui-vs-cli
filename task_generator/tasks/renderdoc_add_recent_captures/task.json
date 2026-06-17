@@ -1,0 +1,71 @@
+{
+  "id": "renderdoc_add_recent_captures",
+  "app": "renderdoc",
+  "task": "Edit UI.config: set RecentCaptureFiles to triangle.rdc and draw_call.rdc, set DefaultCaptureSaveDirectory to /home/user/captures. Preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "triangle.rdc",
+        "sandbox_path": "/home/user/captures/triangle.rdc"
+      },
+      {
+        "filename": "draw_call.rdc",
+        "sandbox_path": "/home/user/captures/draw_call.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-rdc-valid /home/user/captures/triangle.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "triangle.rdc is still a valid capture"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/draw_call.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "draw_call.rdc is still a valid capture"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/triangle.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "triangle.rdc is in RecentCaptureFiles"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/draw_call.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "draw_call.rdc is in RecentCaptureFiles"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/captures",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory points at /home/user/captures"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

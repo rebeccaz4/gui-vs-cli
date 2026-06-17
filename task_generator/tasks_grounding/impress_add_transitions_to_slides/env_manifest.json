@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_add_transitions_to_slides",
+  "files": [
+    {"filename": "sales_pitch.pptx", "sandbox_path": "/home/user/Documents/sales_pitch.pptx", "type": "pptx"}
+  ]
+}

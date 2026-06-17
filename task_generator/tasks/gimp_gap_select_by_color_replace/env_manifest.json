@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_gap_select_by_color_replace",
+  "files": [
+    {"filename": "three_stripes.png", "sandbox_path": "/home/user/Documents/three_stripes.png", "type": "png"}
+  ]
+}

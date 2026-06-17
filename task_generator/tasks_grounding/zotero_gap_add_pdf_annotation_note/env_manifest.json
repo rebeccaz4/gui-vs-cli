@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_add_pdf_annotation_note",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "deep_learning.pdf",
+      "sandbox_path": "/home/user/Documents/deep_learning.pdf",
+      "type": "pdf"
+    }
+  ]
+}

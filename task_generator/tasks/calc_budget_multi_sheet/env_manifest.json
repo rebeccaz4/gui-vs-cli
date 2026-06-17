@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_budget_multi_sheet",
+  "files": [
+    {"filename": "budget.xlsx", "sandbox_path": "/home/user/Documents/budget.xlsx", "type": "xlsx"}
+  ]
+}

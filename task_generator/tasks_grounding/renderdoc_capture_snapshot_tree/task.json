@@ -1,0 +1,138 @@
+{
+  "id": "renderdoc_capture_snapshot_tree",
+  "app": "renderdoc",
+  "task": "Create directory snapshot structure: organize day1a.rdc and day1b.rdc into /home/user/snapshots/day1, day2a.rdc and day2b.rdc into /home/user/snapshots/day2, day3a.rdc and day3b.rdc into /home/user/snapshots/day3, preserving original files in /home/user/captures.",
+  "task_grounding": "The directory /home/user/captures contains six valid capture files:\n\n  day1a.rdc, day1b.rdc, day2a.rdc, day2b.rdc, day3a.rdc, day3b.rdc\n\nBuild a structured snapshot tree WITHOUT moving the originals:\n1. Create /home/user/snapshots/day1, /home/user/snapshots/day2, and /home/user/snapshots/day3 (and any missing parent directories).\n2. COPY day1a.rdc and day1b.rdc into /home/user/snapshots/day1.\n3. COPY day2a.rdc and day2b.rdc into /home/user/snapshots/day2.\n4. COPY day3a.rdc and day3b.rdc into /home/user/snapshots/day3.\n\nThe originals in /home/user/captures must remain exactly as they were (still six valid .rdc files). Keep all copied filenames identical to the originals.",
+  "env": {
+    "files": [
+      {
+        "filename": "day1a.rdc",
+        "sandbox_path": "/home/user/captures/day1a.rdc"
+      },
+      {
+        "filename": "day1b.rdc",
+        "sandbox_path": "/home/user/captures/day1b.rdc"
+      },
+      {
+        "filename": "day2a.rdc",
+        "sandbox_path": "/home/user/captures/day2a.rdc"
+      },
+      {
+        "filename": "day2b.rdc",
+        "sandbox_path": "/home/user/captures/day2b.rdc"
+      },
+      {
+        "filename": "day3a.rdc",
+        "sandbox_path": "/home/user/captures/day3a.rdc"
+      },
+      {
+        "filename": "day3b.rdc",
+        "sandbox_path": "/home/user/captures/day3b.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/captures 6",
+      "key": "match",
+      "expected": true,
+      "description": "originals still 6"
+    },
+    {
+      "command": "check-file-exists /home/user/snapshots/day1",
+      "key": "is_dir",
+      "expected": true,
+      "description": "day1 dir"
+    },
+    {
+      "command": "check-file-exists /home/user/snapshots/day2",
+      "key": "is_dir",
+      "expected": true,
+      "description": "day2 dir"
+    },
+    {
+      "command": "check-file-exists /home/user/snapshots/day3",
+      "key": "is_dir",
+      "expected": true,
+      "description": "day3 dir"
+    },
+    {
+      "command": "check-capture-count /home/user/snapshots/day1 2",
+      "key": "match",
+      "expected": true,
+      "description": "day1 has 2"
+    },
+    {
+      "command": "check-capture-count /home/user/snapshots/day2 2",
+      "key": "match",
+      "expected": true,
+      "description": "day2 has 2"
+    },
+    {
+      "command": "check-capture-count /home/user/snapshots/day3 2",
+      "key": "match",
+      "expected": true,
+      "description": "day3 has 2"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day1/day1a.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day1a copy valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day1/day1b.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day1b copy valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day2/day2a.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day2a copy valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day2/day2b.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day2b copy valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day3/day3a.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day3a copy valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/snapshots/day3/day3b.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "day3b copy valid"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/day1a.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "original day1a present"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/day3b.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "original day3b present"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash: test -f file.rdc; or CLI-Anything: cli-anything-renderdoc -c file.rdc capture info",
+    "reason": "Task only requires verifying .rdc file existence or validity, not editing binary content. Can use bash test commands or CLI-Anything RenderDoc skill: 'cli-anything-renderdoc -c file.rdc capture info'"
+  }
+}

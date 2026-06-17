@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_change_colorspace_grayscale",
+  "files": [
+    {
+      "filename": "photo_rgba.kra",
+      "sandbox_path": "/home/user/Documents/photo_rgba.kra",
+      "type": "kra"
+    }
+  ]
+}

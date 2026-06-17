@@ -1,0 +1,20 @@
+{
+  "task_id": "renderdoc_add_recent_captures",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "triangle.rdc",
+      "sandbox_path": "/home/user/captures/triangle.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "draw_call.rdc",
+      "sandbox_path": "/home/user/captures/draw_call.rdc",
+      "type": "rdc"
+    }
+  ]
+}

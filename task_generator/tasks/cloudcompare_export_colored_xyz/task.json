@@ -1,0 +1,45 @@
+{
+  "id": "cloudcompare_export_colored_xyz",
+  "app": "cloudcompare",
+  "task": "Export the point cloud from /home/user/Documents/colored.ply to /home/user/Documents/colored.asc as an ASCII cloud. The input is an ASCII PLY with 300 points that carry RGB color. The output must contain all 300 points with X, Y, Z, R, G, B columns (6 columns total) to preserve the color information.",
+  "env": {
+    "files": [
+      {
+        "filename": "colored.ply",
+        "sandbox_path": "/home/user/Documents/colored.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/colored.asc",
+      "key": "exists",
+      "expected": true,
+      "description": "ASC output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/colored.asc 300",
+      "key": "match",
+      "expected": true,
+      "description": "Output has 300 points"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/colored.asc",
+      "key": "has_color",
+      "expected": true,
+      "description": "Output preserves RGB color"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: 1) Create scalar field from coordinates (cloud sf-from-coord), 2) Convert to RGB (cloud sf-to-rgb), 3) Export with RGB (export cloud --preset ply)",
+    "reason": "CLI supports colorization through scalar field manipulation: create SF from coordinates, convert SF to RGB colors, then export with color preservation."
+  }
+}

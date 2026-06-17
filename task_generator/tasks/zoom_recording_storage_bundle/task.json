@@ -1,0 +1,33 @@
+{
+  "id": "zoom_recording_storage_bundle",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Configure a complete local recording workflow that spans two sections and the filesystem. Do ALL of the following: (1) Change localRecordingPath to exactly /home/user/Recordings/Zoom. (2) Set RecordToNewFolder to true, AddTimestampToRecording to true, and AutoRecording to true. (3) Create the directory /home/user/Recordings/Zoom on disk. Save the updated config file in-place at /home/user/.config/zoomus.conf. Do not modify any other config keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-section-exists Recording", "key": "exists", "expected": true, "description": "[Recording] section exists"},
+    {"command": "check-config General localRecordingPath /home/user/Recordings/Zoom", "key": "match", "expected": true, "description": "[General]localRecordingPath matches"},
+    {"command": "check-recording-path /home/user/Recordings/Zoom", "key": "match", "expected": true, "description": "Recording path resolves to /home/user/Recordings/Zoom"},
+    {"command": "check-config Recording RecordToNewFolder true", "key": "match", "expected": true, "description": "[Recording]RecordToNewFolder == true"},
+    {"command": "check-config Recording AddTimestampToRecording true", "key": "match", "expected": true, "description": "[Recording]AddTimestampToRecording == true"},
+    {"command": "check-config Recording AutoRecording true", "key": "match", "expected": true, "description": "[Recording]AutoRecording == true"},
+    {"command": "check-config Recording RecordingAudioOnly false", "key": "match", "expected": true, "description": "Other [Recording] keys untouched"},
+    {"command": "check-directory-exists /home/user/Recordings/Zoom", "key": "exists", "expected": true, "description": "Recording directory exists on disk"}
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [General] localRecordingPath=/home/user/Recordings/Zoom; [Recording] RecordToNewFolder=true, AddTimestampToRecording=true, AutoRecording=true; then run mkdir -p /home/user/Recordings/Zoom",
+    "reason": "CLI agent can edit the config file with sed/Python and create directories with mkdir. Multi-section config edits plus directory creation are well within CLI capabilities."
+  }
+}

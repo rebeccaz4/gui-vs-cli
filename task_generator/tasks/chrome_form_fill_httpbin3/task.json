@@ -1,0 +1,58 @@
+{
+  "id": "chrome_form_fill_httpbin3",
+  "app": "chrome",
+  "task": "Submit a form to https://httpbin.org/forms/post with the following values: Customer name: 'Elena Rodriguez', Telephone: '123-4567', E-mail: 'john@example.com', Pizza Size: 'small', Pizza Toppings: 'onion', Delivery instructions: 'Please ring bell twice — nut allergy in household'. Save the server response to /home/user/form_response.json. The response should contain all the submitted form data.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-contains /home/user/form_response.json \"Elena Rodriguez\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains customer name 'Elena Rodriguez'"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"123-4567\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains phone number '123-4567'"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"john@example.com\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains email 'john@example.com'"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"small\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains pizza size 'small'"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"onion\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains pizza topping 'onion'"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"ring bell twice\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Form response contains delivery instructions"
+    },
+    {
+      "command": "check-file-contains /home/user/form_response.json \"extra cheese\"",
+      "key": "contains",
+      "expected": false,
+      "description": "Form response contains delivery instructions 'extra cheese'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

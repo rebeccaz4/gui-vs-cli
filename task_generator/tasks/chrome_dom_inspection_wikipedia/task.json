@@ -1,0 +1,76 @@
+{
+  "id": "chrome_dom_inspection_wikipedia",
+  "app": "chrome",
+  "task": "Google Chrome is open. Open two tabs, each showing a Wikipedia article about a functional programming language. Tab 0 must navigate to https://en.wikipedia.org/wiki/Lisp and tab 1 must navigate to https://en.wikipedia.org/wiki/Haskell. Wait for each page to fully load. Then bookmark both articles. When done, both tabs must be open, both articles must be in your browsing history, and both bookmarks must exist. Each Wikipedia article page has an h1 element containing the article title and an infobox table element — the verifier will check these DOM structures are present.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-tab-open wikipedia.org/wiki/Lisp",
+      "key": "found",
+      "expected": true,
+      "description": "Lisp Wikipedia tab is open"
+    },
+    {
+      "command": "check-tab-open wikipedia.org/wiki/Haskell",
+      "key": "found",
+      "expected": true,
+      "description": "Haskell Wikipedia tab is open"
+    },
+    {
+      "command": "check-url-visited wikipedia.org/wiki/Lisp",
+      "key": "visited",
+      "expected": true,
+      "description": "Lisp Wikipedia page was visited"
+    },
+    {
+      "command": "check-url-visited wikipedia.org/wiki/Haskell",
+      "key": "visited",
+      "expected": true,
+      "description": "Haskell Wikipedia page was visited"
+    },
+    {
+      "command": "check-element-exists h1 0",
+      "key": "exists",
+      "expected": true,
+      "description": "Tab 0 has an h1 element"
+    },
+    {
+      "command": "check-element-exists h1 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Tab 1 has an h1 element"
+    },
+    {
+      "command": "check-element-exists table.infobox 0",
+      "key": "exists",
+      "expected": true,
+      "description": "Tab 0 has a Wikipedia infobox table"
+    },
+    {
+      "command": "check-element-exists table.infobox 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Tab 1 has a Wikipedia infobox table"
+    },
+    {
+      "command": "check-bookmark wikipedia.org/wiki/Lisp",
+      "key": "exists",
+      "expected": true,
+      "description": "Lisp Wikipedia page is bookmarked"
+    },
+    {
+      "command": "check-bookmark wikipedia.org/wiki/Haskell",
+      "key": "exists",
+      "expected": true,
+      "description": "Haskell Wikipedia page is bookmarked"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

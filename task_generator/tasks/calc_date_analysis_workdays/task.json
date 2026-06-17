@@ -1,0 +1,144 @@
+{
+  "id": "calc_date_analysis_workdays",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/orders.xlsx in LibreOffice Calc. Sheet 'Orders' has Order ID (A), Order Date (B), Amount (C) with 20 orders in rows 2-21 spanning January-March 2025.\n\n1. In D1 type 'Year' and make it bold. In E1 type 'Month' and make it bold. In F1 type 'Weekday' and make it bold. In G1 type 'Is Weekend' and make it bold.\n2. In D2 enter =YEAR(B2) and fill down through D21.\n3. In E2 enter =MONTH(B2) and fill down through E21.\n4. In F2 enter =WEEKDAY(B2,2) and fill down through F21. (Mode 2: Monday=1, Sunday=7.)\n5. In G2 enter =IF(F2>=6,\"Yes\",\"No\") and fill down through G21.\n6. Create a new sheet named 'MonthlyTotals'.\n7. On MonthlyTotals: A1='Month' (bold), B1='Total' (bold). A2=1, A3=2, A4=3.\n8. In B2 enter =SUMIF(Orders.E2:E21,A2,Orders.C2:C21). Fill down through B4.\n9. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "orders.xlsx",
+        "sandbox_path": "/home/user/Documents/orders.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 Year Orders",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = Year"
+    },
+    {
+      "command": "check-cell-value E1 Month Orders",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = Month"
+    },
+    {
+      "command": "check-cell-value F1 Weekday Orders",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = Weekday"
+    },
+    {
+      "command": "check-cell-value G1 \"Is Weekend\" Orders",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = Is Weekend"
+    },
+    {
+      "command": "check-cell-formatted D1 true Orders",
+      "key": "match",
+      "expected": true,
+      "description": "D1 bold"
+    },
+    {
+      "command": "check-cell-value D2 2025 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "D2 year = 2025"
+    },
+    {
+      "command": "check-cell-value E2 1 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "E2 month = 1 (January)"
+    },
+    {
+      "command": "check-cell-value E10 2 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "E10 month = 2 (February)"
+    },
+    {
+      "command": "check-cell-value E21 3 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "E21 month = 3 (March)"
+    },
+    {
+      "command": "check-cell-value G3 Yes Orders",
+      "key": "match",
+      "expected": true,
+      "description": "G3 (Jan 5 Sun) = Yes weekend"
+    },
+    {
+      "command": "check-cell-value G2 No Orders",
+      "key": "match",
+      "expected": true,
+      "description": "G2 (Jan 3 Fri) = No"
+    },
+    {
+      "command": "cell-value D2 Orders",
+      "eval": "result.get('formula') is not None and 'YEAR' in result.get('formula','').upper()",
+      "description": "D2 uses YEAR()"
+    },
+    {
+      "command": "cell-value F2 Orders",
+      "eval": "result.get('formula') is not None and 'WEEKDAY' in result.get('formula','').upper()",
+      "description": "F2 uses WEEKDAY()"
+    },
+    {
+      "command": "check-sheet-exists MonthlyTotals",
+      "key": "exists",
+      "expected": true,
+      "description": "MonthlyTotals sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Month MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals A1 = Month"
+    },
+    {
+      "command": "check-cell-value B1 Total MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals B1 = Total"
+    },
+    {
+      "command": "check-cell-formatted A1 true MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals A1 bold"
+    },
+    {
+      "command": "check-cell-value B2 880 MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals B2 January = 880"
+    },
+    {
+      "command": "check-cell-value B3 820 MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals B3 February = 820"
+    },
+    {
+      "command": "check-cell-value B4 955 MonthlyTotals",
+      "key": "match",
+      "expected": true,
+      "description": "MonthlyTotals B4 March = 955"
+    },
+    {
+      "command": "cell-value B2 MonthlyTotals",
+      "eval": "result.get('formula') is not None and 'SUMIF' in result.get('formula','').upper()",
+      "description": "MonthlyTotals B2 uses SUMIF"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

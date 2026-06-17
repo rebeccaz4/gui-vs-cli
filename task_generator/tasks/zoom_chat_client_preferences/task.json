@@ -1,0 +1,31 @@
+{
+  "id": "zoom_chat_client_preferences",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Harden the Zoom chat client by updating four keys. Set Theme to dark, EnableSpellCheck to false, ShowLinkPreview to false, and AutoDownloadFiles to false. Save in-place at /home/user/.config/zoomus.conf. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-section-exists chat.client", "key": "exists", "expected": true, "description": "[chat.client] section exists"},
+    {"command": "check-config chat.client Theme dark", "key": "match", "expected": true, "description": "[chat.client]Theme == dark"},
+    {"command": "check-config chat.client EnableSpellCheck false", "key": "match", "expected": true, "description": "[chat.client]EnableSpellCheck == false"},
+    {"command": "check-config chat.client ShowLinkPreview false", "key": "match", "expected": true, "description": "[chat.client]ShowLinkPreview == false"},
+    {"command": "check-config chat.client AutoDownloadFiles false", "key": "match", "expected": true, "description": "[chat.client]AutoDownloadFiles == false"},
+    {"command": "check-config chat.client EnableGiphy true", "key": "match", "expected": true, "description": "Unrelated [chat.client]EnableGiphy untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [chat.client] Theme=dark, EnableSpellCheck=false, ShowLinkPreview=false, AutoDownloadFiles=false",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. The cli-anything-zoom skill is for REST API, but bash/Python can handle config file edits."
+  }
+}

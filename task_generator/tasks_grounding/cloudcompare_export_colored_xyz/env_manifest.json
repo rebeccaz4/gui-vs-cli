@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_export_colored_xyz",
+  "files": [
+    {
+      "filename": "colored.ply",
+      "sandbox_path": "/home/user/Documents/colored.ply",
+      "type": "ply"
+    }
+  ]
+}

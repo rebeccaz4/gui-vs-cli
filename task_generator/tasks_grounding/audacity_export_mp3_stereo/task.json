@@ -1,0 +1,52 @@
+{
+  "id": "audacity_export_mp3_stereo",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/source.wav already loaded (a 3-second stereo 44.1 kHz WAV file). Export this audio as an MP3 file to /home/user/Music/song.mp3 using default bit-rate settings.",
+  "task_grounding": "Audacity is open with /home/user/Music/source.wav already loaded (a 3-second stereo 44.1 kHz WAV file).\n\nExport this audio as an MP3 file to /home/user/Music/song.mp3 using File > Export > Export as MP3. In the Export Audio dialog, keep the default bit-rate settings ('Preset: Standard, 170-210 kbps' or similar) and click Save. If an Edit Metadata Tags dialog appears, click OK to accept the defaults.",
+  "env": {
+    "files": [
+      {
+        "filename": "source.wav",
+        "sandbox_path": "/home/user/Music/source.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/song.mp3",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported MP3 exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/song.mp3 mp3",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is mp3"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/song.mp3 2",
+      "key": "match",
+      "expected": true,
+      "description": "MP3 has 2 channels (stereo)"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/song.mp3 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "MP3 duration is at least 2.5 seconds"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1. cli-anything-audacity project new -o /home/user/Music/project.json 2. cli-anything-audacity --project /home/user/Music/project.json track add 3. cli-anything-audacity --project /home/user/Music/project.json clip add 0 /home/user/Music/source.wav 4. cli-anything-audacity --project /home/user/Music/project.json export render /home/user/Music/song.mp3 --overwrite",
+    "reason": "CLI-Anything-Audacity supports MP3 export via 'export render' command. Stereo WAV files can be imported and exported to MP3 format."
+  }
+}

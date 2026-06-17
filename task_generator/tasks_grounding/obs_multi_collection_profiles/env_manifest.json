@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_multi_collection_profiles",
+  "files": [
+    {
+      "filename": "banner.png",
+      "sandbox_path": "/home/user/Pictures/banner.png",
+      "type": "png"
+    }
+  ]
+}

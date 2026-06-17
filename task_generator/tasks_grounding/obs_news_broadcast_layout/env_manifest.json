@@ -1,0 +1,15 @@
+{
+  "task_id": "obs_news_broadcast_layout",
+  "files": [
+    {
+      "filename": "news_logo.png",
+      "sandbox_path": "/home/user/Pictures/news_logo.png",
+      "type": "png"
+    },
+    {
+      "filename": "weather_map.png",
+      "sandbox_path": "/home/user/Pictures/weather_map.png",
+      "type": "png"
+    }
+  ]
+}

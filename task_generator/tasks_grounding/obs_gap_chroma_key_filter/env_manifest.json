@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_gap_chroma_key_filter",
+  "files": [
+    {
+      "filename": "green_plate.png",
+      "sandbox_path": "/home/user/Pictures/green_plate.png",
+      "type": "png"
+    }
+  ]
+}

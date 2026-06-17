@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_obj_vertices_to_xyz",
+  "files": [
+    {
+      "filename": "shape.obj",
+      "sandbox_path": "/home/user/Documents/shape.obj",
+      "type": "obj"
+    }
+  ]
+}

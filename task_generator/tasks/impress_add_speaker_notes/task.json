@@ -1,0 +1,81 @@
+{
+  "id": "impress_add_speaker_notes",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/training_deck.pptx in LibreOffice Impress. This presentation has 4 slides about employee onboarding with titles: 'Welcome', 'Company History', 'Tools & Systems', 'Q&A'.\n\nAdd speaker notes to each slide as follows:\n\nSlide 1 notes: 'Introduce yourself and welcome new hires. Estimated time: 5 minutes.'\nSlide 2 notes: 'Walk through the company history timeline on the screen. Estimated time: 10 minutes.'\nSlide 3 notes: 'Demonstrate the tools live. Let attendees follow along. Estimated time: 20 minutes.'\nSlide 4 notes: 'Open the floor for questions. Hand out feedback forms. Estimated time: 15 minutes.'\n\nSave the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "training_deck.pptx",
+        "sandbox_path": "/home/user/Documents/training_deck.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-notes-contain 0 \"Introduce yourself and welcome new hires\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 notes contain 'Introduce yourself and welcome new hires'"
+    },
+    {
+      "command": "check-notes-contain 0 \"Estimated time: 5 minutes\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 notes contain 'Estimated time: 5 minutes'"
+    },
+    {
+      "command": "check-notes-contain 1 \"Walk through the company history timeline\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 notes contain 'Walk through the company history timeline'"
+    },
+    {
+      "command": "check-notes-contain 1 \"Estimated time: 10 minutes\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 notes contain 'Estimated time: 10 minutes'"
+    },
+    {
+      "command": "check-notes-contain 2 \"Demonstrate the tools live\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 notes contain 'Demonstrate the tools live'"
+    },
+    {
+      "command": "check-notes-contain 2 \"Estimated time: 20 minutes\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 notes contain 'Estimated time: 20 minutes'"
+    },
+    {
+      "command": "check-notes-contain 3 \"Open the floor for questions\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 notes contain 'Open the floor for questions'"
+    },
+    {
+      "command": "check-notes-contain 3 \"Estimated time: 15 minutes\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 notes contain 'Estimated time: 15 minutes'"
+    },
+    {
+      "command": "check-slide-count 4",
+      "key": "match",
+      "expected": true,
+      "description": "Presentation still has 4 slides (no slides added or removed)"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/training_deck.pptx",
+      "key": "exists",
+      "expected": true,
+      "description": "File has been saved to disk"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

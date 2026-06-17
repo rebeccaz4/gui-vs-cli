@@ -1,0 +1,20 @@
+{
+  "task_id": "godot4_input_actions_and_display",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/combo_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/combo_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/combo_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

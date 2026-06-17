@@ -1,0 +1,97 @@
+{
+  "id": "renderdoc_capture_archive_partition",
+  "app": "renderdoc",
+  "task": "The directory /home/user/staging contains five capture files that must be sorted into a final archive.\n\nStarting files in /home/user/staging:\n  frame_a.rdc  (valid)\n  frame_b.rdc  (valid)\n  frame_c.rdc  (valid)\n  frame_bad1.rdc  (corrupt — bad magic bytes)\n  frame_bad2.rdc  (corrupt — bad magic bytes)\n\nReorganize them as follows:\n1. Create /home/user/archive/verified and /home/user/archive/quarantine.\n2. Move the three VALID .rdc files into /home/user/archive/verified. They must keep their original names.\n3. Move the TWO corrupt .rdc files into /home/user/archive/quarantine. They must keep their original names.\n4. Leave the /home/user/staging directory empty of .rdc files.",
+  "task_grounding": "The directory /home/user/staging contains five capture files that must be sorted into a final archive.\n\nStarting files in /home/user/staging:\n  frame_a.rdc  (valid)\n  frame_b.rdc  (valid)\n  frame_c.rdc  (valid)\n  frame_bad1.rdc  (corrupt — bad magic bytes)\n  frame_bad2.rdc  (corrupt — bad magic bytes)\n\nReorganize them as follows:\n1. Create /home/user/archive/verified and /home/user/archive/quarantine.\n2. Move the three VALID .rdc files into /home/user/archive/verified. They must keep their original names.\n3. Move the TWO corrupt .rdc files into /home/user/archive/quarantine. They must keep their original names.\n4. Leave the /home/user/staging directory empty of .rdc files.",
+  "env": {
+    "files": [
+      {
+        "filename": "frame_a.rdc",
+        "sandbox_path": "/home/user/staging/frame_a.rdc"
+      },
+      {
+        "filename": "frame_b.rdc",
+        "sandbox_path": "/home/user/staging/frame_b.rdc"
+      },
+      {
+        "filename": "frame_c.rdc",
+        "sandbox_path": "/home/user/staging/frame_c.rdc"
+      },
+      {
+        "filename": "frame_bad1.rdc",
+        "sandbox_path": "/home/user/staging/frame_bad1.rdc"
+      },
+      {
+        "filename": "frame_bad2.rdc",
+        "sandbox_path": "/home/user/staging/frame_bad2.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/archive/verified 3",
+      "key": "match",
+      "expected": true,
+      "description": "verified has 3 .rdc files"
+    },
+    {
+      "command": "check-capture-count /home/user/archive/quarantine 2",
+      "key": "match",
+      "expected": true,
+      "description": "quarantine has 2 .rdc files"
+    },
+    {
+      "command": "check-capture-count /home/user/staging 0",
+      "key": "match",
+      "expected": true,
+      "description": "staging has no .rdc files"
+    },
+    {
+      "command": "check-rdc-valid /home/user/archive/verified/frame_a.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_a valid in verified"
+    },
+    {
+      "command": "check-rdc-valid /home/user/archive/verified/frame_b.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_b valid in verified"
+    },
+    {
+      "command": "check-rdc-valid /home/user/archive/verified/frame_c.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frame_c valid in verified"
+    },
+    {
+      "command": "check-rdc-valid /home/user/archive/quarantine/frame_bad1.rdc",
+      "key": "valid",
+      "expected": false,
+      "description": "bad1 is invalid in quarantine"
+    },
+    {
+      "command": "check-rdc-valid /home/user/archive/quarantine/frame_bad2.rdc",
+      "key": "valid",
+      "expected": false,
+      "description": "bad2 is invalid in quarantine"
+    },
+    {
+      "command": "list-captures /home/user/archive/verified",
+      "eval": "all(c['valid'] for c in result.get('captures', []))",
+      "description": "all captures in verified are valid"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash: test -f file.rdc; or CLI-Anything: cli-anything-renderdoc -c file.rdc capture info",
+    "reason": "Task only requires verifying .rdc file existence or validity, not editing binary content. Can use bash test commands or CLI-Anything RenderDoc skill: 'cli-anything-renderdoc -c file.rdc capture info'"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "musescore3_gap_dc_al_fine",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/sonatina_dc.mscz (4 measures). Add a 'Fine' marker at measure 2 (so the piece ends there on the repeat) and a 'D.C. al Fine' jump at the end of measure 4. Use Add > Text > Tempo & Jumps or the Lines/Repeats palette. Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "sonatina_dc.mscz",
+        "sandbox_path": "/home/user/Documents/sonatina_dc.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/sonatina_dc.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-marker-text /home/user/Documents/sonatina_dc.mscz Fine",
+      "key": "match",
+      "expected": true,
+      "description": "Fine marker present"
+    },
+    {
+      "command": "check-jump-text /home/user/Documents/sonatina_dc.mscz D.C.",
+      "key": "match",
+      "expected": true,
+      "description": "D.C. jump present"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, add repeat structures: <Repeat>, <Jump> (DC al Fine), and <Volta> elements with proper timing, repackage",
+    "reason": "Adding repeat structures is inserting Repeat/Jump/Volta XML elements - complex but feasible with Python stdlib in ~100 lines"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "musescore3_gap_crescendo_hairpin",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/swell.mscz (4 measures). Add a crescendo hairpin spanning measures 1 through 2, and a decrescendo hairpin spanning measures 3 through 4. Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "swell.mscz",
+        "sandbox_path": "/home/user/Documents/swell.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/swell.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-has-hairpin /home/user/Documents/swell.mscz crescendo",
+      "key": "match",
+      "expected": true,
+      "description": "Crescendo hairpin present"
+    },
+    {
+      "command": "check-has-hairpin /home/user/Documents/swell.mscz decrescendo",
+      "key": "match",
+      "expected": true,
+      "description": "Decrescendo hairpin present"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, add <Hairpin><subtype>0</subtype></Hairpin> (0=crescendo, 1=decrescendo) spanner element, repackage",
+    "reason": "Adding hairpin dynamics is inserting XML spanner elements - can be done with Python stdlib in ~35 lines"
+  }
+}

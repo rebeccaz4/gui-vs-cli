@@ -1,0 +1,84 @@
+{
+  "id": "audacity_export_with_project_metadata",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/song.aup loaded. The project contains a single stereo wavetrack (~3 seconds). The project currently has no metadata tags. Set these tag values exactly: Title: Starlight, Artist: Nova Sound, Year: 2025. Save the project with Ctrl+S (so the tags are persisted inside /home/user/Music/song.aup). Export the audio as a WAV file to /home/user/Music/starlight.wav using 'WAV (Microsoft) signed 16-bit PCM' format. Both the updated /home/user/Music/song.aup AND the exported /home/user/Music/starlight.wav must exist.",
+  "task_grounding": "Audacity is open with /home/user/Music/song.aup loaded. The project contains a single stereo wavetrack (~3 seconds). The project currently has no metadata tags.\n\nDo the following in order:\n\n1. Open Edit > Metadata... and set these tag values exactly:\n   - Title: Starlight\n   - Artist: Nova Sound\n   - Year: 2025\n   Click OK to accept.\n\n2. Save the project with Ctrl+S (so the tags are persisted inside /home/user/Music/song.aup).\n\n3. Export the audio as a WAV file to /home/user/Music/starlight.wav using File > Export > Export as WAV... In the Save dialog, type 'starlight.wav' and choose /home/user/Music as the directory. Keep the 'Save as type' set to 'WAV (Microsoft) signed 16-bit PCM'. Click Save. If an 'Edit Metadata Tags' dialog appears on top of the export, just click OK to accept the same tags.\n\nBoth the updated /home/user/Music/song.aup AND the exported /home/user/Music/starlight.wav must exist. Do not rename the project file and do not export to a different location.",
+  "env": {
+    "files": [
+      {
+        "filename": "song.aup",
+        "sandbox_path": "/home/user/Music/song.aup"
+      },
+      {
+        "filename": "song_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/song_data/e00/d00/e000001.au"
+      },
+      {
+        "filename": "song_data/e00/d00/e000002.au",
+        "sandbox_path": "/home/user/Music/song_data/e00/d00/e000002.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/song.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "song.aup is still valid"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/song.aup TITLE Starlight",
+      "key": "match",
+      "expected": true,
+      "description": "TITLE tag is 'Starlight' in .aup"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/song.aup ARTIST 'Nova Sound'",
+      "key": "match",
+      "expected": true,
+      "description": "ARTIST tag is 'Nova Sound' in .aup"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/song.aup YEAR 2025",
+      "key": "match",
+      "expected": true,
+      "description": "YEAR tag is '2025' in .aup"
+    },
+    {
+      "command": "check-file-exists /home/user/Music/starlight.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported WAV exists at /home/user/Music/starlight.wav"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/starlight.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Exported WAV codec is pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/starlight.wav 2",
+      "key": "match",
+      "expected": true,
+      "description": "Exported WAV is stereo (2 channels)"
+    },
+    {
+      "command": "check-export-format /home/user/Music/starlight.wav wav",
+      "key": "match",
+      "expected": true,
+      "description": "Exported container format is WAV"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → clip import/add → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, clip import/add, metadata tag settings, export render operation"
+  }
+}

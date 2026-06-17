@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="C" version="7.14.0" producer="main_bin" root="/home/user">
+  <profile description="HD 720p 25 fps" width="1280" height="720"
+           progressive="1" sample_aspect_num="1" sample_aspect_den="1"
+           display_aspect_num="16" display_aspect_den="9"
+           frame_rate_num="25" frame_rate_den="1" colorspace="709"/>
+  <playlist id="main_bin">
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">0</property>
+  </playlist>
+  <tractor id="tractor0" in="00:00:00.000" out="00:00:00.000">
+    <property name="shotcut">1</property>
+    <track producer="main_bin"/>
+  </tractor>
+</mlt>

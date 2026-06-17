@@ -1,0 +1,59 @@
+{
+  "id": "godot4_add_label_node_to_scene",
+  "app": "godot4",
+  "task": "Edit the Godot 4 scene file at /home/user/godot_projects/ui_game/main.tscn. The scene currently contains only a root Node2D named Main. Add a new child node under Main with name=\"ScoreLabel\", type=\"Label\", and property text=\"Score: 0\". In a .tscn file this looks like:\n\n[node name=\"ScoreLabel\" type=\"Label\" parent=\".\"]\ntext = \"Score: 0\"\n\nSave the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/ui_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/ui_game/main.tscn"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/ui_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-node-exists /home/user/godot_projects/ui_game/main.tscn ScoreLabel",
+      "key": "exists",
+      "expected": true,
+      "description": "ScoreLabel node exists"
+    },
+    {
+      "command": "check-node-type /home/user/godot_projects/ui_game/main.tscn ScoreLabel Label",
+      "key": "match",
+      "expected": true,
+      "description": "ScoreLabel is a Label"
+    },
+    {
+      "command": "check-node-parent /home/user/godot_projects/ui_game/main.tscn ScoreLabel .",
+      "key": "match",
+      "expected": true,
+      "description": "ScoreLabel parent is root"
+    },
+    {
+      "command": "check-node-property /home/user/godot_projects/ui_game/main.tscn ScoreLabel text '\"Score: 0\"'",
+      "key": "match",
+      "expected": true,
+      "description": "ScoreLabel text is 'Score: 0'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python to parse main.tscn, add [node name=\"ScoreLabel\" type=\"Label\" parent=\".\"] block with text property",
+    "reason": "Text-based scene file editing. CLI agent can manipulate .tscn format with Python string/text processing. No GUI needed."
+  }
+}

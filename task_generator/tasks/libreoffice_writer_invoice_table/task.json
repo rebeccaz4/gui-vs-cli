@@ -1,0 +1,63 @@
+{
+  "id": "libreoffice_writer_invoice_table",
+  "app": "libreoffice_writer",
+  "task": "Create an invoice document in LibreOffice Writer. Add a Heading 1 'INVOICE'. Add a paragraph 'Invoice Number: INV-2026-001'. Add a paragraph 'Date: April 3, 2026'. Add a paragraph 'Bill To: Acme Corporation'. Insert a table named 'Table1' with 5 rows and 3 columns. Header row: 'Item', 'Quantity', 'Price'. Row 2: 'Web Development', '40', '4000'. Row 3: 'Database Setup', '10', '1500'. Row 4: 'Testing', '20', '2000'. Row 5: 'Total', '', '7500'. Save as /home/user/Documents/invoice.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/invoice.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists INVOICE 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 'INVOICE' exists"
+    },
+    {
+      "command": "check-text-contains INV-2026-001",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains invoice number"
+    },
+    {
+      "command": "check-text-contains \"Acme Corporation\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains bill-to"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/invoice.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 5",
+      "description": "Table has 5 rows"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/invoice.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Item', 'Quantity', 'Price'] for t in result.get('tables', []))",
+      "description": "Header: Item, Quantity, Price"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/invoice.odt",
+      "eval": "any(len(t.get('data', [])) >= 2 and t['data'][1][0] == 'Web Development' for t in result.get('tables', []))",
+      "description": "Row 2: Web Development"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/invoice.odt",
+      "eval": "any(len(t.get('data', [])) >= 5 and t['data'][4][0] == 'Total' and t['data'][4][2] == '7500' for t in result.get('tables', []))",
+      "description": "Row 5: Total = 7500"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/invoice.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists at expected path"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

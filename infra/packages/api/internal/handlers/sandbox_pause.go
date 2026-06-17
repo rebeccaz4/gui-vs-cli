@@ -1,0 +1,120 @@
+package handlers
+
+import (
+	"context"
+	"database/sql"
+	"errors"
+	"fmt"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
+	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/zap"
+
+	"github.com/e2b-dev/infra/packages/api/internal/api"
+	"github.com/e2b-dev/infra/packages/api/internal/orchestrator"
+	"github.com/e2b-dev/infra/packages/api/internal/sandbox"
+	"github.com/e2b-dev/infra/packages/api/internal/utils"
+	"github.com/e2b-dev/infra/packages/auth/pkg/auth"
+	sqlcdb "github.com/e2b-dev/infra/packages/db/client"
+	"github.com/e2b-dev/infra/packages/shared/pkg/logger"
+	"github.com/e2b-dev/infra/packages/shared/pkg/telemetry"
+)
+
+func (a *APIStore) PostSandboxesSandboxIDPause(c *gin.Context, sandboxID api.SandboxID) {
+	ctx := c.Request.Context()
+	// Get team from context, use TeamContextKey
+
+	teamID := auth.MustGetTeamInfo(c).Team.ID
+
+	var err error
+	sandboxID, err = utils.ShortID(sandboxID)
+	if err != nil {
+		a.sendAPIStoreError(c, http.StatusBadRequest, "Invalid sandbox ID")
+
+		return
+	}
+
+	span := trace.SpanFromContext(ctx)
+	traceID := span.SpanContext().TraceID().String()
+	c.Set("traceID", traceID)
+
+	sbx, err := a.orchestrator.GetSandbox(ctx, teamID, sandboxID)
+	if err != nil {
+		apiErr := pauseHandleNotRunningSandbox(ctx, a.sqlcDB, sandboxID, teamID)
+		a.sendAPIStoreError(c, apiErr.Code, apiErr.ClientMsg)
+
+		return
+	}
+
+	if sbx.TeamID != teamID {
+		logger.L().Debug(ctx, "Sandbox team mismatch on pause", logger.WithSandboxID(sandboxID), logger.WithTeamID(teamID.String()))
+		a.sendAPIStoreError(c, http.StatusNotFound, utils.SandboxNotFoundMsg(sandboxID))
+
+		return
+	}
+
+	err = a.orchestrator.RemoveSandbox(ctx, sbx, sandbox.StateActionPause)
+
+	var transErr *sandbox.InvalidStateTransitionError
+
+	switch {
+	case err == nil:
+	case errors.Is(err, orchestrator.ErrSandboxNotFound):
+		apiErr := pauseHandleNotRunningSandbox(ctx, a.sqlcDB, sandboxID, teamID)
+		a.sendAPIStoreError(c, apiErr.Code, apiErr.ClientMsg)
+
+		return
+	case errors.As(err, &transErr):
+		a.sendAPIStoreError(c, http.StatusConflict, fmt.Sprintf("Sandbox '%s' cannot be paused while in '%s' state", sandboxID, transErr.CurrentState))
+
+		return
+	default:
+		telemetry.ReportError(ctx, "error pausing sandbox", err)
+
+		a.sendAPIStoreError(c, http.StatusInternalServerError, "Error pausing sandbox")
+
+		return
+	}
+
+	c.Status(http.StatusNoContent)
+}
+
+func pauseHandleNotRunningSandbox(ctx context.Context, sqlcDB *sqlcdb.Client, sandboxID string, teamID uuid.UUID) api.APIError {
+	// TODO: ENG-3544 scope GetLastSnapshot query by teamID to avoid post-fetch ownership check.
+	snap, err := sqlcDB.GetLastSnapshot(ctx, sandboxID)
+	if err == nil {
+		if snap.Snapshot.TeamID != teamID {
+			logger.L().Debug(ctx, "Snapshot team mismatch on pause", logger.WithSandboxID(sandboxID), logger.WithTeamID(teamID.String()))
+
+			return api.APIError{
+				Code:      http.StatusNotFound,
+				ClientMsg: utils.SandboxNotFoundMsg(sandboxID),
+			}
+		}
+
+		logger.L().Warn(ctx, "Sandbox is already paused", logger.WithSandboxID(sandboxID))
+
+		return api.APIError{
+			Code:      http.StatusConflict,
+			ClientMsg: fmt.Sprintf("Error pausing sandbox - sandbox '%s' is already paused", sandboxID),
+		}
+	}
+
+	if errors.Is(err, sql.ErrNoRows) {
+		logger.L().Debug(ctx, "Snapshot not found", logger.WithSandboxID(sandboxID))
+
+		return api.APIError{
+			Code:      http.StatusNotFound,
+			ClientMsg: utils.SandboxNotFoundMsg(sandboxID),
+		}
+	}
+
+	logger.L().Error(ctx, "Error getting snapshot", zap.Error(err), logger.WithSandboxID(sandboxID))
+
+	return api.APIError{
+		Code:      http.StatusInternalServerError,
+		ClientMsg: "Error pausing sandbox",
+	}
+}

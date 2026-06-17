@@ -1,0 +1,10 @@
+{
+  "task_id": "zoom_disable_touchup_appearance",
+  "files": [
+    {
+      "filename": "zoomus.conf",
+      "sandbox_path": "/home/user/.config/zoomus.conf",
+      "type": "ini"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_torus_parametric",
+  "files": [
+    {
+      "filename": "ring.FCStd",
+      "sandbox_path": "/home/user/Documents/ring.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

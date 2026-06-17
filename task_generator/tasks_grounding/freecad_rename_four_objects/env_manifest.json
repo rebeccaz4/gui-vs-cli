@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_rename_four_objects",
+  "files": [
+    {
+      "filename": "parts_catalog.FCStd",
+      "sandbox_path": "/home/user/Documents/parts_catalog.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

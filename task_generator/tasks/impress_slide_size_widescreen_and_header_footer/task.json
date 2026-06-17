@@ -1,0 +1,74 @@
+{
+  "id": "impress_slide_size_widescreen_and_header_footer",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/strategy_review.odp in LibreOffice Impress. This 6-slide deck is currently at the standard 4:3 size. You must:\n\n1. Change the slide size to 16:9 widescreen: exactly 13.333 inches wide by 7.5 inches tall, in landscape orientation (Slide > Slide Properties, or Slide > Page Properties; pick the 'Widescreen' preset or set the width/height manually).\n\n2. Insert a header/footer (Insert > Header and Footer) so that EVERY SLIDE FROM SLIDE 2 ONWARDS displays:\n   - a fixed footer with the text 'Confidential - Draft 2026-Q2'\n   - an automatic slide number\n   The first slide (the title slide 'Strategy Review 2026') MUST NOT show the footer. In the Header and Footer dialog, tick 'Do not show on the first slide' (or clear the footer on slide 1 only) before applying 'Apply to All'.\n\n3. Save the file, overwriting /home/user/Documents/strategy_review.odp (do NOT Save As). Keep the file as .odp.\n\nThe deck must still have exactly 6 slides when you finish.",
+  "env": {
+    "files": [
+      {
+        "filename": "strategy_review.odp",
+        "sandbox_path": "/home/user/Documents/strategy_review.odp"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/strategy_review.odp",
+      "key": "exists",
+      "expected": true,
+      "description": "strategy_review.odp is saved on disk"
+    },
+    {
+      "command": "check-slide-size /home/user/Documents/strategy_review.odp 13.333 7.5 0.05",
+      "key": "match",
+      "expected": true,
+      "description": "Slide size is 16:9 widescreen (13.333in x 7.5in)"
+    },
+    {
+      "command": "check-footer-on-slide /home/user/Documents/strategy_review.odp 1 \"Confidential - Draft 2026-Q2\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 has footer 'Confidential - Draft 2026-Q2'"
+    },
+    {
+      "command": "check-footer-on-slide /home/user/Documents/strategy_review.odp 2 \"Confidential - Draft 2026-Q2\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 3 has footer 'Confidential - Draft 2026-Q2'"
+    },
+    {
+      "command": "check-footer-on-slide /home/user/Documents/strategy_review.odp 5 \"Confidential - Draft 2026-Q2\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 6 has footer 'Confidential - Draft 2026-Q2'"
+    },
+    {
+      "command": "check-footer-on-slide /home/user/Documents/strategy_review.odp 0",
+      "key": "has_footer",
+      "expected": false,
+      "description": "Slide 1 (title) does NOT have the footer"
+    },
+    {
+      "command": "check-slide-number-on-slide /home/user/Documents/strategy_review.odp 1",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 shows a slide number"
+    },
+    {
+      "command": "check-slide-number-on-slide /home/user/Documents/strategy_review.odp 5",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 6 shows a slide number"
+    },
+    {
+      "command": "check-slide-count 6",
+      "key": "match",
+      "expected": true,
+      "description": "Deck still has exactly 6 slides"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "impress_conference_agenda_deck",
+  "app": "libreoffice_impress",
+  "task": "Create a new presentation from scratch in LibreOffice Impress with exactly 7 slides for a conference agenda.\n\nSlide 1 (Title Slide): Title 'DevSummit 2026', subtitle 'October 12-14, San Francisco'.\nSlide 2: Title 'Opening Keynote'. Body: 'Dr. Lin Ortega', 'The next decade of developer tools'.\nSlide 3: Title 'AI Infrastructure Track'. Body: 'GPU Cluster Scaling', 'Distributed Inference', 'Cost Optimization'.\nSlide 4: Title 'Security Track'. Body: 'Zero-Trust Networking', 'Supply Chain Auditing', 'Secrets Management'.\nSlide 5: Title 'Open Source Track'. Body: 'Maintainer Roundtable', 'Funding Models', 'Community Health'.\nSlide 6: Title 'Evening Social'. Body: 'Rooftop Terrace 7pm', 'Dinner and networking'.\nSlide 7: Title 'Closing Remarks'. Body: 'See you at DevSummit 2027'.\n\nAdd speaker notes to Slide 1: 'welcome attendees and cover logistics for the three day event'.\nAdd speaker notes to Slide 2: 'introduce Dr. Ortega and her latest research'.\nAdd speaker notes to Slide 6: 'remind attendees to RSVP for the dinner'.\n\nSave the presentation as /home/user/Documents/devsummit_agenda.pptx.",
+  "env": {
+    "files": [],
+    "reload_files": ["/home/user/Documents/devsummit_agenda.pptx"]
+  },
+  "verification": [
+    {"command": "check-slide-count 7", "key": "match", "expected": true, "description": "Presentation has exactly 7 slides"},
+    {"command": "check-slide-title 0 \"DevSummit 2026\"", "key": "match", "expected": true, "description": "Slide 1 title is 'DevSummit 2026'"},
+    {"command": "check-slide-contains 0 \"October 12-14, San Francisco\"", "key": "contains", "expected": true, "description": "Slide 1 subtitle"},
+    {"command": "check-slide-title 1 \"Opening Keynote\"", "key": "match", "expected": true, "description": "Slide 2 title"},
+    {"command": "check-slide-contains 1 \"Dr. Lin Ortega\"", "key": "contains", "expected": true, "description": "Slide 2 contains speaker name"},
+    {"command": "check-slide-title 2 \"AI Infrastructure Track\"", "key": "match", "expected": true, "description": "Slide 3 title"},
+    {"command": "check-slide-contains 2 \"GPU Cluster Scaling\"", "key": "contains", "expected": true, "description": "Slide 3 content"},
+    {"command": "check-slide-title 3 \"Security Track\"", "key": "match", "expected": true, "description": "Slide 4 title"},
+    {"command": "check-slide-contains 3 \"Zero-Trust Networking\"", "key": "contains", "expected": true, "description": "Slide 4 content"},
+    {"command": "check-slide-title 4 \"Open Source Track\"", "key": "match", "expected": true, "description": "Slide 5 title"},
+    {"command": "check-slide-contains 4 \"Maintainer Roundtable\"", "key": "contains", "expected": true, "description": "Slide 5 content"},
+    {"command": "check-slide-title 5 \"Evening Social\"", "key": "match", "expected": true, "description": "Slide 6 title"},
+    {"command": "check-slide-contains 5 \"Rooftop Terrace 7pm\"", "key": "contains", "expected": true, "description": "Slide 6 content"},
+    {"command": "check-slide-title 6 \"Closing Remarks\"", "key": "match", "expected": true, "description": "Slide 7 title"},
+    {"command": "check-notes-contain 0 \"welcome\"", "key": "contains", "expected": true, "description": "Slide 1 notes mention welcome"},
+    {"command": "check-notes-contain 0 \"logistics\"", "key": "contains", "expected": true, "description": "Slide 1 notes mention logistics"},
+    {"command": "check-notes-contain 1 \"introduce Dr. Ortega\"", "key": "contains", "expected": true, "description": "Slide 2 notes intro speaker"},
+    {"command": "check-notes-contain 5 \"RSVP\"", "key": "contains", "expected": true, "description": "Slide 6 notes mention RSVP"},
+    {"command": "check-file-exists /home/user/Documents/devsummit_agenda.pptx", "key": "exists", "expected": true, "description": "Output file exists"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

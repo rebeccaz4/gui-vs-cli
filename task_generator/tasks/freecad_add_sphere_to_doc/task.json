@@ -1,0 +1,63 @@
+{
+  "id": "freecad_add_sphere_to_doc",
+  "app": "freecad",
+  "task": "Add a Part::Sphere object to the document at /home/user/Documents/shapes.FCStd. Set its Radius to 15 mm and change its Label to 'Planet'. Preserve the existing Part::Box object named 'Box'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "shapes.FCStd",
+        "sandbox_path": "/home/user/Documents/shapes.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/shapes.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/shapes.FCStd Box",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Box still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/shapes.FCStd Sphere",
+      "key": "exists",
+      "expected": true,
+      "description": "Sphere object exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/shapes.FCStd Sphere Part::Sphere",
+      "key": "match",
+      "expected": true,
+      "description": "Sphere is Part::Sphere"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/shapes.FCStd Sphere Radius 15",
+      "key": "match",
+      "expected": true,
+      "description": "Sphere Radius == 15"
+    },
+    {
+      "command": "check-label /home/user/Documents/shapes.FCStd Sphere Planet",
+      "key": "match",
+      "expected": true,
+      "description": "Sphere Label == 'Planet'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box"
+  }
+}

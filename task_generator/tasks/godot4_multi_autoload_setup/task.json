@@ -1,0 +1,101 @@
+{
+  "id": "godot4_multi_autoload_setup",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/multi_autoload_game/project.godot. Add an [autoload] section (if missing) and register three autoload singletons pointing at the pre-existing scripts in the project:\n\n[autoload]\n\nGameState=\"*res://scripts/game_state.gd\"\nAudioManager=\"*res://scripts/audio_manager.gd\"\nSaveSystem=\"*res://scripts/save_system.gd\"\n\nEach leading '*' marks the autoload as enabled. Do not modify or delete the existing .gd script files. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/main.tscn"
+      },
+      {
+        "filename": "scripts/game_state.gd",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/game_state.gd"
+      },
+      {
+        "filename": "scripts/audio_manager.gd",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/audio_manager.gd"
+      },
+      {
+        "filename": "scripts/save_system.gd",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/save_system.gd"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/multi_autoload_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-autoload /home/user/godot_projects/multi_autoload_game/project.godot GameState",
+      "key": "exists",
+      "expected": true,
+      "description": "GameState autoload is registered"
+    },
+    {
+      "command": "check-autoload /home/user/godot_projects/multi_autoload_game/project.godot AudioManager",
+      "key": "exists",
+      "expected": true,
+      "description": "AudioManager autoload is registered"
+    },
+    {
+      "command": "check-autoload /home/user/godot_projects/multi_autoload_game/project.godot SaveSystem",
+      "key": "exists",
+      "expected": true,
+      "description": "SaveSystem autoload is registered"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/multi_autoload_game/project.godot autoload/GameState '\"*res://scripts/game_state.gd\"'",
+      "key": "match",
+      "expected": true,
+      "description": "GameState points to game_state.gd (enabled)"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/multi_autoload_game/project.godot autoload/AudioManager '\"*res://scripts/audio_manager.gd\"'",
+      "key": "match",
+      "expected": true,
+      "description": "AudioManager points to audio_manager.gd (enabled)"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/multi_autoload_game/project.godot autoload/SaveSystem '\"*res://scripts/save_system.gd\"'",
+      "key": "match",
+      "expected": true,
+      "description": "SaveSystem points to save_system.gd (enabled)"
+    },
+    {
+      "command": "file-exists /home/user/godot_projects/multi_autoload_game/scripts/game_state.gd",
+      "key": "exists",
+      "expected": true,
+      "description": "game_state.gd still exists"
+    },
+    {
+      "command": "file-exists /home/user/godot_projects/multi_autoload_game/scripts/audio_manager.gd",
+      "key": "exists",
+      "expected": true,
+      "description": "audio_manager.gd still exists"
+    },
+    {
+      "command": "file-exists /home/user/godot_projects/multi_autoload_game/scripts/save_system.gd",
+      "key": "exists",
+      "expected": true,
+      "description": "save_system.gd still exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash/Python to edit project.godot INI file directly",
+    "reason": "project.godot is a text INI file - trivial to edit with CLI tools"
+  }
+}

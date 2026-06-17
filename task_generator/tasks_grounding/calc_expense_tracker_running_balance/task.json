@@ -1,0 +1,169 @@
+{
+  "id": "calc_expense_tracker_running_balance",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/expenses.xlsx in LibreOffice Calc. The sheet 'Expenses' has bold headers in row 1 (A='Date', B='Category', C='Description', D='Amount') and 30 expense rows in rows 2-31 covering categories Food, Transport, Utilities, Entertainment, and Health.\n\nDo the following:\n\n1. In cell E1 type 'Running Balance' and make it bold.\n2. In E2:E31 enter a running-balance formula. Use =SUM($D$2:D2) in E2 and fill down so each row shows the cumulative sum of Amount from row 2 to that row.\n3. Create a new sheet named 'Summary'.\n4. On 'Summary', fill row 1 with bold headers: A1='Category' and B1='Total'.\n5. In A2:A6 enter the category names in this exact order: 'Food', 'Transport', 'Utilities', 'Entertainment', 'Health'.\n6. In B2:B6 use SUMIFS (or SUMIF) over Expenses.D:D filtered by category name in column A (e.g. B2=SUMIFS(Expenses.D:D,Expenses.B:B,A2)).\n7. In A8 type 'Top Category' and make it bold. In B8 enter a formula using INDEX/MATCH over Summary B2:B6 and A2:A6 to return the category name with the largest total (e.g. =INDEX(A2:A6,MATCH(MAX(B2:B6),B2:B6,0))).\n8. Save the file (it should stay at /home/user/Documents/expenses.xlsx).",
+  "task_grounding": "Open the file /home/user/Documents/expenses.xlsx in LibreOffice Calc. The sheet 'Expenses' has bold headers in row 1 (A='Date', B='Category', C='Description', D='Amount') and 30 expense rows in rows 2-31 covering categories Food, Transport, Utilities, Entertainment, and Health.\n\nDo the following:\n\n1. In cell E1 type 'Running Balance' and make it bold.\n2. In E2:E31 enter a running-balance formula. Use =SUM($D$2:D2) in E2 and fill down so each row shows the cumulative sum of Amount from row 2 to that row.\n3. Create a new sheet named 'Summary'.\n4. On 'Summary', fill row 1 with bold headers: A1='Category' and B1='Total'.\n5. In A2:A6 enter the category names in this exact order: 'Food', 'Transport', 'Utilities', 'Entertainment', 'Health'.\n6. In B2:B6 use SUMIFS (or SUMIF) over Expenses.D:D filtered by category name in column A (e.g. B2=SUMIFS(Expenses.D:D,Expenses.B:B,A2)).\n7. In A8 type 'Top Category' and make it bold. In B8 enter a formula using INDEX/MATCH over Summary B2:B6 and A2:A6 to return the category name with the largest total (e.g. =INDEX(A2:A6,MATCH(MAX(B2:B6),B2:B6,0))).\n8. Save the file with Ctrl+S (it should stay at /home/user/Documents/expenses.xlsx).",
+  "env": {
+    "files": [
+      {
+        "filename": "expenses.xlsx",
+        "sandbox_path": "/home/user/Documents/expenses.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value E1 \"Running Balance\" Expenses",
+      "key": "match",
+      "expected": true,
+      "description": "Expenses!E1 = 'Running Balance'"
+    },
+    {
+      "command": "check-cell-formatted E1 true Expenses",
+      "key": "match",
+      "expected": true,
+      "description": "Expenses!E1 is bold"
+    },
+    {
+      "command": "cell-value E2 Expenses",
+      "eval": "result.get('formula') is not None and 'SUM' in result.get('formula','').upper()",
+      "description": "E2 uses a SUM formula"
+    },
+    {
+      "command": "check-cell-value E2 45 Expenses",
+      "key": "match",
+      "expected": true,
+      "description": "E2 running balance = 45"
+    },
+    {
+      "command": "check-cell-value E31 1715 Expenses",
+      "key": "match",
+      "expected": true,
+      "description": "E31 running balance (grand total) = 1715"
+    },
+    {
+      "command": "check-sheet-exists Summary",
+      "key": "exists",
+      "expected": true,
+      "description": "'Summary' sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Category Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A1 = 'Category'"
+    },
+    {
+      "command": "check-cell-value B1 Total Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B1 = 'Total'"
+    },
+    {
+      "command": "check-cell-formatted A1 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A1 is bold"
+    },
+    {
+      "command": "check-cell-formatted B1 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B1 is bold"
+    },
+    {
+      "command": "check-cell-value A2 Food Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A2 = 'Food'"
+    },
+    {
+      "command": "check-cell-value A3 Transport Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A3 = 'Transport'"
+    },
+    {
+      "command": "check-cell-value A4 Utilities Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A4 = 'Utilities'"
+    },
+    {
+      "command": "check-cell-value A5 Entertainment Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A5 = 'Entertainment'"
+    },
+    {
+      "command": "check-cell-value A6 Health Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A6 = 'Health'"
+    },
+    {
+      "command": "check-cell-value B2 260 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B2 Food total = 260"
+    },
+    {
+      "command": "check-cell-value B3 210 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B3 Transport total = 210"
+    },
+    {
+      "command": "check-cell-value B4 345 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B4 Utilities total = 345"
+    },
+    {
+      "command": "check-cell-value B5 270 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B5 Entertainment total = 270"
+    },
+    {
+      "command": "check-cell-value B6 630 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B6 Health total = 630"
+    },
+    {
+      "command": "cell-value B2 Summary",
+      "eval": "result.get('formula') is not None and 'SUMIF' in result.get('formula','').upper()",
+      "description": "Summary!B2 uses a SUMIFS/SUMIF formula"
+    },
+    {
+      "command": "check-cell-value A8 \"Top Category\" Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A8 = 'Top Category'"
+    },
+    {
+      "command": "check-cell-formatted A8 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!A8 is bold"
+    },
+    {
+      "command": "check-cell-value B8 Health Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary!B8 = 'Health' (top category)"
+    },
+    {
+      "command": "cell-value B8 Summary",
+      "eval": "result.get('formula') is not None and 'INDEX' in result.get('formula','').upper() and 'MATCH' in result.get('formula','').upper()",
+      "description": "Summary!B8 uses INDEX/MATCH"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

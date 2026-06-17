@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_onion_skinning_enable",
+  "files": [
+    {
+      "filename": "walk_cycle.kra",
+      "sandbox_path": "/home/user/Documents/walk_cycle.kra",
+      "type": "kra"
+    }
+  ]
+}

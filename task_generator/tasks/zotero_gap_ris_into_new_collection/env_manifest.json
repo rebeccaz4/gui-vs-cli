@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_ris_into_new_collection",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "nlp_papers.ris",
+      "sandbox_path": "/home/user/Documents/nlp_papers.ris",
+      "type": "ris"
+    }
+  ]
+}

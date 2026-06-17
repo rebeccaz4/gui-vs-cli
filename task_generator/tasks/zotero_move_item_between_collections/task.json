@@ -1,0 +1,51 @@
+{
+  "id": "zotero_move_item_between_collections",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The item 'BERT: Pre-training of Deep Bidirectional Transformers' currently belongs to the 'Transformers' subcollection (under AI Research). Perform a MOVE: (1) Create a new top-level collection named exactly 'Language Models' under My Library. (2) Add the BERT item to the new 'Language Models' collection. (3) Remove BERT from the 'Transformers' collection. After all three steps, BERT must be in 'Language Models' and must NOT be in 'Transformers'. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-collection-exists 'Language Models'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Language Models' collection exists"
+    },
+    {
+      "command": "check-collection-contains 'Language Models' BERT",
+      "key": "contains",
+      "expected": true,
+      "description": "Language Models contains BERT"
+    },
+    {
+      "command": "check-collection-contains Transformers BERT",
+      "key": "contains",
+      "expected": false,
+      "description": "Transformers no longer contains BERT"
+    },
+    {
+      "command": "check-item-exists BERT",
+      "key": "exists",
+      "expected": true,
+      "description": "BERT item still exists in library"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json collection create 'Language Models' --experimental && cli-anything-zotero --json item find \"BERT\" && cli-anything-zotero --json item move-to-collection <item_key> 'Language Models' --from Transformers --experimental",
+    "reason": "CLI-Anything supports moving items between collections via the experimental 'item move-to-collection' command. This creates the target collection, adds the item to it, and removes it from the source collection. Requires Zotero to be closed."
+  }
+}

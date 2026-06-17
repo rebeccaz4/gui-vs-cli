@@ -1,0 +1,81 @@
+{
+  "id": "freecad_gap_techdraw_views_dims",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/techdraw_start.FCStd. The document already contains a Part::Box named 'Block' (60 x 40 x 20 mm). Switch to the TechDraw workbench. Create a new drawing Page using the A4 landscape template, and rename the page to exactly 'DrawingPage'. Add two orthographic views of 'Block' on that page: a front view named exactly 'FrontView' (projecting along +Y, so the 60x20 face is visible) and a top view named exactly 'TopView' (projecting along +Z, so the 60x40 face is visible). Both views at scale 1:1. Add a linear length dimension attached to the front view that measures the 60 mm horizontal width of Block. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/techdraw_start.FCStd. The document already contains a Part::Box named 'Block' (60 x 40 x 20 mm). Switch to the TechDraw workbench. Create a new drawing Page using the A4 landscape template, and rename the page to exactly 'DrawingPage'. Add two orthographic views of 'Block' on that page: a front view named exactly 'FrontView' (projecting along +Y, so the 60x20 face is visible) and a top view named exactly 'TopView' (projecting along +Z, so the 60x40 face is visible). Both views at scale 1:1. Add a linear length dimension attached to the front view that measures the 60 mm horizontal width of Block. Save the file with Ctrl+S.",
+  "env": {
+    "files": [
+      {
+        "filename": "techdraw_start.FCStd",
+        "sandbox_path": "/home/user/Documents/techdraw_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/techdraw_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/techdraw_start.FCStd Block",
+      "key": "exists",
+      "expected": true,
+      "description": "Block preserved"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/techdraw_start.FCStd DrawingPage",
+      "key": "exists",
+      "expected": true,
+      "description": "DrawingPage exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/techdraw_start.FCStd DrawingPage TechDraw::DrawPage",
+      "key": "match",
+      "expected": true,
+      "description": "DrawingPage is TechDraw::DrawPage"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/techdraw_start.FCStd FrontView",
+      "key": "exists",
+      "expected": true,
+      "description": "FrontView exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/techdraw_start.FCStd FrontView TechDraw::DrawViewPart",
+      "key": "match",
+      "expected": true,
+      "description": "FrontView is DrawViewPart"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/techdraw_start.FCStd TopView",
+      "key": "exists",
+      "expected": true,
+      "description": "TopView exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/techdraw_start.FCStd TopView TechDraw::DrawViewPart",
+      "key": "match",
+      "expected": true,
+      "description": "TopView is DrawViewPart"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/techdraw_start.FCStd TechDraw::DrawViewDimension 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one DrawViewDimension"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: part add box → techdraw new-page + add-view + add-dimension + export-pdf",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, techdraw new-page + add-view + add-dimension + export-pdf"
+  }
+}

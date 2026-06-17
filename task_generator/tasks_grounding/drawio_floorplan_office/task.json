@@ -1,0 +1,88 @@
+{
+  "id": "drawio_floorplan_office",
+  "app": "drawio",
+  "task": "Create an office floor plan at /home/user/Documents/floorplan.drawio. Create 6 rectangles labeled: Lobby, MeetingRoom, Office1, Office2, Kitchen, Restroom. Apply fills: Lobby #f5f5f5, MeetingRoom #dae8fc, Kitchen #fff2cc. Connect adjacent rooms with at least 5 edges representing doorways: Lobby<->MeetingRoom, Lobby<->Office1, Lobby<->Office2, Lobby<->Kitchen, Kitchen<->Restroom. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/floorplan.drawio in draw.io Desktop. Create a simple office floor plan showing 6 rooms as labeled rectangles. Create exactly 6 rectangle shapes with these exact labels: 'Lobby', 'MeetingRoom', 'Office1', 'Office2', 'Kitchen', 'Restroom'. Apply fill colors: 'Lobby' must have fillColor #f5f5f5, 'MeetingRoom' must have fillColor #dae8fc, 'Kitchen' must have fillColor #fff2cc. The other three rooms can keep any fill color. Draw at least 5 connecting lines between adjacent rooms to represent doorways: Lobby<->MeetingRoom, Lobby<->Office1, Lobby<->Office2, Lobby<->Kitchen, Kitchen<->Restroom. Save at /home/user/Documents/floorplan.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "floorplan.drawio",
+        "sandbox_path": "/home/user/Documents/floorplan.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/floorplan.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/floorplan.drawio 6 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 6 vertices"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio Lobby",
+      "key": "exists",
+      "expected": true,
+      "description": "Lobby label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio MeetingRoom",
+      "key": "exists",
+      "expected": true,
+      "description": "MeetingRoom label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio Office1",
+      "key": "exists",
+      "expected": true,
+      "description": "Office1 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio Office2",
+      "key": "exists",
+      "expected": true,
+      "description": "Office2 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio Kitchen",
+      "key": "exists",
+      "expected": true,
+      "description": "Kitchen label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/floorplan.drawio Restroom",
+      "key": "exists",
+      "expected": true,
+      "description": "Restroom label exists"
+    },
+    {
+      "command": "edges /home/user/Documents/floorplan.drawio 0",
+      "eval": "len(result) >= 5",
+      "description": "At least 5 doorway edges on page 0"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Inspect the vertices list. Does the vertex labeled 'Lobby' have fillColor=#f5f5f5 in its style, the vertex labeled 'MeetingRoom' have fillColor=#dae8fc, and the vertex labeled 'Kitchen' have fillColor=#fff2cc? All three must match.",
+      "command": "vertices /home/user/Documents/floorplan.drawio 0",
+      "context": "command_output",
+      "description": "Lobby/MeetingRoom/Kitchen have correct fill colors"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', shape list → shape style --id <id> --fill-color <#hex>, connect add --source <id> --target <id>, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Style modification (with list); ✅ Connection add supported; ✅ Shape types: rectangle"
+  },
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "audacity_gap_reverse_effect",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/phrase.wav loaded — a 3-second linear chirp sweeping from 300 Hz to 3000 Hz. Apply the Reverse effect to reverse the audio in time. Export the result to /home/user/Music/reversed.wav as a mono 44100 Hz 16-bit PCM WAV file.",
+  "task_grounding": "Audacity is open with /home/user/Music/phrase.wav loaded — a 3-second linear chirp sweeping from 300 Hz up to 3000 Hz, mono 44.1 kHz at amplitude 0.6.\n\nSelect the entire audio (Ctrl+A) and apply Effect > Reverse (it may be under a 'Special' submenu, depending on Audacity's menu layout). This reverses the sample order, so the chirp will now sweep from ~3000 Hz down to ~300 Hz.\n\nExport the reversed audio to /home/user/Music/reversed.wav using File > Export > Export as WAV... with 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono. Accept any metadata dialog defaults.",
+  "env": {
+    "files": [
+      {
+        "filename": "phrase.wav",
+        "sandbox_path": "/home/user/Music/phrase.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/reversed.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Reversed WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/reversed.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/reversed.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/reversed.wav 2.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration ~3s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/reversed.wav 0.0 0.1 2900 20",
+      "key": "match",
+      "expected": true,
+      "description": "First 0.1s now has high frequency (was end of original chirp ~3000 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/reversed.wav 2.9 3.0 400 40",
+      "key": "match",
+      "expected": true,
+      "description": "Last 0.1s now has low frequency (was start of original chirp ~300 Hz)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: clip import/add → effect add reverse → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: clip import/add, effect add reverse, metadata tag settings, export render operation"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "id": "renderdoc_cleanup_broken_captures",
+  "app": "renderdoc",
+  "task": "The directory /home/user/captures contains five .rdc files, two corrupt. Delete broken_x.rdc and broken_y.rdc, create quarantine directory, leave valid captures intact. Final state: 3 valid .rdc files, empty quarantine dir.",
+  "task_grounding": "The directory /home/user/captures contains five .rdc files, but two are corrupt (their first bytes are not the RenderDoc magic \"RDOC\"):\n\n  scene_a.rdc  - valid capture\n  scene_b.rdc  - valid capture\n  scene_c.rdc  - valid capture\n  broken_x.rdc - corrupt (bad magic)\n  broken_y.rdc - corrupt (bad magic)\n\nDo the following:\n1. Delete broken_x.rdc and broken_y.rdc from /home/user/captures.\n2. Create an empty directory /home/user/captures/quarantine.\n3. Leave scene_a.rdc, scene_b.rdc, and scene_c.rdc untouched.\n\nWhen finished, /home/user/captures must contain exactly 3 .rdc files, all valid, plus the empty quarantine/ subdirectory.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_a.rdc",
+        "sandbox_path": "/home/user/captures/scene_a.rdc"
+      },
+      {
+        "filename": "scene_b.rdc",
+        "sandbox_path": "/home/user/captures/scene_b.rdc"
+      },
+      {
+        "filename": "scene_c.rdc",
+        "sandbox_path": "/home/user/captures/scene_c.rdc"
+      },
+      {
+        "filename": "broken_x.rdc",
+        "sandbox_path": "/home/user/captures/broken_x.rdc"
+      },
+      {
+        "filename": "broken_y.rdc",
+        "sandbox_path": "/home/user/captures/broken_y.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "3 captures remain"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/scene_a.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "scene_a valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/scene_b.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "scene_b valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/scene_c.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "scene_c valid"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/broken_x.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "broken_x deleted"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/broken_y.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "broken_y deleted"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/quarantine",
+      "key": "is_dir",
+      "expected": true,
+      "description": "quarantine dir exists"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/quarantine 0",
+      "key": "match",
+      "expected": true,
+      "description": "quarantine empty of .rdc"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash: test -f file.rdc; or CLI-Anything: cli-anything-renderdoc -c file.rdc capture info",
+    "reason": "Task only requires verifying .rdc file existence or validity, not editing binary content. Can use bash test commands or CLI-Anything RenderDoc skill: 'cli-anything-renderdoc -c file.rdc capture info'"
+  }
+}

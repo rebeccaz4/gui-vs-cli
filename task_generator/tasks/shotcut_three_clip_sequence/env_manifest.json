@@ -1,0 +1,25 @@
+{
+  "task_id": "shotcut_three_clip_sequence",
+  "files": [
+    {
+      "filename": "sequence.mlt",
+      "sandbox_path": "/home/user/Documents/sequence.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "shot1.mp4",
+      "sandbox_path": "/home/user/Videos/shot1.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "shot2.mp4",
+      "sandbox_path": "/home/user/Videos/shot2.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "shot3.mp4",
+      "sandbox_path": "/home/user/Videos/shot3.mp4",
+      "type": "mp4"
+    }
+  ]
+}

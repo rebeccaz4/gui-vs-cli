@@ -1,0 +1,72 @@
+{
+  "id": "libreoffice_writer_header_footer_landscape",
+  "app": "libreoffice_writer",
+  "task": "Create a new document in LibreOffice Writer. Set the page orientation to landscape. Set all four margins (top, bottom, left, right) to 1500 (1.5cm). Add a header with text 'Project Phoenix - Status Report'. Add a footer with text 'Page 1 of 1'. Add a Heading 1 'Project Phoenix Status'. Add a paragraph with at least 30 words describing a fictional project status update. Save as /home/user/Documents/project_status.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/project_status.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "page-style",
+      "eval": "result.get('orientation') == 'landscape'",
+      "description": "Orientation is landscape"
+    },
+    {
+      "command": "page-style",
+      "eval": "result.get('margin_top') == 1500",
+      "description": "Top margin is 1500"
+    },
+    {
+      "command": "page-style",
+      "eval": "result.get('margin_bottom') == 1500",
+      "description": "Bottom margin is 1500"
+    },
+    {
+      "command": "page-style",
+      "eval": "result.get('margin_left') == 1500",
+      "description": "Left margin is 1500"
+    },
+    {
+      "command": "page-style",
+      "eval": "result.get('margin_right') == 1500",
+      "description": "Right margin is 1500"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('header_text', '').strip() == 'Project Phoenix - Status Report'",
+      "description": "Header text correct"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Page 1 of 1'",
+      "description": "Footer text correct"
+    },
+    {
+      "command": "check-heading-exists \"Project Phoenix Status\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 exists"
+    },
+    {
+      "command": "check-word-count 30",
+      "key": "in_range",
+      "expected": true,
+      "description": "Word count at least 30"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/project_status.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

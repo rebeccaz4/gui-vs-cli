@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_colorize_add_rgb",
+  "files": [
+    {
+      "filename": "plain.ply",
+      "sandbox_path": "/home/user/Documents/plain.ply",
+      "type": "ply"
+    }
+  ]
+}

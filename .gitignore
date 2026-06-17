@@ -1,0 +1,120 @@
+# Secrets
+.env
+.env.local
+.env.dev
+
+# Nested git repos
+E2B/.git
+OSWorld/.git
+infra/.git
+MAI-UI/
+UI-TARS/
+
+# Dependencies
+node_modules/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Large binaries
+synth_env/infra/packages/orchestrator/bin/
+synth_env/infra/packages/nomad-nodepool-apm/bin/
+synth_env/infra/packages/envd/bin/
+infra/packages/orchestrator/bin/
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+evaluation/runs
+evaluation/repair/runs
+evaluation/plans/
+/docs/
+/CLAUDE.md
+# Screenshots (optional - remove if you want these tracked)
+# screenshots/
+
+# Root-level temporary tests
+/tests/
+
+# Temporary analysis scripts
+/test_*.py
+/analyze_*.py
+/debug_*.py
+/diagnose_*.py
+/check_*.py
+/collect_*.py
+/compare_*.py
+/count_*.py
+/explain_*.py
+/find_*.py
+/generate_*.py
+/list_*.py
+/propose_*.py
+/revaluate_*.py
+/batch_*.py
+
+# Temporary reports and docs
+/*_feasibility_*.md
+/*_report.md
+/*_summary.md
+/EXECUTIVE_SUMMARY.md
+/INSTRUCTIONS.md
+/*_comparison*.txt
+/*_comparison*.md
+
+# Backup files
+*_backup.*
+*.bak
+evaluation/runs_backup/
+evaluation/run_eval_backup.py
+evaluation/runtime/cli_agent_runner.py.bak
+
+# Personal notes
+/gui_*.md
+/cli_stats_summary.json
+/failed_tasks_to_delete.txt
+
+# Nested git repos (keep them separate)
+acl-style-files/
+
+# Claude settings
+.claude/
+
+task_generator/tasks_all/
+
+# Benchmark task directories are tracked, but root-level generation artifacts
+# under these directories are local development outputs.
+task_generator/tasks/*.py
+task_generator/tasks/*.json
+task_generator/tasks/*.md
+task_generator/tasks/.DS_Store
+task_generator/tasks/env/
+task_generator/tasks_grounding/*.py
+task_generator/tasks_grounding/*.json
+task_generator/tasks_grounding/*.md
+task_generator/tasks_grounding/.DS_Store
+task_generator/tasks_grounding/env/
+
+# Local cleanup folders
+check/
+paper/
+trash/
+verifier_check/
+
+task_generator/tasks_check/

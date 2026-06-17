@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_competition_rank_percentile",
+  "files": [
+    {
+      "filename": "competition.xlsx",
+      "sandbox_path": "/home/user/Documents/competition.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

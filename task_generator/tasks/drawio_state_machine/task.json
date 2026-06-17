@@ -1,0 +1,75 @@
+{
+  "id": "drawio_state_machine",
+  "app": "drawio",
+  "task": "Create an order lifecycle state machine at /home/user/Documents/state_machine.drawio. Create 5 rounded rectangles labeled: New, Confirmed, Shipped, Delivered, Cancelled. Add transitions: New->Confirmed, Confirmed->Shipped, Shipped->Delivered, New->Cancelled, Confirmed->Cancelled. The diagram must have 5 vertices and 5 edges. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "state_machine.drawio",
+        "sandbox_path": "/home/user/Documents/state_machine.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/state_machine.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists at expected path"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/state_machine.drawio New",
+      "key": "exists",
+      "expected": true,
+      "description": "State 'New' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/state_machine.drawio Confirmed",
+      "key": "exists",
+      "expected": true,
+      "description": "State 'Confirmed' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/state_machine.drawio Shipped",
+      "key": "exists",
+      "expected": true,
+      "description": "State 'Shipped' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/state_machine.drawio Delivered",
+      "key": "exists",
+      "expected": true,
+      "description": "State 'Delivered' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/state_machine.drawio Cancelled",
+      "key": "exists",
+      "expected": true,
+      "description": "State 'Cancelled' exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/state_machine.drawio 5",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 5 state shapes"
+    },
+    {
+      "command": "check-edge-count /home/user/Documents/state_machine.drawio 5",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 5 transition edges"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Shape types: rectangle, rounded"
+  },
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

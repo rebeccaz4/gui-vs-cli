@@ -1,0 +1,97 @@
+{
+  "id": "renderdoc_project_save_dir_and_presets",
+  "app": "renderdoc",
+  "task": "Create /home/user/projects/titan_captures/. Create titan_client.cap (rdocConfigData=1, settings.executable='/usr/local/bin/titan_client', workingDir='/home/user/projects/titan_captures', commandLine='--client', options={APIValidation:true,CaptureCallstacks:false,HookIntoChildren:false}, autoStart=false) and titan_server.cap (rdocConfigData=1, settings.executable='/usr/local/bin/titan_server', workingDir='/home/user/projects/titan_captures', commandLine='--server', options={APIValidation:true,CaptureCallstacks:true,HookIntoChildren:false}, autoStart=true). Edit UI.config: DefaultCaptureSaveDirectory='/home/user/projects/titan_captures', RecentCaptureSettings=['/home/user/projects/titan_captures/titan_client.cap','/home/user/projects/titan_captures/titan_server.cap'], preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/projects/titan_captures",
+      "key": "is_dir",
+      "expected": true,
+      "description": "titan_captures directory exists"
+    },
+    {
+      "command": "check-file-exists /home/user/projects/titan_captures/titan_client.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "titan_client.cap exists"
+    },
+    {
+      "command": "check-file-exists /home/user/projects/titan_captures/titan_server.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "titan_server.cap exists"
+    },
+    {
+      "command": "check-cap-executable /home/user/projects/titan_captures/titan_client.cap /usr/local/bin/titan_client",
+      "key": "match",
+      "expected": true,
+      "description": "titan_client executable"
+    },
+    {
+      "command": "check-cap-executable /home/user/projects/titan_captures/titan_server.cap /usr/local/bin/titan_server",
+      "key": "match",
+      "expected": true,
+      "description": "titan_server executable"
+    },
+    {
+      "command": "check-cap-command-line /home/user/projects/titan_captures/titan_client.cap --client",
+      "key": "match",
+      "expected": true,
+      "description": "--client flag"
+    },
+    {
+      "command": "check-cap-command-line /home/user/projects/titan_captures/titan_server.cap --server",
+      "key": "match",
+      "expected": true,
+      "description": "--server flag"
+    },
+    {
+      "command": "check-cap-option /home/user/projects/titan_captures/titan_server.cap CaptureCallstacks true",
+      "key": "match",
+      "expected": true,
+      "description": "server CaptureCallstacks true"
+    },
+    {
+      "command": "cap-parse /home/user/projects/titan_captures/titan_server.cap",
+      "eval": "result.get('autoStart') is True",
+      "description": "server autoStart true"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory \"/home/user/projects/titan_captures\"",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory set"
+    },
+    {
+      "command": "recent-settings",
+      "eval": "result.get('settings') == ['/home/user/projects/titan_captures/titan_client.cap', '/home/user/projects/titan_captures/titan_server.cap']",
+      "description": "RecentCaptureSettings ordered"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

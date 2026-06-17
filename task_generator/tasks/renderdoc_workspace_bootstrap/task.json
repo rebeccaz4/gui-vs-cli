@@ -1,0 +1,119 @@
+{
+  "id": "renderdoc_workspace_bootstrap",
+  "app": "renderdoc",
+  "task": "Create /home/user/rdoc_workspace/, /home/user/rdoc_workspace/captures/, /home/user/rdoc_workspace/settings/. Move project_frame1.rdc and project_frame2.rdc from /home/user/staging/ to /home/user/rdoc_workspace/captures/. Edit UI.config: UIStyle='Dark', Font_GlobalScale=1.3, TextureViewer_ResetRange=true, DefaultCaptureSaveDirectory='/home/user/rdoc_workspace/captures', RecentCaptureFiles=['/home/user/rdoc_workspace/captures/project_frame1.rdc','/home/user/rdoc_workspace/captures/project_frame2.rdc'], preserve rdocConfigData=1. Empty /home/user/staging/ of .rdc files.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "project_frame1.rdc",
+        "sandbox_path": "/home/user/staging/project_frame1.rdc"
+      },
+      {
+        "filename": "project_frame2.rdc",
+        "sandbox_path": "/home/user/staging/project_frame2.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/rdoc_workspace",
+      "key": "is_dir",
+      "expected": true,
+      "description": "workspace dir"
+    },
+    {
+      "command": "check-file-exists /home/user/rdoc_workspace/captures",
+      "key": "is_dir",
+      "expected": true,
+      "description": "captures subdir"
+    },
+    {
+      "command": "check-file-exists /home/user/rdoc_workspace/settings",
+      "key": "is_dir",
+      "expected": true,
+      "description": "settings subdir"
+    },
+    {
+      "command": "check-capture-count /home/user/rdoc_workspace/captures 2",
+      "key": "match",
+      "expected": true,
+      "description": "2 captures in workspace"
+    },
+    {
+      "command": "check-capture-count /home/user/staging 0",
+      "key": "match",
+      "expected": true,
+      "description": "staging empty of .rdc"
+    },
+    {
+      "command": "check-rdc-valid /home/user/rdoc_workspace/captures/project_frame1.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "project_frame1 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/rdoc_workspace/captures/project_frame2.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "project_frame2 valid"
+    },
+    {
+      "command": "check-theme Dark",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle Dark"
+    },
+    {
+      "command": "check-font-scale 1.3",
+      "key": "match",
+      "expected": true,
+      "description": "Font_GlobalScale 1.3"
+    },
+    {
+      "command": "check-setting TextureViewer_ResetRange true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_ResetRange true"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/rdoc_workspace/captures",
+      "key": "match",
+      "expected": true,
+      "description": "save dir set"
+    },
+    {
+      "command": "check-recent-capture /home/user/rdoc_workspace/captures/project_frame1.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "frame1 in recents"
+    },
+    {
+      "command": "check-recent-capture /home/user/rdoc_workspace/captures/project_frame2.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "frame2 in recents"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "marker preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

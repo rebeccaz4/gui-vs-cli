@@ -1,0 +1,122 @@
+{
+  "id": "obsidian_zettelkasten_atomic",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/ZettelVault. Build a Zettelkasten of 6 atomic, ID-prefixed notes plus an index:\n\n1. Create a folder 'Zettels'.\n2. Inside 'Zettels', create these 6 notes. Each one must have YAML frontmatter with 'type: zettel' and 'created: 2025-03-15' at the top, then a level-1 heading matching the note's concept, a short paragraph, an inline tag #zettel, and a wikilink to the NEXT zettel in the chain.\n   - '202503150930 - Atomic Notes.md' \u2014 concept: atomic notes; links to [[202503150945 - Fleeting vs Permanent]]\n   - '202503150945 - Fleeting vs Permanent.md' \u2014 concept: note maturity; links to [[202503151000 - Linking Thought]]\n   - '202503151000 - Linking Thought.md' \u2014 concept: linked thinking; links to [[202503151015 - Zettelkasten Method]]\n   - '202503151015 - Zettelkasten Method.md' \u2014 concept: the method; links to [[202503151030 - Knowledge Graph]]\n   - '202503151030 - Knowledge Graph.md' \u2014 concept: graph of ideas; links to [[202503151045 - Spaced Review]]\n   - '202503151045 - Spaced Review.md' \u2014 concept: periodic review; no forward link, include an inline tag #zettel\n3. Create 'Index.md' in the vault ROOT (not in Zettels) with a level-1 heading 'Zettel Index', an ordered list of wikilinks to all 6 zettels in the order above, and the inline tag #index.\n\nThe vault must end up with exactly 7 notes total.",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/ZettelVault/.obsidian/app.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/ZettelVault Zettels",
+      "key": "exists",
+      "expected": true,
+      "description": "Zettels folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/ZettelVault 'Zettels/202503150930 - Atomic Notes' type zettel",
+      "key": "match",
+      "expected": true,
+      "description": "First zettel has type=zettel"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/ZettelVault 'Zettels/202503150930 - Atomic Notes' created 2025-03-15",
+      "key": "match",
+      "expected": true,
+      "description": "First zettel has created=2025-03-15"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/ZettelVault 'Zettels/202503150930 - Atomic Notes' zettel",
+      "key": "has_tag",
+      "expected": true,
+      "description": "First zettel has #zettel tag"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault 'Zettels/202503150930 - Atomic Notes' '202503150945 - Fleeting vs Permanent'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Chain link 1->2"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault 'Zettels/202503150945 - Fleeting vs Permanent' '202503151000 - Linking Thought'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Chain link 2->3"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault 'Zettels/202503151000 - Linking Thought' '202503151015 - Zettelkasten Method'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Chain link 3->4"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault 'Zettels/202503151015 - Zettelkasten Method' '202503151030 - Knowledge Graph'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Chain link 4->5"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault 'Zettels/202503151030 - Knowledge Graph' '202503151045 - Spaced Review'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Chain link 5->6"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/ZettelVault 'Zettels/202503151045 - Spaced Review' type zettel",
+      "key": "match",
+      "expected": true,
+      "description": "Last zettel has type=zettel"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/ZettelVault 'Zettels/202503151045 - Spaced Review' zettel",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Last zettel has #zettel tag"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/ZettelVault Index",
+      "key": "exists",
+      "expected": true,
+      "description": "Index note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/ZettelVault Index index",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Index has #index tag"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault Index '202503150930 - Atomic Notes'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Index links to first zettel"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/ZettelVault Index '202503151045 - Spaced Review'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Index links to last zettel"
+    },
+    {
+      "command": "list-notes /home/user/Documents/ZettelVault",
+      "eval": "result.get('count') == 7",
+      "description": "Vault has exactly 7 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Zettels/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa6\u4e2a\u5e26timestamped IDs\u7684atomic notes\u548c Index.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create a folder'\u3001'create these 6 notes'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

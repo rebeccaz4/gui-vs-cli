@@ -1,0 +1,31 @@
+{
+  "id": "zoom_accessibility_bundle",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Enable Zoom's accessibility features for a low-vision user. Set EnableClosedCaptioning to true, set FontSize to exactly 3 (large), set HighContrast to true, and set AlwaysShowCaptions to true. Save the file in-place at the same path. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-section-exists Accessibility", "key": "exists", "expected": true, "description": "[Accessibility] section exists"},
+    {"command": "check-config Accessibility EnableClosedCaptioning true", "key": "match", "expected": true, "description": "[Accessibility]EnableClosedCaptioning == true"},
+    {"command": "check-config Accessibility FontSize 3", "key": "match", "expected": true, "description": "[Accessibility]FontSize == 3"},
+    {"command": "check-config Accessibility HighContrast true", "key": "match", "expected": true, "description": "[Accessibility]HighContrast == true"},
+    {"command": "check-config Accessibility AlwaysShowCaptions true", "key": "match", "expected": true, "description": "[Accessibility]AlwaysShowCaptions == true"},
+    {"command": "check-config Accessibility ScreenReaderAlerts false", "key": "match", "expected": true, "description": "Other [Accessibility] keys untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [Accessibility] EnableClosedCaptioning=true, FontSize=3, HighContrast=true, AlwaysShowCaptions=true",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. The cli-anything-zoom skill is for REST API operations (meetings/recordings), not config file editing, but basic bash/Python commands are sufficient."
+  }
+}

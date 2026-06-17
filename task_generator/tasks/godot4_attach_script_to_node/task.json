@@ -1,0 +1,63 @@
+{
+  "id": "godot4_attach_script_to_node",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/script_game/main.tscn so that the Player node has the script res://scripts/player.gd attached. You must add an ext_resource line near the top of the file and reference it from the Player node's script property. The final main.tscn should include:\n\n[ext_resource type=\"Script\" path=\"res://scripts/player.gd\" id=\"1_player\"]\n\n...and the Player node block should contain:\nscript = ExtResource(\"1_player\")\n\nSave the file. Do not modify the player.gd script itself.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/script_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/script_game/main.tscn"
+      },
+      {
+        "filename": "scripts/player.gd",
+        "sandbox_path": "/home/user/godot_projects/script_game/scripts/player.gd"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/script_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-has-script /home/user/godot_projects/script_game/main.tscn player.gd",
+      "key": "found",
+      "expected": true,
+      "description": "Scene has player.gd as ext_resource"
+    },
+    {
+      "command": "check-node-exists /home/user/godot_projects/script_game/main.tscn Player",
+      "key": "exists",
+      "expected": true,
+      "description": "Player node still exists"
+    },
+    {
+      "command": "check-file-contains /home/user/godot_projects/script_game/main.tscn ExtResource",
+      "key": "contains",
+      "expected": true,
+      "description": "Scene references ExtResource"
+    },
+    {
+      "command": "check-script-class-name /home/user/godot_projects/script_game/scripts/player.gd Player",
+      "key": "match",
+      "expected": true,
+      "description": "player.gd class_name preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python to edit main.tscn: add ext_resource line for player.gd, add script = ExtResource(\"1_player\") to Player node block",
+    "reason": "Text-based scene editing. CLI agent can insert ext_resource and modify node properties with Python. No GUI operations."
+  }
+}

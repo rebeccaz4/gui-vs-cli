@@ -1,0 +1,7 @@
+{
+  "task_id": "gimp_composite_two_images_flatten",
+  "files": [
+    {"filename": "landscape_base.png", "sandbox_path": "/home/user/Documents/landscape_base.png", "type": "png"},
+    {"filename": "logo_overlay.png", "sandbox_path": "/home/user/Documents/logo_overlay.png", "type": "png"}
+  ]
+}

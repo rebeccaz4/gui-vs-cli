@@ -1,0 +1,35 @@
+{
+  "task_id": "shotcut_v2_five_clip_sequence",
+  "files": [
+    {
+      "filename": "montage.mlt",
+      "sandbox_path": "/home/user/Documents/montage.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "clip1.mp4",
+      "sandbox_path": "/home/user/Videos/clip1.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "clip2.mp4",
+      "sandbox_path": "/home/user/Videos/clip2.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "clip3.mp4",
+      "sandbox_path": "/home/user/Videos/clip3.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "clip4.mp4",
+      "sandbox_path": "/home/user/Videos/clip4.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "clip5.mp4",
+      "sandbox_path": "/home/user/Videos/clip5.mp4",
+      "type": "mp4"
+    }
+  ]
+}

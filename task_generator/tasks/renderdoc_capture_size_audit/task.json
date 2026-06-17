@@ -1,0 +1,84 @@
+{
+  "id": "renderdoc_capture_size_audit",
+  "app": "renderdoc",
+  "task": "Organize capture files by size: create small/medium/large directories, move tiny.rdc to small/, medium.rdc to medium/, large.rdc to large/, configure UI.config RecentCaptureFiles with large then medium, preserve rdocConfigData.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "tiny.rdc",
+        "sandbox_path": "/home/user/incoming/tiny.rdc"
+      },
+      {
+        "filename": "medium.rdc",
+        "sandbox_path": "/home/user/incoming/medium.rdc"
+      },
+      {
+        "filename": "large.rdc",
+        "sandbox_path": "/home/user/incoming/large.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-rdc-valid /home/user/sized/small/tiny.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "tiny in small/ is valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/sized/medium/medium.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "medium in medium/ is valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/sized/large/large.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "large in large/ is valid"
+    },
+    {
+      "command": "file-info /home/user/sized/large/large.rdc",
+      "eval": "result.get('size', 0) >= 1024",
+      "description": "large.rdc is >= 1 KB"
+    },
+    {
+      "command": "file-info /home/user/sized/small/tiny.rdc",
+      "eval": "result.get('size', 0) < 200",
+      "description": "tiny.rdc is < 200 bytes"
+    },
+    {
+      "command": "check-capture-count /home/user/incoming 0",
+      "key": "match",
+      "expected": true,
+      "description": "incoming emptied"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result.get('files') == ['/home/user/sized/large/large.rdc', '/home/user/sized/medium/medium.rdc']",
+      "description": "RecentCaptureFiles ordered [large, medium]"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

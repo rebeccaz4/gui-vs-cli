@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_export_cylinder_to_step",
+  "files": [
+    {"filename": "pipe.FCStd", "sandbox_path": "/home/user/Documents/pipe.FCStd", "type": "fcstd"}
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "obs_prune_crowded_scene",
+  "app": "obs",
+  "task": "Open OBS Studio. The scene collection already contains a single scene named 'Master' with 8 sources: 'Primary Cam', 'Secondary Cam', 'Desktop', 'Chat Overlay', 'BRB Image', 'Stinger Video', 'Logo', 'Audio Meter'.\n\nYour task is to prune the 'Master' scene so only three sources remain: 'Primary Cam', 'Desktop', and 'Logo'. Remove the other 5 sources from the scene.\n\nRules:\n1. Do NOT rename, add, or create any source or scene.\n2. Do NOT create new scenes and do NOT delete the 'Master' scene.\n3. The final collection must still have exactly 1 scene, and 'Master' must contain exactly the 3 sources listed above.\n4. The 3 remaining sources must be visible (eye icon enabled).\n5. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Master",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Master' still exists"
+    },
+    {
+      "command": "check-scene-count 1",
+      "key": "match",
+      "expected": true,
+      "description": "Collection has exactly 1 scene"
+    },
+    {
+      "command": "check-source-in-scene 'Primary Cam' Master",
+      "key": "exists",
+      "expected": true,
+      "description": "'Primary Cam' kept in 'Master'"
+    },
+    {
+      "command": "check-source-in-scene Desktop Master",
+      "key": "exists",
+      "expected": true,
+      "description": "'Desktop' kept in 'Master'"
+    },
+    {
+      "command": "check-source-in-scene Logo Master",
+      "key": "exists",
+      "expected": true,
+      "description": "'Logo' kept in 'Master'"
+    },
+    {
+      "command": "check-source-in-scene 'Secondary Cam' Master",
+      "key": "exists",
+      "expected": false,
+      "description": "'Secondary Cam' removed from 'Master'"
+    },
+    {
+      "command": "check-source-in-scene 'Chat Overlay' Master",
+      "key": "exists",
+      "expected": false,
+      "description": "'Chat Overlay' removed from 'Master'"
+    },
+    {
+      "command": "check-source-in-scene 'BRB Image' Master",
+      "key": "exists",
+      "expected": false,
+      "description": "'BRB Image' removed from 'Master'"
+    },
+    {
+      "command": "check-source-in-scene 'Stinger Video' Master",
+      "key": "exists",
+      "expected": false,
+      "description": "'Stinger Video' removed from 'Master'"
+    },
+    {
+      "command": "check-source-in-scene 'Audio Meter' Master",
+      "key": "exists",
+      "expected": false,
+      "description": "'Audio Meter' removed from 'Master'"
+    },
+    {
+      "command": "check-source-visible 'Primary Cam'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Primary Cam' is visible"
+    },
+    {
+      "command": "check-source-visible Desktop",
+      "key": "visible",
+      "expected": true,
+      "description": "'Desktop' is visible"
+    },
+    {
+      "command": "check-source-visible Logo",
+      "key": "visible",
+      "expected": true,
+      "description": "'Logo' is visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'output streaming/recording/settings' commands for basic configuration",
+    "reason": "CLI has basic output/recording/streaming configuration but advanced settings may require GUI"
+  }
+}

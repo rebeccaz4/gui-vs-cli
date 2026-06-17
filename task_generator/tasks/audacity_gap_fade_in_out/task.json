@@ -1,0 +1,68 @@
+{
+  "id": "audacity_gap_fade_in_out",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/steady.wav loaded (a 5-second 440 Hz sine tone at constant amplitude 0.7). Apply a fade-in effect to the first 1 second (0 to 1s) and a fade-out effect to the last 1 second (4 to 5s). Export the result to /home/user/Music/faded.wav as a mono 44100 Hz 16-bit PCM WAV file.",
+  "env": {
+    "files": [
+      {
+        "filename": "steady.wav",
+        "sandbox_path": "/home/user/Music/steady.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/faded.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Faded WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/faded.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/faded.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/faded.wav 4.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration ~5s"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/faded.wav 0.0 0.05 -25",
+      "key": "match",
+      "expected": true,
+      "description": "Start of track is faded in (near silent in first 50 ms)"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/faded.wav 4.95 5.0 -25",
+      "key": "match",
+      "expected": true,
+      "description": "End of track is faded out (near silent in last 50 ms)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/faded.wav 2.0 3.0 -10 -4",
+      "key": "match",
+      "expected": true,
+      "description": "Middle region retains full-amplitude tone (~-9 dB RMS for 0.5 amplitude sine)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: clip import/add → effect add fade-in/fade-out → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: clip import/add, effect add fade-in/fade-out, metadata tag settings, export render operation"
+  }
+}

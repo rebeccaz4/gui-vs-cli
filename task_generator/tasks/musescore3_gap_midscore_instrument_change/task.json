@@ -1,0 +1,38 @@
+{
+  "id": "musescore3_gap_midscore_instrument_change",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/woodwind_switch.mscz (single clarinet staff, 4 measures). Add a mid-score instrument change at the start of measure 3 so that the staff switches from Clarinet to Flute from measure 3 onwards. Use the Text palette's 'Change Instrument' element (Add > Text > Change Instr.) or the 'Change Instrument' palette entry. Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "woodwind_switch.mscz",
+        "sandbox_path": "/home/user/Documents/woodwind_switch.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/woodwind_switch.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-instrument-change-at /home/user/Documents/woodwind_switch.mscz 3 flute",
+      "key": "match",
+      "expected": true,
+      "description": "Instrument change to Flute at measure 3"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, find measure 3, insert <InstrumentChange> element with new instrument definition, repackage",
+    "reason": "Adding instrument changes is inserting InstrumentChange XML elements - can be done with Python stdlib in ~35 lines"
+  }
+}

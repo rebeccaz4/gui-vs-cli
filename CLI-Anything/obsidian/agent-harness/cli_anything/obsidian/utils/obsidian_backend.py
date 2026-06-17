@@ -1,0 +1,200 @@
+"""Obsidian Local REST API wrapper — the single module that makes network requests.
+
+Obsidian Local REST API plugin runs an HTTPS server (default: https://localhost:27124).
+Authentication is via Bearer token configured in the plugin settings.
+Uses self-signed certificate by default (verify=False).
+"""
+
+import sys
+import types
+
+try:
+    import requests
+    _REQUESTS_AVAILABLE = True
+except ModuleNotFoundError:
+    _REQUESTS_AVAILABLE = False
+
+    class _RequestsExceptions:
+        class ConnectionError(Exception):
+            pass
+
+        class HTTPError(Exception):
+            pass
+
+        class Timeout(Exception):
+            pass
+
+    def _missing_request(*args, **kwargs):
+        raise _RequestsExceptions.ConnectionError("requests is not installed")
+
+    requests = types.ModuleType("requests")
+    requests.get = _missing_request
+    requests.post = _missing_request
+    requests.put = _missing_request
+    requests.delete = _missing_request
+    requests.exceptions = _RequestsExceptions
+    sys.modules.setdefault("requests", requests)
+
+try:
+    import urllib3
+except ModuleNotFoundError:
+    urllib3 = None
+from typing import Any
+
+# Suppress InsecureRequestWarning for self-signed certs
+if urllib3 is not None:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# Default Obsidian Local REST API URL
+DEFAULT_BASE_URL = "https://localhost:27124"
+
+
+def _require_requests():
+    return None
+
+
+def _headers(api_key: str, accept: str = "application/json",
+             content_type: str | None = None) -> dict:
+    """Build request headers with Bearer auth."""
+    h = {"Authorization": f"Bearer {api_key}", "Accept": accept}
+    if content_type:
+        h["Content-Type"] = content_type
+    return h
+
+
+def api_get(base_url: str, endpoint: str, api_key: str,
+            params: dict | None = None, timeout: int = 30) -> Any:
+    """Perform a GET request against the Obsidian REST API."""
+    _require_requests()
+    url = f"{base_url.rstrip('/')}{endpoint}"
+    try:
+        resp = requests.get(url, headers=_headers(api_key),
+                           params=params, timeout=timeout, verify=False)
+        resp.raise_for_status()
+        if resp.status_code == 204 or not resp.content:
+            return {"status": "ok"}
+        content_type = resp.headers.get("content-type", "")
+        if "application/json" in content_type:
+            return resp.json()
+        return {"content": resp.text}
+    except requests.exceptions.ConnectionError as e:
+        raise RuntimeError(
+            f"Cannot connect to Obsidian REST API at {base_url}. "
+            "Is Obsidian running with the Local REST API plugin enabled?"
+        ) from e
+    except requests.exceptions.HTTPError as e:
+        raise RuntimeError(
+            f"Obsidian API error {resp.status_code} on GET {endpoint}: {resp.text}"
+        ) from e
+    except requests.exceptions.Timeout as e:
+        raise RuntimeError(
+            f"Request to Obsidian timed out: GET {endpoint}"
+        ) from e
+
+
+def api_post(base_url: str, endpoint: str, api_key: str,
+             data: dict | None = None, params: dict | None = None,
+             timeout: int = 30) -> Any:
+    """Perform a POST request against the Obsidian REST API."""
+    _require_requests()
+    url = f"{base_url.rstrip('/')}{endpoint}"
+    try:
+        resp = requests.post(url, headers=_headers(api_key),
+                            json=data, params=params,
+                            timeout=timeout, verify=False)
+        resp.raise_for_status()
+        if resp.status_code == 204 or not resp.content:
+            return {"status": "ok"}
+        content_type = resp.headers.get("content-type", "")
+        if "application/json" in content_type:
+            return resp.json()
+        return {"content": resp.text}
+    except requests.exceptions.ConnectionError as e:
+        raise RuntimeError(
+            f"Cannot connect to Obsidian REST API at {base_url}. "
+            "Is Obsidian running with the Local REST API plugin enabled?"
+        ) from e
+    except requests.exceptions.HTTPError as e:
+        raise RuntimeError(
+            f"Obsidian API error {resp.status_code} on POST {endpoint}: {resp.text}"
+        ) from e
+    except requests.exceptions.Timeout as e:
+        raise RuntimeError(
+            f"Request to Obsidian timed out: POST {endpoint}"
+        ) from e
+
+
+def api_put(base_url: str, endpoint: str, api_key: str,
+            content: str = "", content_type: str = "text/markdown",
+            timeout: int = 30) -> Any:
+    """Perform a PUT request (sends raw text, not JSON)."""
+    _require_requests()
+    url = f"{base_url.rstrip('/')}{endpoint}"
+    try:
+        headers = _headers(api_key, content_type=content_type)
+        resp = requests.put(url, headers=headers, data=content.encode("utf-8"),
+                           timeout=timeout, verify=False)
+        resp.raise_for_status()
+        if resp.status_code == 204 or not resp.content:
+            return {"status": "ok"}
+        ct = resp.headers.get("content-type", "")
+        if "application/json" in ct:
+            return resp.json()
+        return {"status": "ok"}
+    except requests.exceptions.ConnectionError as e:
+        raise RuntimeError(
+            f"Cannot connect to Obsidian REST API at {base_url}. "
+            "Is Obsidian running with the Local REST API plugin enabled?"
+        ) from e
+    except requests.exceptions.HTTPError as e:
+        raise RuntimeError(
+            f"Obsidian API error {resp.status_code} on PUT {endpoint}: {resp.text}"
+        ) from e
+    except requests.exceptions.Timeout as e:
+        raise RuntimeError(
+            f"Request to Obsidian timed out: PUT {endpoint}"
+        ) from e
+
+
+def api_delete(base_url: str, endpoint: str, api_key: str,
+               timeout: int = 30) -> Any:
+    """Perform a DELETE request."""
+    _require_requests()
+    url = f"{base_url.rstrip('/')}{endpoint}"
+    try:
+        resp = requests.delete(url, headers=_headers(api_key),
+                              timeout=timeout, verify=False)
+        resp.raise_for_status()
+        if resp.status_code == 204 or not resp.content:
+            return {"status": "ok"}
+        ct = resp.headers.get("content-type", "")
+        if "application/json" in ct:
+            return resp.json()
+        return {"status": "ok"}
+    except requests.exceptions.ConnectionError as e:
+        raise RuntimeError(
+            f"Cannot connect to Obsidian REST API at {base_url}. "
+            "Is Obsidian running with the Local REST API plugin enabled?"
+        ) from e
+    except requests.exceptions.HTTPError as e:
+        raise RuntimeError(
+            f"Obsidian API error {resp.status_code} on DELETE {endpoint}: {resp.text}"
+        ) from e
+    except requests.exceptions.Timeout as e:
+        raise RuntimeError(
+            f"Request to Obsidian timed out: DELETE {endpoint}"
+        ) from e
+
+
+def is_available(api_key: str, base_url: str = DEFAULT_BASE_URL) -> bool:
+    """Check if Obsidian REST API is reachable."""
+    try:
+        resp = requests.get(
+            f"{base_url.rstrip('/')}/",
+            headers={"Authorization": f"Bearer {api_key}"},
+            timeout=5,
+            verify=False,
+        )
+        return resp.status_code == 200
+    except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
+        return False

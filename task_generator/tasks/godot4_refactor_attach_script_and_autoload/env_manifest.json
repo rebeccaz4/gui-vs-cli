@@ -1,0 +1,30 @@
+{
+  "task_id": "godot4_refactor_attach_script_and_autoload",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/refactor_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/refactor_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "scripts/enemy.gd",
+      "sandbox_path": "/home/user/godot_projects/refactor_game/scripts/enemy.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "scripts/game_manager.gd",
+      "sandbox_path": "/home/user/godot_projects/refactor_game/scripts/game_manager.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/refactor_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

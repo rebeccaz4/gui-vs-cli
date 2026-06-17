@@ -1,0 +1,25 @@
+{
+  "task_id": "renderdoc_capture_size_audit",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "tiny.rdc",
+      "sandbox_path": "/home/user/incoming/tiny.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "medium.rdc",
+      "sandbox_path": "/home/user/incoming/medium.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "large.rdc",
+      "sandbox_path": "/home/user/incoming/large.rdc",
+      "type": "rdc"
+    }
+  ]
+}

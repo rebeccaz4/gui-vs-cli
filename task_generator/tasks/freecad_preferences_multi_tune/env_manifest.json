@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_preferences_multi_tune",
+  "files": [
+    {
+      "filename": "empty_prefs.FCStd",
+      "sandbox_path": "/home/user/Documents/empty_prefs.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "musescore3_rebuild_score_header",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/waltz_draft.mscz. The score currently has 4 measures in C major (no sharps or flats), 4/4 time, a first-measure tempo of 120 BPM, and an empty composer.\n\nRebuild the score header so it reads as a D-major waltz. Make all four of the following changes, then save:\n1. Change the time signature at measure 1 to 3/4. Use the Palettes panel (View > Palettes), expand Time Signatures, select measure 1, and apply 3/4.\n2. Change the first tempo marking to exactly 108 BPM (quarter note = 108). Edit the existing tempo text in place or replace it via Add > Text > Tempo Marking set to 108.\n3. Change the key signature at the start to D major (two sharps). Expand the Key Signatures palette, select measure 1, and apply the 2-sharps key signature.\n4. Open File > Score Properties and set the Composer field to exactly: Yvette Chauvire. Click OK.\n\nThen save the file with Ctrl+S.\n\nAfter saving, the first TimeSig must equal 3/4, the first Tempo must equal 108 BPM, the first KeySig accidental count must equal 2, and the composer metaTag must equal 'Yvette Chauvire'. The file must stay at /home/user/Documents/waltz_draft.mscz.",
+  "env": {
+    "files": [
+      {
+        "filename": "waltz_draft.mscz",
+        "sandbox_path": "/home/user/Documents/waltz_draft.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/waltz_draft.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "waltz_draft.mscz still exists"
+    },
+    {
+      "command": "check-time-signature /home/user/Documents/waltz_draft.mscz 3 4",
+      "key": "match",
+      "expected": true,
+      "description": "First TimeSig equals 3/4"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/waltz_draft.mscz 108",
+      "key": "match",
+      "expected": true,
+      "description": "First Tempo equals 108 BPM"
+    },
+    {
+      "command": "check-key-signature /home/user/Documents/waltz_draft.mscz 2",
+      "key": "match",
+      "expected": true,
+      "description": "First KeySig has 2 accidentals (D major, two sharps)"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/waltz_draft.mscz composer Yvette Chauvire",
+      "key": "match",
+      "expected": true,
+      "description": "composer metaTag equals 'Yvette Chauvire'"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, modify TimeSig (3/4), Tempo (108 BPM), Key (D major), and metaTag (composer), repackage",
+    "reason": "Score header changes are modifications to existing XML elements - can be done with Python stdlib in ~40 lines"
+  }
+}

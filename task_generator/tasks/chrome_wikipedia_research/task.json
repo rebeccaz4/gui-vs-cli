@@ -1,0 +1,52 @@
+{
+  "id": "chrome_wikipedia_research",
+  "app": "chrome",
+  "task": "Google Chrome is open. Navigate to https://en.wikipedia.org/wiki/Python_(programming_language) and bookmark this page. Then open a new tab and navigate to https://en.wikipedia.org/wiki/JavaScript and bookmark this page. Then open a third tab and navigate to https://en.wikipedia.org/wiki/Rust_(programming_language) and bookmark this page. Finally, close the tab that is showing the JavaScript Wikipedia page. When done, you should have exactly two tabs remaining: one showing the Python page and one showing the Rust page. All three bookmarks (Python, JavaScript, Rust) should still exist.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-tab-open Python_(programming_language)",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Python_(programming_language) Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open Rust_(programming_language)",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Rust_(programming_language) Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open JavaScript",
+      "key": "found",
+      "expected": false,
+      "description": "JavaScript tab has been closed"
+    },
+    {
+      "command": "check-bookmark Python_(programming_language)",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Python_(programming_language) exists"
+    },
+    {
+      "command": "check-bookmark JavaScript",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for JavaScript exists even though tab was closed"
+    },
+    {
+      "command": "check-bookmark Rust_(programming_language)",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Rust_(programming_language) exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

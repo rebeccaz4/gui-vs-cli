@@ -1,0 +1,15 @@
+{
+  "task_id": "audacity_add_chapter_labels",
+  "files": [
+    {
+      "filename": "audiobook.aup",
+      "sandbox_path": "/home/user/Music/audiobook.aup",
+      "type": "aup"
+    },
+    {
+      "filename": "audiobook_data/e00/d00/e000001.au",
+      "sandbox_path": "/home/user/Music/audiobook_data/e00/d00/e000001.au",
+      "type": "au"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "cloudcompare_merge_two_xyz",
+  "app": "cloudcompare",
+  "task": "Merge two ASCII XYZ point clouds: /home/user/Documents/left.xyz (200 points) and /home/user/Documents/right.xyz (300 points) into a single point cloud. Export the merged cloud as a binary little-endian PLY at /home/user/Documents/merged.ply containing all 500 points (200+300).",
+  "env": {
+    "files": [
+      {
+        "filename": "left.xyz",
+        "sandbox_path": "/home/user/Documents/left.xyz"
+      },
+      {
+        "filename": "right.xyz",
+        "sandbox_path": "/home/user/Documents/right.xyz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/merged.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Merged PLY exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/merged.ply 500",
+      "key": "match",
+      "expected": true,
+      "description": "Merged cloud has 500 points (200+300)"
+    },
+    {
+      "command": "check-format /home/user/Documents/merged.ply ply",
+      "key": "match",
+      "expected": true,
+      "description": "Output is PLY"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

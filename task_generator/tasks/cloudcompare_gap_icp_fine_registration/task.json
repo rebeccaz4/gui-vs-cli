@@ -1,0 +1,53 @@
+{
+  "id": "cloudcompare_gap_icp_fine_registration",
+  "app": "cloudcompare",
+  "task": "Open `/home/user/Documents/reference.ply` and `/home/user/Documents/misaligned.ply` in CloudCompare. Register the point cloud in `misaligned.ply` to the coordinate frame of `reference.ply`, and save the resulting aligned cloud as `/home/user/Documents/aligned.ply` in ASCII PLY format. Export only the aligned cloud. The result should still contain 1200 points and should closely match the spatial extent of the reference cloud (approximately x in [-2.2, 5.2], y in [-2.2, 2.2], z in [-2.2, 2.2]).",
+  "env": {
+    "files": [{ 
+        "filename": "misaligned.ply",
+        "sandbox_path": "/home/user/Documents/misaligned.ply"
+      },
+      {
+        "filename": "reference.ply",
+        "sandbox_path": "/home/user/Documents/reference.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/aligned.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "Aligned PLY exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/aligned.ply 1200",
+      "key": "match",
+      "expected": true,
+      "description": "Aligned cloud has the same 1200 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/aligned.ply -2.5 -2.5 -2.5 5.5 2.5 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "Aligned cloud bbox falls within reference cloud bbox"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/aligned.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "Exported as ASCII PLY"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "search.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    ".terraform/**": true,
+    ".vscode/**": true,
+    ".git/**": true,
+    "packages/orchestrator/.shared/**": true,
+    "packages/orchestrator/.block-storage/**": true,
+    "packages/fc-kernels/linux/**": true,
+    "packages/fc-versions/firecracker/**": true,
+    "packages/fc-versions/builds/**": true,
+    "packages/orchestrator/.local-build/**": true
+  },
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    ".terraform/**": true,
+    ".vscode/**": true,
+    ".git/**": true,
+    "packages/fc-kernels/linux/**": true,
+    "packages/fc-versions/firecracker/**": true,
+    "packages/fc-versions/builds/**": true,
+    "packages/orchestrator/.local-build/**": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.formatOnSave": true,
+  "[terraform]": {
+    "editor.tabSize": 2
+  },
+  "go.delveConfig": {
+    "debuggerMode": "native",
+  },
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+  },
+  "editor.tabCompletion": "on",
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--path-mode=abs",
+    "--fast-only",
+  ],
+  "go.formatTool": "custom",
+  "go.formatFlags": [
+    "fmt",
+    "--stdin"
+  ],
+  "go.lintOnSave": "package",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+  },
+  "go.useLanguageServer": true,
+  "go.toolsManagement.autoUpdate": true,
+  "go.testOnSave": false,
+  "go.testTimeout": "20s",
+  "go.inlayHints.assignVariableTypes": true,
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.inlayHints.compositeLiteralTypes": true,
+  "go.inlayHints.constantValues": true,
+  "go.inlayHints.functionTypeParameters": true,
+  "go.inlayHints.rangeVariableTypes": true,
+  "go.inlayHints.parameterNames": true,
+  "go.survey.prompt": false,
+  "[go][go.mod]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "go.goroot": "${workspaceFolder}/.vscode/mise-tools/goRoot",
+  "go.alternateTools": {
+    "customFormatter": "golangci-lint",
+    "dlv": "${workspaceFolder}/.vscode/mise-tools/dlv",
+    "go": "${workspaceFolder}/.vscode/mise-tools/go",
+    "gopls": "${workspaceFolder}/.vscode/mise-tools/gopls"
+  },
+  "mise.configureExtensionsUseSymLinks": true,
+  "mise.configureExtensionsAutomatically": true,
+  "mise.configureExtensionsAutomaticallyIgnoreList": [
+    "ms-vscode.js-debug"
+  ],
+  "python.defaultInterpreterPath": "${workspaceFolder}/.vscode/mise-tools/python"
+}

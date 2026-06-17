@@ -1,0 +1,122 @@
+{
+  "id": "obs_news_broadcast_layout",
+  "app": "obs",
+  "task": "Build a scene collection for a TV news broadcast. 1. OBS may start with a default 'Scene' -- delete it. 2. Create exactly three scenes with these exact names: 'Studio', 'Field Report', 'Weather'. 3. In the 'Studio' scene, add these four sources with these exact names: a. Video Capture Device named exactly 'Anchor Cam'. b. Color Source named exactly 'Lower Third'. c. Text (FreeType 2) source named exactly 'Headline Ticker' (set the text to any value). d. Image source named exactly 'Network Logo' pointing at /home/user/Pictures/news_logo.png. 4. In the 'Field Report' scene, add these two sources: a. Video Capture Device named exactly 'Reporter Cam'. b. Text (FreeType 2) source named exactly 'Location Bug' (set the text to any value). 5. In the 'Weather' scene, add these two sources: a. Image source named exactly 'Weather Map' pointing at /home/user/Pictures/weather_map.png. b. Text (FreeType 2) source named exactly 'Forecast Caption' (set the text to any value). 6. All sources must be visible. 7. The final collection must have exactly 3 scenes. 8.",
+  "task_grounding": "Open OBS Studio and build a scene collection for a TV news broadcast.\n\n1. OBS may start with a default 'Scene' -- delete it.\n2. Create exactly three scenes with these exact names: 'Studio', 'Field Report', 'Weather'.\n\n3. In the 'Studio' scene, add these four sources with these exact names:\n   a. Video Capture Device named exactly 'Anchor Cam'.\n   b. Color Source named exactly 'Lower Third'.\n   c. Text (FreeType 2) source named exactly 'Headline Ticker' (set the text to any value).\n   d. Image source named exactly 'Network Logo' pointing at /home/user/Pictures/news_logo.png.\n\n4. In the 'Field Report' scene, add these two sources:\n   a. Video Capture Device named exactly 'Reporter Cam'.\n   b. Text (FreeType 2) source named exactly 'Location Bug' (set the text to any value).\n\n5. In the 'Weather' scene, add these two sources:\n   a. Image source named exactly 'Weather Map' pointing at /home/user/Pictures/weather_map.png.\n   b. Text (FreeType 2) source named exactly 'Forecast Caption' (set the text to any value).\n\n6. All sources must be visible (eye icon enabled).\n7. The final collection must have exactly 3 scenes.\n8. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "news_logo.png",
+        "sandbox_path": "/home/user/Pictures/news_logo.png"
+      },
+      {
+        "filename": "weather_map.png",
+        "sandbox_path": "/home/user/Pictures/weather_map.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Studio",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Studio' exists"
+    },
+    {
+      "command": "check-scene-exists 'Field Report'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Field Report' exists"
+    },
+    {
+      "command": "check-scene-exists Weather",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Weather' exists"
+    },
+    {
+      "command": "check-scene-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 scenes"
+    },
+    {
+      "command": "check-source-in-scene 'Anchor Cam' Studio",
+      "key": "exists",
+      "expected": true,
+      "description": "'Anchor Cam' in 'Studio'"
+    },
+    {
+      "command": "check-source-in-scene 'Lower Third' Studio",
+      "key": "exists",
+      "expected": true,
+      "description": "'Lower Third' in 'Studio'"
+    },
+    {
+      "command": "check-source-in-scene 'Headline Ticker' Studio",
+      "key": "exists",
+      "expected": true,
+      "description": "'Headline Ticker' in 'Studio'"
+    },
+    {
+      "command": "check-source-in-scene 'Network Logo' Studio",
+      "key": "exists",
+      "expected": true,
+      "description": "'Network Logo' in 'Studio'"
+    },
+    {
+      "command": "check-source-in-scene 'Reporter Cam' 'Field Report'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Reporter Cam' in 'Field Report'"
+    },
+    {
+      "command": "check-source-in-scene 'Location Bug' 'Field Report'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Location Bug' in 'Field Report'"
+    },
+    {
+      "command": "check-source-in-scene 'Weather Map' Weather",
+      "key": "exists",
+      "expected": true,
+      "description": "'Weather Map' in 'Weather'"
+    },
+    {
+      "command": "check-source-in-scene 'Forecast Caption' Weather",
+      "key": "exists",
+      "expected": true,
+      "description": "'Forecast Caption' in 'Weather'"
+    },
+    {
+      "command": "check-source-visible 'Anchor Cam'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Anchor Cam' visible"
+    },
+    {
+      "command": "check-source-visible 'Network Logo'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Network Logo' visible"
+    },
+    {
+      "command": "check-source-visible 'Weather Map'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Weather Map' visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

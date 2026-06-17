@@ -1,0 +1,39 @@
+{
+  "id": "freecad_set_theme_preference",
+  "app": "freecad",
+  "task": "Configure FreeCAD so that the theme is set to Dark and the auto-save interval is set to 120 seconds. Ensure the changes are saved to /home/user/.config/FreeCAD/user.cfg while preserving unrelated settings.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.FCStd",
+        "sandbox_path": "/home/user/Documents/empty.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-preference BaseApp/Preferences/General/ThemeName Dark",
+      "key": "match",
+      "expected": true,
+      "description": "Theme set to Dark"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/General/AutoSaveInterval 120",
+      "key": "match",
+      "expected": true,
+      "description": "AutoSaveInterval == 120"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: preference/theme settings",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: preference/theme settings"
+  }
+}

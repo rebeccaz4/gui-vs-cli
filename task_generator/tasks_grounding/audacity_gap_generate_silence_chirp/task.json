@@ -1,0 +1,76 @@
+{
+  "id": "audacity_gap_generate_silence_chirp",
+  "app": "audacity",
+  "task": "Audacity is open with an empty project. First, change the Project Rate to 48000 Hz. Generate a linear chirp with these exact settings: Waveform = Sine, Start frequency = 200 Hz, End frequency = 4000 Hz, Start amplitude = 0.8, End amplitude = 0.8, Interpolation = Linear, Duration = 4.0 seconds. Then append 2.0 seconds of silence after the chirp. The total track length should be 6.0 seconds. Export the full track to /home/user/Music/chirp_silence.wav using 'WAV (Microsoft) signed 16-bit PCM' at 48000 Hz mono.",
+  "task_grounding": "Audacity is open with an empty project.\n\nFirst, change the Project Rate (in the lower-left of the Audacity window, or via Tracks > Resample) to 48000 Hz so any generated audio uses a 48 kHz sample rate.\n\nThen use Generate > Chirp... to generate a linear chirp with these exact settings: Waveform = Sine, Start frequency = 200 Hz, End frequency = 4000 Hz, Start amplitude = 0.8, End amplitude = 0.8, Interpolation = Linear, Duration = 4.0 seconds. Click OK.\n\nPlace the cursor at the end of the chirp (position 4.0 seconds) and use Generate > Silence... to append 2.0 seconds of silence after the chirp. The total track length should now be 6.0 seconds.\n\nExport the full track to /home/user/Music/chirp_silence.wav using File > Export > Export as WAV... with 'WAV (Microsoft) signed 16-bit PCM' at 48000 Hz mono. Accept any metadata dialog defaults.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/chirp_silence.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Chirp+silence WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/chirp_silence.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/chirp_silence.wav 48000",
+      "key": "match",
+      "expected": true,
+      "description": "48000 Hz"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/chirp_silence.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/chirp_silence.wav 5.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration ~6s"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/chirp_silence.wav 4.5 5.9 -30",
+      "key": "match",
+      "expected": true,
+      "description": "Last ~2s region is silence"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/chirp_silence.wav 1.0 3.0 -10 -1",
+      "key": "match",
+      "expected": true,
+      "description": "First 4s has signal (chirp RMS roughly -3 to -5 dB for amp 0.8)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/chirp_silence.wav 0.0 0.2 400 40",
+      "key": "match",
+      "expected": true,
+      "description": "Chirp starts near 200 Hz (sampled 0-0.2s)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/chirp_silence.wav 3.8 4.0 3700 15",
+      "key": "match",
+      "expected": true,
+      "description": "Chirp ends near 4000 Hz (sampled 3.8-4.0s)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → metadata tag settings → export render operation → project settings --rate → preference/setting configuration → generate tone/silence/chirp",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, metadata tag settings, export render operation, project settings --rate, preference/setting configuration, generate tone/silence/chirp"
+  }
+}

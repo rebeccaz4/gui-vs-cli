@@ -1,0 +1,15 @@
+{
+  "task_id": "obs_gaming_stream_layout",
+  "files": [
+    {
+      "filename": "frame.png",
+      "sandbox_path": "/home/user/Pictures/frame.png",
+      "type": "png"
+    },
+    {
+      "filename": "starting.png",
+      "sandbox_path": "/home/user/Pictures/starting.png",
+      "type": "png"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "godot4_gap_audio_buses_layout",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/audio_bus_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/audio_bus_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "default_bus_layout.tres",
+      "sandbox_path": "/home/user/godot_projects/audio_bus_game/default_bus_layout.tres",
+      "type": "tres"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/audio_bus_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "cloudcompare_gap_cross_section_slice",
+  "files": [
+    {"filename": "tower.ply", "sandbox_path": "/home/user/Documents/tower.ply", "type": "ply"}
+  ]
+}

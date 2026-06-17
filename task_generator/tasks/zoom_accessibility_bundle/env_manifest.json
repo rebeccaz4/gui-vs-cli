@@ -1,0 +1,6 @@
+{
+  "task_id": "zoom_accessibility_bundle",
+  "files": [
+    {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf", "type": "ini"}
+  ]
+}

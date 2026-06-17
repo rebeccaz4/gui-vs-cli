@@ -1,0 +1,15 @@
+{
+  "task_id": "obs_gap_color_correction_lut",
+  "files": [
+    {
+      "filename": "raw_footage.png",
+      "sandbox_path": "/home/user/Pictures/raw_footage.png",
+      "type": "png"
+    },
+    {
+      "filename": "warm_lut.png",
+      "sandbox_path": "/home/user/Pictures/warm_lut.png",
+      "type": "png"
+    }
+  ]
+}

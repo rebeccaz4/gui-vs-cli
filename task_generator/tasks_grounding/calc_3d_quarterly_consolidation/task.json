@@ -1,0 +1,150 @@
+{
+  "id": "calc_3d_quarterly_consolidation",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/quarters.xlsx in LibreOffice Calc. The workbook has sheets Q1, Q2, Q3, Q4 (each with Product in column A and Sales in column B for 8 products in rows 2-9) and a 'PriorYear' sheet with the same 8 products and their prior-year totals in column B.\n\n1. Create a new sheet named 'Annual'.\n2. On Annual, fill row 1 with bold headers: A1='Product', B1='Annual', C1='Prior Year', D1='YoY %'.\n3. In A2:A9 copy the 8 product names from Q1.A2:A9 (Alpha, Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta).\n4. In B2 enter =Q1.B2+Q2.B2+Q3.B2+Q4.B2 (or use =SUM(Q1.B2,Q2.B2,Q3.B2,Q4.B2)) and fill down through B9.\n5. In C2 enter =VLOOKUP(A2,PriorYear.A2:B9,2,0) and fill down through C9.\n6. In D2 enter =(B2-C2)/C2*100 and fill down through D9.\n7. In A10 type 'Total' and make it bold. In B10 enter =SUM(B2:B9). In C10 enter =SUM(C2:C9).\n8. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/quarters.xlsx in LibreOffice Calc. The workbook has sheets Q1, Q2, Q3, Q4 (each with Product in column A and Sales in column B for 8 products in rows 2-9) and a 'PriorYear' sheet with the same 8 products and their prior-year totals in column B.\n\n1. Create a new sheet named 'Annual'.\n2. On Annual, fill row 1 with bold headers: A1='Product', B1='Annual', C1='Prior Year', D1='YoY %'.\n3. In A2:A9 copy the 8 product names from Q1.A2:A9 (Alpha, Beta, Gamma, Delta, Epsilon, Zeta, Eta, Theta).\n4. In B2 enter =Q1.B2+Q2.B2+Q3.B2+Q4.B2 (or use =SUM(Q1.B2,Q2.B2,Q3.B2,Q4.B2)) and fill down through B9.\n5. In C2 enter =VLOOKUP(A2,PriorYear.A2:B9,2,0) and fill down through C9.\n6. In D2 enter =(B2-C2)/C2*100 and fill down through D9.\n7. In A10 type 'Total' and make it bold. In B10 enter =SUM(B2:B9). In C10 enter =SUM(C2:C9).\n8. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "quarters.xlsx",
+        "sandbox_path": "/home/user/Documents/quarters.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-sheet-exists Annual",
+      "key": "exists",
+      "expected": true,
+      "description": "Annual sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Product Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A1 = Product"
+    },
+    {
+      "command": "check-cell-value B1 Annual Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B1 = Annual"
+    },
+    {
+      "command": "check-cell-value C1 \"Prior Year\" Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual C1 = Prior Year"
+    },
+    {
+      "command": "check-cell-value D1 \"YoY %\" Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual D1 = YoY %"
+    },
+    {
+      "command": "check-cell-formatted A1 true Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A1 bold"
+    },
+    {
+      "command": "check-cell-value A2 Alpha Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A2 = Alpha"
+    },
+    {
+      "command": "check-cell-value A9 Theta Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A9 = Theta"
+    },
+    {
+      "command": "check-cell-value B2 55000 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B2 Alpha = 55000"
+    },
+    {
+      "command": "check-cell-value B3 35300 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B3 Beta = 35300"
+    },
+    {
+      "command": "check-cell-value B4 66000 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B4 Gamma = 66000"
+    },
+    {
+      "command": "check-cell-value B6 87500 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B6 Epsilon = 87500"
+    },
+    {
+      "command": "check-cell-value B9 48500 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B9 Theta = 48500"
+    },
+    {
+      "command": "check-cell-value C2 50000 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual C2 Alpha prior = 50000"
+    },
+    {
+      "command": "cell-value D2 Annual",
+      "eval": "abs((result.get('value') or 0) - 10.0) < 0.01",
+      "description": "Annual D2 Alpha YoY = 10.0"
+    },
+    {
+      "command": "cell-value D4 Annual",
+      "eval": "abs((result.get('value') or 0) - 13.79310344827586) < 0.05",
+      "description": "Annual D4 Gamma YoY approx 13.79"
+    },
+    {
+      "command": "check-cell-value A10 Total Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A10 = Total"
+    },
+    {
+      "command": "check-cell-formatted A10 true Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual A10 bold"
+    },
+    {
+      "command": "check-cell-value B10 420300 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual B10 total annual = 420300"
+    },
+    {
+      "command": "check-cell-value C10 378000 Annual",
+      "key": "match",
+      "expected": true,
+      "description": "Annual C10 total prior = 378000"
+    },
+    {
+      "command": "cell-value B2 Annual",
+      "eval": "result.get('formula') is not None and 'Q1' in result.get('formula','').upper() and 'Q4' in result.get('formula','').upper()",
+      "description": "Annual B2 references Q1 and Q4"
+    },
+    {
+      "command": "cell-value C2 Annual",
+      "eval": "result.get('formula') is not None and ('VLOOKUP' in result.get('formula','').upper() or 'INDEX' in result.get('formula','').upper() or 'PRIORYEAR' in result.get('formula','').upper())",
+      "description": "Annual C2 pulls prior year via lookup or direct reference"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

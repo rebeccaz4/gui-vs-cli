@@ -1,0 +1,56 @@
+{
+  "id": "musescore3_gap_voltas_repeats",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/folk_tune.mscz (4 measures). Mark the score with a start-repeat barline at the beginning of measure 1, an end-repeat barline at the end of measure 4, and add a 1st-ending volta bracket over measure 3 and a 2nd-ending volta bracket over measure 4. Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "folk_tune.mscz",
+        "sandbox_path": "/home/user/Documents/folk_tune.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/folk_tune.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-start-repeat-at /home/user/Documents/folk_tune.mscz 1",
+      "key": "match",
+      "expected": true,
+      "description": "Start-repeat at measure 1"
+    },
+    {
+      "command": "check-end-repeat-at /home/user/Documents/folk_tune.mscz 4",
+      "key": "match",
+      "expected": true,
+      "description": "End-repeat at measure 4"
+    },
+    {
+      "command": "check-has-volta-at /home/user/Documents/folk_tune.mscz 3",
+      "key": "match",
+      "expected": true,
+      "description": "Volta at measure 3"
+    },
+    {
+      "command": "check-has-volta-at /home/user/Documents/folk_tune.mscz 4",
+      "key": "match",
+      "expected": true,
+      "description": "Volta at measure 4"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, add <Repeat> and <Volta> elements with proper timing and repeat counts, repackage",
+    "reason": "Adding voltas and repeats is inserting Repeat/Volta XML elements - complex but feasible with Python stdlib in ~100 lines"
+  }
+}

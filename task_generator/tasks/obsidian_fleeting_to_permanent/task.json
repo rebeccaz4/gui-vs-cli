@@ -1,0 +1,170 @@
+{
+  "id": "obsidian_fleeting_to_permanent",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/FleetingVault. The vault has 5 fleeting notes in the root (Fleeting-Habits, Fleeting-Focus, Fleeting-Writing, Fleeting-Learning, Fleeting-Systems), each tagged #fleeting. Convert every fleeting note into a corresponding permanent note and archive the source.\n\nRequirements:\n\n1. Create a folder 'Permanent' in the vault root.\n2. For each of the 5 fleeting notes, create a new note at 'Permanent/Perm-<Topic>.md' (where <Topic> is Habits, Focus, Writing, Learning, Systems) containing:\n   - YAML frontmatter with 'type: permanent' and 'source: fleeting'\n   - A level-1 heading 'Perm: <Topic>'\n   - A paragraph expanding the original fleeting idea\n   - A wikilink back to the source fleeting note (e.g. [[Fleeting-Habits]])\n   - The inline tag #permanent\n3. Edit EACH original fleeting note so it now has the inline tag #archived and NO #fleeting tag. Replace the existing '#fleeting' line with '#archived'. Do not modify the heading or body paragraph of the fleeting notes.\n\nThe vault must end up with exactly 10 notes total (5 fleeting + 5 permanent).",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/FleetingVault/.obsidian/app.json"
+      },
+      {
+        "filename": "Fleeting-Habits.md",
+        "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Habits.md"
+      },
+      {
+        "filename": "Fleeting-Focus.md",
+        "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Focus.md"
+      },
+      {
+        "filename": "Fleeting-Writing.md",
+        "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Writing.md"
+      },
+      {
+        "filename": "Fleeting-Learning.md",
+        "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Learning.md"
+      },
+      {
+        "filename": "Fleeting-Systems.md",
+        "sandbox_path": "/home/user/Documents/FleetingVault/Fleeting-Systems.md"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/FleetingVault Permanent",
+      "key": "exists",
+      "expected": true,
+      "description": "Permanent folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Habits' type permanent",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Habits type=permanent"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Habits' source fleeting",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Habits source=fleeting"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault 'Permanent/Perm-Habits' permanent",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Perm-Habits has #permanent"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FleetingVault 'Permanent/Perm-Habits' Fleeting-Habits",
+      "key": "links_to",
+      "expected": true,
+      "description": "Perm-Habits links back"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Focus' type permanent",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Focus type=permanent"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FleetingVault 'Permanent/Perm-Focus' Fleeting-Focus",
+      "key": "links_to",
+      "expected": true,
+      "description": "Perm-Focus links back"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Writing' type permanent",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Writing type=permanent"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FleetingVault 'Permanent/Perm-Writing' Fleeting-Writing",
+      "key": "links_to",
+      "expected": true,
+      "description": "Perm-Writing links back"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Learning' type permanent",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Learning type=permanent"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FleetingVault 'Permanent/Perm-Learning' Fleeting-Learning",
+      "key": "links_to",
+      "expected": true,
+      "description": "Perm-Learning links back"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FleetingVault 'Permanent/Perm-Systems' type permanent",
+      "key": "match",
+      "expected": true,
+      "description": "Perm-Systems type=permanent"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FleetingVault 'Permanent/Perm-Systems' Fleeting-Systems",
+      "key": "links_to",
+      "expected": true,
+      "description": "Perm-Systems links back"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault Fleeting-Habits archived",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Fleeting-Habits has #archived"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault Fleeting-Focus archived",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Fleeting-Focus has #archived"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault Fleeting-Writing archived",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Fleeting-Writing has #archived"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault Fleeting-Learning archived",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Fleeting-Learning has #archived"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FleetingVault Fleeting-Systems archived",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Fleeting-Systems has #archived"
+    },
+    {
+      "command": "get-note-tags /home/user/Documents/FleetingVault Fleeting-Habits",
+      "eval": "'fleeting' not in (result.get('tags') or [])",
+      "description": "Fleeting-Habits no longer tagged #fleeting"
+    },
+    {
+      "command": "get-note-tags /home/user/Documents/FleetingVault Fleeting-Systems",
+      "eval": "'fleeting' not in (result.get('tags') or [])",
+      "description": "Fleeting-Systems no longer tagged #fleeting"
+    },
+    {
+      "command": "list-notes /home/user/Documents/FleetingVault",
+      "eval": "result.get('count') == 10",
+      "description": "Vault has exactly 10 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Permanent/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa5\u4e2apermanent notes; 3) vault update \u4fee\u65395\u4e2afleeting notes\uff0c\u66ff\u6362tags",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create a folder'\u3001'create a new note'\u3001'edit each note'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7vault create\u548cvault update\u5b8c\u6210"
+  }
+}

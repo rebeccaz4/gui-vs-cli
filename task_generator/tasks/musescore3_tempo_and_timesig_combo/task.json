@@ -1,0 +1,45 @@
+{
+  "id": "musescore3_tempo_and_timesig_combo",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/jig.mscz. The score currently has 8 measures of quarter notes in 4/4 time with a tempo marking of 90 BPM on the first measure.\n\nMake two changes and save:\n1. Change the time signature at the start of the score to 6/8.\n   - Open the Palettes panel (View > Palettes if needed), expand Time Signatures, click on measure 1, and double-click the 6/8 time signature (or drag it onto measure 1).\n2. Change the tempo marking on the first measure to exactly 168 BPM (quarter note = 168).\n   - Double-click the existing tempo text at the top-left of measure 1 and edit the number to 168, or delete the existing marking and insert a new Tempo Marking from Add > Text > Tempo Marking set to 168.\n\nClick outside any selected element to deselect, then save the file with Ctrl+S.\n\nAfter saving, the first TimeSig must equal 6/8 and the first Tempo marking must equal 168 BPM. The file must stay at /home/user/Documents/jig.mscz.",
+  "env": {
+    "files": [
+      {
+        "filename": "jig.mscz",
+        "sandbox_path": "/home/user/Documents/jig.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/jig.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "jig.mscz still exists"
+    },
+    {
+      "command": "check-time-signature /home/user/Documents/jig.mscz 6 8",
+      "key": "match",
+      "expected": true,
+      "description": "First TimeSig equals 6/8"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/jig.mscz 168",
+      "key": "match",
+      "expected": true,
+      "description": "First Tempo marking equals 168 BPM"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, modify both <Tempo> element (text/tempo values) and <TimeSig> element (sigN/sigD values), repackage",
+    "reason": "Modifying tempo and time signature is editing existing XML elements - can be done with Python stdlib in ~30 lines"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_resample_export_22050",
+  "files": [
+    {
+      "filename": "tone44.wav",
+      "sandbox_path": "/home/user/Music/tone44.wav",
+      "type": "wav"
+    }
+  ]
+}

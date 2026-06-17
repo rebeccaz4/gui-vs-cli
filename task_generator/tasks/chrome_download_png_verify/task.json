@@ -1,0 +1,88 @@
+{
+  "id": "chrome_download_png_verify",
+  "app": "chrome",
+  "task": "Google Chrome is open. Visit four image/binary endpoints on httpbin.org in four separate tabs: (1) https://httpbin.org/image/png, (2) https://httpbin.org/image/jpeg, (3) https://httpbin.org/image/webp, and (4) https://httpbin.org/image/svg. Each endpoint serves a different image format. Then bookmark the PNG, JPEG, and SVG image URLs (but NOT the webp URL). When done, all four URLs must appear in your browsing history, the four image tabs must be open, and exactly three of the four endpoints must be bookmarked (png, jpeg, svg).",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-url-visited httpbin.org/image/png",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/image/png was visited"
+    },
+    {
+      "command": "check-url-visited httpbin.org/image/jpeg",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/image/jpeg was visited"
+    },
+    {
+      "command": "check-url-visited httpbin.org/image/webp",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/image/webp was visited"
+    },
+    {
+      "command": "check-url-visited httpbin.org/image/svg",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/image/svg was visited"
+    },
+    {
+      "command": "check-tab-open httpbin.org/image/png",
+      "key": "found",
+      "expected": true,
+      "description": "PNG tab is open"
+    },
+    {
+      "command": "check-tab-open httpbin.org/image/jpeg",
+      "key": "found",
+      "expected": true,
+      "description": "JPEG tab is open"
+    },
+    {
+      "command": "check-tab-open httpbin.org/image/webp",
+      "key": "found",
+      "expected": true,
+      "description": "WebP tab is open"
+    },
+    {
+      "command": "check-tab-open httpbin.org/image/svg",
+      "key": "found",
+      "expected": true,
+      "description": "SVG tab is open"
+    },
+    {
+      "command": "check-bookmark httpbin.org/image/png",
+      "key": "exists",
+      "expected": true,
+      "description": "PNG URL is bookmarked"
+    },
+    {
+      "command": "check-bookmark httpbin.org/image/jpeg",
+      "key": "exists",
+      "expected": true,
+      "description": "JPEG URL is bookmarked"
+    },
+    {
+      "command": "check-bookmark httpbin.org/image/svg",
+      "key": "exists",
+      "expected": true,
+      "description": "SVG URL is bookmarked"
+    },
+    {
+      "command": "check-bookmark httpbin.org/image/webp",
+      "key": "exists",
+      "expected": false,
+      "description": "WebP URL is NOT bookmarked"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

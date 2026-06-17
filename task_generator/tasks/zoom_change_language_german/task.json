@@ -1,0 +1,27 @@
+{
+  "id": "zoom_change_language_german",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Change the Zoom UI language to German by setting language=de-DE. Save the updated file in-place at /home/user/.config/zoomus.conf. Do not change any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-language de-DE", "key": "match", "expected": true, "description": "UI language is de-DE"},
+    {"command": "check-config General language de-DE", "key": "match", "expected": true, "description": "[General]language == de-DE"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [General] language=de-DE",
+    "reason": "CLI agent can directly edit the config file using sed. Simple key-value substitution is trivial for CLI."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "renderdoc_capture_snapshot_tree",
+  "files": [
+    {
+      "filename": "day1a.rdc",
+      "sandbox_path": "/home/user/captures/day1a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "day1b.rdc",
+      "sandbox_path": "/home/user/captures/day1b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "day2a.rdc",
+      "sandbox_path": "/home/user/captures/day2a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "day2b.rdc",
+      "sandbox_path": "/home/user/captures/day2b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "day3a.rdc",
+      "sandbox_path": "/home/user/captures/day3a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "day3b.rdc",
+      "sandbox_path": "/home/user/captures/day3b.rdc",
+      "type": "rdc"
+    }
+  ]
+}

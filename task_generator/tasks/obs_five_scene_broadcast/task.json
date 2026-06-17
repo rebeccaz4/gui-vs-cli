@@ -1,0 +1,99 @@
+{
+  "id": "obs_five_scene_broadcast",
+  "app": "obs",
+  "task": "Open OBS Studio and create a broadcast-ready scene collection with five scenes and various sources.\n\n1. OBS may start with a default 'Scene' -- delete it.\n2. Create five scenes with the exact names: 'Pre-Show', 'Interview', 'Screen Share', 'BRB', and 'End Card'.\n3. Select the 'Pre-Show' scene. Add a Color Source named exactly 'Countdown BG'.\n4. Select the 'Interview' scene. Add a Video Capture Device source named exactly 'Camera'.\n5. Select the 'Screen Share' scene. Add a Display Capture (or Screen Capture) source named exactly 'Monitor'.\n6. Select the 'BRB' scene. Add an Image source named exactly 'BRB Image'. Set its file path to /home/user/Pictures/brb.png.\n7. Select the 'End Card' scene. Add a Color Source named exactly 'EndBG'. Then add a Text (FreeType 2) source named exactly 'Thanks'.\n8. Make sure all added sources are visible (eye icon enabled).\n9. Remove any extra default scenes -- the collection should have exactly 5 scenes.\n10. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "brb.png",
+        "sandbox_path": "/home/user/Pictures/brb.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists 'Pre-Show'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Pre-Show' exists"
+    },
+    {
+      "command": "check-scene-exists Interview",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Interview' exists"
+    },
+    {
+      "command": "check-scene-exists 'Screen Share'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Screen Share' exists"
+    },
+    {
+      "command": "check-scene-exists BRB",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'BRB' exists"
+    },
+    {
+      "command": "check-scene-exists 'End Card'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'End Card' exists"
+    },
+    {
+      "command": "check-scene-count 5",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 5 scenes in the collection"
+    },
+    {
+      "command": "check-source-in-scene 'Countdown BG' 'Pre-Show'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Countdown BG' exists in 'Pre-Show' scene"
+    },
+    {
+      "command": "check-source-in-scene Camera Interview",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Camera' exists in 'Interview' scene"
+    },
+    {
+      "command": "check-source-in-scene Monitor 'Screen Share'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Monitor' exists in 'Screen Share' scene"
+    },
+    {
+      "command": "check-source-in-scene 'BRB Image' BRB",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'BRB Image' exists in 'BRB' scene"
+    },
+    {
+      "command": "check-source-in-scene EndBG 'End Card'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'EndBG' exists in 'End Card' scene"
+    },
+    {
+      "command": "check-source-in-scene Thanks 'End Card'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Thanks' exists in 'End Card' scene"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'output streaming/recording/settings' commands for basic configuration",
+    "reason": "CLI has basic output/recording/streaming configuration but advanced settings may require GUI"
+  }
+}

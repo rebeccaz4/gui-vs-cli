@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_add_transparency_mask",
+  "files": [
+    {
+      "filename": "portrait_mask.kra",
+      "sandbox_path": "/home/user/Documents/portrait_mask.kra",
+      "type": "kra"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "audacity_gap_silence_region",
+  "files": [
+    {"filename": "voiceover.wav", "sandbox_path": "/home/user/Music/voiceover.wav", "type": "wav"}
+  ]
+}

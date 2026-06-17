@@ -1,0 +1,40 @@
+{
+  "id": "chrome_download_httpbin_file",
+  "app": "chrome",
+  "task": "Open Google Chrome. Navigate to https://httpbin.org/image/png in the first tab. This URL serves a PNG image directly. Save the image to the default Downloads folder as 'httpbin_image.png'. After saving, open a new tab and navigate to https://httpbin.org/robots.txt. Verify the robots.txt page loads and displays text content. Both tabs should remain open when done.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-url-visited httpbin.org/image/png",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/image/png was visited"
+    },
+    {
+      "command": "check-download png",
+      "key": "downloaded",
+      "expected": true,
+      "description": "PNG image download completed"
+    },
+    {
+      "command": "check-tab-open httpbin.org/robots.txt",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with httpbin.org/robots.txt is open"
+    },
+    {
+      "command": "check-url-visited httpbin.org/robots.txt",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/robots.txt was visited"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

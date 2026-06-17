@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_ply_binary_to_ascii",
+  "files": [
+    {
+      "filename": "scan_binary.ply",
+      "sandbox_path": "/home/user/Documents/scan_binary.ply",
+      "type": "ply"
+    }
+  ]
+}

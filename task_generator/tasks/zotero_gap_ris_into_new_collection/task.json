@@ -1,0 +1,54 @@
+{
+  "id": "zotero_gap_ris_into_new_collection",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. An RIS file with 2 entries is at /home/user/Documents/nlp_papers.ris (ELECTRA and RoBERTa). Launch Zotero. Create a new top-level collection named exactly 'NLP Imports'. Then import /home/user/Documents/nlp_papers.ris into Zotero, ensuring BOTH imported items are placed in the 'NLP Imports' collection. After completion the 'NLP Imports' collection must exist and contain at least 2 items, and both 'ELECTRA' and 'RoBERTa' items must exist in the library. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "nlp_papers.ris",
+        "sandbox_path": "/home/user/Documents/nlp_papers.ris"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-collection-exists 'NLP Imports'",
+      "key": "exists",
+      "expected": true,
+      "description": "Collection exists"
+    },
+    {
+      "command": "check-collection-count 'NLP Imports' 2",
+      "key": "match",
+      "expected": true,
+      "description": "Collection has at least 2 items"
+    },
+    {
+      "command": "check-item-exists ELECTRA",
+      "key": "exists",
+      "expected": true,
+      "description": "ELECTRA imported"
+    },
+    {
+      "command": "check-item-exists RoBERTa",
+      "key": "exists",
+      "expected": true,
+      "description": "RoBERTa imported"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json collection create 'NLP Imports' --experimental && cli-anything-zotero --json import file /home/user/Documents/nlp_papers.ris --collection <collection_key>",
+    "reason": "CLI-Anything supports both creating collections (experimental) and importing RIS files into specific collections. First create the collection, get its key, then import the RIS file into that collection. Requires Zotero to be running for import."
+  }
+}

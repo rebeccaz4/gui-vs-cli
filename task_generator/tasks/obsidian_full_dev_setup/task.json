@@ -1,0 +1,139 @@
+{
+  "id": "obsidian_full_dev_setup",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/FullDevVault. Perform a complete developer vault setup:\n\n1.Enable 'Vim key bindings' (vimMode), enable 'Show line number' (showLineNumber), enable 'Show frontmatter' (showFrontmatter), disable 'Readable line length' (readableLineLength), enable 'Strict line breaks' (strictLineBreaks).\n2. Set base font size to 15, set theme to 'obsidian' (dark mode).\n3. Set hotkeys for 'Toggle bold' (editor:toggle-bold), 'Open command palette' (command-palette:open), and 'Open quick switcher' (switcher:open).\n4. Create folders: 'Projects', 'TIL', 'Snippets'.\n5. Create 'Projects/API-Service.md' with frontmatter 'type: project', 'language: python', 'status: active' and body:\n\n# API Service\nREST API built with FastAPI.\n\n## Architecture\n- FastAPI framework\n- PostgreSQL database\n- Redis cache\n\n## Tasks\n- Implement auth endpoints\n- Add rate limiting\n- Set up CI/CD\n\nLearnings: [[TIL-FastAPI]], [[TIL-Docker]]\n#project #python #api\n\n6. Create 'TIL/TIL-FastAPI.md' with frontmatter 'type: til', 'date: 2025-03-14' and body:\n\n# TIL: FastAPI Dependency Injection\nFastAPI uses Depends for clean DI.\n\nFrom working on [[API-Service]].\n\n#til #python #fastapi\n\n7. Create 'TIL/TIL-Docker.md' with frontmatter 'type: til', 'date: 2025-03-15' and body:\n\n# TIL: Docker Multi-stage Builds\nReduce image size by 70% with multi-stage builds.\n\nApplied to [[API-Service]].\n\n#til #docker #devops\n\n8. Create 'Snippets/Python-Decorator.md' with frontmatter 'type: snippet', 'language: python' and body:\n\n# Python Decorator Pattern\n\nUseful in [[API-Service]] for auth middleware.\n\n#snippet #python",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-setting /home/user/Documents/FullDevVault vimMode true",
+      "key": "match",
+      "expected": true,
+      "description": "Vim mode enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/FullDevVault showLineNumber true",
+      "key": "match",
+      "expected": true,
+      "description": "Show line number enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/FullDevVault showFrontmatter true",
+      "key": "match",
+      "expected": true,
+      "description": "Show frontmatter enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/FullDevVault readableLineLength false",
+      "key": "match",
+      "expected": true,
+      "description": "Readable line length disabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/FullDevVault strictLineBreaks true",
+      "key": "match",
+      "expected": true,
+      "description": "Strict line breaks enabled"
+    },
+    {
+      "command": "appearance /home/user/Documents/FullDevVault baseFontSize",
+      "eval": "result.get('value') == 15",
+      "description": "Font size set to 15"
+    },
+    {
+      "command": "appearance /home/user/Documents/FullDevVault theme",
+      "eval": "result.get('value') == 'obsidian'",
+      "description": "Theme set to obsidian (dark)"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/FullDevVault editor:toggle-bold",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Bold hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/FullDevVault command-palette:open",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Command palette hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/FullDevVault switcher:open",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Quick switcher hotkey set"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/FullDevVault Projects",
+      "key": "exists",
+      "expected": true,
+      "description": "Projects folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/FullDevVault TIL",
+      "key": "exists",
+      "expected": true,
+      "description": "TIL folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/FullDevVault Snippets",
+      "key": "exists",
+      "expected": true,
+      "description": "Snippets folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/FullDevVault API-Service language python",
+      "key": "match",
+      "expected": true,
+      "description": "API-Service has language=python"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FullDevVault API-Service TIL-FastAPI",
+      "key": "links_to",
+      "expected": true,
+      "description": "API-Service links to TIL-FastAPI"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FullDevVault API-Service TIL-Docker",
+      "key": "links_to",
+      "expected": true,
+      "description": "API-Service links to TIL-Docker"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FullDevVault TIL-FastAPI API-Service",
+      "key": "links_to",
+      "expected": true,
+      "description": "TIL-FastAPI links to API-Service"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/FullDevVault TIL-Docker devops",
+      "key": "has_tag",
+      "expected": true,
+      "description": "TIL-Docker has #devops tag"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/FullDevVault Python-Decorator API-Service",
+      "key": "links_to",
+      "expected": true,
+      "description": "Python-Decorator links to API-Service"
+    },
+    {
+      "command": "list-notes /home/user/Documents/FullDevVault",
+      "eval": "result.get('count') == 4",
+      "description": "Vault has exactly 4 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1) \u4fee\u6539 .obsidian/app.json \u8bbe\u7f6eeditor\u548cappearance\u9009\u9879; 2) \u4fee\u6539 .obsidian/hotkeys.json \u8bbe\u7f6e\u5feb\u6377\u952e; 3) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa\u6587\u4ef6\u5939\u548c\u6240\u6709notes",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'In Settings > Editor'\u3001'In Settings > Appearance'\u3001'In Settings > Hotkeys'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u4fee\u6539\u6240\u6709\u914d\u7f6e\u6587\u4ef6"
+  }
+}

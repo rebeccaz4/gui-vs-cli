@@ -1,0 +1,15 @@
+{
+  "task_id": "audacity_mix_two_files_export",
+  "files": [
+    {
+      "filename": "base.wav",
+      "sandbox_path": "/home/user/Music/base.wav",
+      "type": "wav"
+    },
+    {
+      "filename": "overlay.wav",
+      "sandbox_path": "/home/user/Music/overlay.wav",
+      "type": "wav"
+    }
+  ]
+}

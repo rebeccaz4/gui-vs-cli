@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_expense_tracker_running_balance",
+  "files": [
+    {"filename": "expenses.xlsx", "sandbox_path": "/home/user/Documents/expenses.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "writer_landscape_page_with_bookmarks",
+  "app": "libreoffice_writer",
+  "task": "Open the file /home/user/Documents/reference_guide.odt in LibreOffice Writer. The document contains a reference guide with sections but no headings, no page layout changes, and all paragraphs in Default Paragraph Style.\n\nPerform the following formatting and layout tasks:\n\n1. Change the page orientation to Landscape (Format > Page Style > Page tab, set Orientation to Landscape).\n2. Set the first paragraph 'API Reference Guide' to Heading 1 style and make it bold.\n3. Set the following paragraphs to Heading 2 style: 'Authentication', 'Endpoints', 'Error Codes', and 'Rate Limits'.\n4. Add a page header with the text 'API Reference v2.0' (Format > Page Style > Header tab, enable header, then type the text).\n5. Add a page footer with the text 'Internal Use Only' (Format > Page Style > Footer tab, enable footer, then type the text).\n6. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {"filename": "reference_guide.odt", "sandbox_path": "/home/user/Documents/reference_guide.odt"}
+    ]
+  },
+  "verification": [
+    {"command": "page-style", "eval": "result.get('orientation', '') == 'landscape'", "description": "Page orientation is landscape"},
+    {"command": "check-paragraph-style 0 \"Heading 1\"", "key": "match", "expected": true, "description": "First paragraph has Heading 1 style"},
+    {"command": "check-paragraph-formatted 0 true", "key": "match", "expected": true, "description": "First paragraph is bold"},
+    {"command": "check-heading-exists \"Authentication\" 2", "key": "exists", "expected": true, "description": "'Authentication' is Heading 2"},
+    {"command": "check-heading-exists \"Endpoints\" 2", "key": "exists", "expected": true, "description": "'Endpoints' is Heading 2"},
+    {"command": "check-heading-exists \"Error Codes\" 2", "key": "exists", "expected": true, "description": "'Error Codes' is Heading 2"},
+    {"command": "check-heading-exists \"Rate Limits\" 2", "key": "exists", "expected": true, "description": "'Rate Limits' is Heading 2"},
+    {"command": "headers-footers", "eval": "'API Reference v2.0' in result.get('header_text', '')", "description": "Header contains 'API Reference v2.0'"},
+    {"command": "headers-footers", "eval": "'Internal Use Only' in result.get('footer_text', '')", "description": "Footer contains 'Internal Use Only'"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

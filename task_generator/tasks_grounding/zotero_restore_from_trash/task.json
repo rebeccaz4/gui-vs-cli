@@ -1,0 +1,46 @@
+{
+  "id": "zotero_restore_from_trash",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. The library currently has 4 active items in My Library plus one item in the Trash titled 'Generative Adversarial Networks'. Launch Zotero, click the 'Trash' entry in the left collections pane, locate the item 'Generative Adversarial Networks', and restore it to the library. After the restore the GAN item must NOT be in the trash, must exist among regular items, and the regular (non-trashed) item count must equal 5. Leave Zotero running.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. The library currently has 4 active items in My Library plus one item in the Trash titled 'Generative Adversarial Networks'. Launch Zotero, click the 'Trash' entry in the left collections pane, locate the item 'Generative Adversarial Networks', right-click it and choose 'Restore to Library'. After the restore the GAN item must NOT be in the trash, must exist among regular items, and the regular (non-trashed) item count must equal 5. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-in-trash 'Generative Adversarial Networks'",
+      "key": "in_trash",
+      "expected": false,
+      "description": "GAN item no longer in trash"
+    },
+    {
+      "command": "check-item-exists 'Generative Adversarial Networks'",
+      "key": "exists",
+      "expected": true,
+      "description": "GAN item exists in regular library"
+    },
+    {
+      "command": "check-item-count 5",
+      "key": "match",
+      "expected": true,
+      "description": "Regular item count is 5"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find item by title in deletedItems, 2) Delete the record from deletedItems table",
+    "reason": "Restoring from trash is simply removing the itemID from the deletedItems table. A Python script can DELETE the record from deletedItems, which makes the item appear in the regular library again. This is the reverse of moving to trash."
+  }
+}

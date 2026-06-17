@@ -1,0 +1,63 @@
+{
+  "id": "musescore3_multi_meta_publishing",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/draft_song.mscz. Update the Score Properties so the score is ready for publishing, then save.\n\nOpen File > Score Properties and set the following five fields to these exact values:\n- Work Title: Autumn Reverie\n- Composer: Marie Durand\n- Lyricist: Paul Verlaine\n- Arranger: Chamber Ensemble\n- Copyright: Public Domain 2024\n\nClick OK to close the dialog, then save the file with Ctrl+S. The file must stay at /home/user/Documents/draft_song.mscz.",
+  "env": {
+    "files": [
+      {
+        "filename": "draft_song.mscz",
+        "sandbox_path": "/home/user/Documents/draft_song.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/draft_song.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "draft_song.mscz still exists"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/draft_song.mscz workTitle Autumn Reverie",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle metaTag is 'Autumn Reverie'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/draft_song.mscz composer Marie Durand",
+      "key": "match",
+      "expected": true,
+      "description": "composer metaTag is 'Marie Durand'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/draft_song.mscz lyricist Paul Verlaine",
+      "key": "match",
+      "expected": true,
+      "description": "lyricist metaTag is 'Paul Verlaine'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/draft_song.mscz arranger Chamber Ensemble",
+      "key": "match",
+      "expected": true,
+      "description": "arranger metaTag is 'Chamber Ensemble'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/draft_song.mscz copyright Public Domain 2024",
+      "key": "match",
+      "expected": true,
+      "description": "copyright metaTag is 'Public Domain 2024'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Update metadata via XML editing, then call mscore --export-to for multiple formats (PDF, MIDI, MusicXML, etc.)",
+    "reason": "Metadata editing is simple XML manipulation; multi-format publishing uses mscore command-line export capabilities"
+  }
+}

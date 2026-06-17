@@ -1,0 +1,31 @@
+{
+  "id": "zoom_privacy_lockdown",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Lock down Zoom's auto-start, auto-answer, and telemetry surface. Set autoStart to false, set autoAnswer to false, set EnableCrashReport to false, and set SendFeedback to false. Save the file in-place at the same path. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config General autoStart false", "key": "match", "expected": true, "description": "[General]autoStart == false"},
+    {"command": "check-config General autoAnswer false", "key": "match", "expected": true, "description": "[General]autoAnswer == false"},
+    {"command": "check-config General EnableCrashReport false", "key": "match", "expected": true, "description": "[General]EnableCrashReport == false"},
+    {"command": "check-config General SendFeedback false", "key": "match", "expected": true, "description": "[General]SendFeedback == false"},
+    {"command": "check-config General language en-US", "key": "match", "expected": true, "description": "Other [General] keys untouched"},
+    {"command": "check-config General HowlingDetection true", "key": "match", "expected": true, "description": "HowlingDetection untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [General] autoStart=false, autoAnswer=false, EnableCrashReport=false, SendFeedback=false",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. Multiple key-value changes in one section are straightforward for CLI."
+  }
+}

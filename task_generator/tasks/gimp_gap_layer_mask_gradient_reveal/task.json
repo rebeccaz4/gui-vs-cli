@@ -1,0 +1,59 @@
+{
+  "id": "gimp_gap_layer_mask_gradient_reveal",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/blue_bg.png in GIMP as the background layer. Add /home/user/Documents/red_fg.png as a new layer on top. Add a white layer mask to the red layer, then use the Gradient (Blend) tool to paint a left-to-right black-to-white linear gradient on that mask (black on the left edge, white on the right edge) so that the red fades into the blue across the image. Flatten and export the result as PNG to /home/user/Documents/mask_gradient.png. Output must be 400x300.",
+  "env": {
+    "files": [
+      {
+        "filename": "blue_bg.png",
+        "sandbox_path": "/home/user/Documents/blue_bg.png"
+      },
+      {
+        "filename": "red_fg.png",
+        "sandbox_path": "/home/user/Documents/red_fg.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/mask_gradient.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/mask_gradient.png 400 300",
+      "key": "match",
+      "expected": true,
+      "description": "Output is 400x300"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/mask_gradient.png 5 150 0 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "Left edge reveals blue (mask fully hides red)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/mask_gradient.png 395 150 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "Right edge shows red (mask fully reveals red)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/mask_gradient.png 200 150",
+      "eval": "50 < result.get('r', 0) < 230 and 0 <= result.get('g', 255) < 50 and 30 < result.get('b', 0) < 230",
+      "description": "Midpoint is a blend of red and blue (not pure red or pure blue)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python with PIL: Create gradient mask array, apply to blend two images based on mask - complex but possible",
+    "reason": "Layer mask with gradient requires creating alpha mask programmatically - very complex"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "id": "godot4_input_actions_and_display",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/combo_game/project.godot. Set application/config/name=\"Combo Game\". Add a [display] section with window/size/viewport_width=1024 and window/size/viewport_height=768. Add an [input] section with pause action bound to ESCAPE and screenshot action bound to F2. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/combo_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/combo_game/main.tscn"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/combo_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-project-setting /home/user/godot_projects/combo_game/project.godot application/config/name '\"Combo Game\"'",
+      "key": "match",
+      "expected": true,
+      "description": "config/name is 'Combo Game'"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/combo_game/project.godot display/window/size/viewport_width 1024",
+      "key": "match",
+      "expected": true,
+      "description": "viewport_width is 1024"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/combo_game/project.godot display/window/size/viewport_height 768",
+      "key": "match",
+      "expected": true,
+      "description": "viewport_height is 768"
+    },
+    {
+      "command": "check-input-action /home/user/godot_projects/combo_game/project.godot pause",
+      "key": "exists",
+      "expected": true,
+      "description": "pause action added"
+    },
+    {
+      "command": "check-input-action-key /home/user/godot_projects/combo_game/project.godot pause ESCAPE",
+      "key": "match",
+      "expected": true,
+      "description": "pause bound to ESCAPE"
+    },
+    {
+      "command": "check-input-action /home/user/godot_projects/combo_game/project.godot screenshot",
+      "key": "exists",
+      "expected": true,
+      "description": "screenshot action added"
+    },
+    {
+      "command": "check-input-action-key /home/user/godot_projects/combo_game/project.godot screenshot F2",
+      "key": "match",
+      "expected": true,
+      "description": "screenshot bound to F2"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash/Python to edit project.godot INI file directly",
+    "reason": "project.godot is a text INI file - trivial to edit with CLI tools"
+  }
+}

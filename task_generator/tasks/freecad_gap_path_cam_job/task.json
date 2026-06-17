@@ -1,0 +1,62 @@
+{
+  "id": "freecad_gap_path_cam_job",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/path_start.FCStd. The document contains a Part::Box named 'Stock' (80 x 60 x 10 mm). Switch to the Path (CAM) workbench. Create a new Path Job. Add the 'Stock' object to the job. Generate a toolpath for a profile operation: tool diameter=3 mm, feed rate=600 mm/min, depth of cut=10 mm. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "path_start.FCStd",
+        "sandbox_path": "/home/user/Documents/path_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/path_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/path_start.FCStd Stock",
+      "key": "exists",
+      "expected": true,
+      "description": "Stock preserved"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/path_start.FCStd CNCJob",
+      "key": "exists",
+      "expected": true,
+      "description": "CNCJob exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/path_start.FCStd CNCJob Path::FeatureCompoundPython",
+      "key": "match",
+      "expected": true,
+      "description": "CNCJob is a Path Job (Path::FeatureCompoundPython)"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/path_start.FCStd TC_EndMill6",
+      "key": "exists",
+      "expected": true,
+      "description": "TC_EndMill6 tool controller exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/path_start.FCStd ProfileOp",
+      "key": "exists",
+      "expected": true,
+      "description": "ProfileOp operation exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: part add box → cam new-job + set-tool + generate-gcode",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, cam new-job + set-tool + generate-gcode"
+  }
+}

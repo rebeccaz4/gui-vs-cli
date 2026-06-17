@@ -1,0 +1,87 @@
+{
+  "id": "obsidian_add_links_to_existing",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/LinkVault. The vault has 5 isolated notes with no links between them. Edit each note to add cross-references by appending a '## Related' section at the end:\n\n1. Edit 'Python.md': Add '## Related' section with links to [[JavaScript]] and [[Git]].\n2. Edit 'JavaScript.md': Add '## Related' section with links to [[Python]] and [[React]].\n3. Edit 'React.md': Add '## Related' section with links to [[JavaScript]] and [[TypeScript]].\n4. Edit 'TypeScript.md': Add '## Related' section with links to [[JavaScript]] and [[React]].\n5. Edit 'Git.md': Add '## Related' section with links to [[Python]] and [[JavaScript]].\n\nThen create 'Map of Content.md' in root with body:\n\n# Map of Content\n\n## Languages\n- [[Python]]\n- [[JavaScript]]\n- [[TypeScript]]\n\n## Frameworks\n- [[React]]\n\n## Tools\n- [[Git]]\n\n#moc #overview",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault Python JavaScript",
+      "key": "links_to",
+      "expected": true,
+      "description": "Python links to JavaScript"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault Python Git",
+      "key": "links_to",
+      "expected": true,
+      "description": "Python links to Git"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault JavaScript React",
+      "key": "links_to",
+      "expected": true,
+      "description": "JavaScript links to React"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault React TypeScript",
+      "key": "links_to",
+      "expected": true,
+      "description": "React links to TypeScript"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault TypeScript React",
+      "key": "links_to",
+      "expected": true,
+      "description": "TypeScript links to React"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault Git Python",
+      "key": "links_to",
+      "expected": true,
+      "description": "Git links to Python"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/LinkVault Python Related",
+      "key": "has_heading",
+      "expected": true,
+      "description": "Python has Related heading"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault 'Map of Content' Python",
+      "key": "links_to",
+      "expected": true,
+      "description": "Map of Content links to Python"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/LinkVault 'Map of Content' Git",
+      "key": "links_to",
+      "expected": true,
+      "description": "Map of Content links to Git"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/LinkVault 'Map of Content' moc",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Map of Content has #moc tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/LinkVault",
+      "eval": "result.get('count') == 6",
+      "description": "Vault has exactly 6 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) vault update \u4fee\u6539\u73b0\u67095\u4e2anotes\u7684\u5185\u5bb9\uff0c\u6dfb\u52a0## Related\u90e8\u5206\u548cwikilinks; 2) vault create \u521b\u5efa Map of Content.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Edit each note'\u3001'append'\u3001'create'\u7b49GUI\u64cd\u4f5c\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7cli-anything-obsidian skill\u7684vault update\u548cvault create\u547d\u4ee4\u5b8c\u6210\u6240\u6709\u64cd\u4f5c\uff0c\u65e0\u9700GUI\u4ea4\u4e92"
+  }
+}

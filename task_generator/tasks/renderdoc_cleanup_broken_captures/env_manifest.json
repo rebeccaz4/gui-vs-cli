@@ -1,0 +1,30 @@
+{
+  "task_id": "renderdoc_cleanup_broken_captures",
+  "files": [
+    {
+      "filename": "scene_a.rdc",
+      "sandbox_path": "/home/user/captures/scene_a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "scene_b.rdc",
+      "sandbox_path": "/home/user/captures/scene_b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "scene_c.rdc",
+      "sandbox_path": "/home/user/captures/scene_c.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "broken_x.rdc",
+      "sandbox_path": "/home/user/captures/broken_x.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "broken_y.rdc",
+      "sandbox_path": "/home/user/captures/broken_y.rdc",
+      "type": "rdc"
+    }
+  ]
+}

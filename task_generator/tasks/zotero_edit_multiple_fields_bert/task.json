@@ -1,0 +1,45 @@
+{
+  "id": "zotero_edit_multiple_fields_bert",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'BERT: Pre-training of Deep Bidirectional Transformers' in the middle pane and click it so its metadata appears. The item currently has a publicationTitle of 'NAACL' and a DOI but its Pages, Volume, and Publisher fields are empty. Set the following fields to the exact values shown: Pages = 4171-4186, Volume = 1, Publisher = Association for Computational Linguistics. Make sure each value is saved. Leave Zotero running so the edits persist.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-field 'BERT: Pre-training' pages 4171-4186",
+      "key": "match",
+      "expected": true,
+      "description": "BERT pages = 4171-4186"
+    },
+    {
+      "command": "check-item-field 'BERT: Pre-training' volume 1",
+      "key": "match",
+      "expected": true,
+      "description": "BERT volume = 1"
+    },
+    {
+      "command": "check-item-field 'BERT: Pre-training' publisher 'Association for Computational Linguistics'",
+      "key": "match",
+      "expected": true,
+      "description": "BERT publisher set"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find BERT item by title, 2) For each field (pages, volume, publisher), find fieldID and insert/update value in itemDataValues table, 3) Link via itemData table",
+    "reason": "Multiple field updates follow the same pattern as single field updates. Zotero's metadata system uses the same itemData/itemDataValues structure for all fields. A Python script can update multiple fields in a single transaction."
+  }
+}

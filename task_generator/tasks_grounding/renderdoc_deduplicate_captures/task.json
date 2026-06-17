@@ -1,0 +1,108 @@
+{
+  "id": "renderdoc_deduplicate_captures",
+  "app": "renderdoc",
+  "task": "Remove byte-for-byte duplicate capture files from /home/user/captures/ keeping only unique files.",
+  "task_grounding": "The directory /home/user/captures contains six capture files where some are byte-for-byte duplicates of each other:\n\n  draw1.rdc, draw2.rdc, draw3.rdc  - three identical copies\n  frameA.rdc, frameB.rdc           - two identical copies\n  unique.rdc                       - one-of-a-kind\n\nRemove duplicates so that only one copy of each group remains:\n1. Delete draw2.rdc and draw3.rdc, keeping draw1.rdc.\n2. Delete frameB.rdc, keeping frameA.rdc.\n3. Leave unique.rdc alone.\n\nWhen finished, /home/user/captures must contain exactly 3 .rdc files (draw1.rdc, frameA.rdc, unique.rdc), all valid. Do not modify contents of any remaining file.",
+  "env": {
+    "files": [
+      {
+        "filename": "draw1.rdc",
+        "sandbox_path": "/home/user/captures/draw1.rdc"
+      },
+      {
+        "filename": "draw2.rdc",
+        "sandbox_path": "/home/user/captures/draw2.rdc"
+      },
+      {
+        "filename": "draw3.rdc",
+        "sandbox_path": "/home/user/captures/draw3.rdc"
+      },
+      {
+        "filename": "frameA.rdc",
+        "sandbox_path": "/home/user/captures/frameA.rdc"
+      },
+      {
+        "filename": "frameB.rdc",
+        "sandbox_path": "/home/user/captures/frameB.rdc"
+      },
+      {
+        "filename": "unique.rdc",
+        "sandbox_path": "/home/user/captures/unique.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "3 captures remain"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/draw1.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "draw1 kept"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frameA.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "frameA kept"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/unique.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "unique kept"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/draw2.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "draw2 deleted"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/draw3.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "draw3 deleted"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frameB.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "frameB deleted"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/draw1.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "draw1 valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/frameA.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "frameA valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/unique.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "unique valid"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash: sha256sum *.rdc | sort | find duplicates; rm duplicate_files.rdc",
+    "reason": "Task only requires deleting duplicate .rdc files, not editing their content. Can use bash: find duplicates with checksum comparison (sha256sum), then delete with rm command."
+  }
+}

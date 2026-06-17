@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_export_musicxml",
+  "files": [
+    {
+      "filename": "duet.mscz",
+      "sandbox_path": "/home/user/Documents/duet.mscz",
+      "type": "mscz"
+    }
+  ]
+}

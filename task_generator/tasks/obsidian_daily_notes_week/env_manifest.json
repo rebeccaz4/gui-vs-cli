@@ -1,0 +1,7 @@
+{
+  "task_id": "obsidian_daily_notes_week",
+  "files": [
+    {"filename": "app.json", "sandbox_path": "/home/user/Documents/DailyVault/.obsidian/app.json", "type": "json"},
+    {"filename": "core-plugins.json", "sandbox_path": "/home/user/Documents/DailyVault/.obsidian/core-plugins.json", "type": "json"}
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "id": "drawio_kubernetes_cluster",
+  "app": "drawio",
+  "task": "Create a Kubernetes cluster architecture at /home/user/Documents/k8s_cluster.drawio. Create 12 shapes: Control Plane, Ingress, Worker1, Worker2, Worker3, Pod1-6, ServiceMesh. Connect hierarchically: Control Plane to each Worker, each Worker to 2 Pods (Worker1->Pod1/2, Worker2->Pod3/4, Worker3->Pod5/6), Ingress to Control Plane. The diagram must have 12 vertices and at least 9 edges. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/k8s_cluster.drawio in draw.io Desktop. Create a Kubernetes cluster architecture diagram on page 0. Add exactly 12 shapes with these exact labels: 'Control Plane', 'Ingress', 'Worker1', 'Worker2', 'Worker3', 'Pod1', 'Pod2', 'Pod3', 'Pod4', 'Pod5', 'Pod6', 'ServiceMesh'. Connect them hierarchically: Control Plane must have edges to each of Worker1, Worker2, and Worker3. Each worker has 2 pods connected to it (Worker1->Pod1, Worker1->Pod2, Worker2->Pod3, Worker2->Pod4, Worker3->Pod5, Worker3->Pod6). Also connect Ingress to Control Plane. The diagram must have at least 9 edges total. Save at /home/user/Documents/k8s_cluster.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "k8s_cluster.drawio",
+        "sandbox_path": "/home/user/Documents/k8s_cluster.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/k8s_cluster.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/k8s_cluster.drawio 12 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 12 vertices"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio \"Control Plane\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Control Plane label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Ingress",
+      "key": "exists",
+      "expected": true,
+      "description": "Ingress label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Worker1",
+      "key": "exists",
+      "expected": true,
+      "description": "Worker1 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Worker2",
+      "key": "exists",
+      "expected": true,
+      "description": "Worker2 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Worker3",
+      "key": "exists",
+      "expected": true,
+      "description": "Worker3 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod1",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod1 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod2",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod2 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod3",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod3 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod4",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod4 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod5",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod5 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio Pod6",
+      "key": "exists",
+      "expected": true,
+      "description": "Pod6 label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/k8s_cluster.drawio ServiceMesh",
+      "key": "exists",
+      "expected": true,
+      "description": "ServiceMesh label exists"
+    },
+    {
+      "command": "edges /home/user/Documents/k8s_cluster.drawio 0",
+      "eval": "len(result) >= 9",
+      "description": "At least 9 edges on page 0"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Using the connections list (source/target IDs) and the vertices list (IDs to labels), verify that Control Plane has connecting edges to ALL THREE workers: Worker1, Worker2, and Worker3. Edges may go in either direction. Answer yes only if all three connections exist.",
+      "command": "connections /home/user/Documents/k8s_cluster.drawio 0",
+      "context": "command_output",
+      "description": "Control Plane connects to all 3 workers"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  }
+}

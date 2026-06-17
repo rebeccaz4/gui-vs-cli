@@ -1,0 +1,56 @@
+{
+  "id": "musescore3_gap_chord_symbols",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/leadsheet.mscz (single melody staff, 4 measures in C major). Add chord symbols above the first note of each measure: measure 1 = C, measure 2 = F, measure 3 = G7, measure 4 = C. Use Add > Text > Chord Symbol (Ctrl+K). Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "leadsheet.mscz",
+        "sandbox_path": "/home/user/Documents/leadsheet.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/leadsheet.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-chord-symbol-in-measure /home/user/Documents/leadsheet.mscz 1 C",
+      "key": "match",
+      "expected": true,
+      "description": "C chord symbol at measure 1"
+    },
+    {
+      "command": "check-chord-symbol-in-measure /home/user/Documents/leadsheet.mscz 2 F",
+      "key": "match",
+      "expected": true,
+      "description": "F chord symbol at measure 2"
+    },
+    {
+      "command": "check-chord-symbol-in-measure /home/user/Documents/leadsheet.mscz 3 G7",
+      "key": "match",
+      "expected": true,
+      "description": "G7 chord symbol at measure 3"
+    },
+    {
+      "command": "check-chord-symbol-in-measure /home/user/Documents/leadsheet.mscz 4 C",
+      "key": "match",
+      "expected": true,
+      "description": "C chord symbol at measure 4"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, find beat positions, insert <Harmony><text>C</text></Harmony> elements above notes, repackage",
+    "reason": "Adding chord symbols is inserting Harmony XML elements - can be done with Python stdlib in ~35 lines"
+  }
+}

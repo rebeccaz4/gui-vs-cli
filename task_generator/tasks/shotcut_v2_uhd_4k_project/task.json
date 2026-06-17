@@ -1,0 +1,55 @@
+{
+  "id": "shotcut_v2_uhd_4k_project",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/uhd_project.mlt (currently a 1920x1080 30 fps project). A source video exists at /home/user/Videos/drone.mp4.\n\nSteps:\n1. Open Settings > Video Mode > Custom > Add... and create a new custom video mode with resolution 3840x2160, frame rate 30 fps, aspect ratio 16:9, progressive. Select it so it becomes the active project video mode.\n2. Import /home/user/Videos/drone.mp4 into the project.\n3. Drag drone.mp4 onto the V1 timeline track so it becomes the only clip on the timeline.\n4. Press Ctrl+S to save the project.\n\nThe saved project at /home/user/Documents/uhd_project.mlt must have a 3840x2160 profile at 30 fps and reference drone.mp4.",
+  "env": {
+    "files": [
+      {
+        "filename": "uhd_project.mlt",
+        "sandbox_path": "/home/user/Documents/uhd_project.mlt"
+      },
+      {
+        "filename": "drone.mp4",
+        "sandbox_path": "/home/user/Videos/drone.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/uhd_project.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/uhd_project.mlt 3840 2160",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 3840x2160"
+    },
+    {
+      "command": "check-fps /home/user/Documents/uhd_project.mlt 30",
+      "key": "match",
+      "expected": true,
+      "description": "Project frame rate is 30 fps"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/uhd_project.mlt drone.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "drone.mp4 is referenced in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Not feasible via CLI - requires changing project profile through GUI Settings > Video Mode > Custom",
+    "reason": "❌ CLI-Anything shotcut can create new projects with specified profiles but cannot modify the profile of an existing project. Changing profile requires GUI interaction in Settings > Video Mode > Custom. The MLT XML profile can be manually edited but this is error-prone and not a standard CLI operation."
+  }
+}

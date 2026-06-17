@@ -1,0 +1,85 @@
+{
+  "id": "renderdoc_cap_launcher_hook",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/launcher.cap: executable='/usr/local/games/game_launcher', workingDir='/home/user/games', commandLine='--launch-child engine_process', options HookIntoChildren=true, APIValidation=false, CaptureCallstacks=false, CaptureAllCmdLists=false, DebugOutputMute=true, RefAllResources=false, VerifyBufferAccess=false, environment empty, autoStart=false.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/launcher.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "launcher.cap exists"
+    },
+    {
+      "command": "cap-parse /home/user/captures/launcher.cap",
+      "eval": "isinstance(result, dict) and 'error' not in result",
+      "description": "launcher.cap parses as JSON"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/launcher.cap /usr/local/games/game_launcher",
+      "key": "match",
+      "expected": true,
+      "description": "executable is game_launcher"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/launcher.cap /home/user/games",
+      "key": "match",
+      "expected": true,
+      "description": "workingDir is /home/user/games"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/launcher.cap --launch-child",
+      "key": "match",
+      "expected": true,
+      "description": "commandLine includes --launch-child"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/launcher.cap HookIntoChildren true",
+      "key": "match",
+      "expected": true,
+      "description": "HookIntoChildren is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/launcher.cap APIValidation false",
+      "key": "match",
+      "expected": true,
+      "description": "APIValidation is false"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/launcher.cap DebugOutputMute true",
+      "key": "match",
+      "expected": true,
+      "description": "DebugOutputMute is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/launcher.cap CaptureCallstacks false",
+      "key": "match",
+      "expected": true,
+      "description": "CaptureCallstacks is false"
+    },
+    {
+      "command": "cap-parse /home/user/captures/launcher.cap",
+      "eval": "result.get('environment') == [] and result.get('autoStart') is False",
+      "description": "environment is empty list; autoStart is false"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

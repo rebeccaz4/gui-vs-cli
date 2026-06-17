@@ -1,0 +1,119 @@
+{
+  "id": "drawio_restyle_erd",
+  "app": "drawio",
+  "task": "Modify the ER diagram at /home/user/Documents/erd.drawio. The file contains 5 rectangles: Customer (id 2), Product (id 3), Order (id 4), Category (id 5), AuditLog (id 6). Change fills: Customer and Order to #dae8fc (blue), Product and Category to #fff2cc (yellow), AuditLog to #f8cecc (red). Add rectangles labeled OrderItem and Payment. Connect Order->OrderItem and Order->Payment. Final diagram must have 7 vertices. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/erd.drawio in draw.io Desktop. The file already contains 5 rectangle shapes with white fill: 'Customer' (cell id 2), 'Product' (cell id 3), 'Order' (cell id 4), 'Category' (cell id 5), and 'AuditLog' (cell id 6). Perform these changes: (1) Change the fill color of 'Customer' (id 2) to blue #dae8fc. (2) Change the fill color of 'Order' (id 4) to blue #dae8fc. (3) Change the fill color of 'Product' (id 3) to yellow #fff2cc. (4) Change the fill color of 'Category' (id 5) to yellow #fff2cc. (5) Change the fill color of 'AuditLog' (id 6) to red #f8cecc. (6) Add 2 new rectangle shapes labeled 'OrderItem' and 'Payment'. (7) Draw an edge from 'Order' to 'OrderItem' and an edge from 'Order' to 'Payment'. When finished the page must have exactly 7 vertices. Save the file at /home/user/Documents/erd.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "erd.drawio",
+        "sandbox_path": "/home/user/Documents/erd.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/erd.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/erd.drawio 7 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 7 vertices after edits"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio Customer",
+      "key": "exists",
+      "expected": true,
+      "description": "Customer label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio Product",
+      "key": "exists",
+      "expected": true,
+      "description": "Product label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio Order",
+      "key": "exists",
+      "expected": true,
+      "description": "Order label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio Category",
+      "key": "exists",
+      "expected": true,
+      "description": "Category label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio AuditLog",
+      "key": "exists",
+      "expected": true,
+      "description": "AuditLog label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio OrderItem",
+      "key": "exists",
+      "expected": true,
+      "description": "OrderItem added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/erd.drawio Payment",
+      "key": "exists",
+      "expected": true,
+      "description": "Payment added"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/erd.drawio 2 fillColor \"#dae8fc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Customer (id 2) is blue #dae8fc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/erd.drawio 3 fillColor \"#fff2cc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Product (id 3) is yellow #fff2cc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/erd.drawio 4 fillColor \"#dae8fc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Order (id 4) is blue #dae8fc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/erd.drawio 5 fillColor \"#fff2cc\"",
+      "key": "match",
+      "expected": true,
+      "description": "Category (id 5) is yellow #fff2cc"
+    },
+    {
+      "command": "check-style-property /home/user/Documents/erd.drawio 6 fillColor \"#f8cecc\"",
+      "key": "match",
+      "expected": true,
+      "description": "AuditLog (id 6) is red #f8cecc"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Using the connections list and the vertices list, verify that the diagram contains an edge from 'Order' to 'OrderItem' and another edge from 'Order' to 'Payment'. Both edges must exist. Answer yes only if both are present.",
+      "command": "connections /home/user/Documents/erd.drawio 0",
+      "context": "command_output",
+      "description": "Order->OrderItem and Order->Payment edges exist"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', shape style --id <id> --fill-color <#hex>, connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Style modification with IDs; ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: rectangle"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_export_multiple_formats",
+  "files": [
+    {
+      "filename": "logo.kra",
+      "sandbox_path": "/home/user/Documents/logo.kra",
+      "type": "kra"
+    }
+  ]
+}

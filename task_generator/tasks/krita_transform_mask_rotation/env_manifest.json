@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_transform_mask_rotation",
+  "files": [
+    {
+      "filename": "transform.kra",
+      "sandbox_path": "/home/user/Documents/transform.kra",
+      "type": "kra"
+    }
+  ]
+}

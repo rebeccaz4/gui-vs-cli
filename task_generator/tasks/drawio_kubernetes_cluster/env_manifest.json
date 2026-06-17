@@ -1,0 +1,10 @@
+{
+  "task_id": "drawio_kubernetes_cluster",
+  "files": [
+    {
+      "filename": "k8s_cluster.drawio",
+      "sandbox_path": "/home/user/Documents/k8s_cluster.drawio",
+      "type": "drawio"
+    }
+  ]
+}

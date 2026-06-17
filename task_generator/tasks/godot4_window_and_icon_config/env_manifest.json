@@ -1,0 +1,20 @@
+{
+  "task_id": "godot4_window_and_icon_config",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/window_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/window_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/window_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

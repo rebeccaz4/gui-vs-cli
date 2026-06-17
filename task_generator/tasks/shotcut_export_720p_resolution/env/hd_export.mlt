@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="C" version="7.14.0" producer="main_bin" root="/home/user">
+  <profile description="HD 720p 25 fps" width="1280" height="720"
+           progressive="1" sample_aspect_num="1" sample_aspect_den="1"
+           display_aspect_num="16" display_aspect_den="9"
+           frame_rate_num="25" frame_rate_den="1" colorspace="709"/>
+
+  <chain id="chain0" in="00:00:00.000" out="00:00:01.000">
+    <property name="resource">/home/user/Videos/master.mp4</property>
+    <property name="mlt_service">avformat</property>
+    <property name="shotcut:caption">master.mp4</property>
+    <property name="length">00:00:01.000</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+  </chain>
+
+  <playlist id="main_bin">
+    <property name="shotcut:projectAudioChannels">2</property>
+    <entry producer="chain0" in="00:00:00.000" out="00:00:01.000"/>
+  </playlist>
+
+  <playlist id="playlist0">
+    <property name="shotcut:name">V1</property>
+    <property name="shotcut:video">1</property>
+    <entry producer="chain0" in="00:00:00.000" out="00:00:01.000"/>
+  </playlist>
+
+  <tractor id="tractor0" in="00:00:00.000" out="00:00:01.000">
+    <property name="shotcut">1</property>
+    <track producer="main_bin" hide="both"/>
+    <track producer="playlist0"/>
+  </tractor>
+</mlt>

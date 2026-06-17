@@ -1,0 +1,128 @@
+{
+  "id": "drawio_incident_runbook",
+  "app": "drawio",
+  "task": "Create a two-page incident response runbook at /home/user/Documents/runbook.drawio. Page 1 (Detection): 5 shapes labeled Alert Received, Triage, Severity Check, Low, High. Connect: Alert Received->Triage->Severity Check->Low, Severity Check->High, Low->Triage (loop). Page 2 (Response): 6 shapes labeled Contain, Eradicate, Recover, Root Cause, Document, Close. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/runbook.drawio in draw.io Desktop. Build a two-page incident response runbook. Rename page 1 to 'Detection' and add a new page 2 named 'Response'. Page 1 ('Detection') must contain exactly 5 shapes with these exact labels: 'Alert Received', 'Triage', 'Severity Check', 'Low', 'High'. Connect them as a branching flow: Alert Received->Triage->Severity Check, then Severity Check->Low and Severity Check->High. Add one additional edge from 'Low' back to 'Triage' (loop). Page 2 ('Response') must contain exactly 6 shapes with these exact labels: 'Contain', 'Eradicate', 'Recover', 'Root Cause', 'Document', 'Close'. Save at /home/user/Documents/runbook.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "runbook.drawio",
+        "sandbox_path": "/home/user/Documents/runbook.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/runbook.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-page-count /home/user/Documents/runbook.drawio 2",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 2 pages"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/runbook.drawio 5 0",
+      "key": "match",
+      "expected": true,
+      "description": "Page 0 has exactly 5 vertices"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/runbook.drawio 6 1",
+      "key": "match",
+      "expected": true,
+      "description": "Page 1 has exactly 6 vertices"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio \"Alert Received\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Alert Received label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Triage",
+      "key": "exists",
+      "expected": true,
+      "description": "Triage label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio \"Severity Check\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Severity Check label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Low",
+      "key": "exists",
+      "expected": true,
+      "description": "Low label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio High",
+      "key": "exists",
+      "expected": true,
+      "description": "High label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Contain",
+      "key": "exists",
+      "expected": true,
+      "description": "Contain label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Eradicate",
+      "key": "exists",
+      "expected": true,
+      "description": "Eradicate label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Recover",
+      "key": "exists",
+      "expected": true,
+      "description": "Recover label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio \"Root Cause\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Root Cause label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Document",
+      "key": "exists",
+      "expected": true,
+      "description": "Document label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/runbook.drawio Close",
+      "key": "exists",
+      "expected": true,
+      "description": "Close label exists"
+    },
+    {
+      "command": "edges /home/user/Documents/runbook.drawio 0",
+      "eval": "len(result) >= 5",
+      "description": "Page 0 has at least 5 edges"
+    },
+    {
+      "command": "diagrams /home/user/Documents/runbook.drawio",
+      "eval": "[p.get('name') for p in result] == ['Detection','Response']",
+      "description": "Page names are Detection and Response in order"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

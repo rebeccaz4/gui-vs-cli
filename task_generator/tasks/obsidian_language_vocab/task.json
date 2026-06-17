@@ -1,0 +1,111 @@
+{
+  "id": "obsidian_language_vocab",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/SpanishVault. Create a Spanish vocabulary learning vault:\n\n1. Create folders: 'Vocabulary', 'Grammar', 'Lessons'.\n2. Create 'Vocabulary/Greetings.md' with frontmatter 'type: vocabulary', 'level: A1' and body with heading 'Greetings', a vocabulary table with Spanish-English pairs including 'Hola' (Hello), 'Buenos d\u00edas' (Good morning), 'Adi\u00f3s' (Goodbye), a link to [[Lesson 1]], and tags #vocabulary #A1 #greetings\n3. Create 'Vocabulary/Food.md' with frontmatter 'type: vocabulary', 'level: A1' and body with heading 'Food', a vocabulary table with Spanish-English pairs including 'Manzana' (Apple), 'Pan' (Bread), 'Agua' (Water), links to [[Lesson 2]] and [[Greetings]], and tags #vocabulary #A1 #food\n4. Create 'Grammar/Present Tense.md' with frontmatter 'type: grammar', 'level: A1' and body with heading 'Present Tense', conjugation rules, examples, links to [[Lesson 1]] and [[Lesson 2]], and tags #grammar #A1 #verbs\n5. Create 'Lessons/Lesson 1.md' with frontmatter 'type: lesson', 'order: 1' and body with heading 'Lesson 1', lesson overview, links to [[Greetings]] and [[Present Tense]], and tags #lesson #A1\n6. Create 'Lessons/Lesson 2.md' with frontmatter 'type: lesson', 'order: 2' and body with heading 'Lesson 2', lesson overview, links to [[Food]] and [[Greetings]], and tags #lesson #A1",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/SpanishVault Vocabulary",
+      "key": "exists",
+      "expected": true,
+      "description": "Vocabulary folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/SpanishVault Grammar",
+      "key": "exists",
+      "expected": true,
+      "description": "Grammar folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/SpanishVault Lessons",
+      "key": "exists",
+      "expected": true,
+      "description": "Lessons folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/SpanishVault Greetings level A1",
+      "key": "match",
+      "expected": true,
+      "description": "Greetings has level=A1"
+    },
+    {
+      "command": "check-note-contains /home/user/Documents/SpanishVault Greetings Hola",
+      "key": "contains",
+      "expected": true,
+      "description": "Greetings contains Hola"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault Food Greetings",
+      "key": "links_to",
+      "expected": true,
+      "description": "Food links to Greetings"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault Food 'Lesson 2'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Food links to Lesson 2"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/SpanishVault 'Present Tense' grammar",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Present Tense has #grammar tag"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Present Tense' 'Lesson 1'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Present Tense links to Lesson 1"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Present Tense' 'Lesson 2'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Present Tense links to Lesson 2"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Lesson 1' Greetings",
+      "key": "links_to",
+      "expected": true,
+      "description": "Lesson 1 links to Greetings"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Lesson 1' 'Present Tense'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Lesson 1 links to Present Tense"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Lesson 2' Food",
+      "key": "links_to",
+      "expected": true,
+      "description": "Lesson 2 links to Food"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/SpanishVault 'Lesson 2' Greetings",
+      "key": "links_to",
+      "expected": true,
+      "description": "Lesson 2 links to Greetings"
+    },
+    {
+      "command": "list-notes /home/user/Documents/SpanishVault",
+      "eval": "result.get('count') == 5",
+      "description": "Vault has exactly 5 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Vocabulary/, Grammar/, Lessons/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa\u6240\u6709notes\uff0c\u5305\u542bvocabulary tables\u548cwikilinks",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

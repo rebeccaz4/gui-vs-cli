@@ -1,0 +1,12 @@
+{
+  "task_id": "obsidian_frontmatter_normalize",
+  "files": [
+    {"filename": "app.json", "sandbox_path": "/home/user/Documents/NormalizeVault/.obsidian/app.json", "type": "json"},
+    {"filename": "Task-Launch.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Task-Launch.md", "type": "markdown"},
+    {"filename": "Idea-DarkMode.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Idea-DarkMode.md", "type": "markdown"},
+    {"filename": "Meeting-Kickoff.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Meeting-Kickoff.md", "type": "markdown"},
+    {"filename": "Reference-Style.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Reference-Style.md", "type": "markdown"},
+    {"filename": "Project-Alpha.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Project-Alpha.md", "type": "markdown"},
+    {"filename": "Log-Sprint3.md", "sandbox_path": "/home/user/Documents/NormalizeVault/Log-Sprint3.md", "type": "markdown"}
+  ]
+}

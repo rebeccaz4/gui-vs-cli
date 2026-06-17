@@ -1,0 +1,74 @@
+{
+  "id": "renderdoc_cap_perf_profile",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/perf.cap: executable='/usr/local/games/perf_target', workingDir='/home/user/perf', commandLine='--benchmark --frames 1000', options APIValidation=false, CaptureCallstacks=false, CaptureAllCmdLists=false, DebugOutputMute=true, RefAllResources=false, VerifyBufferAccess=false, HookIntoChildren=false, environment empty, autoStart=true, queueFrameCap=500, numQueuedFrames=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cap-executable /home/user/captures/perf.cap /usr/local/games/perf_target",
+      "key": "match",
+      "expected": true,
+      "description": "executable"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/perf.cap /home/user/perf",
+      "key": "match",
+      "expected": true,
+      "description": "workingDir"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/perf.cap --benchmark",
+      "key": "match",
+      "expected": true,
+      "description": "--benchmark flag"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/perf.cap --frames",
+      "key": "match",
+      "expected": true,
+      "description": "--frames flag"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/perf.cap APIValidation false",
+      "key": "match",
+      "expected": true,
+      "description": "APIValidation false"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/perf.cap CaptureCallstacks false",
+      "key": "match",
+      "expected": true,
+      "description": "CaptureCallstacks false"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/perf.cap DebugOutputMute true",
+      "key": "match",
+      "expected": true,
+      "description": "DebugOutputMute true"
+    },
+    {
+      "command": "cap-parse /home/user/captures/perf.cap",
+      "eval": "result.get('queueFrameCap') == 500 and result.get('numQueuedFrames') == 1 and result.get('autoStart') is True",
+      "description": "queueFrameCap=500, numQueuedFrames=1, autoStart=true"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

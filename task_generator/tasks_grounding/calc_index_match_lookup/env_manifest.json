@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_index_match_lookup",
+  "files": [
+    {
+      "filename": "quotes.xlsx",
+      "sandbox_path": "/home/user/Documents/quotes.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

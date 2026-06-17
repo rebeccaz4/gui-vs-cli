@@ -1,0 +1,23 @@
+TY  - JOUR
+TI  - Efficient Estimation of Word Representations
+AU  - Mikolov, Tomas
+PY  - 2013
+JO  - arXiv
+DO  - 10.48550/arXiv.1301.3781
+ER  -
+
+TY  - JOUR
+TI  - GloVe: Global Vectors for Word Representation
+AU  - Pennington, Jeffrey
+PY  - 2014
+JO  - EMNLP
+DO  - 10.3115/v1/D14-1162
+ER  -
+
+TY  - JOUR
+TI  - FastText: Enriching Word Vectors with Subword Information
+AU  - Bojanowski, Piotr
+PY  - 2017
+JO  - TACL
+DO  - 10.1162/tacl_a_00051
+ER  -

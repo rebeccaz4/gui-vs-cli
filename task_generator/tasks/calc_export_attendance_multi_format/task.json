@@ -1,0 +1,27 @@
+{
+  "id": "calc_export_attendance_multi_format",
+  "app": "libreoffice_calc",
+  "task": "Open /home/user/Documents/attendance.xlsx in LibreOffice Calc. The workbook contains a sheet named 'Attendance' with 20 students and their daily attendance records. Export the data to three different formats in the /home/user/Documents/ directory:\n\n1. attendance_export.csv - CSV format with comma separator\n2. attendance_export.html - HTML format as a table\n3. attendance_export.ods - ODF Spreadsheet format\n\nEnsure all three files are created with the complete attendance data. Save any changes to the original workbook before closing.",
+  "env": {
+    "files": [
+      {"filename": "attendance.xlsx", "sandbox_path": "/home/user/Documents/attendance.xlsx"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Documents/attendance_export.csv", "key": "exists", "expected": true, "description": "CSV export file exists"},
+    {"command": "check-file-format /home/user/Documents/attendance_export.csv csv", "key": "match", "expected": true, "description": "CSV file is in correct format"},
+    {"command": "check-csv-rows /home/user/Documents/attendance_export.csv 20 true", "key": "match", "expected": true, "description": "CSV has 20 data rows plus header"},
+    {"command": "check-file-exists /home/user/Documents/attendance_export.html", "key": "exists", "expected": true, "description": "HTML export file exists"},
+    {"command": "check-file-format /home/user/Documents/attendance_export.html html", "key": "match", "expected": true, "description": "HTML file is in correct format"},
+    {"command": "check-html-contains /home/user/Documents/attendance_export.html Attendance", "key": "contains", "expected": true, "description": "HTML contains attendance data"},
+    {"command": "check-file-exists /home/user/Documents/attendance_export.ods", "key": "exists", "expected": true, "description": "ODS export file exists"},
+    {"command": "check-file-format /home/user/Documents/attendance_export.ods ods", "key": "match", "expected": true, "description": "ODS file is in correct format"},
+    {"command": "check-file-exists /home/user/Documents/attendance.xlsx", "key": "exists", "expected": true, "description": "Original xlsx file still exists"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

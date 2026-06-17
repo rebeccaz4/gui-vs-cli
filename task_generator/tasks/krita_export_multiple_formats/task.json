@@ -1,0 +1,26 @@
+{
+  "id": "krita_export_multiple_formats",
+  "app": "krita",
+  "task": "Open /home/user/Documents/logo.kra in Krita. Export the same image to three files in /home/user/Pictures/: logo.png (PNG), logo.jpg (JPEG), and logo.webp (WebP). Do not modify the canvas size or the layer contents — the source logo.kra itself should not be edited (only exported from).",
+  "env": {
+    "files": [
+      {"filename": "logo.kra", "sandbox_path": "/home/user/Documents/logo.kra"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Pictures/logo.png", "key": "exists", "expected": true, "description": "PNG export exists"},
+    {"command": "check-file-exists /home/user/Pictures/logo.jpg", "key": "exists", "expected": true, "description": "JPEG export exists"},
+    {"command": "check-file-exists /home/user/Pictures/logo.webp", "key": "exists", "expected": true, "description": "WebP export exists"},
+    {"command": "check-file-exists /home/user/Pictures/logo.png", "eval": "result.get('size_bytes',0) > 100", "expected": true, "description": "PNG non-trivial"},
+    {"command": "check-file-exists /home/user/Pictures/logo.jpg", "eval": "result.get('size_bytes',0) > 100", "expected": true, "description": "JPEG non-trivial"},
+    {"command": "check-file-exists /home/user/Pictures/logo.webp", "eval": "result.get('size_bytes',0) > 100", "expected": true, "description": "WebP non-trivial"},
+    {"command": "check-image-size /home/user/Documents/logo.kra 512 512", "key": "match", "expected": true, "description": "Source canvas size unchanged"}
+  ],
+  "metadata": {"complexity": 4, "data_generatability": 5, "estimated_difficulty": 4},
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Export logo.kra to PNG, JPEG, and WebP formats",
+    "reason": "✅ CLI supports export render with different formats (png, jpeg, webp)"
+  }
+}

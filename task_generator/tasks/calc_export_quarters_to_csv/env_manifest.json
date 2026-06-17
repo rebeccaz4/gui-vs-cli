@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_export_quarters_to_csv",
+  "files": [
+    {"filename": "quarters.xlsx", "sandbox_path": "/home/user/Documents/quarters.xlsx", "type": "xlsx"}
+  ]
+}

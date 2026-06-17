@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_modify_existing_content",
+  "files": [
+    {"filename": "product_launch.pptx", "sandbox_path": "/home/user/Documents/product_launch.pptx", "type": "pptx"}
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "freecad_compound_of_primitives",
+  "app": "freecad",
+  "task": "Create a Part::Compound object in the document at /home/user/Documents/assembly.FCStd that groups the three existing primitives: Part::Box named 'Box', Part::Cylinder named 'Cylinder', and Part::Cone named 'Cone'. Set the Compound's Label to 'AssemblyGroup'. All three primitives must remain in the document. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/assembly.FCStd. The document contains three primitive objects: a Part::Box named 'Box' (12x12x12), a Part::Cylinder named 'Cylinder' (Radius 5, Height 15), and a Part::Cone named 'Cone' (Radius1 6, Radius2 0, Height 10). Switch to the Part workbench. In the Model tree select all three objects (click 'Box', then Ctrl+click 'Cylinder', then Ctrl+click 'Cone'). Run Part > Compound > Make Compound — this creates a new object of type Part::Compound. Change the Label of the newly created Compound object to exactly 'AssemblyGroup'. All three primitives must still exist in the document (they become children of the Compound but remain as objects). The final document must contain exactly 4 objects total. Save the file with Ctrl+S.",
+  "env": {
+    "files": [
+      {
+        "filename": "assembly.FCStd",
+        "sandbox_path": "/home/user/Documents/assembly.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/assembly.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/assembly.FCStd Box",
+      "key": "exists",
+      "expected": true,
+      "description": "Box still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/assembly.FCStd Cylinder",
+      "key": "exists",
+      "expected": true,
+      "description": "Cylinder still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/assembly.FCStd Cone",
+      "key": "exists",
+      "expected": true,
+      "description": "Cone still exists"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/assembly.FCStd Part::Compound 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Compound"
+    },
+    {
+      "command": "check-object-count /home/user/Documents/assembly.FCStd 4",
+      "key": "match",
+      "expected": true,
+      "description": "Document has exactly 4 objects"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Does the FreeCAD document contain exactly one object whose type is 'Part::Compound' AND whose Label property equals 'AssemblyGroup'? Answer yes only if both conditions are true.",
+      "command": "objects /home/user/Documents/assembly.FCStd",
+      "context": "command_output",
+      "description": "Compound labelled 'AssemblyGroup'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box"
+  }
+}

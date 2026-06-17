@@ -1,0 +1,28 @@
+{
+  "id": "chrome_download_resnet_paper",
+  "app": "chrome",
+  "task": "Search for the paper 'ResNet: Enabling Deep Convolutional Neural Networks through Residual Learning' in Google Chrome and download it as a PDF. Save the PDF to /home/user/Downloads/resnet_paper.pdf.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Downloads/resnet_paper.pdf",
+      "key": "exists",
+      "expected": true,
+      "description": "PDF file saved as resnet_paper.pdf"
+    },
+    {
+      "command": "check-file-contains /home/user/Downloads/resnet_paper.pdf \"ResNet: Enabling Deep Convolutional Neural Networks through Residual Learning\"",
+      "key": "contains",
+      "expected": true,
+      "description": "PDF contains 'ResNet: Enabling Deep Convolutional Neural Networks through Residual Learning' in the title"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

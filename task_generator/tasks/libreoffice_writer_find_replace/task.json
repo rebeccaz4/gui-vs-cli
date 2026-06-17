@@ -1,0 +1,43 @@
+{
+  "id": "libreoffice_writer_find_replace",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/contract.odt in LibreOffice Writer. Use Find & Replace to replace all occurrences of 'ACME Corp' with 'GlobalTech Industries'. Then replace all occurrences of '2025' with '2026'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "contract.odt",
+        "sandbox_path": "/home/user/Documents/contract.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "search \"ACME Corp\"",
+      "eval": "result.get('found', True) == False",
+      "description": "No occurrences of 'ACME Corp' remain"
+    },
+    {
+      "command": "check-text-contains \"GlobalTech Industries\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Document contains 'GlobalTech Industries'"
+    },
+    {
+      "command": "search 2025",
+      "eval": "result.get('found', True) == False",
+      "description": "No occurrences of '2025' remain"
+    },
+    {
+      "command": "check-text-contains 2026",
+      "key": "contains",
+      "expected": true,
+      "description": "Document contains '2026'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

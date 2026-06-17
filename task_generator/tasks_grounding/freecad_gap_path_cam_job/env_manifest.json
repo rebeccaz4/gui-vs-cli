@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_path_cam_job",
+  "files": [
+    {
+      "filename": "path_start.FCStd",
+      "sandbox_path": "/home/user/Documents/path_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

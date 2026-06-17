@@ -1,0 +1,99 @@
+{
+  "id": "writer_product_catalog_tables",
+  "app": "libreoffice_writer",
+  "task": "Open the file /home/user/Documents/catalog_data.odt in LibreOffice Writer. The document contains product descriptions with no tables and no formatting (all paragraphs in Default Paragraph Style).\n\nPerform the following formatting and table insertion tasks:\n\n1. Set the first paragraph 'Spring 2026 Product Catalog' to Heading 1 style.\n2. Set the paragraphs 'Outdoor Collection' and 'Indoor Collection' to Heading 2 style.\n3. Place your cursor after the paragraph under 'Outdoor Collection' that ends with '...perfect for any garden.' (before the blank line above 'Indoor Collection'). Insert a table with 4 rows and 4 columns (Table > Insert Table, set Name to 'Table1', Rows=4, Columns=4).\n4. Fill in Table1 as follows:\n   - Row 0 (header): 'Item', 'Material', 'Color', 'Price'\n   - Row 1: 'Garden Chair', 'Teak', 'Natural', '$149'\n   - Row 2: 'Patio Table', 'Aluminum', 'White', '$299'\n   - Row 3: 'Sun Umbrella', 'Polyester', 'Blue', '$89'\n5. Place your cursor after the paragraph under 'Indoor Collection' that ends with '...designed for modern living.' (before the blank line). Insert a table with 4 rows and 4 columns (Table > Insert Table, set Name to 'Table2', Rows=4, Columns=4).\n6. Fill in Table2 as follows:\n   - Row 0 (header): 'Item', 'Material', 'Color', 'Price'\n   - Row 1: 'Sofa', 'Leather', 'Brown', '$1,200'\n   - Row 2: 'Coffee Table', 'Oak', 'Walnut', '$450'\n   - Row 3: 'Floor Lamp', 'Steel', 'Black', '$175'\n7. Add a page footer with the text 'Catalog - Confidential' (Format > Page Style > Footer tab, enable footer, then type the text).\n8. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "catalog_data.odt",
+        "sandbox_path": "/home/user/Documents/catalog_data.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"Spring 2026 Product Catalog\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "'Spring 2026 Product Catalog' is Heading 1"
+    },
+    {
+      "command": "check-heading-exists \"Outdoor Collection\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Outdoor Collection' is Heading 2"
+    },
+    {
+      "command": "check-heading-exists \"Indoor Collection\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "'Indoor Collection' is Heading 2"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' for t in result.get('tables', []))",
+      "description": "Table 'Table1' exists in saved file"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' and t.get('rows') == 4 and t.get('cols') == 4 for t in result.get('tables', []))",
+      "description": "Table1 has 4 rows and 4 columns"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' and len(t.get('data', [])) > 0 and len(t['data'][0]) > 0 and t['data'][0][0] == 'Item' for t in result.get('tables', []))",
+      "description": "Table1 (0,0) is 'Item'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' and len(t.get('data', [])) > 1 and len(t['data'][1]) > 1 and t['data'][1][1] == 'Teak' for t in result.get('tables', []))",
+      "description": "Table1 (1,1) is 'Teak'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' and len(t.get('data', [])) > 2 and len(t['data'][2]) > 2 and t['data'][2][2] == 'White' for t in result.get('tables', []))",
+      "description": "Table1 (2,2) is 'White'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table1' and len(t.get('data', [])) > 3 and len(t['data'][3]) > 3 and t['data'][3][3] == '$89' for t in result.get('tables', []))",
+      "description": "Table1 (3,3) is '$89'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table2' for t in result.get('tables', []))",
+      "description": "Table 'Table2' exists in saved file"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table2' and t.get('rows') == 4 and t.get('cols') == 4 for t in result.get('tables', []))",
+      "description": "Table2 has 4 rows and 4 columns"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table2' and len(t.get('data', [])) > 1 and len(t['data'][1]) > 0 and t['data'][1][0] == 'Sofa' for t in result.get('tables', []))",
+      "description": "Table2 (1,0) is 'Sofa'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table2' and len(t.get('data', [])) > 2 and len(t['data'][2]) > 2 and t['data'][2][2] == 'Walnut' for t in result.get('tables', []))",
+      "description": "Table2 (2,2) is 'Walnut'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/catalog_data.odt",
+      "eval": "any(t['name'] == 'Table2' and len(t.get('data', [])) > 3 and len(t['data'][3]) > 3 and t['data'][3][3] == '$175' for t in result.get('tables', []))",
+      "description": "Table2 (3,3) is '$175'"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "'Catalog - Confidential' in result.get('footer_text', '')",
+      "description": "Footer contains 'Catalog - Confidential'"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

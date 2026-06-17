@@ -1,0 +1,56 @@
+{
+  "id": "renderdoc_gap_pipeline_state_export",
+  "app": "renderdoc",
+  "task": "Create a Python script at /home/user/scripts/export_pipeline.py and configure the Python shell in UI.config.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/scripts/export_pipeline.py",
+      "key": "exists",
+      "expected": true,
+      "description": "Python script exists"
+    },
+    {
+      "command": "file-info /home/user/scripts/export_pipeline.py",
+      "eval": "result.get('size', 0) >= 200",
+      "description": "Script is at least 200 bytes"
+    },
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-setting PythonShell_RecentFiles '[\"/home/user/scripts/export_pipeline.py\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "PythonShell_RecentFiles contains the script path"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

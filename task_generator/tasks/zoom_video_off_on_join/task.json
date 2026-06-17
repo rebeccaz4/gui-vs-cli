@@ -1,0 +1,27 @@
+{
+  "id": "zoom_video_off_on_join",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Change autoTurnOffVideo to true so Zoom will turn the camera off whenever a meeting is joined. Save the updated file in place at /home/user/.config/zoomus.conf. Do not change any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config General autoTurnOffVideo true", "key": "match", "expected": true, "description": "[General]autoTurnOffVideo is true"},
+    {"command": "check-config General autoMuteMic false", "key": "match", "expected": true, "description": "autoMuteMic left untouched"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [General] autoTurnOffVideo=true",
+    "reason": "CLI agent can directly edit the config file using sed. Single boolean value change is trivial for CLI. Task mentions GUI Settings > Video but CLI is equally viable."
+  }
+}

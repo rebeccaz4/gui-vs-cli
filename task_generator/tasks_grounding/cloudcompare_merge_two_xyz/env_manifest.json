@@ -1,0 +1,15 @@
+{
+  "task_id": "cloudcompare_merge_two_xyz",
+  "files": [
+    {
+      "filename": "left.xyz",
+      "sandbox_path": "/home/user/Documents/left.xyz",
+      "type": "xyz"
+    },
+    {
+      "filename": "right.xyz",
+      "sandbox_path": "/home/user/Documents/right.xyz",
+      "type": "xyz"
+    }
+  ]
+}

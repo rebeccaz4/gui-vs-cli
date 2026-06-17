@@ -1,0 +1,10 @@
+{
+  "task_id": "shotcut_v2_default_profile_dv_pal",
+  "files": [
+    {
+      "filename": "pal_prefs.mlt",
+      "sandbox_path": "/home/user/Documents/pal_prefs.mlt",
+      "type": "mlt"
+    }
+  ]
+}

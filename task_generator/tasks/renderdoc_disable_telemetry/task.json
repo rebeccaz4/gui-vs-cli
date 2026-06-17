@@ -1,0 +1,57 @@
+{
+  "id": "renderdoc_disable_telemetry",
+  "app": "renderdoc",
+  "task": "Open the RenderDoc config file /home/user/.local/share/qrenderdoc/UI.config (JSON, open it in a text editor such as gedit). Change exactly these three keys to fully disable analytics and update checks:\n\n1. Set \"Analytics_TotalOptOut\" to true.\n2. Set \"Analytics_ManualCheck\" to false.\n3. Set \"CheckUpdate_AllowChecks\" to false.\n\nAll other keys, including \"rdocConfigData\": 1, must remain intact. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-setting Analytics_TotalOptOut true",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_TotalOptOut is true"
+    },
+    {
+      "command": "check-setting Analytics_ManualCheck false",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_ManualCheck is false"
+    },
+    {
+      "command": "check-setting CheckUpdate_AllowChecks false",
+      "key": "match",
+      "expected": true,
+      "description": "CheckUpdate_AllowChecks is false"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

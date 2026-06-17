@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_threshold_black_white",
+  "files": [
+    {"filename": "gradient.png", "sandbox_path": "/home/user/Documents/gradient.png", "type": "png"}
+  ]
+}

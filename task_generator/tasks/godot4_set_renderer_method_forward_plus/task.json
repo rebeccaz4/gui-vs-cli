@@ -1,0 +1,47 @@
+{
+  "id": "godot4_set_renderer_method_forward_plus",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/renderer_game/project.godot. In the [rendering] section, change the value of renderer/rendering_method from gl_compatibility to forward_plus. The final line should be: renderer/rendering_method=\"forward_plus\". Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/renderer_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/renderer_game/main.tscn"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/renderer_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-project-setting /home/user/godot_projects/renderer_game/project.godot rendering/renderer/rendering_method '\"forward_plus\"'",
+      "key": "match",
+      "expected": true,
+      "description": "rendering_method is forward_plus"
+    },
+    {
+      "command": "file-exists /home/user/godot_projects/renderer_game/project.godot",
+      "key": "exists",
+      "expected": true,
+      "description": "project.godot still exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash/Python to edit project.godot INI file directly",
+    "reason": "project.godot is a text INI file - trivial to edit with CLI tools"
+  }
+}

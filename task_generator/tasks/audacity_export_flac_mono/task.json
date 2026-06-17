@@ -1,0 +1,57 @@
+{
+  "id": "audacity_export_flac_mono",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/input.wav already loaded (a 2.5-second mono 44.1 kHz WAV file). Export this audio as a FLAC file to /home/user/Music/output.flac with 16-bit sample format.",
+  "env": {
+    "files": [
+      {
+        "filename": "input.wav",
+        "sandbox_path": "/home/user/Music/input.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/output.flac",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported FLAC exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/output.flac flac",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is flac"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/output.flac 44100",
+      "key": "match",
+      "expected": true,
+      "description": "Sample rate is 44100 Hz"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/output.flac 1",
+      "key": "match",
+      "expected": true,
+      "description": "FLAC has 1 channel (mono)"
+    },
+    {
+      "command": "check-export-format /home/user/Music/output.flac flac",
+      "key": "match",
+      "expected": true,
+      "description": "Container format is flac"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1. cli-anything-audacity project new -o /home/user/Music/project.json 2. cli-anything-audacity --project /home/user/Music/project.json track add 3. cli-anything-audacity --project /home/user/Music/project.json clip add 0 /home/user/Music/input.wav 4. cli-anything-audacity --project /home/user/Music/project.json export render /home/user/Music/output.flac --overwrite",
+    "reason": "CLI-Anything-Audacity supports FLAC export via 'export render' command. The tool can import WAV files and export to various formats including FLAC."
+  }
+}

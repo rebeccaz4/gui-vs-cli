@@ -1,0 +1,51 @@
+{
+  "id": "audacity_stereo_to_mono_export",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/stereo.wav already loaded (a 2-second stereo 44.1 kHz WAV). Convert the stereo track to mono and export the result to /home/user/Music/mono.wav as a mono 44100 Hz 16-bit PCM WAV file.",
+  "env": {
+    "files": [
+      {
+        "filename": "stereo.wav",
+        "sandbox_path": "/home/user/Music/stereo.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/mono.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Mono WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/mono.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is pcm_s16le"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/mono.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Channel count is 1 (mono)"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/mono.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "Sample rate is 44100 Hz"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → clip import/add → metadata tag settings → export render operation → preference/setting configuration → multi-track mix operations",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, clip import/add, metadata tag settings, export render operation, preference/setting configuration, multi-track mix operations"
+  }
+}

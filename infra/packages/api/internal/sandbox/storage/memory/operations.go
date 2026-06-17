@@ -1,0 +1,236 @@
+package memory
+
+import (
+	"context"
+	"fmt"
+	"slices"
+
+	"github.com/google/uuid"
+	"go.uber.org/zap"
+
+	"github.com/e2b-dev/infra/packages/api/internal/sandbox"
+	"github.com/e2b-dev/infra/packages/shared/pkg/logger"
+	"github.com/e2b-dev/infra/packages/shared/pkg/utils"
+)
+
+// Add the sandbox to the cache
+func (s *Storage) Add(_ context.Context, sbx sandbox.Sandbox) error {
+	added := s.items.SetIfAbsent(sbx.SandboxID, newMemorySandbox(sbx))
+	if !added {
+		return sandbox.ErrAlreadyExists
+	}
+
+	return nil
+}
+
+// exists check if the sandbox exists in the cache or is being evicted.
+func (s *Storage) exists(sandboxID string) bool {
+	return s.items.Has(sandboxID)
+}
+
+// Get the item from the cache.
+func (s *Storage) get(sandboxID string) (*memorySandbox, error) {
+	item, ok := s.items.Get(sandboxID)
+	if !ok {
+		return nil, fmt.Errorf("sandbox \"%s\" doesn't exist", sandboxID)
+	}
+
+	return item, nil
+}
+
+// Get the item from the cache.
+func (s *Storage) Get(_ context.Context, teamID uuid.UUID, sandboxID string) (sandbox.Sandbox, error) {
+	item, ok := s.items.Get(sandboxID)
+	if !ok {
+		return sandbox.Sandbox{}, &sandbox.NotFoundError{SandboxID: sandboxID}
+	}
+
+	data := item.Data()
+	if data.TeamID != teamID {
+		return sandbox.Sandbox{}, &sandbox.NotFoundError{SandboxID: sandboxID}
+	}
+
+	return data, nil
+}
+
+func (s *Storage) Remove(_ context.Context, _ uuid.UUID, sandboxID string) error {
+	s.items.Remove(sandboxID)
+
+	return nil
+}
+
+func (s *Storage) getItems(teamID *uuid.UUID, states []sandbox.State) []sandbox.Sandbox {
+	items := make([]sandbox.Sandbox, 0)
+	for _, item := range s.items.Items() {
+		data := item.Data()
+
+		if teamID != nil && *teamID != data.TeamID {
+			continue
+		}
+
+		if len(states) > 0 && !slices.Contains(states, data.State) {
+			continue
+		}
+
+		items = append(items, data)
+	}
+
+	return items
+}
+
+func (s *Storage) TeamItems(_ context.Context, teamID uuid.UUID, states []sandbox.State) ([]sandbox.Sandbox, error) {
+	return s.getItems(&teamID, states), nil
+}
+
+func (s *Storage) TeamsWithSandboxCount(_ context.Context) (map[uuid.UUID]int64, error) {
+	teams := make(map[uuid.UUID]int64)
+	for _, item := range s.items.Items() {
+		teams[item._data.TeamID]++
+	}
+
+	return teams, nil
+}
+
+func (s *Storage) ExpiredItems(_ context.Context) ([]sandbox.Sandbox, error) {
+	all := s.getItems(nil, []sandbox.State{sandbox.StateRunning})
+	expired := make([]sandbox.Sandbox, 0, len(all))
+	for _, sbx := range all {
+		if sbx.IsExpired() {
+			expired = append(expired, sbx)
+		}
+	}
+
+	return expired, nil
+}
+
+func (s *Storage) Update(_ context.Context, teamID uuid.UUID, sandboxID string, updateFunc func(sandbox.Sandbox) (sandbox.Sandbox, error)) (sandbox.Sandbox, error) {
+	item, ok := s.items.Get(sandboxID)
+	if !ok {
+		return sandbox.Sandbox{}, &sandbox.NotFoundError{SandboxID: sandboxID}
+	}
+
+	item.mu.Lock()
+	defer item.mu.Unlock()
+
+	if item._data.TeamID != teamID {
+		return sandbox.Sandbox{}, &sandbox.NotFoundError{SandboxID: sandboxID}
+	}
+
+	sbx, err := updateFunc(item._data)
+	if err != nil {
+		return sandbox.Sandbox{}, err
+	}
+
+	item._data = sbx
+
+	return sbx, nil
+}
+
+func (s *Storage) StartRemoving(ctx context.Context, _ uuid.UUID, sandboxID string, stateAction sandbox.StateAction) (alreadyDone bool, callback func(context.Context, error), err error) {
+	sbx, err := s.get(sandboxID)
+	if err != nil {
+		return false, nil, err
+	}
+
+	return startRemoving(ctx, sbx, stateAction)
+}
+
+func startRemoving(ctx context.Context, sbx *memorySandbox, stateAction sandbox.StateAction) (alreadyDone bool, callback func(ctx context.Context, err error), err error) {
+	newState := stateAction.TargetState
+
+	sbx.mu.Lock()
+	transition := sbx.transition
+	if transition != nil {
+		currentState := sbx._data.State
+		sbx.mu.Unlock()
+
+		if currentState != newState && !sandbox.AllowedTransitions[currentState][newState] {
+			return false, nil, &sandbox.InvalidStateTransitionError{CurrentState: currentState, TargetState: newState}
+		}
+
+		logger.L().Debug(ctx, "State transition already in progress to the same state, waiting", logger.WithSandboxID(sbx.SandboxID()), zap.String("state", string(newState)))
+		err = transition.WaitWithContext(ctx)
+		if err != nil {
+			return false, nil, fmt.Errorf("sandbox is in failed state: %w", err)
+		}
+
+		// If the transition is to the same state just wait
+		switch {
+		case currentState == newState:
+			return true, func(context.Context, error) {}, nil
+		case sandbox.AllowedTransitions[currentState][newState]:
+			return startRemoving(ctx, sbx, stateAction)
+		default:
+			return false, nil, fmt.Errorf("unexpected state transition")
+		}
+	}
+
+	defer sbx.mu.Unlock()
+	if sbx._data.State == newState {
+		logger.L().Debug(ctx, "Already in the same state", logger.WithSandboxID(sbx.SandboxID()), zap.String("state", string(newState)))
+
+		return true, func(context.Context, error) {}, nil
+	}
+
+	if _, ok := sandbox.AllowedTransitions[sbx._data.State][newState]; !ok {
+		return false, nil, &sandbox.InvalidStateTransitionError{CurrentState: sbx._data.State, TargetState: newState}
+	}
+
+	if stateAction.Effect == sandbox.TransitionExpires {
+		sbx.setExpired()
+	}
+
+	sbx._data.State = newState
+	sbx.transition = utils.NewErrorOnce()
+
+	callback = func(ctx context.Context, err error) {
+		logger.L().Debug(ctx, "Transition complete", logger.WithSandboxID(sbx.SandboxID()), zap.String("state", string(newState)), zap.Error(err))
+		sbx.mu.Lock()
+		defer sbx.mu.Unlock()
+
+		if stateAction.Effect == sandbox.TransitionTransient {
+			if err == nil && sbx._data.State == newState {
+				sbx._data.State = sandbox.StateRunning
+			}
+
+			// Signal nil to waiters so concurrent callers (e.g. kill)
+			// are unblocked and can proceed with their own transition.
+			err = nil
+		}
+
+		setErr := sbx.transition.SetError(err)
+		if setErr != nil {
+			logger.L().Warn(ctx, "Failed to set transition result", logger.WithSandboxID(sbx.SandboxID()), zap.Error(setErr))
+		}
+
+		if err != nil {
+			// Keep the transition in place so the error stays
+			return
+		}
+
+		// The transition is completed and the next transition can be started
+		sbx.transition = nil
+	}
+
+	return false, callback, nil
+}
+
+func (s *Storage) WaitForStateChange(ctx context.Context, _ uuid.UUID, sandboxID string) error {
+	sbx, err := s.get(sandboxID)
+	if err != nil {
+		return fmt.Errorf("failed to get sandbox: %w", err)
+	}
+
+	return waitForStateChange(ctx, sbx)
+}
+
+func waitForStateChange(ctx context.Context, sbx *memorySandbox) error {
+	sbx.mu.RLock()
+	transition := sbx.transition
+	sbx.mu.RUnlock()
+	if transition == nil {
+		return nil
+	}
+
+	return transition.WaitWithContext(ctx)
+}

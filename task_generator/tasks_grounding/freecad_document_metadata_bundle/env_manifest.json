@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_document_metadata_bundle",
+  "files": [
+    {
+      "filename": "report.FCStd",
+      "sandbox_path": "/home/user/Documents/report.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

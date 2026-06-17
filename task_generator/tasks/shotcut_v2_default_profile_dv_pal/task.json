@@ -1,0 +1,39 @@
+{
+  "id": "shotcut_v2_default_profile_dv_pal",
+  "app": "shotcut",
+  "task": "Shotcut is open with a placeholder project /home/user/Documents/pal_prefs.mlt. Your task is to set Shotcut's default Video Mode to 'PAL' (dv_pal).\n\nSteps:\n1. Open the Settings menu in the top menu bar.\n2. Hover the 'Video Mode' submenu.\n3. Under the 'SD' or 'Non-Broadcast' section, click the 'PAL' video mode so it becomes the selected default.\n4. Give Shotcut a moment, then press Ctrl+S on the project so the application flushes its configuration.\n\nShotcut persists this in ~/.config/Meltytech/Shotcut.conf under the [Settings] section as defaultProfile=dv_pal.",
+  "env": {
+    "files": [
+      {
+        "filename": "pal_prefs.mlt",
+        "sandbox_path": "/home/user/Documents/pal_prefs.mlt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.config/Meltytech/Shotcut.conf",
+      "key": "exists",
+      "expected": true,
+      "description": "Shotcut configuration file exists"
+    },
+    {
+      "command": "check-config-value Settings defaultProfile dv_pal",
+      "key": "match",
+      "expected": true,
+      "description": "Settings.defaultProfile equals 'dv_pal'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Not feasible via CLI - requires modifying Shotcut config file ~/.config/Meltytech/Shotcut.conf",
+    "reason": "❌ CLI cannot modify application default profile settings stored in Shotcut.conf. The CLI-Anything shotcut skills support creating new projects with specified profiles but not changing global app preferences. Config file may not exist in fresh sandbox."
+  }
+}

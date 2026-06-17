@@ -1,0 +1,52 @@
+{
+  "id": "cloudcompare_ply_mesh_to_obj",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/tetra.ply in CloudCompare. It is an ASCII PLY tetrahedron mesh with 4 vertices and 4 triangular faces. Save the mesh as an OBJ file at /home/user/Documents/tetra.obj. The exported OBJ must keep all 4 faces — export the mesh, not a vertices-only cloud.",
+  "task_grounding": "Open /home/user/Documents/tetra.ply in CloudCompare. It is an ASCII PLY tetrahedron mesh with 4 vertices and 4 triangular faces. Use File > Save As to save the mesh as an OBJ file at /home/user/Documents/tetra.obj. The exported OBJ must keep all 4 faces — export the mesh, not a vertices-only cloud.",
+  "env": {
+    "files": [
+      {
+        "filename": "tetra.ply",
+        "sandbox_path": "/home/user/Documents/tetra.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/tetra.obj",
+      "key": "exists",
+      "expected": true,
+      "description": "OBJ output exists"
+    },
+    {
+      "command": "check-is-mesh /home/user/Documents/tetra.obj",
+      "key": "is_mesh",
+      "expected": true,
+      "description": "Output OBJ contains faces"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/tetra.obj 4",
+      "key": "match",
+      "expected": true,
+      "description": "Output has 4 vertices"
+    },
+    {
+      "command": "check-face-count /home/user/Documents/tetra.obj 4",
+      "key": "match",
+      "expected": true,
+      "description": "Output has 4 triangular faces"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

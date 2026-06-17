@@ -1,0 +1,98 @@
+{
+  "id": "obs_gaming_stream_layout",
+  "app": "obs",
+  "task": "Set up a gaming stream layout with three scenes and multiple source types. 1. OBS may start with a default 'Scene' -- delete it. 2. Create three scenes with the exact names: 'Gaming', 'Just Chatting', and 'Starting Soon'. 3. Select the 'Gaming' scene and add these three sources: a. A Display Capture source named exactly 'Game'. b. A Video Capture Device source named exactly 'Webcam'. c. A Text (FreeType 2) source named exactly 'Stream Title'. 4. Select the 'Just Chatting' scene and add these two sources: a. A Video Capture Device source named exactly 'Main Camera'. b. An Image source named exactly 'Chat Frame'. Set its file path to /home/user/Pictures/frame.png. 5. Select the 'Starting Soon' scene and add these two sources: a. An Image source named exactly 'Start Screen'. Set its file path to /home/user/Pictures/starting.png. b. A Color Source named exactly 'Backdrop'. 6. Make sure all sources are visible (eye icon enabled) in all scenes. 7. Remove any extra default scenes. The collection should have exactly 3 scenes. 8.",
+  "task_grounding": "Open OBS Studio and set up a gaming stream layout with three scenes and multiple source types.\n\n1. OBS may start with a default 'Scene' -- delete it.\n2. Create three scenes with the exact names: 'Gaming', 'Just Chatting', and 'Starting Soon'.\n3. Select the 'Gaming' scene and add these three sources:\n   a. A Display Capture (or Screen Capture) source named exactly 'Game'.\n   b. A Video Capture Device source named exactly 'Webcam'.\n   c. A Text (FreeType 2) source named exactly 'Stream Title'. Set the text to any value.\n4. Select the 'Just Chatting' scene and add these two sources:\n   a. A Video Capture Device source named exactly 'Main Camera'.\n   b. An Image source named exactly 'Chat Frame'. Set its file path to /home/user/Pictures/frame.png.\n5. Select the 'Starting Soon' scene and add these two sources:\n   a. An Image source named exactly 'Start Screen'. Set its file path to /home/user/Pictures/starting.png.\n   b. A Color Source named exactly 'Backdrop'.\n6. Make sure all sources are visible (eye icon enabled) in all scenes.\n7. Remove any extra default scenes. The collection should have exactly 3 scenes.\n8. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "frame.png",
+        "sandbox_path": "/home/user/Pictures/frame.png"
+      },
+      {
+        "filename": "starting.png",
+        "sandbox_path": "/home/user/Pictures/starting.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Gaming",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Gaming' exists"
+    },
+    {
+      "command": "check-scene-exists 'Just Chatting'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Just Chatting' exists"
+    },
+    {
+      "command": "check-scene-exists 'Starting Soon'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Starting Soon' exists"
+    },
+    {
+      "command": "check-scene-count 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 scenes in the collection"
+    },
+    {
+      "command": "check-source-in-scene Game Gaming",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Game' exists in 'Gaming' scene"
+    },
+    {
+      "command": "check-source-in-scene Webcam Gaming",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Webcam' exists in 'Gaming' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Stream Title' Gaming",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Stream Title' exists in 'Gaming' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Main Camera' 'Just Chatting'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Main Camera' exists in 'Just Chatting' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Chat Frame' 'Just Chatting'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Chat Frame' exists in 'Just Chatting' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Start Screen' 'Starting Soon'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Start Screen' exists in 'Starting Soon' scene"
+    },
+    {
+      "command": "check-source-in-scene Backdrop 'Starting Soon'",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Backdrop' exists in 'Starting Soon' scene"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

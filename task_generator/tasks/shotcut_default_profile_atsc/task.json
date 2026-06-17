@@ -1,0 +1,39 @@
+{
+  "id": "shotcut_default_profile_atsc",
+  "app": "shotcut",
+  "task": "Shotcut is open with a placeholder project /home/user/Documents/empty.mlt. Your task is to set Shotcut's default Video Mode to 'HD 1080p 30 fps'.\n\nSteps:\n1. Open the Settings menu in the top menu bar.\n2. Hover the 'Video Mode' submenu.\n3. Under 'ATSC' (or the default HD section), click the 'HD 1080p 30 fps' video mode so it becomes the selected default.\n4. Press Ctrl+S on the project so the application flushes its configuration.\n\nShotcut stores this in ~/.config/Meltytech/Shotcut.conf under the [Settings] section as defaultProfile=atsc_1080p_30.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.mlt",
+        "sandbox_path": "/home/user/Documents/empty.mlt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.config/Meltytech/Shotcut.conf",
+      "key": "exists",
+      "expected": true,
+      "description": "Shotcut configuration file exists"
+    },
+    {
+      "command": "check-config-value Settings defaultProfile atsc_1080p_30",
+      "key": "match",
+      "expected": true,
+      "description": "Settings.defaultProfile equals 'atsc_1080p_30'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "no",
+    "is_gui_oriented": "yes",
+    "translation": "Not feasible via CLI - requires modifying Shotcut config file ~/.config/Meltytech/Shotcut.conf",
+    "reason": "❌ CLI cannot modify application settings stored in Shotcut.conf. The CLI-Anything shotcut skills support project-level operations but not global app preferences. Config file may not exist in fresh sandbox."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_attach_pdf_to_item",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "attention_paper.pdf",
+      "sandbox_path": "/home/user/Documents/attention_paper.pdf",
+      "type": "pdf"
+    }
+  ]
+}

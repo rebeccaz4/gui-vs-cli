@@ -1,0 +1,53 @@
+{
+  "id": "godot4_set_display_resolution",
+  "app": "godot4",
+  "task": "Edit /home/user/godot_projects/display_game/project.godot. Add a [display] section with window/size/viewport_width=1920 and window/size/viewport_height=1080. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/display_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/display_game/main.tscn"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/display_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "file-exists /home/user/godot_projects/display_game/project.godot",
+      "key": "exists",
+      "expected": true,
+      "description": "project.godot exists"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/display_game/project.godot display/window/size/viewport_width 1920",
+      "key": "match",
+      "expected": true,
+      "description": "viewport_width is 1920"
+    },
+    {
+      "command": "check-project-setting /home/user/godot_projects/display_game/project.godot display/window/size/viewport_height 1080",
+      "key": "match",
+      "expected": true,
+      "description": "viewport_height is 1080"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash/Python to edit project.godot INI file directly",
+    "reason": "project.godot is a text INI file - trivial to edit with CLI tools"
+  }
+}

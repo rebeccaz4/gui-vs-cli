@@ -1,0 +1,15 @@
+{
+  "task_id": "zotero_gap_import_ris_file",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    },
+    {
+      "filename": "new_papers.ris",
+      "sandbox_path": "/home/user/Documents/new_papers.ris",
+      "type": "ris"
+    }
+  ]
+}

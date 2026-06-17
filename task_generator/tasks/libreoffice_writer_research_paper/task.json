@@ -1,0 +1,76 @@
+{
+  "id": "libreoffice_writer_research_paper",
+  "app": "libreoffice_writer",
+  "task": "Create a research paper structure in LibreOffice Writer. Add a Heading 1 'Machine Learning in Healthcare: A Review'. Add a Heading 2 'Abstract'. Add a paragraph with at least 60 words summarizing a fictional research paper about ML applications in healthcare diagnostics. Add a Heading 2 'Introduction'. Add a paragraph with at least 50 words about the introduction. Add a Heading 2 'Methodology'. Add a paragraph with at least 40 words. Add a Heading 2 'Results'. Insert a table named 'Table1' with 4 rows and 3 columns. Header: 'Model', 'Accuracy', 'F1 Score'. Row 2: 'Random Forest', '0.89', '0.87'. Row 3: 'Neural Network', '0.94', '0.92'. Row 4: 'SVM', '0.85', '0.83'. Add a Heading 2 'Conclusion'. Add a paragraph with at least 30 words. Add a footer with text 'Draft - Not for Distribution'. Save as /home/user/Documents/research_paper.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/research_paper.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"Machine Learning in Healthcare\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 exists"
+    },
+    {
+      "command": "check-heading-exists Abstract 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Abstract'"
+    },
+    {
+      "command": "check-heading-exists Methodology 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Methodology'"
+    },
+    {
+      "command": "check-heading-exists Results 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Results'"
+    },
+    {
+      "command": "check-heading-exists Conclusion 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Conclusion'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/research_paper.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 4",
+      "description": "Table has 4 rows"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/research_paper.odt",
+      "eval": "any(len(t.get('data', [])) >= 3 and t['data'][2][0] == 'Neural Network' and t['data'][2][1] == '0.94' for t in result.get('tables', []))",
+      "description": "Row 3: Neural Network, 0.94"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Draft - Not for Distribution'",
+      "description": "Footer text correct"
+    },
+    {
+      "command": "check-word-count 180",
+      "key": "in_range",
+      "expected": true,
+      "description": "Word count at least 180"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/research_paper.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

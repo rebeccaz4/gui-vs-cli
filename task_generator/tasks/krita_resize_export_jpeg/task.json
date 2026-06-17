@@ -1,0 +1,23 @@
+{
+  "id": "krita_resize_export_jpeg",
+  "app": "krita",
+  "task": "Open /home/user/Documents/photo.kra in Krita. It is currently 1920x1080. Scale the entire image (canvas + contents) down to 1280x720 using a high-quality interpolation filter. Then export the scaled image to /home/user/Pictures/photo_web.jpg as a JPEG. Save the .kra file in place so /home/user/Documents/photo.kra itself is also 1280x720 after the task.",
+  "env": {
+    "files": [
+      {"filename": "photo.kra", "sandbox_path": "/home/user/Documents/photo.kra"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Documents/photo.kra", "key": "exists", "expected": true, "description": "photo.kra still exists"},
+    {"command": "check-image-size /home/user/Documents/photo.kra 1280 720", "key": "match", "expected": true, "description": "photo.kra resized to 1280x720"},
+    {"command": "check-file-exists /home/user/Pictures/photo_web.jpg", "key": "exists", "expected": true, "description": "Exported JPEG exists"},
+    {"command": "check-file-exists /home/user/Pictures/photo_web.jpg", "eval": "result.get('size_bytes',0) > 1000", "expected": true, "description": "Exported JPEG is non-trivial"}
+  ],
+  "metadata": {"complexity": 4, "data_generatability": 5, "estimated_difficulty": 4},
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Resize image to 1280x720 and export to JPEG",
+    "reason": "✅ CLI supports canvas resize and export render to JPEG"
+  }
+}

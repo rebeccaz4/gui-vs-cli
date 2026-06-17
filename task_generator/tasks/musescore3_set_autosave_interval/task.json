@@ -1,0 +1,39 @@
+{
+  "id": "musescore3_set_autosave_interval",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the placeholder file /home/user/Documents/placeholder.mscz. You do not need to edit the placeholder score itself \u2014 this task is only about changing the MuseScore 3 application preferences.\n\nPerform these steps:\n1. Open the Edit menu and click Preferences....\n2. Go to the Save section / tab (it may be called 'General > Save' or 'I/O' depending on the layout).\n3. Make sure 'Auto Save' is checked (enabled).\n4. Set 'Save every ___ minutes' (the Auto Save interval) to exactly 7.\n5. Click OK to close the Preferences dialog. This writes the change to ~/.config/MuseScore/MuseScore3.ini.\n\nYou do not need to save the placeholder score. After the preferences dialog closes, the autoSave key must be 'true' and the autoSaveInterval key must be '7' in the INI file.",
+  "env": {
+    "files": [
+      {
+        "filename": "placeholder.mscz",
+        "sandbox_path": "/home/user/Documents/placeholder.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-preference application.autoSave true",
+      "key": "match",
+      "expected": true,
+      "description": "Auto Save is enabled in MuseScore3.ini"
+    },
+    {
+      "command": "check-preference application.autoSaveInterval 7",
+      "key": "match",
+      "expected": true,
+      "description": "Auto Save interval is set to 7 minutes"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Directly edit ~/.config/MuseScore/MuseScore3.ini using bash or Python",
+    "reason": "Preferences are stored in INI files that can be edited directly"
+  }
+}

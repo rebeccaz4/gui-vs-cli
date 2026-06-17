@@ -1,0 +1,30 @@
+{
+  "task_id": "shotcut_v2_four_track_layered_composite",
+  "files": [
+    {
+      "filename": "layered.mlt",
+      "sandbox_path": "/home/user/Documents/layered.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "bg.mp4",
+      "sandbox_path": "/home/user/Videos/bg.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "overlay.mp4",
+      "sandbox_path": "/home/user/Videos/overlay.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "music.mp3",
+      "sandbox_path": "/home/user/Music/music.mp3",
+      "type": "mp3"
+    },
+    {
+      "filename": "voiceover.mp3",
+      "sandbox_path": "/home/user/Music/voiceover.mp3",
+      "type": "mp3"
+    }
+  ]
+}

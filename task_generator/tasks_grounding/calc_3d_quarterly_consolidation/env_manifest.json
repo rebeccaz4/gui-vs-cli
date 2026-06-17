@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_3d_quarterly_consolidation",
+  "files": [
+    {
+      "filename": "quarters.xlsx",
+      "sandbox_path": "/home/user/Documents/quarters.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

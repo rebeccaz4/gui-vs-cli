@@ -1,0 +1,148 @@
+{
+  "id": "renderdoc_cap_env_chain",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/hardened.cap: executable='/usr/local/games/hardened_game', workingDir='/home/user/games/hardened', commandLine='--vulkan --safe-mode --log-level debug', environment with VK_LOADER_LAYERS_ENABLE, RDOC_DEBUG_LOG, MESA_DEBUG, VULKAN_SDK, options APIValidation=true, CaptureCallstacks=true, CaptureAllCmdLists=true, RefAllResources=true, VerifyBufferAccess=true, autoStart=false. Register in UI.config.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/hardened.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "hardened.cap exists"
+    },
+    {
+      "command": "file-info /home/user/captures/hardened.cap",
+      "eval": "result.get('size', 0) >= 400",
+      "description": "hardened.cap is at least 400 bytes"
+    },
+    {
+      "command": "cap-parse /home/user/captures/hardened.cap",
+      "eval": "isinstance(result, dict) and 'error' not in result",
+      "description": "hardened.cap parses as valid capture-settings JSON"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/hardened.cap /usr/local/games/hardened_game",
+      "key": "match",
+      "expected": true,
+      "description": "executable is /usr/local/games/hardened_game"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/hardened.cap /home/user/games/hardened",
+      "key": "match",
+      "expected": true,
+      "description": "workingDir is /home/user/games/hardened"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/hardened.cap --safe-mode",
+      "key": "match",
+      "expected": true,
+      "description": "commandLine includes --safe-mode"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/hardened.cap --log-level",
+      "key": "match",
+      "expected": true,
+      "description": "commandLine includes --log-level"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/hardened.cap VK_LOADER_LAYERS_ENABLE",
+      "key": "present",
+      "expected": true,
+      "description": "env registers VK_LOADER_LAYERS_ENABLE"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/hardened.cap RDOC_DEBUG_LOG",
+      "key": "present",
+      "expected": true,
+      "description": "env registers RDOC_DEBUG_LOG"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/hardened.cap MESA_DEBUG",
+      "key": "present",
+      "expected": true,
+      "description": "env registers MESA_DEBUG"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/hardened.cap VULKAN_SDK",
+      "key": "present",
+      "expected": true,
+      "description": "env registers VULKAN_SDK"
+    },
+    {
+      "command": "cap-parse /home/user/captures/hardened.cap",
+      "eval": "isinstance(result.get('environment'), list) and len(result['environment']) == 4",
+      "description": "environment has exactly 4 entries"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap APIValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "APIValidation is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap CaptureCallstacks true",
+      "key": "match",
+      "expected": true,
+      "description": "CaptureCallstacks is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap CaptureAllCmdLists true",
+      "key": "match",
+      "expected": true,
+      "description": "CaptureAllCmdLists is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap RefAllResources true",
+      "key": "match",
+      "expected": true,
+      "description": "RefAllResources is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap VerifyBufferAccess true",
+      "key": "match",
+      "expected": true,
+      "description": "VerifyBufferAccess is true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/hardened.cap HookIntoChildren false",
+      "key": "match",
+      "expected": true,
+      "description": "HookIntoChildren is false"
+    },
+    {
+      "command": "cap-parse /home/user/captures/hardened.cap",
+      "eval": "result.get('autoStart') is False and result.get('queueFrameCap') == 3 and result.get('numQueuedFrames') == 10",
+      "description": "autoStart=false, queueFrameCap=3, numQueuedFrames=10"
+    },
+    {
+      "command": "recent-settings",
+      "eval": "result.get('settings') == ['/home/user/captures/hardened.cap']",
+      "description": "RecentCaptureSettings is exactly the hardened.cap path"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "UI.config rdocConfigData marker preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

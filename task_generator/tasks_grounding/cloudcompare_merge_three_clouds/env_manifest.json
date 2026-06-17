@@ -1,0 +1,20 @@
+{
+  "task_id": "cloudcompare_merge_three_clouds",
+  "files": [
+    {
+      "filename": "north.xyz",
+      "sandbox_path": "/home/user/Documents/north.xyz",
+      "type": "xyz"
+    },
+    {
+      "filename": "south.xyz",
+      "sandbox_path": "/home/user/Documents/south.xyz",
+      "type": "xyz"
+    },
+    {
+      "filename": "east.xyz",
+      "sandbox_path": "/home/user/Documents/east.xyz",
+      "type": "xyz"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "id": "calc_class_roster_grade_band",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/roster.xlsx in LibreOffice Calc. The sheet 'Roster' has bold headers in row 1 (A='Student ID', B='Name', C='Exam1', D='Exam2', E='Exam3') and 25 students in rows 2-26 with numeric scores 0-100.\n\nCompute weighted final grades, assign letter grades, and summarize the distribution:\n\n1. In F1 type 'Final' (bold). In G1 type 'Grade' (bold).\n2. In F2:F26 enter =C2*0.3+D2*0.3+E2*0.4 (30% Exam1, 30% Exam2, 40% Exam3).\n3. In G2:G26 enter a nested IF formula that assigns a letter grade from the Final: 'A' if >=90, else 'B' if >=80, else 'C' if >=70, else 'D' if >=60, else 'F'. Use: =IF(F2>=90,\"A\",IF(F2>=80,\"B\",IF(F2>=70,\"C\",IF(F2>=60,\"D\",\"F\")))).\n4. Create a new sheet named 'GradeSummary'.\n5. On GradeSummary, in row 1 enter bold headers: A1='Grade', B1='Count'.\n6. In A2:A6 enter 'A', 'B', 'C', 'D', 'F' (in that order).\n7. In B2:B6 enter =COUNTIF(Roster.G2:G26,A2) (and fill down).\n8. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "roster.xlsx",
+        "sandbox_path": "/home/user/Documents/roster.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value F1 Final Roster",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = 'Final'"
+    },
+    {
+      "command": "check-cell-value G1 Grade Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = 'Grade'"
+    },
+    {
+      "command": "check-cell-formatted F1 true Roster",
+      "key": "match",
+      "expected": true,
+      "description": "F1 bold"
+    },
+    {
+      "command": "check-cell-formatted G1 true Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G1 bold"
+    },
+    {
+      "command": "cell-value F2 Roster",
+      "eval": "result.get('formula') is not None and '0.3' in result.get('formula','') and '0.4' in result.get('formula','')",
+      "description": "F2 uses weighted formula"
+    },
+    {
+      "command": "check-cell-value F2 95.3 Roster",
+      "key": "match",
+      "expected": true,
+      "description": "F2 Alice final = 95.3"
+    },
+    {
+      "command": "check-cell-value F9 49.5 Roster",
+      "key": "match",
+      "expected": true,
+      "description": "F9 Henry final = 49.5"
+    },
+    {
+      "command": "check-cell-value F14 95.5 Roster",
+      "key": "match",
+      "expected": true,
+      "description": "F14 Mia final = 95.5"
+    },
+    {
+      "command": "cell-value G2 Roster",
+      "eval": "result.get('formula') is not None and 'IF' in result.get('formula','').upper()",
+      "description": "G2 uses nested IF"
+    },
+    {
+      "command": "check-cell-value G2 A Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G2 grade = A (Alice 95.3)"
+    },
+    {
+      "command": "check-cell-value G9 F Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G9 grade = F (Henry 49.5)"
+    },
+    {
+      "command": "check-cell-value G3 B Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G3 grade = B (Bob 87.9)"
+    },
+    {
+      "command": "check-cell-value G6 D Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G6 grade = D (Eve 60.7)"
+    },
+    {
+      "command": "check-cell-value G7 C Roster",
+      "key": "match",
+      "expected": true,
+      "description": "G7 grade = C (Frank 72.0)"
+    },
+    {
+      "command": "check-sheet-exists GradeSummary",
+      "key": "exists",
+      "expected": true,
+      "description": "'GradeSummary' sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Grade GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary A1 = 'Grade'"
+    },
+    {
+      "command": "check-cell-value B1 Count GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B1 = 'Count'"
+    },
+    {
+      "command": "check-cell-formatted A1 true GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary A1 bold"
+    },
+    {
+      "command": "check-cell-value A2 A GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary A2 = 'A'"
+    },
+    {
+      "command": "check-cell-value A6 F GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary A6 = 'F'"
+    },
+    {
+      "command": "check-cell-value B2 5 GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B2 count A = 5"
+    },
+    {
+      "command": "check-cell-value B3 7 GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B3 count B = 7"
+    },
+    {
+      "command": "check-cell-value B4 6 GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B4 count C = 6"
+    },
+    {
+      "command": "check-cell-value B5 4 GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B5 count D = 4"
+    },
+    {
+      "command": "check-cell-value B6 3 GradeSummary",
+      "key": "match",
+      "expected": true,
+      "description": "GradeSummary B6 count F = 3"
+    },
+    {
+      "command": "cell-value B2 GradeSummary",
+      "eval": "result.get('formula') is not None and 'COUNTIF' in result.get('formula','').upper()",
+      "description": "GradeSummary B2 uses COUNTIF"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

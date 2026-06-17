@@ -1,0 +1,46 @@
+{
+  "id": "zotero_add_author_to_survey",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' (currently has a single author, Sutton) and select it. Add a SECOND author with first name exactly 'Andrew' and last name exactly 'Barto'. Make sure the existing Sutton author remains. After saving, the item must have exactly 2 creators total: Sutton and Barto. Leave Zotero running.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' (currently has a single author, Sutton) and select it. In the right-hand Info pane, scroll to the Author / creators section and add a SECOND author with first name exactly 'Andrew' and last name exactly 'Barto' (use the (+) button next to the existing author row, or right-click > Add Creator). Make sure the existing Sutton author remains. After saving, the item must have exactly 2 creators total: Sutton and Barto. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-creator 'Survey of RL Methods' Barto",
+      "key": "has_creator",
+      "expected": true,
+      "description": "Survey has author Barto"
+    },
+    {
+      "command": "check-item-creator 'Survey of RL Methods' Sutton",
+      "key": "has_creator",
+      "expected": true,
+      "description": "Survey still has author Sutton"
+    },
+    {
+      "command": "check-item-creator-count 'Survey of RL Methods' 2",
+      "key": "match",
+      "expected": true,
+      "description": "Survey has exactly 2 creators"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find item by title, 2) Insert new creator into creators table, 3) Link creator to item via itemCreators table with creatorType='author'",
+    "reason": "Zotero stores creator data in SQLite tables (creators, itemCreators). A Python script can directly insert a new creator record and link it to the item. The database schema supports multiple creators per item, making this operation straightforward via SQL INSERT statements."
+  }
+}

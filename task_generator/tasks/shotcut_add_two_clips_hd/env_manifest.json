@@ -1,0 +1,20 @@
+{
+  "task_id": "shotcut_add_two_clips_hd",
+  "files": [
+    {
+      "filename": "my_project.mlt",
+      "sandbox_path": "/home/user/Documents/my_project.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "clip_a.mp4",
+      "sandbox_path": "/home/user/Videos/clip_a.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "clip_b.mp4",
+      "sandbox_path": "/home/user/Videos/clip_b.mp4",
+      "type": "mp4"
+    }
+  ]
+}

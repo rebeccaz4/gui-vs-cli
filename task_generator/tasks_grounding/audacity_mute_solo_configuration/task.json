@@ -1,0 +1,88 @@
+{
+  "id": "audacity_mute_solo_configuration",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/mix.aup loaded. The project has three wavetracks in this top-to-bottom order: 'Bass' (index 0), 'Drums' (index 1), 'Keys' (index 2). All tracks are currently unmuted and unsoloed. Configure the track mute/solo state as follows: mute the 'Bass' track, solo the 'Drums' track, leave the 'Keys' track neither muted nor soloed. Save the project so the mute/solo flags are persisted inside /home/user/Music/mix.aup.",
+  "task_grounding": "Audacity is open with /home/user/Music/mix.aup loaded. The project has three wavetracks in this top-to-bottom order: 'Bass' (index 0), 'Drums' (index 1), 'Keys' (index 2). All tracks are currently unmuted and unsoloed.\n\nConfigure the track mute/solo state as follows:\n- Click the 'Mute' button on the 'Bass' track so Bass is muted.\n- Click the 'Solo' button on the 'Drums' track so Drums is soloed.\n- Leave the 'Keys' track untouched (neither muted nor soloed).\n\nThen save the project with Ctrl+S so the mute/solo flags are persisted inside /home/user/Music/mix.aup. Do not rename any tracks and do not add or delete tracks.",
+  "env": {
+    "files": [
+      {
+        "filename": "mix.aup",
+        "sandbox_path": "/home/user/Music/mix.aup"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000001.au"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000002.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000002.au"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000003.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000003.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/mix.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "mix.aup is still valid"
+    },
+    {
+      "command": "check-track-count /home/user/Music/mix.aup 3",
+      "key": "match",
+      "expected": true,
+      "description": "Project still has 3 wavetracks"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 0 true",
+      "key": "match",
+      "expected": true,
+      "description": "Track 0 (Bass) is muted"
+    },
+    {
+      "command": "check-track-solo /home/user/Music/mix.aup 1 true",
+      "key": "match",
+      "expected": true,
+      "description": "Track 1 (Drums) is soloed"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 2 false",
+      "key": "match",
+      "expected": true,
+      "description": "Track 2 (Keys) is NOT muted"
+    },
+    {
+      "command": "check-track-solo /home/user/Music/mix.aup 2 false",
+      "key": "match",
+      "expected": true,
+      "description": "Track 2 (Keys) is NOT soloed"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 1 false",
+      "key": "match",
+      "expected": true,
+      "description": "Track 1 (Drums) is NOT muted"
+    },
+    {
+      "command": "check-track-solo /home/user/Music/mix.aup 0 false",
+      "key": "match",
+      "expected": true,
+      "description": "Track 0 (Bass) is NOT soloed"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track add operation → clip import/add → multi-track mix operations",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track add operation, clip import/add, multi-track mix operations"
+  }
+}

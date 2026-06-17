@@ -1,0 +1,25 @@
+{
+  "task_id": "renderdoc_default_save_dir_and_recents",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "alpha_test.rdc",
+      "sandbox_path": "/home/user/captures/alpha_test.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "beta_test.rdc",
+      "sandbox_path": "/home/user/captures/beta_test.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "gamma_test.rdc",
+      "sandbox_path": "/home/user/captures/gamma_test.rdc",
+      "type": "rdc"
+    }
+  ]
+}

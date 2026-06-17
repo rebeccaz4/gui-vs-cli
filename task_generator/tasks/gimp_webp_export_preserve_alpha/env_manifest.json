@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_webp_export_preserve_alpha",
+  "files": [
+    {"filename": "icon_rgba.png", "sandbox_path": "/home/user/Documents/icon_rgba.png", "type": "png"}
+  ]
+}

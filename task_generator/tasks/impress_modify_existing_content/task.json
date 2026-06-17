@@ -1,0 +1,69 @@
+{
+  "id": "impress_modify_existing_content",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/product_launch.pptx in LibreOffice Impress. This is a 5-slide product launch presentation for 'Widget Pro'.\n\nMake the following modifications:\n\n1. On Slide 1 (title 'Widget Pro'), change the subtitle from 'Launch Date: March 2025' to 'Launch Date: June 2025'.\n\n2. On Slide 2 (title 'Key Features'), add a new bullet point 'AI-powered recommendations' after the existing bullet points. The existing bullets are: 'Real-time analytics dashboard', 'Cross-platform compatibility', 'Enterprise-grade security', '24/7 customer support'.\n\n3. On Slide 3 (title 'Pricing'), change the text '$49.99/month' to '$39.99/month' in the first bullet. The first bullet should read 'Starter Plan: $39.99/month'.\n\n4. On Slide 4 (title 'Go-to-Market Strategy'), add speaker notes: 'Emphasize the 30-day free trial offer.'\n\n5. On Slide 5, change the title from 'Thank You' to 'Thank You & Next Steps'. Add a new line of body text: 'Visit widgetpro.com for early access.'\n\nSave the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "product_launch.pptx",
+        "sandbox_path": "/home/user/Documents/product_launch.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-contains 0 \"Launch Date: June 2025\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 contains updated launch date 'Launch Date: June 2025'"
+    },
+    {
+      "command": "check-slide-contains 1 \"AI-powered recommendations\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 contains new bullet 'AI-powered recommendations'"
+    },
+    {
+      "command": "check-slide-contains 1 \"Real-time analytics dashboard\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 still contains original bullet 'Real-time analytics dashboard'"
+    },
+    {
+      "command": "check-slide-contains 2 \"$39.99/month\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 contains updated price '$39.99/month'"
+    },
+    {
+      "command": "check-notes-contain 3 \"Emphasize the 30-day free trial offer\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 notes contain 'Emphasize the 30-day free trial offer'"
+    },
+    {
+      "command": "check-slide-contains 4 \"Thank You & Next Steps\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 contains updated title 'Thank You & Next Steps'"
+    },
+    {
+      "command": "check-slide-contains 4 \"Visit widgetpro.com for early access\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 contains new body text about early access"
+    },
+    {
+      "command": "check-slide-count 5",
+      "key": "match",
+      "expected": true,
+      "description": "Presentation still has 5 slides"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

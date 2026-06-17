@@ -1,0 +1,63 @@
+{
+  "id": "drawio_edit_existing",
+  "app": "drawio",
+  "task": "Extend the network diagram at /home/user/Documents/network.drawio. The file contains two connected shapes (Router, Server). Add two rectangles: Firewall and Load Balancer. Connect Firewall to Load Balancer. Add a second page named Notes. Preserve all existing shapes and connections. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "network.drawio",
+        "sandbox_path": "/home/user/Documents/network.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/network.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file still exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/network.drawio Router",
+      "key": "exists",
+      "expected": true,
+      "description": "Original 'Router' shape preserved"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/network.drawio Server",
+      "key": "exists",
+      "expected": true,
+      "description": "Original 'Server' shape preserved"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/network.drawio Firewall",
+      "key": "exists",
+      "expected": true,
+      "description": "New 'Firewall' shape added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/network.drawio \"Load Balancer\"",
+      "key": "exists",
+      "expected": true,
+      "description": "New 'Load Balancer' shape added"
+    },
+    {
+      "command": "check-page-count /home/user/Documents/network.drawio 2",
+      "key": "match",
+      "expected": true,
+      "description": "Diagram has 2 pages (original + Notes)"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: rectangle"
+  },
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

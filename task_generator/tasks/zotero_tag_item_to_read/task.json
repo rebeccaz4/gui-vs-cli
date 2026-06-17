@@ -1,0 +1,45 @@
+{
+  "id": "zotero_tag_item_to_read",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. In the library you will find an item titled 'Attention Is All You Need'. Open that item (click it) and add a new tag named exactly 'to-read' (lowercase, with a hyphen) via the Tags tab on the right. The tag does not exist yet \u2014 creating it on the item will also create it in the library. Leave Zotero running so the tag is saved.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists on disk"
+    },
+    {
+      "command": "check-tag-exists to-read",
+      "key": "exists",
+      "expected": true,
+      "description": "Tag 'to-read' exists"
+    },
+    {
+      "command": "check-item-tag 'Attention Is All You Need' to-read",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Attention Is All You Need item has tag 'to-read'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Python script using SQLite: 1) Insert new 'to-read' tag into tags table, 2) Find item by title, 3) Insert record into itemTags table linking the item to the new tag",
+    "reason": "Creating a new tag and adding it to an item involves two operations: inserting the tag into the tags table, then creating the item-tag relationship in the itemTags junction table. Both are standard SQL operations."
+  }
+}

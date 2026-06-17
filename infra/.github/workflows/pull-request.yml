@@ -1,0 +1,61 @@
+name: Pull Request
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  validate-openapi:
+    uses: ./.github/workflows/validate-openapi.yml
+  generated-code-check:
+    uses: ./.github/workflows/pr-no-generated-changes.yml
+    with:
+      # Only auto-commit for same-repo PRs (secrets aren't available for forks)
+      commit: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    secrets:
+      app_id: ${{ vars.AUTOFIXER_APP_ID }}
+      app_secret: ${{ secrets.AUTOFIXER_APP_SECRET }}
+  out-of-order-migrations:
+    uses: ./.github/workflows/out-of-order-migrations.yml
+  unit-tests:
+    uses: ./.github/workflows/pr-tests.yml
+  integration-tests:
+    needs: [out-of-order-migrations]
+    uses: ./.github/workflows/integration_tests.yml
+    with:
+      # Only publish the results for same-repo PRs
+      publish: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+  publish-test-results:
+    needs:
+      - unit-tests
+      - integration-tests
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          # Docker build artifacts have to ignored
+          # https://github.com/actions/toolkit/pull/1874
+          pattern: "!*.dockerbuild"
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          comment_mode: off
+          fail_on: "errors"
+          files: "artifacts/**/*.xml"

@@ -1,0 +1,25 @@
+import * as commander from 'commander'
+
+import { connectCommand } from './connect'
+import { listCommand } from './list'
+import { killCommand } from './kill'
+import { pauseCommand } from './pause'
+import { resumeCommand } from './resume'
+import { createCommand } from './create'
+import { logsCommand } from './logs'
+import { metricsCommand } from './metrics'
+import { execCommand } from './exec'
+
+export const sandboxCommand = new commander.Command('sandbox')
+  .description('work with sandboxes')
+  .alias('sbx')
+  .addCommand(connectCommand)
+  .addCommand(listCommand)
+  .addCommand(killCommand)
+  .addCommand(pauseCommand)
+  .addCommand(resumeCommand)
+  .addCommand(createCommand('create', 'cr', false))
+  .addCommand(createCommand('spawn', 'sp', true), { hidden: true })
+  .addCommand(logsCommand)
+  .addCommand(metricsCommand)
+  .addCommand(execCommand)

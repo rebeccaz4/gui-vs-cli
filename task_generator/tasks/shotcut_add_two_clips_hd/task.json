@@ -1,0 +1,65 @@
+{
+  "id": "shotcut_add_two_clips_hd",
+  "app": "shotcut",
+  "task": "A Shotcut project exists at /home/user/Documents/my_project.mlt with 1920x1080 resolution and 30 fps. Two video files exist: clip_a.mp4 and clip_b.mp4 in /home/user/Videos/.\n\nActions required:\n1. Add clip_a.mp4 to the project.\n2. Add clip_b.mp4 to the project.\n3. Place both clips on the V1 timeline track sequentially, with clip_a.mp4 first followed immediately by clip_b.mp4.\n4. Save the project.\n\nThe saved my_project.mlt must maintain the 1920x1080 30 fps profile and reference both clip_a.mp4 and clip_b.mp4 on the same track.",
+  "env": {
+    "files": [
+      {
+        "filename": "my_project.mlt",
+        "sandbox_path": "/home/user/Documents/my_project.mlt"
+      },
+      {
+        "filename": "clip_a.mp4",
+        "sandbox_path": "/home/user/Videos/clip_a.mp4"
+      },
+      {
+        "filename": "clip_b.mp4",
+        "sandbox_path": "/home/user/Videos/clip_b.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/my_project.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists at /home/user/Documents/my_project.mlt"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/my_project.mlt 1920 1080",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1920x1080"
+    },
+    {
+      "command": "check-fps /home/user/Documents/my_project.mlt 30",
+      "key": "match",
+      "expected": true,
+      "description": "Project frame rate is 30 fps"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/my_project.mlt clip_a.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "Clip clip_a.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/my_project.mlt clip_b.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "Clip clip_b.mp4 is referenced in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open my_project.mlt, timeline add-clip clip_a.mp4 --track 1, timeline add-clip clip_b.mp4 --track 1, project save",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, timeline add-clip (multiple calls), project save. Sequential clip placement on single track."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "cloudcompare_preserve_intensity_export",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/lidar_intensity.xyz in CloudCompare. It is a 4-column ASCII point cloud (X Y Z Intensity) with 600 points \u2014 the 4th column is a scalar field that CloudCompare should import as 'Scalar field #1' or 'intensity'. Re-export the cloud twice, preserving the intensity scalar in both outputs:\n1. File > Save As: save as an ASCII cloud at /home/user/Documents/lidar_intensity.asc with the X, Y, Z and the intensity scalar column enabled (4 columns).\n2. File > Save As: save as a PLY file (ASCII or binary) at /home/user/Documents/lidar_intensity_out.ply with the intensity scalar exported (so the PLY carries a scalar / intensity property).\nBoth outputs must contain all 600 points.",
+  "env": {
+    "files": [
+      {
+        "filename": "lidar_intensity.xyz",
+        "sandbox_path": "/home/user/Documents/lidar_intensity.xyz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/lidar_intensity.asc",
+      "key": "exists",
+      "expected": true,
+      "description": "ASC output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/lidar_intensity.asc 600",
+      "key": "match",
+      "expected": true,
+      "description": "ASC has 600 points"
+    },
+    {
+      "command": "check-has-intensity /home/user/Documents/lidar_intensity.asc",
+      "key": "has_intensity",
+      "expected": true,
+      "description": "ASC preserves intensity scalar (4 columns)"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/lidar_intensity_out.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "PLY output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/lidar_intensity_out.ply 600",
+      "key": "match",
+      "expected": true,
+      "description": "PLY has 600 points"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CloudCompare CLI: cli-anything-cloudcompare export cloud INDEX output.ply --preset ply [--overwrite]",
+    "reason": "CLI has 'export cloud' command supporting multiple formats (PLY binary/ASCII, LAS, XYZ, etc.) with format-specific options."
+  }
+}

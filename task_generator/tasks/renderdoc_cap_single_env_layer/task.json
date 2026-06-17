@@ -1,0 +1,61 @@
+{
+  "id": "renderdoc_cap_single_env_layer",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/layer_only.cap: executable='/usr/local/games/vk_only', workingDir='/home/user', commandLine='', environment with VK_INSTANCE_LAYERS, options APIValidation=false, HookIntoChildren=false, autoStart=false.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cap-executable /home/user/captures/layer_only.cap /usr/local/games/vk_only",
+      "key": "match",
+      "expected": true,
+      "description": "executable"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/layer_only.cap VK_INSTANCE_LAYERS",
+      "key": "present",
+      "expected": true,
+      "description": "VK_INSTANCE_LAYERS env present"
+    },
+    {
+      "command": "cap-parse /home/user/captures/layer_only.cap",
+      "eval": "isinstance(result.get('environment'), list) and len(result['environment']) == 1",
+      "description": "environment has exactly 1 entry"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/layer_only.cap APIValidation false",
+      "key": "match",
+      "expected": true,
+      "description": "APIValidation false"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/layer_only.cap HookIntoChildren false",
+      "key": "match",
+      "expected": true,
+      "description": "HookIntoChildren false"
+    },
+    {
+      "command": "cap-parse /home/user/captures/layer_only.cap",
+      "eval": "result.get('autoStart') is False",
+      "description": "autoStart false"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

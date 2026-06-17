@@ -1,0 +1,69 @@
+{
+  "id": "drawio_er_diagram",
+  "app": "drawio",
+  "task": "Create a database schema diagram at /home/user/Documents/er_diagram.drawio. Create 4 rectangles labeled: Customer, Order, Product, Category. Connect them: Customer->Order, Order->Product, Product->Category. The diagram must have exactly 4 vertices and 3 edges. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "er_diagram.drawio",
+        "sandbox_path": "/home/user/Documents/er_diagram.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/er_diagram.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists at expected path"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/er_diagram.drawio Customer",
+      "key": "exists",
+      "expected": true,
+      "description": "Shape 'Customer' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/er_diagram.drawio Order",
+      "key": "exists",
+      "expected": true,
+      "description": "Shape 'Order' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/er_diagram.drawio Product",
+      "key": "exists",
+      "expected": true,
+      "description": "Shape 'Product' exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/er_diagram.drawio Category",
+      "key": "exists",
+      "expected": true,
+      "description": "Shape 'Category' exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/er_diagram.drawio 4",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 4 shapes"
+    },
+    {
+      "command": "check-edge-count /home/user/Documents/er_diagram.drawio 3",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 3 edges"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: rectangle"
+  },
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

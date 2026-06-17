@@ -1,0 +1,56 @@
+{
+  "id": "zotero_gap_multi_pdf_attach",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Three PDF files are provided under /home/user/Documents/: attention.pdf, bert.pdf, deep_learning.pdf. Launch Zotero. Attach each PDF to the matching existing item as a child attachment (Attach Stored Copy of File):\n  - attention.pdf -> 'Attention Is All You Need'\n  - bert.pdf -> 'BERT: Pre-training of Deep Bidirectional Transformers'\n  - deep_learning.pdf -> 'Deep Learning'\nAfter completion, each of the three items must have at least one child PDF attachment. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "attention.pdf",
+        "sandbox_path": "/home/user/Documents/attention.pdf"
+      },
+      {
+        "filename": "bert.pdf",
+        "sandbox_path": "/home/user/Documents/bert.pdf"
+      },
+      {
+        "filename": "deep_learning.pdf",
+        "sandbox_path": "/home/user/Documents/deep_learning.pdf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-attachment 'Attention Is All You Need'",
+      "key": "has_attachment",
+      "expected": true,
+      "description": "Attention has an attachment"
+    },
+    {
+      "command": "check-item-attachment 'BERT'",
+      "key": "has_attachment",
+      "expected": true,
+      "description": "BERT has an attachment"
+    },
+    {
+      "command": "check-item-attachment 'Deep Learning'",
+      "key": "has_attachment",
+      "expected": true,
+      "description": "Deep Learning has an attachment"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Python script using SQLite + file operations: For each PDF-item pair: 1) Find item by title, 2) Copy PDF to Zotero storage directory with unique key, 3) Insert attachment item record with parentItemID, 4) Link attachment to parent item",
+    "reason": "Multiple PDF attachments follow the same pattern as single attachment. Each attachment is an item in the database with parentItemID. A Python script can loop through the three files and create three separate attachment records linked to their respective parent items."
+  }
+}

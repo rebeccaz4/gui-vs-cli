@@ -1,0 +1,29 @@
+{
+  "current_scene": "Live Stream",
+  "scene_order": [
+    {
+      "name": "Live Stream"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Live Stream",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Screen",
+            "visible": true,
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Screen",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true
+    }
+  ]
+}

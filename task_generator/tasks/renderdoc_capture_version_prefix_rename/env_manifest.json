@@ -1,0 +1,25 @@
+{
+  "task_id": "renderdoc_capture_version_prefix_rename",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "shadow.rdc",
+      "sandbox_path": "/home/user/unlabeled/shadow.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "lighting.rdc",
+      "sandbox_path": "/home/user/unlabeled/lighting.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "post.rdc",
+      "sandbox_path": "/home/user/unlabeled/post.rdc",
+      "type": "rdc"
+    }
+  ]
+}

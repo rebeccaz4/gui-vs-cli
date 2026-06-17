@@ -1,0 +1,20 @@
+{
+  "task_id": "renderdoc_workspace_bootstrap",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "project_frame1.rdc",
+      "sandbox_path": "/home/user/staging/project_frame1.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "project_frame2.rdc",
+      "sandbox_path": "/home/user/staging/project_frame2.rdc",
+      "type": "rdc"
+    }
+  ]
+}

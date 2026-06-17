@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_preserve_intensity_export",
+  "files": [
+    {
+      "filename": "lidar_intensity.xyz",
+      "sandbox_path": "/home/user/Documents/lidar_intensity.xyz",
+      "type": "xyz"
+    }
+  ]
+}

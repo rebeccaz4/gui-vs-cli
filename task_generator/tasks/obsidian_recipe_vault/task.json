@@ -1,0 +1,105 @@
+{
+  "id": "obsidian_recipe_vault",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/RecipeVault. Create a recipe collection:\n\n1. Create folders: 'Italian', 'Asian', 'Desserts'.\n2. Create 'Italian/Carbonara.md' with frontmatter 'cuisine: italian', 'servings: 4', 'time: 30' and body containing heading 'Carbonara', ingredient list, instructions, a link to [[Cacio e Pepe]], and tags #recipe #italian #pasta\n3. Create 'Italian/Cacio e Pepe.md' with frontmatter 'cuisine: italian', 'servings: 2', 'time: 20' and body containing heading, ingredients, instructions, a link to [[Carbonara]], and tags #recipe #italian #pasta\n4. Create 'Asian/PadThai.md' with frontmatter 'cuisine: thai', 'servings: 2', 'time: 25' and body containing heading, ingredients, instructions, and tags #recipe #thai #noodles\n5. Create 'Desserts/Tiramisu.md' with frontmatter 'cuisine: italian', 'servings: 6', 'time: 45' and body containing heading, ingredients, instructions, a link to [[Carbonara]], and tags #recipe #italian #dessert\n6. Create 'Index.md' in root with body containing heading 'Recipe Index', links to [[Carbonara]], [[Cacio e Pepe]], [[PadThai]], [[Tiramisu]], and tags #index #recipes",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/RecipeVault Italian",
+      "key": "exists",
+      "expected": true,
+      "description": "Italian folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/RecipeVault Asian",
+      "key": "exists",
+      "expected": true,
+      "description": "Asian folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/RecipeVault Desserts",
+      "key": "exists",
+      "expected": true,
+      "description": "Desserts folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/RecipeVault Carbonara cuisine italian",
+      "key": "match",
+      "expected": true,
+      "description": "Carbonara has cuisine=italian"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/RecipeVault Carbonara 'Cacio e Pepe'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Carbonara links to Cacio e Pepe"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/RecipeVault 'Cacio e Pepe' Carbonara",
+      "key": "links_to",
+      "expected": true,
+      "description": "Cacio e Pepe links to Carbonara"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/RecipeVault PadThai cuisine thai",
+      "key": "match",
+      "expected": true,
+      "description": "PadThai has cuisine=thai"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/RecipeVault PadThai noodles",
+      "key": "has_tag",
+      "expected": true,
+      "description": "PadThai has #noodles tag"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/RecipeVault Tiramisu servings 6",
+      "key": "match",
+      "expected": true,
+      "description": "Tiramisu has servings=6"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/RecipeVault Tiramisu Carbonara",
+      "key": "links_to",
+      "expected": true,
+      "description": "Tiramisu links to Carbonara"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/RecipeVault Index Carbonara",
+      "key": "links_to",
+      "expected": true,
+      "description": "Index links to Carbonara"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/RecipeVault Index PadThai",
+      "key": "links_to",
+      "expected": true,
+      "description": "Index links to PadThai"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/RecipeVault Index index",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Index has #index tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/RecipeVault",
+      "eval": "result.get('count') == 5",
+      "description": "Vault has exactly 5 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Italian/, Asian/, Desserts/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa\u6240\u6709recipe notes\u548c Index.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

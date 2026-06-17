@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_product_pricing_table",
+  "files": [
+    {"filename": "products.xlsx", "sandbox_path": "/home/user/Documents/products.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_multi_output_format_mode",
+  "files": [
+    {"filename": "source_multi.png", "sandbox_path": "/home/user/Documents/source_multi.png", "type": "png"}
+  ]
+}

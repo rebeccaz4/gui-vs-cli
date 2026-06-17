@@ -1,0 +1,38 @@
+{
+  "id": "krita_wrap_around_and_mirror",
+  "app": "krita",
+  "task": "Open /home/user/Documents/pattern.kra in Krita. Enable Wrap-Around mode so that seamless-tile painting is active. Additionally, switch Krita's canvas background to the mid-gray checkered pattern. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "pattern.kra",
+        "sandbox_path": "/home/user/Documents/pattern.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/pattern.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "pattern.kra still exists"
+    },
+    {
+      "command": "kritarc-get General wrapAroundMode",
+      "eval": "str(result.get('value','')).lower() == 'true'",
+      "expected": true,
+      "description": "Wrap-around mode enabled in kritarc"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Enable wrap-around mode by editing ~/.config/kritarc configuration file",
+    "reason": "✅ CLI supports view settings by directly modifying the kritarc INI-style configuration file"
+  }
+}

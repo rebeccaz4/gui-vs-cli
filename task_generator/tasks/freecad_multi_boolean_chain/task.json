@@ -1,0 +1,69 @@
+{
+  "id": "freecad_multi_boolean_chain",
+  "app": "freecad",
+  "task": "In /home/user/Documents/chain.FCStd which contains a Part::Box named 'Box' (20x20x20), a Part::Cylinder named 'Cylinder' (Radius 5, Height 40), and a Part::Sphere named 'Sphere' (Radius 12), perform a multi-step Boolean operation chain. First, create a Part::Fuse by combining Box and Sphere. Then create a Part::Cut by cutting the newly created Fusion with Cylinder. The final document must contain 5 objects in total: the original Box, Cylinder, Sphere, plus 1 Part::Fuse and 1 Part::Cut. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "chain.FCStd",
+        "sandbox_path": "/home/user/Documents/chain.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/chain.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/chain.FCStd Box",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Box still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/chain.FCStd Cylinder",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Cylinder still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/chain.FCStd Sphere",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Sphere still exists"
+    },
+    {
+      "command": "check-object-count /home/user/Documents/chain.FCStd 5",
+      "key": "match",
+      "expected": true,
+      "description": "Document has exactly 5 objects"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/chain.FCStd Part::Fuse 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Fuse"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/chain.FCStd Part::Cut 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Cut"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → part boolean cut",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, part boolean cut"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_obj_to_mesh_xyz_asc",
+  "files": [
+    {
+      "filename": "gear.obj",
+      "sandbox_path": "/home/user/Documents/gear.obj",
+      "type": "obj"
+    }
+  ]
+}

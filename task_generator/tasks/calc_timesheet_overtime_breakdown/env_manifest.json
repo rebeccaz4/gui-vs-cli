@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_timesheet_overtime_breakdown",
+  "files": [
+    {"filename": "timesheet.xlsx", "sandbox_path": "/home/user/Documents/timesheet.xlsx", "type": "xlsx"}
+  ]
+}

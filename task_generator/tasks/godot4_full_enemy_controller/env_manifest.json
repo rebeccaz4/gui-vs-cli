@@ -1,0 +1,25 @@
+{
+  "task_id": "godot4_full_enemy_controller",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "scripts/enemy_controller.gd",
+      "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

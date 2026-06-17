@@ -1,0 +1,6 @@
+{
+  "task_id": "audacity_gap_fade_in_out",
+  "files": [
+    {"filename": "steady.wav", "sandbox_path": "/home/user/Music/steady.wav", "type": "wav"}
+  ]
+}

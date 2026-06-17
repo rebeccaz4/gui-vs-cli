@@ -1,0 +1,4 @@
+Title,Author,Year,Journal,DOI
+Efficient Estimation of Word Representations,Mikolov,2013,arXiv,10.48550/arXiv.1301.3781
+GloVe: Global Vectors for Word Representation,Pennington,2014,EMNLP,10.3115/v1/D14-1162
+FastText: Enriching Word Vectors with Subword Information,Bojanowski,2017,TACL,10.1162/tacl_a_00051

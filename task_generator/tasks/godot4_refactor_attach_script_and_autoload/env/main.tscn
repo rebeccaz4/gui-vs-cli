@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://refactor_scene"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Enemy" type="Node2D" parent="."]

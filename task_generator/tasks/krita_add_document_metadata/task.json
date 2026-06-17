@@ -1,0 +1,56 @@
+{
+  "id": "krita_add_document_metadata",
+  "app": "krita",
+  "task": "Open /home/user/Documents/artwork.kra in Krita. Edit document information dialog and set the following fields exactly: Title = 'Sunset Study', Subject = 'Landscape', Keywords = 'sunset, landscape, study', Author full name = 'Jane Painter', and Description / Abstract containing the phrase 'sunset scene'. Save the file in place at /home/user/Documents/artwork.kra.",
+  "env": {
+    "files": [
+      {
+        "filename": "artwork.kra",
+        "sandbox_path": "/home/user/Documents/artwork.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "metadata /home/user/Documents/artwork.kra",
+      "eval": "result.get('title') == 'Sunset Study'",
+      "expected": true,
+      "description": "Title set"
+    },
+    {
+      "command": "metadata /home/user/Documents/artwork.kra",
+      "eval": "result.get('subject') == 'Landscape'",
+      "expected": true,
+      "description": "Subject set"
+    },
+    {
+      "command": "metadata /home/user/Documents/artwork.kra",
+      "eval": "'sunset' in (result.get('keyword') or '').lower() and 'landscape' in (result.get('keyword') or '').lower()",
+      "expected": true,
+      "description": "Keywords include sunset and landscape"
+    },
+    {
+      "command": "metadata /home/user/Documents/artwork.kra",
+      "eval": "result.get('author') == 'Jane Painter'",
+      "expected": true,
+      "description": "Author = Jane Painter"
+    },
+    {
+      "command": "metadata /home/user/Documents/artwork.kra",
+      "eval": "'sunset scene' in (result.get('description') or '').lower()",
+      "expected": true,
+      "description": "Description contains 'sunset scene'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Set document metadata by editing documentinfo.xml in .kra file",
+    "reason": "✅ CLI supports metadata editing by extracting, modifying documentinfo.xml, and repacking the .kra ZIP file"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_v2_vertical_9x16_export",
+  "files": [
+    {
+      "filename": "reels.mlt",
+      "sandbox_path": "/home/user/Documents/reels.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "reels_source.mp4",
+      "sandbox_path": "/home/user/Videos/reels_source.mp4",
+      "type": "mp4"
+    }
+  ]
+}

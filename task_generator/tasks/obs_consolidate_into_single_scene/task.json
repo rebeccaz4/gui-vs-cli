@@ -1,0 +1,93 @@
+{
+  "id": "obs_consolidate_into_single_scene",
+  "app": "obs",
+  "task": "The scene collection already contains three scenes, each with one source: - 'Cam A' scene containing source 'Webcam A' - 'Cam B' scene containing source 'Webcam B' - 'Graphics' scene containing source 'Lower Third' Your task is to consolidate everything into one new scene named 'Unified'. 1. Create a new scene named exactly 'Unified'. 2. Add three sources to the 'Unified' scene with these exact names: 'Webcam A', 'Webcam B', 'Lower Third'. (You may use any source type from the Add Source menu; only the names matter.) 3. Delete the original three scenes: 'Cam A', 'Cam B', 'Graphics'. 4. The final collection must have exactly 1 scene, 'Unified', containing those three sources, all visible. 5.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Unified",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Unified' exists"
+    },
+    {
+      "command": "check-scene-exists 'Cam A'",
+      "key": "exists",
+      "expected": false,
+      "description": "Original 'Cam A' deleted"
+    },
+    {
+      "command": "check-scene-exists 'Cam B'",
+      "key": "exists",
+      "expected": false,
+      "description": "Original 'Cam B' deleted"
+    },
+    {
+      "command": "check-scene-exists Graphics",
+      "key": "exists",
+      "expected": false,
+      "description": "Original 'Graphics' deleted"
+    },
+    {
+      "command": "check-scene-count 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 1 scene"
+    },
+    {
+      "command": "check-source-in-scene 'Webcam A' Unified",
+      "key": "exists",
+      "expected": true,
+      "description": "'Webcam A' in 'Unified'"
+    },
+    {
+      "command": "check-source-in-scene 'Webcam B' Unified",
+      "key": "exists",
+      "expected": true,
+      "description": "'Webcam B' in 'Unified'"
+    },
+    {
+      "command": "check-source-in-scene 'Lower Third' Unified",
+      "key": "exists",
+      "expected": true,
+      "description": "'Lower Third' in 'Unified'"
+    },
+    {
+      "command": "check-source-visible 'Webcam A'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Webcam A' visible"
+    },
+    {
+      "command": "check-source-visible 'Webcam B'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Webcam B' visible"
+    },
+    {
+      "command": "check-source-visible 'Lower Third'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Lower Third' visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

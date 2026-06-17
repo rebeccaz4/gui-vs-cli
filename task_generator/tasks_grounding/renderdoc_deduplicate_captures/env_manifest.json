@@ -1,0 +1,35 @@
+{
+  "task_id": "renderdoc_deduplicate_captures",
+  "files": [
+    {
+      "filename": "draw1.rdc",
+      "sandbox_path": "/home/user/captures/draw1.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "draw2.rdc",
+      "sandbox_path": "/home/user/captures/draw2.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "draw3.rdc",
+      "sandbox_path": "/home/user/captures/draw3.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frameA.rdc",
+      "sandbox_path": "/home/user/captures/frameA.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frameB.rdc",
+      "sandbox_path": "/home/user/captures/frameB.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "unique.rdc",
+      "sandbox_path": "/home/user/captures/unique.rdc",
+      "type": "rdc"
+    }
+  ]
+}

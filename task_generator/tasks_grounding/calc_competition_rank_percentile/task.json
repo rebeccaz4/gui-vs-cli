@@ -1,0 +1,139 @@
+{
+  "id": "calc_competition_rank_percentile",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/competition.xlsx in LibreOffice Calc. Sheet 'Results' has Name (A), Country (B), Score (C) with 20 competitors in rows 2-21.\n\n1. In D1 type 'Rank' and make it bold. In E1 type 'Percentile' and make it bold. In F1 type 'Medal' and make it bold.\n2. In D2 enter =RANK(C2,C$2:C$21) and fill down through D21. Higher scores should get rank 1.\n3. In E2 enter =PERCENTRANK(C$2:C$21,C2) and fill down through E21.\n4. In F2 enter a nested-IF that returns 'Gold' when the rank is 1, 'Silver' when 2, 'Bronze' when 3, 'Finalist' when rank is 4 or 5, and empty string otherwise: =IF(D2=1,\"Gold\",IF(D2=2,\"Silver\",IF(D2=3,\"Bronze\",IF(D2<=5,\"Finalist\",\"\")))). Fill down through F21.\n5. In A23 fill in 'Top Country' and make it bold.\n6. In B23 enter =INDEX(B2:B21,MATCH(1,D2:D21,0)) to return the country of the rank-1 competitor.\n7. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/competition.xlsx in LibreOffice Calc. Sheet 'Results' has Name (A), Country (B), Score (C) with 20 competitors in rows 2-21.\n\n1. In D1 type 'Rank' and make it bold. In E1 type 'Percentile' and make it bold. In F1 type 'Medal' and make it bold.\n2. In D2 enter =RANK(C2,C$2:C$21) and fill down through D21. Higher scores should get rank 1.\n3. In E2 enter =PERCENTRANK(C$2:C$21,C2) and fill down through E21.\n4. In F2 enter a nested-IF that returns 'Gold' when the rank is 1, 'Silver' when 2, 'Bronze' when 3, 'Finalist' when rank is 4 or 5, and empty string otherwise: =IF(D2=1,\"Gold\",IF(D2=2,\"Silver\",IF(D2=3,\"Bronze\",IF(D2<=5,\"Finalist\",\"\")))). Fill down through F21.\n5. In A23 type 'Top Country' and make it bold.\n6. In B23 enter =INDEX(B2:B21,MATCH(1,D2:D21,0)) to return the country of the rank-1 competitor.\n7. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "competition.xlsx",
+        "sandbox_path": "/home/user/Documents/competition.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 Rank Results",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = Rank"
+    },
+    {
+      "command": "check-cell-value E1 Percentile Results",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = Percentile"
+    },
+    {
+      "command": "check-cell-value F1 Medal Results",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = Medal"
+    },
+    {
+      "command": "check-cell-formatted D1 true Results",
+      "key": "match",
+      "expected": true,
+      "description": "D1 bold"
+    },
+    {
+      "command": "check-cell-value D2 7 Results",
+      "key": "match",
+      "expected": true,
+      "description": "D2 Ana rank = 7"
+    },
+    {
+      "command": "check-cell-value D5 2 Results",
+      "key": "match",
+      "expected": true,
+      "description": "D5 Dora rank = 2"
+    },
+    {
+      "command": "check-cell-value D9 1 Results",
+      "key": "match",
+      "expected": true,
+      "description": "D9 Haru rank = 1"
+    },
+    {
+      "command": "check-cell-value D3 3 Results",
+      "key": "match",
+      "expected": true,
+      "description": "D3 Bill rank = 3"
+    },
+    {
+      "command": "check-cell-value D12 5 Results",
+      "key": "match",
+      "expected": true,
+      "description": "D12 Kira rank = 5"
+    },
+    {
+      "command": "cell-value D2 Results",
+      "eval": "result.get('formula') is not None and 'RANK' in result.get('formula','').upper()",
+      "description": "D2 uses RANK"
+    },
+    {
+      "command": "cell-value E2 Results",
+      "eval": "result.get('formula') is not None and 'PERCENTRANK' in result.get('formula','').upper()",
+      "description": "E2 uses PERCENTRANK"
+    },
+    {
+      "command": "check-cell-value F9 Gold Results",
+      "key": "match",
+      "expected": true,
+      "description": "F9 Haru = Gold"
+    },
+    {
+      "command": "check-cell-value F5 Silver Results",
+      "key": "match",
+      "expected": true,
+      "description": "F5 Dora = Silver"
+    },
+    {
+      "command": "check-cell-value F3 Bronze Results",
+      "key": "match",
+      "expected": true,
+      "description": "F3 Bill = Bronze"
+    },
+    {
+      "command": "check-cell-value F12 Finalist Results",
+      "key": "match",
+      "expected": true,
+      "description": "F12 Kira (rank 5) = Finalist"
+    },
+    {
+      "command": "check-cell-value F17 Finalist Results",
+      "key": "match",
+      "expected": true,
+      "description": "F17 Pia (rank 4) = Finalist"
+    },
+    {
+      "command": "check-cell-value A23 \"Top Country\" Results",
+      "key": "match",
+      "expected": true,
+      "description": "A23 = Top Country"
+    },
+    {
+      "command": "check-cell-formatted A23 true Results",
+      "key": "match",
+      "expected": true,
+      "description": "A23 bold"
+    },
+    {
+      "command": "check-cell-value B23 JPN Results",
+      "key": "match",
+      "expected": true,
+      "description": "B23 = JPN (country of gold medalist)"
+    },
+    {
+      "command": "cell-value B23 Results",
+      "eval": "result.get('formula') is not None and ('INDEX' in result.get('formula','').upper() or 'VLOOKUP' in result.get('formula','').upper())",
+      "description": "B23 uses INDEX/MATCH or VLOOKUP"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

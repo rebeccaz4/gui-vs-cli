@@ -1,0 +1,15 @@
+{
+  "task_id": "renderdoc_verify_capture_integrity",
+  "files": [
+    {
+      "filename": "good_frame.rdc",
+      "sandbox_path": "/home/user/captures/good_frame.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "bad_frame.rdc",
+      "sandbox_path": "/home/user/captures/bad_frame.rdc",
+      "type": "bin"
+    }
+  ]
+}

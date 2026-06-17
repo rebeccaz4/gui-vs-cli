@@ -1,0 +1,114 @@
+{
+  "id": "drawio_aws_cloud_arch",
+  "app": "drawio",
+  "task": "Extend the AWS architecture diagram at /home/user/Documents/aws_arch.drawio. The file contains 3 existing shapes (VPC, EC2, RDS). Add 7 new shapes with these labels: CloudFront, LoadBalancer, Web1, Web2, App1, App2, S3Bucket. Apply fill colors: Web1 and Web2 must be #dae8fc (blue); App1 and App2 must be #d5e8d4 (green). Connect LoadBalancer to Web1. The final diagram must have exactly 10 vertices on page 0. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/aws_arch.drawio in draw.io Desktop. The file already contains 3 labeled shapes: 'VPC', 'EC2', and 'RDS' (all with white fill). Extend the diagram so it becomes a full 3-tier AWS web application architecture. Add exactly 7 new shapes with these labels: 'CloudFront', 'LoadBalancer', 'Web1', 'Web2', 'App1', 'App2', 'S3Bucket'. Apply fill colors: both 'Web1' and 'Web2' must have fillColor #dae8fc (blue); both 'App1' and 'App2' must have fillColor #d5e8d4 (green). Draw a connection (arrow) from 'LoadBalancer' to 'Web1'. When finished the first page must have exactly 10 vertices total (the 3 originals plus 7 new ones). Save the file at the same path /home/user/Documents/aws_arch.drawio (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "aws_arch.drawio",
+        "sandbox_path": "/home/user/Documents/aws_arch.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/aws_arch.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/aws_arch.drawio 10 0",
+      "key": "match",
+      "expected": true,
+      "description": "Page 0 has exactly 10 vertices"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio VPC",
+      "key": "exists",
+      "expected": true,
+      "description": "Original VPC label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio EC2",
+      "key": "exists",
+      "expected": true,
+      "description": "Original EC2 label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio RDS",
+      "key": "exists",
+      "expected": true,
+      "description": "Original RDS label remains"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio CloudFront",
+      "key": "exists",
+      "expected": true,
+      "description": "CloudFront added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio LoadBalancer",
+      "key": "exists",
+      "expected": true,
+      "description": "LoadBalancer added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio Web1",
+      "key": "exists",
+      "expected": true,
+      "description": "Web1 added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio Web2",
+      "key": "exists",
+      "expected": true,
+      "description": "Web2 added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio App1",
+      "key": "exists",
+      "expected": true,
+      "description": "App1 added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio App2",
+      "key": "exists",
+      "expected": true,
+      "description": "App2 added"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/aws_arch.drawio S3Bucket",
+      "key": "exists",
+      "expected": true,
+      "description": "S3Bucket added"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Inspect the vertices list. Do the two shapes labeled 'Web1' and 'Web2' both have fillColor #dae8fc in their style string, AND do 'App1' and 'App2' both have fillColor #d5e8d4? Answer yes only if all four conditions are met.",
+      "command": "vertices /home/user/Documents/aws_arch.drawio 0",
+      "context": "command_output",
+      "description": "Web1/Web2 are blue (#dae8fc) and App1/App2 are green (#d5e8d4)"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Inspect the connections list. Does it include an edge whose source vertex is labeled 'LoadBalancer' and whose target vertex is labeled 'Web1'? (Cross-reference source/target IDs with the vertices.)",
+      "command": "connections /home/user/Documents/aws_arch.drawio 0",
+      "context": "command_output",
+      "description": "Connection from LoadBalancer to Web1 exists"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', shape list → shape style --id <id> --fill-color <#hex>, connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Style modification (with list); ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: cloud"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  }
+}

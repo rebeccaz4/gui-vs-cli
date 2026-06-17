@@ -1,0 +1,45 @@
+{
+  "id": "zotero_add_item_to_collection",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The library contains an item titled 'A Survey of RL Methods' which is currently only inside the 'Reinforcement Learning' collection. Add this item to the existing 'AI Research' collection as well \u2014 a single Zotero item can belong to multiple collections. You can do this by dragging the item from the middle pane onto the 'AI Research' collection in the left pane, or by right-clicking the item and using 'Add to Collection'. Leave the item in 'Reinforcement Learning' also. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-collection-contains 'AI Research' 'Survey of RL Methods'",
+      "key": "contains",
+      "expected": true,
+      "description": "'AI Research' contains the survey item"
+    },
+    {
+      "command": "check-collection-contains 'Reinforcement Learning' 'Survey of RL Methods'",
+      "key": "contains",
+      "expected": true,
+      "description": "Survey item still present in 'Reinforcement Learning'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "cli-anything-zotero --json item add-to-collection <item_key> 'AI Research' --experimental",
+    "reason": "CLI-Anything supports adding items to collections via the experimental 'item add-to-collection' command. First find the item with 'item find \"Survey of RL Methods\"' to get its key, then use the add-to-collection command. Requires Zotero to be closed."
+  }
+}

@@ -1,0 +1,1484 @@
+{
+  "source_version": "2.7.8",
+  "source_basename": "index.js",
+  "tool_count": 84,
+  "tools": [
+    {
+      "name": "safari_navigate",
+      "description": "Navigate to a URL in Safari. Waits for page to fully load.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to navigate to"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "name": "safari_go_back",
+      "description": "Go back in browser history",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_go_forward",
+      "description": "Go forward in browser history",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_reload",
+      "description": "Reload the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "hard": {
+            "type": "boolean",
+            "description": "Hard reload (bypass cache)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_read_page",
+      "description": "Read page text content (title, URL, body text). Use for reading article text or page content. For interacting with elements, prefer safari_snapshot (gives ref IDs). Use selector to read specific element. Use maxLength to limit output.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector to read specific element"
+          },
+          "maxLength": {
+            "type": "number",
+            "description": "Max chars to return (default: 50000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_get_source",
+      "description": "Get HTML source of current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "maxLength": {
+            "type": "number",
+            "description": "Max chars (default: 200000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_snapshot",
+      "description": "PREFERRED way to see page state. Returns accessibility tree with ref IDs for every interactive element. Use refs with click/fill/type instead of CSS selectors. Workflow: snapshot → see refs → click({ref:'0_5'}). PREFER THIS over safari_screenshot (cheaper, structured text vs heavy image) and over safari_read_page (includes interactive refs). Use safari_screenshot only when you need to see visual layout/styling.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector for subtree (default: full page)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_navigate_and_read",
+      "description": "Navigate to a URL and return the page content in one step — saves 1 full round-trip vs navigate+read_page. Use instead of safari_navigate + safari_read_page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to navigate to"
+          },
+          "maxLength": {
+            "type": "number",
+            "description": "Max chars to return (default: 50000)"
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Load timeout in ms (default: 30000)"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "name": "safari_click",
+      "description": "Click element. Use ref (from snapshot), selector, text, or x/y. Works on React/Airtable/virtual DOM apps via full PointerEvent+MouseEvent sequence + React Fiber fallback. Pure JS — never touches user's mouse. When using ref, always take a FRESH safari_snapshot first — refs expire after each new snapshot.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string",
+            "description": "Ref ID from safari_snapshot (e.g. '0_5')"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "text": {
+            "type": "string",
+            "description": "Visible text to find and click"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_click_and_read",
+      "description": "Click an element then return the updated page — saves 1 full round-trip vs separate click+read_page. Handles both React Router navigation and full page loads.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Visible text of the element to click"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate"
+          },
+          "wait": {
+            "type": "number",
+            "description": "Ms to wait after click (default: auto-detect navigation)"
+          },
+          "maxLength": {
+            "type": "number",
+            "description": "Max chars to return (default: 50000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_double_click",
+      "description": "Double-click an element by CSS selector or x/y coordinates (e.g. to select a word in text)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_right_click",
+      "description": "Right-click (context menu) an element by CSS selector or x/y coordinates",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_native_click",
+      "description": "OS-level mouse click via macOS CGEvent — produces isTrusted: true events that pass WAF/bot detection (G2, Cloudflare, etc.). Use when regular safari_click fails with 405/403 errors or form submissions are blocked. Trade-off: physically moves the mouse cursor and requires Safari window to be visible. Use ref (from snapshot), selector, text, or x/y. When using ref, always take a FRESH safari_snapshot first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string",
+            "description": "Ref ID from safari_snapshot (e.g. '0_5')"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "text": {
+            "type": "string",
+            "description": "Visible text to find and click"
+          },
+          "x": {
+            "type": "number",
+            "description": "Viewport X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Viewport Y coordinate"
+          },
+          "doubleClick": {
+            "type": "boolean",
+            "description": "Double-click instead of single click",
+            "default": false
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_fill",
+      "description": "Fill/replace value in an input, textarea, select, OR contenteditable (rich text). Handles React controlled inputs, ProseMirror, Draft.js, and Google Closure editors automatically. Use for SETTING a value (replaces existing). For code editors (Monaco/CodeMirror/Ace), use safari_replace_editor instead. For character-by-character typing in search boxes, use safari_type_text. IMPORTANT: When using ref, always take a FRESH safari_snapshot first — refs expire after each new snapshot (prefix changes: 5_xx → 6_xx).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string",
+            "description": "Ref ID from safari_snapshot"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value to fill"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "safari_clear_field",
+      "description": "Clear an input field",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector of the input"
+          }
+        },
+        "required": [
+          "selector"
+        ]
+      }
+    },
+    {
+      "name": "safari_select_option",
+      "description": "Select an option in a native <select> dropdown. Sets .value and dispatches change event. For custom dropdowns (React/LinkedIn), use safari_click on the dropdown trigger, then safari_click on the option instead.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector of the select"
+          },
+          "value": {
+            "type": "string",
+            "description": "Option value to select"
+          }
+        },
+        "required": [
+          "selector",
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "safari_fill_form",
+      "description": "Fill multiple form fields at once",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "description": "Array of {selector, value} pairs"
+          }
+        },
+        "required": [
+          "fields"
+        ]
+      }
+    },
+    {
+      "name": "safari_press_key",
+      "description": "Press a keyboard key (enter, tab, escape, arrows, etc). Supports modifiers (cmd, shift, alt, ctrl).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key name: enter, tab, escape, space, delete, up, down, left, right, or a single character"
+          },
+          "modifiers": {
+            "type": "array",
+            "description": "Modifier keys: cmd, shift, alt, ctrl"
+          }
+        },
+        "required": [
+          "key"
+        ]
+      }
+    },
+    {
+      "name": "safari_type_text",
+      "description": "Type text character-by-character with realistic key events. Best for: search boxes (triggers autocomplete), chat inputs, and fields that react to each keystroke. For rich text editors (Medium, HackerNoon, LinkedIn), use safari_fill instead — it uses framework-native APIs. For code editors (Monaco/CodeMirror), use safari_replace_editor. When using ref, always take a FRESH safari_snapshot first — refs expire after each new snapshot.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to type"
+          },
+          "ref": {
+            "type": "string",
+            "description": "Ref ID from safari_snapshot"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector to focus"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "safari_replace_editor",
+      "description": "Replace ALL content in a code editor (Monaco, CodeMirror, Ace, ProseMirror). Use ONLY for code editors — Airtable automations, GitHub gists, CodePen, n8n code nodes, etc. NOT for rich text editors like Medium/LinkedIn (use safari_fill for those). Detects ProseMirror/Draft.js/CodeMirror/Monaco/Ace and uses their native API.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The complete code/text to put in the editor"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "safari_screenshot",
+      "description": "Take a visual screenshot (base64 JPEG). EXPENSIVE — use safari_snapshot instead for most tasks. Only use screenshot when you need to verify visual layout, styling, images, or colors that snapshot can't show.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fullPage": {
+            "type": "boolean",
+            "description": "Capture full page (not just viewport)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_screenshot_element",
+      "description": "Take a screenshot of a specific element (by CSS selector). Returns base64 PNG image.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector of the element to capture"
+          }
+        },
+        "required": [
+          "selector"
+        ]
+      }
+    },
+    {
+      "name": "safari_scroll",
+      "description": "Scroll the page up or down by a specified amount",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "description": "Scroll direction (default: down)",
+            "enum": [
+              "up",
+              "down"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "Pixels to scroll (default: 500)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_scroll_to",
+      "description": "Scroll to a specific position on the page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X position (default: 0)"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y position (default: 0)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_list_tabs",
+      "description": "List all open tabs in Safari with their titles and URLs",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_new_tab",
+      "description": "Open a new tab, optionally with a URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to open (empty for blank tab)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_close_tab",
+      "description": "Close the current tab",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_switch_tab",
+      "description": "Switch to a specific tab by index (use safari_list_tabs to see indices). All subsequent commands (click, fill, evaluate, screenshot, scroll) will target this tab. If commands seem to run on the wrong tab, call switch_tab again to re-anchor.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "number",
+            "description": "Tab index (starting from 1)"
+          }
+        },
+        "required": [
+          "index"
+        ]
+      }
+    },
+    {
+      "name": "safari_wait_for",
+      "description": "Wait for an element or text to appear on the page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector to wait for"
+          },
+          "text": {
+            "type": "string",
+            "description": "Text to wait for"
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Timeout in ms (default: 10000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_wait_for_new_tab",
+      "description": "Wait for a new tab to appear (e.g. after OAuth login click opens popup). Automatically switches to the new tab.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "timeout": {
+            "type": "number",
+            "description": "Timeout in ms (default: 10000)"
+          },
+          "urlContains": {
+            "type": "string",
+            "description": "Only match new tabs whose URL contains this string"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_evaluate",
+      "description": "Execute JavaScript in the current page. Automatically falls back to AppleScript when CSP blocks execution (e.g. Google Search Console, LinkedIn). For reading data, prefer safari_read_page or safari_snapshot. For interactions, prefer safari_click/fill with refs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "script": {
+            "type": "string",
+            "description": "JavaScript code to execute"
+          }
+        },
+        "required": [
+          "script"
+        ]
+      }
+    },
+    {
+      "name": "safari_get_element",
+      "description": "Get detailed info about an element (tag, text, rect, attributes, visibility)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          }
+        },
+        "required": [
+          "selector"
+        ]
+      }
+    },
+    {
+      "name": "safari_query_all",
+      "description": "Find all elements matching a CSS selector (returns tag, text, href, value)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max results (default: 20)"
+          }
+        },
+        "required": [
+          "selector"
+        ]
+      }
+    },
+    {
+      "name": "safari_hover",
+      "description": "Hover over element. Use ref, selector, or x/y",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string",
+            "description": "Ref ID from safari_snapshot"
+          },
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "x": {
+            "type": "number",
+            "description": "X coordinate"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y coordinate"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_handle_dialog",
+      "description": "Set up handler for the next alert/confirm/prompt dialog",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Accept or dismiss (default: accept)",
+            "enum": [
+              "accept",
+              "dismiss"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "Text to enter for prompt dialogs"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_resize",
+      "description": "Resize the Safari window",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "type": "number",
+            "description": "Window width"
+          },
+          "height": {
+            "type": "number",
+            "description": "Window height"
+          }
+        },
+        "required": [
+          "width",
+          "height"
+        ]
+      }
+    },
+    {
+      "name": "safari_drag",
+      "description": "Drag an element to another element or position. Use CSS selectors or x/y coordinates.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceSelector": {
+            "type": "string",
+            "description": "CSS selector of element to drag"
+          },
+          "targetSelector": {
+            "type": "string",
+            "description": "CSS selector of drop target"
+          },
+          "sourceX": {
+            "type": "number",
+            "description": "Source X coordinate"
+          },
+          "sourceY": {
+            "type": "number",
+            "description": "Source Y coordinate"
+          },
+          "targetX": {
+            "type": "number",
+            "description": "Target X coordinate"
+          },
+          "targetY": {
+            "type": "number",
+            "description": "Target Y coordinate"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_upload_file",
+      "description": "Upload a file to a <input type='file'> element via JavaScript DataTransfer — NO file dialog, NO UI interaction. IMPORTANT: Do NOT click the file input before calling this tool — just provide the selector and file path. If a file dialog is already open, this tool will close it first. NOTE: 'verified 0 files' may appear even on success if the site uses a custom upload handler — check visually with safari_snapshot.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector of the file input"
+          },
+          "filePath": {
+            "type": "string",
+            "description": "Absolute path to the file to upload"
+          }
+        },
+        "required": [
+          "selector",
+          "filePath"
+        ]
+      }
+    },
+    {
+      "name": "safari_paste_image",
+      "description": "Paste an image from a local file into the focused element via JS DataTransfer (no clipboard, no focus steal). Works on Medium, dev.to, HackerNoon, TOI, etc.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filePath": {
+            "type": "string",
+            "description": "Absolute path to the image file (PNG, JPG, WebP)"
+          }
+        },
+        "required": [
+          "filePath"
+        ]
+      }
+    },
+    {
+      "name": "safari_emulate",
+      "description": "Emulate a mobile device by resizing window and setting user agent. Devices: iphone-14, iphone-14-pro-max, ipad, ipad-pro, pixel-7, galaxy-s24. Or use custom width/height.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "type": "string",
+            "description": "Device name: iphone-14, ipad, pixel-7, galaxy-s24, etc."
+          },
+          "width": {
+            "type": "number",
+            "description": "Custom viewport width"
+          },
+          "height": {
+            "type": "number",
+            "description": "Custom viewport height"
+          },
+          "userAgent": {
+            "type": "string",
+            "description": "Custom user agent string"
+          },
+          "scale": {
+            "type": "number",
+            "description": "Initial scale (default: 1)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_reset_emulation",
+      "description": "Reset device emulation back to desktop mode",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_get_cookies",
+      "description": "Get cookies for the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_local_storage",
+      "description": "Get localStorage data for the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Specific key to get (omit for all)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_network",
+      "description": "Quick network overview via Performance API (no setup needed). Shows URLs and timing for resources loaded by the page. For detailed request/response info (headers, status codes, POST bodies), use safari_start_network_capture + safari_network_details instead.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Max requests to return (default: 50)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_run_script",
+      "description": "Batch multiple Safari actions in ONE call. Steps: [{action, args}]. Actions match other safari_* tool names without prefix (e.g. 'navigate', 'click', 'fill', 'evaluate', 'readPage').",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "type": "array",
+            "description": "Array of steps to execute sequentially"
+          }
+        },
+        "required": [
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "safari_start_console",
+      "description": "Start capturing console messages (log, warn, error, info). Call once per page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_get_console",
+      "description": "Get captured console messages (must call safari_start_console first)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_clear_console",
+      "description": "Clear all captured console messages",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_save_pdf",
+      "description": "Save the current page as a PDF file. Uses screencapture + PDF rendering (no Safari UI interaction needed).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Absolute file path to save the PDF (e.g. /Users/am/Downloads/page.pdf)"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    {
+      "name": "safari_accessibility_snapshot",
+      "description": "Get the accessibility tree of the page (roles, ARIA labels, focusable elements, form states). Essential for a11y auditing.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector for subtree (default: full page)"
+          },
+          "maxDepth": {
+            "type": "number",
+            "description": "Max tree depth (default: 5)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_set_cookie",
+      "description": "Set a cookie on the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Cookie name"
+          },
+          "value": {
+            "type": "string",
+            "description": "Cookie value"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Cookie domain"
+          },
+          "path": {
+            "type": "string",
+            "description": "Cookie path (default: /)"
+          },
+          "expires": {
+            "type": "string",
+            "description": "Expiry date (e.g. 'Thu, 01 Jan 2030 00:00:00 GMT')"
+          },
+          "secure": {
+            "type": "boolean",
+            "description": "Secure flag"
+          },
+          "sameSite": {
+            "type": "string",
+            "description": "SameSite attribute",
+            "enum": [
+              "Strict",
+              "Lax",
+              "None"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "safari_delete_cookies",
+      "description": "Delete a specific cookie or all cookies for the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Cookie name to delete"
+          },
+          "all": {
+            "type": "boolean",
+            "description": "Delete all cookies"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_session_storage",
+      "description": "Get sessionStorage data for the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Specific key (omit for all)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_set_session_storage",
+      "description": "Set a value in sessionStorage",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Storage key"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value to store"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "safari_set_local_storage",
+      "description": "Set a value in localStorage",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Storage key"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value to store"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "safari_delete_local_storage",
+      "description": "Delete a localStorage key, or clear all localStorage (omit key to clear all)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key to delete (omit to clear ALL)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_delete_session_storage",
+      "description": "Delete a sessionStorage key, or clear all sessionStorage (omit key to clear all)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key to delete (omit to clear ALL)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_export_storage",
+      "description": "Export all storage state (cookies + localStorage + sessionStorage) as JSON — useful for saving and restoring login sessions",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_import_storage",
+      "description": "Import storage state from JSON (as exported by safari_export_storage) — restores cookies, localStorage, sessionStorage",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "description": "JSON string from safari_export_storage"
+          }
+        },
+        "required": [
+          "state"
+        ]
+      }
+    },
+    {
+      "name": "safari_clipboard_read",
+      "description": "Read the current clipboard content (text)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_clipboard_write",
+      "description": "Write text to the system clipboard",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to copy to clipboard"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "safari_mock_route",
+      "description": "Intercept network requests matching a URL pattern and return a mock response. Works with both fetch and XHR. Useful for testing API error states, offline behavior, or replacing API responses.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "urlPattern": {
+            "type": "string",
+            "description": "URL substring or regex pattern to match (e.g. '/api/users' or 'example\\.com')"
+          },
+          "response": {
+            "type": "object",
+            "description": "Mock response to return"
+          }
+        },
+        "required": [
+          "urlPattern",
+          "response"
+        ]
+      }
+    },
+    {
+      "name": "safari_clear_mocks",
+      "description": "Remove all network route mocks (restore real network behavior)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_wait",
+      "description": "Wait for a fixed time in milliseconds. Use only when you need a brief pause between actions. PREFER safari_wait_for (waits for element/text to appear) — it's smarter and doesn't waste time.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ms": {
+            "type": "number",
+            "description": "Milliseconds to wait"
+          }
+        },
+        "required": [
+          "ms"
+        ]
+      }
+    },
+    {
+      "name": "safari_start_network_capture",
+      "description": "Start capturing detailed network requests (fetch + XHR) with headers, status, timing. Call once per page. Intercepts fetch/XHR — captures requests AFTER this call only. For quick overview of already-loaded resources, use safari_network instead.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_network_details",
+      "description": "Get captured network requests with full details (must call safari_start_network_capture first)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Max requests (default: 50)"
+          },
+          "filter": {
+            "type": "string",
+            "description": "Filter by URL substring"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_clear_network",
+      "description": "Clear all captured network requests",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_performance_metrics",
+      "description": "Get detailed performance metrics: navigation timing, Web Vitals (FCP, LCP, CLS), resource breakdown, memory usage",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_throttle_network",
+      "description": "Simulate slow network conditions. Profiles: slow-3g, fast-3g, 4g, offline. Or custom latency/speed. Call with no args to reset.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "string",
+            "description": "Preset: slow-3g, fast-3g, 4g, offline"
+          },
+          "latency": {
+            "type": "number",
+            "description": "Custom latency in ms"
+          },
+          "downloadKbps": {
+            "type": "number",
+            "description": "Custom download speed in Kbps"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_console_filter",
+      "description": "Get console messages filtered by level (must call safari_start_console first)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string",
+            "description": "Console level to filter",
+            "enum": [
+              "log",
+              "warn",
+              "error",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "level"
+        ]
+      }
+    },
+    {
+      "name": "safari_extract_tables",
+      "description": "Extract HTML tables as structured JSON (headers + rows). Perfect for scraping data tables.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector (default: 'table')"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max tables (default: 10)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_extract_meta",
+      "description": "Extract all meta tags: title, description, canonical, OG tags, Twitter cards, JSON-LD, alternate languages, RSS feeds",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_extract_images",
+      "description": "Extract all images with src, alt, dimensions, loading strategy, viewport visibility",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Max images (default: 50)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_extract_links",
+      "description": "Extract all links with href, text, rel, target, external/nofollow detection",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number",
+            "description": "Max links (default: 100)"
+          },
+          "filter": {
+            "type": "string",
+            "description": "Filter by URL or text substring"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_override_geolocation",
+      "description": "Override the browser's geolocation API to return custom coordinates",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "description": "Latitude (-90 to 90)"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude (-180 to 180)"
+          },
+          "accuracy": {
+            "type": "number",
+            "description": "Accuracy in meters (default: 100)"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ]
+      }
+    },
+    {
+      "name": "safari_get_computed_style",
+      "description": "Get computed CSS styles for an element. Optionally filter specific properties.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector"
+          },
+          "properties": {
+            "type": "array",
+            "description": "Specific CSS properties to get (e.g. ['color', 'font-size'])"
+          }
+        },
+        "required": [
+          "selector"
+        ]
+      }
+    },
+    {
+      "name": "safari_list_indexed_dbs",
+      "description": "List all IndexedDB databases on the current page",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_get_indexed_db",
+      "description": "Read records from an IndexedDB database store",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dbName": {
+            "type": "string",
+            "description": "Database name"
+          },
+          "storeName": {
+            "type": "string",
+            "description": "Object store name"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max records (default: 20)"
+          }
+        },
+        "required": [
+          "dbName",
+          "storeName"
+        ]
+      }
+    },
+    {
+      "name": "safari_css_coverage",
+      "description": "Analyze CSS coverage: find unused CSS rules across all stylesheets. Shows coverage percentage per stylesheet.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_detect_forms",
+      "description": "Auto-detect all forms on the page with their fields, types, selectors, and submit buttons. Great for automated form filling.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "safari_scroll_to_element",
+      "description": "Scroll to element by CSS selector OR text. For virtual DOM (Airtable) use text — scrolls down until text appears in DOM.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector of target element"
+          },
+          "text": {
+            "type": "string",
+            "description": "Text to find — scrolls down until it appears (for virtual DOM/lazy loading)"
+          },
+          "block": {
+            "type": "string",
+            "description": "Scroll alignment (default: center)",
+            "enum": [
+              "start",
+              "center",
+              "end",
+              "nearest"
+            ]
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Max time to scroll in ms (default: 10000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_click_and_wait",
+      "description": "Click an element AND wait for the result (page load or element). Use instead of click + wait_for separately.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "type": "string",
+            "description": "CSS selector to click"
+          },
+          "text": {
+            "type": "string",
+            "description": "Visible text to click"
+          },
+          "waitFor": {
+            "type": "string",
+            "description": "CSS selector to wait for after click"
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Wait timeout in ms (default: 10000)"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "safari_fill_and_submit",
+      "description": "Fill a form AND submit it in one operation. Finds submit button automatically if not specified.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "description": "Fields to fill"
+          },
+          "submitSelector": {
+            "type": "string",
+            "description": "Submit button selector (auto-detected if omitted)"
+          }
+        },
+        "required": [
+          "fields"
+        ]
+      }
+    },
+    {
+      "name": "safari_analyze_page",
+      "description": "Full page analysis in ONE call: title, URL, meta tags, OG, headings, link stats, image stats, forms, and text preview. Perfect for SEO/audit.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  ]
+}

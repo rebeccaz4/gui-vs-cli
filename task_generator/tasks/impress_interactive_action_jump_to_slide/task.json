@@ -1,0 +1,96 @@
+{
+  "id": "impress_interactive_action_jump_to_slide",
+  "app": "libreoffice_impress",
+  "task": "Using LibreOffice Impress, build a brand-new 5-slide interactive navigation deck and save it as /home/user/Documents/nav_deck.odp (native ODP format). The deck must be laid out exactly like this:\n\nSlide 1 \u2014 Title 'Menu'. On this slide, insert THREE rectangle shapes (Insert > Shape > Basic Shapes > Rectangle, or toolbar rectangle tool). Double-click each rectangle to add text:\n  - Rectangle 1: text 'Section A'\n  - Rectangle 2: text 'Section B'\n  - Rectangle 3: text 'Section C'\n\nFor each rectangle, set an Interaction so that clicking it during the slideshow jumps to the correct slide. Right-click the rectangle > Interaction (or Slide Show > Interaction). In the Interaction dialog, choose 'Go to page or object' and select the target slide:\n  - The 'Section A' rectangle must jump to Slide 2\n  - The 'Section B' rectangle must jump to Slide 3\n  - The 'Section C' rectangle must jump to Slide 4\n\nSlide 2 \u2014 Title 'Section A'\nSlide 3 \u2014 Title 'Section B'\nSlide 4 \u2014 Title 'Section C'\nSlide 5 \u2014 Title 'Thanks'\n\nSave the file as /home/user/Documents/nav_deck.odp in ODP format (File > Save As, set filename, select ODF Presentation (.odp)).",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/nav_deck.odp"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/nav_deck.odp",
+      "key": "exists",
+      "expected": true,
+      "description": "nav_deck.odp is saved on disk"
+    },
+    {
+      "command": "check-slide-count 5",
+      "key": "match",
+      "expected": true,
+      "description": "Deck has exactly 5 slides"
+    },
+    {
+      "command": "check-slide-title 0 Menu",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 1 title is 'Menu'"
+    },
+    {
+      "command": "check-slide-title 1 \"Section A\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 title is 'Section A'"
+    },
+    {
+      "command": "check-slide-title 2 \"Section B\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 3 title is 'Section B'"
+    },
+    {
+      "command": "check-slide-title 3 \"Section C\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 4 title is 'Section C'"
+    },
+    {
+      "command": "check-slide-title 4 Thanks",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 5 title is 'Thanks'"
+    },
+    {
+      "command": "check-slide-contains 0 \"Section A\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 contains a shape with text 'Section A'"
+    },
+    {
+      "command": "check-slide-contains 0 \"Section B\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 contains a shape with text 'Section B'"
+    },
+    {
+      "command": "check-slide-contains 0 \"Section C\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 1 contains a shape with text 'Section C'"
+    },
+    {
+      "command": "check-shape-jumps-to-slide /home/user/Documents/nav_deck.odp 0 \"Section A\" \"Section A\"",
+      "key": "match",
+      "expected": true,
+      "description": "Rectangle 'Section A' on slide 1 jumps to the 'Section A' slide"
+    },
+    {
+      "command": "check-shape-jumps-to-slide /home/user/Documents/nav_deck.odp 0 \"Section B\" \"Section B\"",
+      "key": "match",
+      "expected": true,
+      "description": "Rectangle 'Section B' on slide 1 jumps to the 'Section B' slide"
+    },
+    {
+      "command": "check-shape-jumps-to-slide /home/user/Documents/nav_deck.odp 0 \"Section C\" \"Section C\"",
+      "key": "match",
+      "expected": true,
+      "description": "Rectangle 'Section C' on slide 1 jumps to the 'Section C' slide"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  }
+}

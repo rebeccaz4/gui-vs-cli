@@ -1,0 +1,74 @@
+{
+  "id": "calc_named_ranges_and_data_validation",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/orders.xlsx in LibreOffice Calc. The workbook has three sheets:\n- 'Orders' with bold headers in row 1 (A='Order ID', B='Customer', C='Item', D='Qty', E='Price', F='Total w/ Tax'). Rows 2-21 already contain values for Order ID (ORD-001..ORD-020), Item, Qty (1-5) and Price - the Customer column (B) and Total column (F) are blank.\n- 'Customers' with bold headers A1='Customer Name' and 9 customer names in A2:A10.\n- 'Settings' with A1='Tax Rate' (bold) and B1=0.08.\n\nDo the following:\n\n1. Create a named range called exactly 'CustomerList' that points to Customers.A2:A10.\n2. Create a named range called exactly 'TaxRate' that points to Settings.B1.\n3. On the 'Orders' sheet, select cells B2:B21 and open Validity. Set 'Allow' to 'Cell range', and for the source enter =CustomerList (so the dropdown pulls from the named range).\n4. On the 'Orders' sheet, in F2:F21 enter the formula =E2*D2*(1+TaxRate) and fill down so each row uses the TaxRate named range.\n5. Save the file  keeping it at /home/user/Documents/orders.xlsx.",
+  "task_grounding": "Open the file /home/user/Documents/orders.xlsx in LibreOffice Calc. The workbook has three sheets:\n- 'Orders' with bold headers in row 1 (A='Order ID', B='Customer', C='Item', D='Qty', E='Price', F='Total w/ Tax'). Rows 2-21 already contain values for Order ID (ORD-001..ORD-020), Item, Qty (1-5) and Price - the Customer column (B) and Total column (F) are blank.\n- 'Customers' with bold headers A1='Customer Name' and 9 customer names in A2:A10.\n- 'Settings' with A1='Tax Rate' (bold) and B1=0.08.\n\nDo the following:\n\n1. Create a named range called exactly 'CustomerList' that points to Customers.A2:A10. Use Sheet > Named Ranges and Expressions > Define (Ctrl+F3).\n2. Create a named range called exactly 'TaxRate' that points to Settings.B1.\n3. On the 'Orders' sheet, select cells B2:B21 and open Data > Validity. Set 'Allow' to 'Cell range', and for the source enter =CustomerList (so the dropdown pulls from the named range).\n4. On the 'Orders' sheet, in F2:F21 enter the formula =E2*D2*(1+TaxRate) and fill down so each row uses the TaxRate named range.\n5. Save the file (Ctrl+S) keeping it at /home/user/Documents/orders.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "orders.xlsx",
+        "sandbox_path": "/home/user/Documents/orders.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-sheet-exists Orders",
+      "key": "exists",
+      "expected": true,
+      "description": "'Orders' sheet exists"
+    },
+    {
+      "command": "check-sheet-exists Customers",
+      "key": "exists",
+      "expected": true,
+      "description": "'Customers' sheet exists"
+    },
+    {
+      "command": "check-sheet-exists Settings",
+      "key": "exists",
+      "expected": true,
+      "description": "'Settings' sheet exists"
+    },
+    {
+      "command": "check-named-range CustomerList Customers",
+      "key": "match",
+      "expected": true,
+      "description": "Named range 'CustomerList' references Customers sheet"
+    },
+    {
+      "command": "check-named-range TaxRate Settings",
+      "key": "match",
+      "expected": true,
+      "description": "Named range 'TaxRate' references Settings sheet"
+    },
+    {
+      "command": "check-data-validation B2 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "Orders!B2 has data-validation rule"
+    },
+    {
+      "command": "check-data-validation B21 Orders",
+      "key": "match",
+      "expected": true,
+      "description": "Orders!B21 has data-validation rule"
+    },
+    {
+      "command": "cell-value F2 Orders",
+      "eval": "result.get('formula') is not None and 'TAXRATE' in result.get('formula','').upper().replace(' ','')",
+      "description": "Orders!F2 formula references TaxRate named range"
+    },
+    {
+      "command": "cell-value F21 Orders",
+      "eval": "result.get('formula') is not None and 'TAXRATE' in result.get('formula','').upper().replace(' ','')",
+      "description": "Orders!F21 formula references TaxRate named range"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

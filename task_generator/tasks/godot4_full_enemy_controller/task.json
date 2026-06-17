@@ -1,0 +1,99 @@
+{
+  "id": "godot4_full_enemy_controller",
+  "app": "godot4",
+  "task": "Create an EnemyController class in /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd with class_name EnemyController extending CharacterBody2D. Declare died and health_changed signals, @export variables (max_hp: int = 100, speed: float = 120.0, damage: int = 10), and implement take_damage(amount: int), heal(amount: int), and _physics_process(delta: float) functions. The file should contain a valid GDScript class with all specified members.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/main.tscn"
+      },
+      {
+        "filename": "scripts/enemy_controller.gd",
+        "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/enemy_ctrl_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-script-class-name /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd EnemyController",
+      "key": "match",
+      "expected": true,
+      "description": "class_name is EnemyController"
+    },
+    {
+      "command": "check-script-extends /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd CharacterBody2D",
+      "key": "match",
+      "expected": true,
+      "description": "extends CharacterBody2D"
+    },
+    {
+      "command": "check-script-signal /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd died",
+      "key": "exists",
+      "expected": true,
+      "description": "died signal declared"
+    },
+    {
+      "command": "check-script-signal /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd health_changed",
+      "key": "exists",
+      "expected": true,
+      "description": "health_changed signal declared"
+    },
+    {
+      "command": "check-script-export /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd max_hp",
+      "key": "exists",
+      "expected": true,
+      "description": "@export max_hp declared"
+    },
+    {
+      "command": "check-script-export /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd speed",
+      "key": "exists",
+      "expected": true,
+      "description": "@export speed declared"
+    },
+    {
+      "command": "check-script-export /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd damage",
+      "key": "exists",
+      "expected": true,
+      "description": "@export damage declared"
+    },
+    {
+      "command": "check-script-func /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd take_damage",
+      "key": "exists",
+      "expected": true,
+      "description": "take_damage function exists"
+    },
+    {
+      "command": "check-script-func /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd heal",
+      "key": "exists",
+      "expected": true,
+      "description": "heal function exists"
+    },
+    {
+      "command": "check-script-func /home/user/godot_projects/enemy_ctrl_game/scripts/enemy_controller.gd _physics_process",
+      "key": "exists",
+      "expected": true,
+      "description": "_physics_process function exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash/Python to create/edit .gd script files",
+    "reason": "GDScript files are plain text - CLI can create/edit them directly"
+  }
+}

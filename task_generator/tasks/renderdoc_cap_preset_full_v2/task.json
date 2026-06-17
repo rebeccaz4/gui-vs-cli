@@ -1,0 +1,120 @@
+{
+  "id": "renderdoc_cap_preset_full_v2",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/triangle_demo.cap: executable='/usr/local/games/triangle_demo', workingDir='/home/user/games', commandLine='--width 1280 --height 720 --vulkan', environment with VK_LOADER_LAYERS_ENABLE and RDOC_DEBUG_LOG, options APIValidation=true, CaptureCallstacks=true, RefAllResources=true, VerifyBufferAccess=true, autoStart=true. Register in UI.config.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/triangle_demo.cap",
+      "key": "exists",
+      "expected": true,
+      "description": "triangle_demo.cap was created on disk"
+    },
+    {
+      "command": "file-info /home/user/captures/triangle_demo.cap",
+      "eval": "result.get('size', 0) >= 300",
+      "description": "triangle_demo.cap is at least 300 bytes (non-trivial preset)"
+    },
+    {
+      "command": "cap-parse /home/user/captures/triangle_demo.cap",
+      "eval": "isinstance(result, dict) and 'error' not in result",
+      "description": "triangle_demo.cap parses as a valid qrenderdoc capture-settings JSON"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/triangle_demo.cap /usr/local/games/triangle_demo",
+      "key": "match",
+      "expected": true,
+      "description": "executable is /usr/local/games/triangle_demo"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/triangle_demo.cap /home/user/games",
+      "key": "match",
+      "expected": true,
+      "description": "workingDir is /home/user/games"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/triangle_demo.cap --vulkan",
+      "key": "match",
+      "expected": true,
+      "description": "commandLine contains the --vulkan flag"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/triangle_demo.cap --width",
+      "key": "match",
+      "expected": true,
+      "description": "commandLine contains the --width flag"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/triangle_demo.cap APIValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "options.APIValidation == true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/triangle_demo.cap CaptureCallstacks true",
+      "key": "match",
+      "expected": true,
+      "description": "options.CaptureCallstacks == true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/triangle_demo.cap HookIntoChildren false",
+      "key": "match",
+      "expected": true,
+      "description": "options.HookIntoChildren == false"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/triangle_demo.cap RefAllResources true",
+      "key": "match",
+      "expected": true,
+      "description": "options.RefAllResources == true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/triangle_demo.cap VerifyBufferAccess true",
+      "key": "match",
+      "expected": true,
+      "description": "options.VerifyBufferAccess == true"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/triangle_demo.cap VK_LOADER_LAYERS_ENABLE",
+      "key": "present",
+      "expected": true,
+      "description": "environment registers VK_LOADER_LAYERS_ENABLE"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/triangle_demo.cap RDOC_DEBUG_LOG",
+      "key": "present",
+      "expected": true,
+      "description": "environment registers RDOC_DEBUG_LOG"
+    },
+    {
+      "command": "cap-parse /home/user/captures/triangle_demo.cap",
+      "eval": "result.get('autoStart') is True and result.get('queueFrameCap') == 1 and result.get('numQueuedFrames') == 5",
+      "description": "autoStart=true, queueFrameCap=1, numQueuedFrames=5"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "UI.config rdocConfigData marker preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

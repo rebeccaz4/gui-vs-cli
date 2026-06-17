@@ -1,0 +1,51 @@
+{
+  "id": "renderdoc_font_scale_up",
+  "app": "renderdoc",
+  "task": "Open /home/user/.local/share/qrenderdoc/UI.config (it is a JSON document even though the extension is .config) in a text editor. Apply these changes and save:\n\n1. Set \"Font_GlobalScale\" to the number 1.75 (not a string \u2014 a JSON float).\n2. Set \"Font_PreferMonospaced\" to true.\n\nLeave every other key, including the \"rdocConfigData\": 1 marker, unchanged.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-font-scale 1.75",
+      "key": "match",
+      "expected": true,
+      "description": "Font_GlobalScale is 1.75"
+    },
+    {
+      "command": "check-setting Font_PreferMonospaced true",
+      "key": "match",
+      "expected": true,
+      "description": "Font_PreferMonospaced is true"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

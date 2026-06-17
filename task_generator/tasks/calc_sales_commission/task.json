@@ -1,0 +1,167 @@
+{
+  "id": "calc_sales_commission",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/commissions.xlsx in LibreOffice Calc. It contains a sheet called 'Sales' with columns: Salesperson (A), Region (B), Monthly Sales (C). Row 1 has bold headers, rows 2-21 have 20 sales records.\n\n1. In cell D1, enter 'Commission Rate' and make it bold.\n2. In cell E1, enter 'Commission Amount' and make it bold.\n3. In D2, enter a nested IF formula to determine the commission rate based on sales tiers:\n   - If Monthly Sales (C2) > 20000, the rate is 10% (0.10)\n   - If Monthly Sales (C2) >= 10000, the rate is 8% (0.08)\n   - Otherwise, the rate is 5% (0.05)\n   The formula should be: =IF(C2>20000,0.1,IF(C2>=10000,0.08,0.05))\n4. In E2, enter the formula =C2*D2 to calculate the commission amount.\n5. Copy both formulas (D2:E2) down through rows 3-21 for all 20 records.\n6. Create a new sheet called 'Commission Summary'.\n7. In the Commission Summary sheet:\n   - A1: 'Metric' (bold)\n   - B1: 'Value' (bold)\n   - A2: 'Total Sales'\n   - B2: =SUM(Sales.C2:C21)\n   - A3: 'Total Commission'\n   - B3: =SUM(Sales.E2:E21)\n   - A4: 'Average Commission Rate'\n   - B4: =B3/B2 (this should yield the weighted average rate)\n8. Save the file .",
+  "env": {
+    "files": [
+      {
+        "filename": "commissions.xlsx",
+        "sandbox_path": "/home/user/Documents/commissions.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 \"Commission Rate\" Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = 'Commission Rate'"
+    },
+    {
+      "command": "check-cell-formatted D1 true Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D1 is bold"
+    },
+    {
+      "command": "check-cell-value E1 \"Commission Amount\" Sales",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = 'Commission Amount'"
+    },
+    {
+      "command": "check-cell-formatted E1 true Sales",
+      "key": "match",
+      "expected": true,
+      "description": "E1 is bold"
+    },
+    {
+      "command": "cell-value D2 Sales",
+      "eval": "result.get('formula') is not None and 'IF' in result.get('formula','').upper()",
+      "description": "D2 contains an IF formula"
+    },
+    {
+      "command": "check-cell-value D2 0.08 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D2 = 0.08 (Bob East 19573 falls in 8% tier)"
+    },
+    {
+      "command": "check-cell-value E2 1565.84 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "E2 = 1565.84 (19573 * 0.08)"
+    },
+    {
+      "command": "cell-value E2 Sales",
+      "eval": "result.get('formula') is not None and ('C2' in result.get('formula','').upper() and 'D2' in result.get('formula','').upper())",
+      "description": "E2 formula references C2 and D2"
+    },
+    {
+      "command": "check-cell-value D4 0.05 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D4 = 0.05 (Bob South 8770 falls in 5% tier)"
+    },
+    {
+      "command": "check-cell-value E4 438.5 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "E4 = 438.5 (8770 * 0.05)"
+    },
+    {
+      "command": "check-cell-value D8 0.1 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D8 = 0.10 (Henry South 23353 falls in 10% tier)"
+    },
+    {
+      "command": "check-cell-value E8 2335.3 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "E8 = 2335.3 (23353 * 0.10)"
+    },
+    {
+      "command": "check-cell-value D21 0.05 Sales",
+      "key": "match",
+      "expected": true,
+      "description": "D21 = 0.05 (David East 7875 falls in 5% tier)"
+    },
+    {
+      "command": "check-sheet-exists \"Commission Summary\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'Commission Summary' exists"
+    },
+    {
+      "command": "check-cell-value A1 Metric \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary A1 = 'Metric'"
+    },
+    {
+      "command": "check-cell-formatted A1 true \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary A1 is bold"
+    },
+    {
+      "command": "check-cell-value B1 Value \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary B1 = 'Value'"
+    },
+    {
+      "command": "check-cell-formatted B1 true \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary B1 is bold"
+    },
+    {
+      "command": "check-cell-value A2 \"Total Sales\" \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary A2 = 'Total Sales'"
+    },
+    {
+      "command": "check-cell-value B2 268628 \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary B2 = 268628 (total sales)"
+    },
+    {
+      "command": "cell-value B2 \"Commission Summary\"",
+      "eval": "result.get('formula') is not None and 'SUM' in result.get('formula','').upper()",
+      "description": "Commission Summary B2 contains a SUM formula"
+    },
+    {
+      "command": "check-cell-value A3 \"Total Commission\" \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary A3 = 'Total Commission'"
+    },
+    {
+      "command": "check-cell-value B3 21511.47 \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary B3 = 21511.47 (total commission)"
+    },
+    {
+      "command": "check-cell-value A4 \"Average Commission Rate\" \"Commission Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Commission Summary A4 = 'Average Commission Rate'"
+    },
+    {
+      "command": "cell-value B4 \"Commission Summary\"",
+      "eval": "result.get('formula') is not None and 'B3' in result.get('formula','').upper() and 'B2' in result.get('formula','').upper()",
+      "description": "Commission Summary B4 formula references B3 and B2"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

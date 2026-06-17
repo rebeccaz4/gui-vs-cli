@@ -1,0 +1,6 @@
+{
+  "task_id": "zoom_general_meetings_ui_bundle",
+  "files": [
+    {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf", "type": "ini"}
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "shotcut_multi_track_audio_video",
+  "app": "shotcut",
+  "task": "A Shotcut project is open at /home/user/Documents/multi_track.mlt (1920x1080, 30 fps). Three source files are available: /home/user/Videos/video1.mp4, /home/user/Videos/video2.mp4 and /home/user/Music/audio1.mp3.\n\nActions required:\n1. Add video1.mp4, video2.mp4 and audio1.mp3 to the project.\n2. Place video1.mp4 on the V1 video track.\n3. Add a new video track (V2) and place video2.mp4 on it.\n4. Add a new audio track and place audio1.mp3 on it.\n5. Save the project.\n\nThe saved project must reference all three imported files.",
+  "env": {
+    "files": [
+      {
+        "filename": "multi_track.mlt",
+        "sandbox_path": "/home/user/Documents/multi_track.mlt"
+      },
+      {
+        "filename": "video1.mp4",
+        "sandbox_path": "/home/user/Videos/video1.mp4"
+      },
+      {
+        "filename": "video2.mp4",
+        "sandbox_path": "/home/user/Videos/video2.mp4"
+      },
+      {
+        "filename": "audio1.mp3",
+        "sandbox_path": "/home/user/Music/audio1.mp3"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/multi_track.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/multi_track.mlt 1920 1080",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1920x1080"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/multi_track.mlt video1.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "video1.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/multi_track.mlt video2.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "video2.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/multi_track.mlt audio1.mp3",
+      "key": "exists",
+      "expected": true,
+      "description": "audio1.mp3 is referenced in the project"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open multi_track.mlt, timeline add-track --type video --name V2, timeline add-track --type audio --name A1, timeline add-clip video1.mp4 --track 1, timeline add-clip video2.mp4 --track 2, timeline add-clip audio1.mp3 --track 3, project save",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, timeline add-track (multiple), timeline add-clip (multiple), project save. Multi-track workflow with mixed video/audio tracks."
+  }
+}

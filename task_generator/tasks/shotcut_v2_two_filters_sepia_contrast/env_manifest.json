@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_v2_two_filters_sepia_contrast",
+  "files": [
+    {
+      "filename": "color_grade.mlt",
+      "sandbox_path": "/home/user/Documents/color_grade.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "landscape.mp4",
+      "sandbox_path": "/home/user/Videos/landscape.mp4",
+      "type": "mp4"
+    }
+  ]
+}

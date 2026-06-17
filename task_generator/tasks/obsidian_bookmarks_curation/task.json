@@ -1,0 +1,129 @@
+{
+  "id": "obsidian_bookmarks_curation",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/BookmarkVault. Create a reference library and pin the most important notes as bookmarks:\n\n1. Create 6 reference notes in the vault root. Each note must have a level-1 heading matching its title, a short body paragraph, and the inline tag #reference.\n   - 'Guide.md' \u2014 heading 'Guide'\n   - 'Cheatsheet.md' \u2014 heading 'Cheatsheet'\n   - 'FAQ.md' \u2014 heading 'FAQ'\n   - 'Glossary.md' \u2014 heading 'Glossary'\n   - 'Changelog.md' \u2014 heading 'Changelog'\n   - 'README.md' \u2014 heading 'README'\n2. Enable the 'Bookmarks' core plugin in Settings > Core plugins.\n3. Using the Bookmarks panel (or by editing .obsidian/bookmarks.json directly), add exactly 4 file bookmarks pointing to: Guide.md, Cheatsheet.md, FAQ.md, Glossary.md. The other two notes (Changelog.md, README.md) must NOT be bookmarked.\n4. Create 'BookmarkIndex.md' in the root with a level-1 heading 'Bookmark Index', a bulleted list of wikilinks to the 4 bookmarked notes ([[Guide]], [[Cheatsheet]], [[FAQ]], [[Glossary]]), and the inline tag #index.\n\nThe vault must contain exactly 7 notes.",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/BookmarkVault/.obsidian/app.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault Guide",
+      "key": "exists",
+      "expected": true,
+      "description": "Guide note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault Cheatsheet",
+      "key": "exists",
+      "expected": true,
+      "description": "Cheatsheet note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault FAQ",
+      "key": "exists",
+      "expected": true,
+      "description": "FAQ note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault Glossary",
+      "key": "exists",
+      "expected": true,
+      "description": "Glossary note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault Changelog",
+      "key": "exists",
+      "expected": true,
+      "description": "Changelog note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/BookmarkVault README",
+      "key": "exists",
+      "expected": true,
+      "description": "README note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/BookmarkVault Guide reference",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Guide has #reference tag"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/BookmarkVault Cheatsheet Cheatsheet 1",
+      "key": "has_heading",
+      "expected": true,
+      "description": "Cheatsheet has level-1 heading"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/BookmarkVault bookmarks core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Bookmarks core plugin enabled"
+    },
+    {
+      "command": "bookmarks /home/user/Documents/BookmarkVault",
+      "eval": "len([i for i in (result.get('items') or []) if 'Guide' in (i.get('path') or '')]) >= 1",
+      "description": "Guide is bookmarked"
+    },
+    {
+      "command": "bookmarks /home/user/Documents/BookmarkVault",
+      "eval": "len([i for i in (result.get('items') or []) if 'Cheatsheet' in (i.get('path') or '')]) >= 1",
+      "description": "Cheatsheet is bookmarked"
+    },
+    {
+      "command": "bookmarks /home/user/Documents/BookmarkVault",
+      "eval": "len([i for i in (result.get('items') or []) if 'FAQ' in (i.get('path') or '')]) >= 1",
+      "description": "FAQ is bookmarked"
+    },
+    {
+      "command": "bookmarks /home/user/Documents/BookmarkVault",
+      "eval": "len([i for i in (result.get('items') or []) if 'Glossary' in (i.get('path') or '')]) >= 1",
+      "description": "Glossary is bookmarked"
+    },
+    {
+      "command": "bookmarks /home/user/Documents/BookmarkVault",
+      "eval": "len(result.get('items') or []) == 4",
+      "description": "Exactly 4 bookmarks"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/BookmarkVault BookmarkIndex Guide",
+      "key": "links_to",
+      "expected": true,
+      "description": "BookmarkIndex links Guide"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/BookmarkVault BookmarkIndex Glossary",
+      "key": "links_to",
+      "expected": true,
+      "description": "BookmarkIndex links Glossary"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/BookmarkVault BookmarkIndex index",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BookmarkIndex has #index tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/BookmarkVault",
+      "eval": "result.get('count') == 7",
+      "description": "Vault has exactly 7 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1) \u4fee\u6539 .obsidian/core-plugins.json \u542f\u7528 bookmarks plugin; 2) \u4fee\u6539 .obsidian/bookmarks.json \u6dfb\u52a04\u4e2abookmarks; 3) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa6\u4e2areference notes\u548c BookmarkIndex.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Enable the Bookmarks core plugin in Settings'\u3001'Using the Bookmarks panel'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7\u4fee\u6539JSON\u914d\u7f6e\u6587\u4ef6\u5b8c\u6210\u6240\u6709\u64cd\u4f5c"
+  }
+}

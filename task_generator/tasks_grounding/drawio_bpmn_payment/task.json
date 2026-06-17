@@ -1,0 +1,95 @@
+{
+  "id": "drawio_bpmn_payment",
+  "app": "drawio",
+  "task": "Create a BPMN payment processing flow at /home/user/Documents/payment_bpmn.drawio. Create 7 shapes on page 0: Start (ellipse), Receive Payment (rectangle), Validate (rectangle), Risk Check (diamond), Approve (rectangle), Reject (rectangle), End (ellipse). Connect them: Start->Receive Payment->Validate->Risk Check->Approve->End, and Risk Check->Reject. The diagram must have exactly 7 vertices and 7 edges. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/payment_bpmn.drawio in draw.io Desktop. Build a BPMN-style payment processing flow. Create exactly 7 shapes on page 0 with these exact labels: 'Start' (use an ellipse/circle for the start event), 'Receive Payment' (rectangle task), 'Validate' (rectangle task), 'Risk Check' (rhombus/diamond gateway), 'Approve' (rectangle task), 'Reject' (rectangle task), 'End' (ellipse/circle end event). Draw exactly 7 connecting arrows between them: Start->Receive Payment, Receive Payment->Validate, Validate->Risk Check, Risk Check->Approve, Risk Check->Reject, Approve->End, and Reject->End. Save the diagram at /home/user/Documents/payment_bpmn.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "payment_bpmn.drawio",
+        "sandbox_path": "/home/user/Documents/payment_bpmn.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/payment_bpmn.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-vertex-count /home/user/Documents/payment_bpmn.drawio 7 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 7 vertices"
+    },
+    {
+      "command": "check-edge-count /home/user/Documents/payment_bpmn.drawio 7 0",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 7 edges"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio Start",
+      "key": "exists",
+      "expected": true,
+      "description": "Start label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio \"Receive Payment\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Receive Payment label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio Validate",
+      "key": "exists",
+      "expected": true,
+      "description": "Validate label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio \"Risk Check\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Risk Check label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio Approve",
+      "key": "exists",
+      "expected": true,
+      "description": "Approve label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio Reject",
+      "key": "exists",
+      "expected": true,
+      "description": "Reject label exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/payment_bpmn.drawio End",
+      "key": "exists",
+      "expected": true,
+      "description": "End label exists"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Using the connections list (source/target IDs) and the vertices list (IDs to labels), verify that all four of these edges exist: (1) Validate -> Risk Check, (2) Risk Check -> Approve, (3) Risk Check -> Reject, (4) Approve -> End. Answer yes only if all four exist.",
+      "command": "connections /home/user/Documents/payment_bpmn.drawio 0",
+      "context": "command_output",
+      "description": "Decision-branch connections exist"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, page add/rename, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Multi-page operations; ✅ Shape types: ellipse, rectangle, diamond"
+  },
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "task_id": "gimp_gap_layer_mask_gradient_reveal",
+  "files": [
+    {"filename": "blue_bg.png", "sandbox_path": "/home/user/Documents/blue_bg.png", "type": "png"},
+    {"filename": "red_fg.png", "sandbox_path": "/home/user/Documents/red_fg.png", "type": "png"}
+  ]
+}

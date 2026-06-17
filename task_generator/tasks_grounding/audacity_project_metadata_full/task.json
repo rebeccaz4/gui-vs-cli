@@ -1,0 +1,74 @@
+{
+  "id": "audacity_project_metadata_full",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/ambient.aup already loaded. The project contains a single wavetrack. Set the project metadata as follows: Artist: 'Ambient Artist', Title: 'Relaxing Sounds', Album: 'Chill Collection', Year: 2023, Track Number: 5, Genre: 'Ambient', Comments: 'Generated for testing'. Save the project.",
+  "task_grounding": "Audacity is open with /home/user/Music/ambient.aup already loaded. The project contains a single wavetrack named 'Ambient Pad' and has no metadata tags set.\n\nOpen Edit > Metadata... and fill in the following tag values exactly:\n- Title: Ocean Drift\n- Artist: Mika Lee\n- Album: Coastal\n- Year: 2024\n- Genre: Ambient\n- Comments: A short demo recording for testing\n\nClick OK to close the metadata dialog, then save the project (File > Save Project, or Ctrl+S) so the tags are persisted inside the .aup XML at /home/user/Music/ambient.aup. Do not rename the file and do not change any track or project settings.",
+  "env": {
+    "files": [
+      {
+        "filename": "ambient.aup",
+        "sandbox_path": "/home/user/Music/ambient.aup"
+      },
+      {
+        "filename": "ambient_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/ambient_data/e00/d00/e000001.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/ambient.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "Project file is still a valid .aup"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/ambient.aup TITLE 'Relaxing Sounds'",
+      "key": "match",
+      "expected": true,
+      "description": "TITLE tag is 'Relaxing Sounds'"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/ambient.aup ARTIST 'Ambient Artist'",
+      "key": "match",
+      "expected": true,
+      "description": "ARTIST tag is 'Ambient Artist'"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/ambient.aup ALBUM 'Chill Collection'",
+      "key": "match",
+      "expected": true,
+      "description": "ALBUM tag is 'Chill Collection'"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/ambient.aup YEAR 2023",
+      "key": "match",
+      "expected": true,
+      "description": "YEAR tag is '2023'"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/ambient.aup GENRE Ambient",
+      "key": "match",
+      "expected": true,
+      "description": "GENRE tag is 'Ambient'"
+    },
+    {
+      "command": "check-tag-contains /home/user/Music/ambient.aup COMMENTS 'Generated for testing'",
+      "key": "match",
+      "expected": true,
+      "description": "COMMENTS tag contains 'Generated for testing'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → clip import/add → metadata tag settings → preference/setting configuration",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, clip import/add, metadata tag settings, preference/setting configuration"
+  }
+}

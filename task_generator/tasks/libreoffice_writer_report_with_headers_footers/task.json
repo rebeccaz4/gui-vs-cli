@@ -1,0 +1,63 @@
+{
+  "id": "libreoffice_writer_report_with_headers_footers",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/draft_report.odt in LibreOffice Writer. Add a header with the text 'Quarterly Report Q1 2026'. Add a footer with the text 'Confidential'. Then change the page orientation to landscape. Save the file as TXT to /home/user/Documents/draft_report.txt",
+  "env": {
+    "files": [
+      {
+        "filename": "draft_report.odt",
+        "sandbox_path": "/home/user/Documents/draft_report.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "headers-footers",
+      "eval": "result.get('header_text', '').strip() == 'Quarterly Report Q1 2026'",
+      "description": "Header text is 'Quarterly Report Q1 2026'"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Confidential'",
+      "description": "Footer text is 'Confidential'"
+    },
+    {
+      "command": "page-style",
+      "eval": "result.get('orientation') == 'landscape'",
+      "description": "Page orientation is landscape"
+    },
+    {
+      "command": "check-file-format",
+      "args": [
+        "/home/user/Documents/draft_report.txt",
+        "txt"
+      ],
+      "eval": "result.get('match') == true",
+      "description": "File is saved as TXT format"
+    },
+    {
+      "command": "check-txt-contains",
+      "args": [
+        "/home/user/Documents/draft_report.txt",
+        "Quarterly Report Q1 2026"
+      ],
+      "eval": "result.get('contains') == true",
+      "description": "TXT file contains header text"
+    },
+    {
+      "command": "check-txt-contains",
+      "args": [
+        "/home/user/Documents/draft_report.txt",
+        "Confidential"
+      ],
+      "eval": "result.get('contains') == true",
+      "description": "TXT file contains footer text"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

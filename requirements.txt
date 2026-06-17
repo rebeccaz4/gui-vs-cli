@@ -1,0 +1,15 @@
+# Host-side development/runtime dependencies for the unified GUI-CLI desktop benchmark.
+# Docker support uses the system `docker` CLI and does not require a Python SDK.
+
+-e ./E2B/packages/python-sdk
+-e ./desktop/packages/python-sdk
+anthropic
+backoff
+dashscope
+flask
+google-genai
+httpx
+openai
+Pillow
+python-dotenv
+requests

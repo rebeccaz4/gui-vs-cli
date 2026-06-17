@@ -1,0 +1,30 @@
+{
+  "task_id": "renderdoc_rename_project_captures",
+  "files": [
+    {
+      "filename": "john_ok.rdc",
+      "sandbox_path": "/home/user/captures/john_ok.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "unnamed.rdc",
+      "sandbox_path": "/home/user/captures/unnamed.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "snapshot_final2.rdc",
+      "sandbox_path": "/home/user/captures/snapshot_final2.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "backup_old.rdc",
+      "sandbox_path": "/home/user/captures/backup_old.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "wip_trial.rdc",
+      "sandbox_path": "/home/user/captures/wip_trial.rdc",
+      "type": "rdc"
+    }
+  ]
+}

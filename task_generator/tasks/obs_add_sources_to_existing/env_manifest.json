@@ -1,0 +1,15 @@
+{
+  "task_id": "obs_add_sources_to_existing",
+  "files": [
+    {
+      "filename": "scene_collection.json",
+      "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json",
+      "type": "json"
+    },
+    {
+      "filename": "channel_logo.png",
+      "sandbox_path": "/home/user/Pictures/channel_logo.png",
+      "type": "png"
+    }
+  ]
+}

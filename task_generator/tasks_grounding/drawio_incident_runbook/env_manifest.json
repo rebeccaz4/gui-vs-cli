@@ -1,0 +1,10 @@
+{
+  "task_id": "drawio_incident_runbook",
+  "files": [
+    {
+      "filename": "runbook.drawio",
+      "sandbox_path": "/home/user/Documents/runbook.drawio",
+      "type": "drawio"
+    }
+  ]
+}

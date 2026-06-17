@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_v2_crop_filter_on_clip",
+  "files": [
+    {
+      "filename": "crop_me.mlt",
+      "sandbox_path": "/home/user/Documents/crop_me.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "wide_shot.mp4",
+      "sandbox_path": "/home/user/Videos/wide_shot.mp4",
+      "type": "mp4"
+    }
+  ]
+}

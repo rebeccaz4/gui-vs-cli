@@ -1,0 +1,56 @@
+{
+  "id": "krita_add_gradient_fill_layer",
+  "app": "krita",
+  "task": "Open /home/user/Documents/sunset.kra in Krita. It contains one paint layer named 'Ground'. Add a new Fill Layer that uses a Gradient generator and name the new layer exactly 'SkyGradient'. Configure the gradient to interpolate from pure orange (#FF8C00) at the top to pure yellow (#FFFF00) at the bottom. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "sunset.kra",
+        "sandbox_path": "/home/user/Documents/sunset.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/sunset.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "sunset.kra still exists"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/sunset.kra Ground",
+      "key": "exists",
+      "expected": true,
+      "description": "Ground layer preserved"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/sunset.kra SkyGradient",
+      "key": "exists",
+      "expected": true,
+      "description": "SkyGradient layer added"
+    },
+    {
+      "command": "layer-info /home/user/Documents/sunset.kra SkyGradient",
+      "eval": "result.get('node_type') in ('generatedlayer','filllayer','generatorlayer')",
+      "expected": true,
+      "description": "SkyGradient is a generated/fill layer"
+    },
+    {
+      "command": "layer-info /home/user/Documents/sunset.kra SkyGradient",
+      "eval": "'gradient' in (result.get('generator_name','') or '').lower() or result.get('node_type','') in ('generatedlayer','filllayer','generatorlayer')",
+      "expected": true,
+      "description": "Generator is gradient (or generic fill layer acceptable)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Add gradient fill layer 'SkyGradient'",
+    "reason": "⚠️ CLI supports layer add filllayer, but gradient generator configuration not exposed"
+  }
+}

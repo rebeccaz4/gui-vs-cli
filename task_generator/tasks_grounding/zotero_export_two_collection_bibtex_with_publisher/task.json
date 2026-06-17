@@ -1,0 +1,58 @@
+{
+  "id": "zotero_export_two_collection_bibtex_with_publisher",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. This task has TWO parts that must both be completed. (1) Locate the journal article 'A Survey of RL Methods' and edit it: set its DOI field to exactly '10.1234/rl-survey-2020' and set its Pages field to exactly '1-42'. Make sure the edits are saved. (2) Then export the entire 'My Library' (all 4 items) to BibTeX format and save the file to exactly /home/user/Documents/full_library.bib. After both parts the .bib file must exist with exactly 4 entries including 'Survey of RL Methods', and the survey item must have the new DOI and pages values in the library. Leave Zotero running.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. This task has TWO parts that must both be completed. (1) Locate the journal article 'A Survey of RL Methods' and edit it: in the right-hand Info pane set its DOI field to exactly '10.1234/rl-survey-2020' and set its Pages field to exactly '1-42'. Make sure the edits are saved. (2) Then export the entire 'My Library' (all 4 items) to BibTeX format and save the file to exactly /home/user/Documents/full_library.bib. After both parts the .bib file must exist with exactly 4 entries including 'Survey of RL Methods', and the survey item must have the new DOI and pages values in the library. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-field 'Survey of RL Methods' DOI 10.1234/rl-survey-2020",
+      "key": "match",
+      "expected": true,
+      "description": "Survey DOI updated"
+    },
+    {
+      "command": "check-item-field 'Survey of RL Methods' pages 1-42",
+      "key": "match",
+      "expected": true,
+      "description": "Survey pages updated"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/full_library.bib",
+      "key": "exists",
+      "expected": true,
+      "description": "BibTeX export file exists"
+    },
+    {
+      "command": "check-bibtex-count /home/user/Documents/full_library.bib 4",
+      "key": "match",
+      "expected": true,
+      "description": "BibTeX has 4 entries"
+    },
+    {
+      "command": "check-bibtex-title /home/user/Documents/full_library.bib 'Survey of RL Methods'",
+      "key": "contains",
+      "expected": true,
+      "description": "BibTeX contains survey title"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Edit item fields: find item, update DOI and pages in itemDataValues table, 2) Export library: query all items, format as BibTeX, write to file",
+    "reason": "Both parts are feasible. Editing fields uses the same SQLite update pattern as other metadata tasks. Exporting to BibTeX can be done by querying all items and formatting them as BibTeX - this is what Zotero does internally. A Python script can implement the BibTeX format."
+  }
+}

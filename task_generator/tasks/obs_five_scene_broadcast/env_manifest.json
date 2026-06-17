@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_five_scene_broadcast",
+  "files": [
+    {
+      "filename": "brb.png",
+      "sandbox_path": "/home/user/Pictures/brb.png",
+      "type": "png"
+    }
+  ]
+}

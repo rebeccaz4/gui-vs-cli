@@ -1,0 +1,90 @@
+{
+  "id": "libreoffice_writer_grant_proposal_v2",
+  "app": "libreoffice_writer",
+  "task": "Create a new LibreOffice Writer document for a grant proposal. Add a Heading 1 'Grant Proposal: Community Literacy Initiative' at the top. Add four Heading 2 sections in order: 'Executive Summary', 'Budget', 'Timeline', 'Expected Outcomes'. Under 'Executive Summary' add a paragraph of at least 40 words summarizing the initiative. Under 'Budget' insert a table named Table1 with 6 rows and 2 columns. Header: 'Category', 'Amount USD'. Row 2: 'Teaching Materials', '15000'. Row 3: 'Instructor Stipends', '40000'. Row 4: 'Venue Rental', '8000'. Row 5: 'Outreach and Marketing', '5000'. Row 6: 'Administration', '7000'. Under 'Timeline' insert a second table with 5 rows and 3 columns. Header: 'Phase', 'Start', 'End'. Row 2: 'Planning', '2026-05-01', '2026-06-15'. Row 3: 'Recruitment', '2026-06-16', '2026-07-31'. Row 4: 'Instruction', '2026-08-01', '2026-11-30'. Row 5: 'Evaluation', '2026-12-01', '2026-12-31'. Under 'Expected Outcomes' add a paragraph (at least 25 words). Set all four page margins (top, bottom, left, right) to 2.5 cm. Enable the page header and set its text to 'Literacy Initiative Grant Proposal'. Save to /home/user/Documents/grant_proposal.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/grant_proposal.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/grant_proposal.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "grant_proposal.odt exists"
+    },
+    {
+      "command": "check-heading-exists \"Grant Proposal: Community Literacy Initiative\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1"
+    },
+    {
+      "command": "check-heading-exists \"Executive Summary\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Executive Summary"
+    },
+    {
+      "command": "check-heading-exists Budget 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Budget"
+    },
+    {
+      "command": "check-heading-exists Timeline 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Timeline"
+    },
+    {
+      "command": "check-heading-exists \"Expected Outcomes\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Expected Outcomes"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/grant_proposal.odt",
+      "eval": "len(result.get('tables', [])) >= 2",
+      "description": "At least 2 tables"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/grant_proposal.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Category', 'Amount USD'] for t in result.get('tables', []))",
+      "description": "Budget table header"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/grant_proposal.odt",
+      "eval": "any(len(t.get('data', [])) >= 6 and t['data'][2][1] == '40000' for t in result.get('tables', []))",
+      "description": "Instructor Stipends amount is 40000"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/grant_proposal.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Phase', 'Start', 'End'] for t in result.get('tables', []))",
+      "description": "Timeline header"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/grant_proposal.odt",
+      "eval": "any(len(t.get('data', [])) >= 5 and t['data'][3][2] == '2026-11-30' for t in result.get('tables', []))",
+      "description": "Instruction phase ends 2026-11-30"
+    },
+    {
+      "command": "page-style",
+      "eval": "abs(result.get('margin_top', 0) - 2500) <= 50 and abs(result.get('margin_bottom', 0) - 2500) <= 50 and abs(result.get('margin_left', 0) - 2500) <= 50 and abs(result.get('margin_right', 0) - 2500) <= 50",
+      "description": "All four margins are 2.5 cm"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('header_text', '').strip() == 'Literacy Initiative Grant Proposal'",
+      "description": "Header text correct"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

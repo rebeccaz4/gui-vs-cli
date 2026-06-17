@@ -1,0 +1,71 @@
+{
+  "id": "libreoffice_writer_contract_amendment_v2",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/service_agreement.odt in LibreOffice Writer. Use Find & Replace to replace every occurrence of 'OldCo' with 'NewCo Holdings' and every occurrence of 'ClientX' with 'Globex Limited'. After the existing contract text, add a Heading 1 with text 'Amendment No. 1'. Below that heading, add a paragraph of at least 20 words describing the amendment (e.g., noting the parties have agreed to new terms effective immediately). Then insert a signatures table named Table1 with 4 rows and 3 columns. Header row: 'Party', 'Name', 'Date'. Row 2: 'Provider', 'NewCo Holdings', '2026-04-10'. Row 3: 'Client', 'Globex Limited', '2026-04-10'. Row 4: 'Witness', 'Jane Doe', '2026-04-10'. Add a bookmark named 'signature_party' anchored at the Party row of the signatures table area. Save the file at its original path.",
+  "env": {
+    "files": [
+      {
+        "filename": "service_agreement.odt",
+        "sandbox_path": "/home/user/Documents/service_agreement.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-text-contains \"NewCo Holdings\"",
+      "key": "contains",
+      "expected": true,
+      "description": "NewCo Holdings present"
+    },
+    {
+      "command": "check-text-contains \"Globex Limited\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Globex Limited present"
+    },
+    {
+      "command": "check-text-contains OldCo",
+      "key": "contains",
+      "expected": false,
+      "description": "No occurrences of OldCo remain"
+    },
+    {
+      "command": "check-text-contains ClientX",
+      "key": "contains",
+      "expected": false,
+      "description": "No occurrences of ClientX remain"
+    },
+    {
+      "command": "check-heading-exists \"Amendment No. 1\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 'Amendment No. 1'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/service_agreement.odt",
+      "eval": "len(result.get('tables', [])) >= 1 and result['tables'][0].get('rows', 0) == 4 and result['tables'][0].get('cols', 0) == 3",
+      "description": "Signatures table is 4x3"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/service_agreement.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Party', 'Name', 'Date'] for t in result.get('tables', []))",
+      "description": "Header row"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/service_agreement.odt",
+      "eval": "any(len(t.get('data', [])) >= 4 and t['data'][1][1] == 'NewCo Holdings' and t['data'][2][1] == 'Globex Limited' for t in result.get('tables', []))",
+      "description": "Provider and Client rows correct"
+    },
+    {
+      "command": "bookmarks",
+      "eval": "'signature_party' in result.get('bookmarks', [])",
+      "description": "Bookmark 'signature_party' exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

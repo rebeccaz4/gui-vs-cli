@@ -1,0 +1,6 @@
+{
+  "task_id": "writer_find_replace_cleanup",
+  "files": [
+    {"filename": "draft_article.odt", "sandbox_path": "/home/user/Documents/draft_article.odt", "type": "odt"}
+  ]
+}

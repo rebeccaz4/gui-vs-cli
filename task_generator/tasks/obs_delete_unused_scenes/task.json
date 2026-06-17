@@ -1,0 +1,81 @@
+{
+  "id": "obs_delete_unused_scenes",
+  "app": "obs",
+  "task": "Open OBS Studio. The scene collection already contains 6 scenes: 'Intro', 'Main', 'BRB', 'Outro', 'Debug', 'Archive'. Each scene contains a single placeholder source.\n\nYour task is to prune the collection down to only 2 scenes: 'Main' and 'Outro'. Delete the other 4 scenes entirely.\n\nRules:\n1. Delete these scenes: 'Intro', 'BRB', 'Debug', 'Archive'.\n2. Keep these scenes: 'Main', 'Outro'.\n3. Do NOT rename, add, or create any scene.\n4. Do NOT modify the contents of 'Main' or 'Outro'.\n5. The final collection must have exactly 2 scenes.\n6. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Main",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Main' kept"
+    },
+    {
+      "command": "check-scene-exists Outro",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Outro' kept"
+    },
+    {
+      "command": "check-scene-exists Intro",
+      "key": "exists",
+      "expected": false,
+      "description": "Scene 'Intro' deleted"
+    },
+    {
+      "command": "check-scene-exists BRB",
+      "key": "exists",
+      "expected": false,
+      "description": "Scene 'BRB' deleted"
+    },
+    {
+      "command": "check-scene-exists Debug",
+      "key": "exists",
+      "expected": false,
+      "description": "Scene 'Debug' deleted"
+    },
+    {
+      "command": "check-scene-exists Archive",
+      "key": "exists",
+      "expected": false,
+      "description": "Scene 'Archive' deleted"
+    },
+    {
+      "command": "check-scene-count 2",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 2 scenes in collection"
+    },
+    {
+      "command": "check-source-in-scene 'Main Cam' Main",
+      "key": "exists",
+      "expected": true,
+      "description": "'Main Cam' still in 'Main'"
+    },
+    {
+      "command": "check-source-in-scene 'Outro Roll' Outro",
+      "key": "exists",
+      "expected": true,
+      "description": "'Outro Roll' still in 'Outro'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use 'scene list' to find index, then 'source set --name new-name' to rename",
+    "reason": "CLI can rename scenes and sources using 'source set --name new-name' command"
+  }
+}

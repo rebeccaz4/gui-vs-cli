@@ -1,0 +1,62 @@
+{
+  "id": "freecad_gap_partdesign_pocket_plate",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/plate_start.FCStd. The document already contains a PartDesign Body named 'PlateBody' with a 50x50x5 mm Plate at (0,0,0). Switch to the PartDesign workbench. Make the Body active. Attach a new Sketch to the top face of the Plate. Draw a 20x20 mm rectangle centered on the face. Create a Pocket feature from this sketch with depth=3 mm and Type='Through'. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "plate_start.FCStd",
+        "sandbox_path": "/home/user/Documents/plate_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/plate_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/plate_start.FCStd PlateBody",
+      "key": "exists",
+      "expected": true,
+      "description": "PlateBody preserved"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/plate_start.FCStd BasePlate",
+      "key": "exists",
+      "expected": true,
+      "description": "BasePlate preserved"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/plate_start.FCStd CenterPocket",
+      "key": "exists",
+      "expected": true,
+      "description": "CenterPocket exists"
+    },
+    {
+      "command": "check-object-type /home/user/Documents/plate_start.FCStd CenterPocket PartDesign::Pocket",
+      "key": "match",
+      "expected": true,
+      "description": "CenterPocket is a PartDesign::Pocket"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/plate_start.FCStd CenterPocket Length 5",
+      "key": "match",
+      "expected": true,
+      "description": "Pocket Length = 5"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Using cli-anything-freecad: body pocket operation",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: body pocket operation"
+  }
+}

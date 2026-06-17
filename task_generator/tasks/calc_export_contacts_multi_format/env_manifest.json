@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_export_contacts_multi_format",
+  "files": [
+    {"filename": "contacts.xlsx", "sandbox_path": "/home/user/Documents/contacts.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_resize_export_jpeg",
+  "files": [
+    {
+      "filename": "photo.kra",
+      "sandbox_path": "/home/user/Documents/photo.kra",
+      "type": "kra"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "gimp_gap_blend_mode_multiply_opacity",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/photo_base.png in GIMP, then add /home/user/Documents/texture_overlay.png as a new layer on top of it. Set the top (texture) layer's blend mode to Multiply and its opacity to 60%. Flatten the image and export the final composite as a PNG to /home/user/Documents/multiply_result.png. The output must be 512x512 pixels.",
+  "env": {
+    "files": [
+      {
+        "filename": "photo_base.png",
+        "sandbox_path": "/home/user/Documents/photo_base.png"
+      },
+      {
+        "filename": "texture_overlay.png",
+        "sandbox_path": "/home/user/Documents/texture_overlay.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/multiply_result.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/multiply_result.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "Output is PNG"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/multiply_result.png 512 512",
+      "key": "match",
+      "expected": true,
+      "description": "Output is 512x512"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/multiply_result.png 256 256",
+      "eval": "result.get('r', 999) < 250 and result.get('g', 999) < 250",
+      "description": "Center pixel shows blend effect (not pure yellow/white from base) — R and G channels darkened by multiply"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/multiply_result.png 256 256",
+      "eval": "result.get('b', 0) < 220",
+      "description": "Center pixel blue channel still affected by multiply (not 255, not raw overlay either)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: composite -compose multiply -gravity center overlay.png base.png -alpha set -channel A -evaluate set 60% output.png",
+    "reason": "Blend modes exist in ImageMagick but syntax is complex and may require testing"
+  }
+}

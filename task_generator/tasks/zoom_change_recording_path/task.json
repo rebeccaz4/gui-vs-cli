@@ -1,0 +1,28 @@
+{
+  "id": "zoom_change_recording_path",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Currently localRecordingPath=/home/user/Documents/Zoom. Do BOTH of the following: (1) change localRecordingPath of /home/user/.config/zoomus.conf to exactly /home/user/ZoomRecordings. (2) Create the directory /home/user/ZoomRecordings on disk so that it exists. Save the updated config file in-place. Do not change any other config keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-recording-path /home/user/ZoomRecordings", "key": "match", "expected": true, "description": "Recording path is /home/user/ZoomRecordings"},
+    {"command": "check-config General localRecordingPath /home/user/ZoomRecordings", "key": "match", "expected": true, "description": "[General]localRecordingPath matches"},
+    {"command": "check-directory-exists /home/user/ZoomRecordings", "key": "exists", "expected": true, "description": "Recording directory exists on disk"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [General] localRecordingPath=/home/user/ZoomRecordings, then run mkdir -p /home/user/ZoomRecordings",
+    "reason": "CLI agent can edit the config file with sed and create directories with mkdir. Both are core CLI capabilities."
+  }
+}

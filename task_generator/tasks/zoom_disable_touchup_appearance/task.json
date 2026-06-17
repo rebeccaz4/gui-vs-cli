@@ -1,0 +1,27 @@
+{
+  "id": "zoom_disable_touchup_appearance",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Change TouchUpMyAppearance to false so the 'Touch up my appearance' filter is disabled. Save the file in-place at /home/user/.config/zoomus.conf. Do not modify any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config Video TouchUpMyAppearance false", "key": "match", "expected": true, "description": "[Video]TouchUpMyAppearance == false"},
+    {"command": "check-config Video mirrorMyVideo true", "key": "match", "expected": true, "description": "mirrorMyVideo left untouched"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [Video] TouchUpMyAppearance=false",
+    "reason": "CLI agent can directly edit the config file using sed. Single boolean value change is trivial for CLI. Task mentions GUI but CLI is equally viable."
+  }
+}

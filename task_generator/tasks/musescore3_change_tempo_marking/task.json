@@ -1,0 +1,39 @@
+{
+  "id": "musescore3_change_tempo_marking",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/allegretto.mscz. The score currently has 8 measures of quarter notes in 4/4 time and a tempo marking on the first measure of 90 BPM (quarter note = 90).\n\nPerform these steps:\n1. Click on the existing tempo text at the top-left of measure 1 to select it.\n2. Change the BPM value to exactly 144 (quarter note = 144). You can double-click the tempo marking to edit it in place, then type the new number, or delete it and add a new tempo marking from Add > Text > Tempo Marking set to 144 BPM.\n3. Click somewhere outside the tempo marking to deselect.\n4. Save the file with Ctrl+S.\n\nThe file must remain at /home/user/Documents/allegretto.mscz. The first Tempo marking must equal 144 BPM (beats-per-minute) after you save.",
+  "env": {
+    "files": [
+      {
+        "filename": "allegretto.mscz",
+        "sandbox_path": "/home/user/Documents/allegretto.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/allegretto.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "allegretto.mscz still exists"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/allegretto.mscz 144",
+      "key": "match",
+      "expected": true,
+      "description": "First Tempo marking is 144 BPM (within \u00b10.5)"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, find <Tempo> element, modify <text> and <tempo> values to new tempo marking, repackage",
+    "reason": "Changing tempo markings is modifying existing XML elements - can be done with Python stdlib in ~25 lines"
+  }
+}

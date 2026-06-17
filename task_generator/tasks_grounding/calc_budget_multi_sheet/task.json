@@ -1,0 +1,134 @@
+{
+  "id": "calc_budget_multi_sheet",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/budget.xlsx in LibreOffice Calc. It contains a sheet called 'January' with columns: Category (A), Planned (B), Actual (C). Row 1 has headers (bold), rows 2-9 have 8 expense categories: Rent, Utilities, Groceries, Transport, Insurance, Entertainment, Healthcare, Savings.\n\n1. Create a new sheet called 'February'. In row 1, add the same headers: A1='Category', B1='Planned', C1='Actual'. Copy the 8 category names from January A2:A9 into February A2:A9. Leave the Planned and Actual columns in February empty (the agent just needs to set up the structure).\n2. Create a new sheet called 'March' with the same structure as February (headers in row 1, category names in A2:A9).\n3. Create a new sheet called 'Q1 Summary'.\n4. In the Q1 Summary sheet:\n   - A1: 'Category' (bold)\n   - B1: 'Total Planned' (bold)\n   - C1: 'Total Actual' (bold)\n   - D1: 'Difference' (bold)\n5. Copy the 8 category names from January A2:A9 into Q1 Summary A2:A9.\n6. In Q1 Summary B2, enter the formula =January.B2+February.B2+March.B2 to sum planned amounts across all three months.\n7. Copy this formula pattern down through B3:B9 for all categories.\n8. In Q1 Summary C2:C9, enter similar formulas summing the Actual columns across all three months (e.g., C2 = =January.C2+February.C2+March.C2).\n9. In Q1 Summary D2:D9, enter formulas computing the difference: D2 = =B2-C2 (Total Planned minus Total Actual).\n10. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/budget.xlsx in LibreOffice Calc. It contains a sheet called 'January' with columns: Category (A), Planned (B), Actual (C). Row 1 has headers (bold), rows 2-9 have 8 expense categories: Rent, Utilities, Groceries, Transport, Insurance, Entertainment, Healthcare, Savings.\n\n1. Create a new sheet called 'February'. In row 1, add the same headers: A1='Category', B1='Planned', C1='Actual'. Copy the 8 category names from January A2:A9 into February A2:A9. Leave the Planned and Actual columns in February empty (the agent just needs to set up the structure).\n2. Create a new sheet called 'March' with the same structure as February (headers in row 1, category names in A2:A9).\n3. Create a new sheet called 'Q1 Summary'.\n4. In the Q1 Summary sheet:\n   - A1: 'Category' (bold)\n   - B1: 'Total Planned' (bold)\n   - C1: 'Total Actual' (bold)\n   - D1: 'Difference' (bold)\n5. Copy the 8 category names from January A2:A9 into Q1 Summary A2:A9.\n6. In Q1 Summary B2, enter the formula =January.B2+February.B2+March.B2 to sum planned amounts across all three months.\n7. Copy this formula pattern down through B3:B9 for all categories.\n8. In Q1 Summary C2:C9, enter similar formulas summing the Actual columns across all three months (e.g., C2 = =January.C2+February.C2+March.C2).\n9. In Q1 Summary D2:D9, enter formulas computing the difference: D2 = =B2-C2 (Total Planned minus Total Actual).\n10. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "budget.xlsx",
+        "sandbox_path": "/home/user/Documents/budget.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-sheet-exists February",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'February' exists"
+    },
+    {
+      "command": "check-sheet-exists March",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'March' exists"
+    },
+    {
+      "command": "check-sheet-exists \"Q1 Summary\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'Q1 Summary' exists"
+    },
+    {
+      "command": "check-sheet-count 4",
+      "key": "match",
+      "expected": true,
+      "description": "Workbook has 4 sheets total"
+    },
+    {
+      "command": "check-cell-value A1 Category February",
+      "key": "match",
+      "expected": true,
+      "description": "February A1 = 'Category'"
+    },
+    {
+      "command": "check-cell-value A2 Rent February",
+      "key": "match",
+      "expected": true,
+      "description": "February A2 = 'Rent'"
+    },
+    {
+      "command": "check-cell-value A1 Category March",
+      "key": "match",
+      "expected": true,
+      "description": "March A1 = 'Category'"
+    },
+    {
+      "command": "check-cell-value A1 Category \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary A1 = 'Category'"
+    },
+    {
+      "command": "check-cell-formatted A1 true \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary A1 is bold"
+    },
+    {
+      "command": "check-cell-value B1 \"Total Planned\" \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary B1 = 'Total Planned'"
+    },
+    {
+      "command": "check-cell-formatted B1 true \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary B1 is bold"
+    },
+    {
+      "command": "check-cell-value C1 \"Total Actual\" \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary C1 = 'Total Actual'"
+    },
+    {
+      "command": "check-cell-formatted C1 true \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary C1 is bold"
+    },
+    {
+      "command": "check-cell-value D1 Difference \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary D1 = 'Difference'"
+    },
+    {
+      "command": "check-cell-formatted D1 true \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary D1 is bold"
+    },
+    {
+      "command": "check-cell-value A2 Rent \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary A2 = 'Rent'"
+    },
+    {
+      "command": "cell-value B2 \"Q1 Summary\"",
+      "eval": "result.get('formula') is not None and 'January' in result.get('formula','') or 'JANUARY' in result.get('formula','').upper()",
+      "description": "Q1 Summary B2 contains a cross-sheet formula referencing January"
+    },
+    {
+      "command": "check-cell-value B2 1500 \"Q1 Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Q1 Summary B2 = 1500 (January Rent planned, Feb+Mar are 0)"
+    },
+    {
+      "command": "cell-value D2 \"Q1 Summary\"",
+      "eval": "result.get('formula') is not None and ('B2' in result.get('formula','').upper() and 'C2' in result.get('formula','').upper())",
+      "description": "Q1 Summary D2 contains formula referencing B2 and C2"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

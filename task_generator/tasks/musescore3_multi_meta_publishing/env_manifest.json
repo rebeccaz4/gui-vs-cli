@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_multi_meta_publishing",
+  "files": [
+    {
+      "filename": "draft_song.mscz",
+      "sandbox_path": "/home/user/Documents/draft_song.mscz",
+      "type": "mscz"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "freecad_fuse_two_boxes",
+  "app": "freecad",
+  "task": "Perform a Boolean Fuse operation on the document at /home/user/Documents/twin.FCStd. Fuse the two existing Part::Box objects named 'Box' and 'Box001' together. Set the resulting Part::Fuse object's Label to 'MergedFrame'. Both original boxes must remain in the document. Save the file.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/twin.FCStd. The document already contains two Part::Box objects named 'Box' (20x20x10) and 'Box001' (10x10x30). Switch to the Part workbench. In the Model tree, click on 'Box', then Ctrl+click on 'Box001' so both are selected. Run Part > Boolean > Union (Fuse) — this creates a new Part::Fuse object. Change the Label of the newly created Fuse object to exactly 'MergedFrame' (Data tab > Label, or double-click its row in the Model tree). Both original boxes must still exist in the document (they become children of the Fuse in the tree but remain as objects). Save the file with Ctrl+S so the changes are written back to /home/user/Documents/twin.FCStd.",
+  "env": {
+    "files": [
+      {
+        "filename": "twin.FCStd",
+        "sandbox_path": "/home/user/Documents/twin.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/twin.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/twin.FCStd Box",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Box still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/twin.FCStd Box001",
+      "key": "exists",
+      "expected": true,
+      "description": "Original Box001 still exists"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/twin.FCStd Part::Fuse 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one Part::Fuse"
+    },
+    {
+      "command": "check-object-type-count /home/user/Documents/twin.FCStd Part::Box 2",
+      "key": "match",
+      "expected": true,
+      "description": "Still exactly two Part::Box"
+    },
+    {
+      "command": "check-object-count /home/user/Documents/twin.FCStd 3",
+      "key": "match",
+      "expected": true,
+      "description": "Document has exactly 3 objects total"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Does the FreeCAD document contain exactly one object whose type is 'Part::Fuse' AND whose Label property is exactly 'MergedFrame'? Answer yes only if both conditions are true.",
+      "command": "objects /home/user/Documents/twin.FCStd",
+      "context": "command_output",
+      "description": "Fuse object is labelled 'MergedFrame'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box → part boolean fuse",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box, part boolean fuse"
+  }
+}

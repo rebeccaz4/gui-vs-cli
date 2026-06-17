@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_payroll_tax_brackets",
+  "files": [
+    {
+      "filename": "payroll.xlsx",
+      "sandbox_path": "/home/user/Documents/payroll.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

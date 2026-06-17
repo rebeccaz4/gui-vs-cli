@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_compound_of_primitives",
+  "files": [
+    {
+      "filename": "assembly.FCStd",
+      "sandbox_path": "/home/user/Documents/assembly.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

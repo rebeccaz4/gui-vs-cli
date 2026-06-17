@@ -1,0 +1,117 @@
+{
+  "id": "obs_relocate_sources_across_scenes",
+  "app": "obs",
+  "task": "The scene collection already contains two scenes: - 'Raw' with 5 sources: 'Cam1', 'Cam2', 'Screen', 'Overlay', 'Bumper' - 'Target' which is currently empty Your task is to move three of the sources from 'Raw' to 'Target' so that: - 'Raw' contains only 'Cam1' and 'Screen'. - 'Target' contains 'Cam2', 'Overlay', 'Bumper'. Rules: 1. Do NOT create or delete any scene. Both 'Raw' and 'Target' must still exist; the collection must still have exactly 2 scenes. 2. The three moved sources ('Cam2', 'Overlay', 'Bumper') must appear ONLY in 'Target', not in 'Raw'. 3. 'Cam1' and 'Screen' must remain in 'Raw' and must NOT appear in 'Target'. 4. All sources must be visible. 5. You may achieve the move by removing each source from 'Raw' and adding a source with the exact same name in 'Target' (using any source type from the Add Source menu). Only the names in each scene matter. 6.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Raw",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Raw' still exists"
+    },
+    {
+      "command": "check-scene-exists Target",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Target' still exists"
+    },
+    {
+      "command": "check-scene-count 2",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 2 scenes"
+    },
+    {
+      "command": "check-source-in-scene Cam1 Raw",
+      "key": "exists",
+      "expected": true,
+      "description": "'Cam1' kept in 'Raw'"
+    },
+    {
+      "command": "check-source-in-scene Screen Raw",
+      "key": "exists",
+      "expected": true,
+      "description": "'Screen' kept in 'Raw'"
+    },
+    {
+      "command": "check-source-in-scene Cam2 Raw",
+      "key": "exists",
+      "expected": false,
+      "description": "'Cam2' no longer in 'Raw'"
+    },
+    {
+      "command": "check-source-in-scene Overlay Raw",
+      "key": "exists",
+      "expected": false,
+      "description": "'Overlay' no longer in 'Raw'"
+    },
+    {
+      "command": "check-source-in-scene Bumper Raw",
+      "key": "exists",
+      "expected": false,
+      "description": "'Bumper' no longer in 'Raw'"
+    },
+    {
+      "command": "check-source-in-scene Cam2 Target",
+      "key": "exists",
+      "expected": true,
+      "description": "'Cam2' moved to 'Target'"
+    },
+    {
+      "command": "check-source-in-scene Overlay Target",
+      "key": "exists",
+      "expected": true,
+      "description": "'Overlay' moved to 'Target'"
+    },
+    {
+      "command": "check-source-in-scene Bumper Target",
+      "key": "exists",
+      "expected": true,
+      "description": "'Bumper' moved to 'Target'"
+    },
+    {
+      "command": "check-source-in-scene Cam1 Target",
+      "key": "exists",
+      "expected": false,
+      "description": "'Cam1' not in 'Target'"
+    },
+    {
+      "command": "check-source-in-scene Screen Target",
+      "key": "exists",
+      "expected": false,
+      "description": "'Screen' not in 'Target'"
+    },
+    {
+      "command": "check-source-visible Cam1",
+      "key": "visible",
+      "expected": true,
+      "description": "'Cam1' visible"
+    },
+    {
+      "command": "check-source-visible Cam2",
+      "key": "visible",
+      "expected": true,
+      "description": "'Cam2' visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

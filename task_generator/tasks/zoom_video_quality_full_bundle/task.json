@@ -1,0 +1,31 @@
+{
+  "id": "zoom_video_quality_full_bundle",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Update FOUR keys: set HDVideo to true, set TouchUpMyAppearance to false, set mirrorMyVideo to false, and set AdjustForLowLight to true. Save the file in-place at the same path. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config Video HDVideo true", "key": "match", "expected": true, "description": "[Video]HDVideo == true"},
+    {"command": "check-config Video TouchUpMyAppearance false", "key": "match", "expected": true, "description": "[Video]TouchUpMyAppearance == false"},
+    {"command": "check-config Video mirrorMyVideo false", "key": "match", "expected": true, "description": "[Video]mirrorMyVideo == false"},
+    {"command": "check-config Video AdjustForLowLight true", "key": "match", "expected": true, "description": "[Video]AdjustForLowLight == true"},
+    {"command": "check-config Video FrameRate 30", "key": "match", "expected": true, "description": "Other [Video] keys untouched"},
+    {"command": "check-config Video VideoDevice IntegratedWebcam", "key": "match", "expected": true, "description": "VideoDevice untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [Video] HDVideo=true, TouchUpMyAppearance=false, mirrorMyVideo=false, AdjustForLowLight=true",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. Multiple key-value changes in one section are straightforward for CLI. Task mentions GUI Settings > Video but CLI is equally viable."
+  }
+}

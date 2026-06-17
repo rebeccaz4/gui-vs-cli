@@ -1,0 +1,76 @@
+{
+  "id": "chrome_five_tabs_organize",
+  "app": "chrome",
+  "task": "Google Chrome is open. Open five tabs and navigate them to the following URLs: (1) https://example.com, (2) https://example.org, (3) https://httpbin.org/get, (4) https://httpbin.org/ip, (5) https://en.wikipedia.org/wiki/Internet. Bookmark all five pages. Then close the tabs showing example.com and example.org, so that only three tabs remain open: httpbin.org/get, httpbin.org/ip, and the Internet Wikipedia page. The bookmarks for all five pages should still exist.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-tab-open httpbin.org/get",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with httpbin.org/get is open"
+    },
+    {
+      "command": "check-tab-open httpbin.org/ip",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with httpbin.org/ip is open"
+    },
+    {
+      "command": "check-tab-open wikipedia.org/wiki/Internet",
+      "key": "found",
+      "expected": true,
+      "description": "Tab with Internet Wikipedia page is open"
+    },
+    {
+      "command": "check-tab-open example.com",
+      "key": "found",
+      "expected": false,
+      "description": "Tab with example.com has been closed"
+    },
+    {
+      "command": "check-tab-open example.org",
+      "key": "found",
+      "expected": false,
+      "description": "Tab with example.org has been closed"
+    },
+    {
+      "command": "check-bookmark example.com",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for example.com still exists"
+    },
+    {
+      "command": "check-bookmark example.org",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for example.org still exists"
+    },
+    {
+      "command": "check-bookmark httpbin.org/get",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for httpbin.org/get exists"
+    },
+    {
+      "command": "check-bookmark httpbin.org/ip",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for httpbin.org/ip exists"
+    },
+    {
+      "command": "check-bookmark Internet",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Internet Wikipedia page exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

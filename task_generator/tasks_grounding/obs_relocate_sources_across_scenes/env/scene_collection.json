@@ -1,0 +1,185 @@
+{
+  "current_scene": "Raw",
+  "scene_order": [
+    {
+      "name": "Raw"
+    },
+    {
+      "name": "Target"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Cam1",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Cam2",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Screen",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Overlay",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Bumper",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Raw",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Cam1",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Cam2",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Screen",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Overlay",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Bumper",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    },
+    {
+      "name": "Target",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": []
+      },
+      "enabled": true,
+      "mute": false
+    }
+  ],
+  "name": "Untitled"
+}

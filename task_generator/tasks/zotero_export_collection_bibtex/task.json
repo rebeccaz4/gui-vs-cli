@@ -1,0 +1,45 @@
+{
+  "id": "zotero_export_collection_bibtex",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is available at /home/user/Zotero/zotero.sqlite. Open Zotero and wait for the library to load. Using the existing library contents, export the references contained in the collection 'Reinforcement Learning' to a BibTeX file. Save the result to: /home/user/Documents/rl_export.bib. The exported file must exist, contain exactly one BibTeX entry, and that entry's title must contain 'Survey of RL Methods'. Leave Zotero open after completing the task.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/rl_export.bib",
+      "key": "exists",
+      "expected": true,
+      "description": "rl_export.bib exists on disk"
+    },
+    {
+      "command": "check-bibtex-count /home/user/Documents/rl_export.bib 1",
+      "key": "match",
+      "expected": true,
+      "description": "BibTeX file has exactly 1 entry"
+    },
+    {
+      "command": "check-bibtex-title /home/user/Documents/rl_export.bib 'Survey of RL Methods'",
+      "key": "contains",
+      "expected": true,
+      "description": "BibTeX file contains the survey paper title"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find collection by name, 2) Query all items in collection via collectionItems table, 3) Format each item as BibTeX, 4) Write to output file",
+    "reason": "Exporting a collection to BibTeX is straightforward. The script queries the collectionItems junction table to get all items in the collection, then formats their metadata as BibTeX. This is what Zotero's export feature does internally."
+  }
+}

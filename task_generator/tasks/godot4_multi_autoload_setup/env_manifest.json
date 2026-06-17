@@ -1,0 +1,35 @@
+{
+  "task_id": "godot4_multi_autoload_setup",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "scripts/game_state.gd",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/game_state.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "scripts/audio_manager.gd",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/audio_manager.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "scripts/save_system.gd",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/scripts/save_system.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/multi_autoload_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_set_autosave_interval",
+  "files": [
+    {
+      "filename": "placeholder.mscz",
+      "sandbox_path": "/home/user/Documents/placeholder.mscz",
+      "type": "mscz"
+    }
+  ]
+}

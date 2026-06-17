@@ -1,0 +1,10 @@
+{
+  "task_id": "zotero_add_author_to_survey",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    }
+  ]
+}

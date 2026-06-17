@@ -1,0 +1,128 @@
+{
+  "id": "obsidian_digital_garden",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/GardenVault. Build a digital garden with full configuration:\n\n1. Enable 'Show frontmatter' (showFrontmatter), enable 'Fold heading' (foldHeading), enable 'Spell check' (spellcheck).\n2. Set base font size to 17.\n3. Set hotkeys for 'Toggle bold' (editor:toggle-bold) and 'Toggle italic' (editor:toggle-italic).\n4. Create folders: 'Seeds', 'Budding', 'Evergreen'.\n5. Create 'Seeds/Thinking in Systems.md' with frontmatter 'type: seed', 'planted: 2025-03-01' and body:\n\n# Thinking in Systems\nEarly thoughts on systems thinking.\n\nA system is more than the sum of its parts.\nFeedback loops create emergent behavior.\n\nRelated: [[Mental Models]], [[Feedback Loops]]\n#seed #systems\n\n6. Create 'Budding/Mental Models.md' with frontmatter 'type: budding', 'planted: 2025-02-15' and body:\n\n# Mental Models\nFrameworks for understanding the world.\n\n## Key Models\n- First principles thinking\n- Inversion\n- Circle of competence\n\nGrows from: [[Thinking in Systems]]\nLeads to: [[Decision Making]]\n#budding #thinking\n\n7. Create 'Budding/Feedback Loops.md' with frontmatter 'type: budding', 'planted: 2025-02-20' and body:\n\n# Feedback Loops\nPositive and negative feedback in systems.\n\n## Types\n- Reinforcing (positive): growth spirals\n- Balancing (negative): homeostasis\n\nSource: [[Thinking in Systems]]\n#budding #systems\n\n8. Create 'Evergreen/Decision Making.md' with frontmatter 'type: evergreen', 'planted: 2025-01-10', 'confidence: high' and body:\n\n# Decision Making\nA well-developed note on making better decisions.\n\n## Framework\n1. Define the problem clearly\n2. Apply [[Mental Models]]\n3. Consider second-order effects via [[Feedback Loops]]\n4. Decide and commit\n\n## Key Insight\nMost bad decisions come from rushing step 1.\n#evergreen #thinking #decisions",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-setting /home/user/Documents/GardenVault showFrontmatter true",
+      "key": "match",
+      "expected": true,
+      "description": "showFrontmatter enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/GardenVault foldHeading true",
+      "key": "match",
+      "expected": true,
+      "description": "foldHeading enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/GardenVault spellcheck true",
+      "key": "match",
+      "expected": true,
+      "description": "spellcheck enabled"
+    },
+    {
+      "command": "appearance /home/user/Documents/GardenVault baseFontSize",
+      "eval": "result.get('value') == 17",
+      "description": "Font size set to 17"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/GardenVault editor:toggle-bold",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Bold hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/GardenVault editor:toggle-italic",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Italic hotkey set"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/GardenVault Seeds",
+      "key": "exists",
+      "expected": true,
+      "description": "Seeds folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/GardenVault Budding",
+      "key": "exists",
+      "expected": true,
+      "description": "Budding folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/GardenVault Evergreen",
+      "key": "exists",
+      "expected": true,
+      "description": "Evergreen folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/GardenVault 'Thinking in Systems' type seed",
+      "key": "match",
+      "expected": true,
+      "description": "Thinking in Systems is a seed"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/GardenVault 'Thinking in Systems' 'Mental Models'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Thinking in Systems links to Mental Models"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/GardenVault 'Thinking in Systems' 'Feedback Loops'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Thinking in Systems links to Feedback Loops"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/GardenVault 'Mental Models' 'Decision Making'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Mental Models links to Decision Making"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/GardenVault 'Feedback Loops' 'Thinking in Systems'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Feedback Loops links to Thinking in Systems"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/GardenVault 'Decision Making' confidence high",
+      "key": "match",
+      "expected": true,
+      "description": "Decision Making has confidence=high"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/GardenVault 'Decision Making' 'Mental Models'",
+      "key": "links_to",
+      "expected": true,
+      "description": "Decision Making links to Mental Models"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/GardenVault 'Decision Making' evergreen",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Decision Making has #evergreen tag"
+    },
+    {
+      "command": "list-notes /home/user/Documents/GardenVault",
+      "eval": "result.get('count') == 4",
+      "description": "Vault has exactly 4 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1) \u4fee\u6539 .obsidian/app.json \u8bbe\u7f6eeditor\u9009\u9879; 2) \u4fee\u6539 .obsidian/hotkeys.json \u8bbe\u7f6e\u5feb\u6377\u952e; 3) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa\u6587\u4ef6\u5939\u548c\u6240\u6709notes",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'In Settings > Editor'\u3001'In Settings > Appearance'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u4fee\u6539\u914d\u7f6e\u6587\u4ef6\u5e76\u521b\u5efanotes"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "renderdoc_cap_launcher_hook",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    }
+  ]
+}

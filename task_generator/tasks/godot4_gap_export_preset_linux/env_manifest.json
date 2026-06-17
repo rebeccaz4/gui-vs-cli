@@ -1,0 +1,25 @@
+{
+  "task_id": "godot4_gap_export_preset_linux",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/export_linux_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/export_linux_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "export_presets.cfg",
+      "sandbox_path": "/home/user/godot_projects/export_linux_game/export_presets.cfg",
+      "type": "cfg"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/export_linux_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

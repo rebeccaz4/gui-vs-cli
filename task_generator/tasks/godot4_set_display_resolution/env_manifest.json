@@ -1,0 +1,20 @@
+{
+  "task_id": "godot4_set_display_resolution",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/display_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/display_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/display_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

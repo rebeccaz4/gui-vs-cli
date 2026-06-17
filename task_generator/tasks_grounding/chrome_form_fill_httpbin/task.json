@@ -1,0 +1,41 @@
+{
+  "id": "chrome_form_fill_httpbin",
+  "app": "chrome",
+  "task": "Google Chrome is open. Navigate to https://httpbin.org/forms/post. Then, submit a pizza order form at https://httpbin.org/forms/post with the following values:\n- Customer name: John Smith\n- Telephone: 555-1234\n- E-mail: john@example.com\n- Pizza Size: medium\n- Comments: Extra cheese please\n\nAfter submission, verify that the response page displays all submitted form data correctly.",
+  "task_grounding": "Open Google Chrome. Navigate to https://httpbin.org/forms/post. Fill in the form with the following values: Customer name: 'John Smith', Telephone: '555-1234', E-mail: 'john@example.com', Pizza Size: select 'medium', Comments: 'Extra cheese please'. Then click the Submit Order button to submit the form. After submission, the page should show the submitted data.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-url-visited httpbin.org/forms/post",
+      "key": "visited",
+      "expected": true,
+      "description": "httpbin.org/forms/post was visited"
+    },
+    {
+      "command": "check-url-visited httpbin.org/post",
+      "key": "visited",
+      "expected": true,
+      "description": "Form was submitted (httpbin.org/post visited)"
+    },
+    {
+      "command": "check-page-contains \"John Smith\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Submitted page contains customer name 'John Smith'"
+    },
+    {
+      "command": "check-page-contains \"555-1234\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Submitted page contains phone number '555-1234'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

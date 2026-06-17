@@ -1,0 +1,42 @@
+{
+  "id": "zotero_gap_pdf_and_color_tag",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. A PDF is provided at /home/user/Documents/bert_paper.pdf. Launch Zotero. Do BOTH of the following on the existing item 'BERT: Pre-training of Deep Bidirectional Transformers':\n  1. Attach the PDF /home/user/Documents/bert_paper.pdf to the BERT item as a child attachment.\n  2. Add the tag 'important' to the BERT item.\nAfter saving, the BERT item must have at least one PDF attachment child AND be tagged with 'important'. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "bert_paper.pdf",
+        "sandbox_path": "/home/user/Documents/bert_paper.pdf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-attachment 'BERT'",
+      "key": "has_attachment",
+      "expected": true,
+      "description": "BERT has an attachment"
+    },
+    {
+      "command": "check-item-tag 'BERT' important",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BERT has 'important' tag"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite + file operations: 1) Attach PDF: copy to storage, insert attachment item with parentItemID, 2) Add tag: find/create 'important' tag, insert record in itemTags table",
+    "reason": "Both operations are accessible via SQLite. PDF attachment requires creating an item record with parentItemID and copying the file. Tagging requires inserting into the itemTags junction table. A single Python script can perform both operations."
+  }
+}

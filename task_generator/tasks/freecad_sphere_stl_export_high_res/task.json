@@ -1,0 +1,45 @@
+{
+  "id": "freecad_sphere_stl_export_high_res",
+  "app": "freecad",
+  "task": "Export the Part::Sphere named 'Sphere' (Radius=30) from /home/user/Documents/ball.FCStd to an STL file at /home/user/exports/ball.stl. The resulting STL must have at least 200 triangles. Save the FCStd document after exporting.",
+  "env": {
+    "files": [
+      {
+        "filename": "ball.FCStd",
+        "sandbox_path": "/home/user/Documents/ball.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/ball.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "FCStd source still exists"
+    },
+    {
+      "command": "check-file-exists /home/user/exports/ball.stl",
+      "key": "exists",
+      "expected": true,
+      "description": "STL export exists"
+    },
+    {
+      "command": "check-stl-min-triangles /home/user/exports/ball.stl 200",
+      "key": "match",
+      "expected": true,
+      "description": "STL has >= 200 triangles"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add sphere → export render STL",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add sphere, export render STL"
+  }
+}

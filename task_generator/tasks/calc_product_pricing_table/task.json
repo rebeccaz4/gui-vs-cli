@@ -1,0 +1,152 @@
+{
+  "id": "calc_product_pricing_table",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/products.xlsx in LibreOffice Calc. It contains a sheet called 'Products' with columns: Product Name (A), Base Price (B), Cost (C). Row 1 has headers (bold), rows 2-16 have 15 products.\n\n1. In cell D1, enter 'Profit Margin %' and make it bold.\n2. In cells D2:D16, enter the formula =(B2-C2)/B2*100 to calculate the profit margin as a percentage. For row 2: =(B2-C2)/B2*100.\n3. In cell E1, enter 'Discounted Price (10%)' and make it bold.\n4. In cells E2:E16, enter the formula =B2*0.9 to apply a 10% discount to the base price.\n5. In cell F1, enter 'Tax (8.5%)' and make it bold.\n6. In cells F2:F16, enter the formula =E2*0.085 to calculate the tax amount on the discounted price.\n7. In cell G1, enter 'Final Price' and make it bold.\n8. In cells G2:G16, enter the formula =E2+F2 to calculate the final price (discounted price plus tax).\n9. In cell A17, enter 'MIN' and make it bold. In cell A18, enter 'MAX' and make it bold. In cell A19, enter 'AVERAGE' and make it bold.\n10. In B17, enter =MIN(B2:B16). In B18, enter =MAX(B2:B16). In B19, enter =AVERAGE(B2:B16).\n11. Copy the MIN/MAX/AVERAGE formulas across columns C through G (so C17:G17 have MIN formulas, C18:G18 have MAX formulas, C19:G19 have AVERAGE formulas).\n12. Save the file .",
+  "env": {
+    "files": [
+      {
+        "filename": "products.xlsx",
+        "sandbox_path": "/home/user/Documents/products.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value D1 \"Profit Margin %\" Products",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = 'Profit Margin %'"
+    },
+    {
+      "command": "check-cell-formatted D1 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "D1 is bold"
+    },
+    {
+      "command": "cell-value D2 Products",
+      "eval": "result.get('formula') is not None and 'B2' in result.get('formula','').upper() and 'C2' in result.get('formula','').upper()",
+      "description": "D2 contains a margin formula referencing B2 and C2"
+    },
+    {
+      "command": "cell-value D2 Products",
+      "eval": "abs(float(result.get('value', 0)) - 58.32) < 0.5",
+      "description": "D2 value is approximately 58.32% (Wireless Mouse margin)"
+    },
+    {
+      "command": "check-cell-value E1 \"Discounted Price (10%)\" Products",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = 'Discounted Price (10%)'"
+    },
+    {
+      "command": "check-cell-formatted E1 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "E1 is bold"
+    },
+    {
+      "command": "cell-value E2 Products",
+      "eval": "result.get('formula') is not None and '0.9' in result.get('formula','') or '*0.9' in result.get('formula','')",
+      "description": "E2 contains a 10% discount formula"
+    },
+    {
+      "command": "check-cell-value F1 \"Tax (8.5%)\" Products",
+      "key": "match",
+      "expected": true,
+      "description": "F1 = 'Tax (8.5%)'"
+    },
+    {
+      "command": "check-cell-formatted F1 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "F1 is bold"
+    },
+    {
+      "command": "check-cell-value G1 \"Final Price\" Products",
+      "key": "match",
+      "expected": true,
+      "description": "G1 = 'Final Price'"
+    },
+    {
+      "command": "check-cell-formatted G1 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "G1 is bold"
+    },
+    {
+      "command": "cell-value G2 Products",
+      "eval": "result.get('formula') is not None and 'E2' in result.get('formula','').upper() and 'F2' in result.get('formula','').upper()",
+      "description": "G2 contains formula =E2+F2"
+    },
+    {
+      "command": "check-cell-value A17 MIN Products",
+      "key": "match",
+      "expected": true,
+      "description": "A17 = 'MIN'"
+    },
+    {
+      "command": "check-cell-formatted A17 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "A17 is bold"
+    },
+    {
+      "command": "check-cell-value A18 MAX Products",
+      "key": "match",
+      "expected": true,
+      "description": "A18 = 'MAX'"
+    },
+    {
+      "command": "check-cell-formatted A18 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "A18 is bold"
+    },
+    {
+      "command": "check-cell-value A19 AVERAGE Products",
+      "key": "match",
+      "expected": true,
+      "description": "A19 = 'AVERAGE'"
+    },
+    {
+      "command": "check-cell-formatted A19 true Products",
+      "key": "match",
+      "expected": true,
+      "description": "A19 is bold"
+    },
+    {
+      "command": "cell-value B17 Products",
+      "eval": "result.get('formula') is not None and 'MIN' in result.get('formula','').upper()",
+      "description": "B17 contains a MIN formula"
+    },
+    {
+      "command": "check-cell-value B17 9.99 Products",
+      "key": "match",
+      "expected": true,
+      "description": "B17 = 9.99 (min base price)"
+    },
+    {
+      "command": "cell-value B18 Products",
+      "eval": "result.get('formula') is not None and 'MAX' in result.get('formula','').upper()",
+      "description": "B18 contains a MAX formula"
+    },
+    {
+      "command": "check-cell-value B18 89.99 Products",
+      "key": "match",
+      "expected": true,
+      "description": "B18 = 89.99 (max base price)"
+    },
+    {
+      "command": "cell-value B19 Products",
+      "eval": "result.get('formula') is not None and 'AVERAGE' in result.get('formula','').upper()",
+      "description": "B19 contains an AVERAGE formula"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

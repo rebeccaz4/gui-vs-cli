@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_conditional_formatting_sales_heatmap",
+  "files": [
+    {"filename": "regional_sales.xlsx", "sandbox_path": "/home/user/Documents/regional_sales.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "cloudcompare_gap_csf_ground_filter",
+  "files": [
+    {"filename": "scene.ply", "sandbox_path": "/home/user/Documents/scene.ply", "type": "ply"}
+  ]
+}

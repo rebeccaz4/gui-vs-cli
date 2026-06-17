@@ -1,0 +1,74 @@
+{
+  "id": "renderdoc_cap_extended_frames",
+  "app": "renderdoc",
+  "task": "Create a preset file /home/user/captures/extended.cap: executable='/usr/local/games/sweep_target', workingDir='/home/user/sweeps', commandLine='--sweep-frames', environment with RDOC_SWEEP_MODE, options APIValidation=true, CaptureAllCmdLists=true, RefAllResources=true, queueFrameCap=10, numQueuedFrames=30.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cap-executable /home/user/captures/extended.cap /usr/local/games/sweep_target",
+      "key": "match",
+      "expected": true,
+      "description": "executable"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/extended.cap /home/user/sweeps",
+      "key": "match",
+      "expected": true,
+      "description": "workingDir"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/extended.cap --sweep-frames",
+      "key": "match",
+      "expected": true,
+      "description": "--sweep-frames flag"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/extended.cap RDOC_SWEEP_MODE",
+      "key": "present",
+      "expected": true,
+      "description": "RDOC_SWEEP_MODE env present"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/extended.cap APIValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "APIValidation true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/extended.cap CaptureAllCmdLists true",
+      "key": "match",
+      "expected": true,
+      "description": "CaptureAllCmdLists true"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/extended.cap RefAllResources true",
+      "key": "match",
+      "expected": true,
+      "description": "RefAllResources true"
+    },
+    {
+      "command": "cap-parse /home/user/captures/extended.cap",
+      "eval": "result.get('queueFrameCap') == 10 and result.get('numQueuedFrames') == 30",
+      "description": "queueFrameCap=10, numQueuedFrames=30"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('file.cap')); data['settings']['executable'] = '/path'; json.dump(data, open('file.cap', 'w'), indent=2)",
+    "reason": ".cap files are JSON documents. Can use Python's json module to create/modify them: read existing structure, update fields (executable, workingDir, commandLine, environment, options, etc.), write back with proper formatting."
+  }
+}

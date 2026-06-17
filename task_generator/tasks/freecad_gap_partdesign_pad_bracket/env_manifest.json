@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_partdesign_pad_bracket",
+  "files": [
+    {
+      "filename": "bracket_start.FCStd",
+      "sandbox_path": "/home/user/Documents/bracket_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "obs_gap_chroma_key_filter",
+  "app": "obs",
+  "task": "Set up a green-screen keyed layout. 1. OBS may start with a default 'Scene'. 2. Create a scene named exactly 'Live'. 3. In the 'Live' scene, add an Image source named exactly 'WebCam' whose file is /home/user/Pictures/green_plate.png. 4. Apply a Chroma Key filter to the 'WebCam' source. Name the filter exactly 'Green Screen'. 5. Configure the filter: Key Color Type = Green, Similarity = 420, Smoothness = 100. 6. The 'WebCam' source must be visible. 7..",
+  "task_grounding": "Open OBS Studio and set up a green-screen keyed layout.\n\n1. OBS may start with a default 'Scene' — delete it.\n2. Create a scene named exactly 'Live'.\n3. In the 'Live' scene, add an Image source named exactly 'WebCam' whose file is /home/user/Pictures/green_plate.png.\n4. Apply a Chroma Key filter to the 'WebCam' source. Name the filter exactly 'Green Screen'.\n5. Configure the filter: Key Color Type = Green, Similarity = 420, Smoothness = 100.\n6. Make sure the 'WebCam' source is visible (eye icon enabled).\n7. Close OBS or let it auto-save so the scene collection JSON is written.",
+  "env": {
+    "files": [
+      {
+        "filename": "green_plate.png",
+        "sandbox_path": "/home/user/Pictures/green_plate.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Live",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Live' exists"
+    },
+    {
+      "command": "check-source-in-scene WebCam Live",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'WebCam' is in the 'Live' scene"
+    },
+    {
+      "command": "check-source-has-filter WebCam 'Green Screen'",
+      "key": "exists",
+      "expected": true,
+      "description": "Filter 'Green Screen' exists on 'WebCam'"
+    },
+    {
+      "command": "source-filter-info WebCam 'Green Screen'",
+      "eval": "'chroma_key' in (result.get('type') or '')",
+      "expected": true,
+      "description": "'Green Screen' filter is a chroma key filter"
+    },
+    {
+      "command": "source-filter-info WebCam 'Green Screen'",
+      "eval": "str(result.get('settings', {}).get('key_color_type', '')).lower() == 'green'",
+      "expected": true,
+      "description": "Chroma key color type set to green"
+    },
+    {
+      "command": "source-filter-info WebCam 'Green Screen'",
+      "eval": "int(result.get('settings', {}).get('similarity', 0)) == 420",
+      "expected": true,
+      "description": "Chroma key similarity is 420"
+    },
+    {
+      "command": "source-filter-info WebCam 'Green Screen'",
+      "eval": "int(result.get('settings', {}).get('smoothness', 0)) == 100",
+      "expected": true,
+      "description": "Chroma key smoothness is 100"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

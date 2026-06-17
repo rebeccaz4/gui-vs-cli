@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_attendance_tracker",
+  "files": [
+    {"filename": "attendance.xlsx", "sandbox_path": "/home/user/Documents/attendance.xlsx", "type": "xlsx"}
+  ]
+}

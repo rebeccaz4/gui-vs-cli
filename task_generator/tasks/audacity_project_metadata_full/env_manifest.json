@@ -1,0 +1,15 @@
+{
+  "task_id": "audacity_project_metadata_full",
+  "files": [
+    {
+      "filename": "ambient.aup",
+      "sandbox_path": "/home/user/Music/ambient.aup",
+      "type": "aup"
+    },
+    {
+      "filename": "ambient_data/e00/d00/e000001.au",
+      "sandbox_path": "/home/user/Music/ambient_data/e00/d00/e000001.au",
+      "type": "au"
+    }
+  ]
+}

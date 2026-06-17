@@ -1,0 +1,45 @@
+{
+  "task_id": "renderdoc_triage_by_version",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "json"
+    },
+    {
+      "filename": "alpha.rdc",
+      "sandbox_path": "/home/user/captures/alpha.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "beta.rdc",
+      "sandbox_path": "/home/user/captures/beta.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "gamma.rdc",
+      "sandbox_path": "/home/user/captures/gamma.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "delta.rdc",
+      "sandbox_path": "/home/user/captures/delta.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "epsilon.rdc",
+      "sandbox_path": "/home/user/captures/epsilon.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "zeta.rdc",
+      "sandbox_path": "/home/user/captures/zeta.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "bogus.rdc",
+      "sandbox_path": "/home/user/captures/bogus.rdc",
+      "type": "rdc"
+    }
+  ]
+}

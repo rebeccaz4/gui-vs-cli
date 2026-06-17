@@ -1,0 +1,20 @@
+{
+  "task_id": "godot4_add_input_action_jump",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/platformer/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/platformer/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/platformer/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

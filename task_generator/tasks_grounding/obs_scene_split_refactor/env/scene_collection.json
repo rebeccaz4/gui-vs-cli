@@ -1,0 +1,202 @@
+{
+  "current_scene": "Everything",
+  "scene_order": [
+    {
+      "name": "Everything"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Webcam",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Desktop",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Game Capture",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Intro Logo",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "BRB Text",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "End Card",
+      "id": "xshm_input",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true,
+      "mute": false,
+      "volume": 1.0
+    },
+    {
+      "name": "Everything",
+      "id": "scene",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Webcam",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Desktop",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Game Capture",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "Intro Logo",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "BRB Text",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          },
+          {
+            "name": "End Card",
+            "visible": true,
+            "locked": false,
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0
+          }
+        ]
+      },
+      "enabled": true,
+      "mute": false
+    }
+  ],
+  "name": "Untitled"
+}

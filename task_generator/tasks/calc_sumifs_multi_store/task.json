@@ -1,0 +1,152 @@
+{
+  "id": "calc_sumifs_multi_store",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/transactions.xlsx in LibreOffice Calc. Sheet 'Transactions' has columns Date (A), Store (B), Category (C), Amount (D) in row 1 (bold headers) and 40 data rows (2-41). Stores are North, South, West. Categories are Food, Clothing, Electronics, Home.\n\n1. Create a new sheet named 'Summary'.\n2. On Summary, fill row 1 with bold headers: A1='Store', B1='Food', C1='Clothing', D1='Electronics', E1='Home', F1='Total'.\n3. In A2 type 'North'. In A3 type 'South'. In A4 type 'West'.\n4. In B2 enter a formula using SUMIFS that sums Transactions column D where Store equals A2 and Category equals B$1. Example: =SUMIFS(Transactions.D:D,Transactions.B:B,$A2,Transactions.C:C,B$1). Copy this formula to cover B2:E4 so every store x category cell has the correct SUMIFS.\n5. In F2 enter =SUM(B2:E2). Copy to F3 and F4.\n6. In A5 type 'Total' and make it bold.\n7. In B5 enter =SUM(B2:B4). Copy B5 across to C5, D5, E5, F5.\n8. Save the file .",
+  "env": {
+    "files": [
+      {
+        "filename": "transactions.xlsx",
+        "sandbox_path": "/home/user/Documents/transactions.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-sheet-exists Summary",
+      "key": "exists",
+      "expected": true,
+      "description": "Summary sheet exists"
+    },
+    {
+      "command": "check-cell-value A1 Store Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A1 = Store"
+    },
+    {
+      "command": "check-cell-value B1 Food Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B1 = Food"
+    },
+    {
+      "command": "check-cell-value F1 Total Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary F1 = Total"
+    },
+    {
+      "command": "check-cell-formatted A1 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A1 bold"
+    },
+    {
+      "command": "check-cell-value A2 North Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A2 = North"
+    },
+    {
+      "command": "check-cell-value A3 South Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A3 = South"
+    },
+    {
+      "command": "check-cell-value A4 West Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A4 = West"
+    },
+    {
+      "command": "cell-value B2 Summary",
+      "eval": "result.get('formula') is not None and 'SUMIFS' in result.get('formula','').upper()",
+      "description": "B2 uses SUMIFS"
+    },
+    {
+      "command": "check-cell-value B2 500 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B2 (North Food) = 500"
+    },
+    {
+      "command": "check-cell-value C2 445 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary C2 (North Clothing) = 445"
+    },
+    {
+      "command": "check-cell-value D2 280 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary D2 (North Electronics) = 280"
+    },
+    {
+      "command": "check-cell-value E2 315 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary E2 (North Home) = 315"
+    },
+    {
+      "command": "check-cell-value B3 780 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B3 (South Food) = 780"
+    },
+    {
+      "command": "check-cell-value D4 870 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary D4 (West Electronics) = 870"
+    },
+    {
+      "command": "check-cell-value F2 1540 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary F2 (North total) = 1540"
+    },
+    {
+      "command": "check-cell-value F3 1895 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary F3 (South total) = 1895"
+    },
+    {
+      "command": "check-cell-value F4 2625 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary F4 (West total) = 2625"
+    },
+    {
+      "command": "check-cell-value A5 Total Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A5 = Total"
+    },
+    {
+      "command": "check-cell-formatted A5 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A5 bold"
+    },
+    {
+      "command": "check-cell-value B5 2135 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B5 (Food total) = 2135"
+    },
+    {
+      "command": "check-cell-value F5 6060 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary F5 (grand total) = 6060"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

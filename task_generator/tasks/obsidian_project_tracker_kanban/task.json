@@ -1,0 +1,158 @@
+{
+  "id": "obsidian_project_tracker_kanban",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/KanbanVault. Build a project tracker that simulates a kanban board using folders and notes:\n\n1. Create folders 'Backlog', 'InProgress', 'Done' in the vault root.\n2. Create these 7 task notes, each with YAML frontmatter exactly as listed, a level-1 heading 'Task T-00X: <title>', a level-2 heading 'Description' with a one-paragraph summary, and the inline tag #task:\n   - 'Backlog/T-001.md' \u2014 status: backlog, priority: high, estimate: 5, title: 'Research authentication providers'\n   - 'Backlog/T-002.md' \u2014 status: backlog, priority: low, estimate: 2, title: 'Update favicon'\n   - 'Backlog/T-003.md' \u2014 status: backlog, priority: medium, estimate: 3, title: 'Write integration test suite'\n   - 'InProgress/T-004.md' \u2014 status: inprogress, priority: high, estimate: 8, title: 'Implement OAuth login'\n   - 'InProgress/T-005.md' \u2014 status: inprogress, priority: medium, estimate: 5, title: 'Refactor database layer'\n   - 'Done/T-006.md' \u2014 status: done, priority: medium, estimate: 3, title: 'Set up logging pipeline'\n   - 'Done/T-007.md' \u2014 status: done, priority: low, estimate: 1, title: 'Fix typo in README'\n3. Create 'Board.md' in the vault root with:\n   - Level-1 heading 'Project Board'\n   - Level-2 heading 'Backlog' followed by a bulleted list with wikilinks to [[T-001]], [[T-002]], [[T-003]]\n   - Level-2 heading 'In Progress' followed by a bulleted list with wikilinks to [[T-004]], [[T-005]]\n   - Level-2 heading 'Done' followed by a bulleted list with wikilinks to [[T-006]], [[T-007]]\n   - The inline tag #board\n\nThe vault must end up with exactly 8 notes total.",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/KanbanVault/.obsidian/app.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/KanbanVault Backlog",
+      "key": "exists",
+      "expected": true,
+      "description": "Backlog folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/KanbanVault InProgress",
+      "key": "exists",
+      "expected": true,
+      "description": "InProgress folder exists"
+    },
+    {
+      "command": "check-folder-exists /home/user/Documents/KanbanVault Done",
+      "key": "exists",
+      "expected": true,
+      "description": "Done folder exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Backlog/T-001' status backlog",
+      "key": "match",
+      "expected": true,
+      "description": "T-001 status=backlog"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Backlog/T-001' priority high",
+      "key": "match",
+      "expected": true,
+      "description": "T-001 priority=high"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Backlog/T-001' estimate 5",
+      "key": "match",
+      "expected": true,
+      "description": "T-001 estimate=5"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/KanbanVault 'Backlog/T-001' Description 2",
+      "key": "has_heading",
+      "expected": true,
+      "description": "T-001 has Description heading"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/KanbanVault 'Backlog/T-001' task",
+      "key": "has_tag",
+      "expected": true,
+      "description": "T-001 has #task"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Backlog/T-002' priority low",
+      "key": "match",
+      "expected": true,
+      "description": "T-002 priority=low"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Backlog/T-003' priority medium",
+      "key": "match",
+      "expected": true,
+      "description": "T-003 priority=medium"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'InProgress/T-004' status inprogress",
+      "key": "match",
+      "expected": true,
+      "description": "T-004 status=inprogress"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'InProgress/T-004' estimate 8",
+      "key": "match",
+      "expected": true,
+      "description": "T-004 estimate=8"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'InProgress/T-005' status inprogress",
+      "key": "match",
+      "expected": true,
+      "description": "T-005 status=inprogress"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Done/T-006' status done",
+      "key": "match",
+      "expected": true,
+      "description": "T-006 status=done"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/KanbanVault 'Done/T-007' status done",
+      "key": "match",
+      "expected": true,
+      "description": "T-007 status=done"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/KanbanVault Board 'Project Board' 1",
+      "key": "has_heading",
+      "expected": true,
+      "description": "Board has Project Board heading"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/KanbanVault Board 'In Progress' 2",
+      "key": "has_heading",
+      "expected": true,
+      "description": "Board has In Progress heading"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/KanbanVault Board T-001",
+      "key": "links_to",
+      "expected": true,
+      "description": "Board links T-001"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/KanbanVault Board T-004",
+      "key": "links_to",
+      "expected": true,
+      "description": "Board links T-004"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/KanbanVault Board T-007",
+      "key": "links_to",
+      "expected": true,
+      "description": "Board links T-007"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/KanbanVault Board board",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Board has #board"
+    },
+    {
+      "command": "list-notes /home/user/Documents/KanbanVault",
+      "eval": "result.get('count') == 8",
+      "description": "Vault has exactly 8 notes"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Backlog/, InProgress/, Done/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa7\u4e2atask notes\u548c Board.md",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create folders'\u3001'create these 7 task notes'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

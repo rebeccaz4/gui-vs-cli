@@ -1,0 +1,46 @@
+{
+  "id": "gimp_add_alpha_transparent",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/icon_bg.png in GIMP. The image is 200x200 pixels with a solid white background and a red circle in the center (100px diameter). Add an alpha channel to the layer. Delete the white background to make it transparent. Export the result as /home/user/Documents/icon_transparent.png.",
+  "task_grounding": "Open /home/user/Documents/icon_bg.png in GIMP. The image is 200x200 pixels with a solid white background and a red circle in the center. Add an alpha channel to the image (Layer > Transparency > Add Alpha Channel), then select the white background color using the 'Select by Color' tool and delete it to make the background transparent. Export the result as /home/user/Documents/icon_transparent.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "icon_bg.png",
+        "sandbox_path": "/home/user/Documents/icon_bg.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/icon_transparent.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported transparent PNG file exists"
+    },
+    {
+      "command": "check-file-mode /home/user/Documents/icon_transparent.png RGBA",
+      "key": "match",
+      "expected": true,
+      "description": "Image has RGBA mode (alpha channel present)"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/icon_transparent.png 200 200",
+      "key": "match",
+      "expected": true,
+      "description": "Image dimensions are 200x200 pixels"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python with Pillow: img = Image.open(\"input.png\"); img = img.convert(\"RGBA\"); img.save(\"output.png\")",
+    "reason": "Adding alpha channel requires PIL - not a simple one-liner but doable"
+  }
+}

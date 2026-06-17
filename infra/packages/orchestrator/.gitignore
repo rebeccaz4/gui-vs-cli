@@ -1,0 +1,10 @@
+*.out
+.plan
+alloc
+plugin
+orchestrator
+bin
+.clickhouse
+.shared
+/tmp
+.local-build

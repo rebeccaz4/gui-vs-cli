@@ -1,0 +1,67 @@
+{
+  "id": "shotcut_v2_two_filters_sepia_contrast",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/color_grade.mlt (1920x1080 30 fps). The project already contains one clip on the V1 timeline track referencing /home/user/Videos/landscape.mp4.\n\nAdd a 'Sepia Tone' filter and a 'Contrast' filter to the landscape.mp4 clip, both with default parameters. Save the project.",
+  "env": {
+    "files": [
+      {
+        "filename": "color_grade.mlt",
+        "sandbox_path": "/home/user/Documents/color_grade.mlt"
+      },
+      {
+        "filename": "landscape.mp4",
+        "sandbox_path": "/home/user/Videos/landscape.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/color_grade.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-resolution /home/user/Documents/color_grade.mlt 1920 1080",
+      "key": "match",
+      "expected": true,
+      "description": "Project resolution is 1920x1080"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/color_grade.mlt landscape.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "landscape.mp4 is still referenced"
+    },
+    {
+      "command": "check-filter-exists /home/user/Documents/color_grade.mlt sepia",
+      "key": "exists",
+      "expected": true,
+      "description": "A sepia filter is present"
+    },
+    {
+      "command": "check-filter-exists /home/user/Documents/color_grade.mlt contrast",
+      "key": "exists",
+      "expected": true,
+      "description": "A contrast filter is present"
+    },
+    {
+      "command": "check-filter-count /home/user/Documents/color_grade.mlt 2",
+      "key": "match",
+      "expected": true,
+      "description": "Project has exactly 2 filters"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CLI: project open color_grade.mlt, filter add sepia --track 1 --clip 0, filter add contrast --track 1 --clip 0, project save",
+    "reason": "✅ CLI-Anything shotcut supports filter add with --track and --clip parameters. Can add multiple filters to same clip. Task mentions GUI steps (Filters panel, + button) but CLI can accomplish same outcome directly."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "task_id": "gimp_flip_both_directions",
+  "files": [
+    {"filename": "arrow.png", "sandbox_path": "/home/user/Documents/arrow.png", "type": "png"},
+    {"filename": "red_top_green_bottom.png", "sandbox_path": "/home/user/Documents/red_top_green_bottom.png", "type": "png"}
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "gimp_gap_alpha_channel_threshold_cutout",
+  "app": "gimp",
+  "task": "An image is available at: /home/user/Documents/silhouette.png. Open it in GIMP. Replace all white background pixels with transparency while preserving the black foreground shape unchanged. Save the result to: /home/user/Documents/cutout.png. The output must be a PNG image with an alpha channel.",
+  "env": {
+    "files": [
+      {
+        "filename": "silhouette.png",
+        "sandbox_path": "/home/user/Documents/silhouette.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/cutout.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/cutout.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "Output is PNG"
+    },
+    {
+      "command": "check-file-mode /home/user/Documents/cutout.png RGBA",
+      "key": "match",
+      "expected": true,
+      "description": "Output has RGBA (alpha channel preserved)"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/cutout.png 300 300",
+      "key": "match",
+      "expected": true,
+      "description": "Output is 300x300"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/cutout.png 10 10",
+      "eval": "result.get('a', 255) < 30",
+      "description": "Former white corner is now fully transparent"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/cutout.png 150 150",
+      "eval": "result.get('a', 0) > 200",
+      "description": "Center of black star remains opaque"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python with PIL: Load image, iterate pixels, set white pixels to transparent, save as PNG",
+    "reason": "Color-to-alpha requires pixel manipulation - possible with PIL but not trivial"
+  }
+}

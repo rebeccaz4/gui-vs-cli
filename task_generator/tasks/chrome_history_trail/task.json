@@ -1,0 +1,58 @@
+{
+  "id": "chrome_history_trail",
+  "app": "chrome",
+  "task": "Google Chrome is open. Visit the following five Wikipedia URLs in sequence, one after another in the same tab: (1) https://en.wikipedia.org/wiki/Alan_Turing, (2) https://en.wikipedia.org/wiki/Ada_Lovelace, (3) https://en.wikipedia.org/wiki/Grace_Hopper, (4) https://en.wikipedia.org/wiki/Tim_Berners-Lee, (5) https://en.wikipedia.org/wiki/Linus_Torvalds. After visiting all five pages, the final page (Linus_Torvalds) should still be displayed in the tab. Bookmark only the Linus_Torvalds page. When done, you should have one tab open showing Linus_Torvalds, with all five URLs in browsing history.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-url-visited Alan_Turing",
+      "key": "visited",
+      "expected": true,
+      "description": "Alan_Turing Wikipedia page was visited"
+    },
+    {
+      "command": "check-url-visited Ada_Lovelace",
+      "key": "visited",
+      "expected": true,
+      "description": "Ada_Lovelace Wikipedia page was visited"
+    },
+    {
+      "command": "check-url-visited Grace_Hopper",
+      "key": "visited",
+      "expected": true,
+      "description": "Grace_Hopper Wikipedia page was visited"
+    },
+    {
+      "command": "check-url-visited Tim_Berners-Lee",
+      "key": "visited",
+      "expected": true,
+      "description": "Tim_Berners-Lee Wikipedia page was visited"
+    },
+    {
+      "command": "check-url-visited Linus_Torvalds",
+      "key": "visited",
+      "expected": true,
+      "description": "Linus_Torvalds Wikipedia page was visited"
+    },
+    {
+      "command": "check-tab-open Linus_Torvalds",
+      "key": "found",
+      "expected": true,
+      "description": "Current tab shows Linus_Torvalds page"
+    },
+    {
+      "command": "check-bookmark Linus_Torvalds",
+      "key": "exists",
+      "expected": true,
+      "description": "Bookmark for Linus_Torvalds exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  }
+}

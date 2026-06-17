@@ -1,0 +1,52 @@
+{
+  "id": "gimp_threshold_black_white",
+  "app": "gimp",
+  "task": "Apply a threshold filter to /home/user/Documents/gradient.png to convert it to pure black and white (threshold value: 128). Export to /home/user/Documents/threshold_result.png (400x200).",
+  "task_grounding": "Open /home/user/Documents/gradient.png in GIMP. The image is 400x200 pixels containing a horizontal gradient from black on the left to white on the right. Apply a threshold at the midpoint (Colors > Threshold, set threshold to 128) to convert the image to pure black and white. Export the result as /home/user/Documents/threshold_result.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "gradient.png",
+        "sandbox_path": "/home/user/Documents/gradient.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/threshold_result.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported threshold result PNG file exists"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/threshold_result.png 400 200",
+      "key": "match",
+      "expected": true,
+      "description": "Image dimensions are 400x200 pixels"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/threshold_result.png 50 100 0 0 0",
+      "key": "match",
+      "expected": true,
+      "description": "Left side pixel is pure black (below threshold)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/threshold_result.png 350 100 255 255 255",
+      "key": "match",
+      "expected": true,
+      "description": "Right side pixel is pure white (above threshold)"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: convert input.png -threshold 128 output.png",
+    "reason": "Threshold is standard ImageMagick operation"
+  }
+}

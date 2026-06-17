@@ -1,0 +1,57 @@
+{
+  "id": "impress_save_as_new_format",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/annual_review.pptx in LibreOffice Impress. This presentation has 5 slides with titles: 'Annual Review 2025', 'Financial Summary', 'Team Growth', 'Product Milestones', 'Goals for 2026'.\n\nPerform the following edits:\n\n1. On Slide 2 ('Financial Summary'), add a new bullet point at the end of the existing content: 'Net profit margin: 18%'\n\n2. On Slide 5 ('Goals for 2026'), add speaker notes: 'Set quarterly check-in meetings to track progress.'\n\n3. Use File > Save As to save the presentation in ODP format (ODF Presentation) at the path /home/user/Documents/annual_review.odp.\n\nThe original file /home/user/Documents/annual_review.pptx should still exist on disk after you save the ODP copy. The presentation should still have exactly 5 slides.",
+  "env": {
+    "files": [
+      {
+        "filename": "annual_review.pptx",
+        "sandbox_path": "/home/user/Documents/annual_review.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-count 5",
+      "key": "match",
+      "expected": true,
+      "description": "Presentation still has exactly 5 slides"
+    },
+    {
+      "command": "check-slide-title 1 \"Financial Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 title is 'Financial Summary'"
+    },
+    {
+      "command": "check-slide-contains 1 \"Net profit margin: 18%\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 2 contains 'Net profit margin: 18%'"
+    },
+    {
+      "command": "check-notes-contain 4 \"Set quarterly check-in meetings to track progress\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 notes contain expected text"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/annual_review.odp",
+      "key": "exists",
+      "expected": true,
+      "description": "ODP file exists at expected path"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/annual_review.pptx",
+      "key": "exists",
+      "expected": true,
+      "description": "Original PPTX file still exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ms-python.black-formatter",
+    "dbaeumer.vscode-eslint",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "streetsidesoftware.code-spell-checker",
+    "timonwong.shellcheck",
+    "chrischinchilla.vale-vscode"
+  ]
+}

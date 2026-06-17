@@ -1,0 +1,111 @@
+{
+  "id": "obs_multi_collection_profiles",
+  "app": "obs",
+  "task": "Create a scene collection for a virtual event with four scenes and many sources. 1. OBS may start with a default 'Scene' -- delete it. 2. Create four scenes with the exact names: 'Welcome', 'Speaker', 'Panel', and 'Closing'. 3. Select the 'Welcome' scene and add two sources: a. An Image source named exactly 'Event Banner'. Set its file path to /home/user/Pictures/banner.png. b. A Text (FreeType 2) source named exactly 'Event Title'. 4. Select the 'Speaker' scene and add two sources: a. A Display Capture source named exactly 'Slides'. b. A Video Capture Device source named exactly 'Speaker Cam'. 5. Select the 'Panel' scene and add three Video Capture Device sources: a. Named exactly 'Panelist 1'. b. Named exactly 'Panelist 2'. c. Named exactly 'Panelist 3'. 6. Select the 'Closing' scene and add two sources: a. A Color Source named exactly 'Closing BG'. b. A Text (FreeType 2) source named exactly 'Goodbye'. 7. Make sure all sources are visible (eye icon enabled) in all scenes. 8. Remove any extra default scenes. The collection should have exactly 4 scenes. 9.",
+  "env": {
+    "files": [
+      {
+        "filename": "banner.png",
+        "sandbox_path": "/home/user/Pictures/banner.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Welcome",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Welcome' exists"
+    },
+    {
+      "command": "check-scene-exists Speaker",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Speaker' exists"
+    },
+    {
+      "command": "check-scene-exists Panel",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Panel' exists"
+    },
+    {
+      "command": "check-scene-exists Closing",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Closing' exists"
+    },
+    {
+      "command": "check-scene-count 4",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 4 scenes in the collection"
+    },
+    {
+      "command": "check-source-in-scene 'Event Banner' Welcome",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Event Banner' exists in 'Welcome' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Event Title' Welcome",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Event Title' exists in 'Welcome' scene"
+    },
+    {
+      "command": "check-source-in-scene Slides Speaker",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Slides' exists in 'Speaker' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Speaker Cam' Speaker",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Speaker Cam' exists in 'Speaker' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Panelist 1' Panel",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Panelist 1' exists in 'Panel' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Panelist 2' Panel",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Panelist 2' exists in 'Panel' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Panelist 3' Panel",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Panelist 3' exists in 'Panel' scene"
+    },
+    {
+      "command": "check-source-in-scene 'Closing BG' Closing",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Closing BG' exists in 'Closing' scene"
+    },
+    {
+      "command": "check-source-in-scene Goodbye Closing",
+      "key": "exists",
+      "expected": true,
+      "description": "Source 'Goodbye' exists in 'Closing' scene"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "renderdoc_capture_version_prefix_rename",
+  "app": "renderdoc",
+  "task": "Version-prefix and organize captures: rename unlabeled .rdc files with v258_ prefix, move to labeled directory, set save directory, clear unlabeled folder.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "shadow.rdc",
+        "sandbox_path": "/home/user/unlabeled/shadow.rdc"
+      },
+      {
+        "filename": "lighting.rdc",
+        "sandbox_path": "/home/user/unlabeled/lighting.rdc"
+      },
+      {
+        "filename": "post.rdc",
+        "sandbox_path": "/home/user/unlabeled/post.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-capture-count /home/user/labeled 3",
+      "key": "match",
+      "expected": true,
+      "description": "labeled has 3 captures"
+    },
+    {
+      "command": "check-capture-count /home/user/unlabeled 0",
+      "key": "match",
+      "expected": true,
+      "description": "unlabeled empty"
+    },
+    {
+      "command": "check-rdc-version /home/user/labeled/v258_shadow.rdc 258",
+      "key": "match",
+      "expected": true,
+      "description": "v258_shadow.rdc version 258"
+    },
+    {
+      "command": "check-rdc-version /home/user/labeled/v258_lighting.rdc 0x102",
+      "key": "match",
+      "expected": true,
+      "description": "v258_lighting.rdc version 0x102"
+    },
+    {
+      "command": "check-rdc-version /home/user/labeled/v258_post.rdc 258",
+      "key": "match",
+      "expected": true,
+      "description": "v258_post.rdc version 258"
+    },
+    {
+      "command": "check-rdc-valid /home/user/labeled/v258_shadow.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "v258_shadow.rdc valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/labeled/v258_lighting.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "v258_lighting.rdc valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/labeled/v258_post.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "v258_post.rdc valid"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory \"/home/user/labeled\"",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory set"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

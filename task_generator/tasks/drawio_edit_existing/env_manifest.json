@@ -1,0 +1,6 @@
+{
+  "task_id": "drawio_edit_existing",
+  "files": [
+    {"filename": "network.drawio", "sandbox_path": "/home/user/Documents/network.drawio", "type": "drawio"}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "musescore3_gap_fingering_numbers",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/finger_study.mscz (piano staff, 4 quarter notes per measure). Add piano fingering numbers 1, 2, 3, 5 to the first four notes of measure 1 (one number per note in order). Use Add > Text > Fingering or the Fingering palette. Save in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "finger_study.mscz",
+        "sandbox_path": "/home/user/Documents/finger_study.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/finger_study.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-fingering-count-in-measure /home/user/Documents/finger_study.mscz 1 4",
+      "key": "match",
+      "expected": true,
+      "description": "At least 4 fingering annotations in measure 1"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Unzip .mscz file, parse XML, find target <Note> elements, insert <Fingering><text>1</text></Fingering> elements, repackage",
+    "reason": "Adding fingering numbers is inserting child XML elements into Note elements - straightforward with ElementTree, ~30 lines of Python"
+  }
+}

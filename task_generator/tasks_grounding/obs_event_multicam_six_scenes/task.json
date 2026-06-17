@@ -1,0 +1,154 @@
+{
+  "id": "obs_event_multicam_six_scenes",
+  "app": "obs",
+  "task": "Build a fresh scene collection for a multi-camera live event with six scenes. 1. OBS may start with a default 'Scene' -- delete it. 2. Create exactly six scenes with these exact names: 'Pre-Show', 'Keynote', 'Q and A', 'Demo', 'Interview', 'Wrap-Up'. 3. In the 'Pre-Show' scene, add: a. Image source named exactly 'Countdown' pointing at /home/user/Pictures/countdown.png. b. Text (FreeType 2) source named exactly 'Welcome Message'. 4. In the 'Keynote' scene, add: a. Display Capture source named exactly 'Keynote Screen'. b. Video Capture Device source named exactly 'Speaker Cam'. 5. In the 'Q and A' scene, add: a. Video Capture Device source named exactly 'Audience Cam'. b. Text (FreeType 2) source named exactly 'Question Prompt'. 6. In the 'Demo' scene, add: a. Display Capture source named exactly 'Demo Screen'. b. Video Capture Device source named exactly 'Demo Presenter'. 7. In the 'Interview' scene, add: a. Video Capture Device source named exactly 'Interviewer'. b. Video Capture Device source named exactly 'Guest'. 8. In the 'Wrap-Up' scene, add: a. Color Source named exactly 'Outro BG'. b. Text (FreeType 2) source named exactly 'Thanks'. 9. All sources must be visible. 10. The final collection must have exactly 6 scenes and no other scenes. 11.",
+  "task_grounding": "Open OBS Studio and build a fresh scene collection for a multi-camera live event with six scenes.\n\n1. OBS may start with a default 'Scene' -- delete it.\n2. Create exactly six scenes with these exact names: 'Pre-Show', 'Keynote', 'Q and A', 'Demo', 'Interview', 'Wrap-Up'.\n\n3. In the 'Pre-Show' scene, add:\n   a. Image source named exactly 'Countdown' pointing at /home/user/Pictures/countdown.png.\n   b. Text (FreeType 2) source named exactly 'Welcome Message'.\n\n4. In the 'Keynote' scene, add:\n   a. Display Capture (or Screen Capture) source named exactly 'Keynote Screen'.\n   b. Video Capture Device source named exactly 'Speaker Cam'.\n\n5. In the 'Q and A' scene, add:\n   a. Video Capture Device source named exactly 'Audience Cam'.\n   b. Text (FreeType 2) source named exactly 'Question Prompt'.\n\n6. In the 'Demo' scene, add:\n   a. Display Capture source named exactly 'Demo Screen'.\n   b. Video Capture Device source named exactly 'Demo Presenter'.\n\n7. In the 'Interview' scene, add:\n   a. Video Capture Device source named exactly 'Interviewer'.\n   b. Video Capture Device source named exactly 'Guest'.\n\n8. In the 'Wrap-Up' scene, add:\n   a. Color Source named exactly 'Outro BG'.\n   b. Text (FreeType 2) source named exactly 'Thanks'.\n\n9. All sources must be visible (eye icon enabled).\n10. The final collection must have exactly 6 scenes and no other scenes.\n11. Close OBS or let it auto-save.",
+  "env": {
+    "files": [
+      {
+        "filename": "countdown.png",
+        "sandbox_path": "/home/user/Pictures/countdown.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Pre-Show",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Pre-Show' exists"
+    },
+    {
+      "command": "check-scene-exists Keynote",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Keynote' exists"
+    },
+    {
+      "command": "check-scene-exists 'Q and A'",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Q and A' exists"
+    },
+    {
+      "command": "check-scene-exists Demo",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Demo' exists"
+    },
+    {
+      "command": "check-scene-exists Interview",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Interview' exists"
+    },
+    {
+      "command": "check-scene-exists Wrap-Up",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Wrap-Up' exists"
+    },
+    {
+      "command": "check-scene-count 6",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 6 scenes"
+    },
+    {
+      "command": "check-source-in-scene Countdown Pre-Show",
+      "key": "exists",
+      "expected": true,
+      "description": "'Countdown' in 'Pre-Show'"
+    },
+    {
+      "command": "check-source-in-scene 'Welcome Message' Pre-Show",
+      "key": "exists",
+      "expected": true,
+      "description": "'Welcome Message' in 'Pre-Show'"
+    },
+    {
+      "command": "check-source-in-scene 'Keynote Screen' Keynote",
+      "key": "exists",
+      "expected": true,
+      "description": "'Keynote Screen' in 'Keynote'"
+    },
+    {
+      "command": "check-source-in-scene 'Speaker Cam' Keynote",
+      "key": "exists",
+      "expected": true,
+      "description": "'Speaker Cam' in 'Keynote'"
+    },
+    {
+      "command": "check-source-in-scene 'Audience Cam' 'Q and A'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Audience Cam' in 'Q and A'"
+    },
+    {
+      "command": "check-source-in-scene 'Question Prompt' 'Q and A'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Question Prompt' in 'Q and A'"
+    },
+    {
+      "command": "check-source-in-scene 'Demo Screen' Demo",
+      "key": "exists",
+      "expected": true,
+      "description": "'Demo Screen' in 'Demo'"
+    },
+    {
+      "command": "check-source-in-scene 'Demo Presenter' Demo",
+      "key": "exists",
+      "expected": true,
+      "description": "'Demo Presenter' in 'Demo'"
+    },
+    {
+      "command": "check-source-in-scene Interviewer Interview",
+      "key": "exists",
+      "expected": true,
+      "description": "'Interviewer' in 'Interview'"
+    },
+    {
+      "command": "check-source-in-scene Guest Interview",
+      "key": "exists",
+      "expected": true,
+      "description": "'Guest' in 'Interview'"
+    },
+    {
+      "command": "check-source-in-scene 'Outro BG' Wrap-Up",
+      "key": "exists",
+      "expected": true,
+      "description": "'Outro BG' in 'Wrap-Up'"
+    },
+    {
+      "command": "check-source-in-scene Thanks Wrap-Up",
+      "key": "exists",
+      "expected": true,
+      "description": "'Thanks' in 'Wrap-Up'"
+    },
+    {
+      "command": "check-source-visible Countdown",
+      "key": "visible",
+      "expected": true,
+      "description": "'Countdown' visible"
+    },
+    {
+      "command": "check-source-visible 'Speaker Cam'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Speaker Cam' visible"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use 'source list' to find source, then 'source set --visible true/false'",
+    "reason": "CLI can set source visibility using 'source set --visible true/false' command"
+  }
+}

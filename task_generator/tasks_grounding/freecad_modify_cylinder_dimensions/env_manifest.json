@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_modify_cylinder_dimensions",
+  "files": [
+    {"filename": "cylinder.FCStd", "sandbox_path": "/home/user/Documents/cylinder.FCStd", "type": "fcstd"}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_scale_thumbnail_webp",
+  "files": [
+    {"filename": "big_photo.png", "sandbox_path": "/home/user/Documents/big_photo.png", "type": "png"}
+  ]
+}

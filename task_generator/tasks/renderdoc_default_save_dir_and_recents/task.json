@@ -1,0 +1,105 @@
+{
+  "id": "renderdoc_default_save_dir_and_recents",
+  "app": "renderdoc",
+  "task": "Set up a new RenderDoc capture workspace using the capture files currently located in `/home/user/captures`. Move `alpha_test.rdc`, `beta_test.rdc`, and `gamma_test.rdc` into `/home/user/work/rdoc_captures`, creating any required directories. Update the RenderDoc UI configuration at `/home/user/.local/share/qrenderdoc/UI.config` so that this directory becomes the default capture location and the three moved captures appear in the recent capture list. Preserve the existing configuration structure and ensure the capture files remain unchanged. After completion, the three capture files should exist only under `/home/user/work/rdoc_captures`, and `/home/user/captures` should contain no `.rdc` files.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "alpha_test.rdc",
+        "sandbox_path": "/home/user/captures/alpha_test.rdc"
+      },
+      {
+        "filename": "beta_test.rdc",
+        "sandbox_path": "/home/user/captures/beta_test.rdc"
+      },
+      {
+        "filename": "gamma_test.rdc",
+        "sandbox_path": "/home/user/captures/gamma_test.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/work/rdoc_captures",
+      "key": "is_dir",
+      "expected": true,
+      "description": "new workspace dir"
+    },
+    {
+      "command": "check-capture-count /home/user/work/rdoc_captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "3 captures in workspace"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 0",
+      "key": "match",
+      "expected": true,
+      "description": "original captures empty"
+    },
+    {
+      "command": "check-rdc-valid /home/user/work/rdoc_captures/alpha_test.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "alpha valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/work/rdoc_captures/beta_test.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "beta valid"
+    },
+    {
+      "command": "check-rdc-valid /home/user/work/rdoc_captures/gamma_test.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "gamma valid"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/work/rdoc_captures",
+      "key": "match",
+      "expected": true,
+      "description": "save dir set"
+    },
+    {
+      "command": "check-recent-capture /home/user/work/rdoc_captures/alpha_test.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "alpha in recents"
+    },
+    {
+      "command": "check-recent-capture /home/user/work/rdoc_captures/beta_test.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "beta in recents"
+    },
+    {
+      "command": "check-recent-capture /home/user/work/rdoc_captures/gamma_test.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "gamma in recents"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "marker preserved"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

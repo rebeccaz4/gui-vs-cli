@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_partdesign_revolve_bottle",
+  "files": [
+    {
+      "filename": "bottle_start.FCStd",
+      "sandbox_path": "/home/user/Documents/bottle_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

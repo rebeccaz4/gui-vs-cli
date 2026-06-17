@@ -1,0 +1,87 @@
+{
+  "id": "freecad_rename_four_objects",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/parts_catalog.FCStd. The document contains four primitive objects whose internal names are 'Box', 'Cylinder', 'Sphere', and 'Cone'. Do not change the internal names, but update the Label property of each object so that the labels are exactly: Box -> 'BaseFrame', Cylinder -> 'AxleShaft', Sphere -> 'BallJoint', Cone -> 'Nozzle'. Leave the object count unchanged at 4. Save the file so the changes are written back to /home/user/Documents/parts_catalog.FCStd.",
+  "env": {
+    "files": [
+      {
+        "filename": "parts_catalog.FCStd",
+        "sandbox_path": "/home/user/Documents/parts_catalog.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/parts_catalog.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-count /home/user/Documents/parts_catalog.FCStd 4",
+      "key": "match",
+      "expected": true,
+      "description": "Document still has exactly 4 objects"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/parts_catalog.FCStd Box",
+      "key": "exists",
+      "expected": true,
+      "description": "Box still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/parts_catalog.FCStd Cylinder",
+      "key": "exists",
+      "expected": true,
+      "description": "Cylinder still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/parts_catalog.FCStd Sphere",
+      "key": "exists",
+      "expected": true,
+      "description": "Sphere still exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/parts_catalog.FCStd Cone",
+      "key": "exists",
+      "expected": true,
+      "description": "Cone still exists"
+    },
+    {
+      "command": "check-label /home/user/Documents/parts_catalog.FCStd Box BaseFrame",
+      "key": "match",
+      "expected": true,
+      "description": "Box Label == 'BaseFrame'"
+    },
+    {
+      "command": "check-label /home/user/Documents/parts_catalog.FCStd Cylinder AxleShaft",
+      "key": "match",
+      "expected": true,
+      "description": "Cylinder Label == 'AxleShaft'"
+    },
+    {
+      "command": "check-label /home/user/Documents/parts_catalog.FCStd Sphere BallJoint",
+      "key": "match",
+      "expected": true,
+      "description": "Sphere Label == 'BallJoint'"
+    },
+    {
+      "command": "check-label /home/user/Documents/parts_catalog.FCStd Cone Nozzle",
+      "key": "match",
+      "expected": true,
+      "description": "Cone Label == 'Nozzle'"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add box",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add box"
+  }
+}

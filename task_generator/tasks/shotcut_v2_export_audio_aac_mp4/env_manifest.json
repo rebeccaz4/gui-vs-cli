@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_v2_export_audio_aac_mp4",
+  "files": [
+    {
+      "filename": "aac_export.mlt",
+      "sandbox_path": "/home/user/Documents/aac_export.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "with_audio.mp4",
+      "sandbox_path": "/home/user/Videos/with_audio.mp4",
+      "type": "mp4"
+    }
+  ]
+}

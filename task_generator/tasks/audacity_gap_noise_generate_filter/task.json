@@ -1,0 +1,63 @@
+{
+  "id": "audacity_gap_noise_generate_filter",
+  "app": "audacity",
+  "task": "Audacity is open with an empty project. Generate white noise with these exact settings: Noise type = White, Amplitude = 0.8, Duration = 3.0 seconds. Select the entire noise audio and apply a low-pass filter with Cutoff frequency = 1000 Hz and Rolloff = 24 dB per octave. Export the filtered audio to /home/user/Music/filtered_noise.wav using 'WAV (Microsoft) signed 16-bit PCM' at 44100 Hz mono.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/filtered_noise.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "Filtered noise WAV exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/filtered_noise.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "Codec pcm_s16le"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/filtered_noise.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/filtered_noise.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "Mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/filtered_noise.wav 2.9",
+      "key": "match",
+      "expected": true,
+      "description": "Duration ~3s"
+    },
+    {
+      "command": "check-export-band-energy-ratio-max /home/user/Music/filtered_noise.wav 2000 0.35",
+      "key": "match",
+      "expected": true,
+      "description": "Most energy below 2000 Hz (high-frequency content attenuated by low-pass)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/filtered_noise.wav 0.5 2.5 -25 -3",
+      "key": "match",
+      "expected": true,
+      "description": "There IS signal (not accidentally exported silence)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-audacity: project new/open/save operations → track management → selection set + clip remove → noise generation + filter → metadata tag settings → export render operation",
+    "reason": "CLI-Anything-Audacity supports all required operations: project new/open/save operations, track management, selection set + clip remove, noise generation + filter, metadata tag settings, export render operation"
+  }
+}

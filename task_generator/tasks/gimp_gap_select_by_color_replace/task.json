@@ -1,0 +1,56 @@
+{
+  "id": "gimp_gap_select_by_color_replace",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/three_stripes.png (a 600x300 image with three vertical stripes — red, green, blue). Replace the green stripe with yellow(#FFFF00). Save the result as /home/user/Documents/color_replaced.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "three_stripes.png",
+        "sandbox_path": "/home/user/Documents/three_stripes.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/color_replaced.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/color_replaced.png 600 300",
+      "key": "match",
+      "expected": true,
+      "description": "Output is 600x300"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/color_replaced.png 100 150 255 0 0 10",
+      "key": "match",
+      "expected": true,
+      "description": "Red stripe unchanged"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/color_replaced.png 300 150 255 255 0 10",
+      "key": "match",
+      "expected": true,
+      "description": "Green stripe now yellow"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/color_replaced.png 500 150 0 0 255 10",
+      "key": "match",
+      "expected": true,
+      "description": "Blue stripe unchanged"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python with PIL: Load image, find all green pixels, replace with yellow, save",
+    "reason": "Color replacement requires pixel iteration with PIL - doable but manual"
+  }
+}

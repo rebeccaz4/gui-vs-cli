@@ -1,0 +1,43 @@
+{
+  "id": "zotero_gap_import_ris_file",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. A single-record RIS file is at /home/user/Documents/new_papers.ris. Launch Zotero. Import the RIS file into the library. After import a new item titled 'GPT-4 Technical Report' (type journalArticle) must exist in the library and the total item count must be at least 5. Leave Zotero running.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. A single-record RIS file is at /home/user/Documents/new_papers.ris. Launch Zotero. Import the RIS file into the library via File > Import > A file (BibTeX, RIS, Zotero RDF, etc.) > select /home/user/Documents/new_papers.ris. Proceed through any import dialogs (uncheck 'Place imported collection into new collection' if you prefer it merged into the main library, but either choice is acceptable). After import a new item titled 'GPT-4 Technical Report' (type journalArticle) must exist in the library and the total item count must be at least 5. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      },
+      {
+        "filename": "new_papers.ris",
+        "sandbox_path": "/home/user/Documents/new_papers.ris"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-exists 'GPT-4 Technical Report'",
+      "key": "exists",
+      "expected": true,
+      "description": "Imported GPT-4 item exists"
+    },
+    {
+      "command": "check-item-type 'GPT-4 Technical Report' journalArticle",
+      "key": "match",
+      "expected": true,
+      "description": "Type is journalArticle"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json import file /home/user/Documents/new_papers.ris",
+    "reason": "CLI-Anything supports importing RIS files via the 'import file' command. This uses Zotero's connector endpoint and requires Zotero to be running. The import will create new items from the RIS entries."
+  }
+}

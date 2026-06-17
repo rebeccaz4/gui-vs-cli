@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_export_ogg_vorbis",
+  "files": [
+    {
+      "filename": "voice.wav",
+      "sandbox_path": "/home/user/Music/voice.wav",
+      "type": "wav"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_rename_and_reorganize_scenes",
+  "files": [
+    {
+      "filename": "scene_collection.json",
+      "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json",
+      "type": "json"
+    }
+  ]
+}

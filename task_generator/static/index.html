@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface2: #f0f2f5;
+  --border: #d8dee4;
+  --text: #1f2328;
+  --text2: #656d76;
+  --accent: #0969da;
+  --green: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Layout */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header h1 { font-size: 18px; font-weight: 600; white-space: nowrap; }
+.header select, .header input {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.header .search { width: 260px; }
+.header .stats { margin-left: auto; color: var(--text2); font-size: 13px; }
+
+.container { max-width: 1400px; margin: 0 auto; padding: 20px 24px; }
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.summary-card,
+.summary-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.summary-card {
+  padding: 14px 16px;
+}
+
+.summary-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+  margin-bottom: 6px;
+}
+
+.summary-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.summary-subtext {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.summary-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-panel-header h2 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.summary-scope {
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.summary-panel-body {
+  padding: 0 16px 14px;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.metrics-table th,
+.metrics-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.metrics-table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+}
+
+.metrics-table td.metric-num,
+.metrics-table th.metric-num {
+  text-align: right;
+}
+
+.metrics-table tr:last-child td {
+  border-bottom: none;
+}
+
+.empty-summary {
+  padding: 16px 0 4px;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+/* Task grid */
+.task-list { display: flex; flex-direction: column; gap: 8px; }
+
+.task-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.task-card:hover { border-color: var(--accent); }
+.task-card.expanded { border-color: var(--accent); }
+
+/* Card header row */
+.task-header {
+  display: grid;
+  grid-template-columns: 1fr 100px 80px 80px 160px 90px 200px;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  gap: 12px;
+}
+.task-header:hover { background: var(--surface2); }
+
+.task-id {
+  font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.task-app {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--surface2);
+  color: var(--text2);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.task-diff {
+  text-align: center;
+  font-size: 13px;
+}
+.task-diff .dots { letter-spacing: 2px; }
+.task-checks {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text2);
+}
+.task-reward {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.task-reward.pass { color: var(--green); }
+.task-reward.partial { color: var(--orange); }
+.task-reward.fail { color: var(--red); }
+.task-reward.none { color: var(--text2); }
+
+.task-agreement {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text2);
+}
+.task-agreement.high { color: var(--green); }
+.task-agreement.mid { color: var(--orange); }
+.task-agreement.low { color: var(--red); }
+
+.task-actions-mini {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Expanded detail */
+.task-detail {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 16px;
+}
+.task-card.expanded .task-detail { display: block; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.detail-section {
+  background: var(--surface2);
+  border-radius: 6px;
+  padding: 14px;
+}
+.detail-section h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+  margin-bottom: 8px;
+}
+.detail-section pre {
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Metadata pills */
+.meta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.meta-pill {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.meta-pill .label { color: var(--text2); }
+.meta-pill .value { color: var(--text); font-weight: 600; }
+
+/* Verification list */
+.check-list { list-style: none; }
+.check-list li {
+  font-size: 13px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: monospace;
+}
+.check-list li:last-child { border: none; }
+.check-icon { margin-right: 6px; }
+.check-row-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.check-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Action bar */
+.action-bar {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.action-bar .left { display: flex; gap: 8px; align-items: center; }
+.action-bar .right { flex: 1; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.btn:hover { border-color: var(--accent); background: var(--bg); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary {
+  background: #1a7f37;
+  border-color: #1a7f37;
+  color: #fff;
+}
+.btn-primary:hover { background: #15692d; }
+.btn-accent {
+  background: #ddf4ff;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-accent:hover { background: #c8e8fd; }
+
+.model-select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Status badge */
+.status-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.status-badge.running { background: #dafbe1; color: var(--green); animation: pulse 1.5s infinite; }
+.status-badge.starting { background: #ddf4ff; color: var(--accent); animation: pulse 1.5s infinite; }
+.status-badge.completed { background: #dafbe1; color: var(--green); }
+.status-badge.error { background: #ffebe9; color: var(--red); }
+.status-badge.adjusting { background: #fbefff; color: var(--purple); animation: pulse 1.5s infinite; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+/* Stream link */
+.stream-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--green);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+.stream-link:hover { text-decoration: underline; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.toast.success { border-color: var(--green); }
+.toast.error { border-color: var(--red); }
+
+/* Proposal diff view */
+.proposal-view {
+  margin-top: 10px;
+  display: none;
+}
+.proposal-view.show { display: block; }
+.proposal-diff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.proposal-side {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 400px;
+}
+.proposal-side h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+  margin-bottom: 6px;
+}
+.proposal-side pre {
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.proposal-side.original { border-left: 3px solid var(--red); }
+.proposal-side.proposed { border-left: 3px solid var(--green); }
+.change-summary {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.change-summary-title {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+  margin-bottom: 6px;
+}
+.change-item {
+  padding: 2px 0;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.change-item .change-field {
+  font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.change-item .change-desc { color: var(--text); }
+.proposal-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.proposal-status {
+  font-size: 13px;
+  color: var(--text2);
+  margin-left: 8px;
+}
+.btn-approve {
+  background: #1a7f37;
+  border-color: #1a7f37;
+  color: #fff;
+}
+.btn-approve:hover { background: #15692d; }
+.btn-reject {
+  background: var(--surface2);
+  border-color: var(--red);
+  color: var(--red);
+}
+.btn-reject:hover { background: #ffebe9; }
+
+/* Adjust output (kept for loading state) */
+.adjust-output {
+  margin-top: 10px;
+  padding: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .task-header {
+    grid-template-columns: 1fr 80px 60px 100px;
+  }
+  .task-checks, .task-reward, .task-agreement { display: none; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .summary-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Last run info */
+.last-run-info {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 8px;
+  padding: 8px;
+  background: var(--bg);
+  border-radius: 4px;
+}
+.last-run-info .model-tag { color: var(--purple); }
+
+/* ── Trajectory Modal ─────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  overflow-y: auto;
+}
+.modal-overlay.open { display: block; }
+.modal {
+  background: var(--surface);
+  max-width: 1100px;
+  margin: 30px auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+.modal-header h2 { font-size: 15px; font-weight: 600; }
+.modal-header .meta { font-size: 12px; color: var(--text2); display: flex; gap: 12px; }
+.modal-close {
+  background: none; border: none; font-size: 22px;
+  color: var(--text2); cursor: pointer; padding: 4px 8px;
+}
+.modal-close:hover { color: var(--text); }
+.modal-body { padding: 20px; }
+
+/* Run selector tabs */
+.run-tabs {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.run-tab {
+  padding: 5px 12px; border-radius: 6px; font-size: 12px;
+  border: 1px solid var(--border); background: var(--surface2);
+  color: var(--text2); cursor: pointer;
+}
+.run-tab:hover { border-color: var(--accent); }
+.run-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.run-tab .reward-sm { font-weight: 600; margin-left: 4px; }
+
+/* Checks section */
+.checks-section { margin-bottom: 20px; }
+.checks-section h3 {
+  font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text2); margin-bottom: 8px;
+}
+.trajectory-overview {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(9, 105, 218, 0.04), rgba(9, 105, 218, 0.01));
+}
+.trajectory-overview h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text2);
+  margin-bottom: 8px;
+}
+.trajectory-overview-text {
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.check-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; border-radius: 4px; font-size: 13px;
+  margin-bottom: 3px;
+}
+.check-row.pass { background: #dafbe1; }
+.check-row.fail { background: #ffebe9; }
+.check-status { font-weight: 700; width: 40px; flex-shrink: 0; }
+.check-row.pass .check-status { color: var(--green); }
+.check-row.fail .check-status { color: var(--red); }
+.check-desc { flex: 1; }
+.check-cmd { font-family: monospace; font-size: 11px; color: var(--text2); }
+
+/* Steps */
+.trajectory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.trajectory-step {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.52fr) minmax(0, 0.7fr);
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  opacity: 0.72;
+  transition: background 0.2s ease, grid-template-columns 0.28s ease, gap 0.28s ease, padding 0.28s ease, opacity 0.28s ease;
+}
+.trajectory-step.active {
+  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.7fr);
+  gap: 18px;
+  padding: 14px 0;
+  background: linear-gradient(90deg, rgba(9, 105, 218, 0.04), transparent 45%);
+  opacity: 1;
+}
+.trajectory-step-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.trajectory-step-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.step-num {
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  transition: font-size 0.28s ease;
+}
+.trajectory-step.active .step-num {
+  font-size: 12px;
+}
+.trajectory-step-reasoning {
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.32;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+  transition: font-size 0.28s ease, line-height 0.28s ease, margin-bottom 0.28s ease;
+}
+.trajectory-step.active .trajectory-step-reasoning {
+  font-size: 12px;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.trajectory-step-reasoning-label, .step-actions-label {
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text2);
+  margin-bottom: 2px; font-weight: 600;
+  transition: font-size 0.28s ease, margin-bottom 0.28s ease;
+}
+.trajectory-step.active .trajectory-step-reasoning-label,
+.trajectory-step.active .step-actions-label {
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+.trajectory-step-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.trajectory-step-media-frame {
+  width: 100%;
+  max-width: 320px;
+  height: clamp(72px, 10vw, 118px);
+  padding: 2px;
+  border-radius: 10px;
+  background: transparent;
+  opacity: 0.42;
+  transition: box-shadow 0.25s ease, opacity 0.25s ease, background 0.25s ease, max-width 0.28s ease, height 0.28s ease, padding 0.28s ease;
+}
+.trajectory-step.active .trajectory-step-media-frame {
+  max-width: 840px;
+  height: clamp(240px, 38vw, 460px);
+  padding: 6px;
+  box-shadow: 0 14px 34px rgba(9, 105, 218, 0.18);
+  opacity: 1;
+  background: rgba(9, 105, 218, 0.03);
+}
+.trajectory-step-media-frame.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text2);
+  font-size: 13px;
+}
+.trajectory-step-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgba(31, 35, 40, 0.08);
+  background: var(--surface);
+  cursor: pointer;
+  transform: scale(0.46);
+  filter: saturate(0.72);
+  transition: transform 0.3s ease, border-color 0.2s ease, filter 0.3s ease;
+}
+.trajectory-step.active .trajectory-step-image {
+  border-color: var(--accent);
+  transform: scale(1);
+  filter: saturate(1);
+}
+.trajectory-step-image:hover { border-color: var(--accent); }
+
+.step-action-code {
+  font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+  font-size: 10px;
+  background: transparent;
+  padding: 2px 0;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  border: none;
+  color: var(--text2);
+  transition: font-size 0.28s ease;
+}
+.step-action-result {
+  font-size: 10px;
+  color: var(--text2);
+  margin-bottom: 4px;
+  transition: font-size 0.28s ease;
+}
+.step-action-result.fail { color: var(--red); }
+.trajectory-step.active .step-action-code,
+.trajectory-step.active .step-action-result {
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .trajectory-step {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 6px 0;
+    opacity: 0.82;
+  }
+  .trajectory-step.active {
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .trajectory-step-head {
+    flex-direction: column;
+  }
+  .trajectory-step-media-frame {
+    max-width: 100%;
+    height: clamp(88px, 22vw, 140px);
+    opacity: 1;
+  }
+  .trajectory-step.active .trajectory-step-media-frame {
+    height: clamp(220px, 72vw, 360px);
+  }
+}
+
+/* Screenshot lightbox */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 3000;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 95vw; max-height: 95vh; }
+
+/* LLM Judge results */
+.judge-section {
+  margin-bottom: 20px;
+  border: 2px solid var(--purple);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.judge-header {
+  background: #fbefff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.judge-header h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--purple);
+  margin: 0;
+}
+.judge-accuracy {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple);
+}
+.judge-body { padding: 10px 14px; }
+.judge-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.judge-check-row.pass { background: #dafbe1; }
+.judge-check-row.fail { background: #ffebe9; }
+.judge-check-row .check-status { font-weight: 700; width: 40px; flex-shrink: 0; }
+.judge-check-row.pass .check-status { color: var(--green); }
+.judge-check-row.fail .check-status { color: var(--red); }
+.judge-reasoning {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 2px;
+  font-style: italic;
+}
+.judge-summary {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--surface2);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--text);
+}
+.judge-vs {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+.judge-vs.match { background: #dafbe1; color: var(--green); }
+.judge-vs.mismatch { background: #ffebe9; color: var(--red); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Task Manager</h1>
+  <select id="appFilter">
+    <option value="">All Apps</option>
+  </select>
+  <select id="diffFilter">
+    <option value="">All Difficulties</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <select id="runFilter">
+    <option value="">No Run</option>
+  </select>
+  <input class="search" id="searchInput" type="text" placeholder="Search tasks...">
+  <button class="btn btn-primary" onclick="openGenerate()" style="flex-shrink:0">+ Generate</button>
+  <div class="stats" id="stats"></div>
+</div>
+
+<div class="container">
+  <div class="dashboard">
+    <div class="summary-grid" id="summaryCards"></div>
+    <div class="summary-panel">
+      <div class="summary-panel-header">
+        <h2>Metrics By App</h2>
+        <div class="summary-scope" id="summaryScope"></div>
+      </div>
+      <div class="summary-panel-body" id="appMetrics"></div>
+    </div>
+  </div>
+  <div class="task-list" id="taskList"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="genModal">
+  <div class="modal" style="max-width:1200px">
+    <div class="modal-header">
+      <h2>Generate New Tasks</h2>
+      <button class="modal-close" onclick="closeGenerate()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="genForm">
+        <div style="display:flex;gap:12px;margin-bottom:12px">
+          <div style="flex:1">
+            <label style="font-size:12px;color:var(--text2);display:block;margin-bottom:4px">App</label>
+            <select id="genApp" class="model-select" style="width:100%"></select>
+          </div>
+          <div style="width:80px">
+            <label style="font-size:12px;color:var(--text2);display:block;margin-bottom:4px">Count</label>
+            <input id="genCount" type="number" value="5" min="1" max="20" class="model-select" style="width:100%">
+          </div>
+        </div>
+        <label style="font-size:12px;color:var(--text2);display:block;margin-bottom:4px">Guidance (optional)</label>
+        <textarea id="genGuidance" style="width:100%;min-height:60px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;margin-bottom:12px" placeholder="e.g. 'Focus on multi-tab workflows', 'Include tasks that test keyboard shortcuts', 'Difficulty 4-5 only'"></textarea>
+        <button class="btn btn-primary" id="genBtn" onclick="generateTasks()">Generate</button>
+        <span id="genStatus" style="margin-left:10px;font-size:13px;color:var(--text2)"></span>
+      </div>
+      <div id="genResults" style="display:none;margin-top:16px">
+        <div class="bulk-proposal-list" id="genTaskList"></div>
+        <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
+          <button class="btn btn-approve" onclick="approveGenerated()">Approve All</button>
+          <button class="btn btn-reject" onclick="rejectGenerated()">Reject All</button>
+          <span id="genLesson" style="margin-left:10px;font-size:12px;color:var(--text2)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="trajModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2 id="trajTitle"></h2>
+        <div class="meta" id="trajMeta"></div>
+      </div>
+      <button class="modal-close" onclick="closeTrajectory()">&times;</button>
+    </div>
+    <div class="modal-body" id="trajBody">Loading...</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <div><h2>Delete task?</h2></div>
+      <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="margin-bottom:12px">You are about to permanently delete task <strong id="deleteTaskId"></strong>.</p>
+      <p style="margin-bottom:12px">This will remove:</p>
+      <ul style="margin:0 0 16px 20px;line-height:1.8">
+        <li>The task folder (<code>task.json</code> and <code>env/</code> files)</li>
+        <li>Its entry in the combined <code>&lt;app&gt;_tasks.json</code></li>
+        <li>All trajectory folders across evaluation runs</li>
+        <li>Its result lines and LLM judge caches</li>
+      </ul>
+      <p style="color:var(--red);font-weight:600;margin-bottom:16px">This action cannot be undone.</p>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn btn-reject" id="deleteConfirmBtn" onclick="doDeleteTask()">Delete permanently</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="">
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────
+
+let allTasks = [];
+let models = [];
+let runModels = {};  // run_id -> model (from /api/runs)
+let expandedTasks = new Set();
+let pollingIntervals = {};
+let summaryData = null;
+// Persist adjust state across re-renders: taskId -> {statusText, suggestion, btnDisabled, btnText, proposal}
+let adjustState = {};
+
+function applyAdjustState(taskId) {
+  const state = adjustState[taskId];
+  if (!state) return;
+  const statusEl = document.getElementById(`adjustStatus-${taskId}`);
+  const proposalView = document.getElementById(`proposal-${taskId}`);
+  const oldPre = document.getElementById(`proposalOld-${taskId}`);
+  const newPre = document.getElementById(`proposalNew-${taskId}`);
+  const summaryEl = document.getElementById(`changeSummary-${taskId}`);
+  if (statusEl && state.statusText) { statusEl.style.display = 'inline'; statusEl.textContent = state.statusText; }
+  if (state.proposal && proposalView && oldPre && newPre) {
+    oldPre.textContent = state.proposal.oldJSON;
+    newPre.textContent = state.proposal.newJSON;
+    if (summaryEl) summaryEl.innerHTML = state.proposal.summaryHTML;
+    proposalView.classList.add('show');
+  }
+}
+
+// ── Init ───────────────────────────────────────────────────────────────
+
+async function init() {
+  const [modelsRes, appsRes, runsRes] = await Promise.all([
+    fetch('/api/models').then(r => r.json()),
+    fetch('/api/apps').then(r => r.json()),
+    fetch('/api/runs').then(r => r.json()),
+  ]);
+  models = modelsRes;
+
+  // Populate app filter
+  const sel = document.getElementById('appFilter');
+  appsRes.forEach(app => {
+    const opt = document.createElement('option');
+    opt.value = app;
+    opt.textContent = app.replace(/_/g, ' ');
+    sel.appendChild(opt);
+  });
+
+  // Populate run filter
+  const runSel = document.getElementById('runFilter');
+  runsRes.forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r.run_id;
+    const prefix = r.source === 'repair' ? '[repair] ' : '';
+    opt.textContent = `${prefix}${r.run_id} (${r.task_count} tasks)`;
+    runSel.appendChild(opt);
+    if (r.model) runModels[r.run_id] = r.model;
+  });
+
+  await fetchTasks();
+  render();
+
+  // Start polling for any running tasks
+  allTasks.forEach(t => {
+    if (t.running && (t.running.status === 'running' || t.running.status === 'starting')) {
+      startPolling(t.id);
+    }
+  });
+}
+
+// ── Rendering ──────────────────────────────────────────────────────────
+
+let _lastRunFilter = '__init__';
+
+async function fetchTasks() {
+  const runFilter = document.getElementById('runFilter').value;
+  const taskParams = new URLSearchParams();
+  if (runFilter) taskParams.set('run', runFilter);
+  else taskParams.set('run', 'none');
+  const summaryParams = new URLSearchParams();
+  if (runFilter) summaryParams.set('run', runFilter);
+
+  const [tasks, summary] = await Promise.all([
+    fetch('/api/tasks?' + taskParams.toString()).then(r => r.json()),
+    fetch('/api/summary' + (summaryParams.toString() ? `?${summaryParams.toString()}` : '')).then(r => r.json()),
+  ]);
+  allTasks = tasks;
+  summaryData = summary;
+  judgeCache = {};
+  for (const task of allTasks) {
+    const lr = task.last_run;
+    if (lr?.judge) {
+      setJudgeCache(task.id, lr.run_id, lr.traj_subdir, lr.source || 'eval', lr.judge);
+    }
+  }
+  _lastRunFilter = runFilter;
+}
+
+async function render() {
+  const appFilter = document.getElementById('appFilter').value;
+  const diffFilter = document.getElementById('diffFilter').value;
+  const runFilter = document.getElementById('runFilter').value;
+  const search = document.getElementById('searchInput').value.toLowerCase();
+
+  // Only refetch from server when run filter changed
+  if (runFilter !== _lastRunFilter) {
+    await fetchTasks();
+  }
+
+  const filtered = allTasks.filter(t => {
+    if (appFilter && t.app !== appFilter) return false;
+    if (diffFilter && String(t.metadata?.estimated_difficulty) !== diffFilter) return false;
+    if (search && !t.id.toLowerCase().includes(search) && !t.task?.toLowerCase().includes(search)) return false;
+    return true;
+  }).sort((a, b) => {
+    const appCmp = (a.app || '').localeCompare(b.app || '');
+    if (appCmp !== 0) return appCmp;
+    return (a.id || '').localeCompare(b.id || '');
+  });
+
+  document.getElementById('stats').textContent =
+    `${filtered.length} of ${allTasks.length} tasks`;
+  renderSummary();
+
+  const list = document.getElementById('taskList');
+  list.innerHTML = filtered.map(t => renderCard(t)).join('');
+
+  // Reattach event listeners and restore adjust state
+  filtered.forEach(t => {
+    const card = document.getElementById(`card-${t.id}`);
+    if (!card) return;
+    card.querySelector('.task-header').addEventListener('click', () => toggleExpand(t.id));
+    if (expandedTasks.has(t.id)) applyAdjustState(t.id);
+  });
+}
+
+function renderCard(t) {
+  const diff = t.metadata?.estimated_difficulty || '?';
+  const dots = diff !== '?' ? '<span style="color:' + diffColor(diff) + '">' + dotStr(diff) + '</span>' : '?';
+  const expanded = expandedTasks.has(t.id);
+  const lr = t.last_run;
+  const running = t.running;
+
+  let rewardHTML = '<span class="task-reward none">--</span>';
+  if (lr) {
+    const cls = lr.reward === 1 ? 'pass' : lr.reward > 0 ? 'partial' : 'fail';
+    const srcBadge = lr.source === 'repair'
+      ? '<span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#6b5bd6;color:#fff;margin-right:4px">REPAIR</span>'
+      : '';
+    rewardHTML = `<span class="task-reward ${cls}" title="${lr.model}${lr.source === 'repair' ? ' (repair)' : ''}">${srcBadge}${(lr.reward * 100).toFixed(0)}%<span style="font-weight:400;font-size:11px;color:var(--text2);margin-left:4px">${lr.model}</span></span>`;
+  }
+
+  let statusHTML = '';
+  if (running) {
+    statusHTML = `<span class="status-badge ${running.status}">${running.status}</span>`;
+    if (running.stream_url) {
+      statusHTML += ` <a class="stream-link" href="${running.stream_url}" target="_blank" onclick="event.stopPropagation()">Open Desktop</a>`;
+    }
+  }
+
+  const viewHint = lr ? `, '${lr.run_id || ''}', '${lr.traj_subdir || ''}', '${lr.source || 'eval'}'` : '';
+  const viewBtn = lr
+    ? `<button class="btn" onclick="event.stopPropagation(); openTrajectory('${t.id}'${viewHint})">View</button>`
+    : '';
+  const isJudging = judgingTasks.has(t.id);
+  const judgeBtn = lr
+    ? `<button class="btn btn-accent" onclick="event.stopPropagation(); judgeTask('${t.id}', '${lr.run_id || ''}', '${lr.traj_subdir || ''}')" id="judgeBtn-${t.id}" ${isJudging ? 'disabled' : ''}>${isJudging ? 'Judging...' : 'Judge'}</button>`
+    : '';
+
+  return `
+    <div class="task-card ${expanded ? 'expanded' : ''}" id="card-${t.id}">
+      <div class="task-header">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="task-id">${t.id}</span>
+          ${statusHTML}
+        </div>
+        <span class="task-app">${t.app}</span>
+        <span class="task-diff">${dots}</span>
+        <span class="task-checks">${t.num_checks} checks</span>
+        ${rewardHTML}
+        ${renderAgreementCell(t.id, lr?.run_id, lr?.traj_subdir)}
+        <div class="task-actions-mini">
+          ${viewBtn}
+          ${judgeBtn}
+          <button class="btn btn-primary" onclick="event.stopPropagation(); runTask('${t.id}')" ${running?.status === 'running' ? 'disabled' : ''}>
+            Run
+          </button>
+        </div>
+      </div>
+      <div class="task-detail">
+        ${expanded ? renderDetail(t) : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderDetail(t) {
+  const meta = t.metadata || {};
+  const verifs = t.verification || [];
+  const lr = t.last_run;
+  const running = t.running;
+
+  let lastRunHTML = '';
+  if (lr) {
+    const date = new Date(lr.timestamp).toLocaleString();
+    lastRunHTML = `
+      <div class="last-run-info">
+        Last run: <span class="model-tag">${lr.model}</span>
+        | ${lr.checks_passed}/${lr.checks_total} checks
+        | ${lr.agent_steps} steps
+        | ${date}
+      </div>
+    `;
+  }
+
+  let streamHTML = '';
+  if (running?.stream_url) {
+    streamHTML = `
+      <div style="margin-bottom:12px">
+        <a class="stream-link" href="${running.stream_url}" target="_blank">
+          Open E2B Desktop Stream
+        </a>
+        <span class="status-badge ${running.status}" style="margin-left:8px">${running.status}</span>
+      </div>
+    `;
+  }
+
+  return `
+    ${streamHTML}
+    <div class="meta-row">
+      <span class="meta-pill"><span class="label">difficulty </span><span class="value">${meta.estimated_difficulty || '?'}</span></span>
+      <span class="meta-pill"><span class="label">complexity </span><span class="value">${meta.complexity || '?'}</span></span>
+      <span class="meta-pill"><span class="label">generatability </span><span class="value">${meta.data_generatability || '?'}</span></span>
+      <span class="meta-pill"><span class="label">determinism </span><span class="value">${meta.verification_determinism || '?'}</span></span>
+      <span class="meta-pill"><span class="label">env files </span><span class="value">${t.env?.files?.length || 0}</span></span>
+    </div>
+    ${lastRunHTML}
+    <div class="detail-grid">
+      <div class="detail-section">
+        <h3>Task Description</h3>
+        <pre>${escapeHTML(t.task || '')}</pre>
+      </div>
+      <div class="detail-section">
+          <h3>Verification (${verifs.length})</h3>
+        <ul class="check-list">
+          ${verifs.map((v, i) => {
+            const isJudge = v.judge === 'llm';
+            const label = escapeHTML(v.description || v.command || '');
+            const badge = isJudge ? ' <span style="font-size:10px;background:#8250df;color:#fff;padding:1px 6px;border-radius:8px;vertical-align:middle">LLM JUDGE</span>' : '';
+            const btn = isJudge ? '' : ` <button class="btn btn-accent" style="padding:1px 8px;font-size:11px;margin-left:6px" onclick="convertCriterionToJudge('${t.id}', ${i})" id="convBtn-${t.id}-${i}">→ LLM judge</button>`;
+            const deleteBtn = `<button class="btn btn-reject" style="padding:1px 8px;font-size:11px;margin-left:6px" onclick="deleteCriterion('${t.id}', ${i})" id="delCheckBtn-${t.id}-${i}" ${running?.status === 'running' || running?.status === 'starting' ? 'disabled' : ''}>Delete</button>`;
+            return `<li><div class="check-row-main"><span class="check-label">${label}${badge}</span>${btn}${deleteBtn}</div></li>`;
+          }).join('')}
+        </ul>
+      </div>
+    </div>
+    <div class="action-bar">
+      <div class="left">
+        <select class="model-select" id="model-${t.id}">
+          ${models.map(m => `<option value="${m}" ${m === 'kimi-k2.5' ? 'selected' : ''}>${m}</option>`).join('')}
+        </select>
+        <button class="btn btn-primary" onclick="runTask('${t.id}')" id="runBtn-${t.id}"
+          ${running?.status === 'running' || running?.status === 'starting' ? 'disabled' : ''}>
+          Run Task
+        </button>
+        <button class="btn btn-reject" onclick="confirmDeleteTask('${t.id}')" id="deleteBtn-${t.id}"
+          ${running?.status === 'running' || running?.status === 'starting' ? 'disabled' : ''}
+          style="margin-left:8px">
+          Delete
+        </button>
+      </div>
+      <div class="right">
+        <div>
+          <span class="adjust-output" id="adjustStatus-${t.id}" style="display:none;border:none;padding:0;background:none;font-family:inherit"></span>
+          <div class="proposal-view" id="proposal-${t.id}">
+            <div class="change-summary" id="changeSummary-${t.id}"></div>
+            <div class="proposal-diff">
+              <div class="proposal-side original">
+                <h4>Current</h4>
+                <pre id="proposalOld-${t.id}"></pre>
+              </div>
+              <div class="proposal-side proposed">
+                <h4>Proposed</h4>
+                <pre id="proposalNew-${t.id}"></pre>
+              </div>
+            </div>
+            <div class="proposal-actions">
+              <button class="btn btn-approve" onclick="approveTask('${t.id}')">Approve</button>
+              <button class="btn btn-reject" onclick="rejectTask('${t.id}')">Reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── Helpers ─────────────────────────────────────────────────────────────
+
+function diffColor(d) {
+  return ['', '#1a7f37', '#0969da', '#9a6700', '#bc4c00', '#cf222e'][d] || '#656d76';
+}
+
+function dotStr(d) {
+  const n = parseInt(d) || 0;
+  return '<span class="dots">' + '\u25CF'.repeat(n) + '<span style="opacity:0.2">' + '\u25CF'.repeat(5 - n) + '</span></span>';
+}
+
+function renderAgreementCell(taskId, runId, trajSubdir) {
+  if (!runId || !trajSubdir) return '<span class="task-agreement">--</span>';
+  const source = allTasks.find(t => t.id === taskId)?.last_run?.source || 'eval';
+  const result = getJudgeCache(taskId, runId, trajSubdir, source);
+  if (!result) return '<span class="task-agreement">--</span>';
+  if (result.accuracy == null) return '<span class="task-agreement">--</span>';
+  const pct = (result.accuracy * 100).toFixed(0);
+  const cls = result.accuracy >= 0.8 ? 'high' : result.accuracy >= 0.5 ? 'mid' : 'low';
+  return `<span class="task-agreement ${cls}">${pct}%</span>`;
+}
+
+function setJudgeCache(taskId, runId, trajSubdir, source, result) {
+  if (!taskId || !runId || !trajSubdir || !result) return;
+  judgeCache[`${taskId}|${runId}|${trajSubdir}`] = result;
+  judgeCache[`${taskId}|${runId}|${trajSubdir}|${source || 'eval'}`] = result;
+}
+
+function getJudgeCache(taskId, runId, trajSubdir, source) {
+  return (
+    judgeCache[`${taskId}|${runId}|${trajSubdir}|${source || 'eval'}`] ||
+    judgeCache[`${taskId}|${runId}|${trajSubdir}`] ||
+    null
+  );
+}
+
+function formatPercent(value) {
+  if (value == null) return '--';
+  const pct = (value * 100).toFixed(1);
+  return `${pct.endsWith('.0') ? pct.slice(0, -2) : pct}%`;
+}
+
+function formatCount(value) {
+  return value == null ? '--' : String(value);
+}
+
+function renderSummary() {
+  const cardsEl = document.getElementById('summaryCards');
+  const tableEl = document.getElementById('appMetrics');
+  const scopeEl = document.getElementById('summaryScope');
+  const appFilter = document.getElementById('appFilter').value;
+
+  if (!summaryData) {
+    cardsEl.innerHTML = '';
+    tableEl.innerHTML = '<div class="empty-summary">Loading metrics...</div>';
+    scopeEl.textContent = '';
+    return;
+  }
+
+  const selectedRow = appFilter
+    ? (summaryData.by_app || []).find(row => row.app === appFilter)
+    : null;
+  const overall = selectedRow || summaryData.overall || {};
+  const scopeBits = [summaryData.scope?.label || ''];
+  if (appFilter) scopeBits.push(`App filter: ${appFilter}`);
+  scopeEl.textContent = scopeBits.filter(Boolean).join(' • ');
+
+  const cards = [
+    { label: 'Tasks', value: formatCount(overall.task_count), subtext: 'Total task definitions' },
+    { label: 'Results', value: formatCount(overall.result_count), subtext: 'Tasks with run data' },
+    { label: 'Avg Reward', value: formatPercent(overall.avg_reward), subtext: 'Average checker reward' },
+    { label: 'Pass Rate', value: formatPercent(overall.pass_rate), subtext: 'Reward == 100%' },
+    { label: 'Avg Accuracy', value: formatPercent(overall.avg_accuracy), subtext: 'Judge vs checker' },
+    { label: 'Judged', value: formatCount(overall.judged_count), subtext: 'Tasks with judge accuracy' },
+  ];
+  cardsEl.innerHTML = cards.map(card => `
+    <div class="summary-card">
+      <div class="summary-label">${card.label}</div>
+      <div class="summary-value">${card.value}</div>
+      <div class="summary-subtext">${card.subtext}</div>
+    </div>
+  `).join('');
+
+  let rows = summaryData.by_app || [];
+  if (appFilter) rows = rows.filter(row => row.app === appFilter);
+  rows = [...rows].sort((a, b) => a.app.localeCompare(b.app));
+
+  if (!rows.length) {
+    tableEl.innerHTML = '<div class="empty-summary">No app metrics available.</div>';
+    return;
+  }
+
+  tableEl.innerHTML = `
+    <table class="metrics-table">
+      <thead>
+        <tr>
+          <th>App</th>
+          <th class="metric-num">Tasks</th>
+          <th class="metric-num">Results</th>
+          <th class="metric-num">Avg Reward</th>
+          <th class="metric-num">Pass Rate</th>
+          <th class="metric-num">Avg Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map(row => `
+          <tr>
+            <td>${escapeHTML(row.app)}</td>
+            <td class="metric-num">${formatCount(row.task_count)}</td>
+            <td class="metric-num">${formatCount(row.result_count)}</td>
+            <td class="metric-num">${formatPercent(row.avg_reward)}</td>
+            <td class="metric-num">${formatPercent(row.pass_rate)}</td>
+            <td class="metric-num">${formatPercent(row.avg_accuracy)}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function encodePathPart(value) {
+  return encodeURIComponent(value || '');
+}
+
+let _toastTimer = null;
+function showToast(msg, type = '') {
+  const toast = document.getElementById('toast');
+  if (_toastTimer) clearTimeout(_toastTimer);
+  toast.textContent = msg;
+  toast.className = 'toast show ' + type;
+  const duration = type === 'error' ? 8000 : 3000;
+  _toastTimer = setTimeout(() => { toast.className = 'toast'; _toastTimer = null; }, duration);
+}
+
+// ── Actions ────────────────────────────────────────────────────────────
+
+function toggleExpand(taskId) {
+  if (expandedTasks.has(taskId)) {
+    expandedTasks.delete(taskId);
+  } else {
+    expandedTasks.add(taskId);
+  }
+  render();
+}
+
+async function runTask(taskId) {
+  const runFilter = document.getElementById('runFilter').value;
+  const modelSel = document.getElementById(`model-${taskId}`);
+
+  // If viewing a specific run, use that run's model and save into it
+  let model = modelSel ? modelSel.value : 'kimi-k2.5';
+  let runId = null;
+  if (runFilter) {
+    runId = runFilter;
+    // Prefer the folder's model (from /api/runs: config.json for eval, trajectory.json for repair).
+    // Fall back to an existing trajectory's model, then to the card dropdown.
+    const folderModel = runModels[runFilter];
+    const task = allTasks.find(t => t.id === taskId);
+    const lr = task?.last_run;
+    if (folderModel && folderModel !== 'unknown') {
+      model = folderModel;
+    } else if (lr?.model) {
+      model = lr.model;
+    }
+  }
+
+  const btn = document.getElementById(`runBtn-${taskId}`);
+  if (btn) btn.disabled = true;
+
+  const dest = runId ? ` (into ${runId})` : '';
+  showToast(`Starting ${taskId} with ${model}${dest}...`);
+
+  try {
+    const payload = { model };
+    if (runId) payload.run_id = runId;
+    const res = await fetch(`/api/tasks/${taskId}/run`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (data.status === 'already_running' && data.stream_url) {
+      window.open(data.stream_url, '_blank');
+      return;
+    }
+
+    // Update local state
+    const task = allTasks.find(t => t.id === taskId);
+    if (task) {
+      task.running = { status: 'starting', model, stream_url: null };
+    }
+    render();
+
+    // Start polling for stream URL
+    startPolling(taskId);
+
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+    if (btn) btn.disabled = false;
+  }
+}
+
+function startPolling(taskId) {
+  if (pollingIntervals[taskId]) return;
+
+  let opened = false;
+  pollingIntervals[taskId] = setInterval(async () => {
+    try {
+      const res = await fetch(`/api/tasks/${taskId}/status`);
+      const data = await res.json();
+
+      const task = allTasks.find(t => t.id === taskId);
+      if (task) task.running = data;
+
+      // Auto-open stream URL once available
+      if (data.stream_url && !opened) {
+        opened = true;
+        window.open(data.stream_url, '_blank');
+        showToast(`Desktop stream opened for ${taskId}`, 'success');
+      }
+
+      // Re-render the expanded card if visible
+      if (expandedTasks.has(taskId)) {
+        const detail = document.querySelector(`#card-${taskId} .task-detail`);
+        if (detail) detail.innerHTML = renderDetail(task);
+      }
+
+      // Update header status
+      const header = document.querySelector(`#card-${taskId} .task-header`);
+      if (header) {
+        const statusEl = header.querySelector('.status-badge');
+        if (statusEl) {
+          statusEl.className = `status-badge ${data.status}`;
+          statusEl.textContent = data.status;
+        }
+      }
+
+      // Stop polling when done
+      if (data.status === 'completed' || data.status === 'error') {
+        clearInterval(pollingIntervals[taskId]);
+        delete pollingIntervals[taskId];
+        showToast(
+          data.status === 'completed'
+            ? `${taskId} completed` + (data.reward != null ? ` (reward: ${(data.reward*100).toFixed(0)}%)` : '')
+            : `${taskId} errored: ${data.error || 'unknown'}`,
+          data.status === 'completed' ? 'success' : 'error'
+        );
+        // Refresh all tasks to get updated results (preserve current run filter)
+        await fetchTasks();
+        render();
+      }
+    } catch (e) {
+      // Silently retry
+    }
+  }, 2000);
+}
+
+function summarizeChanges(original, proposed) {
+  const changes = [];
+  // Compare task description
+  if (original.task !== proposed.task) {
+    changes.push({field: 'task', desc: 'Task description changed'});
+  }
+  // Compare verification
+  const origV = JSON.stringify(original.verification || []);
+  const propV = JSON.stringify(proposed.verification || []);
+  if (origV !== propV) {
+    const origCount = (original.verification || []).length;
+    const propCount = (proposed.verification || []).length;
+    if (origCount !== propCount) {
+      changes.push({field: 'verification', desc: `${origCount} checks → ${propCount} checks`});
+    } else {
+      changes.push({field: 'verification', desc: `${propCount} checks modified`});
+    }
+  }
+  // Compare env files
+  const origE = JSON.stringify(original.env || {});
+  const propE = JSON.stringify(proposed.env || {});
+  if (origE !== propE) {
+    changes.push({field: 'env', desc: 'Environment files changed'});
+  }
+  // Compare metadata
+  const origM = original.metadata || {};
+  const propM = proposed.metadata || {};
+  for (const key of new Set([...Object.keys(origM), ...Object.keys(propM)])) {
+    if (origM[key] !== propM[key]) {
+      changes.push({field: `metadata.${key}`, desc: `${origM[key] ?? '—'} → ${propM[key] ?? '—'}`});
+    }
+  }
+  // Compare id
+  if (original.id !== proposed.id) {
+    changes.push({field: 'id', desc: `${original.id} → ${proposed.id}`});
+  }
+  // Compare app
+  if (original.app !== proposed.app) {
+    changes.push({field: 'app', desc: `${original.app} → ${proposed.app}`});
+  }
+  return changes;
+}
+
+let _pendingDeleteTaskId = null;
+
+function confirmDeleteTask(taskId) {
+  _pendingDeleteTaskId = taskId;
+  document.getElementById('deleteTaskId').textContent = taskId;
+  const btn = document.getElementById('deleteConfirmBtn');
+  btn.disabled = false;
+  btn.textContent = 'Delete permanently';
+  document.getElementById('deleteModal').classList.add('open');
+}
+
+function closeDeleteModal() {
+  _pendingDeleteTaskId = null;
+  document.getElementById('deleteModal').classList.remove('open');
+}
+
+async function doDeleteTask() {
+  const taskId = _pendingDeleteTaskId;
+  if (!taskId) return;
+  const btn = document.getElementById('deleteConfirmBtn');
+  btn.disabled = true;
+  btn.textContent = 'Deleting...';
+  try {
+    const res = await fetch(`/api/tasks/${taskId}`, { method: 'DELETE' });
+    const data = await res.json();
+    if (data.status === 'deleted') {
+      showToast(`Task ${taskId} deleted`, 'success');
+      // Remove from local state
+      allTasks = allTasks.filter(t => t.id !== taskId);
+      expandedTasks.delete(taskId);
+      delete adjustState[taskId];
+      for (const key of Object.keys(judgeCache)) {
+        if (key.startsWith(taskId + '|')) delete judgeCache[key];
+      }
+      closeDeleteModal();
+      _lastRunFilter = '__force__';
+      await render();
+    } else {
+      showToast(`Delete failed: ${data.error || 'unknown error'}`, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Delete permanently';
+    }
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+    btn.disabled = false;
+    btn.textContent = 'Delete permanently';
+  }
+}
+
+async function convertCriterionToJudge(taskId, index) {
+  const btn = document.getElementById(`convBtn-${taskId}-${index}`);
+  if (btn) { btn.disabled = true; btn.textContent = 'Converting...'; }
+
+  const suggestion = `Convert criterion #${index} to LLM-as-judge`;
+  adjustState[taskId] = {
+    suggestion,
+    btnDisabled: true,
+    btnText: 'Converting...',
+    statusText: `Converting criterion #${index} to LLM-as-judge via Claude Code... this may take a few minutes.`,
+  };
+  applyAdjustState(taskId);
+
+  try {
+    const res = await fetch(`/api/tasks/${taskId}/convert_criterion`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ index }),
+    });
+    const data = await res.json();
+
+    if (data.status === 'proposed') {
+      const changes = summarizeChanges(data.original, data.proposed);
+      const summaryHTML = changes.length === 0
+        ? '<div class="change-summary-title">No changes detected</div>'
+        : `<div class="change-summary-title">Changed fields (${changes.length})</div>` +
+          changes.map(c =>
+            `<div class="change-item"><span class="change-field">${escapeHTML(c.field)}</span> <span class="change-desc">${escapeHTML(c.desc)}</span></div>`
+          ).join('');
+
+      adjustState[taskId] = {
+        suggestion,
+        btnDisabled: false,
+        btnText: 'Adjust Task',
+        statusText: `Proposed LLM-as-judge conversion for criterion #${index}. Review below and approve.`,
+        proposal: {
+          oldJSON: JSON.stringify(data.original, null, 2),
+          newJSON: JSON.stringify(data.proposed, null, 2),
+          summaryHTML,
+        },
+      };
+    } else {
+      showToast(`Conversion failed: ${data.error}`, 'error');
+      adjustState[taskId] = {
+        suggestion,
+        btnDisabled: false,
+        btnText: 'Adjust Task',
+        statusText: `Error: ${data.error}`,
+      };
+    }
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+    adjustState[taskId] = {
+      suggestion,
+      btnDisabled: false,
+      btnText: 'Adjust Task',
+      statusText: `Network error: ${e.message}`,
+    };
+  }
+
+  applyAdjustState(taskId);
+}
+
+async function deleteCriterion(taskId, index) {
+  const task = allTasks.find(t => t.id === taskId);
+  const criterion = task?.verification?.[index];
+  if (!criterion) {
+    showToast('Verification check not found', 'error');
+    return;
+  }
+
+  const label = criterion.description || criterion.command || `criterion #${index}`;
+  const confirmed = window.confirm(`Delete verification check ${index + 1} from ${taskId}?\n\n${label}`);
+  if (!confirmed) return;
+
+  const btn = document.getElementById(`delCheckBtn-${taskId}-${index}`);
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Deleting...';
+  }
+
+  try {
+    const res = await fetch(`/api/tasks/${taskId}/delete_criterion`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ index }),
+    });
+    const data = await res.json();
+
+    if (data.status === 'deleted') {
+      showToast(`Deleted check ${index + 1} from ${taskId}`, 'success');
+
+      for (const key of Object.keys(judgeCache)) {
+        if (key.startsWith(taskId + '|')) delete judgeCache[key];
+      }
+
+      delete adjustState[taskId];
+      expandedTasks.add(taskId);
+      _lastRunFilter = '__force__';
+      await render();
+    } else {
+      showToast(`Delete failed: ${data.error || 'unknown error'}`, 'error');
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Delete';
+      }
+    }
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Delete';
+    }
+  }
+}
+
+async function approveTask(taskId) {
+  try {
+    const res = await fetch(`/api/tasks/${taskId}/approve`, { method: 'POST' });
+    const data = await res.json();
+
+    if (data.status === 'approved') {
+      showToast(`Task ${taskId} updated`, 'success');
+
+      // Update local state
+      if (data.task) {
+        const idx = allTasks.findIndex(t => t.id === taskId);
+        if (idx >= 0) {
+          allTasks[idx] = {
+            ...allTasks[idx],
+            ...data.task,
+            last_run: null,
+            runs_by_model: {},
+          };
+        }
+      }
+
+      // Clear judge cache entries for this task (agreement is stale)
+      for (const key of Object.keys(judgeCache)) {
+        if (key.startsWith(taskId + '|')) delete judgeCache[key];
+      }
+
+      // Clear UI and persisted adjust state
+      delete adjustState[taskId];
+      const status = document.getElementById(`adjustStatus-${taskId}`);
+      if (status) status.style.display = 'none';
+
+      expandedTasks.add(taskId);
+      _lastRunFilter = '__force__';
+      await render();
+    } else {
+      showToast(`Error: ${data.error}`, 'error');
+    }
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+  }
+}
+
+async function rejectTask(taskId) {
+  try {
+    await fetch(`/api/tasks/${taskId}/reject`, { method: 'POST' });
+    showToast('Proposal discarded', '');
+  } catch (e) { /* ignore */ }
+
+  // Hide proposal view and clear persisted state
+  delete adjustState[taskId];
+  const proposalView = document.getElementById(`proposal-${taskId}`);
+  if (proposalView) proposalView.classList.remove('show');
+  const status = document.getElementById(`adjustStatus-${taskId}`);
+  if (status) status.style.display = 'none';
+}
+
+// ── Trajectory viewer ──────────────────────────────────────────────────
+
+async function openTrajectory(taskId, preferRunId, preferTrajSubdir, preferSource) {
+  const modal = document.getElementById('trajModal');
+  const body = document.getElementById('trajBody');
+  cleanupTrajectoryScrollState();
+  modal.classList.add('open');
+  body.innerHTML = '<p style="color:var(--text2)">Loading runs...</p>';
+
+  document.getElementById('trajTitle').textContent = taskId;
+  document.getElementById('trajMeta').innerHTML = '';
+
+  // Fetch available runs for this task
+  const runs = await fetch(`/api/tasks/${taskId}/trajectories`).then(r => r.json());
+  if (!runs.length) {
+    body.innerHTML = '<p style="color:var(--text2)">No trajectory data found.</p>';
+    return;
+  }
+
+  // Render run selector tabs + load preferred run (fall back to first)
+  window._trajTaskId = taskId;
+  window._trajRuns = runs;
+  let chosen = null;
+  if (preferRunId) {
+    chosen = runs.find(r => r.run_id === preferRunId
+      && (!preferTrajSubdir || r.traj_subdir === preferTrajSubdir)
+      && (!preferSource || (r.source || 'eval') === preferSource));
+  }
+  if (!chosen) chosen = runs[0];
+  loadTrajectoryRun(taskId, chosen.run_id, chosen.traj_subdir, runs, chosen.source || 'eval');
+}
+
+async function loadTrajectoryRun(taskId, runId, trajSubdir, runs, source) {
+  const body = document.getElementById('trajBody');
+  cleanupTrajectoryScrollState();
+  body.innerHTML = '<p style="color:var(--text2)">Loading trajectory...</p>';
+  source = source || 'eval';
+  const sourceQS = source === 'repair' ? '?source=repair' : '';
+  const task = allTasks.find(t => t.id === taskId);
+
+  // Run tabs
+  const tabsHTML = runs.map(r => {
+    const rSource = r.source || 'eval';
+    const cls = r.run_id === runId && r.traj_subdir === trajSubdir && rSource === source ? 'active' : '';
+    const rewardPct = r.reward != null ? (r.reward * 100).toFixed(0) + '%' : '?';
+    const ts = r.timestamp ? new Date(r.timestamp).toLocaleString() : '';
+    const badge = rSource === 'repair'
+      ? '<span style="font-size:9px;padding:1px 5px;border-radius:3px;background:var(--accent,#6b5bd6);color:#fff;margin-right:4px">REPAIR</span>'
+      : '';
+    return `<button class="run-tab ${cls}" onclick="loadTrajectoryRun('${taskId}','${r.run_id}','${r.traj_subdir}', window._trajRuns, '${rSource}')">
+      ${badge}${r.model || '?'} <span class="reward-sm">${rewardPct}</span> <span style="font-size:10px;color:var(--text2)">${ts}</span>
+    </button>`;
+  }).join('');
+
+  // Fetch trajectory
+  const traj = await fetch(
+    `/api/trajectory/${encodePathPart(runId)}/${encodePathPart(trajSubdir)}${sourceQS}`
+  ).then(r => r.json());
+  if (traj.error) {
+    body.innerHTML = `<div class="run-tabs">${tabsHTML}</div><p style="color:var(--red)">${traj.error}</p>`;
+    return;
+  }
+
+  // Meta
+  document.getElementById('trajMeta').innerHTML = `
+    <span>Model: <strong>${traj.model}</strong></span>
+    <span>Steps: <strong>${traj.agent_steps}</strong></span>
+    <span>Reward: <strong>${traj.reward != null ? (traj.reward * 100).toFixed(0) + '%' : '--'}</strong></span>
+    <span>${traj.checks_passed != null ? traj.checks_passed + '/' + traj.checks_total + ' checks' : '-- checks'}</span>
+    <span>${new Date(traj.timestamp).toLocaleString()}</span>
+  `;
+
+  // Verification checks
+  const checks = traj.verification_details || [];
+  const checksHTML = checks.length ? `
+    <div class="checks-section">
+      <h3>Verification Checks (${traj.checks_passed}/${traj.checks_total})</h3>
+      ${checks.map(c => {
+        const cls = c.passed ? 'pass' : 'fail';
+        const status = c.passed ? 'PASS' : 'FAIL';
+        let detail = '';
+        if (!c.passed && 'actual' in c) {
+          detail = `<div class="check-cmd">expected ${JSON.stringify(c.expected)}, got ${JSON.stringify(c.actual)}</div>`;
+        }
+        return `<div class="check-row ${cls}">
+          <span class="check-status">${status}</span>
+          <div>
+            <div class="check-desc">${escapeHTML(c.description || c.command)}</div>
+            <div class="check-cmd">${escapeHTML(c.command)}</div>
+            ${detail}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  ` : '';
+  const taskDescriptionHTML = task?.task ? `
+    <div class="trajectory-overview">
+      <h3>Task Description</h3>
+      <div class="trajectory-overview-text">${escapeHTML(task.task)}</div>
+    </div>
+  ` : '';
+
+  // Steps
+  const steps = traj.trajectory || [];
+  const stepsHTML = steps.map((s, index) => {
+    const actions = s.actions || [];
+    const actionResults = s.action_results || [];
+    const compactActions = [];
+    actions.forEach((action, i) => {
+      const result = actionResults[i] || {};
+      const prev = compactActions[compactActions.length - 1];
+      if (
+        prev &&
+        prev.action === action &&
+        (prev.result.description || '') === (result.description || '') &&
+        prev.result.success === result.success
+      ) {
+        return;
+      }
+      compactActions.push({ action, result });
+    });
+
+    const ssFile = s.screenshot_file;
+    const ssUrl = ssFile
+      ? `/api/trajectory/${encodePathPart(runId)}/${encodePathPart(trajSubdir)}/screenshot/${encodePathPart(ssFile.split('/').pop())}${sourceQS}`
+      : '';
+
+    const actionsHTML = compactActions.map(({action, result}) => {
+      const resultCls = result.success === false ? 'fail' : '';
+      return `
+        <div class="step-action-code">${escapeHTML(action)}</div>
+        ${result.description ? `<div class="step-action-result ${resultCls}">${escapeHTML(result.description)}</div>` : ''}
+      `;
+    }).join('');
+
+    const stepKey = `${trajSubdir}-${s.step}`;
+    return `
+      <div class="trajectory-step ${index === 0 ? 'active' : ''}" id="step-${stepKey}">
+        <div class="trajectory-step-text">
+          <div class="trajectory-step-head">
+            <span class="step-num">Step ${s.step}</span>
+          </div>
+          ${s.reasoning ? `
+            <div class="trajectory-step-reasoning-label">Reasoning</div>
+            <div class="trajectory-step-reasoning">${escapeHTML(s.reasoning)}</div>
+          ` : ''}
+          ${actionsHTML ? `
+            <div class="step-actions-label">Actions</div>
+            ${actionsHTML}
+          ` : ''}
+        </div>
+        <div class="trajectory-step-media">
+          ${ssUrl ? `
+            <div class="trajectory-step-media-frame">
+              <img class="trajectory-step-image" src="${ssUrl}" loading="lazy" onclick="openLightbox('${ssUrl}')" alt="Step ${s.step} screenshot">
+            </div>
+          ` : `
+            <div class="trajectory-step-media-frame placeholder">No screenshot for this step</div>
+          `}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Fetch LLM judge results: check one-shot flag, local cache, then server cache
+  let judgeResult = window._currentJudgeResult || getJudgeCache(window._trajTaskId, runId, trajSubdir, source);
+  if (!judgeResult) {
+    try {
+      const jr = await fetch(
+        `/api/judge/${encodePathPart(runId)}/${encodePathPart(trajSubdir)}${sourceQS}`
+      ).then(r => r.json());
+      if (jr.status === 'done') {
+        judgeResult = jr.result;
+        setJudgeCache(window._trajTaskId, runId, trajSubdir, source, judgeResult);
+      }
+    } catch (e) { /* ignore */ }
+  }
+  const judgeHTML = renderJudgeSection(judgeResult, checks);
+  // Clear the one-shot flag
+  window._currentJudgeResult = null;
+
+  const judgeModalBtn = (judgeResult || source === 'repair')
+    ? ''
+    : `<button class="btn btn-accent" id="trajJudgeBtn" onclick="runJudgeFromModal('${window._trajTaskId}','${runId}','${trajSubdir}')" style="margin-bottom:16px">Run LLM Judge</button>`;
+
+  body.innerHTML = `
+    <div class="run-tabs">${tabsHTML}</div>
+    ${taskDescriptionHTML}
+    ${judgeModalBtn}
+    ${judgeHTML}
+    ${checksHTML}
+    <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text2);margin-bottom:10px">
+      Trajectory (${steps.length} steps)
+    </h3>
+    <div class="trajectory-list">${stepsHTML}</div>
+  `;
+  initTrajectoryScrollState();
+}
+
+function closeTrajectory() {
+  cleanupTrajectoryScrollState();
+  document.getElementById('trajModal').classList.remove('open');
+}
+
+function cleanupTrajectoryScrollState() {
+  if (window._trajectoryStepObserver) {
+    window._trajectoryStepObserver.disconnect();
+    window._trajectoryStepObserver = null;
+  }
+  const root = document.getElementById('trajModal');
+  if (root && window._trajectoryPointerMoveHandler) {
+    root.removeEventListener('pointermove', window._trajectoryPointerMoveHandler);
+    window._trajectoryPointerMoveHandler = null;
+  }
+  if (root && window._trajectoryMouseLeaveHandler) {
+    root.removeEventListener('mouseleave', window._trajectoryMouseLeaveHandler);
+    window._trajectoryMouseLeaveHandler = null;
+  }
+}
+
+function setActiveTrajectoryStep(stepEl) {
+  if (!stepEl) return;
+  document.querySelectorAll('#trajBody .trajectory-step.active').forEach(el => {
+    if (el !== stepEl) el.classList.remove('active');
+  });
+  stepEl.classList.add('active');
+}
+
+function findFocusedTrajectoryStep(root, steps) {
+  if (!root || !steps.length) return null;
+  const rootRect = root.getBoundingClientRect();
+  const focusLine = root.clientHeight * 0.28;
+  let bestStep = null;
+  let bestDistance = Infinity;
+
+  steps.forEach(step => {
+    const rect = step.getBoundingClientRect();
+    const visibleTop = Math.max(rect.top, rootRect.top);
+    const visibleBottom = Math.min(rect.bottom, rootRect.bottom);
+    if (visibleBottom <= visibleTop) return;
+
+    const distance = Math.abs(rect.top - rootRect.top - focusLine);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestStep = step;
+    }
+  });
+
+  return bestStep;
+}
+
+function initTrajectoryScrollState() {
+  cleanupTrajectoryScrollState();
+
+  const root = document.getElementById('trajModal');
+  const steps = Array.from(document.querySelectorAll('#trajBody .trajectory-step'));
+  if (!root || !steps.length) return;
+
+  const observer = new IntersectionObserver(() => {
+    const focusedStep = findFocusedTrajectoryStep(root, steps);
+    if (focusedStep) setActiveTrajectoryStep(focusedStep);
+  }, {
+    root,
+    threshold: [0.2, 0.45, 0.7],
+    rootMargin: '-8% 0px -38% 0px',
+  });
+
+  const pointerMoveHandler = event => {
+    const step = event.target.closest('#trajBody .trajectory-step');
+    if (step) setActiveTrajectoryStep(step);
+  };
+  const mouseLeaveHandler = () => {
+    const focusedStep = findFocusedTrajectoryStep(root, steps);
+    if (focusedStep) setActiveTrajectoryStep(focusedStep);
+  };
+
+  root.addEventListener('pointermove', pointerMoveHandler, { passive: true });
+  root.addEventListener('mouseleave', mouseLeaveHandler, { passive: true });
+
+  steps.forEach(step => {
+    observer.observe(step);
+    step.addEventListener('click', () => setActiveTrajectoryStep(step), { passive: true });
+  });
+
+  const focusedStep = findFocusedTrajectoryStep(root, steps) || steps[0];
+  setActiveTrajectoryStep(focusedStep);
+  window._trajectoryStepObserver = observer;
+  window._trajectoryPointerMoveHandler = pointerMoveHandler;
+  window._trajectoryMouseLeaveHandler = mouseLeaveHandler;
+}
+
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  lb.classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// Close modals on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeLightbox();
+    closeTrajectory();
+    closeGenerate();
+    closeDeleteModal();
+  }
+});
+
+// Close modal on overlay click
+document.getElementById('trajModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeTrajectory();
+});
+document.getElementById('deleteModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeDeleteModal();
+});
+
+// ── Task generation ────────────────────────────────────────────────────
+
+let currentGenKey = null;
+
+function openGenerate() {
+  const modal = document.getElementById('genModal');
+  const appSel = document.getElementById('genApp');
+  // Populate app dropdown from header filter options
+  const appFilter = document.getElementById('appFilter');
+  appSel.innerHTML = '';
+  for (const opt of appFilter.options) {
+    if (!opt.value) continue;
+    const o = document.createElement('option');
+    o.value = opt.value;
+    o.textContent = opt.textContent;
+    appSel.appendChild(o);
+  }
+  // Pre-select current app filter if set
+  if (appFilter.value) appSel.value = appFilter.value;
+
+  document.getElementById('genResults').style.display = 'none';
+  document.getElementById('genStatus').textContent = '';
+  document.getElementById('genGuidance').value = '';
+  modal.classList.add('open');
+}
+
+function closeGenerate() {
+  document.getElementById('genModal').classList.remove('open');
+}
+
+async function generateTasks() {
+  const app = document.getElementById('genApp').value;
+  const count = parseInt(document.getElementById('genCount').value) || 5;
+  const guidance = document.getElementById('genGuidance').value.trim();
+  const btn = document.getElementById('genBtn');
+  const status = document.getElementById('genStatus');
+
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  status.textContent = 'Sending to Claude Code... this may take a few minutes.';
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ app, count, guidance }),
+    });
+    const data = await res.json();
+
+    if (data.status === 'proposed') {
+      currentGenKey = data.gen_key;
+      status.textContent = `Generated ${data.tasks.length} tasks. Review below.`;
+
+      const lessonEl = document.getElementById('genLesson');
+      lessonEl.textContent = data.lesson ? `Lesson: "${data.lesson}"` : '';
+
+      // Render proposed tasks
+      const list = document.getElementById('genTaskList');
+      list.innerHTML = data.tasks.map(t => `
+        <div class="proposal-view show" id="gen-${t.id}" style="display:block;margin-bottom:10px">
+          <div class="change-summary">
+            <span>${t.id}</span>
+            <span style="font-weight:400;font-size:12px;color:var(--text2)">
+              difficulty: ${t.metadata?.estimated_difficulty || '?'}
+              | ${t.verification?.length || 0} checks
+            </span>
+          </div>
+          <div>
+            <div class="detail-section" style="margin-bottom:10px">
+              <h3>Task Description</h3>
+              <pre>${escapeHTML(t.task || '')}</pre>
+            </div>
+            <div class="detail-section">
+              <h3>Full JSON</h3>
+              <pre>${escapeHTML(JSON.stringify(t, null, 2))}</pre>
+            </div>
+        </div>
+      `).join('');
+
+      document.getElementById('genResults').style.display = 'block';
+    } else {
+      status.textContent = `Error: ${data.error}`;
+      showToast(`Generation failed: ${data.error}`, 'error');
+    }
+  } catch (e) {
+    status.textContent = `Error: ${e.message}`;
+    showToast(`Error: ${e.message}`, 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Generate';
+}
+
+async function approveGenerated() {
+  if (!currentGenKey) return;
+  try {
+    const res = await fetch('/api/generate/approve', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ gen_key: currentGenKey }),
+    });
+    const data = await res.json();
+    if (data.status === 'approved') {
+      showToast(`Added ${data.added.length} tasks (${data.total} total)`, 'success');
+      closeGenerate();
+      _lastRunFilter = '__force__';
+      await render();
+    } else {
+      showToast(`Error: ${data.error}`, 'error');
+    }
+  } catch (e) {
+    showToast(`Error: ${e.message}`, 'error');
+  }
+  currentGenKey = null;
+}
+
+async function rejectGenerated() {
+  if (currentGenKey) {
+    await fetch('/api/generate/reject', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ gen_key: currentGenKey }),
+    }).catch(() => {});
+  }
+  currentGenKey = null;
+  document.getElementById('genResults').style.display = 'none';
+  document.getElementById('genStatus').textContent = 'Discarded.';
+  showToast('Generated tasks discarded');
+}
+
+// Close generate modal on overlay/Escape
+document.getElementById('genModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeGenerate();
+});
+
+// ── LLM Judge ─────────────────────────────────────────────────────────
+
+// Cache: "taskId|runId|trajSubdir" -> judge result
+let judgeCache = {};
+// Track which tasks are currently being judged
+let judgingTasks = new Set();
+
+async function judgeTask(taskId, runId, trajSubdir) {
+  if (judgingTasks.has(taskId)) return; // already judging
+
+  if (!runId || !trajSubdir) {
+    showToast('No trajectory data found for this task', 'error');
+    return;
+  }
+
+  judgingTasks.add(taskId);
+  render(); // re-render to show disabled state
+  showToast(`Starting LLM judge for ${taskId}...`);
+
+  try {
+    // Check local cache
+    const cachedJudge = getJudgeCache(taskId, runId, trajSubdir, 'eval');
+    if (cachedJudge) {
+      judgingTasks.delete(taskId);
+      render();
+      openTrajectoryWithJudge(taskId, cachedJudge);
+      return;
+    }
+
+    const res = await fetch(`/api/tasks/${taskId}/judge`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ run_id: runId, traj_subdir: trajSubdir }),
+    });
+    const data = await res.json();
+
+    if (data.status === 'done') {
+      setJudgeCache(taskId, runId, trajSubdir, 'eval', data.result);
+      showToast(`Judge complete for ${taskId}`, 'success');
+      openTrajectoryWithJudge(taskId, data.result);
+    } else {
+      showToast(`Judge error: ${data.error}`, 'error');
+    }
+  } catch (e) {
+    showToast(`Judge error: ${e.message}`, 'error');
+  }
+
+  judgingTasks.delete(taskId);
+  render();
+}
+
+function openTrajectoryWithJudge(taskId, judgeResult) {
+  // Store judge result so trajectory modal can display it
+  window._currentJudgeResult = judgeResult;
+  openTrajectory(taskId);
+}
+
+async function runJudgeFromModal(taskId, runId, trajSubdir) {
+  const btn = document.getElementById('trajJudgeBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Judging...'; }
+  showToast(`Starting LLM judge for ${taskId}...`);
+
+  try {
+    const res = await fetch(`/api/tasks/${taskId}/judge`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ run_id: runId, traj_subdir: trajSubdir }),
+    });
+    const data = await res.json();
+
+    if (data.status === 'done') {
+      setJudgeCache(taskId, runId, trajSubdir, 'eval', data.result);
+      showToast(`Judge complete for ${taskId}`, 'success');
+      // Reload the trajectory view to show results
+      window._currentJudgeResult = data.result;
+      loadTrajectoryRun(taskId, runId, trajSubdir, window._trajRuns);
+    } else {
+      showToast(`Judge error: ${data.error}`, 'error');
+      if (btn) { btn.disabled = false; btn.textContent = 'Run LLM Judge'; }
+    }
+  } catch (e) {
+    showToast(`Judge error: ${e.message}`, 'error');
+    if (btn) { btn.disabled = false; btn.textContent = 'Run LLM Judge'; }
+  }
+}
+
+function renderJudgeSection(judgeResult, progChecks) {
+  if (!judgeResult) return '';
+  const checks = judgeResult.checks || [];
+  const accuracy = judgeResult.accuracy != null ? (judgeResult.accuracy * 100).toFixed(0) : '?';
+
+  const checksHTML = checks.map((c, i) => {
+    const cls = c.passed ? 'pass' : 'fail';
+    const status = c.passed ? 'PASS' : 'FAIL';
+
+    // Compare with programmatic checker
+    let vsHTML = '';
+    if (progChecks && progChecks[i]) {
+      const progPassed = progChecks[i].passed;
+      const match = progPassed === c.passed;
+      vsHTML = `<span class="judge-vs ${match ? 'match' : 'mismatch'}">${match ? 'agrees' : 'disagrees'} with checker</span>`;
+    }
+
+    return `<div class="judge-check-row ${cls}">
+      <span class="check-status">${status}</span>
+      <div style="flex:1">
+        <div>${escapeHTML(c.description)} ${vsHTML}</div>
+        <div class="judge-reasoning">${escapeHTML(c.reasoning || '')}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const passedCount = checks.filter(c => c.passed).length;
+
+  return `
+    <div class="judge-section">
+      <div class="judge-header">
+        <h3>LLM Judge (${passedCount}/${checks.length} passed)</h3>
+        <span class="judge-accuracy">Accuracy vs programmatic: ${accuracy}% (${judgeResult.matches}/${judgeResult.total_compared})</span>
+      </div>
+      <div class="judge-body">
+        ${checksHTML}
+        ${judgeResult.summary ? `<div class="judge-summary">${escapeHTML(judgeResult.summary)}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// ── Event listeners ────────────────────────────────────────────────────
+
+document.getElementById('appFilter').addEventListener('change', render);
+document.getElementById('diffFilter').addEventListener('change', render);
+document.getElementById('runFilter').addEventListener('change', render);
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(render, 300);
+});
+
+// ── Boot ───────────────────────────────────────────────────────────────
+
+init();
+</script>
+</body>
+</html>

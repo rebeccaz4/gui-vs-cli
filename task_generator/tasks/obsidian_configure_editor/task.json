@@ -1,0 +1,58 @@
+{
+  "id": "obsidian_configure_editor",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/EditorVault. Using the Obsidian Settings dialog, configure the following editor settings:\n\n1. Enable 'Spell check' (the spellcheck toggle in Settings > Editor)\n2. Enable 'Strict line breaks' (strictLineBreaks)\n3. Disable 'Readable line length' (readableLineLength)\n4. Enable 'Fold heading' (foldHeading)\n5. Enable 'Fold indent' (foldIndent)\n6. Enable 'Show line number' (showLineNumber)\n\nAfter changing all settings, close the Settings dialog.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-setting /home/user/Documents/EditorVault spellcheck true",
+      "key": "match",
+      "expected": true,
+      "description": "Spellcheck enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/EditorVault strictLineBreaks true",
+      "key": "match",
+      "expected": true,
+      "description": "Strict line breaks enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/EditorVault readableLineLength false",
+      "key": "match",
+      "expected": true,
+      "description": "Readable line length disabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/EditorVault foldHeading true",
+      "key": "match",
+      "expected": true,
+      "description": "Fold heading enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/EditorVault foldIndent true",
+      "key": "match",
+      "expected": true,
+      "description": "Fold indent enabled"
+    },
+    {
+      "command": "check-setting /home/user/Documents/EditorVault showLineNumber true",
+      "key": "match",
+      "expected": true,
+      "description": "Show line number enabled"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u76f4\u63a5\u7f16\u8f91 .obsidian/app.json \u6587\u4ef6\uff0c\u8bbe\u7f6e spellcheck=true, strictLineBreaks=true, readableLineLength=false, foldHeading=true, foldIndent=true, showLineNumber=true",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Using the Obsidian Settings dialog'\u3001'configure the following editor settings'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ea\u9700\u4fee\u6539JSON\u914d\u7f6e\u6587\u4ef6"
+  }
+}

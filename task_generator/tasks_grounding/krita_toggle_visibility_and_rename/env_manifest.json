@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_toggle_visibility_and_rename",
+  "files": [
+    {
+      "filename": "multi.kra",
+      "sandbox_path": "/home/user/Documents/multi.kra",
+      "type": "kra"
+    }
+  ]
+}

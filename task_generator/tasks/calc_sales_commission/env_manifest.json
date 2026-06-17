@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_sales_commission",
+  "files": [
+    {"filename": "commissions.xlsx", "sandbox_path": "/home/user/Documents/commissions.xlsx", "type": "xlsx"}
+  ]
+}

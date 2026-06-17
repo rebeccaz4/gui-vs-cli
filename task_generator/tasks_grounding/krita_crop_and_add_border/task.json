@@ -1,0 +1,45 @@
+{
+  "id": "krita_crop_and_add_border",
+  "app": "krita",
+  "task": "Open /home/user/Documents/photo_crop.kra in Krita (currently 1600x900). First, crop the canvas to a centered 1200x800 region. Then expand the canvas back outwards by 30 pixels on every side so that the final canvas is exactly 1260x860 — the existing 1200x800 image content must sit centered inside a 30-pixel-wide solid black frame. Save the file in place at /home/user/Documents/photo_crop.kra.",
+  "task_grounding": "Open /home/user/Documents/photo_crop.kra in Krita (currently 1600x900). First, crop the canvas to a centered 1200x800 region (use Image > Trim to Image Size or the crop tool on a centered 1200x800 selection). Then expand the canvas back outwards by 30 pixels on every side so that the final canvas is exactly 1260x860 — the existing 1200x800 image content must sit centered inside a 30-pixel-wide solid black frame. Save the file in place at /home/user/Documents/photo_crop.kra.",
+  "env": {
+    "files": [
+      {
+        "filename": "photo_crop.kra",
+        "sandbox_path": "/home/user/Documents/photo_crop.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/photo_crop.kra",
+      "key": "exists",
+      "expected": true,
+      "description": "File saved"
+    },
+    {
+      "command": "check-image-size /home/user/Documents/photo_crop.kra 1260 860",
+      "key": "match",
+      "expected": true,
+      "description": "Final canvas is 1260x860"
+    },
+    {
+      "command": "preview /home/user/Documents/photo_crop.kra",
+      "eval": "result.get('width') == 1260 and result.get('height') == 860",
+      "expected": true,
+      "description": "Merged preview matches new canvas size"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Crop to 1200x800 then expand to 1260x860 with black border",
+    "reason": "⚠️ CLI supports canvas resize but not precise crop + border expansion workflow"
+  }
+}

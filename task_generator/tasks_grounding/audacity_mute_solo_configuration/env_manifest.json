@@ -1,0 +1,25 @@
+{
+  "task_id": "audacity_mute_solo_configuration",
+  "files": [
+    {
+      "filename": "mix.aup",
+      "sandbox_path": "/home/user/Music/mix.aup",
+      "type": "aup"
+    },
+    {
+      "filename": "mix_data/e00/d00/e000001.au",
+      "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000001.au",
+      "type": "au"
+    },
+    {
+      "filename": "mix_data/e00/d00/e000002.au",
+      "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000002.au",
+      "type": "au"
+    },
+    {
+      "filename": "mix_data/e00/d00/e000003.au",
+      "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000003.au",
+      "type": "au"
+    }
+  ]
+}

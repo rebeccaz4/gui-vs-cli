@@ -1,0 +1,67 @@
+{
+  "id": "gimp_composite_two_images_flatten",
+  "app": "gimp",
+  "task": "Open the base image /home/user/Documents/landscape_base.png (800x600 — sky blue on top, green ground on bottom) in GIMP. Open /home/user/Documents/logo_overlay.png (100x100 solid red) as a new layer on top of the base image and position it so its top-left corner sits at offset (20, 20) on the base canvas. Flatten the image into a single layer and export the result as a PNG file to /home/user/Documents/composite_final.png. The final image must still be 800x600 pixels.",
+  "env": {
+    "files": [
+      {
+        "filename": "landscape_base.png",
+        "sandbox_path": "/home/user/Documents/landscape_base.png"
+      },
+      {
+        "filename": "logo_overlay.png",
+        "sandbox_path": "/home/user/Documents/logo_overlay.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/composite_final.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output PNG exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/composite_final.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "Output is PNG format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/composite_final.png 800 600",
+      "key": "match",
+      "expected": true,
+      "description": "Output dimensions are 800x600"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/composite_final.png 70 70 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (70,70) inside pasted logo region is red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/composite_final.png 500 100 135 206 235 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (500,100) in untouched sky area is sky blue"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/composite_final.png 500 500 34 139 34 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (500,500) in untouched ground area is green"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "partial",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick composite: composite -gravity northwest -geometry +20+20 overlay.png base.png output.png",
+    "reason": "Layer compositing is possible but requires correct offset/alignment calculation"
+  }
+}

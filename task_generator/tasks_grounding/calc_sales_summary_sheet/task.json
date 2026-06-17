@@ -1,0 +1,74 @@
+{
+  "id": "calc_sales_summary_sheet",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/sales_data.xlsx in LibreOffice Calc. It contains a sheet called 'Sales' with columns: Product (A), Region (B), Q1 (C), Q2 (D), Q3 (E), Q4 (F). Row 1 has headers, rows 2-13 have 12 products.\n\n1. Create a new sheet called 'Summary'.\n2. In cell A1 of the Summary sheet, enter 'Total Revenue'.\n3. In cell B1 of the Summary sheet, enter the formula =SUM(Sales.C2:F13) to sum all quarterly revenue.\n4. In cell A2 of the Summary sheet, enter 'Average Per Quarter'.\n5. In cell B2 of the Summary sheet, enter the formula =B1/4.\n6. Make cells A1 and A2 in the Summary sheet bold.\n7. Save the file .",
+  "task_grounding": "Open the file /home/user/Documents/sales_data.xlsx in LibreOffice Calc. It contains a sheet called 'Sales' with columns: Product (A), Region (B), Q1 (C), Q2 (D), Q3 (E), Q4 (F). Row 1 has headers, rows 2-13 have 12 products.\n\n1. Create a new sheet called 'Summary'.\n2. In cell A1 of the Summary sheet, type 'Total Revenue'.\n3. In cell B1 of the Summary sheet, enter the formula =SUM(Sales.C2:F13) to sum all quarterly revenue.\n4. In cell A2 of the Summary sheet, type 'Average Per Quarter'.\n5. In cell B2 of the Summary sheet, enter the formula =B1/4.\n6. Make cells A1 and A2 in the Summary sheet bold.\n7. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "sales_data.xlsx",
+        "sandbox_path": "/home/user/Documents/sales_data.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-sheet-exists Summary",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'Summary' exists"
+    },
+    {
+      "command": "check-cell-value A1 \"Total Revenue\" Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A1 = 'Total Revenue'"
+    },
+    {
+      "command": "cell-value B1 Summary",
+      "eval": "result.get('formula','').upper().replace(' ','').find('SUM') >= 0",
+      "description": "Summary B1 contains a SUM formula"
+    },
+    {
+      "command": "check-cell-value B1 66050 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B1 = 66050 (total of all quarterly revenue)"
+    },
+    {
+      "command": "check-cell-value A2 \"Average Per Quarter\" Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A2 = 'Average Per Quarter'"
+    },
+    {
+      "command": "cell-value B2 Summary",
+      "eval": "result.get('formula') is not None and 'B1' in result.get('formula','').upper()",
+      "description": "Summary B2 contains a formula referencing B1"
+    },
+    {
+      "command": "check-cell-value B2 16512.5 Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary B2 = 16512.5 (66050/4)"
+    },
+    {
+      "command": "check-cell-formatted A1 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A1 is bold"
+    },
+    {
+      "command": "check-cell-formatted A2 true Summary",
+      "key": "match",
+      "expected": true,
+      "description": "Summary A2 is bold"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

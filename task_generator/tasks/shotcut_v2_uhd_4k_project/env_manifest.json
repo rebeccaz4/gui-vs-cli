@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_v2_uhd_4k_project",
+  "files": [
+    {
+      "filename": "uhd_project.mlt",
+      "sandbox_path": "/home/user/Documents/uhd_project.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "drone.mp4",
+      "sandbox_path": "/home/user/Videos/drone.mp4",
+      "type": "mp4"
+    }
+  ]
+}

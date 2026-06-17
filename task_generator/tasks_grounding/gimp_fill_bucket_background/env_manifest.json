@@ -1,0 +1,6 @@
+{
+  "task_id": "gimp_fill_bucket_background",
+  "files": [
+    {"filename": "transparent_black_square.png", "sandbox_path": "/home/user/Documents/transparent_black_square.png", "type": "png"}
+  ]
+}

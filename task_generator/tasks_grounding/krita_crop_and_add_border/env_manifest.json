@@ -1,0 +1,10 @@
+{
+  "task_id": "krita_crop_and_add_border",
+  "files": [
+    {
+      "filename": "photo_crop.kra",
+      "sandbox_path": "/home/user/Documents/photo_crop.kra",
+      "type": "kra"
+    }
+  ]
+}

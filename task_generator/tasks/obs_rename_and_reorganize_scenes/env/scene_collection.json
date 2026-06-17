@@ -1,0 +1,77 @@
+{
+  "current_scene": "Scene 1",
+  "scene_order": [
+    {
+      "name": "Scene 1"
+    },
+    {
+      "name": "Scene 2"
+    },
+    {
+      "name": "Scene 3"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Scene 1",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Display 1",
+            "visible": true,
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scene 2",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Cam 1",
+            "visible": true,
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scene 3",
+      "versioned_id": "scene",
+      "settings": {
+        "items": [
+          {
+            "name": "Color BG",
+            "visible": true,
+            "locked": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Display 1",
+      "versioned_id": "xshm_input",
+      "settings": {},
+      "enabled": true
+    },
+    {
+      "name": "Cam 1",
+      "versioned_id": "v4l2_input",
+      "settings": {
+        "device_id": "/dev/video0"
+      },
+      "enabled": true
+    },
+    {
+      "name": "Color BG",
+      "versioned_id": "color_source_v3",
+      "settings": {
+        "color": 4278190335
+      },
+      "enabled": true
+    }
+  ]
+}

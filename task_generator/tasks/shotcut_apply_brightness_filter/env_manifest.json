@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_apply_brightness_filter",
+  "files": [
+    {
+      "filename": "filter_project.mlt",
+      "sandbox_path": "/home/user/Documents/filter_project.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "source.mp4",
+      "sandbox_path": "/home/user/Videos/source.mp4",
+      "type": "mp4"
+    }
+  ]
+}

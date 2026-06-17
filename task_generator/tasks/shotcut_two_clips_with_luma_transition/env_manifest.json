@@ -1,0 +1,20 @@
+{
+  "task_id": "shotcut_two_clips_with_luma_transition",
+  "files": [
+    {
+      "filename": "transition_project.mlt",
+      "sandbox_path": "/home/user/Documents/transition_project.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "alpha.mp4",
+      "sandbox_path": "/home/user/Videos/alpha.mp4",
+      "type": "mp4"
+    },
+    {
+      "filename": "beta.mp4",
+      "sandbox_path": "/home/user/Videos/beta.mp4",
+      "type": "mp4"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "obs_event_multicam_six_scenes",
+  "files": [
+    {
+      "filename": "countdown.png",
+      "sandbox_path": "/home/user/Pictures/countdown.png",
+      "type": "png"
+    }
+  ]
+}

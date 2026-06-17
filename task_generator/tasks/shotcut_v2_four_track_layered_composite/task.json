@@ -1,0 +1,35 @@
+{
+  "id": "shotcut_v2_four_track_layered_composite",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/layered.mlt (1920x1080 30 fps, empty timeline). Four source files exist: /home/user/Videos/bg.mp4, /home/user/Videos/overlay.mp4, /home/user/Music/music.mp3, and /home/user/Music/voiceover.mp3.\n\nImport all four media files. Place bg.mp4 on video track V1, overlay.mp4 on a second video track V2, music.mp3 on audio track A1, and voiceover.mp3 on audio track A2. Save the project.",
+  "env": {
+    "files": [
+      {"filename": "layered.mlt", "sandbox_path": "/home/user/Documents/layered.mlt"},
+      {"filename": "bg.mp4", "sandbox_path": "/home/user/Videos/bg.mp4"},
+      {"filename": "overlay.mp4", "sandbox_path": "/home/user/Videos/overlay.mp4"},
+      {"filename": "music.mp3", "sandbox_path": "/home/user/Music/music.mp3"},
+      {"filename": "voiceover.mp3", "sandbox_path": "/home/user/Music/voiceover.mp3"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Documents/layered.mlt", "key": "exists", "expected": true, "description": "Project file exists"},
+    {"command": "check-resolution /home/user/Documents/layered.mlt 1920 1080", "key": "match", "expected": true, "description": "Project resolution is 1920x1080"},
+    {"command": "check-clip-exists /home/user/Documents/layered.mlt bg.mp4", "key": "exists", "expected": true, "description": "bg.mp4 is referenced"},
+    {"command": "check-clip-exists /home/user/Documents/layered.mlt overlay.mp4", "key": "exists", "expected": true, "description": "overlay.mp4 is referenced"},
+    {"command": "check-clip-exists /home/user/Documents/layered.mlt music.mp3", "key": "exists", "expected": true, "description": "music.mp3 is referenced"},
+    {"command": "check-clip-exists /home/user/Documents/layered.mlt voiceover.mp3", "key": "exists", "expected": true, "description": "voiceover.mp3 is referenced"},
+    {"command": "project-info /home/user/Documents/layered.mlt", "eval": "result['tractor_track_count'] >= 5", "description": "Timeline tractor has at least 5 track references (bin + V1 + V2 + A1 + A2)"}
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open layered.mlt, timeline add-track --type video --name V2, timeline add-track --type audio --name A1, timeline add-track --type audio --name A2, timeline add-clip bg.mp4 --track 1, timeline add-clip overlay.mp4 --track 2, timeline add-clip music.mp3 --track 3, timeline add-clip voiceover.mp3 --track 4, project save",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, timeline add-track (3 tracks), timeline add-clip (4 clips across tracks), project save. Complex multi-track layered compositing workflow."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "impress_deduplicate_and_fix_deck",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/messy_deck.odp in LibreOffice Impress. The deck has 8 slides with duplicates. The current slide order (by title) is:\n1. Intro\n2. Data\n3. Intro (duplicate)\n4. Analysis\n5. Data (duplicate)\n6. Findings\n7. Analysis (duplicate)\n8. Outro\n\nClean up the deck so it has exactly 5 unique slides in this order:\n1. Intro\n2. Data\n3. Analysis\n4. Findings\n5. Conclusion\n\nSpecifically:\n- Delete the duplicate Intro, duplicate Data, and duplicate Analysis slides.\n- Rename the last slide from 'Outro' to 'Conclusion'.\n- Replace the body text on the renamed Conclusion slide with 'Next steps and acknowledgements'.\n\nSave the file keeping the same /home/user/Documents/messy_deck.odp path and ODP format.",
+  "env": {
+    "files": [
+      {"filename": "messy_deck.odp", "sandbox_path": "/home/user/Documents/messy_deck.odp"}
+    ]
+  },
+  "verification": [
+    {"command": "check-slide-count 5", "key": "match", "expected": true, "description": "Exactly 5 slides"},
+    {"command": "check-slide-title 0 \"Intro\"", "key": "match", "expected": true, "description": "Slide 1 Intro"},
+    {"command": "check-slide-title 1 \"Data\"", "key": "match", "expected": true, "description": "Slide 2 Data"},
+    {"command": "check-slide-title 2 \"Analysis\"", "key": "match", "expected": true, "description": "Slide 3 Analysis"},
+    {"command": "check-slide-title 3 \"Findings\"", "key": "match", "expected": true, "description": "Slide 4 Findings"},
+    {"command": "check-slide-title 4 \"Conclusion\"", "key": "match", "expected": true, "description": "Slide 5 Conclusion"},
+    {"command": "check-slide-contains 4 \"Next steps and acknowledgements\"", "key": "contains", "expected": true, "description": "Conclusion body updated"},
+    {"command": "check-file-exists /home/user/Documents/messy_deck.odp", "key": "exists", "expected": true, "description": "File saved"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

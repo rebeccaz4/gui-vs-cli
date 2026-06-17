@@ -1,0 +1,46 @@
+{
+  "id": "zotero_rename_collection",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. In the collections pane there is an existing top-level collection named 'Reinforcement Learning' which contains the item 'A Survey of RL Methods'. Change the collection name to exactly 'RL Papers'. After renaming, the collection 'Reinforcement Learning' must NOT exist any more, the collection 'RL Papers' must exist, and the survey item must still belong to 'RL Papers'. Leave Zotero running.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. In the collections pane there is an existing top-level collection named 'Reinforcement Learning' which contains the item 'A Survey of RL Methods'. Right-click that collection and choose 'Rename Collection...' (or double-click its name) and change the name to exactly 'RL Papers'. After renaming, the collection 'Reinforcement Learning' must NOT exist any more, the collection 'RL Papers' must exist, and the survey item must still belong to 'RL Papers'. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-collection-exists 'RL Papers'",
+      "key": "exists",
+      "expected": true,
+      "description": "Renamed collection exists"
+    },
+    {
+      "command": "check-collection-exists 'Reinforcement Learning'",
+      "key": "exists",
+      "expected": false,
+      "description": "Old collection name removed"
+    },
+    {
+      "command": "check-collection-contains 'RL Papers' 'Survey of RL Methods'",
+      "key": "contains",
+      "expected": true,
+      "description": "Survey item is in renamed collection"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Python script using SQLite: 1) Find collection by name, 2) Update collectionName field in collections table",
+    "reason": "Collection names are stored in the collections table. A Python script can directly update the collectionName field via SQL UPDATE. This is a simple database operation that changes the collection name without affecting its items or subcollections."
+  }
+}

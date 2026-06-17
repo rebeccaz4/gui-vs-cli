@@ -1,0 +1,105 @@
+{
+  "id": "drawio_swimlane_process",
+  "app": "drawio",
+  "task": "Create an order fulfillment process at /home/user/Documents/swimlane_process.drawio. Create 3 header rectangles: Customer, Sales, Warehouse. Create 6 activity rectangles: Place Order, Verify Stock, Approve Sale, Pick Items, Pack Items, Ship Order. Connect sequentially: Place Order->Verify Stock->Approve Sale->Pick Items->Pack Items->Ship Order. The diagram must have at least 9 vertices and 5 edges. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/swimlane_process.drawio in draw.io Desktop. Build a process diagram for an order fulfillment workflow. Create 3 header rectangles labeled 'Customer', 'Sales', and 'Warehouse'. Create 6 process activity rectangles with these exact labels: 'Place Order', 'Verify Stock', 'Approve Sale', 'Pick Items', 'Pack Items', and 'Ship Order'. Connect them in this order with arrows: Place Order -> Verify Stock -> Approve Sale -> Pick Items -> Pack Items -> Ship Order (5 connections). The diagram must have at least 9 vertices total (3 headers + 6 activities) and at least 5 edges. Save the diagram at /home/user/Documents/swimlane_process.drawio.",
+  "env": {
+    "files": [
+      {
+        "filename": "swimlane_process.drawio",
+        "sandbox_path": "/home/user/Documents/swimlane_process.drawio"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/swimlane_process.drawio",
+      "key": "exists",
+      "expected": true,
+      "description": "Diagram file exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio Customer",
+      "key": "exists",
+      "expected": true,
+      "description": "Customer header exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio Sales",
+      "key": "exists",
+      "expected": true,
+      "description": "Sales header exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio Warehouse",
+      "key": "exists",
+      "expected": true,
+      "description": "Warehouse header exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Place Order\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Place Order activity exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Verify Stock\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Verify Stock activity exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Approve Sale\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Approve Sale activity exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Pick Items\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Pick Items activity exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Pack Items\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Pack Items activity exists"
+    },
+    {
+      "command": "check-label-exists /home/user/Documents/swimlane_process.drawio \"Ship Order\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Ship Order activity exists"
+    },
+    {
+      "command": "vertices /home/user/Documents/swimlane_process.drawio 0",
+      "eval": "len(result) >= 9",
+      "description": "At least 9 vertices on page 0"
+    },
+    {
+      "command": "edges /home/user/Documents/swimlane_process.drawio 0",
+      "eval": "len(result) >= 5",
+      "description": "At least 5 edges on page 0"
+    },
+    {
+      "judge": "llm",
+      "prompt": "Inspect the connections list (edges with source/target IDs) and the vertices list. Does the diagram contain an edge whose source vertex label is 'Place Order' and whose target vertex label is 'Verify Stock'?",
+      "command": "connections /home/user/Documents/swimlane_process.drawio 0",
+      "context": "command_output",
+      "description": "Connection Place Order -> Verify Stock exists"
+    }
+  ],
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "CLI: project open <file>, shape add --type <type> --label 'text', connect add --source <id> --target <id>, project save",
+    "reason": "✅ CLI supports project open; ✅ Shape add supported; ✅ Connection add supported; ✅ Shape types: rectangle"
+  },
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

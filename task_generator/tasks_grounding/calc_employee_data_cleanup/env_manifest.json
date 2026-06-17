@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_employee_data_cleanup",
+  "files": [
+    {"filename": "employees.xlsx", "sandbox_path": "/home/user/Documents/employees.xlsx", "type": "xlsx"}
+  ]
+}

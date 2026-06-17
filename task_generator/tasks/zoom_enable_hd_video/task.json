@@ -1,0 +1,27 @@
+{
+  "id": "zoom_enable_hd_video",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Change HDVideo to true to enable HD video. Save the file in-place at /home/user/.config/zoomus.conf. Do not modify any other keys.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config Video HDVideo true", "key": "match", "expected": true, "description": "[Video]HDVideo == true"},
+    {"command": "check-config Video mirrorMyVideo true", "key": "match", "expected": true, "description": "mirrorMyVideo left untouched"}
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed to modify /home/user/.config/zoomus.conf: set [Video] HDVideo=true",
+    "reason": "CLI agent can directly edit the config file using sed. Single boolean value change is trivial for CLI. Task mentions GUI but CLI is equally viable."
+  }
+}

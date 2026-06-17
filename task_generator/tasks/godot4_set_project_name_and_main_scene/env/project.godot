@@ -1,0 +1,12 @@
+; Engine configuration file.
+
+config_version=5
+
+[application]
+
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

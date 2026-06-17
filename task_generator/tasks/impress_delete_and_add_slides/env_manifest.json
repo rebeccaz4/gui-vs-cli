@@ -1,0 +1,6 @@
+{
+  "task_id": "impress_delete_and_add_slides",
+  "files": [
+    {"filename": "workshop_slides.pptx", "sandbox_path": "/home/user/Documents/workshop_slides.pptx", "type": "pptx"}
+  ]
+}

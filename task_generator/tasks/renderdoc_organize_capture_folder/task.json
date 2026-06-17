@@ -1,0 +1,93 @@
+{
+  "id": "renderdoc_organize_capture_folder",
+  "app": "renderdoc",
+  "task": "Create /home/user/captures/archive/. Move raw_dump.rdc and raw_dump2.rdc from /home/user/captures/ to /home/user/captures/archive/. Rename triangle.rdc to main_frame.rdc in /home/user/captures/. Leave notes.txt untouched. Result: /home/user/captures/ has main_frame.rdc and notes.txt; /home/user/captures/archive/ has raw_dump.rdc and raw_dump2.rdc.",
+  "env": {
+    "files": [
+      {
+        "filename": "raw_dump.rdc",
+        "sandbox_path": "/home/user/captures/raw_dump.rdc"
+      },
+      {
+        "filename": "raw_dump2.rdc",
+        "sandbox_path": "/home/user/captures/raw_dump2.rdc"
+      },
+      {
+        "filename": "triangle.rdc",
+        "sandbox_path": "/home/user/captures/triangle.rdc"
+      },
+      {
+        "filename": "notes.txt",
+        "sandbox_path": "/home/user/captures/notes.txt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/main_frame.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "main_frame.rdc exists in /home/user/captures"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/main_frame.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "main_frame.rdc is a valid capture"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/triangle.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "triangle.rdc no longer in /home/user/captures"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 1 .rdc file remains in /home/user/captures"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/archive",
+      "key": "is_dir",
+      "expected": true,
+      "description": "archive subdirectory exists"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/archive/raw_dump.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "raw_dump.rdc moved into archive"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/archive/raw_dump2.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "raw_dump2.rdc moved into archive"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/archive 2",
+      "key": "match",
+      "expected": true,
+      "description": "archive has exactly 2 .rdc files"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/notes.txt",
+      "key": "exists",
+      "expected": true,
+      "description": "notes.txt is untouched"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use bash: mkdir -p /home/user/captures/archive; mv /home/user/captures/raw_dump.rdc /home/user/captures/raw_dump2.rdc /home/user/captures/archive/; mv /home/user/captures/triangle.rdc /home/user/captures/main_frame.rdc",
+    "reason": "Task only requires file operations (create directory, move files, rename files) which are standard bash commands: mkdir, mv. No .rdc content modification needed."
+  }
+}

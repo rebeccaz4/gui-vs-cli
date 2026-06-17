@@ -1,0 +1,7 @@
+{
+  "task_id": "gimp_gap_blend_mode_multiply_opacity",
+  "files": [
+    {"filename": "photo_base.png", "sandbox_path": "/home/user/Documents/photo_base.png", "type": "png"},
+    {"filename": "texture_overlay.png", "sandbox_path": "/home/user/Documents/texture_overlay.png", "type": "png"}
+  ]
+}

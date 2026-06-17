@@ -1,0 +1,69 @@
+{
+  "id": "godot4_implement_gdscript_class",
+  "app": "godot4",
+  "task": "Open /home/user/godot_projects/class_game/scripts/enemy.gd. It is currently an empty stub. Replace its contents with a valid GDScript class that satisfies all of the following:\n\n1. Declares class_name Enemy\n2. extends CharacterBody2D\n3. Declares a signal named died\n4. Has an @export var max_health: int = 100\n5. Defines a function named take_damage that takes one parameter amount: int\n\nAn example implementation:\n\nclass_name Enemy\nextends CharacterBody2D\n\nsignal died\n\n@export var max_health: int = 100\n\nvar current_health: int = max_health\n\nfunc take_damage(amount: int):\n\tcurrent_health -= amount\n\tif current_health <= 0:\n\t\tdied.emit()\n\nSave the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "project.godot",
+        "sandbox_path": "/home/user/godot_projects/class_game/project.godot"
+      },
+      {
+        "filename": "main.tscn",
+        "sandbox_path": "/home/user/godot_projects/class_game/main.tscn"
+      },
+      {
+        "filename": "scripts/enemy.gd",
+        "sandbox_path": "/home/user/godot_projects/class_game/scripts/enemy.gd"
+      },
+      {
+        "filename": "icon.svg",
+        "sandbox_path": "/home/user/godot_projects/class_game/icon.svg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-script-class-name /home/user/godot_projects/class_game/scripts/enemy.gd Enemy",
+      "key": "match",
+      "expected": true,
+      "description": "class_name is Enemy"
+    },
+    {
+      "command": "check-script-extends /home/user/godot_projects/class_game/scripts/enemy.gd CharacterBody2D",
+      "key": "match",
+      "expected": true,
+      "description": "extends CharacterBody2D"
+    },
+    {
+      "command": "check-script-export /home/user/godot_projects/class_game/scripts/enemy.gd max_health",
+      "key": "exists",
+      "expected": true,
+      "description": "@export var max_health exists"
+    },
+    {
+      "command": "check-script-func /home/user/godot_projects/class_game/scripts/enemy.gd take_damage",
+      "key": "exists",
+      "expected": true,
+      "description": "take_damage function exists"
+    },
+    {
+      "command": "check-script-signal /home/user/godot_projects/class_game/scripts/enemy.gd died",
+      "key": "exists",
+      "expected": true,
+      "description": "died signal exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use bash/Python to create/edit .gd script files",
+    "reason": "GDScript files are plain text - CLI can create/edit them directly"
+  }
+}

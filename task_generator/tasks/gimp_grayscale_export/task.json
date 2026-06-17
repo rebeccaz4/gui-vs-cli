@@ -1,0 +1,45 @@
+{
+  "id": "gimp_grayscale_export",
+  "app": "gimp",
+  "task": "Convert /home/user/Documents/colorful.png to grayscale and export to /home/user/Documents/colorful_gray.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "colorful.png",
+        "sandbox_path": "/home/user/Documents/colorful.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/colorful_gray.png",
+      "key": "exists",
+      "expected": true,
+      "description": "Output grayscale PNG file exists at /home/user/Documents/colorful_gray.png"
+    },
+    {
+      "command": "check-file-mode /home/user/Documents/colorful_gray.png L",
+      "key": "match",
+      "expected": true,
+      "description": "Output image is in grayscale (L) mode"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/colorful_gray.png 600 400",
+      "key": "match",
+      "expected": true,
+      "description": "Output image maintains original dimensions 600x400"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: convert input.png -colorspace Gray output.png",
+    "reason": "Grayscale conversion is standard operation"
+  }
+}

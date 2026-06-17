@@ -1,0 +1,127 @@
+{
+  "id": "calc_text_parse_contacts",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/contacts.xlsx in LibreOffice Calc. Sheet 'Contacts' has a single column A1 'Full Entry' with 15 contact strings in rows 2-16 in the format 'LastName, FirstName <email@domain>' (e.g. 'Smith, Jane <jane.smith@acme.io>').\n\n1. In B1 enter 'Last Name', C1 enter 'First Name', D1 enter 'Email', E1 enter 'Domain'. Make all four headers bold.\n2. In B2 enter a formula that extracts the last name (the text before the comma). Fill down through B16.\n3. In C2 enter a formula that extracts the first name. Fill down through C16.\n4. In D2 enter a formula that extracts the email address between '<' and '>'. Fill down through D16.\n5. In E2 enter a formula that extracts the domain. Fill down through E16.\n6. Save the file .",
+  "env": {
+    "files": [
+      {
+        "filename": "contacts.xlsx",
+        "sandbox_path": "/home/user/Documents/contacts.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value B1 \"Last Name\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B1 = Last Name"
+    },
+    {
+      "command": "check-cell-value C1 \"First Name\" Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "C1 = First Name"
+    },
+    {
+      "command": "check-cell-value D1 Email Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D1 = Email"
+    },
+    {
+      "command": "check-cell-value E1 Domain Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E1 = Domain"
+    },
+    {
+      "command": "check-cell-formatted B1 true Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B1 bold"
+    },
+    {
+      "command": "check-cell-value B2 Smith Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B2 last name = Smith"
+    },
+    {
+      "command": "check-cell-value C2 Jane Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "C2 first name = Jane"
+    },
+    {
+      "command": "check-cell-value D2 jane.smith@acme.io Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D2 email = jane.smith@acme.io"
+    },
+    {
+      "command": "check-cell-value E2 acme.io Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E2 domain = acme.io"
+    },
+    {
+      "command": "check-cell-value B3 Brown Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B3 last name = Brown"
+    },
+    {
+      "command": "check-cell-value C3 Alex Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "C3 first name = Alex"
+    },
+    {
+      "command": "check-cell-value E3 example.com Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "E3 domain = example.com"
+    },
+    {
+      "command": "check-cell-value B8 Wilson Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B8 last name = Wilson"
+    },
+    {
+      "command": "check-cell-value C8 Rachel Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "C8 first name = Rachel"
+    },
+    {
+      "command": "check-cell-value B16 Young Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "B16 last name = Young"
+    },
+    {
+      "command": "check-cell-value D16 chris.y@lexcorp.net Contacts",
+      "key": "match",
+      "expected": true,
+      "description": "D16 email = chris.y@lexcorp.net"
+    },
+    {
+      "command": "cell-value B2 Contacts",
+      "eval": "result.get('formula') is not None and ('LEFT' in result.get('formula','').upper() or 'MID' in result.get('formula','').upper())",
+      "description": "B2 uses LEFT/MID"
+    },
+    {
+      "command": "cell-value D2 Contacts",
+      "eval": "result.get('formula') is not None and 'MID' in result.get('formula','').upper() and 'FIND' in result.get('formula','').upper()",
+      "description": "D2 uses MID and FIND"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

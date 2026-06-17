@@ -1,0 +1,63 @@
+{
+  "id": "krita_toggle_visibility_and_rename",
+  "app": "krita",
+  "task": "In /home/user/Documents/multi.kra, which has three paint layers named 'A', 'B', and 'C' (top to bottom), make the following changes and save the file in place: (1) rename layer 'A' to 'Main'; (2) rename layer 'C' to 'Accent'; (3) hide layer 'B' (toggle its visibility off); (4) set the opacity of layer 'Main' to 80% (≈204/255). Layer 'B' must still exist — only hidden, not deleted.",
+  "task_grounding": "Open /home/user/Documents/multi.kra in Krita. It has three paint layers named 'A', 'B', and 'C' (top to bottom). Make the following changes and save the file in place at /home/user/Documents/multi.kra: (1) rename layer 'A' to 'Main'; (2) rename layer 'C' to 'Accent'; (3) hide layer 'B' (toggle its visibility off); (4) set the opacity of layer 'Main' to 80% (≈204/255). Layer 'B' must still exist — only hidden, not deleted.",
+  "env": {
+    "files": [
+      {
+        "filename": "multi.kra",
+        "sandbox_path": "/home/user/Documents/multi.kra"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-layer-exists /home/user/Documents/multi.kra Main",
+      "key": "exists",
+      "expected": true,
+      "description": "A renamed to Main"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/multi.kra Accent",
+      "key": "exists",
+      "expected": true,
+      "description": "C renamed to Accent"
+    },
+    {
+      "command": "check-layer-exists /home/user/Documents/multi.kra B",
+      "key": "exists",
+      "expected": true,
+      "description": "Layer B still exists"
+    },
+    {
+      "command": "check-layer-count /home/user/Documents/multi.kra 3",
+      "key": "match",
+      "expected": true,
+      "description": "Three layers preserved"
+    },
+    {
+      "command": "check-layer-visible /home/user/Documents/multi.kra B",
+      "key": "visible",
+      "expected": false,
+      "description": "Layer B is hidden"
+    },
+    {
+      "command": "layer-info /home/user/Documents/multi.kra Main",
+      "eval": "190 <= int(result.get('opacity',0)) <= 215",
+      "expected": true,
+      "description": "Main opacity ≈ 80% (204±)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Open multi.kra, rename layer 'A' to 'Main', rename 'C' to 'Accent', hide layer 'B', set 'Main' opacity to 80%",
+    "reason": "✅ All operations supported: layer set rename, layer set visible false, layer set opacity 204"
+  }
+}

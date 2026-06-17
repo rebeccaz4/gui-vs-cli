@@ -1,0 +1,143 @@
+{
+  "id": "obsidian_daily_notes_week",
+  "app": "obsidian",
+  "task": "Open the Obsidian vault at /home/user/Documents/DailyVault (the daily-notes core plugin is already enabled). Set up a week of daily notes by creating them manually:\n\n1. Create a folder 'Daily' in the vault root.\n2. Create 7 daily notes inside 'Daily/' named '2025-03-10.md', '2025-03-11.md', '2025-03-12.md', '2025-03-13.md', '2025-03-14.md', '2025-03-15.md', '2025-03-16.md'. Each note MUST contain:\n   - YAML frontmatter with 'type: daily' and 'date: <the-iso-date>'\n   - Level-1 heading '<date>' matching the file name\n   - Level-2 headings 'Today', 'Notes', 'Tomorrow'\n   - The inline tag #daily somewhere in the body\n3. In '2025-03-10.md' add a wikilink to [[2025-03-11]] under the 'Tomorrow' section.\n4. In '2025-03-14.md' add a wikilink to [[2025-03-15]] under the 'Tomorrow' section.\n5. In '2025-03-16.md' add a wikilink to [[2025-03-15]] in the 'Notes' section (as a reference back to yesterday).\n\nThe vault must end up with exactly 7 notes total, all inside the 'Daily' folder. The daily-notes core plugin must remain enabled.",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/DailyVault/.obsidian/app.json"
+      },
+      {
+        "filename": "core-plugins.json",
+        "sandbox_path": "/home/user/Documents/DailyVault/.obsidian/core-plugins.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-folder-exists /home/user/Documents/DailyVault Daily",
+      "key": "exists",
+      "expected": true,
+      "description": "Daily folder exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-10'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-10 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-11'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-11 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-12'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-12 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-13'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-13 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-14'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-14 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-15'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-15 note exists"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/DailyVault 'Daily/2025-03-16'",
+      "key": "exists",
+      "expected": true,
+      "description": "2025-03-16 note exists"
+    },
+    {
+      "command": "check-note-has-frontmatter /home/user/Documents/DailyVault 'Daily/2025-03-10' type daily",
+      "key": "match",
+      "expected": true,
+      "description": "2025-03-10 has type=daily"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/DailyVault 'Daily/2025-03-10' daily",
+      "key": "has_tag",
+      "expected": true,
+      "description": "2025-03-10 has #daily tag"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/DailyVault 'Daily/2025-03-12' Today 2",
+      "key": "has_heading",
+      "expected": true,
+      "description": "2025-03-12 has Today heading"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/DailyVault 'Daily/2025-03-12' Notes 2",
+      "key": "has_heading",
+      "expected": true,
+      "description": "2025-03-12 has Notes heading"
+    },
+    {
+      "command": "check-note-has-heading /home/user/Documents/DailyVault 'Daily/2025-03-12' Tomorrow 2",
+      "key": "has_heading",
+      "expected": true,
+      "description": "2025-03-12 has Tomorrow heading"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/DailyVault 'Daily/2025-03-10' 2025-03-11",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-10 links to 2025-03-11"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/DailyVault 'Daily/2025-03-14' 2025-03-15",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-14 links to 2025-03-15"
+    },
+    {
+      "command": "check-note-links-to /home/user/Documents/DailyVault 'Daily/2025-03-16' 2025-03-15",
+      "key": "links_to",
+      "expected": true,
+      "description": "2025-03-16 links to 2025-03-15"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/DailyVault daily-notes core",
+      "key": "enabled",
+      "expected": true,
+      "description": "daily-notes core plugin enabled"
+    },
+    {
+      "command": "list-notes /home/user/Documents/DailyVault Daily",
+      "eval": "result.get('count') == 7",
+      "description": "Daily folder has exactly 7 notes"
+    },
+    {
+      "command": "list-notes /home/user/Documents/DailyVault",
+      "eval": "result.get('count') == 7",
+      "description": "Vault has exactly 7 notes total"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "\u4f7f\u7528 cli-anything-obsidian skill: 1) bash mkdir \u521b\u5efa Daily/ \u6587\u4ef6\u5939; 2) vault create \u521b\u5efa7\u4e2adaily notes\uff0c\u5305\u542bYAML frontmatter\u3001headings\u548cwikilinks",
+    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'create a folder'\u3001'create 7 daily notes'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7bash\u548ccli-anything-obsidian skill\u5b8c\u6210"
+  }
+}

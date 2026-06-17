@@ -1,0 +1,57 @@
+{
+  "id": "renderdoc_gap_remote_target_config",
+  "app": "renderdoc",
+  "task": "Edit UI.config: set RemoteHosts=build-box.lan:39570 and perf-node-01.internal:39570, AdbScabbardPath=/opt/android-sdk/platform-tools/adb, AlwaysReplayLocally=false. Preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-setting RemoteHosts '[{\"Hostname\":\"build-box.lan\",\"Port\":39570},{\"Hostname\":\"perf-node-01.internal\",\"Port\":39570}]'",
+      "key": "match",
+      "expected": true,
+      "description": "RemoteHosts array contains the two hosts in the correct order"
+    },
+    {
+      "command": "check-setting AdbScabbardPath /opt/android-sdk/platform-tools/adb",
+      "key": "match",
+      "expected": true,
+      "description": "AdbScabbardPath is correct"
+    },
+    {
+      "command": "check-setting AlwaysReplayLocally false",
+      "key": "match",
+      "expected": true,
+      "description": "AlwaysReplayLocally is false"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

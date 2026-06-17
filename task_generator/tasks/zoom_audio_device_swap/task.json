@@ -1,0 +1,30 @@
+{
+  "id": "zoom_audio_device_swap",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. Switch Zoom's default audio hardware and input levels. Set AudioDevice to exactly USBHeadset (one token, no spaces), set MicrophoneLevel to exactly 65, set SpeakerLevel to exactly 55, and set AutoAdjustMic to false. Save the file in-place at the same path. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {"filename": "zoomus.conf", "sandbox_path": "/home/user/.config/zoomus.conf"}
+    ]
+  },
+  "verification": [
+    {"command": "check-config-exists", "key": "exists", "expected": true, "description": "zoomus.conf exists"},
+    {"command": "check-config Audio AudioDevice USBHeadset", "key": "match", "expected": true, "description": "[Audio]AudioDevice == USBHeadset"},
+    {"command": "check-config Audio MicrophoneLevel 65", "key": "match", "expected": true, "description": "[Audio]MicrophoneLevel == 65"},
+    {"command": "check-config Audio SpeakerLevel 55", "key": "match", "expected": true, "description": "[Audio]SpeakerLevel == 55"},
+    {"command": "check-config Audio AutoAdjustMic false", "key": "match", "expected": true, "description": "[Audio]AutoAdjustMic == false"},
+    {"command": "check-config Audio SuppressBackgroundNoise 2", "key": "match", "expected": true, "description": "Other [Audio] keys untouched"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use sed or Python to modify /home/user/.config/zoomus.conf: set [Audio] AudioDevice=USBHeadset, MicrophoneLevel=65, SpeakerLevel=55, AutoAdjustMic=false",
+    "reason": "CLI agent can directly edit the config file using sed/awk or Python. Simple text file manipulation is a core CLI capability."
+  }
+}

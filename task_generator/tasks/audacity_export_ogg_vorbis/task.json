@@ -1,0 +1,45 @@
+{
+  "id": "audacity_export_ogg_vorbis",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/voice.wav already loaded (a 3-second mono 44.1 kHz WAV file). Export this audio as an OGG Vorbis file to /home/user/Music/voice.ogg with quality setting 0.5.",
+  "env": {
+    "files": [
+      {
+        "filename": "voice.wav",
+        "sandbox_path": "/home/user/Music/voice.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/voice.ogg",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported OGG exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/voice.ogg vorbis",
+      "key": "match",
+      "expected": true,
+      "description": "Codec is vorbis"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/voice.ogg 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "Duration is at least 2.5 seconds"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "1. cli-anything-audacity project new -o /home/user/Music/project.json 2. cli-anything-audacity --project /home/user/Music/project.json track add 3. cli-anything-audacity --project /home/user/Music/project.json clip add 0 /home/user/Music/voice.wav 4. cli-anything-audacity --project /home/user/Music/project.json export render /home/user/Music/voice.ogg --overwrite",
+    "reason": "CLI-Anything-Audacity supports OGG Vorbis export via 'export render' command. The tool can handle various audio formats for both import and export."
+  }
+}

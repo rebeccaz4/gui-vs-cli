@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_named_ranges_and_data_validation",
+  "files": [
+    {"filename": "orders.xlsx", "sandbox_path": "/home/user/Documents/orders.xlsx", "type": "xlsx"}
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "libreoffice_writer_resume_formatting",
+  "app": "libreoffice_writer",
+  "task": "Create a resume document in LibreOffice Writer. Add a Heading 1 'John Anderson'. Below that, add a paragraph with 'Software Engineer | john.anderson@email.com'. Add a Heading 2 'Experience'. Add a paragraph 'Senior Developer at TechCorp (2020-2025)'. Add another paragraph 'Built and maintained microservices handling 10M requests per day'. Add a Heading 2 'Education'. Add a paragraph 'B.S. Computer Science, MIT, 2019'. Make the Heading 1 'John Anderson' bold. Save as /home/user/Documents/resume_docx.docx and /home/user/Documents/resume_html.html.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/resume_docx.docx",
+      "/home/user/Documents/resume_html.html"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"John Anderson\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 'John Anderson' exists"
+    },
+    {
+      "command": "check-text-contains \"Software Engineer\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains 'Software Engineer'"
+    },
+    {
+      "command": "check-text-contains \"john.anderson@email.com\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains email"
+    },
+    {
+      "command": "check-heading-exists Experience 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Experience' exists"
+    },
+    {
+      "command": "check-text-contains \"Senior Developer at TechCorp\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains experience entry"
+    },
+    {
+      "command": "check-text-contains \"microservices handling 10M requests\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains experience detail"
+    },
+    {
+      "command": "check-heading-exists Education 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Education' exists"
+    },
+    {
+      "command": "check-text-contains \"B.S. Computer Science, MIT, 2019\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Contains education entry"
+    },
+    {
+      "command": "check-paragraph-formatted 0 true",
+      "key": "match",
+      "expected": true,
+      "description": "Heading 1 paragraph is bold"
+    },
+    {
+      "command": "check-file-format",
+      "args": [
+        "/home/user/Documents/resume_docx.docx",
+        "docx"
+      ],
+      "eval": "result.get('match') == true",
+      "description": "DOCX file format is correct"
+    },
+    {
+      "command": "check-file-format",
+      "args": [
+        "/home/user/Documents/resume_html.html",
+        "html"
+      ],
+      "eval": "result.get('match') == true",
+      "description": "HTML file format is correct"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "renderdoc_shader_debug_profile",
+  "app": "renderdoc",
+  "task": "Edit UI.config: set UIStyle='Dark', Font_GlobalScale=1.4, Font_PreferMonospaced=true, TextureViewer_ResetRange=true, TextureViewer_PerTexSettings=true, EventBrowser_ApplyColors=true, Comments_ShowOnLoad=false. Preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.local/share/qrenderdoc/UI.config",
+      "key": "exists",
+      "expected": true,
+      "description": "UI.config still exists"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-theme Dark",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle is Dark"
+    },
+    {
+      "command": "check-font-scale 1.4",
+      "key": "match",
+      "expected": true,
+      "description": "Font_GlobalScale is 1.4"
+    },
+    {
+      "command": "check-setting Font_PreferMonospaced true",
+      "key": "match",
+      "expected": true,
+      "description": "Font_PreferMonospaced true"
+    },
+    {
+      "command": "check-setting TextureViewer_ResetRange true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_ResetRange true"
+    },
+    {
+      "command": "check-setting TextureViewer_PerTexSettings true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_PerTexSettings true"
+    },
+    {
+      "command": "check-setting EventBrowser_ApplyColors true",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_ApplyColors true"
+    },
+    {
+      "command": "check-setting Comments_ShowOnLoad false",
+      "key": "match",
+      "expected": true,
+      "description": "Comments_ShowOnLoad false"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use Python: import json; data = json.load(open('UI.config')); data['RecentCaptureFiles'] = ['path1.rdc', 'path2.rdc']; json.dump(data, open('UI.config', 'w'), indent=2)",
+    "reason": "UI.config is a JSON document. Can use Python's json module to edit it: load, modify specific keys (RecentCaptureFiles, DefaultCaptureSaveDirectory, Font_*, UIStyle, etc.), preserve rdocConfigData marker, save."
+  }
+}

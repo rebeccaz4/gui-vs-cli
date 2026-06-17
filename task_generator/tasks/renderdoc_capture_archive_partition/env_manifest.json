@@ -1,0 +1,30 @@
+{
+  "task_id": "renderdoc_capture_archive_partition",
+  "files": [
+    {
+      "filename": "frame_a.rdc",
+      "sandbox_path": "/home/user/staging/frame_a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_b.rdc",
+      "sandbox_path": "/home/user/staging/frame_b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_c.rdc",
+      "sandbox_path": "/home/user/staging/frame_c.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_bad1.rdc",
+      "sandbox_path": "/home/user/staging/frame_bad1.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_bad2.rdc",
+      "sandbox_path": "/home/user/staging/frame_bad2.rdc",
+      "type": "rdc"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_export_mp3_stereo",
+  "files": [
+    {
+      "filename": "source.wav",
+      "sandbox_path": "/home/user/Music/source.wav",
+      "type": "wav"
+    }
+  ]
+}

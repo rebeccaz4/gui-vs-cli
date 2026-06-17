@@ -1,0 +1,55 @@
+{
+  "id": "shotcut_export_720p_resolution",
+  "app": "shotcut",
+  "task": "A Shotcut project exists at /home/user/Documents/hd_export.mlt with 1280x720 resolution and 25 fps. The V1 timeline track contains one clip referencing /home/user/Videos/master.mp4.\n\nExport the timeline to an MP4 file:\n1. Use the default H.264 export preset.\n2. The export must inherit the project's 1280x720 resolution and 25 fps (do not override width/height/frame rate).\n3. Set the output path to /home/user/Videos/output_720p.mp4.\n4. Complete the export.\n\nThe output file /home/user/Videos/output_720p.mp4 must be a valid H.264 MP4 with 1280x720 resolution.",
+  "env": {
+    "files": [
+      {
+        "filename": "hd_export.mlt",
+        "sandbox_path": "/home/user/Documents/hd_export.mlt"
+      },
+      {
+        "filename": "master.mp4",
+        "sandbox_path": "/home/user/Videos/master.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Videos/output_720p.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported file exists at /home/user/Videos/output_720p.mp4"
+    },
+    {
+      "command": "check-export-output /home/user/Videos/output_720p.mp4",
+      "key": "valid",
+      "expected": true,
+      "description": "Exported file is a valid non-empty media file"
+    },
+    {
+      "command": "check-export-codec /home/user/Videos/output_720p.mp4 h264 video",
+      "key": "match",
+      "expected": true,
+      "description": "Exported video codec is h264"
+    },
+    {
+      "command": "check-export-resolution /home/user/Videos/output_720p.mp4 1280 720",
+      "key": "match",
+      "expected": true,
+      "description": "Exported video resolution is 1280x720"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open hd_export.mlt, export render output_720p.mp4 --preset default",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, export render. Uses ffmpeg/melt in Docker environment for rendering. Export inherits project resolution automatically."
+  }
+}

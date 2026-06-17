@@ -1,0 +1,115 @@
+{
+  "id": "calc_employee_data_cleanup",
+  "app": "libreoffice_calc",
+  "task": "Open the file /home/user/Documents/employees.xlsx in LibreOffice Calc. It contains a sheet called 'Staff' with columns: ID (A), First Name (B), Last Name (C), Department (D), Salary (E), Start Date (F). Row 1 has headers, rows 2-16 have 15 employees.\n\n1. In cell G1, type 'Full Name' and make it bold.\n2. In cells G2 through G16, enter a formula to concatenate First Name and Last Name with a space between them. For row 2: =B2&\" \"&C2 (or =CONCATENATE(B2,\" \",C2)).\n3. Create a new sheet called 'Department Summary'.\n4. In the Department Summary sheet:\n   - A1: 'Department' (bold)\n   - B1: 'Employee Count' (bold)\n   - C1: 'Avg Salary' (bold)\n5. Enter department names in column A:\n   - A2: Engineering\n   - A3: Marketing\n   - A4: Sales\n   - A5: HR\n6. In B2, enter =COUNTIF(Staff.D$2:Staff.D$16,A2) to count Engineering employees.\n7. In C2, enter =AVERAGEIF(Staff.D$2:Staff.D$16,A2,Staff.E$2:Staff.E$16) to calculate average salary for Engineering.\n8. Copy the formulas in B2:C2 down to rows 3-5 for the other departments.\n9. Save the file.",
+  "task_grounding": "Open the file /home/user/Documents/employees.xlsx in LibreOffice Calc. It contains a sheet called 'Staff' with columns: ID (A), First Name (B), Last Name (C), Department (D), Salary (E), Start Date (F). Row 1 has headers, rows 2-16 have 15 employees.\n\n1. In cell G1, type 'Full Name' and make it bold.\n2. In cells G2 through G16, enter a formula to concatenate First Name and Last Name with a space between them. For row 2: =B2&\" \"&C2 (or =CONCATENATE(B2,\" \",C2)).\n3. Create a new sheet called 'Department Summary'.\n4. In the Department Summary sheet:\n   - A1: 'Department' (bold)\n   - B1: 'Employee Count' (bold)\n   - C1: 'Avg Salary' (bold)\n5. Enter department names in column A:\n   - A2: Engineering\n   - A3: Marketing\n   - A4: Sales\n   - A5: HR\n6. In B2, enter =COUNTIF(Staff.D$2:Staff.D$16,A2) to count Engineering employees.\n7. In C2, enter =AVERAGEIF(Staff.D$2:Staff.D$16,A2,Staff.E$2:Staff.E$16) to calculate average salary for Engineering.\n8. Copy the formulas in B2:C2 down to rows 3-5 for the other departments.\n9. Save the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "employees.xlsx",
+        "sandbox_path": "/home/user/Documents/employees.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-cell-value G1 \"Full Name\" Staff",
+      "key": "match",
+      "expected": true,
+      "description": "Staff G1 = 'Full Name'"
+    },
+    {
+      "command": "check-cell-formatted G1 true Staff",
+      "key": "match",
+      "expected": true,
+      "description": "Staff G1 is bold"
+    },
+    {
+      "command": "check-cell-value G2 \"Alice Johnson\" Staff",
+      "key": "match",
+      "expected": true,
+      "description": "Staff G2 = 'Alice Johnson' (concatenated name)"
+    },
+    {
+      "command": "cell-value G2 Staff",
+      "eval": "result.get('formula') is not None and ('CONCATENATE' in result.get('formula','').upper() or '&' in result.get('formula',''))",
+      "description": "G2 contains a CONCATENATE or & formula"
+    },
+    {
+      "command": "check-sheet-exists \"Department Summary\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Sheet 'Department Summary' exists"
+    },
+    {
+      "command": "check-cell-value A1 Department \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary A1 = 'Department'"
+    },
+    {
+      "command": "check-cell-formatted A1 true \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary A1 is bold"
+    },
+    {
+      "command": "check-cell-value B1 \"Employee Count\" \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary B1 = 'Employee Count'"
+    },
+    {
+      "command": "check-cell-formatted B1 true \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary B1 is bold"
+    },
+    {
+      "command": "check-cell-value C1 \"Avg Salary\" \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary C1 = 'Avg Salary'"
+    },
+    {
+      "command": "cell-value B2 \"Department Summary\"",
+      "eval": "result.get('formula') is not None and 'COUNTIF' in result.get('formula','').upper()",
+      "description": "Dept Summary B2 contains COUNTIF formula"
+    },
+    {
+      "command": "check-cell-value B2 5 \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary B2 = 5 (Engineering has 5 employees)"
+    },
+    {
+      "command": "cell-value C2 \"Department Summary\"",
+      "eval": "result.get('formula') is not None and 'AVERAGEIF' in result.get('formula','').upper()",
+      "description": "Dept Summary C2 contains AVERAGEIF formula"
+    },
+    {
+      "command": "check-cell-value C2 101200 \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary C2 = 101200 (avg Engineering salary)"
+    },
+    {
+      "command": "check-cell-value B3 3 \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary B3 = 3 (Marketing has 3 employees)"
+    },
+    {
+      "command": "check-cell-value B4 4 \"Department Summary\"",
+      "key": "match",
+      "expected": true,
+      "description": "Dept Summary B4 = 4 (Sales has 4 employees)"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

@@ -1,0 +1,86 @@
+name: Integration Tests
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        type: boolean
+        description: "Whether to publish the results"
+        required: true
+jobs:
+  integration_tests:
+    runs-on: infra-tests
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Packages
+        uses: ./.github/actions/build-packages
+
+      - name: Initialize Host
+        uses: ./.github/actions/host-init
+
+      - name: Build Template
+        uses: ./.github/actions/build-sandbox-template
+
+      - name: Start Services
+        uses: ./.github/actions/start-services
+
+      - name: Run Integration Tests
+        env:
+          TESTS_API_SERVER_URL: "http://localhost:3000"
+          TESTS_API_GRPC_ADDRESS: "localhost:5009"
+          TESTS_ORCHESTRATOR_HOST: "localhost:5008"
+          TESTS_ENVD_PROXY: "http://localhost:3002"
+          TESTS_CLIENT_PROXY: "http://localhost:3002"
+        run: |
+          # Run the integration tests
+          make test-integration
+
+      - name: Check for Data Races in Service Logs
+        if: always()
+        run: |
+          echo "Checking service logs for data races..."
+          RACE_FOUND=0
+
+          for log_file in ~/logs/*.log; do
+            if [ -f "$log_file" ]; then
+              if grep -q "WARNING: DATA RACE" "$log_file"; then
+                echo "::error::Data race detected in $(basename "$log_file")"
+                echo "=========================================="
+                echo "DATA RACES IN: $log_file"
+                echo "=========================================="
+                # Extract and print all data race blocks
+                grep -A 30 "WARNING: DATA RACE" "$log_file" | head -200
+                echo ""
+                RACE_FOUND=1
+              fi
+            fi
+          done
+
+          if [ "$RACE_FOUND" -eq 1 ]; then
+            echo "::error::Data races were detected in service logs. See above for details."
+            exit 1
+          else
+            echo "No data races detected in service logs."
+          fi
+        shell: bash
+
+      - name: Upload Test Results
+        if: ${{ always() && inputs.publish == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Integration Tests Results
+          path: ./tests/integration/test-results.xml
+
+      - name: Upload Service Logs
+        if: ${{ always() && inputs.publish == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Service Logs
+          path: ~/logs/*.log

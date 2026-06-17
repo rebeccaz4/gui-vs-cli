@@ -1,0 +1,46 @@
+{
+  "id": "freecad_sphere_stl_export_high_res",
+  "app": "freecad",
+  "task": "Export the Part::Sphere named 'Sphere' (Radius=30) from /home/user/Documents/ball.FCStd to an STL file at /home/user/exports/ball.stl. The resulting STL must have at least 200 triangles. Save the FCStd document after exporting.",
+  "task_grounding": "FreeCAD is open with /home/user/Documents/ball.FCStd. The document contains a single Part::Sphere named 'Sphere' with Radius=30. Click 'Sphere' in the Model tree to select it. Use File > Export to save it as an 'STL Mesh (*.stl)'. In the file save dialog, navigate to /home/user/exports/ (create that folder if it does not exist) and set the filename to exactly 'ball.stl'. Click Save. Because a sphere tessellates into many triangles, the resulting STL must have at least 200 triangles (FreeCAD's default mesh deviation produces well over that for a 30 mm sphere, so the default settings are fine). After exporting, return to FreeCAD and press Ctrl+S to save the FCStd document.",
+  "env": {
+    "files": [
+      {
+        "filename": "ball.FCStd",
+        "sandbox_path": "/home/user/Documents/ball.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/ball.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "FCStd source still exists"
+    },
+    {
+      "command": "check-file-exists /home/user/exports/ball.stl",
+      "key": "exists",
+      "expected": true,
+      "description": "STL export exists"
+    },
+    {
+      "command": "check-stl-min-triangles /home/user/exports/ball.stl 200",
+      "key": "match",
+      "expected": true,
+      "description": "STL has >= 200 triangles"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Using cli-anything-freecad: part add sphere → export render STL",
+    "reason": "CLI-Anything-FreeCAD supports all required operations: part add sphere, export render STL"
+  }
+}

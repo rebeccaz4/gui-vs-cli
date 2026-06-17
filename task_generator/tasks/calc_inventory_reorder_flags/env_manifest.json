@@ -1,0 +1,10 @@
+{
+  "task_id": "calc_inventory_reorder_flags",
+  "files": [
+    {
+      "filename": "stock.xlsx",
+      "sandbox_path": "/home/user/Documents/stock.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

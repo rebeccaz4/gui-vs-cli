@@ -1,0 +1,75 @@
+{
+  "id": "musescore3_export_five_formats",
+  "app": "musescore3",
+  "task": "MuseScore 3 is already open with the file /home/user/Documents/suite.mscz. The score has 6 measures of quarter notes in C major 4/4.\n\nExport the score to five different formats, each at an exact path in /home/user/Documents/. Use File > Export... once per format. For each export, set the destination path exactly as shown and click Export.\n\n1. Standard MIDI File (*.mid)  ->  /home/user/Documents/suite.mid\n2. Uncompressed MusicXML (*.musicxml)  ->  /home/user/Documents/suite.musicxml\n3. PDF File (*.pdf)  ->  /home/user/Documents/suite.pdf\n4. PNG Images (*.png)  ->  /home/user/Documents/suite.png (confirm any per-page dialog so a single suite.png is written)\n5. Wave Audio (*.wav)  ->  /home/user/Documents/suite.wav\n\nThe original suite.mscz must still exist at /home/user/Documents/suite.mscz. All five exported files must end up at the exact paths listed: the MIDI must contain at least 4 notes, the MusicXML must have at least 1 part, the PDF must have a valid %PDF- header, the PNG must have a valid PNG header, and the WAV must have a duration of at least 1 second.",
+  "env": {
+    "files": [
+      {
+        "filename": "suite.mscz",
+        "sandbox_path": "/home/user/Documents/suite.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/suite.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "suite.mscz still exists"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/suite.mid",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported suite.mid exists"
+    },
+    {
+      "command": "check-midi-has-notes /home/user/Documents/suite.mid 4",
+      "key": "match",
+      "expected": true,
+      "description": "suite.mid has at least 4 notes"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/suite.musicxml",
+      "key": "exists",
+      "expected": true,
+      "description": "Exported suite.musicxml exists"
+    },
+    {
+      "command": "check-musicxml-parts /home/user/Documents/suite.musicxml 1",
+      "key": "match",
+      "expected": true,
+      "description": "suite.musicxml has exactly 1 part"
+    },
+    {
+      "command": "check-pdf-exists /home/user/Documents/suite.pdf",
+      "key": "match",
+      "expected": true,
+      "description": "Exported suite.pdf exists with %PDF- header"
+    },
+    {
+      "command": "check-png-exists /home/user/Documents/suite.png",
+      "key": "match",
+      "expected": true,
+      "description": "Exported suite.png exists with PNG header"
+    },
+    {
+      "command": "check-wav-duration /home/user/Documents/suite.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "suite.wav duration is at least 1 second"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 5
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use cli-anything-musescore export batch or multiple export commands",
+    "reason": "Batch export to multiple formats is supported"
+  }
+}

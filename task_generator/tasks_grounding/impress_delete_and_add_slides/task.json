@@ -1,0 +1,94 @@
+{
+  "id": "impress_delete_and_add_slides",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/workshop_slides.pptx in LibreOffice Impress. This presentation has 5 slides with titles: 'Workshop Introduction', 'Agenda', 'Exercise 1', 'Exercise 2', 'Wrap Up'.\n\nDelete slide 3 ('Exercise 1') and slide 4 ('Exercise 2'). Add 3 new slides after 'Agenda' (before 'Wrap Up'):\n   - New Slide 3: Title 'Hands-On Lab 1', body text 'Build a REST API in 30 minutes'\n   - New Slide 4: Title 'Hands-On Lab 2', body text 'Deploy to Kubernetes cluster'\n   - New Slide 5: Title 'Hands-On Lab 3', body text 'Set up CI/CD pipeline with GitHub Actions'\n\nAdd speaker notes to Slide 3 ('Hands-On Lab 1'): 'Ensure all attendees have Node.js installed.'\n\nThe final presentation should have exactly 6 slides in this order:\n1. Workshop Introduction\n2. Agenda\n3. Hands-On Lab 1\n4. Hands-On Lab 2\n5. Hands-On Lab 3\n6. Wrap Up\n\nSave the file.",
+  "task_grounding": "Open the file /home/user/Documents/workshop_slides.pptx in LibreOffice Impress. This presentation has 5 slides with titles: 'Workshop Introduction', 'Agenda', 'Exercise 1', 'Exercise 2', 'Wrap Up'.\n\nPerform the following changes:\n\n1. Delete slide 3 ('Exercise 1') and slide 4 ('Exercise 2'). After deletion you should have 3 slides: 'Workshop Introduction', 'Agenda', 'Wrap Up'.\n\n2. Add 3 new slides after 'Agenda' (before 'Wrap Up'):\n   - New Slide 3: Title 'Hands-On Lab 1', body text 'Build a REST API in 30 minutes'\n   - New Slide 4: Title 'Hands-On Lab 2', body text 'Deploy to Kubernetes cluster'\n   - New Slide 5: Title 'Hands-On Lab 3', body text 'Set up CI/CD pipeline with GitHub Actions'\n\n3. Add speaker notes to Slide 3 ('Hands-On Lab 1'): 'Ensure all attendees have Node.js installed.'\n\nThe final presentation should have exactly 6 slides in this order:\n1. Workshop Introduction\n2. Agenda\n3. Hands-On Lab 1\n4. Hands-On Lab 2\n5. Hands-On Lab 3\n6. Wrap Up\n\nSave the file (Ctrl+S).",
+  "env": {
+    "files": [
+      {
+        "filename": "workshop_slides.pptx",
+        "sandbox_path": "/home/user/Documents/workshop_slides.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-count 6",
+      "key": "match",
+      "expected": true,
+      "description": "Presentation has exactly 6 slides"
+    },
+    {
+      "command": "check-slide-title 0 \"Workshop Introduction\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 1 title is 'Workshop Introduction'"
+    },
+    {
+      "command": "check-slide-title 1 \"Agenda\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 2 title is 'Agenda'"
+    },
+    {
+      "command": "check-slide-title 2 \"Hands-On Lab 1\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 3 title is 'Hands-On Lab 1'"
+    },
+    {
+      "command": "check-slide-contains 2 \"Build a REST API in 30 minutes\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 contains expected body text"
+    },
+    {
+      "command": "check-notes-contain 2 \"Ensure all attendees have Node.js installed\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 3 notes contain expected text"
+    },
+    {
+      "command": "check-slide-title 3 \"Hands-On Lab 2\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 4 title is 'Hands-On Lab 2'"
+    },
+    {
+      "command": "check-slide-contains 3 \"Deploy to Kubernetes cluster\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 contains expected body text"
+    },
+    {
+      "command": "check-slide-title 4 \"Hands-On Lab 3\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 5 title is 'Hands-On Lab 3'"
+    },
+    {
+      "command": "check-slide-contains 4 \"Set up CI/CD pipeline with GitHub Actions\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 5 contains expected body text"
+    },
+    {
+      "command": "check-slide-title 5 \"Wrap Up\"",
+      "key": "match",
+      "expected": true,
+      "description": "Slide 6 title is 'Wrap Up'"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/workshop_slides.pptx",
+      "key": "exists",
+      "expected": true,
+      "description": "File has been saved to disk"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  }
+}

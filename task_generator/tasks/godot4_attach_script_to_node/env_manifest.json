@@ -1,0 +1,25 @@
+{
+  "task_id": "godot4_attach_script_to_node",
+  "files": [
+    {
+      "filename": "project.godot",
+      "sandbox_path": "/home/user/godot_projects/script_game/project.godot",
+      "type": "godot"
+    },
+    {
+      "filename": "main.tscn",
+      "sandbox_path": "/home/user/godot_projects/script_game/main.tscn",
+      "type": "tscn"
+    },
+    {
+      "filename": "scripts/player.gd",
+      "sandbox_path": "/home/user/godot_projects/script_game/scripts/player.gd",
+      "type": "gd"
+    },
+    {
+      "filename": "icon.svg",
+      "sandbox_path": "/home/user/godot_projects/script_game/icon.svg",
+      "type": "svg"
+    }
+  ]
+}

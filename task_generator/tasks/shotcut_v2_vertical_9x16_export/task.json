@@ -1,0 +1,29 @@
+{
+  "id": "shotcut_v2_vertical_9x16_export",
+  "app": "shotcut",
+  "task": "A Shotcut project exists at /home/user/Documents/reels.mlt with vertical 1080x1920 resolution and 30 fps. The V1 timeline track contains one clip referencing /home/user/Videos/reels_source.mp4.\n\nExport the timeline to a vertical MP4 file:\n1. Use the default H.264 export preset.\n2. The export must inherit the project's 1080x1920 resolution and 30 fps (do not override width/height/frame rate).\n3. Set the output path to /home/user/Videos/reels_final.mp4.\n4. Complete the export.\n\nThe output file /home/user/Videos/reels_final.mp4 must be a valid H.264 MP4 with 1080x1920 resolution.",
+  "env": {
+    "files": [
+      {"filename": "reels.mlt", "sandbox_path": "/home/user/Documents/reels.mlt"},
+      {"filename": "reels_source.mp4", "sandbox_path": "/home/user/Videos/reels_source.mp4"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Videos/reels_final.mp4", "key": "exists", "expected": true, "description": "Exported file exists"},
+    {"command": "check-export-output /home/user/Videos/reels_final.mp4", "key": "valid", "expected": true, "description": "Exported file is a valid non-empty media file"},
+    {"command": "check-export-codec /home/user/Videos/reels_final.mp4 h264 video", "key": "match", "expected": true, "description": "Exported video codec is h264"},
+    {"command": "check-export-resolution /home/user/Videos/reels_final.mp4 1080 1920", "key": "match", "expected": true, "description": "Exported resolution is 1080x1920 (vertical 9:16)"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open reels.mlt, export render reels_final.mp4 --preset default",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, export render. Uses ffmpeg/melt in Docker environment. Export inherits project vertical resolution (1080x1920) automatically."
+  }
+}

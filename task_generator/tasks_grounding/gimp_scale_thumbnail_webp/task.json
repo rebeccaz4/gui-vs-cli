@@ -1,0 +1,46 @@
+{
+  "id": "gimp_scale_thumbnail_webp",
+  "app": "gimp",
+  "task": "Scale /home/user/Documents/big_photo.png down to 300x200 pixels and export as WebP to /home/user/Documents/thumb.webp.",
+  "task_grounding": "Open /home/user/Documents/big_photo.png (a 1200x800 photo) in GIMP. Scale the image down to 300x200 pixels (Image > Scale Image), then export the scaled thumbnail as a WebP file to /home/user/Documents/thumb.webp.",
+  "env": {
+    "files": [
+      {
+        "filename": "big_photo.png",
+        "sandbox_path": "/home/user/Documents/big_photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/thumb.webp",
+      "key": "exists",
+      "expected": true,
+      "description": "Thumbnail WebP exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/thumb.webp WEBP",
+      "key": "match",
+      "expected": true,
+      "description": "Output is WEBP format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/thumb.webp 300 200",
+      "key": "match",
+      "expected": true,
+      "description": "Thumbnail dimensions are 300x200"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: convert input.png -resize 640x480 output.jpg",
+    "reason": "Resize/scaling is basic ImageMagick feature"
+  }
+}

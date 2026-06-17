@@ -1,0 +1,10 @@
+{
+  "task_id": "drawio_fix_and_color_workflow",
+  "files": [
+    {
+      "filename": "wf_fix.drawio",
+      "sandbox_path": "/home/user/Documents/wf_fix.drawio",
+      "type": "drawio"
+    }
+  ]
+}

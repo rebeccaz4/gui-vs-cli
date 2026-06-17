@@ -1,0 +1,73 @@
+{
+  "id": "libreoffice_writer_employee_directory",
+  "app": "libreoffice_writer",
+  "task": "Create an employee directory in LibreOffice Writer. Add a Heading 1 'Employee Directory'. Add a Heading 2 'Engineering Department'. Insert a table named 'Table1' with 5 rows and 4 columns. Header: 'Name', 'Title', 'Email', 'Extension'. Row 2: 'Alice Wang', 'Lead Engineer', 'alice@company.com', '1001'. Row 3: 'Bob Martinez', 'Senior Developer', 'bob@company.com', '1002'. Row 4: 'Carol Singh', 'DevOps Engineer', 'carol@company.com', '1003'. Row 5: 'David Kim', 'Junior Developer', 'david@company.com', '1004'. Add a Heading 2 'Marketing Department'. Insert a table named 'Table2' with 4 rows and 4 columns. Header: 'Name', 'Title', 'Email', 'Extension'. Row 2: 'Eva Brown', 'Marketing Manager', 'eva@company.com', '2001'. Row 3: 'Frank Lee', 'Content Writer', 'frank@company.com', '2002'. Row 4: 'Grace Patel', 'Social Media Lead', 'grace@company.com', '2003'. Save as /home/user/Documents/employee_directory.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/employee_directory.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-heading-exists \"Employee Directory\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 exists"
+    },
+    {
+      "command": "check-heading-exists \"Engineering Department\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Engineering"
+    },
+    {
+      "command": "check-heading-exists \"Marketing Department\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 Marketing"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "len(result.get('tables', [])) >= 2",
+      "description": "At least 2 tables"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "result['tables'][0].get('rows', 0) == 5 and result['tables'][0].get('cols', 0) == 4",
+      "description": "Table1: 5 rows, 4 cols"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "result['tables'][0]['data'][1][0] == 'Alice Wang'",
+      "description": "Table1 Row 2: Alice Wang"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "result['tables'][0]['data'][4][3] == '1004'",
+      "description": "Table1 Row 5 ext: 1004"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "result['tables'][1]['data'][1][0] == 'Eva Brown'",
+      "description": "Table2 Row 2: Eva Brown"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/employee_directory.odt",
+      "eval": "result['tables'][1]['data'][3][2] == 'grace@company.com'",
+      "description": "Table2 Row 4: grace email"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/employee_directory.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

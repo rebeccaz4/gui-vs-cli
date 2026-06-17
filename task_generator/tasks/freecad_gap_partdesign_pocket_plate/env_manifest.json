@@ -1,0 +1,10 @@
+{
+  "task_id": "freecad_gap_partdesign_pocket_plate",
+  "files": [
+    {
+      "filename": "plate_start.FCStd",
+      "sandbox_path": "/home/user/Documents/plate_start.FCStd",
+      "type": "fcstd"
+    }
+  ]
+}

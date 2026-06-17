@@ -1,0 +1,6 @@
+{
+  "task_id": "writer_edit_existing_table_data",
+  "files": [
+    {"filename": "sales_report.odt", "sandbox_path": "/home/user/Documents/sales_report.odt", "type": "odt"}
+  ]
+}

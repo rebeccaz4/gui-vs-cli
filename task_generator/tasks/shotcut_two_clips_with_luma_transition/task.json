@@ -1,0 +1,59 @@
+{
+  "id": "shotcut_two_clips_with_luma_transition",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/transition_project.mlt (1920x1080, 30 fps). Two short video files exist at /home/user/Videos/alpha.mp4 and /home/user/Videos/beta.mp4.\n\nActions required:\n1. Add alpha.mp4 and beta.mp4 to the project.\n2. Place alpha.mp4 on the V1 timeline track at the start (time 00:00:00.000).\n3. Place beta.mp4 on the same V1 track so its start overlaps the end of alpha.mp4 by a small amount (about half a second). This will automatically create a dissolve transition in the overlap region.\n4. Save the project.\n\nThe saved project must reference both clips and must contain a 'luma' transition.",
+  "env": {
+    "files": [
+      {
+        "filename": "transition_project.mlt",
+        "sandbox_path": "/home/user/Documents/transition_project.mlt"
+      },
+      {
+        "filename": "alpha.mp4",
+        "sandbox_path": "/home/user/Videos/alpha.mp4"
+      },
+      {
+        "filename": "beta.mp4",
+        "sandbox_path": "/home/user/Videos/beta.mp4"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/transition_project.mlt",
+      "key": "exists",
+      "expected": true,
+      "description": "Project file exists"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/transition_project.mlt alpha.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "alpha.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-clip-exists /home/user/Documents/transition_project.mlt beta.mp4",
+      "key": "exists",
+      "expected": true,
+      "description": "beta.mp4 is referenced in the project"
+    },
+    {
+      "command": "check-transition-exists /home/user/Documents/transition_project.mlt luma",
+      "key": "exists",
+      "expected": true,
+      "description": "A luma (dissolve) transition is present"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use CLI: project open transition_project.mlt, media probe alpha.mp4 to get duration, timeline add-clip alpha.mp4 --track 1 --in 00:00:00.000, timeline add-clip beta.mp4 --track 1 --at [calculated_overlap_time], project save",
+    "reason": "⚠️ Partially feasible but complex. CLI-Anything can add clips at specific times to create overlap, which generates luma transitions automatically. However, requires calculating overlap timing manually. Task mentions GUI concepts (drag, overlap) but CLI can achieve same result with precise timecode placement."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "shotcut_v2_export_audio_aac_mp4",
+  "app": "shotcut",
+  "task": "Shotcut is already open with /home/user/Documents/aac_export.mlt \u2014 a 1280x720 30 fps project that already contains one clip on the V1 timeline track referencing /home/user/Videos/with_audio.mp4 (which has both video and audio).\n\nExport the timeline to /home/user/Videos/audio_out.mp4 with H.264 video codec and AAC audio codec. Wait for the export to complete before finishing.",
+  "env": {
+    "files": [
+      {"filename": "aac_export.mlt", "sandbox_path": "/home/user/Documents/aac_export.mlt"},
+      {"filename": "with_audio.mp4", "sandbox_path": "/home/user/Videos/with_audio.mp4"}
+    ]
+  },
+  "verification": [
+    {"command": "check-file-exists /home/user/Videos/audio_out.mp4", "key": "exists", "expected": true, "description": "Exported audio_out.mp4 exists"},
+    {"command": "check-export-output /home/user/Videos/audio_out.mp4", "key": "valid", "expected": true, "description": "Exported file is valid and non-empty"},
+    {"command": "check-export-codec /home/user/Videos/audio_out.mp4 h264 video", "key": "match", "expected": true, "description": "Exported video codec is h264"},
+    {"command": "check-export-codec /home/user/Videos/audio_out.mp4 aac audio", "key": "match", "expected": true, "description": "Exported audio codec is aac"}
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 4,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "no",
+    "translation": "Use CLI: project open aac_export.mlt, export render audio_out.mp4 --preset default",
+    "reason": "✅ Fully supported by CLI-Anything shotcut skills: project open, export render. Uses ffmpeg/melt in Docker environment. Default preset produces H.264 video + AAC audio automatically."
+  }
+}

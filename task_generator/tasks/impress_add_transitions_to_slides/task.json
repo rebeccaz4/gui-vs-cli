@@ -1,0 +1,63 @@
+{
+  "id": "impress_add_transitions_to_slides",
+  "app": "libreoffice_impress",
+  "task": "Open the file /home/user/Documents/sales_pitch.pptx in LibreOffice Impress. This presentation has 4 slides with titles: 'Our Solution', 'Market Opportunity', 'Business Model', 'Call to Action'.\n\nAdd a slide transition effect to every slide in the presentation. Add speaker notes to Slide 4 ('Call to Action'): 'Ask for questions and distribute business cards.'\n\nThe presentation should still have exactly 4 slides when you are done. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "sales_pitch.pptx",
+        "sandbox_path": "/home/user/Documents/sales_pitch.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-slide-count 4",
+      "key": "match",
+      "expected": true,
+      "description": "Presentation still has exactly 4 slides"
+    },
+    {
+      "command": "check-has-transition 0",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 1 has a transition effect applied"
+    },
+    {
+      "command": "check-has-transition 1",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 2 has a transition effect applied"
+    },
+    {
+      "command": "check-has-transition 2",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 3 has a transition effect applied"
+    },
+    {
+      "command": "check-has-transition 3",
+      "key": "has_transition",
+      "expected": true,
+      "description": "Slide 4 has a transition effect applied"
+    },
+    {
+      "command": "check-notes-contain 3 \"Ask for questions and distribute business cards\"",
+      "key": "contains",
+      "expected": true,
+      "description": "Slide 4 notes contain 'Ask for questions and distribute business cards'"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/sales_pitch.pptx",
+      "key": "exists",
+      "expected": true,
+      "description": "File has been saved to disk"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 4,
+    "verification_determinism": 4,
+    "estimated_difficulty": 3
+  }
+}

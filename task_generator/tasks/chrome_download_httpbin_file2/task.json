@@ -1,0 +1,28 @@
+{
+  "id": "chrome_download_httpbin_file2",
+  "app": "chrome",
+  "task": "Download and save two images from httpbin.org to the Downloads folder:\n1. JPEG image from https://httpbin.org/image/jpeg → save as 'httpbin_image.jpeg'\n2. PNG image from https://httpbin.org/image → save as 'httpbin_image.png'\n\nBoth files must exist in /home/user/Downloads/ with the exact filenames specified.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Downloads/httpbin_image.jpeg",
+      "key": "exists",
+      "expected": true,
+      "description": "JPEG image saved as httpbin_image.jpeg in Downloads"
+    },
+    {
+      "command": "check-file-exists /home/user/Downloads/httpbin_image.png",
+      "key": "exists",
+      "expected": true,
+      "description": "PNG image saved as httpbin_image.png in Downloads"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 4,
+    "estimated_difficulty": 4
+  }
+}

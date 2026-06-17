@@ -1,0 +1,64 @@
+{
+  "id": "gimp_rotate_180_tiff_export",
+  "app": "gimp",
+  "task": "Rotate /home/user/Documents/quadrants.png 180 degrees and export the result to /home/user/Documents/quadrants_rotated.tiff.",
+  "task_grounding": "Open /home/user/Documents/quadrants.png (400x400 image with four colored quadrants: top-left red, top-right green, bottom-left blue, bottom-right yellow) in GIMP. Rotate the entire image 180 degrees (Image > Transform > Rotate 180). Then export the rotated result as a TIFF file to /home/user/Documents/quadrants_rotated.tiff. The output must remain 400x400 pixels.",
+  "env": {
+    "files": [
+      {
+        "filename": "quadrants.png",
+        "sandbox_path": "/home/user/Documents/quadrants.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/quadrants_rotated.tiff",
+      "key": "exists",
+      "expected": true,
+      "description": "Output TIFF exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/quadrants_rotated.tiff TIFF",
+      "key": "match",
+      "expected": true,
+      "description": "Output file is TIFF format"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/quadrants_rotated.tiff 400 400",
+      "key": "match",
+      "expected": true,
+      "description": "Output dimensions are 400x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/quadrants_rotated.tiff 50 50 255 255 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (50,50) is now yellow (was bottom-right before 180 rotation)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/quadrants_rotated.tiff 350 350 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (350,350) is now red (was top-left before 180 rotation)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/quadrants_rotated.tiff 50 350 0 255 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "Pixel (50,350) is now green (was top-right before 180 rotation)"
+    }
+  ],
+  "metadata": {
+    "complexity": 4,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 4
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "Use ImageMagick: convert input.png -rotate 180 output.tiff",
+    "reason": "Rotation is standard ImageMagick operation"
+  }
+}

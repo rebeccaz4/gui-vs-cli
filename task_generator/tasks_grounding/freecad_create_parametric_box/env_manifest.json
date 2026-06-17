@@ -1,0 +1,6 @@
+{
+  "task_id": "freecad_create_parametric_box",
+  "files": [
+    {"filename": "part.FCStd", "sandbox_path": "/home/user/Documents/part.FCStd", "type": "fcstd"}
+  ]
+}

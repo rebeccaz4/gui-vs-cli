@@ -1,0 +1,46 @@
+{
+  "id": "zotero_subcollection_neural",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. In the collections pane under 'My Library' there is an existing collection named 'AI Research'. Create a subcollection named exactly 'Neural Networks' as a direct child of 'AI Research', not a sibling. Leave Zotero running so the new subcollection is saved.",
+  "task_grounding": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. In the collections pane under 'My Library' there is an existing collection named 'AI Research'. Right-click it and pick 'New Subcollection' (or use the corresponding menu) and create a subcollection named exactly 'Neural Networks'. The new collection must be a direct child of 'AI Research', not a sibling. Leave Zotero running so the new subcollection is saved.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Zotero/zotero.sqlite",
+      "key": "exists",
+      "expected": true,
+      "description": "zotero.sqlite exists"
+    },
+    {
+      "command": "check-collection-exists 'Neural Networks'",
+      "key": "exists",
+      "expected": true,
+      "description": "'Neural Networks' collection exists"
+    },
+    {
+      "command": "check-subcollection 'AI Research' 'Neural Networks'",
+      "key": "is_subcollection",
+      "expected": true,
+      "description": "'Neural Networks' is a subcollection of 'AI Research'"
+    }
+  ],
+  "metadata": {
+    "complexity": 3,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 3
+  },
+  "cli_feasibility": {
+    "feasible": "yes",
+    "is_gui_oriented": "yes",
+    "translation": "cli-anything-zotero --json collection find 'AI Research' && cli-anything-zotero --json collection create 'Neural Networks' --parent <parent_collection_key> --experimental",
+    "reason": "CLI-Anything supports creating subcollections via the experimental 'collection create' command with a --parent parameter. First find the parent collection key, then create the subcollection. Requires Zotero to be closed."
+  }
+}

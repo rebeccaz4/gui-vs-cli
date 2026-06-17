@@ -1,0 +1,90 @@
+{
+  "id": "libreoffice_writer_user_manual_v2",
+  "app": "libreoffice_writer",
+  "task": "Create a new LibreOffice Writer document and build a user manual for a product called CloudSync Pro. The document must contain: a Heading 1 'CloudSync Pro User Manual' at the top; a Heading 2 'Installation' followed by a paragraph of at least 25 words describing how to install the app; a Heading 2 'Features' followed by a feature comparison table named Table1 with 5 rows and 3 columns: header row 'Feature', 'Free', 'Pro'; row 2 'Cloud Storage', '5 GB', '1 TB'; row 3 'Sync Devices', '2', '10'; row 4 'Support', 'Email', '24/7 Chat'; row 5 'Offline Mode', 'No', 'Yes'; a Heading 2 'Frequently Asked Questions' followed by a second table Table2 with 5 rows and 2 columns: header row 'Question', 'Answer'; row 2 'How do I reset my password', 'Use the forgot password link on login'; row 3 'Is my data encrypted', 'Yes, AES-256 at rest and TLS in transit'; row 4 'Can I cancel anytime', 'Yes, from your account settings'; row 5 'What platforms are supported', 'Windows, macOS, Linux, iOS, Android'. Enable the page header and set its text to 'CloudSync Pro v3.2 - User Manual'. Enable the page footer and set its text to 'Confidential'. Save the document to /home/user/Documents/cloudsync_manual.odt.",
+  "env": {
+    "files": [],
+    "reload_files": [
+      "/home/user/Documents/cloudsync_manual.odt"
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/cloudsync_manual.odt",
+      "key": "exists",
+      "expected": true,
+      "description": "cloudsync_manual.odt exists on disk"
+    },
+    {
+      "command": "check-heading-exists \"CloudSync Pro User Manual\" 1",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 1 exists"
+    },
+    {
+      "command": "check-heading-exists Installation 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Installation'"
+    },
+    {
+      "command": "check-heading-exists Features 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Features'"
+    },
+    {
+      "command": "check-heading-exists \"Frequently Asked Questions\" 2",
+      "key": "exists",
+      "expected": true,
+      "description": "Heading 2 'Frequently Asked Questions'"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/cloudsync_manual.odt",
+      "eval": "len(result.get('tables', [])) >= 2",
+      "description": "At least 2 tables exist"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/cloudsync_manual.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Feature', 'Free', 'Pro'] for t in result.get('tables', []))",
+      "description": "Feature comparison header row"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/cloudsync_manual.odt",
+      "eval": "any(len(t.get('data', [])) >= 5 and t['data'][1][2] == '1 TB' for t in result.get('tables', []))",
+      "description": "Pro tier cloud storage is 1 TB"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/cloudsync_manual.odt",
+      "eval": "any(t.get('data', [[]])[0] == ['Question', 'Answer'] for t in result.get('tables', []))",
+      "description": "FAQ table header row"
+    },
+    {
+      "command": "parse-tables /home/user/Documents/cloudsync_manual.odt",
+      "eval": "any(len(t.get('data', [])) >= 5 and 'AES-256' in t['data'][2][1] for t in result.get('tables', []))",
+      "description": "FAQ mentions AES-256 encryption"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "'CloudSync Pro v3.2' in result.get('header_text', '') and 'User Manual' in result.get('header_text', '')",
+      "description": "Header text is correct"
+    },
+    {
+      "command": "headers-footers",
+      "eval": "result.get('footer_text', '').strip() == 'Confidential'",
+      "description": "Footer text is 'Confidential'"
+    },
+    {
+      "command": "check-word-count 120",
+      "key": "in_range",
+      "expected": true,
+      "description": "Document has at least 120 words"
+    }
+  ],
+  "metadata": {
+    "complexity": 5,
+    "data_generatability": 5,
+    "verification_determinism": 5,
+    "estimated_difficulty": 5
+  }
+}

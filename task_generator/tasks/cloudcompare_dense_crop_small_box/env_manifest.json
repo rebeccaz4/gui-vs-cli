@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_dense_crop_small_box",
+  "files": [
+    {
+      "filename": "dense_field.ply",
+      "sandbox_path": "/home/user/Documents/dense_field.ply",
+      "type": "ply"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "calc_export_inventory_to_html",
+  "files": [
+    {"filename": "inventory.xlsx", "sandbox_path": "/home/user/Documents/inventory.xlsx", "type": "xlsx"}
+  ]
+}

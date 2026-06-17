@@ -1,0 +1,15 @@
+{
+  "task_id": "shotcut_720p_project_single_clip",
+  "files": [
+    {
+      "filename": "travel.mlt",
+      "sandbox_path": "/home/user/Documents/travel.mlt",
+      "type": "mlt"
+    },
+    {
+      "filename": "beach.mp4",
+      "sandbox_path": "/home/user/Videos/beach.mp4",
+      "type": "mp4"
+    }
+  ]
+}

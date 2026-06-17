@@ -1,0 +1,10 @@
+{
+  "task_id": "zotero_gap_advanced_search_export_results",
+  "files": [
+    {
+      "filename": "zotero.sqlite",
+      "sandbox_path": "/home/user/Zotero/zotero.sqlite",
+      "type": "sqlite"
+    }
+  ]
+}
