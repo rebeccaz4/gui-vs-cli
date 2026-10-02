@@ -1,0 +1,132 @@
+{
+  "id": "renderdoc_sa_keep_largest",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config; /home/user/captures holds three captures of different sizes. Switch the UI to the Dark style with a global font scale of 1.15, set the monospace font family to 'DejaVu Sans Mono' and prefer monospaced fonts. Move the largest capture into a new folder /home/user/captures/keep/, make that folder the default capture save directory, and set the last capture path to the moved file. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "tiny.rdc",
+        "sandbox_path": "/home/user/captures/tiny.rdc"
+      },
+      {
+        "filename": "medium.rdc",
+        "sandbox_path": "/home/user/captures/medium.rdc"
+      },
+      {
+        "filename": "large.rdc",
+        "sandbox_path": "/home/user/captures/large.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-theme Dark",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle Dark"
+    },
+    {
+      "command": "check-font-scale 1.15",
+      "key": "match",
+      "expected": true,
+      "description": "font scale 1.15"
+    },
+    {
+      "command": "check-setting Font_MonoFamily 'DejaVu Sans Mono'",
+      "key": "match",
+      "expected": true,
+      "description": "Font_MonoFamily = DejaVu Sans Mono"
+    },
+    {
+      "command": "check-setting Font_PreferMonospaced true",
+      "key": "match",
+      "expected": true,
+      "description": "Font_PreferMonospaced = true"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/keep/large.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/keep/large.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/large.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/large.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/medium.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/medium.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/tiny.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/tiny.rdc"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/captures/keep",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory = /home/user/captures/keep"
+    },
+    {
+      "command": "check-setting LastCaptureFilePath /home/user/captures/keep/large.rdc",
+      "key": "match",
+      "expected": true,
+      "description": "LastCaptureFilePath = /home/user/captures/keep/large.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_appearance_monospace_profile",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_appearance_monospace_profile",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "tiny.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "medium.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "large.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "switch to list view (sizes)",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "select files (click / Ctrl+click)",
+      "Ctrl+X",
+      "open target folder",
+      "Ctrl+V",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 14
+  }
+}

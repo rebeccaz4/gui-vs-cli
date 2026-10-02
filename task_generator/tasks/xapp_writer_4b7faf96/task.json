@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_4b7faf96",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/print_prep.docx in LibreOffice Writer and read the print preparation checklist. Apply each step to /home/user/Desktop/poster.png in GIMP (convert to CMYK simulation, set resolution to 300 DPI, add a 3mm bleed) and export as /home/user/Desktop/poster_print_ready.pdf.",
+  "env": {
+    "files": [
+      {
+        "filename": "print_prep.docx",
+        "sandbox_path": "/home/user/print_prep.docx"
+      },
+      {
+        "filename": "poster.png",
+        "sandbox_path": "/home/user/Desktop/poster.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "4b7faf96-e6c6-5a2d-9bc5-4d22d3eb8a91",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Open 'print_prep.docx' in LibreOffice Writer and read the print preparation checklist. Apply each step to 'poster.png' in GIMP (convert to CMYK simulation, set resolution to 300 DPI, add a 3mm bleed) and export as 'poster_print_ready.pdf'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

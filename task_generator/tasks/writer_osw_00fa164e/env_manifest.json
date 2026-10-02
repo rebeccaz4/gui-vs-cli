@@ -1,0 +1,15 @@
+{
+  "task_id": "writer_osw_00fa164e",
+  "files": [
+    {
+      "filename": "awe_desk_env.docx",
+      "sandbox_path": "/home/user/Documents/awesome-desktop/awe_desk_env.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "expe-results.xlsx",
+      "sandbox_path": "/home/user/Documents/awesome-desktop/expe-results.xlsx",
+      "type": "xlsx"
+    }
+  ]
+}

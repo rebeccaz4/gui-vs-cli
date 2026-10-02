@@ -1,0 +1,66 @@
+{
+  "id": "freecad_cw_part_056",
+  "app": "freecad",
+  "task": "Create a Part workbench box sized 36 mm along global X, 24 mm along global Y, and 12 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 36, Y = 0 to 24, and Z = 0 to 12. Apply a Part Offset Shape to the box with Offset = 2 mm outward, Mode = Skin, Join type = Tangent/Arc. Keep FreeCAD's default label 'Cube' for the Part box. Save the completed model to /home/user/Unnamed.FCStd.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Unnamed.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "Output model saved at /home/user/Unnamed.FCStd"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM2LjAsInhtYXgiOjM2LjAsInhtaW4iOjAsInkiOjI0LjAsInltYXgiOjI0LjAsInltaW4iOjAsInoiOjEyLjAsInptYXgiOjEyLjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOC4wLCJ5IjoxMi4wLCJ6Ijo2LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTIsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzYsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI0LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjozMTY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjozMS42OH0sInR5cGUiOiJQYXJ0OjpCb3giLCJ2b2x1bWUiOnsiZXhwZWN0ZWQiOjEwMzY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjoxMDMuNjh9fSx7ImxhYmVsX2NvbnRhaW5zIjoiT2Zmc2V0IiwicHJvcGVydGllcyI6eyJKb2luIjp7ImV4cGVjdGVkIjowLCJ0b2xlcmFuY2UiOjAuMX0sIk1vZGUiOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiU291cmNlIjp7ImVxdWFscyI6IkJveCJ9LCJWYWx1ZSI6eyJleHBlY3RlZCI6MiwidG9sZXJhbmNlIjowLjE1fX0sInR5cGUiOiJQYXJ0OjpPZmZzZXQifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiUGFydDo6Qm94IiwiT2Zmc2V0Il19fQ==",
+      "eval": "result.get('checks', {}).get('required_type_contains') is True",
+      "description": "CADWorld check: required_type_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM2LjAsInhtYXgiOjM2LjAsInhtaW4iOjAsInkiOjI0LjAsInltYXgiOjI0LjAsInltaW4iOjAsInoiOjEyLjAsInptYXgiOjEyLjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOC4wLCJ5IjoxMi4wLCJ6Ijo2LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTIsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzYsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI0LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjozMTY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjozMS42OH0sInR5cGUiOiJQYXJ0OjpCb3giLCJ2b2x1bWUiOnsiZXhwZWN0ZWQiOjEwMzY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjoxMDMuNjh9fSx7ImxhYmVsX2NvbnRhaW5zIjoiT2Zmc2V0IiwicHJvcGVydGllcyI6eyJKb2luIjp7ImV4cGVjdGVkIjowLCJ0b2xlcmFuY2UiOjAuMX0sIk1vZGUiOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiU291cmNlIjp7ImVxdWFscyI6IkJveCJ9LCJWYWx1ZSI6eyJleHBlY3RlZCI6MiwidG9sZXJhbmNlIjowLjE1fX0sInR5cGUiOiJQYXJ0OjpPZmZzZXQifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiUGFydDo6Qm94IiwiT2Zmc2V0Il19fQ==",
+      "eval": "result.get('checks', {}).get('object_0') is True",
+      "description": "CADWorld check: object_0"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM2LjAsInhtYXgiOjM2LjAsInhtaW4iOjAsInkiOjI0LjAsInltYXgiOjI0LjAsInltaW4iOjAsInoiOjEyLjAsInptYXgiOjEyLjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOC4wLCJ5IjoxMi4wLCJ6Ijo2LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTIsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzYsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI0LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjozMTY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjozMS42OH0sInR5cGUiOiJQYXJ0OjpCb3giLCJ2b2x1bWUiOnsiZXhwZWN0ZWQiOjEwMzY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjoxMDMuNjh9fSx7ImxhYmVsX2NvbnRhaW5zIjoiT2Zmc2V0IiwicHJvcGVydGllcyI6eyJKb2luIjp7ImV4cGVjdGVkIjowLCJ0b2xlcmFuY2UiOjAuMX0sIk1vZGUiOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiU291cmNlIjp7ImVxdWFscyI6IkJveCJ9LCJWYWx1ZSI6eyJleHBlY3RlZCI6MiwidG9sZXJhbmNlIjowLjE1fX0sInR5cGUiOiJQYXJ0OjpPZmZzZXQifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiUGFydDo6Qm94IiwiT2Zmc2V0Il19fQ==",
+      "eval": "result.get('checks', {}).get('object_1') is True",
+      "description": "CADWorld check: object_1"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM2LjAsInhtYXgiOjM2LjAsInhtaW4iOjAsInkiOjI0LjAsInltYXgiOjI0LjAsInltaW4iOjAsInoiOjEyLjAsInptYXgiOjEyLjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOC4wLCJ5IjoxMi4wLCJ6Ijo2LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTIsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzYsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI0LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjozMTY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjozMS42OH0sInR5cGUiOiJQYXJ0OjpCb3giLCJ2b2x1bWUiOnsiZXhwZWN0ZWQiOjEwMzY4LjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjoxMDMuNjh9fSx7ImxhYmVsX2NvbnRhaW5zIjoiT2Zmc2V0IiwicHJvcGVydGllcyI6eyJKb2luIjp7ImV4cGVjdGVkIjowLCJ0b2xlcmFuY2UiOjAuMX0sIk1vZGUiOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiU291cmNlIjp7ImVxdWFscyI6IkJveCJ9LCJWYWx1ZSI6eyJleHBlY3RlZCI6MiwidG9sZXJhbmNlIjowLjE1fX0sInR5cGUiOiJQYXJ0OjpPZmZzZXQifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiUGFydDo6Qm94IiwiT2Zmc2V0Il19fQ==",
+      "key": "passed",
+      "expected": true,
+      "description": "CADWorld all-checks verdict (source benchmark's binary success)"
+    }
+  ],
+  "metadata": {
+    "source": "CADWorld (ICLR 2026), https://github.com/Zdong104/CADWORLD",
+    "source_task_id": "freecad-part-056",
+    "source_license": "Apache-2.0",
+    "source_domain": "part",
+    "source_subsets": "60+small",
+    "source_evaluator_criteria": [
+      "The saved file must exist at /home/user/Unnamed.FCStd.",
+      "The model should start from a 36 mm by 24 mm by 12 mm Part box aligned to global X, Y, and Z.",
+      "The model should contain a Part Offset Shape with 2 mm outward offset, Mode = Skin, and Join type = Tangent/Arc.",
+      "The evaluator checks the concrete source box dimensions and offset object properties extracted from the created FCStd file."
+    ],
+    "fc019_compat": "yes",
+    "fc019_compat_note": "",
+    "instruction_edits": [
+      {
+        "replaced": "Create a Part workbench box sized 36 mm along global X, 24 mm along global Y, and 12 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 36, Y = 0 to 24, and Z = 0 to 12. Apply a Part Offset Shape to the box with Offset = 2 mm outward, Mode = Skin, Join type = Tangent/Arc. Save the completed model to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the box label to contain 'Cube' (FreeCAD GUI default), which the instruction did not say (wording review 2026-09-30)"
+      },
+      {
+        "replaced": "Create a Part workbench box sized 36 mm along global X, 24 mm along global Y, and 12 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 36, Y = 0 to 24, and Z = 0 to 12. Apply a Part Offset Shape to the box with Offset = 2 mm outward, Mode = Skin, Join type = Tangent/Arc. Keep FreeCAD's default label 'Cube' for the Part box (the checker looks for it). Save the completed model to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the box label to contain 'Cube' (FreeCAD GUI default), which the instruction did not say (wording review 2026-09-30)"
+      }
+    ]
+  },
+  "cli_feasibility": {
+    "feasible": "needs-skill-fix",
+    "reason": "cli-anything-freecad exposes the needed operations, but its `export render --preset fcstd` writes a synthetic Document.xml (no sketch geometry, generic Part::Feature/PartDesign::Feature types), so CADWorld structure checks fail; see update/validation/README.md section 3"
+  }
+}

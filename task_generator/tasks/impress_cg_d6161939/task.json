@@ -1,0 +1,37 @@
+{
+  "id": "impress_cg_d6161939",
+  "app": "libreoffice_impress",
+  "task": "Create a strategy roadmap slide at position 9 of the presentation. Design a horizontal timeline spanning Q1-Q4 2026 with 6 initiative blocks placed across the quarters: 'Platform Redesign (Q1-Q2)', 'Mobile App Launch (Q2)', 'APAC Expansion (Q2-Q3)', 'AI Features (Q3-Q4)', 'Enterprise Tier (Q3)', 'IPO Prep (Q4)'. The file to work on is /home/user/impress_ps_019.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_ps_019.pptx",
+        "sandbox_path": "/home/user/impress_ps_019.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNq9We9u2zgS/66nGLgfbO8miu04RWtsFjASF2ds2yROuovDXmHQNh0TlSWtSDXJBi7uIe4J70luhqIkSrIcpznUH+KYHM7/+XFINhoNZ8LvWLSA63kkQjWAaxUxxW8fIArYYs1CkJ5YcLgTagWrIBJ/B75iHiix5p7wOTB/AcIXSjAlvnKYecH8i3RumPwC4/MBiHUYcSmnoZx2um+d82DNhD8AT8wiHiyXYs6nhsS5niN7/3bgABzCWbAOA5/7CrrQ6ri9TnsA74I4gr9iFikegcdm3JNw1T286gMxINrAN+q+LTHpEZMTYjL0PHhd1TgxEDWI+FyBz9ZcllgcE4vuCbIYVxaziONaL4j4AuSKhVxCSwaoCSyF57VLnPq1nEDxewVLdDFI8TeHb91eqJwGRslBLwURWiidZRSsIQzVPZixy8R65BP4+azL/XjtGm0M5Yfri+n1P4aXo+nNPy9HjvPHxeS38/EETqF5tArW/CiWPGo6N8Pr36bjcxouxq/pOK/gZsXRgxH/KxZkb+5KNHrN1HwFsweQ8UwqCieoAGYcyaXwBFmPv9fCD6LE1q8sElpx2XYmo6tP48nofDr+OL4ZD2/Gv4+uUYc/0X0AzUuPqWUQrWHCF8js1m8eJBMfgpnwOAzDEN6z2J+v0onh5fAMRvch8yUKyEbH8I4zFaNG6dDIx4wKIyE53Ah0gBkeX16Qb0P8/dnJtbv6NJzcjCZateZVt3kAzaue/nus//abSO0s+BJuuZoyz5uSpdMkEi2dn+2BloCBnfB5HEl0nvdA5IDkaQbpjKSlB+jjuRcvyJu3URCHMF8JbxFx36XUIE4kDSkjNlctvdxIoA8aGntKkrqfs0GxhBWTTKkooUfFSVSzrQt629R0GWFVNC3GFnOXhSH3F0b2LimJcWU2GFhKGTQ0sd7kbZHIlocKkbzM5njWblsWY3j9lFYPB7HKHaClkQAtjwJSkYf0FRnatkSKkYBUJtRfeSSWD1OFuNfCmufTkKlVHmb9/bumAaJBtFiHHqfET+IcRsEtFRpBgUyA0NWLJlqSHMDSC5jCUlJ3nPvQcTs6Ul23U5ChAkTnKXHgaC9SOclw9JDbFkaUDDZqWCprKn4/56HC2qEv0pFJ4DYD4avWsnE2wTo9G74fwBnz/UABqqghj8NjxnEzgEe+abRLqxuT0R/DCe4QqGOjErpM8VdwtuIIjAmsz4MYEaS1jqXCxEJXoUc8zvDX24RCJpww7zzut9BQ1wzDL/B2lwG2NyhncSvBinwscdkYKQfgc4S+XPr3mpeYdQq5jD/ffCarO4fCX/B7vjiwdjQgeDBAgovq4SXzXeB5tJ8Rqmi4nePWQiBMqWP4UDEwn3kPUiSlYrGrKZlci9ylmv2pqV764RL+h602BSMfBdy0OTSbNkTQeLHSLRVSZEkBhKbaloFZmzCAq12tgW4iIAwwOCZJ9E6Gyuhswi1K8pBR7wNGT77GdbinUWLjDO69S7tv0D1Cu1pdS8zRxdS0KeRByVWr7RSQLjeF3GlZW3TDHLPLRw62OwsE6LyEBrlU9qcqeBZVc9li0dLLjTvpYyanSaWd6jIqLiuge4n8FPpFqWmhXQ6vrweFpu6///6P7sX65Y5OS0PMkNiw8EVZ+CYNJEaxUXSGDX0/E/b1Otk89qplZX+FTklXnBXY2p5i64syEzk/lVYdQf8Aeu0aIyfYtryv2vlY4LE5er7Nj0a5zR6GG1LLdsm3R+XdcLxF249BWb2WLqV2oqbVZDeetVuMJpOLyRbn6M2hUs+9+lY9Lelqy550+aUqHzFsSS0uAlsr9PMKviEMvzk21HWFbLe3hQ6KCtnmalWg1b8OyvXK/IdWvsz1gjseEUgmMJD9Ju7TrRDRrqtrS9MUNPMhq8RpcEt9W8sLJW6Tn8Lr/eq7l9X368IBIckgE6U9SvikVMKWMnvU7wnVr7XkCF4/p3gTIx5zBpujLdZg2VYc+MMqtpdWbLVKthRrxnItsNPE0wQmtEgSuS5/dQYAbYFIULGzcJ4wTLcrDvDByLSWo+vMos0LoaS3C0qO9zyyazzJj+3JKb0EJkk3qlZM2S43DIjn8NONOWNDi4CJ+bce9Z9l5lp2FXSMSpaTs1LtVHuI+vOLiYl1mJqqB1yAJVy8BHBzhavAYhbuau12nCJ3dH2ZitKyFGWk6GjjYq5EAR2JrC5r21VBy6Ksqq2VUFRQlsKWuoF+1FKiMJp3tcdxu6Hy+RiYy7J8BmOBXSsm1fXF+/E57GS5MzcQQrpbV5bLqd64kElZmHyF6C0DmOt8T24dkhwrp9h+B/xnHfLT5I1n35+6WQrHsyyBkV9t+sazUvIa4trUfVYKGyVekMDPS+S9Erqc2Gjxkzn43PR+ktn3JfbzE7yQ6Pa2VSv81727neNk96njtNmyO+vbi3T/IZ/JdLvZoyvqnhS7onoTnu6RUORP9Qye2TE95YijHTfvBVf8mO7puL572qKU7n5e2Kcc7+pT+oU+pfQUgB19FNyLNVN0VUzvAtDqnvT6nQ6MPnxqb21W9CuMZA8SGnoBcWuUDy75w8O2bkQfrqa0cFcfssddxj4w+QKIfBoWiR9d8OTbT36r7dLEbcTCVc1uRIujWN+zEKmL/8vBLoxGApe85urgWSC5G6FeJZFF2MtC69IxKrjDrPd4xPw5p3uon48OQadA78SQQYjn9VC1nSeQm81kq6jcoRHWhl9O4aTzptN5GkW3JMaTWE2fWcTZl+2tSqVqi/J8JfyYO/VMi5heUW9/NO+nIFbmsSkc/jSCf8vq6kXwXdV2b+CuLH0mZNdbWzrsakS07f0xGN1/AqMtjf4fAN0vA/RS+NaDSuL8tfBbloEH9ArTzpye8v6XTy/aHA+5Fu3mqJs9CKSE6VPBoyUrPRCbBwNrxqE32HO+ZLGnBgiZUgG7ZcLH7znzA1/MMU3I3Us2p4trtXKytxi0YNl8NK++m6NH89C7cenBuOlgLhJMBdIlYpffC6lk5TkrixS98xB9dg2SPfkUDCw9heSh3/5m5vwP5uigVw==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "d6161939-af9a-5cf4-9f1e-6673a9948ff7",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Create a strategy roadmap slide at position 9 of 'Annual_Review_2025.pptx'. Design a horizontal timeline spanning Q1-Q4 2026 with 6 initiative blocks placed across the quarters: 'Platform Redesign (Q1-Q2)', 'Mobile App Launch (Q2)', 'APAC Expansion (Q2-Q3)', 'AI Features (Q3-Q4)', 'Enterprise Tier (Q3)', 'IPO Prep (Q4)'. The file to work on is /home/user/impress_ps_019.pptx.",
+        "reason": "'Annual_Review_2025.pptx' is a leftover name; the file is /home/user/impress_ps_019.pptx (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

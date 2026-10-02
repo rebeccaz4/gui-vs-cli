@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_8150e3dc",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/color_correction_brief.docx in LibreOffice Writer and note the specific color correction steps. Apply those steps to /home/user/Desktop/food_photo.jpg in GIMP (boost reds in highlights, reduce cyan in shadows, add slight warmth overall) and save as /home/user/Desktop/food_corrected.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "color_correction_brief.docx",
+        "sandbox_path": "/home/user/color_correction_brief.docx"
+      },
+      {
+        "filename": "food_photo.jpg",
+        "sandbox_path": "/home/user/Desktop/food_photo.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNrFWOtu28gV/s+nOLWBmkJkSrF324UQGXBsJyvsNg5ko/mxDYSROJSmJjnEzMi2agToQ/QJ+yQ9Zzi8iZStJAUiBJHFOffzncvw4ODAm/IHpkK4WSiRmRGcZ1m8gYWMpcL/leILI2QK2vBMQ6RkAqFcPIKREEkZQraS+CdLQ9DsngPT9vHMcfIw+Ge29G6ZvoPJ5QikfpAqDmfJOjZixrJMzx6UMFzNliLJZsO/nniXMmEiHUEs5orLKBIL7mjgFRAV+Jb7GLl73g0qEuly5AEcw4VMMpny1MDrUYcZwB+FNhrQm0uu74xEUcPgJ8iM7m3xn4zg+p4rFseAwUnMClBbLHgI//33f0Dh92LF0pTHINKF4kzzsA/zeM0h5O43yT7tkn06wh8U3aViIdpeihYY5RUL5QMqWGLMdaFs4GwodOGzmBmB4cbQW63IGjJ1B4zOa5oPML8exkwqg7H3bPo+Tn4H92iSsCUvztN1km0ogWnmeZ+up79dTqYwhqPBSiZ8sNZcHXm35ze/zSaX9PjlVB553vV08n728fz216aggYv/wCbJQogSdORdXE+nL9I3kopKvJBHgNkS0WZmEGl+j+AAQM7T99/tEdARIjrJYm4R/SAwpJmSS8W1pmDqHEuBZZpys1apRhzFkhmYc/PAeQrDYGjB/joYNnQYaVg8IwkcTUcqzz4+/GZMSpHm0CEhtyuh4d355PcbIhSpMAK18fQe/EjEWHVzjRp61rKP5zc3V5ZuKeOQpzWyDD0lOif1gzQcbaITawVPFxxWHD1AbQwo18dohZLheuEQv+TgCwOhCCGVJmfD2ETktlmhIUvylJF3uRajNnky6EOqZs7hMeIxyJhZBULTc79Mfa+kF1GdpZJDnwxTZfzogNwd1aNsi6Yj0JFcY3QwlU+lpi9V/R/0GtLr6XxF+fypPOax5t2mUIL2MoVC12XOlhGF3H+k1OUwVU81s74MEII7GKZXn86nl1v0W7TK4rvuqD3mjwueGbiyX1Ql2A9q7hYarqbT62nb16eGmq+yf1/bO+x2cP6IEZZpKKzZS0bYxtINYS6pdVKno9mkIForhKrCYmHxRgvdxqlIljZjCFLbIQOZ8bQG0AD1YL8x/tH0/dujyjamVMGXZgH+Yhu/kNULmDabjPu2n/S+JtgX08nt5OKcsIUzB7Fj3SohlftWx9HoRyaiFUlsqstmJMup8GwkHV8jkvTs/x5JEioQDEUgS/N+bCAPi8HlsLui/UqzBHcMkfBU2w3BxwAaKkDb29V90XexdRbxCrT4F4c/jUtY2wft4OTty6YJLEve8POVp4zRU0Psl34Nh08NBT8wbtSW1gbnHVfHmXjELS0UUYSDDQecJaGfCK2yXo9LwLXH9jesgnD+4bJ7G2xOdVpIdMYXIhIcN41f13xww9ApZiH8Kdf26hfw7wWDFYpT6Cud9axuvZLrOKxvhSFGI0WoyNxgp4e2AjzDIW6NCvZcJ5BYLu50sRbt3i6Cdt07A2Zq5kJNX3+M+oD/hp+DhLPU77Wo5x3UJy1qNasCPd7WdIaz+mfrdT0zJGE7XKU81Mrb8pwtb+DYCjzM89klsOAGP8dHz2tBGWDy4d11BSTLbuVPx09ND0bBaYRV9X785IIw6r8uQuDO3lY884rnoKYXq78eJUpczcv9FqkTi7FPDciPbFRftUw+IbNsgFqW4VF1H3lpyzr9hi0rt/PqMcubEBmIIMh9JovewLCPYDU7Q70znN+zD53U9qFWS2ndAKubX36Bc52FKnaxYWl1ri10tPVyLiXu7KGTvutKOGheKYNW18ktectiRuv/jVNz/AtcoOagsJ2sGLvbU0I+SMQuXXq1LGi7rRS6NC3eVC0y+Kqbzfe0okPnk4vACOxE0PBgbzrxOsGxRp6j9dUioHEzeAD/DbweDivMInGxlRTzIq9MhheU8UlFmGCMZ0UsxhWflVdS5QQ4gdbo4bjBFOh14jcLukF9RoKa9aFXje5Zl/Z5m7Bsy47pj8627IjnHcRVV+6s0aLfucjnM9haPn6q+4HV5+BZNMPSuKo4SxNabS5P75QKhapoq1TyZrU9JJP8qoqUtkp8xL79Y6uZ97aU3OLldmFfb1gMVVr6OcqfG/310lSuYKthtjTonkhrcKkSdFaLf22k0VJm/cikFq6ySpea4bGTYFuFfVvXhNMWmJ4bDKe2PdmKz3tU2Aj61OaykUmaAWfwtjrYZzi8MCC6h8Rzg+K0OShyO0u7Gil142IfMO625RAmEb0UQduxq9MLqg1E/CF/UZc3oT6sEZIsT2bMU0F2LlZ8cUdtLRGhXed2lBhuxx9G8A4l6lqZ4ZWgWWK9fi6RKsRJdG939UpEBv3GKcLCrehTy0JqRKNfdq+zMfxl2IM/1x5hQ/t52NtGnGMOWLop3sXVP3jUaFWO/HMnYdmqCq7dvapgmXexnOxkQYNris5qItqmv1wXf+sIMd7RIqESnXcoWzTGthHEWKW6AlnNAnr2bInsUSa7S+XlcindsaCMGM7kcF+7t6z9lmp11/SQY+PFQc0d1AcdQP7Ohe10e2GLaBMo3+iicr8W5j69AM4V7n23bd1raxqKWLk7be3E87zGq23vf+NTB8c=",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "8150e3dc-e07b-5b6c-b83f-5fb700065a74",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "medium",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Open 'color_correction_brief.docx' in LibreOffice Writer and note the specific color correction steps. Apply those steps to 'food_photo.jpg' in GIMP (boost reds in highlights, reduce cyan in shadows, add slight warmth overall) and save as 'food_corrected.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_isolate_small_cluster",
+  "files": [
+    {
+      "filename": "two_clusters.ply",
+      "sandbox_path": "/home/user/Documents/two_clusters.ply",
+      "type": "ply"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_quadrant_normals",
+  "files": [
+    {
+      "filename": "surface.ply",
+      "sandbox_path": "/home/user/Documents/surface.ply",
+      "type": "ply"
+    }
+  ]
+}

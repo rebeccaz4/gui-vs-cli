@@ -1,0 +1,92 @@
+{
+  "id": "musescore3_sa_catalog_movement",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/catalog_entry.mscz (4 measures). In the Score Properties set Work Title 'Serenade', Work Number 'Op. 12', Movement Number '2', Movement Title 'Andante' and Composer 'C. Weber'. Add a section break after measure 2 and put mp on the first note of measure 3. Save the score in place and export it as PDF to /home/user/Documents/catalog_entry.pdf.",
+  "env": {
+    "files": [
+      {
+        "filename": "catalog_entry.mscz",
+        "sandbox_path": "/home/user/Documents/catalog_entry.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-meta-tag /home/user/Documents/catalog_entry.mscz workTitle Serenade",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Serenade"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/catalog_entry.mscz workNumber 'Op. 12'",
+      "key": "match",
+      "expected": true,
+      "description": "workNumber = 'Op. 12'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/catalog_entry.mscz movementNumber 2",
+      "key": "match",
+      "expected": true,
+      "description": "movementNumber = 2"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/catalog_entry.mscz movementTitle Andante",
+      "key": "match",
+      "expected": true,
+      "description": "movementTitle = Andante"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/catalog_entry.mscz composer 'C. Weber'",
+      "key": "match",
+      "expected": true,
+      "description": "composer = 'C. Weber'"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/catalog_entry.mscz 2 section",
+      "key": "match",
+      "expected": true,
+      "description": "section break after measure 2"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/catalog_entry.mscz 3 mp",
+      "key": "match",
+      "expected": true,
+      "description": "mp in measure 3"
+    },
+    {
+      "command": "check-pdf-exists /home/user/Documents/catalog_entry.pdf",
+      "key": "match",
+      "expected": true,
+      "description": "PDF exported"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_work_catalog_metadata",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_work_catalog_metadata",
+        "file": "catalog_entry.mscz"
+      }
+    ],
+    "gui_plan": [
+      "File > Score Properties",
+      "type work title",
+      "type work number",
+      "type movement number",
+      "type movement title",
+      "type composer",
+      "OK",
+      "click m2",
+      "Breaks palette: Section break",
+      "click m3 first note",
+      "Dynamics palette: mp",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 16
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_cf2e3046",
+  "app": "libreoffice_calc",
+  "task": "Prepare the annual review workbook: (1) Create a new sheet named 'Executive Summary' and place it first, (2) Set its tab color to #1F3864 (dark blue), (3) Freeze row 1 on all existing data sheets ('Revenue', 'Costs', 'Headcount'). The file to work on is /home/user/calc_sht_multiop_006_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_sht_multiop_006_initial.xlsx",
+        "sandbox_path": "/home/user/calc_sht_multiop_006_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "cf2e3046-f198-5392-9643-f66f7c6e0604",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "writer_cg_810109ec",
+  "app": "libreoffice_writer",
+  "task": "Set up a page break before the paragraph starting with 'Conclusion' and apply a different page style that has landscape orientation for the conclusion section (A4 landscape, keeping 2.54 cm margins on all four sides). The file to work on is /home/user/Desktop/analysis_report.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "analysis_report.docx",
+        "sandbox_path": "/home/user/Desktop/analysis_report.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "810109ec-fd29-5de6-ad8a-19923fa2202e",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Set up a page break before the paragraph starting with 'Conclusion' and apply a different page style that has landscape orientation for the conclusion section. The file to work on is /home/user/Desktop/analysis_report.docx.",
+        "reason": "the check requires A4 landscape with 2.54 cm margins; LibreOffice's built-in Landscape style has 2.0 cm margins (wording review 2026-09-30)"
+      }
+    ],
+    "check_edits": [
+      {
+        "reason": "orientation/size/margins are read from the section containing the Conclusion paragraph instead of the last section, so switching back to portrait for References is also accepted (review 2026-09-30)"
+      }
+    ]
+  }
+}

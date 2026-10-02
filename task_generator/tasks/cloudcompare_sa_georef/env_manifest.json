@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_georef",
+  "files": [
+    {
+      "filename": "survey.xyz",
+      "sandbox_path": "/home/user/Documents/survey.xyz",
+      "type": "xyz"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_29e9bf1c",
+  "app": "libreoffice_writer",
+  "task": "Configure all body paragraphs with 1.5 line spacing, justified alignment, 0.8 cm first-line indent, and 6pt space after each paragraph for a professional report format. The file to work on is /home/user/sustainability_report.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "sustainability_report.docx",
+        "sandbox_path": "/home/user/sustainability_report.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "29e9bf1c-d448-50c4-9ba9-0c1b66ab4709",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

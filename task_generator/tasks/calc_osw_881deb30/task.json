@@ -1,0 +1,118 @@
+{
+  "id": "calc_osw_881deb30",
+  "app": "libreoffice_calc",
+  "task": "I want to find a faculty job in Hong Kong, so I am more curious about the \"Early Career Scheme\" of those schools is better to apply, please help me to count all the documents in the ecs pdf files in my hand, and organize the pass rate of each school by year into table! The ECS PDF files are in /home/user/Documents/Fundings/ecs/. Put the table in the first sheet of /home/user/Documents/Fundings/supported_rate.xlsx and save that file in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "supported_rate.xlsx",
+        "sandbox_path": "/home/user/Documents/Fundings/supported_rate.xlsx"
+      },
+      {
+        "filename": "ecs15.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs15.pdf"
+      },
+      {
+        "filename": "ecs16.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs16.pdf"
+      },
+      {
+        "filename": "ecs17.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs17.pdf"
+      },
+      {
+        "filename": "ecs23.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs23.pdf"
+      },
+      {
+        "filename": "ecs22.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs22.pdf"
+      },
+      {
+        "filename": "ecs21.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs21.pdf"
+      },
+      {
+        "filename": "ecs20.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs20.pdf"
+      },
+      {
+        "filename": "ecs19.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs19.pdf"
+      },
+      {
+        "filename": "ecs18.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs18.pdf"
+      },
+      {
+        "filename": "customer-information-sheet-for-inward-payments-to-hong-kong.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/customer-information-sheet-for-inward-payments-to-hong-kong.pdf"
+      },
+      {
+        "filename": "grf15.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf15.pdf"
+      },
+      {
+        "filename": "grf16.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf16.pdf"
+      },
+      {
+        "filename": "grf17.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf17.pdf"
+      },
+      {
+        "filename": "grf18.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf18.pdf"
+      },
+      {
+        "filename": "grf19.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf19.pdf"
+      },
+      {
+        "filename": "grf20.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf20.pdf"
+      },
+      {
+        "filename": "grf21.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf21.pdf"
+      },
+      {
+        "filename": "grf22.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf22.pdf"
+      },
+      {
+        "filename": "grf23.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf23.pdf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check eNqFetcOxFpy3K8s7pMN7oo56Y3kMAxzTsJCYM45U9h/91ytbECAYc8DwTPNOaGnu7oKzf/4I6uLrNv++Ne//Nt//FEeY/a7+yObhjlZi3/fk7Qv/vjrX/5Yi+3o9z9NYD0NBXhsxQp+puwYinHfQOEY82asNnA75nla9yL/9zXZi3+5++3+8+fTvDfT+Oci//HHevTFfy23P3Px55xbXRT7v89rM+5/Pv3PYZPf0J9GW3f+HMP/zQL/aeH/t+Uff//Hz1jcc5H9lv7PVaqp//Pm3/7tj/++pb9V+//ZVaEvQsD4ni8i6FyP8+QbnYN8pu4bs0YVWSxsJY/dJZwnOBZbJTN7dDO781Y9dXIUHx37s6ztU+QlAZcnja5mYCBFHgQbiJOv2Y4ZGECbL0Wax1oMM8nvd2hxHii8BlTFAilF4sLhzS2EK8DxkR4j21ihS/42Ex5ZakTjXJETolwJuXSLgtblHiRv3gTVhwilSYZzVulC5q617SDzo8CmnzCoDarlIpcM82nYyUHx0I5D0y8h+RerYRTCS0ma0lQZur+ZQTj/kn3t9gYeS9qXtp/rXfvZ1PtuAaLl62m64G0o9UAVNUw4RI4rcPQfQA+yE5X2zILjiry+tvN9mJjGdCzSmdjMyZbVkpD3DN46LlIba6XRSJylOz9vfbS6viraynxTXUDpKY9IN2XTD5uJaF4XthUZbALh6UwBaleazBKHNiMaHs0dZzUoBmrF8jJSa0Z4D2v48Q0gEUyWelR8JfN60DSKjjWXWPvCmBK7YfPiq6tszdeIi4axbsBMTKxOus8iBLyZTEhe7B/SQpIGDwGwG4kYETWqUA5oKui0B4kqX1DFYwczEJ5nOOzqUeKMlm+19tim72cfEeX6/RDBvI90Vl0IepBMGnPS/tNpHVAbJCJchcABG0PV7bdXTF1gCKqxslBVP+WIC1HsCa8YV0zbjjG4Uk+sVb7IBgf8+xtDLYTOXFTuRJ+ZDpSQvJlnBs90Mwi/CBecnfSF4CJB+/w18IqpUCpgW7RaEjoMNBNNR7EmMhaV86jwb42PvJY7WycUTBNRRGdC2rGLK7SS+h6crIj+YHNUvM+akqnc3h2coavhqdYRY7rv3FakfdUecmHW9sTPpHB1Ar7+QEmg2KqGWuOIQEEoT35wryYCTjFyw2G1oeDrwoNHkdBWHneycA4/ycarDyKJN2WTD1ca40DqBSTGwLgBTi8P0Ytl2Ikv9Ww8LEe5pmKWsBSA2w5c5fkpiypEeEysPVq/iWI8RoHvO9fE+mW8FuZzItE38idIqtdOyS6eSBGddcgyZDBhXagmEBEHdmiJlGFoltXc6/luMqKoOAgnxfvpongjktcMk4i05JCbEizxMUgV1ShIZgYIRh6ryecvEw7dWAqtJntakVCFvk60RG8zuwauKAWMjDbRF7BLGzmEALlkjtLEgBBrlGs/KilmJmkdSMYjxfUOA+4naieA5ypiR4fUoKa4HHxVsXlAFOCsGZCC7YGNNdLLWrEswWO4+4VLs6Qk02hWrAo1kiaf1ZrKsJE37LcWTdQ4cas5Cx+bFG80w7cB9fojUnYR1XPwiyNnB/winOq9p2oEvK4lK+TCLZNJL3ouXYJI5wsJCoIqGgvkgJzDPTXS2LHvxX+YjN224BO6jjBrJFznF86rjYZvWKT2WNHrPx/YOI8NgdJQ388KhjXn6YTwCyaTUztgFDePONVsor5QdpP6Je6JI0L6HX0XNVVYPZ+g1aRpLdAKxLuC7QmlA6+J/ZyNkzzf62DmHIAx5iOYPyhE5neyWpTIW7x6qCD2rltjfgF8Po4ptsPL7sJ+E+vaX7vU48XVE1im2CJJOUhkuQnhOZWxucxo67UWlFO0lYgEeEurshdxyjaE6bzWuy7IyW0tWA/wpJaH7TuFP0iD+65mH3s4R81q9GCaTL0GWQaVfXfM+cDd3HgHgDVPZh4UovodOK56OpMdFiYzP3ZyLo3nVCp2SKXhawwUbGNEziC/KG08cakLLfhY0gJdyFxpXeK/Lg4mLi3d06IPXbvfuhY0kPYChhPfSyw1Grvv6A9m7kFoEpNKC8O2eAIcmZn+XJFcnTgHFhHvRfEX52M2cs4spZwegqGGXNJBtr7IHUm41GCmZ0XgiRSCNRdBuYhnwaQbJzXrvKLy9kuleKDoW7AgEbdBETUVCRicXHTrGHlX2g/kXwZBU721Uf5V1OHjqi4YLznKf76oBTfjN6XU0mV+SQcbiLfyv+xuHhlW4JkRxljEsY8OIZwLVqP0WvTW7Kdu9OsQVVy4bh0UvOo5liMkUzFRoWh2U30ryIFJQg4JhYr3ed55KTk3IraRDwgDrzHss2QJAndagEfxPSK+ZkwuWNpNAEvSW6WuF5VN259sAxx2BHr30uXFO7sfFnWwM4+8Le6+ZDeDE1JsK0CIQOuPA1/HEYeutrpWBhoLZP+ZXrMp4NSgiXnkKT0UjLJbttTctGx2q7GNiOUNfmcPQg2ZSu8jXHQ/W4cjzmj5wXpHNeFqss0tdR8LLELl3lYOBcxRzSnTCc27NcyvkZQfgPsBDBeX7fr9PoknPMzazm7prf2dzvvSU/5n9wDILhP30fFU5TRPWtOAcphppMuWHiFSpqUnAGUCEAbUP78Bt/U/T4Br3TRpJBRtTnDdtIQ8rqUZwdu2wnp0HfLodVgwe/rcHfYuJd5JJoWSjK2DKW4qdrXrwheMDsLEVeOJ0jdB5yPlG6G909v2Zb/UTuLgS091+hW50S8/p9XokwpTX69EoU3eXnvPTbbSoO3jqJin8OZm2G63ZKDbHSws+QNopchkUgy5NDHZ+r24Ql66Wa5YxOMD2su1xsbyFSC3GwBYpG0bLoAszZOSEO5utgZbG9MIoKcnk7ZWgVAtdxpbuZzSu7KwNShjbG9vtx3qXKAUkyqdayWCmA0UyrEs2+Uhz2lYBXMrmXPtKXna7uohBO9niPk+Y1/EW746jUgz7DHUnEdr/Mk4Z4y19eDkrzm+/CFgYHG5eJbqpU1Abed6AjwiVty3oZf7PmgrpfCDyM9n9dnRkn/UW2IptXmPy3LlvQ7YwWIBQyjrwfqoQrWbFZKzlousd/dakxduZHVmTbsg+wp9Cf8yXB5GEa5FyCReNgGjr5dvtJj8+oVAwBV1dp0f2gq5+eOMwmWPzLWRBTttyTx2Im4rKf495L/qOZ82RskiHMTwHcguyEzF0fUG+MBZ+Zh4BLVl0d+xZ2SZx8zmZ46b+3sbe63yPnPZY0FnJAfnu1Pvl++8BEZQHwK5UM2KfyeDK6AWyg7jwNtu+xKcsvjZVO7OR3SkD/CyEw61jLq2hjItKgZps1HlWOlcE70f91H8rnNgrcR9kPWzUz++EryrSMDYXnh9VCPhmIo/mgAKxGG41p8BKIBpR1feJ4kR4/OEq0CcWyERCv/O32UhS/fNmQKxiaWxsXchx08A5otXk7FMLJzdLtyUjp++XejxofLM/o6Jh7noxMmTc2ffWE4YJe+BZ2qWqqZ7B1yEG/adYsRe8+a/GA9KPKIxkJDqa462GHXrPFIhkY0quc4//tFg/IIRdCzF3sRD2Xb6Zav4Rf3dHuBXfvHOKWLi5w9LhU4rw1/9qmQsSPxnMRkaqLassiIOzHnODvbRzFAy7vDCy7evJWCvMTpjnw7ldig96PbwmRFpls5WJYKaWtjRXcxwDA3ej/z4k8Mq++eZ2cALb85zPutiEKEJeXGIBJe6L5K/UtLw5S8GEe1mVZgxalfYYH/TZ57mndtOd85S6PFloItWBbUTDGDqzjym3TQ7pq1ebK/R9SxBfn4hEG3ZIuY7EEJxjDMRZ6QhwcceTivN8jXj6pcQJm9J6RsD+JcG0c8xYygFyEdpFJGX3r8dKtJ50EpYNNWvjLPeMLz6zbEkZqRF+kkG7OfuEeXA7R0v9/k030bMQf4r/lI9l+kA8gkMpm+ZzxWSWJ8sj4Fp29pUzIF6tlvHmgnmAldBJdIwI3Qq6g+FKb9eF+OI+akMzjtysvkw4D2MK+YilS7uhDgVjnS8kULwutx2phYkIehQlatowWWzMnYNqbx3L8pQhEOLmDU80s7rK8UDmlKGkXX+1GAfToaTUvHxPJNOD4ay4fZK33S58e/OzBuq6LwVYY2ha7E6hNAHUx1ZUQAiR8JOGcZdS+MZ4+XvY06dDhM/7XPIAbkygPeVCDfueBqr37Xu/DeXNcVoay/6OJN6+D/EQ8gMLPRepXOWJqV6MWpL+JOKbKclB1qYhNsDrQtuVUqDRsgNkdnv/44vhl71QaSh07EIe04ORrOSd1d0cREtmAO4g0jEWWplZJDt5LaKbwf5/XoB/KlErLxMkt8qjvKoz8ZHVe9zy3Or+kapHJfyC0NOUPUSKb6h4b4wd0QrASWzAFILx5c3l2s+L+WnRNGDE3kMVhuFsGaKR0CCP3RevTTkJG0T0GIhlDHScczl4z6Kf46AO+Kae9iXlIzhj0F7YgpH5S9Ul28bNpwk+8GSeo2/nnRVxm2PRpxWG2ep1Za2cXBbL9GiNepDW7R4Ktay+HxHSSJm1G0T4/YVuY7DClTIhNvpiJncyLHIxzu7eJ4DfzaS2fGB49Ff8Qu5Gr092g1+04TCA2swS836sCgBKH1/iqJZxJV5VukReNo4NWLsD8fgvuMYuXMyupydfMaT55pAaqgNwXpiz22SGK7aZsYflC9iql9nKJ7nkluC1CHaISp7GoDNS2L+4ex6PAi8LlXHIAN/ZoxVo58Ze25C+uIolozkkoCRYjyZdstDzGzKAatbytC4wlxbsZ9Yp0XolWSxLFlM2NenWiELXLKxhfQDjMsAAqxofHipNa/fezjxASA7ppC5lC6vNsIt87nUM/30QnJyESSpNbsAyccAfvlO8cvCQY7lK4fv+hQx/BRi5HIGDG0KAeDi56h1g7FJN2rHmh8M1vBTVmbqCd3KpB05x18lAc6//fVT2XxVJmjlpnIjKExHXWApzO0bjsxeoHE/mPpGo0bqdrjLvvN0DgCI2x2XFemIwChmr19JHNJTnQX7+/jOtBZrKNQcSj+3j3yQyNGObbdfv3d/dXbLq2Eia1Rk3dPSgM7lLxWrnw/jUPkgJP3whvSDtAlwjcvjcQS8fcNpEIPqcKjVvNqTXfsQXPHCXlKi2AziG/9gicV+y/sjS3WB9pMXH7bBHvOrgV9/VdPPR4jGj7RMU9Kg+DfD+0E5lLxMT6O7+HkPDLOdf+UT+qqlROsdLExxoGNTmBx6EsAtVndTM1JiiYPGDAj3bmsyXTpURwQ625GCCNDwBwq4hrbms1n8AH0ONVzswVW9m04hGV88hbxN1qGUFHoksCNDWuAixWlOGIUwCTppXxeiwa3TwWhwA165EbyatDEqpPcwyys5QDBrmDTgWKA6SxrCB6nVPPU7aX26d3lI8lXte89iwpAfSENC2BdZdljJ9i0IMZIbBlvFMvp2gOiwodM77iekj6TYIiHS9dxq65kOWMf/IeKmSkKPZo4NZfuN2Tq0TdwIObYW1IYDlMleSj1FUrzfENW2jOOuZ6Fh9eweUBlMHHo5CZE2X2EgUIMt11wNmLqBTMgCOcibGSW21ivPuCuRRhwNdOoLFmITqD+G21htuSgIAI0xTwKfqQTWUdDMDgMpiM3z/HEHIze1PM4BGr0IINKpW9Phz+mWaKTTflm8ZtUinqHT+lO1G0bhKzs6LzBZobOiknuMWN/QmAlmi8H56QCz2Mg4hw3svlskvsWjefhWXil10Hzj8gk0olTPWL7SXW6B4ciF+LZDRaqrjBTGycDhj+e9HxtdlkhdLqaqmtrw/daGa4Dh9mTR2eonl4QYkGsSUuJttLAxOXHB1ObUPumuLcvsSh6Xj7zaj6fbpTpzzv2ioL9LIX6l63rYtBJOwuhFZFBFe2Av0xoWnq2DkvQqx2iM71tgtJ3o/jccgijJvG8TrkWBL6IqeJ0KWWX8JaXNxsN9xXgAknp5x9/XBn0CaeVKf87BlC/rpzEm6xOc3A+nSbRAxbq7UruQd31GIVa/sDp5g+OZPb5cQRUylLg9oNp2DRv47a5vYPTChwd80TSrSekHnzc1HO83QEUTg1unssyDxyA4rWpY/ZOIJi3bBCh2VlCf24jdTH02W0JUIlM8Jbs/lu3FpdJN5uqt0ki6mqtfsir2RdJsrw+6JHyQTeHbI4ZDiUH80zYmSDRKE8Jwhx3shREiRHBxZGAVBPCWkhqkMk2SmFPb/Iuqs011URoKA4ouYPqJjN8eb+lX+pghZ7LlrglAbnkGqEstMZ60iGPlggmEbTz1UEoHBY7YsxV8UGhCbTD3gWGXta6FcQD4VRh934qPEHClbexTPwkbosEX2nW64IvePEAFina1XCdsBjZzXBTjSppZ1GbEhLAYc2cQPfH0/PVM1HuQAzdVhdsAWugmiI53n029zFE+w0iQIRfSuD7JxZiPWPjsUWa0KmYtbgwe7ldbuYNrDrr6dDtIGQoTIfAKZrLOTjevG97FaOQl2nyi7Fwlt/qHel0MNiknhr30w8l9wgl2AobwbnPXXNDK8DX3i775W9mfMB/PX0aO6oJLJdAi1TcXEYmRUOsn8nEwOSyQL8CFZBQUxEp7spZMwi5RzSCfURL72Ft7ooPTNsB57NwfJfsSF3p64Yui0amWFvl0Pf2NOvLx1EdM2H2CKEm+J+nT8iR7X79Ys+UwLepCT698WAcpT0MlLTWHF3NFBY71+IXhzfRKeipDbZc3r7laIbdM1h3Yl/csbXfKXVVMsTl2I+EpqYuvu5iOXPqR+zCZnOFHlEeK/Ijpu2XoU3yb/qDXEOIKX8Am4DS7D46Q+FUST+mdzgh+7xnApU+hSWQ4/LgNJL/axG0gF8GzE4lXfp5DwEN6wuOjJUr3NXW3VNm9DX3tGywV2qAKN4zQsLMWYHG9DzwpwqT+lNZbbSSgQJkZHhKbytQxGTXNCU8BPb3jAWF6yfIWEkTo4JbyHnGY554NM8grhZrnxEPoTiCMmsP58mbAEDyJZY7h3nTngn2jM8WC0JtyxT/i5CI9K6ewGGgxKs0eLCnUj2ikTcnv1chTeIMUOmidpJbZniGyve6wjfWuxYt2Eep96+3AwAUNV6hLRDrJJf4BIwtC+KvgxnXGFlejfVhNn4dr+Zd1iiCwwBUGx8IR54XtruInuB9LA1O6gQWm+IzGXaldRIQTFnwq8BwFcMlJsxtLri/hb/F2bBiR+dgz3GSHy6xX8Ivf4FegV0M3CV2EMFXYLhcLxmjsjiRcCHlPjzC9C71Yx4vJ2xf5Wsr1cTYvP12lTw9Xb7ofN0m4l4BgZnZ1jGhzHxxwSlBbgBJyY3IIXUD8zTVJ3HlZxImtUjxdA88m9owOrpbDsLpx+7DsCsbXJYAo6CdzO9424mwzfzo7PuNFFSypFx9tqSJDll93UY2tp3xdwQJflsXjUbCqfmGOajkjoRhGWX+K+EDf6gvqzw/6LCkLGsu4oga8Ui/hkMMzyzqnC3P0G2hxna59qCn9ZOlZW7fPoIYkDalxLxpVBJ+8q4GPB5jHN80vuq7ceAw8kEMp6Ls/crkmccrvY9FiSLRtnws2h1ZdvxYbzMr248lS4/sSuu5O2LJ2GBfYCZzcJ+aV+cLC+CZwtOTvReJB+qkhqmJzAOGIwYsYp1mH8cC7GnsQEy82M/HANz5uZLj1BB4ap8z0n5+u4BOFRM9hevjS0gkKmRgCWU0V5sz4LRpWhhBBHu4CAID6nRO1Dw6GUmLuv4IDjobZgKK1NKArtaBuQjDNi3QADO37AfUzxXkgDwFvfX7hUcErYNjlrziq4Y91XHrEmhf6huf4NGBeGd1JCBVf4mQKWuO1AJJQMmj92X8nkz+gOAIJyg/AhlAMWIPvTyuuIbVXKfA6/PusQEi5GFs2l3mk1yeVVdB/XUovMVRHaUqTzTN0FqVvphHebrKdVpcuhA0EMtQFL9Ywa2D44+9//cv/pcf7t392hv8l285/dnpnuPv8pF3LWHVYsiDANAp71TnSOaGDCE598W/BTPtXqzhF+YA0lnRkPENAWIU5jpKoEgLnwoNmSgRcq7+byloDrkJYTf+kWWCX3vHai9GS24voJu4D2Ys1DatRROh5YeH/KGiuVIoLQgvLag0nq+1ikf7lFGNGmvdHyw92xTwR/OFlfiAigiRXVYKyhStaEqY/OG+nabdr4hv+uFI4DFJAD47E18w9dcJCzCfgjQAZQX7lx07k2pTROTxCsfkmisT2x9///o9//Dz1RzaN7Z+t82TM//hny/zntu2fjfK+SddiKssm+8+W/9/+9nv4LNb9b/v05/jnyn91i3v/y9/+sv/n9ffFX/6Hsycrl/TZ//xXDPsriv3Vc4W/UX/9fcqk34q/7uvxX5d/jv95hf85/3TsebP+ef//fKng//vA//Wtg9+J/xdoWOx6",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): compare_table"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/multi_apps",
+    "source_task_id": "881deb30-9549-4583-a841-8270c65f2a17",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "0.0",
+      "sonnet46_opus47_agent": "0.0",
+      "holo3_35b": "0.0",
+      "kimi_k26": "0.0",
+      "opus45": "0.0",
+      "evocua_32b": "0.0",
+      "qwen35": "0.0"
+    },
+    "save_sentence_appended": false,
+    "instruction_edits": [
+      {
+        "replaced": "I want to find a faculty job in Hong Kong, so I am more curious about the \"Early Career Scheme\" of those schools is better to apply, please help me to count all the documents in the ecs pdf files in my hand, and organize the pass rate of each school by year into table!",
+        "reason": "input folder and result file were not named; the check reads /home/user/Documents/Fundings/supported_rate.xlsx (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

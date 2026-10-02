@@ -1,0 +1,97 @@
+{
+  "id": "audacity_sa_noise_shape",
+  "app": "audacity",
+  "task": "Audacity is open with an empty project. Generate 4.0 s of white noise with amplitude 0.5. Apply a low-pass filter (1000 Hz cutoff, 24 dB per octave) to all of it, normalize it to a peak of -3.0 dB, and fade out the last 1.0 s to silence. Export it as a mono 44100 Hz 16-bit WAV file to /home/user/Music/noise_shaped.wav.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/noise_shaped.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/noise_shaped.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM WAV"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/noise_shaped.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/noise_shaped.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/noise_shaped.wav 3.95",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 3.95 s"
+    },
+    {
+      "command": "export-info /home/user/Music/noise_shaped.wav",
+      "eval": "float(result['format']['duration']) <= 4.05",
+      "description": "length <= 4.05 s"
+    },
+    {
+      "command": "check-export-band-energy-ratio-max /home/user/Music/noise_shaped.wav 2500 0.15",
+      "key": "match",
+      "expected": true,
+      "description": "low-pass filtered (little energy above 2.5 kHz)"
+    },
+    {
+      "command": "check-export-peak-db /home/user/Music/noise_shaped.wav -3.5 -2.5",
+      "key": "match",
+      "expected": true,
+      "description": "normalized to -3 dB peak"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/noise_shaped.wav 3.93 4.0 -30",
+      "key": "match",
+      "expected": true,
+      "description": "faded out at the end"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/noise_shaped.wav 0.5 2.5 -30 -6",
+      "key": "match",
+      "expected": true,
+      "description": "noise present before the fade"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_noise_generate_filter",
+    "reused_inputs": [],
+    "gui_plan": [
+      "Generate > Noise",
+      "type amplitude 0.5, 4 s",
+      "OK",
+      "Select All",
+      "Effect > Low-Pass Filter",
+      "type 1000 Hz, 24 dB",
+      "OK",
+      "Effect > Normalize",
+      "type -3.0",
+      "OK",
+      "click selection start field",
+      "type start time",
+      "Shift+End",
+      "Effect > Fade Out",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 20
+  }
+}

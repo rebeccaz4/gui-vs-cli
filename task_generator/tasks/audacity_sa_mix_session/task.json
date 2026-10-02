@@ -1,0 +1,148 @@
+{
+  "id": "audacity_sa_mix_session",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/mix.aup loaded; it has three tracks, 'Bass', 'Drums' and 'Keys' (top to bottom). Prepare the session: pan 'Keys' fully to the left, set the gain of 'Bass' to -6 dB, mute 'Drums' (the other two tracks stay unmuted), add one label track with two labels, 'Verse' at 0.25 s and 'Chorus' at 0.75 s, and set the project metadata Title to 'Session A' and Artist to 'Trio'. Save the project to /home/user/Music/mix.aup.",
+  "env": {
+    "files": [
+      {
+        "filename": "mix.aup",
+        "sandbox_path": "/home/user/Music/mix.aup"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000001.au"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000002.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000002.au"
+      },
+      {
+        "filename": "mix_data/e00/d00/e000003.au",
+        "sandbox_path": "/home/user/Music/mix_data/e00/d00/e000003.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/mix.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "project still valid"
+    },
+    {
+      "command": "check-track-count /home/user/Music/mix.aup 3",
+      "key": "match",
+      "expected": true,
+      "description": "three wave tracks kept"
+    },
+    {
+      "command": "check-track-pan /home/user/Music/mix.aup 2 -1.0",
+      "key": "match",
+      "expected": true,
+      "description": "Keys panned fully left"
+    },
+    {
+      "command": "check-track-gain /home/user/Music/mix.aup 0 0.501",
+      "key": "match",
+      "expected": true,
+      "description": "Bass gain -6 dB (linear 0.501)"
+    },
+    {
+      "command": "check-track-gain /home/user/Music/mix.aup 2 1.0",
+      "key": "match",
+      "expected": true,
+      "description": "Keys gain unchanged"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 1 true",
+      "key": "match",
+      "expected": true,
+      "description": "Drums muted"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 0 false",
+      "key": "match",
+      "expected": true,
+      "description": "Bass not muted"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/mix.aup 2 false",
+      "key": "match",
+      "expected": true,
+      "description": "Keys not muted"
+    },
+    {
+      "command": "check-labeltrack-count /home/user/Music/mix.aup 1",
+      "key": "match",
+      "expected": true,
+      "description": "one label track"
+    },
+    {
+      "command": "check-label-count /home/user/Music/mix.aup 2",
+      "key": "match",
+      "expected": true,
+      "description": "exactly two labels"
+    },
+    {
+      "command": "labels /home/user/Music/mix.aup",
+      "eval": "any(l['title']=='Verse' and abs(float(l['t'])-0.25)<=0.02 for l in result) and any(l['title']=='Chorus' and abs(float(l['t'])-0.75)<=0.02 for l in result)",
+      "description": "labels 'Verse' at 0.25 s and 'Chorus' at 0.75 s"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/mix.aup TITLE 'Session A'",
+      "key": "match",
+      "expected": true,
+      "description": "Title tag"
+    },
+    {
+      "command": "check-tag-value /home/user/Music/mix.aup ARTIST Trio",
+      "key": "match",
+      "expected": true,
+      "description": "Artist tag"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_project_metadata_full",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_mute_solo_configuration",
+        "file": "mix.aup"
+      },
+      {
+        "from_task": "audacity_mute_solo_configuration",
+        "file": "mix_data/e00/d00/e000001.au"
+      },
+      {
+        "from_task": "audacity_mute_solo_configuration",
+        "file": "mix_data/e00/d00/e000002.au"
+      },
+      {
+        "from_task": "audacity_mute_solo_configuration",
+        "file": "mix_data/e00/d00/e000003.au"
+      }
+    ],
+    "gui_plan": [
+      "Keys pan slider: set 100% L",
+      "Bass gain slider: set -6 dB",
+      "Drums: click Mute",
+      "Tracks > Add New > Label Track",
+      "click selection start field",
+      "type 0.25",
+      "Edit > Labels > Add Label at Selection (Ctrl+B)",
+      "type Verse + Enter",
+      "click selection start field",
+      "type 0.75",
+      "Ctrl+B",
+      "type Chorus + Enter",
+      "Edit > Metadata",
+      "click Title value",
+      "type Session A",
+      "click Artist value",
+      "type Trio",
+      "OK",
+      "File > Save Project (Ctrl+S)"
+    ],
+    "gui_step_estimate": 19
+  }
+}

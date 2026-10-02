@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_3339444d",
+  "app": "libreoffice_impress",
+  "task": "Create a financial summary slide on slide 9 with a waterfall chart showing how we generate value. Start with 'Current Spend: $500K', then show reductions: 'Automation Savings: -$120K' (green), 'Error Reduction: -$80K' (green), 'Efficiency Gains: -$75K' (green), and one addition: 'Our Platform Cost: +$50K' (red), ending with 'Net Cost: $275K'. Use floating bar segments to create the waterfall effect. The file to work on is /home/user/impress_sales_068.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_sales_068.pptx",
+        "sandbox_path": "/home/user/impress_sales_068.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "3339444d-3819-5549-a8b9-b9f360ccb1e1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

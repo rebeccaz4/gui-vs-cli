@@ -1,0 +1,37 @@
+{
+  "id": "writer_cg_5d1130a4",
+  "app": "libreoffice_writer",
+  "task": "Please help me finalize my project status update. From ~/Documents/project_tracker.xlsx, extract the entries where Status is 'Completed', and add them as a table to the 'Completed Milestones' section of the project report in LibreOffice Writer. The file to work on is /home/user/osworld_multi_apps_calc_to_writer_007.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_multi_apps_calc_to_writer_007.docx",
+        "sandbox_path": "/home/user/osworld_multi_apps_calc_to_writer_007.docx"
+      },
+      {
+        "filename": "project_tracker.xlsx",
+        "sandbox_path": "/home/user/Documents/project_tracker.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNqlWetu47oR/q+nGGR/yO6JHV920UJFDmDE3hP3bLKBHXRbbAODkehYjSypJJ1LDQPnIfqEfZLOkLpfnJyt8yOWSA5nvpn5ZkifnJxYC/7MhAdLV/ixcmD2ogRzFdgX0TYOuOKeDYrJRwlrEW0hFtE/uatWNOmRi/5LIF+AhR74oeRCAZM4+z7gFlQ+flgQCVd+wKWKQi5tkCjPj0KI1pl0weNIqL4XuS/WLW4O86kDkXyOROCttrtA+SsWx3LlssBdqWj1LHzFxWow+KM1jbbMDx0I/HvBo/Xad3kyDB29socrHaCV0PsZzFDXWrqR8MMHB/UmLVGzUMHQgYmCgDOpAN8Yy4C/+FJJMkhtOKCOuy1N7gz6Y4iV7JZEjBy41as2nHmog4ieYcuUu+ESBcVoLKLhRsFuG8oWEWPUIgjgE+TwGYcwwRExLmnSs682KEcIlAgeU4yEfUyF3UaKBQ4M+wPrBF1u+VvCFxG1tFMJZ0jeTRN7LOvb18Wv0/kCzsE+20RbfrZDD9vW7WT562o+pdfv8ohtWR8wqjJTyza0B1VnqZjaSTg/L8Zi15r97WZ2cTubri6+Xt18mdE3UmmJCn3XUdexF/xfO19wMkPCLwzdRL61T8Gebf3gFeFAnCQ9jwajT73BsDf8RE+FbU4TUctXqfgWJsLdoEGu2iHmUy79h5AW/IVt0Y/fcGjt88ArShwPWiRO0Tn3THLMuA3fMpgKtlY090b4rwyumS9yOaPesE3O5GYOs9CLIx/dv0R4fYx1RplEC66YcCPUNHhgXlSUN2qT91lEoeKYyTciUpF6jTlNXDLBNnCx4WEuZNwb1OG6s3LPXM4m09lCe8Sm9KXJX59Drg2bYiIEfmikaxfbuNby+BrCSGxZ4P+brzCCeeeJBV1Ha4dBe52OUXRzkIpcKh39JYZn8o6MmctPYYN0FJhpyt9yiO4puGSfIl8z0RpQMvgSrjHBnIypBEfvIkvZ+g0GHsnWSvT1Jp2uHvgAl80bIB0wBXKDGY4saP8dP72rq950CpeXztWVs1za6f42/iF/SM2ctmMeck303n0ZB77q4NTu98GdVdBQJnA9YVivX1eUSJ01EuoqxlDPEdP//6rn6GRLc4+4VtMFpt0D5oH0nxBPw399vWih90Fw10GEJt1z9cx5CIP+QCtMNFLcQxG7rEgCR8VxlmVei9fcJKQYHEvJpaCunsFfXB4rZAn6R/ohgAXPxKgarjm5WMxv5xeTLw5csDCMkJoj5gHJgn0m8eDAnh9OupXVJ4vZt8kCywjqVxhMIM2U/lCh//dwPmWgTINjHvrKx/Di4RNGooSBkSD/DA9R4CGK6cAwEZ0wd4kW6/gZIQgh7t03D9lYuNuusvGAhx3zkBuJEVeY8/M5Wlaqzym+N5Pl0ikCAP/97T9J/coRyK3f51IPRsOO7MI62oVeNy9mBbSr0fIThcs4G+aB5M2afZ7Mv9Q1u45SXPSeZeWy6srSEj5MVXlnuM0Wi6+L+q4mumrR8gOVvhQ4yLHuI7mKha9JaFCYsKI8HSvEqKeg+fQUUjY9BcOl9cgxy1cGoXP4zBDkYmRQwORB1W0Ij3UkEoUMwMlUp97jrfPw66O+jdIqepFZWCdcHgR9xV9UyrV6V3qrky6TiFTYp7fyrlFoAUYjXxofQMfFktujJjWUmKBPCFjMhM5UM4G5FAy0T7dRsnGlt0rFIkPvtp3GqfQZav03pHy1LLauMb7vbPpB9MwFQoCtj8YlfS5CksPXrG/zW9yiagh6CDtMRC7LkzG14h9zAHf4Tq9q1bwSY7dix1vntpHNqEA2hZDXMpHSc3sPrdRS/GD3zx6tiu1UM4q61iMTjz47pKfcy29EZp4OFJnlCKUd83HNbvC9HrdtHGcAucyhIO21H6hQw+cEmLLGh9Os18axaugVy+L7yXbUSLYqAlfnmtn5pFRu2kFuof8fpeTRMUpuPznFMWciLeelOlw7QZVI+ibhDFdwz1e6mfgTRSLE6KMks0yzhQ6rc3Gae0YLtP73EfEH+OwT8mWd6bGpf8hbB/HAlanTuCc1vT9G7wVyVRs/Oejj1qHCE7c8qoNutTA5VpRIlFX1NCA1KMpLdN9cOjJJfXJk6HXeSFKcn6Rk95hRVHhJAyq7xesPmVfW4iezl0hJU4UwRiRbJsYmnhXaoR91Ay2+94Z3qaZFtrczmfZdW3Utb3uswlYc33wvk3NllSxLy9HdRD/lE1OOYXprxBBwnTsako58xLOZ4YI68jQvg+6NeMg1MRw7dO6abdZufpu284hoK5Maapph/Oa0FprMjDQYzSqrlefBUHcxhfc691NB3UMRQ2TGYOch5adAnjTIJtvSJlOzS6nxqNyUtEWLfFyFbIudUWR6Sy/rLWVyFVPeo1FMc59Z1TW1VVNOanc7xjhqrDrPZlOZLR7L25ZpW4rr8szLSDcZQk9j36bLdHIJ0CY0RQblVu4ssm1Gd43yR++Sn+GdiRsf1Xr8ptRMTe+Y8slIQ4AVMqOTeqPIXFn0ZC+R6Fql1G0tyiq/6TpHxbyr52whuYJRLe1gc+HGvmX4Zn8LcDW5vbh0wN5n4Bzs/KSq07+lga33Zi07zJfL+fUv1T2IqWv7WI0Jn97aCJreKZv5B93enMKoax05RyS9jLl5aKOc7hHOyS+OPuoWZxek/ZWmCqY7uOaW4th5Yqw7Q+r/9iVVD2ef6rfQJbDyq/MG97S7JldkcTuffKnr8vv12OcAHdoUqjTU+QrrbbXbOv5xqeM3NareEZkCpXX+oXPF+Pi5ogLO/3l3M64eFNZ+WLi13PrYoukcKOBJoX9K151m61T2P0L6tYjj+aow93A2zC4W04npleO+sFd6BEsuHgsjFv1QMuVrtgvwZKE4nrrZA3XWClwWRqHv4sGDzh9r6rToqpMi5cF/MpeKVnYDiuas7X3y883hbJ/8YnPQv6fZVnIOjmSfJvfNxV7tAjlzGt2uZoTiFC9aS9ZW7lfzKGi+pbb+B+7BQTA=",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "5d1130a4-3bc1-56e0-9356-3b2126344f8d",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "project_report.docx"
+    ]
+  }
+}

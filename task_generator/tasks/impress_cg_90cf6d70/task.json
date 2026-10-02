@@ -1,0 +1,37 @@
+{
+  "id": "impress_cg_90cf6d70",
+  "app": "libreoffice_impress",
+  "task": "Create a pharmaceutical research presentation. 12 slides: Slide 1: 'Drug Discovery Pipeline - Compound XR-7'. Slide 2: research timeline (horizontal arrow with 5 phase markers: Discovery, Preclinical, Phase I, Phase II, Phase III). Slide 3: molecular structure placeholder (hexagonal shapes connected in a ring). Slide 4: mechanism of action flow diagram. Slide 5: preclinical results table. Slide 6: Phase I trial design diagram (patient flow). Slide 7: efficacy data bar chart. Slide 8: safety profile table with color-coded severity. Slide 9: pharmacokinetics curve chart. Slide 10: competitive landscape comparison table. Slide 11: regulatory pathway flowchart. Slide 12: next milestones and budget. Use medical blue (#0277BD) and white with green (#4CAF50) for positive results. Save as 'Drug_Pipeline.pptx' on the Desktop. The file to work on is /home/user/impress_wf_071.pptx. Name the shapes so their kind is identifiable: the slide-2 timeline arrow's name must contain 'Arrow', each slide-3 hexagon's name 'Hexagon', and in the slide-11 flowchart each decision shape's name 'Diamond' and each process box a rounded rectangle whose name contains 'Rounded'. Save the result at /home/user/Desktop/Drug_Pipeline.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_wf_071.pptx",
+        "sandbox_path": "/home/user/impress_wf_071.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "90cf6d70-b993-56aa-a8ba-294af725e018",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Create a pharmaceutical research presentation. 12 slides: Slide 1: 'Drug Discovery Pipeline - Compound XR-7'. Slide 2: research timeline (horizontal arrow with 5 phase markers: Discovery, Preclinical, Phase I, Phase II, Phase III). Slide 3: molecular structure placeholder (hexagonal shapes connected in a ring). Slide 4: mechanism of action flow diagram. Slide 5: preclinical results table. Slide 6: Phase I trial design diagram (patient flow). Slide 7: efficacy data bar chart. Slide 8: safety profile table with color-coded severity. Slide 9: pharmacokinetics curve chart. Slide 10: competitive landscape comparison table. Slide 11: regulatory pathway flowchart. Slide 12: next milestones and budget. Use medical blue (#0277BD) and white with green (#4CAF50) for positive results. Save as 'Drug_Pipeline.pptx' on the Desktop. The file to work on is /home/user/impress_wf_071.pptx.",
+        "reason": "the check identifies shapes by their names (python-pptx defaults), which LibreOffice does not produce; output path only given in words (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

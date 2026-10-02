@@ -1,0 +1,122 @@
+{
+  "id": "renderdoc_sa_shader_bundle",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set the Light UI style, a global font scale of 0.9, Font_PreferMonospaced = true, TextureViewer_ResetRange = true, TextureViewer_PerTexSettings = false, EventBrowser_ApplyColors = false, Comments_ShowOnLoad = true and ShaderViewer_FriendlyNaming = true. Then save capture settings for launching /usr/bin/glxgears with the command-line arguments '-info' and the environment variable MESA_SHADER_CACHE_DISABLE set to true, to /home/user/captures/shaders.cap, and make it the only entry of the recent capture-settings list. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-theme Light",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle Light"
+    },
+    {
+      "command": "check-font-scale 0.9",
+      "key": "match",
+      "expected": true,
+      "description": "font scale 0.9"
+    },
+    {
+      "command": "check-setting Font_PreferMonospaced true",
+      "key": "match",
+      "expected": true,
+      "description": "Font_PreferMonospaced = true"
+    },
+    {
+      "command": "check-setting TextureViewer_ResetRange true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_ResetRange = true"
+    },
+    {
+      "command": "check-setting TextureViewer_PerTexSettings false",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_PerTexSettings = false"
+    },
+    {
+      "command": "check-setting EventBrowser_ApplyColors false",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_ApplyColors = false"
+    },
+    {
+      "command": "check-setting Comments_ShowOnLoad true",
+      "key": "match",
+      "expected": true,
+      "description": "Comments_ShowOnLoad = true"
+    },
+    {
+      "command": "check-setting ShaderViewer_FriendlyNaming true",
+      "key": "match",
+      "expected": true,
+      "description": "ShaderViewer_FriendlyNaming = true"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/shaders.cap /usr/bin/glxgears",
+      "key": "match",
+      "expected": true,
+      "description": "preset executable"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/shaders.cap -info",
+      "key": "match",
+      "expected": true,
+      "description": "preset arguments"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/shaders.cap MESA_SHADER_CACHE_DISABLE",
+      "key": "present",
+      "expected": true,
+      "description": "environment variable set"
+    },
+    {
+      "command": "check-setting RecentCaptureSettings '[\"/home/user/captures/shaders.cap\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureSettings = [\"/home/user/captures/shaders.cap\"]"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_shader_debug_profile",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_shader_debug_profile",
+        "file": "UI.config"
+      }
+    ],
+    "gui_plan": [
+      "RenderDoc: Window > Launch Application",
+      "type executable",
+      "type working directory / arguments",
+      "open environment editor",
+      "type variable name and value",
+      "Add",
+      "OK",
+      "Save Settings",
+      "type .cap path",
+      "Save",
+      "close RenderDoc",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 16
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "writer_cg_c82cf7e5",
+  "app": "libreoffice_writer",
+  "task": "Create a custom character style named 'Warning' with bold, red (#FF0000) font color, and yellow (#FFFF00) character background. Apply it to the words 'DANGER', 'CAUTION', and 'NOTICE' in my safety procedures document. The file to work on is /home/user/Desktop/safety_procedures.docx (save it in place).",
+  "env": {
+    "files": [
+      {
+        "filename": "safety_procedures.docx",
+        "sandbox_path": "/home/user/Desktop/safety_procedures.docx"
+      },
+      {
+        "filename": "writer_txtfmt_062.docx",
+        "sandbox_path": "/home/user/writer_txtfmt_062.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "c82cf7e5-90f6-51d3-b8e7-a211a8fa9a7c",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "The file to work on is /home/user/writer_txtfmt_062.docx.",
+        "with": "The file to work on is /home/user/Desktop/safety_procedures.docx (save it in place).",
+        "reason": "the reward grades /home/user/Desktop/safety_procedures.docx; the port had named the other staged copy as the file to work on"
+      },
+      {
+        "env_order": "safety_procedures.docx moved to first so the app opens the file the instruction names (review 2026-10-02)"
+      }
+    ],
+    "check_edits": [
+      {
+        "reason": "applying the 'Warning' character style (as instructed) did not count: the check required bold/red/yellow as direct run formatting. Now each property may come from the run or from its Warning character style (review 2026-09-30)"
+      }
+    ]
+  }
+}

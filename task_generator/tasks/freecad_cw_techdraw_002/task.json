@@ -1,0 +1,66 @@
+{
+  "id": "freecad_cw_techdraw_002",
+  "app": "freecad",
+  "task": "The precondition FreeCAD file is saved at /home/user/Precondition_Unnamed.FCStd. Open the given shape in FreeCAD, create a TechDraw page that includes a projection group (FreeCAD's default name 'ProjGroup') with the Front, Bottom and FrontTopRight views, and a section view (default name 'SectionView') cut from top to bottom through the middle. Add at least one dimension and save the completed document to /home/user/Unnamed.FCStd.",
+  "env": {
+    "files": [
+      {
+        "filename": "Precondition_Unnamed.FCStd",
+        "sandbox_path": "/home/user/Precondition_Unnamed.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Unnamed.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "Output model saved at /home/user/Unnamed.FCStd"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF90ZWNoZHJhd19tb2RlbCIsInJlc3VsdF90eXBlIjoiZnJlZWNhZF9tb2RlbF9pbmZvIiwicnVsZXMiOnsiZXhpc3RzIjp0cnVlLCJvYmplY3RzIjpbeyJsYWJlbCI6IlBhZ2UiLCJwcm9wZXJ0aWVzIjp7IlZpZXdzIjp7ImNvbnRhaW5zIjpbIlByb2pHcm91cCIsIlNlY3Rpb25WaWV3Il19fSwidHlwZSI6IlRlY2hEcmF3OjpEcmF3UGFnZSJ9XSwicmVxdWlyZWRfbGFiZWxfY29udGFpbnMiOlsiUGFnZSIsIkZyb250IiwiQm90dG9tIiwiRnJvbnRUb3BSaWdodCIsIlNlY3Rpb24iLCJEaW1lbnNpb24iXSwicmVxdWlyZWRfdHlwZV9jb250YWlucyI6WyJUZWNoRHJhdzo6RHJhd1BhZ2UiLCJUZWNoRHJhdzo6RHJhd1Byb2pHcm91cEl0ZW0iLCJUZWNoRHJhdzo6RHJhd1ZpZXdTZWN0aW9uIiwiVGVjaERyYXc6OkRyYXdWaWV3RGltZW5zaW9uIl19fQ==",
+      "eval": "result.get('checks', {}).get('required_label_contains') is True",
+      "description": "CADWorld check: required_label_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF90ZWNoZHJhd19tb2RlbCIsInJlc3VsdF90eXBlIjoiZnJlZWNhZF9tb2RlbF9pbmZvIiwicnVsZXMiOnsiZXhpc3RzIjp0cnVlLCJvYmplY3RzIjpbeyJsYWJlbCI6IlBhZ2UiLCJwcm9wZXJ0aWVzIjp7IlZpZXdzIjp7ImNvbnRhaW5zIjpbIlByb2pHcm91cCIsIlNlY3Rpb25WaWV3Il19fSwidHlwZSI6IlRlY2hEcmF3OjpEcmF3UGFnZSJ9XSwicmVxdWlyZWRfbGFiZWxfY29udGFpbnMiOlsiUGFnZSIsIkZyb250IiwiQm90dG9tIiwiRnJvbnRUb3BSaWdodCIsIlNlY3Rpb24iLCJEaW1lbnNpb24iXSwicmVxdWlyZWRfdHlwZV9jb250YWlucyI6WyJUZWNoRHJhdzo6RHJhd1BhZ2UiLCJUZWNoRHJhdzo6RHJhd1Byb2pHcm91cEl0ZW0iLCJUZWNoRHJhdzo6RHJhd1ZpZXdTZWN0aW9uIiwiVGVjaERyYXc6OkRyYXdWaWV3RGltZW5zaW9uIl19fQ==",
+      "eval": "result.get('checks', {}).get('required_type_contains') is True",
+      "description": "CADWorld check: required_type_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF90ZWNoZHJhd19tb2RlbCIsInJlc3VsdF90eXBlIjoiZnJlZWNhZF9tb2RlbF9pbmZvIiwicnVsZXMiOnsiZXhpc3RzIjp0cnVlLCJvYmplY3RzIjpbeyJsYWJlbCI6IlBhZ2UiLCJwcm9wZXJ0aWVzIjp7IlZpZXdzIjp7ImNvbnRhaW5zIjpbIlByb2pHcm91cCIsIlNlY3Rpb25WaWV3Il19fSwidHlwZSI6IlRlY2hEcmF3OjpEcmF3UGFnZSJ9XSwicmVxdWlyZWRfbGFiZWxfY29udGFpbnMiOlsiUGFnZSIsIkZyb250IiwiQm90dG9tIiwiRnJvbnRUb3BSaWdodCIsIlNlY3Rpb24iLCJEaW1lbnNpb24iXSwicmVxdWlyZWRfdHlwZV9jb250YWlucyI6WyJUZWNoRHJhdzo6RHJhd1BhZ2UiLCJUZWNoRHJhdzo6RHJhd1Byb2pHcm91cEl0ZW0iLCJUZWNoRHJhdzo6RHJhd1ZpZXdTZWN0aW9uIiwiVGVjaERyYXc6OkRyYXdWaWV3RGltZW5zaW9uIl19fQ==",
+      "eval": "result.get('checks', {}).get('object_0') is True",
+      "description": "CADWorld check: object_0"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF90ZWNoZHJhd19tb2RlbCIsInJlc3VsdF90eXBlIjoiZnJlZWNhZF9tb2RlbF9pbmZvIiwicnVsZXMiOnsiZXhpc3RzIjp0cnVlLCJvYmplY3RzIjpbeyJsYWJlbCI6IlBhZ2UiLCJwcm9wZXJ0aWVzIjp7IlZpZXdzIjp7ImNvbnRhaW5zIjpbIlByb2pHcm91cCIsIlNlY3Rpb25WaWV3Il19fSwidHlwZSI6IlRlY2hEcmF3OjpEcmF3UGFnZSJ9XSwicmVxdWlyZWRfbGFiZWxfY29udGFpbnMiOlsiUGFnZSIsIkZyb250IiwiQm90dG9tIiwiRnJvbnRUb3BSaWdodCIsIlNlY3Rpb24iLCJEaW1lbnNpb24iXSwicmVxdWlyZWRfdHlwZV9jb250YWlucyI6WyJUZWNoRHJhdzo6RHJhd1BhZ2UiLCJUZWNoRHJhdzo6RHJhd1Byb2pHcm91cEl0ZW0iLCJUZWNoRHJhdzo6RHJhd1ZpZXdTZWN0aW9uIiwiVGVjaERyYXc6OkRyYXdWaWV3RGltZW5zaW9uIl19fQ==",
+      "key": "passed",
+      "expected": true,
+      "description": "CADWorld all-checks verdict (source benchmark's binary success)"
+    }
+  ],
+  "metadata": {
+    "source": "CADWorld (ICLR 2026), https://github.com/Zdong104/CADWORLD",
+    "source_task_id": "freecad-techdraw-002",
+    "source_license": "Apache-2.0",
+    "source_domain": "techdraw",
+    "source_subsets": "",
+    "source_evaluator_criteria": [
+      "The saved file must exist at /home/user/Unnamed.FCStd.",
+      "The document tree must include a TechDraw Page component.",
+      "The page must include Front, Bottom, FrontTopRight, a Section view, and dimension objects."
+    ],
+    "fc019_compat": "yes",
+    "fc019_compat_note": "",
+    "instruction_edits": [
+      {
+        "replaced": "The precondition FreeCAD file is saved at /home/user/Precondition_Unnamed.FCStd. Open the given shape in FreeCAD, create a TechDraw page that includes Front, Bottom, FrontTopRight, and a section view cut from top to bottom through the middle. Nicely define the dimension information and save the completed document to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the default object names ProjGroup/SectionView and one dimension (wording review 2026-09-30)"
+      }
+    ]
+  },
+  "cli_feasibility": {
+    "feasible": "needs-skill-fix",
+    "reason": "cli-anything-freecad exposes the needed operations, but its `export render --preset fcstd` writes a synthetic Document.xml (no sketch geometry, generic Part::Feature/PartDesign::Feature types), so CADWorld structure checks fail; see update/validation/README.md section 3"
+  }
+}

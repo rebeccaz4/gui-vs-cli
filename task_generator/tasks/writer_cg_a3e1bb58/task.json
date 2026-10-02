@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_a3e1bb58",
+  "app": "libreoffice_writer",
+  "task": "Remove all duplicate entries from the product catalog in this document. The catalog has over 50 items but many are listed more than once. Keep only the first occurrence of each product line and remove all subsequent duplicates. The file to work on is /home/user/osworld_writer_duplicate_line_removal_007.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_writer_duplicate_line_removal_007.docx",
+        "sandbox_path": "/home/user/osworld_writer_duplicate_line_removal_007.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a3e1bb58-c719-5826-b279-b1188cd69737",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

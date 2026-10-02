@@ -1,0 +1,25 @@
+{
+  "task_id": "xapp_calc_a4dac5a7",
+  "files": [
+    {
+      "filename": "finance_tracker.ods",
+      "sandbox_path": "/home/user/finance_tracker.ods",
+      "type": "ods"
+    },
+    {
+      "filename": "Finance",
+      "sandbox_path": "/home/user/.thunderbird/default.default/Mail/Local Folders/Finance",
+      "type": ""
+    },
+    {
+      "filename": "Inbox",
+      "sandbox_path": "/home/user/.thunderbird/default.default/Mail/Local Folders/Inbox",
+      "type": ""
+    },
+    {
+      "filename": "profiles.ini",
+      "sandbox_path": "/home/user/.thunderbird/profiles.ini",
+      "type": "ini"
+    }
+  ]
+}

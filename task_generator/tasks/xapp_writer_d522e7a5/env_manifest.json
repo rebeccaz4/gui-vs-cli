@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_d522e7a5",
+  "files": [
+    {
+      "filename": "edit_specs.docx",
+      "sandbox_path": "/home/user/Desktop/edit_specs.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "product_photo.png",
+      "sandbox_path": "/home/user/Desktop/product_photo.png",
+      "type": "png"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "cloudcompare_sa_slice_rebase",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/tower.ply in CloudCompare (a vertical column of points, Z from 0 to 10). Extract the horizontal slice of all points with 4 <= Z <= 6, move the slice straight down so that it starts at Z = 0 (X and Y unchanged), compute per-point normals, and save only the slice as a binary big-endian PLY at /home/user/Documents/slice.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "tower.ply",
+        "sandbox_path": "/home/user/Documents/tower.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/slice.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/slice.ply 397",
+      "key": "match",
+      "expected": true,
+      "description": "exactly the points with 4 <= Z <= 6 (397)"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/slice.ply -1.01 -1.01 -0.01 1.01 1.01 2.01",
+      "key": "match",
+      "expected": true,
+      "description": "moved down by 4 (Z in 0..2, X/Y unchanged)"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/slice.ply z 1.9",
+      "key": "match",
+      "expected": true,
+      "description": "slice thickness kept"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/slice.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals computed"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/slice.ply binary_big_endian",
+      "key": "match",
+      "expected": true,
+      "description": "binary big-endian PLY"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_cross_section_slice",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_cross_section_slice",
+        "file": "tower.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type Z min 4",
+      "type Z max 6",
+      "Export section",
+      "close tool",
+      "select slice",
+      "Edit > Apply transformation",
+      "type Z -4",
+      "OK",
+      "Edit > Normals > Compute",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 17
+  }
+}

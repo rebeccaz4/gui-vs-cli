@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_cf78eed7",
+  "app": "libreoffice_calc",
+  "task": "Build a shipping manifest template for outbound orders. Merge cells for the header section containing company info and shipment details, add a table for line items with auto-calculated total weight and declared value, and set up print formatting for a single-page manifest. The file to work on is /home/user/calc_ops_warehouse_shipping_manifest_019_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_ops_warehouse_shipping_manifest_019_initial.xlsx",
+        "sandbox_path": "/home/user/calc_ops_warehouse_shipping_manifest_019_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "cf78eed7-4bbe-5240-b7b3-631400e681b1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

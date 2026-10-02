@@ -1,0 +1,40 @@
+{
+  "task_id": "impress_osw_bf4e9888",
+  "files": [
+    {
+      "filename": "4.3-Template_4.29.2016.pptx",
+      "sandbox_path": "/home/user/Desktop/4.3-Template_4.29.2016.pptx",
+      "type": "pptx"
+    },
+    {
+      "filename": "pic1.png",
+      "sandbox_path": "/home/user/Desktop/pic1.png",
+      "type": "png"
+    },
+    {
+      "filename": "pic2.png",
+      "sandbox_path": "/home/user/Desktop/pic2.png",
+      "type": "png"
+    },
+    {
+      "filename": "pic3.png",
+      "sandbox_path": "/home/user/Desktop/pic3.png",
+      "type": "png"
+    },
+    {
+      "filename": "pic4.png",
+      "sandbox_path": "/home/user/Desktop/pic4.png",
+      "type": "png"
+    },
+    {
+      "filename": "pic5.png",
+      "sandbox_path": "/home/user/Desktop/pic5.png",
+      "type": "png"
+    },
+    {
+      "filename": "pic6.png",
+      "sandbox_path": "/home/user/Desktop/pic6.png",
+      "type": "png"
+    }
+  ]
+}

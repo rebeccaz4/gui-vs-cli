@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_47239d6e",
+  "files": [
+    {
+      "filename": "print_requirements.docx",
+      "sandbox_path": "/home/user/Desktop/print_requirements.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "artwork.jpg",
+      "sandbox_path": "/home/user/Desktop/artwork.jpg",
+      "type": "jpg"
+    }
+  ]
+}

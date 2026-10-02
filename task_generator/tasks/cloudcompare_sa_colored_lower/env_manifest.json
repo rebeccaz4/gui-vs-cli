@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_colored_lower",
+  "files": [
+    {
+      "filename": "colored.ply",
+      "sandbox_path": "/home/user/Documents/colored.ply",
+      "type": "ply"
+    }
+  ]
+}

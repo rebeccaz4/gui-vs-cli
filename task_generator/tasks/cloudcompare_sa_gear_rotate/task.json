@@ -1,0 +1,94 @@
+{
+  "id": "cloudcompare_sa_gear_rotate",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/gear.obj in CloudCompare (a gear mesh, 48 vertices and 80 triangles, lying flat with its axis along Z). Rotate it by 90 degrees about the X axis so that its axis points along Y, scale it uniformly by 10 about the origin, then move it along Y so that its lowest point is at Y = 0, and save the mesh (all 80 triangles) as a binary little-endian PLY at /home/user/Documents/gear_rot.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "gear.obj",
+        "sandbox_path": "/home/user/Documents/gear.obj"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/gear_rot.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/gear_rot.ply 48",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 48 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/gear_rot.ply -30.01 -0.01 -30.01 30.01 20.01 30.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/gear_rot.ply x 59.5",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 59.5"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/gear_rot.ply z 59.5",
+      "key": "match",
+      "expected": true,
+      "description": "z extent >= 59.5"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/gear_rot.ply y 19.5",
+      "key": "match",
+      "expected": true,
+      "description": "y extent >= 19.5"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/gear_rot.ply",
+      "eval": "result['face_count'] == 80",
+      "description": "80 faces"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/gear_rot.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_obj_to_mesh_xyz_asc",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_obj_to_mesh_xyz_asc",
+        "file": "gear.obj"
+      }
+    ],
+    "gui_plan": [
+      "select mesh",
+      "Edit > Apply transformation",
+      "Axis/Angle tab",
+      "type axis 1 0 0",
+      "type angle 90",
+      "OK",
+      "Edit > Multiply/Scale",
+      "type factor",
+      "OK",
+      "read bbox min Y",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 19
+  }
+}

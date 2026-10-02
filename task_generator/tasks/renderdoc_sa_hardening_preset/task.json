@@ -1,0 +1,113 @@
+{
+  "id": "renderdoc_sa_hardening_preset",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Harden it: analytics total opt-out on, manual analytics check off, update checks off, global hook off, process injection off, and an empty recent capture list. Then save capture settings for launching /usr/bin/vkcube with working directory /tmp, the option Hook Into Children disabled and API Validation enabled, to /home/user/settings/safe.cap, and make it the only entry of the recent capture-settings list. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting Analytics_TotalOptOut true",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_TotalOptOut = true"
+    },
+    {
+      "command": "check-setting Analytics_ManualCheck false",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_ManualCheck = false"
+    },
+    {
+      "command": "check-setting CheckUpdate_AllowChecks false",
+      "key": "match",
+      "expected": true,
+      "description": "CheckUpdate_AllowChecks = false"
+    },
+    {
+      "command": "check-setting AllowGlobalHook false",
+      "key": "match",
+      "expected": true,
+      "description": "AllowGlobalHook = false"
+    },
+    {
+      "command": "check-setting AllowProcessInject false",
+      "key": "match",
+      "expected": true,
+      "description": "AllowProcessInject = false"
+    },
+    {
+      "command": "check-setting RecentCaptureFiles '[]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureFiles = []"
+    },
+    {
+      "command": "check-cap-executable /home/user/settings/safe.cap /usr/bin/vkcube",
+      "key": "match",
+      "expected": true,
+      "description": "preset executable"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/settings/safe.cap /tmp",
+      "key": "match",
+      "expected": true,
+      "description": "preset working directory"
+    },
+    {
+      "command": "check-cap-option /home/user/settings/safe.cap hookIntoChildren false",
+      "key": "match",
+      "expected": true,
+      "description": "Hook Into Children off"
+    },
+    {
+      "command": "check-cap-option /home/user/settings/safe.cap apiValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "API Validation on"
+    },
+    {
+      "command": "check-setting RecentCaptureSettings '[\"/home/user/settings/safe.cap\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureSettings = [\"/home/user/settings/safe.cap\"]"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_security_hardening",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_security_hardening",
+        "file": "UI.config"
+      }
+    ],
+    "gui_plan": [
+      "RenderDoc: Window > Launch Application",
+      "type executable",
+      "type working directory / arguments",
+      "set option checkboxes",
+      "Save Settings",
+      "type .cap path",
+      "Save",
+      "close RenderDoc",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 13
+  }
+}

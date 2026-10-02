@@ -1,0 +1,85 @@
+{
+  "id": "cloudcompare_sa_merge_scale",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/left.xyz and /home/user/Documents/right.xyz in CloudCompare and merge them into one cloud. Keep only the merged points with Z <= 10, then scale the result uniformly by 0.1 about the origin (0, 0, 0), and save it as a binary little-endian PLY at /home/user/Documents/merged_small.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "left.xyz",
+        "sandbox_path": "/home/user/Documents/left.xyz"
+      },
+      {
+        "filename": "right.xyz",
+        "sandbox_path": "/home/user/Documents/right.xyz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/merged_small.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/merged_small.ply 331",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 331 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/merged_small.ply -0.001 -0.001 -0.001 1.51 1.51 1.001",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/merged_small.ply x 1.4",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 1.4"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/merged_small.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_merge_two_xyz",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_merge_two_xyz",
+        "file": "left.xyz"
+      },
+      {
+        "from_task": "cloudcompare_merge_two_xyz",
+        "file": "right.xyz"
+      }
+    ],
+    "gui_plan": [
+      "File > Open",
+      "type the file names",
+      "Open",
+      "confirm import dialog",
+      "select both",
+      "Edit > Merge",
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type box limit",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Multiply/Scale",
+      "type factor",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 19
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "id": "gimp_sb_logo_pair",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/landscape_base.png in GIMP (800x600: sky above y=300, grass below). Place /home/user/Documents/logo_overlay.png (100x100, solid red) on it twice: once at full size and 100% opacity with its top-left corner at (20,20), and once scaled down to 50x50 at 50% opacity with its bottom-right corner exactly at (790,590), i.e. covering x 740-789 and y 540-589. Flatten the image and export it as PNG to /home/user/Documents/logo_pair.png (800x600).",
+  "env": {
+    "files": [
+      {
+        "filename": "landscape_base.png",
+        "sandbox_path": "/home/user/Documents/landscape_base.png"
+      },
+      {
+        "filename": "logo_overlay.png",
+        "sandbox_path": "/home/user/Documents/logo_overlay.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/logo_pair.png",
+      "key": "exists",
+      "expected": true,
+      "description": "logo_pair.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/logo_pair.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/logo_pair.png 800 600",
+      "key": "match",
+      "expected": true,
+      "description": "800x600"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 22 22 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "first logo: top-left corner at (20,20)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 117 117 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "first logo: full 100x100 size, opaque"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 15 70 135 206 235 20",
+      "key": "match",
+      "expected": true,
+      "description": "sky left of the first logo"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 70 123 135 206 235 20",
+      "key": "match",
+      "expected": true,
+      "description": "sky below the first logo"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/logo_pair.png 743 543",
+      "eval": "130 <= result.get('r', -1) <= 200 and 60 <= result.get('g', -1) <= 115 and 10 <= result.get('b', -1) <= 32",
+      "description": "second logo top-left (743,543): half-transparent red over grass"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/logo_pair.png 765 565",
+      "eval": "130 <= result.get('r', -1) <= 200 and 60 <= result.get('g', -1) <= 115 and 10 <= result.get('b', -1) <= 32",
+      "description": "second logo centre: 50% opacity"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/logo_pair.png 787 587",
+      "eval": "130 <= result.get('r', -1) <= 200 and 60 <= result.get('g', -1) <= 115 and 10 <= result.get('b', -1) <= 32",
+      "description": "second logo bottom-right reaches (789,589)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 737 565 34 139 34 20",
+      "key": "match",
+      "expected": true,
+      "description": "grass left of the second logo (50 px wide)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 765 537 34 139 34 20",
+      "key": "match",
+      "expected": true,
+      "description": "grass above the second logo (50 px high)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/logo_pair.png 793 593 34 139 34 20",
+      "key": "match",
+      "expected": true,
+      "description": "grass beyond (790,590)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_composite_two_images_flatten",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_composite_two_images_flatten",
+        "file": "landscape_base.png"
+      },
+      {
+        "from_task": "gimp_composite_two_images_flatten",
+        "file": "logo_overlay.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "File > Open as Layers (Ctrl+Alt+O)",
+      "type layer file path",
+      "Open",
+      "Layer > Layer Attributes",
+      "type Offset X 20",
+      "type Offset Y 20",
+      "OK",
+      "Layer > Duplicate Layer (Shift+Ctrl+D)",
+      "Layer > Scale Layer",
+      "type 50 (chain linked)",
+      "Scale",
+      "Layer > Layer Attributes",
+      "type Offset X 740",
+      "type Offset Y 540",
+      "OK",
+      "Layers dock: type opacity 50",
+      "Image > Flatten Image",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 24
+  }
+}

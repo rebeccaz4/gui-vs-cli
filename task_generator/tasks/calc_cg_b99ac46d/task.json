@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_b99ac46d",
+  "app": "libreoffice_calc",
+  "task": "Set up a weekly flash report template that automatically calculates week-to-date and month-to-date figures. Pull data from the daily transaction log sheet, show key metrics with sparklines or mini charts, and protect the template structure so only the daily input cells can be edited. The report should look polished \u2014 proper fonts, colors, and layout. The file to work on is /home/user/calc_fin_weekly_flash_report_080_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_fin_weekly_flash_report_080_initial.xlsx",
+        "sandbox_path": "/home/user/calc_fin_weekly_flash_report_080_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "b99ac46d-ce28-508a-9a13-939c16760a4b",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_47239d6e",
+  "app": "libreoffice_writer",
+  "task": "My print shop has image preparation requirements documented in /home/user/Desktop/print_requirements.docx. Please read the requirements and prepare /home/user/Desktop/artwork.jpg using GIMP, saving the print-ready file as /home/user/Desktop/artwork_print_ready.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "print_requirements.docx",
+        "sandbox_path": "/home/user/Desktop/print_requirements.docx"
+      },
+      {
+        "filename": "artwork.jpg",
+        "sandbox_path": "/home/user/Desktop/artwork.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "47239d6e-6716-52d5-82ca-d9cdf470c170",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "My print shop has image preparation requirements documented in 'print_requirements.docx' on the Desktop. Please read the requirements and prepare 'artwork.jpg' on the Desktop using GIMP, saving the print-ready file as 'artwork_print_ready.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

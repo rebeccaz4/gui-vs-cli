@@ -1,0 +1,88 @@
+{
+  "id": "musescore3_sa_export_parts_set",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/suite.mscz (6 measures). Set the tempo at the start of the score to 90 BPM (quarter note) and add line breaks after measure 2 and after measure 4 (no other breaks). Save the score in place, then export it with these changes to /home/user/Documents/suite.musicxml, /home/user/Documents/suite.mid and /home/user/Documents/suite.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "suite.mscz",
+        "sandbox_path": "/home/user/Documents/suite.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-tempo /home/user/Documents/suite.mscz 90",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 90 BPM"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/suite.mscz 2 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 2"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/suite.mscz 4 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 4"
+    },
+    {
+      "command": "layout-breaks /home/user/Documents/suite.mscz",
+      "eval": "len(result) == 2",
+      "description": "no other breaks"
+    },
+    {
+      "command": "musicxml-info /home/user/Documents/suite.musicxml",
+      "eval": "result['measure_count'] == 6",
+      "description": "MusicXML exported (6 measures)"
+    },
+    {
+      "command": "midi-info /home/user/Documents/suite.mid",
+      "eval": "abs(result['tempo_bpm'] - 90) < 1 and result['note_on_count'] == 24",
+      "description": "MIDI exported after the tempo change (90 BPM)"
+    },
+    {
+      "command": "check-wav-duration /home/user/Documents/suite.wav 17.5",
+      "key": "match",
+      "expected": true,
+      "description": "WAV exported after the tempo change (16 s of music)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_export_five_formats",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_export_five_formats",
+        "file": "suite.mscz"
+      }
+    ],
+    "gui_plan": [
+      "double-click tempo text",
+      "select text",
+      "type 90",
+      "Esc",
+      "click m2",
+      "Breaks palette: Line break",
+      "click m4",
+      "Line break",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 21
+  }
+}

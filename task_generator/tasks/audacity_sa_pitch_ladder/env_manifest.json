@@ -1,0 +1,20 @@
+{
+  "task_id": "audacity_sa_pitch_ladder",
+  "files": [
+    {
+      "filename": "source.wav",
+      "sandbox_path": "/home/user/Music/source.wav",
+      "type": "wav"
+    },
+    {
+      "filename": "voice.wav",
+      "sandbox_path": "/home/user/Music/voice.wav",
+      "type": "wav"
+    },
+    {
+      "filename": "input.wav",
+      "sandbox_path": "/home/user/Music/input.wav",
+      "type": "wav"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_fdf3feb2",
+  "app": "libreoffice_impress",
+  "task": "Apply black color and underline to the title text on slides 2, 3, and 5 only \u2014 do not touch the title on slide 4. The file to work on is /home/user/osworld_impress_title_selective_formatting_008.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_impress_title_selective_formatting_008.pptx",
+        "sandbox_path": "/home/user/osworld_impress_title_selective_formatting_008.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "fdf3feb2-98dd-5559-896b-0799b3398ec0",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

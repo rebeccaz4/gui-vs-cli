@@ -1,0 +1,111 @@
+{
+  "id": "gimp_sb_gradient_stripe",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/three_stripes.png in GIMP (600x300, three 200-pixel vertical stripes: red, green, blue from left to right). Replace the green stripe (x 200-399) with a horizontal linear gradient from pure red (255,0,0) at its left edge (x=200) to pure blue (0,0,255) at its right edge (x=399), each 0-255 channel value interpolated linearly between the two colours and identical on every row; the red and blue stripes stay unchanged. Export the result as PNG to /home/user/Documents/gradient_stripe.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "three_stripes.png",
+        "sandbox_path": "/home/user/Documents/three_stripes.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/gradient_stripe.png",
+      "key": "exists",
+      "expected": true,
+      "description": "gradient_stripe.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/gradient_stripe.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/gradient_stripe.png 600 300",
+      "key": "match",
+      "expected": true,
+      "description": "600x300"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/gradient_stripe.png 100 150 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "left stripe still red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/gradient_stripe.png 500 150 0 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "right stripe still blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 205 150",
+      "eval": "225 <= result.get('r', -1) <= 255 and 0 <= result.get('g', -1) <= 15 and 0 <= result.get('b', -1) <= 30",
+      "description": "gradient start (x=205): red"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 250 150",
+      "eval": "170 <= result.get('r', -1) <= 210 and 0 <= result.get('g', -1) <= 15 and 45 <= result.get('b', -1) <= 85",
+      "description": "x=250: mostly red (~191,0,64)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 300 150",
+      "eval": "105 <= result.get('r', -1) <= 150 and 0 <= result.get('g', -1) <= 15 and 105 <= result.get('b', -1) <= 150",
+      "description": "x=300: purple mid-point (~127,0,128)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 350 150",
+      "eval": "45 <= result.get('r', -1) <= 85 and 0 <= result.get('g', -1) <= 15 and 170 <= result.get('b', -1) <= 210",
+      "description": "x=350: mostly blue (~63,0,192)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 395 150",
+      "eval": "0 <= result.get('r', -1) <= 30 and 0 <= result.get('g', -1) <= 15 and 225 <= result.get('b', -1) <= 255",
+      "description": "gradient end (x=395): blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 250 10",
+      "eval": "170 <= result.get('r', -1) <= 210 and 0 <= result.get('g', -1) <= 15 and 45 <= result.get('b', -1) <= 85",
+      "description": "x=250 at the top row: same (horizontal gradient)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/gradient_stripe.png 350 290",
+      "eval": "45 <= result.get('r', -1) <= 85 and 0 <= result.get('g', -1) <= 15 and 170 <= result.get('b', -1) <= 210",
+      "description": "x=350 at the bottom row: same"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_fill_bucket_background",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_gap_select_by_color_replace",
+        "file": "three_stripes.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Select by Color tool (Shift+O)",
+      "click the green stripe",
+      "click FG swatch",
+      "type ff0000 + OK",
+      "click BG swatch",
+      "type 0000ff + OK",
+      "Gradient tool (G)",
+      "tool options: gradient 'FG to BG (RGB)'",
+      "Ctrl+drag from x=200 to x=399 along a row",
+      "Enter to commit",
+      "Select > None",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 18
+  }
+}

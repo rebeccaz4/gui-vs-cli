@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_sa_filter_mix",
+  "files": [
+    {
+      "filename": "tone44.wav",
+      "sandbox_path": "/home/user/Music/tone44.wav",
+      "type": "wav"
+    }
+  ]
+}

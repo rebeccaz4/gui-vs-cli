@@ -1,0 +1,83 @@
+{
+  "id": "musescore3_sa_transpose_eflat",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/etude_c.mscz (4 measures in C major). Transpose the whole score up to E-flat major, set the Work Title to 'Etude in E-flat' and the tempo marking at the start to 100 BPM (quarter note). Save the score in place and export it as PDF to /home/user/Documents/etude_eflat.pdf and as MusicXML to /home/user/Documents/etude_eflat.musicxml.",
+  "env": {
+    "files": [
+      {
+        "filename": "etude_c.mscz",
+        "sandbox_path": "/home/user/Documents/etude_c.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-key-signature /home/user/Documents/etude_c.mscz -3",
+      "key": "match",
+      "expected": true,
+      "description": "E-flat major (3 flats)"
+    },
+    {
+      "command": "check-note-count /home/user/Documents/etude_c.mscz 16",
+      "key": "match",
+      "expected": true,
+      "description": "notes kept"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/etude_c.mscz workTitle Etude in E-flat",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Etude in E-flat"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/etude_c.mscz 100",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 100 BPM"
+    },
+    {
+      "command": "check-pdf-exists /home/user/Documents/etude_eflat.pdf",
+      "key": "match",
+      "expected": true,
+      "description": "PDF exported"
+    },
+    {
+      "command": "musicxml-info /home/user/Documents/etude_eflat.musicxml",
+      "eval": "result['note_count'] == 16",
+      "description": "MusicXML exported"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_transpose_to_g_major",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_transpose_to_g_major",
+        "file": "etude_c.mscz"
+      }
+    ],
+    "gui_plan": [
+      "Ctrl+A",
+      "Tools > Transpose",
+      "choose E-flat major (up)",
+      "OK",
+      "File > Score Properties",
+      "type work title",
+      "OK",
+      "double-click tempo text",
+      "select text",
+      "type 100",
+      "Esc",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 20
+  }
+}

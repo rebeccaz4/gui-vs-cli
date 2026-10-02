@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_8150e3dc",
+  "files": [
+    {
+      "filename": "color_correction_brief.docx",
+      "sandbox_path": "/home/user/color_correction_brief.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "food_photo.jpg",
+      "sandbox_path": "/home/user/Desktop/food_photo.jpg",
+      "type": "jpg"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "id": "renderdoc_sa_pixel_history_split",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set PixelHistory_ShowFailures = false, PixelHistory_ColorByPrimitive = true, ShaderViewer_AutoStep = true and ShaderViewer_FriendlyNaming = true. In /home/user/captures, move every valid capture (a file that starts with RenderDoc's 4-byte capture signature 'RDOC') that is larger than 100 bytes into a new folder /home/user/captures/big/; leave all other files where they are. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "frame_a.rdc",
+        "sandbox_path": "/home/user/captures/frame_a.rdc"
+      },
+      {
+        "filename": "frame_b.rdc",
+        "sandbox_path": "/home/user/captures/frame_b.rdc"
+      },
+      {
+        "filename": "frame_c.rdc",
+        "sandbox_path": "/home/user/captures/frame_c.rdc"
+      },
+      {
+        "filename": "frame_bad1.rdc",
+        "sandbox_path": "/home/user/captures/frame_bad1.rdc"
+      },
+      {
+        "filename": "frame_bad2.rdc",
+        "sandbox_path": "/home/user/captures/frame_bad2.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting PixelHistory_ShowFailures false",
+      "key": "match",
+      "expected": true,
+      "description": "PixelHistory_ShowFailures = false"
+    },
+    {
+      "command": "check-setting PixelHistory_ColorByPrimitive true",
+      "key": "match",
+      "expected": true,
+      "description": "PixelHistory_ColorByPrimitive = true"
+    },
+    {
+      "command": "check-setting ShaderViewer_AutoStep true",
+      "key": "match",
+      "expected": true,
+      "description": "ShaderViewer_AutoStep = true"
+    },
+    {
+      "command": "check-setting ShaderViewer_FriendlyNaming true",
+      "key": "match",
+      "expected": true,
+      "description": "ShaderViewer_FriendlyNaming = true"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/big/frame_a.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/big/frame_a.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/big/frame_b.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/big/frame_b.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/big/frame_c.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/big/frame_c.rdc"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/big 3",
+      "key": "match",
+      "expected": true,
+      "description": "exactly the three valid captures moved"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 2",
+      "key": "match",
+      "expected": true,
+      "description": "the two corrupt files stay (one of them is 128 bytes)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_pixel_history_debug",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_pixel_history_debug",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_capture_archive_partition",
+        "file": "frame_a.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_archive_partition",
+        "file": "frame_b.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_archive_partition",
+        "file": "frame_c.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_archive_partition",
+        "file": "frame_bad1.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_archive_partition",
+        "file": "frame_bad2.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "list view (sizes)",
+      "RenderDoc: File > Open a suspect capture",
+      "dismiss error",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "select files (click / Ctrl+click)",
+      "Ctrl+X",
+      "open target folder",
+      "Ctrl+V",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 16
+  }
+}

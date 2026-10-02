@@ -1,0 +1,73 @@
+{
+  "id": "cloudcompare_sa_crop_random",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/thick.ply in CloudCompare (1500 points in a 10 x 10 x 10 cube). Keep only the points with X <= 5, then randomly subsample that part down to exactly 200 points, and save them as a binary little-endian PLY at /home/user/Documents/thick_sample.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "thick.ply",
+        "sandbox_path": "/home/user/Documents/thick.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/thick_sample.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/thick_sample.ply 200",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 200 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/thick_sample.ply -0.01 -0.01 -0.01 5.01 10.01 10.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/thick_sample.ply x 4.0",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 4.0"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/thick_sample.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_subsample_min_distance",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_subsample_min_distance",
+        "file": "thick.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type box limit",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Subsample",
+      "choose Random",
+      "type 200",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 15
+  }
+}

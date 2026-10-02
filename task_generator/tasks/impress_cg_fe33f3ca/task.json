@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_fe33f3ca",
+  "app": "libreoffice_impress",
+  "task": "Create a complete quiz section: add 3 new slides after slide 5. Slide 6: multiple choice question 'Which planet is largest?' with options A-D. Slide 7: multiple choice 'What causes tides?' with options A-D. Slide 8: true/false 'The sun is a star: True or False?'. Add a 'Click to Reveal' text box with the answer on each slide, initially colored white on white. The file to work on is /home/user/impress_teach_052.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_teach_052.pptx",
+        "sandbox_path": "/home/user/impress_teach_052.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNrtWt1y28YVvsdTnIEvRDQ0REoWpXCqdBj9NJo4lktp6umoGgwELEnEIIACC0sqhzN5iDxhn6Tn7C6AxY8oWnaTi8YXloTdPf/nOwdnYZqmMWX3burDlZcGCR/D3/Lg35AxjwdxBEGUsVT9BpOMp3EULx9hOBhCkrKMRdylVePazT7CxekYgiU9zxzOXG/hDA72jNN46QbRGMLgLmXxbBZ4zFG7jCsvToNoPjYATuJlEkdIEIbQG9jDA2sM1zF3Q8jCwGfgxTmuBRkMcX0fInYvFzIlI/OtGpU9orI3QCpX4vwIFm4GOx8WgbeAJHQjJqiFbjpnGf/LDvwrx5+k6X3AFzB5fQpxQn9nNbL7DbKHBVmXg+fmGcrDSaqtCb5pEDySBK8XDLI8IhFdyLibojXSnEGcwrkbZgzpC7L0cFc86aR+UNryDP2BIpFvBR/B5SQMvI/AY5iyT8wNd4CzBw538YMkfr8IOIPeIvB9FllisUZ9JKiT7JdpMA+iwlko84yzVLFToeSmTMZM+on50FMbv309HFqGiWFoYFDEKYc4M2ZpvIQk4Q+gnr3XY61ctVmUL+1s4SYUBXLnT1eXztUPk/dnzvU/3p8ZxofL6Y+nF1M4hp3dRbxku+iidMe4nlz96Fyc0uNWxO4YhuGzGcwZd9wwdEhth5g6QmYpuUUxC4CC/xUDCbdJ03lxxMkyQkZXWqMPKfPyNAs+sfAR7R75IcY8zNM4TzKbVCdKdDxDeW5uxZ8zdLTQjBJPkFGKSr70L5jJHTa6shDSXbJqQ0EncVNXkBG7q502LcxTN1lk9UNCHpSF1sV+GzM/SHpWaxfKwNtnS31sN0lY5Pe4PJkynqeRXFJGngWR7wjBHAo5oUdPmS1jburJR5W5z/EAWVbYhsyN4ELmzBLmBQgu0g89z83Ya0KGKAs4Wp504QEG6NLl3sIqza54hPE9xuuxztIWz5TOX80duQoo5GWCaf8cB1EvETaWrnrGT1ZNKp21rgfSKBm1vaO8ILjobnmHSa2FvuDvxWGcZk4QSR/1xP/t2J+hH0DulaGf5hEBc+EoGwGGeCDeBhmm+ExuBgqraF4lgSJRZsGzNn1ReNOhNBclTUQ4CduRAOljd2SjUHjCJp1tIbDNHykwMohiLqzYfa5SsEgLVL/XIJXO7yyr8zhDjN+WsBlEC5YiePtmmxh78FjC4Uz8QEDtJtogmEcfo/g+MmuJLPeomPmEDGePDsdOoDcLQuYkLl9UoSJ+/l3sAdqDh5dJyKoCmaTxnICYkjWTfYEtDqnQGcMsjLHK3jF+z1gEA3sAiKUwtAc1HpyaBocoMAwk3GUYLXcmIsj0qqKJbHQZCbBcMp1AEPHezDyZXlxfnEzejuHEjcj9KKIPRAtWJcX1GFZsrXlCnjanZx8mU+yZUEZtUdm2FBxrnKOK5TGEDOEC3SIfWHLHK7152tA1UScACSIOzyx18CIKBCpSN3Ckincf5nGIBR8TKs5DH9fQI1XXVfUQ9darYWLMEl3yY6RQD7TChO8nV1fjWvv3n19+Vc1Qh/goeyOmdYd/Qx4fHhhPJ03B9nxy8bbN9uwBywgqRAwLa8xQCB9WlTaFK7eMkbPp9HLaZiVDQvnhnCCJLVUt8xbM+4ic7xlaHIXBqA+Zi8BZuAh6uhdwOYmpzGH3B6PXR5bRdsCf4WhT9L7D0GVRnM8XJQddYYt6RCGVdL9qczRHzKj7K7NuiVVNc0ufktRqsf9nRP0/w+zQ9q53h7V0KDYXybLSOK3baaOttpNjr3oZIA9seBlotuyySa8lTy3ahZ1G1DKVyXlzcEvcB9iF+OyB+eVet2oBNraYI6t1xKF+AQNCax6KpaozKE9R0SxfQvDIfbe6pijUdQ41GtIGjos03OixZ7qWOFJ2SKKgcp2K1XX+rjh/97LzXnHee9l5vzjvb3G+8mx+VysmGr7p9q2DTHVIAlLrWGlSqmA1GzUeeM0H/nOcag1pufodDLaD3z0Nfkcy28sYUq/8hD7yyfFKt8G6X6SLM/n+5FQufoGmCDu9VanCegvsLze/oADUFV8G2IkgFNcNgHGiNLThWvbsWBsQlIrAuRnv335pedhrlwdt/lANHhSEtQcPLwKvwzp4jW4/G68Ovz5eNXT7A6n+QCp9FFcl7OH/E1LVFf8dkWp/E1K9qSaaAqlePtHcCr+O6vh1+Pn4dfS18Ys3Ne7CLxFLJleWmJHez8Kc2K0ggn7/PJARPIrjFcPfE2SEQkVSCZH+x9jxRkuhI7jePf8c6CBp5UP6DR8IieUT8etvCwd1XQo4qOn0m6DBm01ocLDtDUTj8kFOczsmFx+q5WM1TTwX//oYuX7guZysIK8uMLQyDO02cqSCqSPHDBhZtbliFlAO3Bz0YdSHw9sxcVUvx/Sgj8bulW93de9KBWuAlAW3Rn0KK1jLofLxxjm42TCS2Zr+1ohtHESWE9YnR7w6rfbw8BVMirsONI7cK3ymhkV3rLg1kt5oU6CQk1uO6feeR8MhU+42heE9Iq0EReU8oQ4+0seaaJVyJNl5LVGxIVyhudmN9yLqt1YbVjrjB9N42LmryBhQSbrKgm+G63FH8MtRUyP8u0a4T86CP5fXXc6lN99dXkueNmYtGQfRQVpp3RCgm/lTjN/FHbxloAoJTKuG5fWMPMb3na3w/EBgD4Xmfm1AKWaXCgTaYkhYoPBl2Uvni02Z2yVIXTwdQ0r6SjZ/qh/ahf0+7FlPqDq9vpi8bWu70kmsdzsUT9I4YamWpWKupwTapiyprS8oSlJEdP5TQm32xheWooNNpWjUvq6u7qU7Lq7FHXej+lxVt9cF8qm7SBBdn7tk5V0wyhw3+I1eHylCdUlghC+6PGRjMN+xuzx0JXoRyQsklmachaGbwk/MD/Kl2U3jsKTxfeiiiX+IQzRo996jcu9JnKfYFl7ly6WbPprPDfS/aw/0mZqdO4KkuMVroUTvqL+dala/ffbbfl2lrj3DQb+lS2PfbSOAles7uoCiEwj8h35DPaoYDYXbmNjRBiCp2+59TvEFwObvDjYc7nhb0Sh3Xx0rz9ZVKd8EistunfxTdaduxu2LIVpEFIpzUY92VnVR1jtfVv4K6uXFTptBccMjrIRVT7PZzXjvdq1XKGWuVtC0CtWmYiVvHy7bmKDjUAbaFzIFBrUBu7tADRoFu0Pkzp6mo1YNsFY1z3aVq2dKltR51aBEVSt+Eos3l6otytXz3UqzbHW7hjpEGSMuL1NFu3MjF2nSbV8lR6pKbnv5pmwjbqy/sESOmiWyfoMn/d95j1e6fut7vG3u8Lru74xXcBZhEZLF1ygv1Ol9aWelPu1a767U11xrm74K2zGoUsX0IZlNm232EGQ8a32TUPqELutLD4/1e/ua+I3r+srJ3R8+GP8Fuz+PLQ==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "fe33f3ca-deaa-5a9c-bbb1-9d3bd9cbfb69",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "id": "renderdoc_sa_rename_review",
+  "app": "renderdoc",
+  "task": "/home/user/captures contains five RenderDoc captures. Rename them to the project convention with this mapping: john_ok.rdc -> frame_001.rdc, unnamed.rdc -> frame_002.rdc, snapshot_final2.rdc -> frame_003.rdc, backup_old.rdc -> frame_004.rdc, wip_trial.rdc -> frame_005.rdc. Then move frame_004.rdc and frame_005.rdc into a new folder /home/user/captures/review/, and put an empty file /home/user/captures/review/README.txt next to them.",
+  "env": {
+    "files": [
+      {
+        "filename": "john_ok.rdc",
+        "sandbox_path": "/home/user/captures/john_ok.rdc"
+      },
+      {
+        "filename": "unnamed.rdc",
+        "sandbox_path": "/home/user/captures/unnamed.rdc"
+      },
+      {
+        "filename": "snapshot_final2.rdc",
+        "sandbox_path": "/home/user/captures/snapshot_final2.rdc"
+      },
+      {
+        "filename": "backup_old.rdc",
+        "sandbox_path": "/home/user/captures/backup_old.rdc"
+      },
+      {
+        "filename": "wip_trial.rdc",
+        "sandbox_path": "/home/user/captures/wip_trial.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/captures/frame_001.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/frame_001.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_002.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/frame_002.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frame_003.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/frame_003.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/review/frame_004.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/review/frame_004.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/review/frame_005.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/review/frame_005.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/review/README.txt",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/review/README.txt"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "three captures at the top level"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/review 2",
+      "key": "match",
+      "expected": true,
+      "description": "two captures in review/"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/john_ok.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/john_ok.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/wip_trial.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/wip_trial.rdc"
+    },
+    {
+      "command": "rdc-header /home/user/captures/frame_003.rdc",
+      "eval": "result.get('prog_version') == 'v1.36 ad02'",
+      "description": "frame_003 is the former snapshot_final2 (content kept)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_rename_project_captures",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_rename_project_captures",
+        "file": "john_ok.rdc"
+      },
+      {
+        "from_task": "renderdoc_rename_project_captures",
+        "file": "unnamed.rdc"
+      },
+      {
+        "from_task": "renderdoc_rename_project_captures",
+        "file": "snapshot_final2.rdc"
+      },
+      {
+        "from_task": "renderdoc_rename_project_captures",
+        "file": "backup_old.rdc"
+      },
+      {
+        "from_task": "renderdoc_rename_project_captures",
+        "file": "wip_trial.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "select file 1",
+      "F2",
+      "type frame_001.rdc + Enter",
+      "select file 2",
+      "F2",
+      "type frame_002.rdc + Enter",
+      "select file 3",
+      "F2",
+      "type frame_003.rdc + Enter",
+      "select file 4",
+      "F2",
+      "type frame_004.rdc + Enter",
+      "select file 5",
+      "F2",
+      "type frame_005.rdc + Enter",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "select files (click / Ctrl+click)",
+      "Ctrl+X",
+      "open target folder",
+      "Ctrl+V",
+      "new empty document (right-click > New Document)",
+      "type README.txt + Enter"
+    ],
+    "gui_step_estimate": 25
+  }
+}

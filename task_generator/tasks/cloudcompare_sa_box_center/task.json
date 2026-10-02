@@ -1,0 +1,82 @@
+{
+  "id": "cloudcompare_sa_box_center",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/dense_field.ply in CloudCompare (2000 points in the cube 0..20). Keep only the points inside the box (5, 5, 5)..(15, 15, 15), move them so that the box center (10, 10, 10) lands on the origin, compute per-point normals, and save the result as a binary big-endian PLY at /home/user/Documents/dense_box.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "dense_field.ply",
+        "sandbox_path": "/home/user/Documents/dense_field.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/dense_box.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/dense_box.ply 245",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 245 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/dense_box.ply -5.01 -5.01 -5.01 5.01 5.01 5.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/dense_box.ply x 9.5",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 9.5"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/dense_box.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/dense_box.ply binary_big_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_big_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_dense_crop_small_box",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_dense_crop_small_box",
+        "file": "dense_field.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type X min/max",
+      "type Y min/max",
+      "type Z min/max",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "Edit > Normals > Compute",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 18
+  }
+}

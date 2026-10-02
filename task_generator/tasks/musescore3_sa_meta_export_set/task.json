@@ -1,0 +1,89 @@
+{
+  "id": "musescore3_sa_meta_export_set",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/fanfare.mscz (4 measures). In the Score Properties set the Work Title to 'Fanfare in C', the Composer to 'J. Rivera' and the Copyright to '2026 Brass Guild'. Set the tempo at the start of the score to 60 BPM (quarter note) and put ff on the first note of measure 1. Save the score in place, then export it (with these changes) as MIDI to /home/user/Documents/fanfare.mid and as WAV to /home/user/Documents/fanfare.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "fanfare.mscz",
+        "sandbox_path": "/home/user/Documents/fanfare.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-meta-tag /home/user/Documents/fanfare.mscz workTitle Fanfare in C",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Fanfare in C"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/fanfare.mscz composer J. Rivera",
+      "key": "match",
+      "expected": true,
+      "description": "composer = J. Rivera"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/fanfare.mscz copyright 2026 Brass Guild",
+      "key": "match",
+      "expected": true,
+      "description": "copyright = 2026 Brass Guild"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/fanfare.mscz 60",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 60 BPM"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/fanfare.mscz 1 ff",
+      "key": "match",
+      "expected": true,
+      "description": "ff in measure 1"
+    },
+    {
+      "command": "midi-info /home/user/Documents/fanfare.mid",
+      "eval": "abs(result['tempo_bpm'] - 60) < 1 and result['note_on_count'] == 16",
+      "description": "MIDI exported after the tempo change (60 BPM, 16 notes)"
+    },
+    {
+      "command": "check-wav-duration /home/user/Documents/fanfare.wav 17",
+      "key": "match",
+      "expected": true,
+      "description": "WAV exported after the tempo change (16 s of music)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_add_composer_and_export_all",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_add_composer_and_export_all",
+        "file": "fanfare.mscz"
+      }
+    ],
+    "gui_plan": [
+      "File > Score Properties",
+      "type work title",
+      "type composer",
+      "type copyright",
+      "OK",
+      "double-click tempo text",
+      "select text",
+      "type 60",
+      "Esc",
+      "click m1 first note",
+      "Dynamics palette: ff",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 20
+  }
+}

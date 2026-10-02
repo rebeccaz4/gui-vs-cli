@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_9adf8ac9",
+  "app": "libreoffice_impress",
+  "task": "Create a comparison table on slide 3 with two columns: 'Before' with red background (#FFCDD2) and 'After' with green background (#C8E6C9), each having 5 rows. The file to work on is /home/user/impress_tct_019.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_tct_019.pptx",
+        "sandbox_path": "/home/user/impress_tct_019.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "9adf8ac9-f5f7-5ce9-9660-04dab3eb0374",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

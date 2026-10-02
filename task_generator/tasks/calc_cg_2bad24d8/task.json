@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_2bad24d8",
+  "app": "libreoffice_calc",
+  "task": "Build a sales KPI dashboard with large formatted metric cells and a pipeline funnel chart. The file to work on is /home/user/calc_gpm_016.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_gpm_016.xlsx",
+        "sandbox_path": "/home/user/calc_gpm_016.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "2bad24d8-667c-5bba-b7ab-5f42fe99f932",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

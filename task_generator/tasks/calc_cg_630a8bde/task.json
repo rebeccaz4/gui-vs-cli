@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_630a8bde",
+  "app": "libreoffice_calc",
+  "task": "Create a diet and nutrition tracker. Build a food database sheet with calories, protein, carbs, and fat per serving. On the daily log sheet, select foods via dropdown, enter servings, auto-calculate macros by looking up values from the database. Add daily totals, compare against targets (2000 cal, 150g protein, 250g carbs, 65g fat), and create a stacked bar chart of daily macro breakdown with target reference lines. The file to work on is /home/user/calc_wf_063.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_wf_063.xlsx",
+        "sandbox_path": "/home/user/calc_wf_063.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "630a8bde-5e50-56ac-8f6a-e669fd9f677a",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "id": "musescore3_sa_repeat_form",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/allegretto.mscz (8 measures of quarter notes in 4/4). Turn it into a repeated form: a start-repeat barline at the beginning of measure 1 and an end-repeat barline at the end of measure 4; a first-ending volta over measure 4 and a second-ending volta over measure 5; a line (system) break after measure 4; mf on the first note of measure 1 and ff on the first note of measure 5; and a 'Fine' marker at measure 8. Do not add or remove measures or notes. Save the score in place and export it as PDF to /home/user/Documents/allegretto.pdf.",
+  "env": {
+    "files": [
+      {
+        "filename": "allegretto.mscz",
+        "sandbox_path": "/home/user/Documents/allegretto.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/allegretto.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "score saved"
+    },
+    {
+      "command": "check-measure-count /home/user/Documents/allegretto.mscz 8",
+      "key": "match",
+      "expected": true,
+      "description": "still 8 measures"
+    },
+    {
+      "command": "check-note-count /home/user/Documents/allegretto.mscz 32",
+      "key": "match",
+      "expected": true,
+      "description": "notes unchanged (32)"
+    },
+    {
+      "command": "check-start-repeat-at /home/user/Documents/allegretto.mscz 1",
+      "key": "match",
+      "expected": true,
+      "description": "start repeat at measure 1"
+    },
+    {
+      "command": "check-end-repeat-at /home/user/Documents/allegretto.mscz 4",
+      "key": "match",
+      "expected": true,
+      "description": "end repeat at measure 4"
+    },
+    {
+      "command": "check-has-volta-at /home/user/Documents/allegretto.mscz 4",
+      "key": "match",
+      "expected": true,
+      "description": "first ending over measure 4"
+    },
+    {
+      "command": "check-has-volta-at /home/user/Documents/allegretto.mscz 5",
+      "key": "match",
+      "expected": true,
+      "description": "second ending over measure 5"
+    },
+    {
+      "command": "voltas /home/user/Documents/allegretto.mscz",
+      "eval": "len(result) >= 2 and all(v['measure'] in (4, 5) for v in result)",
+      "description": "no volta elsewhere"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/allegretto.mscz 4 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 4"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/allegretto.mscz 1 mf",
+      "key": "match",
+      "expected": true,
+      "description": "mf in measure 1"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/allegretto.mscz 5 ff",
+      "key": "match",
+      "expected": true,
+      "description": "ff in measure 5"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/allegretto.mscz",
+      "eval": "any(m['measure'] == 8 and 'fine' in (m.get('text','') + m.get('label','')).lower() for m in result['markers'])",
+      "description": "Fine marker at measure 8"
+    },
+    {
+      "command": "check-pdf-exists /home/user/Documents/allegretto.pdf",
+      "key": "match",
+      "expected": true,
+      "description": "PDF exported"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_change_tempo_marking",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_change_tempo_marking",
+        "file": "allegretto.mscz"
+      }
+    ],
+    "gui_plan": [
+      "open Repeats & Jumps palette",
+      "click m1",
+      "Start repeat",
+      "click m4",
+      "End repeat",
+      "Prima volta",
+      "click m5",
+      "Seconda volta",
+      "click m8",
+      "Fine",
+      "open Breaks palette",
+      "click m4",
+      "Line break",
+      "open Dynamics palette",
+      "click m1 first note",
+      "mf",
+      "click m5 first note",
+      "ff",
+      "Save (Ctrl+S)",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 23
+  }
+}

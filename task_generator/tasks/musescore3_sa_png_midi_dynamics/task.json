@@ -1,0 +1,88 @@
+{
+  "id": "musescore3_sa_png_midi_dynamics",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/chorale.mscz (4 measures). Put p on the first note of measure 1, mf on the first note of measure 2, and f on the first note of measure 3. Set the tempo at the start of the score to 72 BPM (quarter note). Save the score in place, then export it with these changes as PNG to /home/user/Documents/chorale.png (MuseScore appends the page number to PNG exports, so the file on disk is /home/user/Documents/chorale-1.png) and as MIDI to /home/user/Documents/chorale.mid.",
+  "env": {
+    "files": [
+      {
+        "filename": "chorale.mscz",
+        "sandbox_path": "/home/user/Documents/chorale.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/chorale.mscz 1 p",
+      "key": "match",
+      "expected": true,
+      "description": "p in measure 1"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/chorale.mscz 3 f",
+      "key": "match",
+      "expected": true,
+      "description": "f in measure 3"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/chorale.mscz 2 mf",
+      "key": "match",
+      "expected": true,
+      "description": "mf in measure 2"
+    },
+    {
+      "command": "dynamics /home/user/Documents/chorale.mscz",
+      "eval": "len(result) == 3",
+      "description": "no other dynamics"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/chorale.mscz 72",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 72 BPM"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/chorale-1.png",
+      "key": "exists",
+      "expected": true,
+      "description": "PNG exported (MuseScore 3 writes page 1 as chorale-1.png)"
+    },
+    {
+      "command": "midi-info /home/user/Documents/chorale.mid",
+      "eval": "abs(result['tempo_bpm'] - 72) < 1",
+      "description": "MIDI exported after the tempo change"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_export_png_and_midi",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_export_png_and_midi",
+        "file": "chorale.mscz"
+      }
+    ],
+    "gui_plan": [
+      "open Dynamics palette",
+      "click m1 first note",
+      "p",
+      "click m2 first note",
+      "mf",
+      "click m3 first note",
+      "f",
+      "double-click tempo text",
+      "select text",
+      "type 72",
+      "Esc",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 20
+  }
+}

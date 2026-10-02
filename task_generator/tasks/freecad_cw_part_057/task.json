@@ -1,0 +1,67 @@
+{
+  "id": "freecad_cw_part_057",
+  "app": "freecad",
+  "task": "Create a Part workbench box sized 38 mm along global X, 26 mm along global Y, and 18 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 38, Y = 0 to 26, and Z = 0 to 18. Remove the top face at Z = 18, then apply Part Thickness with wall thickness 2 mm inward to make an open-top rectangular shell. The shell should keep the outside dimensions 38 mm by 26 mm by 18 mm, have 2 mm thick walls and bottom, and have an interior cavity opening upward. Keep FreeCAD's default label 'Cube' for the Part box. Save the completed model to /home/user/Unnamed.FCStd.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Unnamed.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "Output model saved at /home/user/Unnamed.FCStd"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM4LjAsInhtYXgiOjM4LjAsInhtaW4iOjAsInkiOjI2LjAsInltYXgiOjI2LjAsInltaW4iOjAsInoiOjE4LjAsInptYXgiOjE4LjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOS4wLCJ5IjoxMy4wLCJ6Ijo5LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTgsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzgsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI2LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjo0MjgwLjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjo0Mi44MDAwMDAwMDAwMDAwMDR9LCJ0eXBlIjoiUGFydDo6Qm94Iiwidm9sdW1lIjp7ImV4cGVjdGVkIjoxNzc4NC4wLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTc3Ljg0fX0seyJsYWJlbF9jb250YWlucyI6IlRoaWNrbmVzcyIsInByb3BlcnRpZXMiOnsiRmFjZXMiOnsiZXF1YWxzIjoiQm94In0sIkpvaW4iOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiTW9kZSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjF9LCJWYWx1ZSI6eyJleHBlY3RlZCI6LTIsInRvbGVyYW5jZSI6MC4xNX19LCJ0eXBlIjoiUGFydDo6VGhpY2tuZXNzIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlBhcnQ6OkJveCIsIlRoaWNrbmVzcyJdfX0=",
+      "eval": "result.get('checks', {}).get('required_type_contains') is True",
+      "description": "CADWorld check: required_type_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM4LjAsInhtYXgiOjM4LjAsInhtaW4iOjAsInkiOjI2LjAsInltYXgiOjI2LjAsInltaW4iOjAsInoiOjE4LjAsInptYXgiOjE4LjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOS4wLCJ5IjoxMy4wLCJ6Ijo5LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTgsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzgsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI2LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjo0MjgwLjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjo0Mi44MDAwMDAwMDAwMDAwMDR9LCJ0eXBlIjoiUGFydDo6Qm94Iiwidm9sdW1lIjp7ImV4cGVjdGVkIjoxNzc4NC4wLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTc3Ljg0fX0seyJsYWJlbF9jb250YWlucyI6IlRoaWNrbmVzcyIsInByb3BlcnRpZXMiOnsiRmFjZXMiOnsiZXF1YWxzIjoiQm94In0sIkpvaW4iOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiTW9kZSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjF9LCJWYWx1ZSI6eyJleHBlY3RlZCI6LTIsInRvbGVyYW5jZSI6MC4xNX19LCJ0eXBlIjoiUGFydDo6VGhpY2tuZXNzIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlBhcnQ6OkJveCIsIlRoaWNrbmVzcyJdfX0=",
+      "eval": "result.get('checks', {}).get('object_0') is True",
+      "description": "CADWorld check: object_0"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM4LjAsInhtYXgiOjM4LjAsInhtaW4iOjAsInkiOjI2LjAsInltYXgiOjI2LjAsInltaW4iOjAsInoiOjE4LjAsInptYXgiOjE4LjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOS4wLCJ5IjoxMy4wLCJ6Ijo5LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTgsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzgsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI2LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjo0MjgwLjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjo0Mi44MDAwMDAwMDAwMDAwMDR9LCJ0eXBlIjoiUGFydDo6Qm94Iiwidm9sdW1lIjp7ImV4cGVjdGVkIjoxNzc4NC4wLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTc3Ljg0fX0seyJsYWJlbF9jb250YWlucyI6IlRoaWNrbmVzcyIsInByb3BlcnRpZXMiOnsiRmFjZXMiOnsiZXF1YWxzIjoiQm94In0sIkpvaW4iOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiTW9kZSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjF9LCJWYWx1ZSI6eyJleHBlY3RlZCI6LTIsInRvbGVyYW5jZSI6MC4xNX19LCJ0eXBlIjoiUGFydDo6VGhpY2tuZXNzIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlBhcnQ6OkJveCIsIlRoaWNrbmVzcyJdfX0=",
+      "eval": "result.get('checks', {}).get('object_1') is True",
+      "description": "CADWorld check: object_1"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImJib3giOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMjUsIngiOjM4LjAsInhtYXgiOjM4LjAsInhtaW4iOjAsInkiOjI2LjAsInltYXgiOjI2LjAsInltaW4iOjAsInoiOjE4LjAsInptYXgiOjE4LjAsInptaW4iOjB9LCJjZW50ZXJfb2ZfbWFzcyI6eyJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDEsInRvbGVyYW5jZSI6MC4zLCJ4IjoxOS4wLCJ5IjoxMy4wLCJ6Ijo5LjB9LCJsYWJlbF9jb250YWlucyI6IkN1YmUiLCJwcm9wZXJ0aWVzIjp7IkhlaWdodCI6eyJleHBlY3RlZCI6MTgsInRvbGVyYW5jZSI6MC4xNX0sIkxlbmd0aCI6eyJleHBlY3RlZCI6MzgsInRvbGVyYW5jZSI6MC4xNX0sIlBsYWNlbWVudCI6eyJQeCI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9LCJQeiI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjJ9fSwiV2lkdGgiOnsiZXhwZWN0ZWQiOjI2LCJ0b2xlcmFuY2UiOjAuMTV9fSwic3VyZmFjZV9hcmVhIjp7ImV4cGVjdGVkIjo0MjgwLjAsInJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMiwidG9sZXJhbmNlIjo0Mi44MDAwMDAwMDAwMDAwMDR9LCJ0eXBlIjoiUGFydDo6Qm94Iiwidm9sdW1lIjp7ImV4cGVjdGVkIjoxNzc4NC4wLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTc3Ljg0fX0seyJsYWJlbF9jb250YWlucyI6IlRoaWNrbmVzcyIsInByb3BlcnRpZXMiOnsiRmFjZXMiOnsiZXF1YWxzIjoiQm94In0sIkpvaW4iOnsiZXhwZWN0ZWQiOjAsInRvbGVyYW5jZSI6MC4xfSwiTW9kZSI6eyJleHBlY3RlZCI6MCwidG9sZXJhbmNlIjowLjF9LCJWYWx1ZSI6eyJleHBlY3RlZCI6LTIsInRvbGVyYW5jZSI6MC4xNX19LCJ0eXBlIjoiUGFydDo6VGhpY2tuZXNzIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlBhcnQ6OkJveCIsIlRoaWNrbmVzcyJdfX0=",
+      "key": "passed",
+      "expected": true,
+      "description": "CADWorld all-checks verdict (source benchmark's binary success)"
+    }
+  ],
+  "metadata": {
+    "source": "CADWorld (ICLR 2026), https://github.com/Zdong104/CADWORLD",
+    "source_task_id": "freecad-part-057",
+    "source_license": "Apache-2.0",
+    "source_domain": "part",
+    "source_subsets": "",
+    "source_evaluator_criteria": [
+      "The saved file must exist at /home/user/Unnamed.FCStd.",
+      "The source box should be 38 mm along X, 26 mm along Y, and 18 mm along Z.",
+      "The top face at Z = 18 should be removed before applying Part Thickness.",
+      "The Part Thickness feature should use 2 mm inward wall thickness, producing an open-top shell with 2 mm walls and bottom.",
+      "Because no golden answer FCStd is available for this task, complex geometry is scored structurally rather than by exact BRep comparison."
+    ],
+    "fc019_compat": "yes",
+    "fc019_compat_note": "",
+    "instruction_edits": [
+      {
+        "replaced": "Create a Part workbench box sized 38 mm along global X, 26 mm along global Y, and 18 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 38, Y = 0 to 26, and Z = 0 to 18. Remove the top face at Z = 18, then apply Part Thickness with wall thickness 2 mm inward to make an open-top rectangular shell. The shell should keep the outside dimensions 38 mm by 26 mm by 18 mm, have 2 mm thick walls and bottom, and have an interior cavity opening upward. Save the completed model to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the box label to contain 'Cube' (FreeCAD GUI default), which the instruction did not say (wording review 2026-09-30)"
+      },
+      {
+        "replaced": "Create a Part workbench box sized 38 mm along global X, 26 mm along global Y, and 18 mm along global Z, with its lower-back-left corner at the origin so it spans X = 0 to 38, Y = 0 to 26, and Z = 0 to 18. Remove the top face at Z = 18, then apply Part Thickness with wall thickness 2 mm inward to make an open-top rectangular shell. The shell should keep the outside dimensions 38 mm by 26 mm by 18 mm, have 2 mm thick walls and bottom, and have an interior cavity opening upward. Keep FreeCAD's default label 'Cube' for the Part box (the checker looks for it). Save the completed model to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the box label to contain 'Cube' (FreeCAD GUI default), which the instruction did not say (wording review 2026-09-30)"
+      }
+    ]
+  },
+  "cli_feasibility": {
+    "feasible": "needs-skill-fix",
+    "reason": "cli-anything-freecad exposes the needed operations, but its `export render --preset fcstd` writes a synthetic Document.xml (no sketch geometry, generic Part::Feature/PartDesign::Feature types), so CADWorld structure checks fail; see update/validation/README.md section 3"
+  }
+}

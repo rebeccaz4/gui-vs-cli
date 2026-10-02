@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_a2fca097",
+  "app": "libreoffice_calc",
+  "task": "Define a named range 'EmployeeList' on the 'Employees' sheet (A2:A500). Then on the 'Validation' sheet, use this named range in a data validation dropdown for cells B2:B20, so users can select an employee name from the list. The file to work on is /home/user/calc_mcp_049.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_mcp_049.xlsx",
+        "sandbox_path": "/home/user/calc_mcp_049.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNqlV9tu2zgQfddXTNwCsrCB4hibhxXgBzdOgKBFWzhB+9AtBFkaxUJkUhWpOIFhoB+xX7hfskPqYuriNNjmIbbJ4fDM5cwMR6ORtcRtkEdwG+ZJJj1YYJwwBBZsMII8YPcI9tUmS/kz4odESBsCFkEhEBIJMc8hCmQAj0Ga0JeEM4hynkV8y6y7QDzAzcKDMEhDfxNm/uTPv6wF3wQJ8yBNVjnyOE5C9JWAdRvyPGH3ngVwyTcZZ8gknMN44l44Hnw8jgef6ENAyB9RKYB6V5y8nb+devTvYjJpaZ3WWhdHsAN9/9Isn7ybeu+mExC8yENCEed8AyYGa0R+tBJSn0vgovmWIcuen1LL+vpp+X5xs4QZ2GdrvsEz8l9uW3fz2/f+zUItmz6yLcuKMAZlT/zsS/LjOE5S9LNArh3lIAB1o/r8omVAyZAHCBNqQ7aJXEOW8/schUgeEUTpXVcfWqIsciY8iFMeSFih3CIymLgTHdxzd9K6Q3IZpL7SgASVpKxyOX8usai/7Yq2aoNdUhv5W54/rDg3sWtxfAoxk3ClPxTYQAAeNGWEU47j0eXy5u7mcv7Bg8uAMS5BKQWlC3aNxr0HO9yPnM7p0fLq63xJqUdgjc1c232w4A18zjHkLEoUDg9WnLwm1oiUTptCyDK1tGgSH9JO2KDwJOTmlavFFVsEEBnsQ9YMC/XtvJ7fkI1L/FEkOSVXfX1CcaN4wTUvWERWtrT8hsUGt17DKpUPmllimFeaSZBxwiCcflrECr2vi4lfXjOD6yAV2EhQVlEMZGe32SbAawwfWv4vAUa6UEW6UlVom1N96TIO1Rm/E4pjSO/yAltCEaPVrp5v7au+t0+gkAnTCSHobEoS44i55rLTOvCmfSQR+gzwGMY6/r5MZIqnEGKalkAdkAXxXnTUXD1l5Fek3Pk2NlL3FGwjfLbzveOFHI5co1xoQmu7r/K6cRZmsxZldCYdtKldE0hf3VB29CJS/1EzCR4sqwOndbx/Q03Bz/PbW6/Vdf79+c9L5Ji9SAZiwsjpXWZW0T9UGb1oiSClfR8hVaggl0mQeq2OXJFzVUjY5px6nl4+al9ZYrr2DRNe6TTDPNuZv/anJFfm1bALDMP7Fr2M5yNvc7qDTxPUhfljkKTBKkWqiZpNXTq6D/gsxo5T18hXtpur5fLTsg+q7C692jntzw6DI0NNX/mc4fH54RdFdCt8ukdXnm9mgzlQ9wBDFZlS3lWDmW/s6IXDccuslimysSHqKHpOXhe8aRO8tkNEGTHll1ZX1CXixTQpS3HN3eix1zPqSkVbVJSMK4cIVPYPHQCKhq3CYQ+VrujR1UIns0roWEVixIYCraNXEbJNkQbUe2PMkYUo2sNi91wtPwMh8zHBqBbOnQpW/Vu7Cmx74Oa7NTZ6Ql6kEQ11YM/aDFLzSWtlyA0d1lUzTKX7/7pE/CBn1HNESY2erJbxyQUHR+glZxBlqUT39ebgMLqBbDraRY41hDLHu4zXzNaTduWemb2rvu1tlfe7Btr+xdbwivbwcp9TUeraOdhMlH2wXdPQv8WKn5pIuCru72neHErO19DMdB6UMyssvniadtRBSmpR86hTWa/VP2hdO0ov6m/7ASf9sv5sAhmu1QOw+yIdNyX4tF12y4J8WmVk2USd32wb027boNZkvJ42CRsboT5Vj63ywlrj30y9hFV7M+T2Z+fNXF8L1hP/zrihdlw19xs79KakmZBRYykbjdW8oQhVbO+qJ+r+bFe9SvfuUyqebKtKLy5cJeyWY0LvPdpER73PmnT0zKdaC37nvXJoAsOPXus/dRT0yQ==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a2fca097-31f0-5837-b5d2-42f7d6db7f39",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

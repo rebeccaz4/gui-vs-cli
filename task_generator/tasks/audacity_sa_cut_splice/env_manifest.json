@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_sa_cut_splice",
+  "files": [
+    {
+      "filename": "long.wav",
+      "sandbox_path": "/home/user/Music/long.wav",
+      "type": "wav"
+    }
+  ]
+}

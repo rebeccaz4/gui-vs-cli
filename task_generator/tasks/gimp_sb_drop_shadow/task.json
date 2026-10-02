@@ -1,0 +1,133 @@
+{
+  "id": "gimp_sb_drop_shadow",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/icon_rgba.png in GIMP (256x256, a yellow circle on a transparent background). Enlarge the canvas to 320x320 with the original image kept at the top-left (the circle does not move). Give the circle a pure blue (RGB 0,0,255) drop shadow at 100% opacity, offset 50 pixels to the right and 70 pixels down, with a blur radius of 4 pixels; the shadow must be complete, also where it extends beyond x=256 or y=256. Then flatten the image onto a white background and export it as PNG to /home/user/Documents/drop_shadow.png (320x320).",
+  "env": {
+    "files": [
+      {
+        "filename": "icon_rgba.png",
+        "sandbox_path": "/home/user/Documents/icon_rgba.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/drop_shadow.png",
+      "key": "exists",
+      "expected": true,
+      "description": "drop_shadow.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/drop_shadow.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/drop_shadow.png 320 320",
+      "key": "match",
+      "expected": true,
+      "description": "320x320"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 128 128 255 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "circle stays yellow, on top of the shadow"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 35 128 255 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "circle not moved (left edge still at x~28)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 128 35 255 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "circle not moved (top edge still at y~28)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/drop_shadow.png 230 250",
+      "eval": "0 <= result.get('r', -1) <= 60 and 0 <= result.get('g', -1) <= 60 and 200 <= result.get('b', -1) <= 255",
+      "description": "shadow below-right of the circle: solid blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/drop_shadow.png 120 260",
+      "eval": "0 <= result.get('r', -1) <= 60 and 0 <= result.get('g', -1) <= 60 and 200 <= result.get('b', -1) <= 255",
+      "description": "shadow below the circle (offset 70 down)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/drop_shadow.png 265 198",
+      "eval": "0 <= result.get('r', -1) <= 60 and 0 <= result.get('g', -1) <= 60 and 200 <= result.get('b', -1) <= 255",
+      "description": "shadow beyond x=256 (not cut off)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/drop_shadow.png 178 285",
+      "eval": "0 <= result.get('r', -1) <= 60 and 0 <= result.get('g', -1) <= 60 and 200 <= result.get('b', -1) <= 255",
+      "description": "shadow beyond y=256, offset 70 down (not cut off)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/drop_shadow.png 280 198",
+      "eval": "0 <= result.get('r', -1) <= 248 and 0 <= result.get('g', -1) <= 248 and 200 <= result.get('b', -1) <= 255",
+      "description": "soft right edge: 2 px beyond the hard edge not white (blurred)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 60 40 255 255 255 10",
+      "key": "match",
+      "expected": true,
+      "description": "top-left outside the circle: white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 20 300 255 255 255 10",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-left corner white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 300 20 255 255 255 10",
+      "key": "match",
+      "expected": true,
+      "description": "top-right corner white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/drop_shadow.png 310 310 255 255 255 10",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-right corner white"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_webp_export_preserve_alpha",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_webp_export_preserve_alpha",
+        "file": "icon_rgba.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Image > Canvas Size",
+      "type 320 (chain linked)",
+      "Resize",
+      "Layer > Layer to Image Size",
+      "Filters > Light and Shadow > Drop Shadow",
+      "type X 50",
+      "type Y 70",
+      "type blur radius 4",
+      "click colour swatch",
+      "type 0000ff + OK",
+      "type opacity 1.0",
+      "OK",
+      "Image > Flatten Image (BG white)",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 20
+  }
+}

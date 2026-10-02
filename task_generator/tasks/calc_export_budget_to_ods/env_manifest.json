@@ -1,6 +1,0 @@
-{
-  "task_id": "calc_export_budget_to_ods",
-  "files": [
-    {"filename": "budget.xlsx", "sandbox_path": "/home/user/Documents/budget.xlsx", "type": "xlsx"}
-  ]
-}

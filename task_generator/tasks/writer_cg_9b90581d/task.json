@@ -1,0 +1,37 @@
+{
+  "id": "writer_cg_9b90581d",
+  "app": "libreoffice_writer",
+  "task": "Help me finalize the academic report. From ~/research/citation_counts.xlsx, find all papers authored by 'Dr. Chen' and insert their citation data as a table into the 'Impact Metrics' section of the research summary open in LibreOffice Writer. The file to work on is /home/user/osworld_multi_apps_calc_to_writer_015.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_multi_apps_calc_to_writer_015.docx",
+        "sandbox_path": "/home/user/osworld_multi_apps_calc_to_writer_015.docx"
+      },
+      {
+        "filename": "citation_counts.xlsx",
+        "sandbox_path": "/home/user/research/citation_counts.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "9b90581d-9f62-557d-870b-efe00c0dd69e",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "research_summary.docx"
+    ]
+  }
+}

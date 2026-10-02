@@ -1,0 +1,72 @@
+{
+  "id": "musescore3_sa_ds_al_coda",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/folk_tune.mscz (4 measures). Append two empty measures at the end (6 measures in total). Then lay out a D.S. al Coda form: a Segno at measure 2, a 'To Coda' at the end of measure 3, a 'D.S. al Coda' at the end of measure 4, and a Coda sign at measure 5. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "folk_tune.mscz",
+        "sandbox_path": "/home/user/Documents/folk_tune.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-measure-count /home/user/Documents/folk_tune.mscz 6",
+      "key": "match",
+      "expected": true,
+      "description": "6 measures"
+    },
+    {
+      "command": "check-note-count /home/user/Documents/folk_tune.mscz 16",
+      "key": "match",
+      "expected": true,
+      "description": "original notes kept"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/folk_tune.mscz",
+      "eval": "any(m['measure'] == 2 and m['label'] == 'segno' for m in result['markers'])",
+      "description": "Segno at measure 2"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/folk_tune.mscz",
+      "eval": "any(m['measure'] == 3 and m['label'] == 'coda' for m in result['markers'])",
+      "description": "To Coda at measure 3"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/folk_tune.mscz",
+      "eval": "any(m['measure'] == 5 and m['label'] == 'codab' for m in result['markers'])",
+      "description": "Coda sign at measure 5"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/folk_tune.mscz",
+      "eval": "any(j['measure'] == 4 and j['jumpTo'] == 'segno' for j in result['jumps'])",
+      "description": "D.S. al Coda (jump to Segno) at measure 4"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_voltas_repeats",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_voltas_repeats",
+        "file": "folk_tune.mscz"
+      }
+    ],
+    "gui_plan": [
+      "Ctrl+B",
+      "Ctrl+B",
+      "open Repeats & Jumps palette",
+      "click m2",
+      "Segno",
+      "click m3",
+      "To Coda",
+      "click m4",
+      "D.S. al Coda",
+      "click m5",
+      "Coda",
+      "Save"
+    ],
+    "gui_step_estimate": 12
+  }
+}

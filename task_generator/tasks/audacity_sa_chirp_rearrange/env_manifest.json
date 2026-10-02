@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_sa_chirp_rearrange",
+  "files": [
+    {
+      "filename": "phrase.wav",
+      "sandbox_path": "/home/user/Music/phrase.wav",
+      "type": "wav"
+    }
+  ]
+}

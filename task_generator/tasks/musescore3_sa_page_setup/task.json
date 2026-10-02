@@ -1,0 +1,111 @@
+{
+  "id": "musescore3_sa_page_setup",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/score_layout.mscz (US Letter). Set the page to A4 in inches (8.27 x 11.69), make the top, bottom, left and right margins 0.5 in on both odd and even pages, set the staff space to 2.0 mm, and add a line break after measure 2. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "score_layout.mscz",
+        "sandbox_path": "/home/user/Documents/score_layout.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageWidth 8.27",
+      "key": "match",
+      "expected": true,
+      "description": "pageWidth = 8.27"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageHeight 11.69",
+      "key": "match",
+      "expected": true,
+      "description": "pageHeight = 11.69"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pagePrintableWidth 7.27",
+      "key": "match",
+      "expected": true,
+      "description": "pagePrintableWidth = 7.27"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageOddLeftMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageOddLeftMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageEvenLeftMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageEvenLeftMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageOddTopMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageOddTopMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageOddBottomMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageOddBottomMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageEvenTopMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageEvenTopMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz pageEvenBottomMargin 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "pageEvenBottomMargin = 0.5"
+    },
+    {
+      "command": "check-style-value /home/user/Documents/score_layout.mscz Spatium 2.0",
+      "key": "match",
+      "expected": true,
+      "description": "Spatium = 2.0"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/score_layout.mscz 2 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 2"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_page_layout_margins",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_page_layout_margins",
+        "file": "score_layout.mscz"
+      }
+    ],
+    "gui_plan": [
+      "Format > Page Settings",
+      "choose inches",
+      "Page size: A4",
+      "Two sided",
+      "type odd top",
+      "type odd bottom",
+      "type odd left",
+      "type odd right",
+      "type even top",
+      "type even bottom",
+      "type even left",
+      "type even right",
+      "type staff space 2.0",
+      "OK",
+      "click m2",
+      "Breaks palette: Line break",
+      "Save"
+    ],
+    "gui_step_estimate": 17
+  }
+}

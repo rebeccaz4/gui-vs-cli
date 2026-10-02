@@ -1,0 +1,145 @@
+{
+  "id": "renderdoc_sa_texture_dedupe",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set TextureViewer_MipLevel = 3, TextureViewer_PerTexYFlip = true, TextureViewer_HexDisplay = true and TextureViewer_ResetRange = false. In /home/user/captures, draw2.rdc and draw3.rdc are copies of draw1.rdc and frameB.rdc is a copy of frameA.rdc: delete the copies and set the recent capture list to the three remaining captures (absolute paths) in alphabetical order. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "draw1.rdc",
+        "sandbox_path": "/home/user/captures/draw1.rdc"
+      },
+      {
+        "filename": "draw2.rdc",
+        "sandbox_path": "/home/user/captures/draw2.rdc"
+      },
+      {
+        "filename": "draw3.rdc",
+        "sandbox_path": "/home/user/captures/draw3.rdc"
+      },
+      {
+        "filename": "frameA.rdc",
+        "sandbox_path": "/home/user/captures/frameA.rdc"
+      },
+      {
+        "filename": "frameB.rdc",
+        "sandbox_path": "/home/user/captures/frameB.rdc"
+      },
+      {
+        "filename": "unique.rdc",
+        "sandbox_path": "/home/user/captures/unique.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting TextureViewer_MipLevel 3",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_MipLevel = 3"
+    },
+    {
+      "command": "check-setting TextureViewer_PerTexYFlip true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_PerTexYFlip = true"
+    },
+    {
+      "command": "check-setting TextureViewer_HexDisplay true",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_HexDisplay = true"
+    },
+    {
+      "command": "check-setting TextureViewer_ResetRange false",
+      "key": "match",
+      "expected": true,
+      "description": "TextureViewer_ResetRange = false"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "three captures left"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/draw1.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/draw1.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/frameA.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/frameA.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/unique.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/unique.rdc"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/draw1.rdc', '/home/user/captures/frameA.rdc', '/home/user/captures/unique.rdc']",
+      "description": "RecentCaptureFiles = draw1.rdc, frameA.rdc, unique.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_texture_mip_selection",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_texture_mip_selection",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "draw1.rdc"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "draw2.rdc"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "draw3.rdc"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "frameA.rdc"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "frameB.rdc"
+      },
+      {
+        "from_task": "renderdoc_deduplicate_captures",
+        "file": "unique.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "select the three copies",
+      "Delete",
+      "confirm",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 10
+  }
+}

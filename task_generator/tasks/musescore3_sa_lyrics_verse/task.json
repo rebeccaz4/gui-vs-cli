@@ -1,0 +1,57 @@
+{
+  "id": "musescore3_sa_lyrics_verse",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/melody.mscz (8 notes in 2 measures). Enter the lyric line 'Si-lent night, ho-ly night, all is' with one syllable under each note, in order, and with the hyphenated words entered as connected syllables (Si-lent, ho-ly). Set the Work Title to 'Silent Night (excerpt)'. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "melody.mscz",
+        "sandbox_path": "/home/user/Documents/melody.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "lyrics /home/user/Documents/melody.mscz",
+      "eval": "len(result) == 8",
+      "description": "one syllable per note (8)"
+    },
+    {
+      "command": "lyrics /home/user/Documents/melody.mscz",
+      "eval": "[l['text'] for l in result] == ['Si', 'lent', 'night', 'ho', 'ly', 'night', 'all', 'is']",
+      "description": "syllables in order"
+    },
+    {
+      "command": "lyrics /home/user/Documents/melody.mscz",
+      "eval": "[l.get('syllabic') or 'single' for l in result] == ['begin', 'end', 'single', 'begin', 'end', 'single', 'single', 'single']",
+      "description": "Si-lent and ho-ly connected"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/melody.mscz workTitle Silent Night (excerpt)",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Silent Night (excerpt)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_add_lyrics_to_melody",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_add_lyrics_to_melody",
+        "file": "melody.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click first note",
+      "Ctrl+L",
+      "type 'Si-lent night, ho-ly night, all is'",
+      "Esc",
+      "File > Score Properties",
+      "type work title",
+      "OK",
+      "Save"
+    ],
+    "gui_step_estimate": 8
+  }
+}

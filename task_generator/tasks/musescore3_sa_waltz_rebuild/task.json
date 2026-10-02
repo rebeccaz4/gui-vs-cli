@@ -1,0 +1,88 @@
+{
+  "id": "musescore3_sa_waltz_rebuild",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/waltz_draft.mscz (4 measures in C major, tempo 120 BPM). Transpose the whole score to D major, set the tempo marking at the start to 132 BPM (quarter note), set the Composer to 'Emile Waldteufel' and the Work Title to 'Skaters Draft', put mf on the first note of measure 1, add a line break after measure 2 and a 'Fine' marker at measure 4. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "waltz_draft.mscz",
+        "sandbox_path": "/home/user/Documents/waltz_draft.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-key-signature /home/user/Documents/waltz_draft.mscz 2",
+      "key": "match",
+      "expected": true,
+      "description": "D major (2 sharps)"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/waltz_draft.mscz 132",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 132 BPM"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/waltz_draft.mscz composer Emile Waldteufel",
+      "key": "match",
+      "expected": true,
+      "description": "composer = Emile Waldteufel"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/waltz_draft.mscz workTitle Skaters Draft",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Skaters Draft"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/waltz_draft.mscz 1 mf",
+      "key": "match",
+      "expected": true,
+      "description": "mf in measure 1"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/waltz_draft.mscz 2 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 2"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/waltz_draft.mscz",
+      "eval": "any(m['measure'] == 4 and 'fine' in (m['text'] + m['label']).lower() for m in result['markers'])",
+      "description": "Fine at measure 4"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_rebuild_score_header",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_rebuild_score_header",
+        "file": "waltz_draft.mscz"
+      }
+    ],
+    "gui_plan": [
+      "Ctrl+A",
+      "Tools > Transpose",
+      "choose D major",
+      "OK",
+      "double-click tempo text",
+      "select text",
+      "type 132",
+      "Esc",
+      "File > Score Properties",
+      "type composer",
+      "type work title",
+      "OK",
+      "click m1 first note",
+      "Dynamics palette: mf",
+      "click m2",
+      "Breaks palette: Line break",
+      "click m4",
+      "Repeats palette: Fine",
+      "Save"
+    ],
+    "gui_step_estimate": 19
+  }
+}

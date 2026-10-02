@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_855f5769",
+  "files": [
+    {
+      "filename": "banner_instructions.docx",
+      "sandbox_path": "/home/user/Desktop/banner_instructions.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "banner_template.png",
+      "sandbox_path": "/home/user/Desktop/banner_template.png",
+      "type": "png"
+    }
+  ]
+}

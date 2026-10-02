@@ -1,0 +1,105 @@
+{
+  "id": "gimp_sb_levels_range",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/gradient.png in GIMP (400x200, a horizontal grey ramp from black at the left to white at the right). In the bottom half of the image only (y >= 100), apply Levels per colour channel: on the red channel set the output levels to 0-128 (input levels unchanged, 0-255), and on the blue channel set the input levels to 64-192 (output unchanged, 0-255); gamma stays 1.0 and the green channel is not changed. The top half (y < 100) stays unchanged. Export the result as PNG to /home/user/Documents/levels_range.png (400x200).",
+  "env": {
+    "files": [
+      {
+        "filename": "gradient.png",
+        "sandbox_path": "/home/user/Documents/gradient.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/levels_range.png",
+      "key": "exists",
+      "expected": true,
+      "description": "levels_range.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/levels_range.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/levels_range.png 400 200",
+      "key": "match",
+      "expected": true,
+      "description": "400x200"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 200 50",
+      "eval": "121 <= result.get('r', -1) <= 133 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "top half unchanged grey (127)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 300 98",
+      "eval": "185 <= result.get('r', -1) <= 197 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "top half unchanged just above y=100 (191)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 300 102",
+      "eval": "90 <= result.get('r', -1) <= 102 and 185 <= result.get('g', -1) <= 197 and 245 <= result.get('b', -1) <= 255",
+      "description": "bottom half starts at y=100: (96,191,253)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 50 150",
+      "eval": "10 <= result.get('r', -1) <= 22 and 25 <= result.get('g', -1) <= 37 and 0 <= result.get('b', -1) <= 6",
+      "description": "x=50 (v=31): red halved 16, blue clipped to 0"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 150 150",
+      "eval": "42 <= result.get('r', -1) <= 54 and 89 <= result.get('g', -1) <= 101 and 55 <= result.get('b', -1) <= 69",
+      "description": "x=150 (v=95): (48,95,62)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 200 150",
+      "eval": "58 <= result.get('r', -1) <= 70 and 121 <= result.get('g', -1) <= 133 and 119 <= result.get('b', -1) <= 133",
+      "description": "x=200 (v=127): (64,127,126)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 300 150",
+      "eval": "90 <= result.get('r', -1) <= 102 and 185 <= result.get('g', -1) <= 197 and 245 <= result.get('b', -1) <= 255",
+      "description": "x=300 (v=191): (96,191,253)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/levels_range.png 395 150",
+      "eval": "120 <= result.get('r', -1) <= 132 and 246 <= result.get('g', -1) <= 255 and 250 <= result.get('b', -1) <= 255",
+      "description": "x=395 (v=252): (126,252,255)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_threshold_black_white",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_threshold_black_white",
+        "file": "gradient.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Colors > Levels",
+      "Channel: Red",
+      "type output white 128",
+      "Channel: Blue",
+      "type input black 64",
+      "type input white 192",
+      "OK",
+      "Select > None",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 19
+  }
+}

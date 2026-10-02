@@ -1,0 +1,92 @@
+{
+  "id": "renderdoc_sa_counters_preset",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set Timeline_ShowDrawcalls = true, PerformanceCounters_Active = ['GPUDuration', 'VSInvocations', 'PSInvocations'] and PerformanceCounters_ShowDescription = false. Then save capture settings for launching /usr/bin/vkcube with the environment variable MESA_VK_VERSION_OVERRIDE set to 1.3 and the option API Validation enabled, to the file /home/user/captures/profile.cap, and make it the only entry of the recent capture-settings list. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting Timeline_ShowDrawcalls true",
+      "key": "match",
+      "expected": true,
+      "description": "Timeline_ShowDrawcalls = true"
+    },
+    {
+      "command": "check-setting PerformanceCounters_Active '[\"GPUDuration\",\"VSInvocations\",\"PSInvocations\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "PerformanceCounters_Active = [\"GPUDuration\",\"VSInvocations\",\"PSInvocations\"]"
+    },
+    {
+      "command": "check-setting PerformanceCounters_ShowDescription false",
+      "key": "match",
+      "expected": true,
+      "description": "PerformanceCounters_ShowDescription = false"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/profile.cap /usr/bin/vkcube",
+      "key": "match",
+      "expected": true,
+      "description": "preset executable"
+    },
+    {
+      "command": "check-cap-env /home/user/captures/profile.cap MESA_VK_VERSION_OVERRIDE",
+      "key": "present",
+      "expected": true,
+      "description": "environment variable set"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/profile.cap apiValidation true",
+      "key": "match",
+      "expected": true,
+      "description": "API Validation on"
+    },
+    {
+      "command": "check-setting RecentCaptureSettings '[\"/home/user/captures/profile.cap\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureSettings = [\"/home/user/captures/profile.cap\"]"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_timeline_perf_counters",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_timeline_perf_counters",
+        "file": "UI.config"
+      }
+    ],
+    "gui_plan": [
+      "RenderDoc: Window > Launch Application",
+      "type executable",
+      "open environment editor",
+      "type variable name and value",
+      "Add",
+      "OK",
+      "set API Validation",
+      "Save Settings",
+      "type .cap path",
+      "Save",
+      "close RenderDoc",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 16
+  }
+}

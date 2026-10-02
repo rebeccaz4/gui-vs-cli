@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_2f5d0129",
+  "app": "libreoffice_calc",
+  "task": "Implement a full dependent dropdown system in the inventory form: Department in column B selects from a master list, and Product Category in column C automatically narrows its dropdown based on the selected department. Protect all non-input columns. The file to work on is /home/user/osworld_calc_data_validation_dropdown_012.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_calc_data_validation_dropdown_012.xlsx",
+        "sandbox_path": "/home/user/osworld_calc_data_validation_dropdown_012.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "2f5d0129-8484-55cb-83e8-42455943805d",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

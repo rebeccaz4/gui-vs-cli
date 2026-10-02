@@ -1,0 +1,45 @@
+{
+  "id": "xapp_writer_61242f65",
+  "app": "libreoffice_writer",
+  "task": "The image editing instructions I wrote to myself are in /home/user/Desktop/my_notes.docx. Please read my notes and apply the specified edits to /home/user/Desktop/screenshot.png using GIMP, saving the result as /home/user/Desktop/screenshot_edited.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "my_notes.docx",
+        "sandbox_path": "/home/user/Desktop/my_notes.docx"
+      },
+      {
+        "filename": "screenshot.png",
+        "sandbox_path": "/home/user/Desktop/screenshot.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "61242f65-e509-5b9d-9904-2a6855541bad",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "medium",
+    "initial_state_reward": 0.0,
+    "check_edits": [
+      {
+        "reason": "the reward only accepted a 50% blue overlay blended in sRGB; GIMP 2.10 (the tool the task names) blends in linear light by default and was scored 0.6. Now either blend is accepted. (review 2026-09-30)"
+      }
+    ],
+    "instruction_edits": [
+      {
+        "replaced": "The image editing instructions I wrote to myself are in 'my_notes.docx' on the Desktop. Please read my notes and apply the specified edits to 'screenshot.png' on the Desktop using GIMP, saving the result as 'screenshot_edited.png'.",
+        "reason": "paths only given by name (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

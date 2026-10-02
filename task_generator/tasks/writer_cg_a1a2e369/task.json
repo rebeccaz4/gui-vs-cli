@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_a1a2e369",
+  "app": "libreoffice_writer",
+  "task": "Insert a date field and an author field in the document header, formatted as 'Date: [date] | Author: [author]'. The file to work on is /home/user/Desktop/lab_notebook.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "lab_notebook.docx",
+        "sandbox_path": "/home/user/Desktop/lab_notebook.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a1a2e369-a9af-568d-a723-d6fa2d3c8be1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

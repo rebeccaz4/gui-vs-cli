@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_tetra_transform",
+  "files": [
+    {
+      "filename": "tetra.ply",
+      "sandbox_path": "/home/user/Documents/tetra.ply",
+      "type": "ply"
+    }
+  ]
+}

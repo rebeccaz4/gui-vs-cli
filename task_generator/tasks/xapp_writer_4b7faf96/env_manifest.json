@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_4b7faf96",
+  "files": [
+    {
+      "filename": "print_prep.docx",
+      "sandbox_path": "/home/user/print_prep.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "poster.png",
+      "sandbox_path": "/home/user/Desktop/poster.png",
+      "type": "png"
+    }
+  ]
+}

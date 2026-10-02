@@ -1,0 +1,89 @@
+{
+  "id": "cloudcompare_sa_stack_merge",
+  "app": "cloudcompare",
+  "task": "Open the three ASCII clouds /home/user/Documents/north.xyz, south.xyz and east.xyz in CloudCompare. Move east.xyz by (-10, 0, +5) so that it sits on top of north.xyz, then merge all three clouds into one and save it as a binary little-endian PLY at /home/user/Documents/stack.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "north.xyz",
+        "sandbox_path": "/home/user/Documents/north.xyz"
+      },
+      {
+        "filename": "south.xyz",
+        "sandbox_path": "/home/user/Documents/south.xyz"
+      },
+      {
+        "filename": "east.xyz",
+        "sandbox_path": "/home/user/Documents/east.xyz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/stack.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/stack.ply 900",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 900 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/stack.ply -0.01 -0.01 -0.01 5.01 15.01 10.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/stack.ply z 9.9",
+      "key": "match",
+      "expected": true,
+      "description": "z extent >= 9.9"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/stack.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_merge_three_clouds",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_merge_three_clouds",
+        "file": "north.xyz"
+      },
+      {
+        "from_task": "cloudcompare_merge_three_clouds",
+        "file": "south.xyz"
+      },
+      {
+        "from_task": "cloudcompare_merge_three_clouds",
+        "file": "east.xyz"
+      }
+    ],
+    "gui_plan": [
+      "File > Open",
+      "type the file names",
+      "Open",
+      "confirm import dialog",
+      "select east.xyz",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "select all three",
+      "Edit > Merge",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 15
+  }
+}

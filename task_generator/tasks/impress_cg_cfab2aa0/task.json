@@ -1,0 +1,37 @@
+{
+  "id": "impress_cg_cfab2aa0",
+  "app": "libreoffice_impress",
+  "task": "Create two clustered column charts (vertical bars) side by side on slide 6. Left chart: 'Revenue by Region' with North America ($25M), Europe ($18M), APAC ($12M), LATAM ($7.5M). Right chart: 'Growth Rate by Region' with North America (12%), Europe (18%), APAC (35%), LATAM (22%). Position left chart at x=0.5in, right chart at x=7in. The file to work on is /home/user/impress_exec_034.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_exec_034.pptx",
+        "sandbox_path": "/home/user/impress_exec_034.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "cfab2aa0-7323-56ba-b585-fe80589d4fea",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Create two grouped bar charts side by side on slide 6. Left chart: 'Revenue by Region' with North America ($25M), Europe ($18M), APAC ($12M), LATAM ($7.5M). Right chart: 'Growth Rate by Region' with North America (12%), Europe (18%), APAC (35%), LATAM (22%). Position left chart at x=0.5in, right chart at x=7in. The file to work on is /home/user/impress_exec_034.pptx.",
+        "reason": "the check only accepts clustered column charts; 'bar' can mean horizontal bars (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

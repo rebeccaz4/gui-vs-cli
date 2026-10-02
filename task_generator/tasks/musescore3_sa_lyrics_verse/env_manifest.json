@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_sa_lyrics_verse",
+  "files": [
+    {
+      "filename": "melody.mscz",
+      "sandbox_path": "/home/user/Documents/melody.mscz",
+      "type": "mscz"
+    }
+  ]
+}

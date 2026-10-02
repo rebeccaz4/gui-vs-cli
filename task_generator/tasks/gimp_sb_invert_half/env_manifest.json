@@ -1,0 +1,10 @@
+{
+  "task_id": "gimp_sb_invert_half",
+  "files": [
+    {
+      "filename": "red_top_green_bottom.png",
+      "sandbox_path": "/home/user/Documents/red_top_green_bottom.png",
+      "type": "png"
+    }
+  ]
+}

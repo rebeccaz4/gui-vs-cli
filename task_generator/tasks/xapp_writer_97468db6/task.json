@@ -1,0 +1,45 @@
+{
+  "id": "xapp_writer_97468db6",
+  "app": "libreoffice_writer",
+  "task": "Read the image editing checklist in /home/user/photo_tasks.docx (open in LibreOffice Writer), then edit /home/user/Desktop/scenery.jpg in GIMP following each item on the checklist. Export the finished image as /home/user/Desktop/scenery_done.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "photo_tasks.docx",
+        "sandbox_path": "/home/user/photo_tasks.docx"
+      },
+      {
+        "filename": "scenery.jpg",
+        "sandbox_path": "/home/user/Desktop/scenery.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "97468db6-ca50-558d-b7a9-17854ff332e3",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "medium",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Read the image editing checklist in 'photo_tasks.docx' (open in LibreOffice Writer), then edit 'scenery.jpg' in GIMP following each item on the checklist. Export the finished image as 'scenery_done.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ],
+    "check_edits": [
+      {
+        "reason": "'rotate -2 degrees' means clockwise in PIL but counter-clockwise in GIMP; the GIMP route scored 0.8. Now a 2-degree rotation in either direction is accepted (review 2026-09-30)"
+      }
+    ]
+  }
+}

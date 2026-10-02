@@ -1,0 +1,84 @@
+{
+  "id": "musescore3_sa_register_landmarks",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/jig.mscz, an 8-measure melody that keeps rising. Find the measure in which the melody first reaches C7 (the C three octaves above middle C). In that measure, put an accent on every note and an ff on its first note, and add a section break at the end of the measure just before it. Then find the measure in which the melody first reaches C8 and put a pp on the first note of that measure. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "jig.mscz",
+        "sandbox_path": "/home/user/Documents/jig.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/jig.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "score saved"
+    },
+    {
+      "command": "check-measure-count /home/user/Documents/jig.mscz 8",
+      "key": "match",
+      "expected": true,
+      "description": "still 8 measures"
+    },
+    {
+      "command": "check-articulation-count /home/user/Documents/jig.mscz accent 4",
+      "key": "match",
+      "expected": true,
+      "description": "exactly four accents"
+    },
+    {
+      "command": "articulations /home/user/Documents/jig.mscz",
+      "eval": "len(result) == 4 and all(a['measure'] == 6 and 'accent' in a['subtype'].lower() for a in result)",
+      "description": "all accents in measure 6 (first C7: B6 C7 D7 E7)"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/jig.mscz 6 ff",
+      "key": "match",
+      "expected": true,
+      "description": "ff in measure 6"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/jig.mscz 5 section",
+      "key": "match",
+      "expected": true,
+      "description": "section break after measure 5"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/jig.mscz 8 pp",
+      "key": "match",
+      "expected": true,
+      "description": "pp in measure 8 (first C8)"
+    },
+    {
+      "command": "dynamics /home/user/Documents/jig.mscz",
+      "eval": "len(result) == 2",
+      "description": "no other dynamics"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_tempo_and_timesig_combo",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_tempo_and_timesig_combo",
+        "file": "jig.mscz"
+      }
+    ],
+    "gui_plan": [
+      "read the score (zoom out)",
+      "click m6",
+      "Shift+V (accent on all notes of the selection)",
+      "click m6 first note",
+      "Dynamics palette: ff",
+      "click m5",
+      "Breaks palette: Section break",
+      "click m8 first note",
+      "Dynamics palette: pp",
+      "Save"
+    ],
+    "gui_step_estimate": 10
+  }
+}

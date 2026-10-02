@@ -1,0 +1,45 @@
+{
+  "id": "writer_cg_6c6160f8",
+  "app": "libreoffice_writer",
+  "task": "Open 'journal_submission_checklist.odt' from the Desktop (/home/user/Desktop/journal_submission_checklist.odt). It contains 10 formatting requirements for a science journal. Apply ALL of them to /home/user/research_paper.odt: 12pt Times New Roman body text, 14pt bold Heading 1 for section titles, double line spacing, 2.54 cm margins, abstract between 150-250 words, figure captions below each figure in 10pt italic, numbered references in Vancouver style, page numbers in top-right corner, a running header with the first author's last name, and all tables with a title above in bold. Save the file in place. Note: despite the .odt extension, the file contains Word (.docx) data; save it in place in that same Word format.",
+  "env": {
+    "files": [
+      {
+        "filename": "journal_submission_checklist.odt",
+        "sandbox_path": "/home/user/Desktop/journal_submission_checklist.odt"
+      },
+      {
+        "filename": "research_paper.odt",
+        "sandbox_path": "/home/user/research_paper.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "6c6160f8-71cf-5106-afd3-5e29ec6308c1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Open 'journal_submission_checklist.odt' from the Desktop. It contains 10 formatting requirements for a science journal. Apply ALL of them to 'research_paper.odt': 12pt Times New Roman body text, 14pt bold Heading 1 for section titles, double line spacing, 2.54 cm margins, abstract between 150-250 words, figure captions below each figure in 10pt italic, numbered references in Vancouver style, page numbers in top-right corner, a running header with the first author's last name, and all tables with a title above in bold. Save the file.",
+        "reason": "research_paper.odt had no path (it is in /home/user, not on the Desktop) (wording review 2026-09-30)"
+      },
+      {
+        "replaced": "Open 'journal_submission_checklist.odt' from the Desktop (/home/user/Desktop/journal_submission_checklist.odt). It contains 10 formatting requirements for a science journal. Apply ALL of them to /home/user/research_paper.odt: 12pt Times New Roman body text, 14pt bold Heading 1 for section titles, double line spacing, 2.54 cm margins, abstract between 150-250 words, figure captions below each figure in 10pt italic, numbered references in Vancouver style, page numbers in top-right corner, a running header with the first author's last name, and all tables with a title above in bold. Save the file in place, keeping its current file format.",
+        "reason": "the .odt files contain DOCX data and the check reads them with python-docx; saving real ODF scores 0 (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

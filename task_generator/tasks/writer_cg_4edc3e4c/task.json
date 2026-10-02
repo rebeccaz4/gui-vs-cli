@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_4edc3e4c",
+  "app": "libreoffice_writer",
+  "task": "Insert custom TOC entries for the paragraphs 'Glossary of Terms' and 'List of Abbreviations' that are not headings but should appear in the table of contents at level 1. The file to work on is /home/user/writer_struct_038.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "writer_struct_038.docx",
+        "sandbox_path": "/home/user/writer_struct_038.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "4edc3e4c-6de1-5a05-8a9f-d1e2a1ffe330",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

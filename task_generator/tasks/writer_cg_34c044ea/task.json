@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_34c044ea",
+  "app": "libreoffice_writer",
+  "task": "I'm preparing a caption-date layout for a photo album document. Each line has a photo caption followed by a date. I'd like the first word of each caption left-aligned and everything after that right-aligned at 8cm. Could you set the tabstops and format each line that way? Every line has at least one word before the date. The file to work on is /home/user/osworld_writer_tabstop_004.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_writer_tabstop_004.docx",
+        "sandbox_path": "/home/user/osworld_writer_tabstop_004.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "34c044ea-5040-5eb9-a331-763af3dea8dd",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

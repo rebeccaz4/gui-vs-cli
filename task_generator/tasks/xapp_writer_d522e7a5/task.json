@@ -1,0 +1,44 @@
+{
+  "id": "xapp_writer_d522e7a5",
+  "app": "libreoffice_writer",
+  "task": "I have a document /home/user/Desktop/edit_specs.docx with instructions for adjusting a product photo. Please read the specifications and apply them to /home/user/Desktop/product_photo.png, saving the result as /home/user/Desktop/product_photo_edited.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "edit_specs.docx",
+        "sandbox_path": "/home/user/Desktop/edit_specs.docx"
+      },
+      {
+        "filename": "product_photo.png",
+        "sandbox_path": "/home/user/Desktop/product_photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "d522e7a5-92cf-59d8-91fa-abd5c88617f4",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "moved_from": "writer_cg_d522e7a5 (LibreOffice single-app pool; user decision 2026-09-29: GIMP image-editing tasks go to Cross-app)",
+    "instruction_edits": [
+      {
+        "replaced": "I have a document on the Desktop named 'edit_specs.docx' with instructions for adjusting a product photo. Please read the specifications and apply them to 'product_photo.png' on the Desktop, saving the result as 'product_photo_edited.png'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

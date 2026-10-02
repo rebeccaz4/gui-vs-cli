@@ -1,0 +1,42 @@
+{
+  "id": "calc_osw_21df9241",
+  "app": "libreoffice_calc",
+  "task": "In /home/user/Represent_in_millions_billions.xlsx, change the representation of column \"Parameter\" to show in Millions (M) in Column B and Billions (B) in Column C. The numbers should be rounded to one decimal place, and half should be rounded up. Then remember to place a white space between the digits and the unit. Save the file in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "Represent_in_millions_billions.xlsx",
+        "sandbox_path": "/home/user/Represent_in_millions_billions.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check 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",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): compare_table"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/libreoffice_calc",
+    "source_task_id": "21df9241-f8d7-4509-b7f1-37e501a823f7",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "1.0",
+      "sonnet46_opus47_agent": "1.0",
+      "holo3_35b": "1.0",
+      "kimi_k26": "0.0",
+      "opus45": "1.0",
+      "evocua_32b": "0.0",
+      "qwen35": "1.0"
+    },
+    "save_sentence_appended": true,
+    "instruction_edits": [
+      {
+        "replaced": "Change the representation of column \"Parameter\" to show in Millions (M) in Column B and Billions (B) in Column C. The numbers should be rounded to one decimal place, and half should be rounded up. Then remember to place a white space between the digits and the unit. Save the file in place.",
+        "reason": "the file to edit was not named (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "musescore3_sa_pedal_sections",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/pedal_study.mscz (4 measures). Add two separate sustain pedal lines: one over measures 1-2 and one over measures 3-4. Add a line break after measure 2 and set the tempo at the start of the score to 80 BPM (quarter note). Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "pedal_study.mscz",
+        "sandbox_path": "/home/user/Documents/pedal_study.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "pedals /home/user/Documents/pedal_study.mscz",
+      "eval": "sorted(p['measure'] for p in result) == [1, 3]",
+      "description": "two pedal lines starting at measures 1 and 3"
+    },
+    {
+      "command": "check-layout-break-at /home/user/Documents/pedal_study.mscz 2 line",
+      "key": "match",
+      "expected": true,
+      "description": "line break after measure 2"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/pedal_study.mscz 80",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 80 BPM"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_pedal_marks",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_pedal_marks",
+        "file": "pedal_study.mscz"
+      }
+    ],
+    "gui_plan": [
+      "select m1-m2",
+      "Lines palette: Pedal",
+      "select m3-m4",
+      "Pedal",
+      "click m2",
+      "Breaks palette: Line break",
+      "click m1 first note",
+      "Tempo palette: quarter = 80",
+      "type 80 + Esc",
+      "Save"
+    ],
+    "gui_step_estimate": 10
+  }
+}

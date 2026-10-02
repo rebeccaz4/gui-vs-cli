@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_83a4c2a9",
+  "app": "libreoffice_writer",
+  "task": "Set unique line spacing for each of the three body paragraphs in this academic paper: paragraph 1 should be single spacing (1.0), paragraph 2 should be 1.5x spacing, and paragraph 3 should be double spacing (2.0). The file to work on is /home/user/osworld_writer_line_spacing_per_paragraph_007.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_writer_line_spacing_per_paragraph_007.docx",
+        "sandbox_path": "/home/user/osworld_writer_line_spacing_per_paragraph_007.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "83a4c2a9-08e3-5885-92f4-6fc8df82373d",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

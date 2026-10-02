@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_91f9c3d3",
+  "app": "libreoffice_writer",
+  "task": "My photo editing requirements are written in /home/user/Desktop/editing_checklist.docx. Please open the checklist, then edit /home/user/Desktop/landscape.jpg in GIMP following all the listed steps, and save the result as /home/user/Desktop/landscape_edited.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "editing_checklist.docx",
+        "sandbox_path": "/home/user/Desktop/editing_checklist.docx"
+      },
+      {
+        "filename": "landscape.jpg",
+        "sandbox_path": "/home/user/Desktop/landscape.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "91f9c3d3-3fd4-5a13-8156-2d05fd2b917b",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "My photo editing requirements are written in 'editing_checklist.docx' on the Desktop. Please open the checklist, then edit 'landscape.jpg' on the Desktop in GIMP following all the listed steps, and save the result as 'landscape_edited.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

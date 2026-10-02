@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_sa_register_landmarks",
+  "files": [
+    {
+      "filename": "jig.mscz",
+      "sandbox_path": "/home/user/Documents/jig.mscz",
+      "type": "mscz"
+    }
+  ]
+}

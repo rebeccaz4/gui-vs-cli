@@ -1,0 +1,70 @@
+{
+  "id": "musescore3_sa_violin_part",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/prelude.mscz (one Piano part). Change the part's instrument to Violin and name the part 'Violin I'. Set the Work Title to 'Aubade' and the Composer to 'L. Boulanger'. Save the score in place and export it as MusicXML to /home/user/Documents/prelude.musicxml.",
+  "env": {
+    "files": [
+      {
+        "filename": "prelude.mscz",
+        "sandbox_path": "/home/user/Documents/prelude.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "parts /home/user/Documents/prelude.mscz",
+      "eval": "any(pt['instrumentId'] == 'strings.violin' for pt in result)",
+      "description": "instrument Violin"
+    },
+    {
+      "command": "parts /home/user/Documents/prelude.mscz",
+      "eval": "any(pt['longName'] == 'Violin I' for pt in result)",
+      "description": "part named 'Violin I'"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/prelude.mscz workTitle Aubade",
+      "key": "match",
+      "expected": true,
+      "description": "workTitle = Aubade"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/prelude.mscz composer L. Boulanger",
+      "key": "match",
+      "expected": true,
+      "description": "composer = L. Boulanger"
+    },
+    {
+      "command": "musicxml-info /home/user/Documents/prelude.musicxml",
+      "eval": "'Violin I' in result['part_names']",
+      "description": "MusicXML carries the part name"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_set_score_metadata",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_set_score_metadata",
+        "file": "prelude.mscz"
+      }
+    ],
+    "gui_plan": [
+      "right-click staff > Staff/Part Properties",
+      "Change Instrument",
+      "select Violin",
+      "OK",
+      "type part name Violin I",
+      "OK",
+      "File > Score Properties",
+      "type work title",
+      "type composer",
+      "OK",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 15
+  }
+}

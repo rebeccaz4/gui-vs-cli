@@ -1,0 +1,10 @@
+{
+  "task_id": "writer_osw_5bc63fb9",
+  "files": [
+    {
+      "filename": "llm_answers.json",
+      "sandbox_path": "/home/user/Desktop/llm_answers.json",
+      "type": "json"
+    }
+  ]
+}

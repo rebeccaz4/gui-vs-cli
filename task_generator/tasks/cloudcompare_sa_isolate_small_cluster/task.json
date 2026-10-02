@@ -1,0 +1,85 @@
+{
+  "id": "cloudcompare_sa_isolate_small_cluster",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/two_clusters.ply in CloudCompare. The cloud consists of two well-separated clusters of different sizes. Keep only the smaller cluster (discard every point of the other one), translate it so that the minimum corner of its bounding box lies exactly at the origin (0, 0, 0), compute per-point normals, and save it as a binary little-endian PLY at /home/user/Documents/small_cluster.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "two_clusters.ply",
+        "sandbox_path": "/home/user/Documents/two_clusters.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/small_cluster.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/small_cluster.ply 500",
+      "key": "match",
+      "expected": true,
+      "description": "only the smaller cluster (500 points)"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/small_cluster.ply -0.02 -0.02 -0.02 5.61 6.36 5.99",
+      "key": "match",
+      "expected": true,
+      "description": "translated so the bbox starts at the origin"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/small_cluster.ply x 5.5",
+      "key": "match",
+      "expected": true,
+      "description": "not scaled (x extent kept)"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/small_cluster.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals computed"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/small_cluster.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "binary little-endian PLY"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_label_connected_components",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_label_connected_components",
+        "file": "two_clusters.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud in DB tree",
+      "Segment tool",
+      "click polygon vertex 1",
+      "vertex 2",
+      "vertex 3",
+      "right-click to close",
+      "Segment In",
+      "confirm",
+      "read bbox min in Properties",
+      "Edit > Apply transformation",
+      "type -min X",
+      "type -min Y",
+      "type -min Z",
+      "OK",
+      "Edit > Normals > Compute",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 21
+  }
+}

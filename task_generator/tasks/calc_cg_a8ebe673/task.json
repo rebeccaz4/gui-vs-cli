@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_a8ebe673",
+  "app": "libreoffice_calc",
+  "task": "Set up cascading dropdown validation where column B shows product categories and column C shows sub-categories that change based on the category selected in column B. The file to work on is /home/user/calc_gao_006.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_gao_006.xlsx",
+        "sandbox_path": "/home/user/calc_gao_006.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a8ebe673-b125-536e-8619-e7a0f488f429",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

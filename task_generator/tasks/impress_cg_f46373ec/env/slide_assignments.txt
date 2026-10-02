@@ -1,0 +1,18 @@
+# Slide Assignments — Research_Collab.pptx
+# Format: Slide <number>: <Author>
+
+Slide 1: Alice
+Slide 2: Alice
+Slide 3: Alice
+Slide 4: Alice
+Slide 5: Alice
+Slide 6: Bob
+Slide 7: Bob
+Slide 8: Bob
+Slide 9: Bob
+Slide 10: Bob
+Slide 11: Carol
+Slide 12: Carol
+Slide 13: Carol
+Slide 14: Carol
+Slide 15: Carol

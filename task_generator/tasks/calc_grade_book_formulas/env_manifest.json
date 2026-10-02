@@ -1,6 +1,0 @@
-{
-  "task_id": "calc_grade_book_formulas",
-  "files": [
-    {"filename": "grades.xlsx", "sandbox_path": "/home/user/Documents/grades.xlsx", "type": "xlsx"}
-  ]
-}

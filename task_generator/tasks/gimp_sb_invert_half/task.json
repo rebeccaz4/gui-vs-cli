@@ -1,0 +1,126 @@
+{
+  "id": "gimp_sb_invert_half",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/red_top_green_bottom.png in GIMP (400x400: red top half, green bottom half). Invert the colours of the left half only (x < 200), then rotate the whole image 90 degrees clockwise, then add a 10-pixel white border on all four sides (420x420 result). Export it as PNG to /home/user/Documents/invert_rotate.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "red_top_green_bottom.png",
+        "sandbox_path": "/home/user/Documents/red_top_green_bottom.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/invert_rotate.png",
+      "key": "exists",
+      "expected": true,
+      "description": "invert_rotate.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/invert_rotate.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/invert_rotate.png 420 420",
+      "key": "match",
+      "expected": true,
+      "description": "420x420"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 5 5 255 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "border top-left white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 415 210 255 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "border right white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 210 415 255 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "border bottom white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 12 12 255 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "image starts at (10,10): magenta (inverted green)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 105 105 255 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "top-left quadrant magenta"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 205 105 255 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "magenta up to x=209"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 305 105 0 255 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "top-right quadrant cyan (inverted red)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 105 305 0 255 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-left quadrant green"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 305 305 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-right quadrant red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/invert_rotate.png 407 407 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "image ends at (409,409)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_crop_rotate_export",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_flip_both_directions",
+        "file": "red_top_green_bottom.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Colors > Invert",
+      "Select > None",
+      "Image > Transform > Rotate 90 clockwise",
+      "Image > Canvas Size",
+      "type width",
+      "type height",
+      "click Center",
+      "Resize layers: All layers, Fill with: White",
+      "Resize",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 20
+  }
+}

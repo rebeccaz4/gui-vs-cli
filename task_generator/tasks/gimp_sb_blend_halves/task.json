@@ -1,0 +1,108 @@
+{
+  "id": "gimp_sb_blend_halves",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/photo_base.png (512x512) in GIMP and blend /home/user/Documents/texture_overlay.png (512x512) over it at 100% opacity: in the top half of the image (y < 256) the texture is combined with the photo using the Screen blend mode, and in the bottom half (y >= 256) using the Multiply blend mode. Flatten the image and export it as PNG to /home/user/Documents/blend_halves.png (512x512).",
+  "env": {
+    "files": [
+      {
+        "filename": "photo_base.png",
+        "sandbox_path": "/home/user/Documents/photo_base.png"
+      },
+      {
+        "filename": "texture_overlay.png",
+        "sandbox_path": "/home/user/Documents/texture_overlay.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/blend_halves.png",
+      "key": "exists",
+      "expected": true,
+      "description": "blend_halves.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/blend_halves.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/blend_halves.png 512 512",
+      "key": "match",
+      "expected": true,
+      "description": "512x512"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 256 100",
+      "eval": "240 <= result.get('r', -1) <= 255 and 240 <= result.get('g', -1) <= 255 and 195 <= result.get('b', -1) <= 225",
+      "description": "top half: Screen (255,255,211)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 256 240",
+      "eval": "240 <= result.get('r', -1) <= 255 and 240 <= result.get('g', -1) <= 255 and 205 <= result.get('b', -1) <= 240",
+      "description": "top half near the middle: Screen (255,255,226)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 3 3",
+      "eval": "240 <= result.get('r', -1) <= 255 and 240 <= result.get('g', -1) <= 255 and 135 <= result.get('b', -1) <= 165",
+      "description": "top half, dark texture: Screen (255,255,150)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 256 300",
+      "eval": "0 <= result.get('r', -1) <= 20 and 185 <= result.get('g', -1) <= 215 and 105 <= result.get('b', -1) <= 130",
+      "description": "bottom half: Multiply (0,200,117)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 100 400",
+      "eval": "0 <= result.get('r', -1) <= 20 and 185 <= result.get('g', -1) <= 215 and 142 <= result.get('b', -1) <= 170",
+      "description": "bottom half: Multiply (0,200,156)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/blend_halves.png 511 511",
+      "eval": "0 <= result.get('r', -1) <= 20 and 135 <= result.get('g', -1) <= 165 and 135 <= result.get('b', -1) <= 165",
+      "description": "bottom half, dark texture: Multiply (0,150,150)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_gap_blend_mode_multiply_opacity",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_gap_blend_mode_multiply_opacity",
+        "file": "photo_base.png"
+      },
+      {
+        "from_task": "gimp_gap_blend_mode_multiply_opacity",
+        "file": "texture_overlay.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "File > Open as Layers (Ctrl+Alt+O)",
+      "type layer file path",
+      "Open",
+      "Layer > Transparency > Add Alpha Channel",
+      "Layers dock: mode Screen",
+      "Layer > Duplicate Layer (Shift+Ctrl+D)",
+      "Layers dock: mode Multiply",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Edit > Clear (Delete): top half of the Multiply copy",
+      "Select > Invert (Ctrl+I)",
+      "click the Screen layer",
+      "Edit > Clear (Delete)",
+      "Select > None",
+      "Image > Flatten Image",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 24
+  }
+}

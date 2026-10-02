@@ -1,0 +1,149 @@
+{
+  "id": "renderdoc_sa_event_browser_triage",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Configure the event browser: EventBrowser_ApplyColors = true, EventBrowser_CollapseMarkers = true, EventBrowser_ShowParameterNames = false, EventBrowser_HideEmpty = true and EventBrowser_Bookmarks = [7, 77, 777]. /home/user/captures holds seven captures; delete the corrupt one (its file does not start with RenderDoc's 4-byte capture signature 'RDOC'; RenderDoc reports its file format as unrecognised) and set the recent capture list to the other six (absolute paths) in alphabetical order. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "alpha.rdc",
+        "sandbox_path": "/home/user/captures/alpha.rdc"
+      },
+      {
+        "filename": "beta.rdc",
+        "sandbox_path": "/home/user/captures/beta.rdc"
+      },
+      {
+        "filename": "gamma.rdc",
+        "sandbox_path": "/home/user/captures/gamma.rdc"
+      },
+      {
+        "filename": "delta.rdc",
+        "sandbox_path": "/home/user/captures/delta.rdc"
+      },
+      {
+        "filename": "epsilon.rdc",
+        "sandbox_path": "/home/user/captures/epsilon.rdc"
+      },
+      {
+        "filename": "zeta.rdc",
+        "sandbox_path": "/home/user/captures/zeta.rdc"
+      },
+      {
+        "filename": "bogus.rdc",
+        "sandbox_path": "/home/user/captures/bogus.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting EventBrowser_ApplyColors true",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_ApplyColors = true"
+    },
+    {
+      "command": "check-setting EventBrowser_CollapseMarkers true",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_CollapseMarkers = true"
+    },
+    {
+      "command": "check-setting EventBrowser_ShowParameterNames false",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_ShowParameterNames = false"
+    },
+    {
+      "command": "check-setting EventBrowser_HideEmpty true",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_HideEmpty = true"
+    },
+    {
+      "command": "check-setting EventBrowser_Bookmarks '[7,77,777]'",
+      "key": "match",
+      "expected": true,
+      "description": "EventBrowser_Bookmarks = [7,77,777]"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/bogus.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/bogus.rdc"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 6",
+      "key": "match",
+      "expected": true,
+      "description": "six captures left"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/alpha.rdc', '/home/user/captures/beta.rdc', '/home/user/captures/delta.rdc', '/home/user/captures/epsilon.rdc', '/home/user/captures/gamma.rdc', '/home/user/captures/zeta.rdc']",
+      "description": "RecentCaptureFiles = alpha.rdc, beta.rdc, delta.rdc, epsilon.rdc, gamma.rdc, zeta.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_event_browser_deepdive",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_event_browser_deepdive",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "alpha.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "beta.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "gamma.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "delta.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "epsilon.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "zeta.rdc"
+      },
+      {
+        "from_task": "renderdoc_triage_by_version",
+        "file": "bogus.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "RenderDoc: File > Open a suspect capture",
+      "dismiss error",
+      "select it",
+      "Delete",
+      "confirm",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 12
+  }
+}

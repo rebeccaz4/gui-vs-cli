@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_10c36365",
+  "app": "libreoffice_writer",
+  "task": "Configure the document with different headers and footers for the first page, odd pages, and even pages. The first page header should say 'CONFIDENTIAL DRAFT', odd page headers should show the document title right-aligned, and even page headers should show the date left-aligned. The file to work on is /home/user/wrpara_033.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "wrpara_033.docx",
+        "sandbox_path": "/home/user/wrpara_033.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "10c36365-2cce-5f89-92e8-20460bdc6ed1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

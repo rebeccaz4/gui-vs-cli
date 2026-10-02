@@ -1,0 +1,77 @@
+{
+  "id": "cloudcompare_sa_colored_lower",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/colored.ply in CloudCompare (300 colored points in 0..20). Keep only the points with Z <= 10, compute per-point normals, and save the result with its original colors and the normals as a binary little-endian PLY at /home/user/Documents/colored_lower.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "colored.ply",
+        "sandbox_path": "/home/user/Documents/colored.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/colored_lower.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/colored_lower.ply 154",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 154 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/colored_lower.ply -0.01 -0.01 -0.01 20.01 20.01 10.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/colored_lower.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals saved"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/colored_lower.ply",
+      "key": "has_color",
+      "expected": true,
+      "description": "colors saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/colored_lower.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_export_colored_xyz",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_export_colored_xyz",
+        "file": "colored.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type box limit",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Normals > Compute",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 13
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_6540f8e6",
+  "app": "libreoffice_impress",
+  "task": "Move the infographic image on slide 2 to the top of that slide, move the chart on slide 5 to the top of slide 5, and underline all body text on slides 3, 4, and 6. The file to work on is /home/user/osworld_impress_image_top_underline_text_007.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_impress_image_top_underline_text_007.pptx",
+        "sandbox_path": "/home/user/osworld_impress_image_top_underline_text_007.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "6540f8e6-db66-5806-8a99-77f8cb26b936",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

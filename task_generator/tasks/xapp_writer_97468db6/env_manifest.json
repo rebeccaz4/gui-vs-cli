@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_97468db6",
+  "files": [
+    {
+      "filename": "photo_tasks.docx",
+      "sandbox_path": "/home/user/photo_tasks.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "scenery.jpg",
+      "sandbox_path": "/home/user/Desktop/scenery.jpg",
+      "type": "jpg"
+    }
+  ]
+}

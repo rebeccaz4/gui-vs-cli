@@ -1,0 +1,113 @@
+{
+  "id": "audacity_sa_loop_fades",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/input.wav loaded (a 2.5-second mono clip). Make it play three times back to back (7.5 s in total), then apply a linear fade-in over the first 0.5 s and a linear fade-out over the last 2.0 s. Export the result as a mono FLAC file at 44100 Hz to /home/user/Music/looped.flac.",
+  "env": {
+    "files": [
+      {
+        "filename": "input.wav",
+        "sandbox_path": "/home/user/Music/input.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/looped.flac",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/looped.flac flac",
+      "key": "match",
+      "expected": true,
+      "description": "FLAC"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/looped.flac 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/looped.flac 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/looped.flac 7.45",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 7.45 s"
+    },
+    {
+      "command": "export-info /home/user/Music/looped.flac",
+      "eval": "float(result['format']['duration']) <= 7.55",
+      "description": "length <= 7.55 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/looped.flac 1.0 5.0 349 3",
+      "key": "match",
+      "expected": true,
+      "description": "clip content (349 Hz) throughout"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/looped.flac 1.0 5.0 -14.5 -11.5",
+      "key": "match",
+      "expected": true,
+      "description": "middle part at the original level"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/looped.flac 0.0 0.1 -25",
+      "key": "match",
+      "expected": true,
+      "description": "fade-in starts from silence"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/looped.flac 6.45 6.55 -21.5 -16.5",
+      "key": "match",
+      "expected": true,
+      "description": "half-way through the 2 s fade-out (-6 dB)"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/looped.flac 7.42 7.5 -25",
+      "key": "match",
+      "expected": true,
+      "description": "fade-out ends in silence"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_export_flac_mono",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_export_flac_mono",
+        "file": "input.wav"
+      }
+    ],
+    "gui_plan": [
+      "Select All (Ctrl+A)",
+      "Effect > Repeat",
+      "type 2",
+      "OK",
+      "click selection start field",
+      "type 0",
+      "click selection end field",
+      "type 0.5",
+      "Effect > Fade In",
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Effect > Fade Out",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 20
+  }
+}

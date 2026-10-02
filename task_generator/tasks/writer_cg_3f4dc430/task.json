@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_3f4dc430",
+  "app": "libreoffice_writer",
+  "task": "Add five bibliography entries for the following journal articles and then insert a formatted bibliography section sorted alphabetically by author at the end of the document: (1) Adams 2019 in Nature, (2) Baker 2020 in Science, (3) Clark 2018 in Cell, (4) Davis 2021 in PNAS, (5) Evans 2017 in JACS. The file to work on is /home/user/writer_bs_015.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "writer_bs_015.docx",
+        "sandbox_path": "/home/user/writer_bs_015.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "3f4dc430-ced1-5c96-aa06-5912afee7efe",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

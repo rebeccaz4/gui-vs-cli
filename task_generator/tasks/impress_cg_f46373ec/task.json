@@ -1,0 +1,45 @@
+{
+  "id": "impress_cg_f46373ec",
+  "app": "libreoffice_impress",
+  "task": "I have a multi-author research presentation 'Research_Collab.pptx' open in Impress and a 'collab_notes.docx' on the Desktop. The notes file has sections for each author's slides with author names as section headings. Read the slide assignments from a 'slide_assignments.txt' file on the Desktop, then insert the appropriate author's notes into each slide. Save the final presentation. The presentation is /home/user/Desktop/Research_Collab.pptx; save it in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "Research_Collab.pptx",
+        "sandbox_path": "/home/user/Desktop/Research_Collab.pptx"
+      },
+      {
+        "filename": "collab_notes.docx",
+        "sandbox_path": "/home/user/Desktop/collab_notes.docx"
+      },
+      {
+        "filename": "slide_assignments.txt",
+        "sandbox_path": "/home/user/Desktop/slide_assignments.txt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f46373ec-c8eb-5e74-9e18-b99ddddae906",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "appended": "The presentation is /home/user/Desktop/Research_Collab.pptx; save it in place.",
+        "reason": "state the file to open and the graded output file (benchmark convention)"
+      }
+    ]
+  }
+}

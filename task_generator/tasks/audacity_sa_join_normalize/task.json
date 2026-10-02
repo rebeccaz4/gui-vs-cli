@@ -1,0 +1,107 @@
+{
+  "id": "audacity_sa_join_normalize",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/source.wav loaded (a 3-second stereo clip). Build a single mono piece that starts with 1.0 s of silence, then plays source.wav, then /home/user/Music/voice.wav directly after it. Normalize the whole piece so that its peak level is -1.0 dB, and export it as a mono MP3 file to /home/user/Music/joined.mp3.",
+  "env": {
+    "files": [
+      {
+        "filename": "source.wav",
+        "sandbox_path": "/home/user/Music/source.wav"
+      },
+      {
+        "filename": "voice.wav",
+        "sandbox_path": "/home/user/Music/voice.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/joined.mp3",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/joined.mp3 mp3",
+      "key": "match",
+      "expected": true,
+      "description": "MP3"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/joined.mp3 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/joined.mp3 6.95",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 6.95 s"
+    },
+    {
+      "command": "export-info /home/user/Music/joined.mp3",
+      "eval": "float(result['format']['duration']) <= 7.2",
+      "description": "length <= 7.2 s"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/joined.mp3 0.1 0.9 -40",
+      "key": "match",
+      "expected": true,
+      "description": "starts with 1 s of silence"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/joined.mp3 1.2 3.8 523 3",
+      "key": "match",
+      "expected": true,
+      "description": "then source.wav (523 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/joined.mp3 4.2 6.8 262 3",
+      "key": "match",
+      "expected": true,
+      "description": "then voice.wav (262 Hz)"
+    },
+    {
+      "command": "check-export-peak-db /home/user/Music/joined.mp3 -1.6 -0.4",
+      "key": "match",
+      "expected": true,
+      "description": "normalized to -1 dB peak"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_export_mp3_stereo",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_export_mp3_stereo",
+        "file": "source.wav"
+      },
+      {
+        "from_task": "audacity_export_ogg_vorbis",
+        "file": "voice.wav"
+      }
+    ],
+    "gui_plan": [
+      "File > Import > Audio",
+      "type voice.wav path",
+      "Open",
+      "click source track at 0 s",
+      "Generate > Silence",
+      "type 1 s",
+      "OK",
+      "Tracks > Align Tracks > Align End to End",
+      "Select All",
+      "Effect > Normalize",
+      "set -1.0 dB",
+      "OK",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 18
+  }
+}

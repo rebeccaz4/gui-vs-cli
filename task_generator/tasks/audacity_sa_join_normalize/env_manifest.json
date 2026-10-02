@@ -1,0 +1,15 @@
+{
+  "task_id": "audacity_sa_join_normalize",
+  "files": [
+    {
+      "filename": "source.wav",
+      "sandbox_path": "/home/user/Music/source.wav",
+      "type": "wav"
+    },
+    {
+      "filename": "voice.wav",
+      "sandbox_path": "/home/user/Music/voice.wav",
+      "type": "wav"
+    }
+  ]
+}

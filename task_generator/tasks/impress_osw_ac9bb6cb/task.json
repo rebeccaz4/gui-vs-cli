@@ -1,0 +1,42 @@
+{
+  "id": "impress_osw_ac9bb6cb",
+  "app": "libreoffice_impress",
+  "task": "I am preparing a PPT in Libreoffice impress. The slide number is barely visible to me. Please help me change the color of the slide number to red? The presentation is /home/user/Desktop/saa-format-guide.pptx; save it in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "saa-format-guide.pptx",
+        "sandbox_path": "/home/user/Desktop/saa-format-guide.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check eNolTkkOwyAM/Erkc1PuPfcXVYQocZYmwcjYUiTE3wvJzbN5JoNf0G8JXt0nw6TB1+vmbHQz2qDHF9l62okTPDpgTLpLc5mFDjSakM0b0yYUTXKun4gPJ/2s64jPGOVsKYqyUmg1uVSIZ0QvODYMrDteClwt7TVXqZQyVKun8GuUCyPcSWK59g7lD14GP+U=",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): check_page_number_colors"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/libreoffice_impress",
+    "source_task_id": "ac9bb6cb-1888-43ab-81e4-a98a547918cd",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "0.0",
+      "sonnet46_opus47_agent": "1.0",
+      "holo3_35b": "1.0",
+      "kimi_k26": "0.0",
+      "opus45": "0.0",
+      "evocua_32b": "0.0",
+      "qwen35": "1.0"
+    },
+    "save_sentence_appended": true,
+    "instruction_edits": [
+      {
+        "replaced": "I am preparing a PPT in Libreoffice impress. The slide number is barely visible to me. Please help me change the color of the slide number to red? Save the file in place.",
+        "reason": "the file to edit was not named (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

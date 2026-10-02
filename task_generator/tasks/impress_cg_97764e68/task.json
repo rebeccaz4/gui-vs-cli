@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_97764e68",
+  "app": "libreoffice_impress",
+  "task": "Create a split-screen testimonial layout on slide 6. Left half has a light blue (#E8F4FD) background rectangle with a customer photo placeholder (oval shape), quote text in 16pt italic, and attribution in 12pt bold. Right half shows three metric callout shapes: 'Revenue +40%' in green, 'Costs -25%' in blue, 'NPS +30pts' in orange. Add Fly In animations: left side from left, right side from right, both on click. The file to work on is /home/user/impress_sales_081.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_sales_081.pptx",
+        "sandbox_path": "/home/user/impress_sales_081.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "97764e68-d421-5117-bd2b-30fbf7150081",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

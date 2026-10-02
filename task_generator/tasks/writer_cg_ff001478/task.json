@@ -1,0 +1,42 @@
+{
+  "id": "writer_cg_ff001478",
+  "app": "libreoffice_writer",
+  "task": "Create a meeting minutes template in /home/user/writer_bs_089.docx (keep the Word format): a 'Meeting Minutes' title in style Heading 1; a table with Date, Location and Attendees fields; an 'Agenda' Heading 2 followed by numbered items in paragraph style 'List Number'; a 'Discussion' Heading 2 followed by body text; an 'Action Items' Heading 2 followed by bulleted items in paragraph style 'List Bullet'; and a 'Next Meeting' date field at the end.",
+  "env": {
+    "files": [
+      {
+        "filename": "writer_bs_089.docx",
+        "sandbox_path": "/home/user/writer_bs_089.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "ff001478-5b59-5624-bf37-326fefb5f002",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Create a document template (.ott) for meeting minutes ... The file to work on is /home/user/writer_bs_089.docx.",
+        "with": "Create a meeting minutes template document ... The file to work on is /home/user/writer_bs_089.docx; save the template there (keep the Word format).",
+        "reason": "reward grades /home/user/writer_bs_089.docx only; an .ott template is never read, so the instruction must name the graded output file"
+      },
+      {
+        "replaced": "Create a meeting minutes template document that includes: a header with 'Meeting Minutes' title, fields for Date, Attendees, and Agenda, a bulleted Action Items section, and a Next Meeting date field. The file to work on is /home/user/writer_bs_089.docx; save the template there (keep the Word format).",
+        "reason": "the check requires specific heading styles, a Location field, a Discussion section and the paragraph styles 'List Number'/'List Bullet', none of which the instruction said (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

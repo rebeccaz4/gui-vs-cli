@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_8eb6e93b",
+  "app": "libreoffice_calc",
+  "task": "For the monthly report workbook: color January tab blue (#4472C4), February tab green (#70AD47), March tab orange (#ED7D31), then freeze the first row and first column on each of those three sheets. The file to work on is /home/user/calc_sht_multiop_003_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_sht_multiop_003_initial.xlsx",
+        "sandbox_path": "/home/user/calc_sht_multiop_003_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "8eb6e93b-855a-5491-b34f-840133ee2cbf",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "gimp_sb_radial_spotlight",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/dark_photo.png in GIMP (400x300, uniformly dark grey). Add a round white spotlight: pure white at the point (200,150), fading out linearly with the distance from that point and reaching no change at a radius of 120 pixels; every pixel farther than 120 pixels from (200,150) keeps its original colour. Export the result as PNG to /home/user/Documents/spotlight.png (400x300).",
+  "env": {
+    "files": [
+      {
+        "filename": "dark_photo.png",
+        "sandbox_path": "/home/user/Documents/dark_photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/spotlight.png",
+      "key": "exists",
+      "expected": true,
+      "description": "spotlight.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/spotlight.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/spotlight.png 400 300",
+      "key": "match",
+      "expected": true,
+      "description": "400x300"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 200 150",
+      "eval": "245 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "centre (200,150) white"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 230 150",
+      "eval": "185 <= result.get('r', -1) <= 240 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=30 to the right: light (GIMP 224, sRGB 199)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 260 150",
+      "eval": "125 <= result.get('r', -1) <= 205 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=60 to the right: half-way (GIMP 188, sRGB 142)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 200 90",
+      "eval": "125 <= result.get('r', -1) <= 205 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=60 above: half-way (circular, not a linear ramp)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 310 150",
+      "eval": "40 <= result.get('r', -1) <= 120 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=110 to the right: still slightly lit (radius not smaller than 120)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 200 40",
+      "eval": "40 <= result.get('r', -1) <= 120 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=110 above: still slightly lit"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 330 150",
+      "eval": "25 <= result.get('r', -1) <= 36 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=130: unchanged dark grey (radius not larger than 120)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 200 20",
+      "eval": "25 <= result.get('r', -1) <= 36 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "r=130 above: unchanged"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/spotlight.png 0 0",
+      "eval": "25 <= result.get('r', -1) <= 36 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "corner unchanged"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_add_alpha_transparent",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_brightness_contrast",
+        "file": "dark_photo.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "set FG white: press D, then X",
+      "Gradient tool (G)",
+      "tool options: gradient 'FG to Transparent'",
+      "tool options: shape Radial",
+      "drag from (200,150) to (320,150), reading the pointer position in the status bar",
+      "Enter to commit",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 13
+  }
+}

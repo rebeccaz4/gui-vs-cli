@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_cbd761d2",
+  "app": "libreoffice_impress",
+  "task": "Duplicate the last 2 slides and arrange the full deck in an alternating pattern: original slides A, B interleaved with their copies A', B', resulting in order A, B, A', B'. The file to work on is /home/user/osworld_impress_slide_duplication_reorder_008.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_impress_slide_duplication_reorder_008.pptx",
+        "sandbox_path": "/home/user/osworld_impress_slide_duplication_reorder_008.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "cbd761d2-638a-5313-9bf9-20807e6c47dd",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

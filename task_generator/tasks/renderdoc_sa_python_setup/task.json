@@ -1,0 +1,70 @@
+{
+  "id": "renderdoc_sa_python_setup",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Enable PythonShell_AutoLoad and set PythonShell_FontSize = 12. Create the file /home/user/.local/share/qrenderdoc/python_history.txt containing exactly these two lines (each ending with a newline): 'import renderdoc as rd' and 'print(rd.GetVersionString())'. Also create an empty folder /home/user/renderdoc_scripts. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting PythonShell_AutoLoad true",
+      "key": "match",
+      "expected": true,
+      "description": "PythonShell_AutoLoad = true"
+    },
+    {
+      "command": "check-setting PythonShell_FontSize 12",
+      "key": "match",
+      "expected": true,
+      "description": "PythonShell_FontSize = 12"
+    },
+    {
+      "command": "file-info /home/user/.local/share/qrenderdoc/python_history.txt",
+      "eval": "result.get('size') == 52",
+      "description": "history file with exactly the two lines"
+    },
+    {
+      "command": "file-info /home/user/renderdoc_scripts",
+      "eval": "result.get('is_dir') is True or result.get('type') == 'directory'",
+      "description": "scripts folder created"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_python_shell_history",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_python_shell_history",
+        "file": "UI.config"
+      }
+    ],
+    "gui_plan": [
+      "open text editor (new file)",
+      "type the two lines",
+      "Save As",
+      "type history path",
+      "Save",
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type /home/user + Enter",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 14
+  }
+}

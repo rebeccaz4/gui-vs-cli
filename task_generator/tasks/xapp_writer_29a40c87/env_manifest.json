@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_29a40c87",
+  "files": [
+    {
+      "filename": "processing_request.docx",
+      "sandbox_path": "/home/user/Desktop/processing_request.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "event_photo.jpg",
+      "sandbox_path": "/home/user/Desktop/event_photo.jpg",
+      "type": "jpg"
+    }
+  ]
+}

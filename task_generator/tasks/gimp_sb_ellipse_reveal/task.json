@@ -1,0 +1,118 @@
+{
+  "id": "gimp_sb_ellipse_reveal",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/blue_bg.png in GIMP (400x300, solid blue) and add /home/user/Documents/red_fg.png (400x300, solid red) as a layer on top. Make the red layer visible only inside the ellipse that fits the rectangle from (80,80) to (320,220) (240 wide, 140 high), with the ellipse edge feathered by 20 pixels (the soft transition is centred on the ellipse edge); outside the ellipse the blue background must show. Flatten the image and export it as PNG to /home/user/Documents/ellipse_reveal.png (400x300).",
+  "env": {
+    "files": [
+      {
+        "filename": "blue_bg.png",
+        "sandbox_path": "/home/user/Documents/blue_bg.png"
+      },
+      {
+        "filename": "red_fg.png",
+        "sandbox_path": "/home/user/Documents/red_fg.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/ellipse_reveal.png",
+      "key": "exists",
+      "expected": true,
+      "description": "ellipse_reveal.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/ellipse_reveal.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/ellipse_reveal.png 400 300",
+      "key": "match",
+      "expected": true,
+      "description": "400x300"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/ellipse_reveal.png 200 150 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "ellipse centre red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/ellipse_reveal.png 40 150 0 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "left of the ellipse blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 90 90",
+      "eval": "0 <= result.get('r', -1) <= 100 and 0 <= result.get('g', -1) <= 20 and 150 <= result.get('b', -1) <= 255",
+      "description": "corner of the bounding box (outside the ellipse) blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 310 210",
+      "eval": "0 <= result.get('r', -1) <= 100 and 0 <= result.get('g', -1) <= 20 and 150 <= result.get('b', -1) <= 255",
+      "description": "opposite bounding-box corner blue"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 85 150",
+      "eval": "120 <= result.get('r', -1) <= 255 and 0 <= result.get('g', -1) <= 20 and 20 <= result.get('b', -1) <= 255",
+      "description": "5 px inside the left edge: mostly red, softened (b>=20 accepts sRGB and linear-light compositing)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 75 150",
+      "eval": "20 <= result.get('r', -1) <= 255 and 0 <= result.get('g', -1) <= 20 and 120 <= result.get('b', -1) <= 255",
+      "description": "5 px outside the left edge: mostly blue, softened (r>=20 accepts sRGB and linear-light compositing)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 200 85",
+      "eval": "120 <= result.get('r', -1) <= 255 and 0 <= result.get('g', -1) <= 20 and 20 <= result.get('b', -1) <= 255",
+      "description": "5 px inside the top edge (y=80): mostly red, softened (b>=20)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/ellipse_reveal.png 200 75",
+      "eval": "20 <= result.get('r', -1) <= 255 and 0 <= result.get('g', -1) <= 20 and 120 <= result.get('b', -1) <= 255",
+      "description": "5 px outside the top edge: mostly blue, softened (r>=20)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_rotate_180_tiff_export",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_gap_layer_mask_gradient_reveal",
+        "file": "blue_bg.png"
+      },
+      {
+        "from_task": "gimp_gap_layer_mask_gradient_reveal",
+        "file": "red_fg.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "File > Open as Layers (Ctrl+Alt+O)",
+      "type layer file path",
+      "Open",
+      "Layer > Mask > Add Layer Mask",
+      "choose Black (full transparency)",
+      "Add",
+      "Ellipse Select tool (E)",
+      "drag a rough ellipse",
+      "tool options: type position 80, 80",
+      "type size 240 x 140",
+      "Select > Feather",
+      "type 20 + OK",
+      "Edit > Fill with BG Color (white)",
+      "Select > None",
+      "Image > Flatten Image",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 22
+  }
+}

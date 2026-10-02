@@ -1,0 +1,69 @@
+{
+  "id": "cloudcompare_sa_vertices_upper",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/shape.obj in CloudCompare (a triangle mesh, 120 vertices). Take its vertices as a point cloud (no triangles), keep only the vertices with Z >= 0.5, and save them as a binary little-endian PLY point cloud at /home/user/Documents/shape_upper.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "shape.obj",
+        "sandbox_path": "/home/user/Documents/shape.obj"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/shape_upper.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/shape_upper.ply 50",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 50 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/shape_upper.ply -6.51 -6.21 0.74 6.51 6.21 1.51",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/shape_upper.ply",
+      "eval": "result['face_count'] == 0",
+      "description": "0 faces"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/shape_upper.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_obj_vertices_to_xyz",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_obj_vertices_to_xyz",
+        "file": "shape.obj"
+      }
+    ],
+    "gui_plan": [
+      "expand mesh in DB tree",
+      "select its vertices cloud",
+      "Tools > Segmentation > Cross Section",
+      "type box limit",
+      "Export section as new entity",
+      "close tool",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 12
+  }
+}

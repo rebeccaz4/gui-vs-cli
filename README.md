@@ -10,7 +10,7 @@ The bundled `CLI-Anything/` directory is the verifier-guided patched skill set u
 
 ## Benchmark Contents
 
-- Standard benchmark tasks: `440`
+- Standard benchmark tasks: `456`
 - Grounded-prompt tasks: `176`
   - These are procedure-guided GUI diagnostic tasks. They keep the same initial state, target state, and verifier as the standard tasks, but use more detailed GUI workflow descriptions with cues such as menu paths, dialog confirmations, action order, and exact object names.
 - Standard task directory: `task_generator/tasks`
@@ -19,7 +19,7 @@ The bundled `CLI-Anything/` directory is the verifier-guided patched skill set u
   - GUI runs: `evaluation/runs/gui/<run_id>/`
   - CLI runs: `evaluation/runs/cli/<run_id>/`
 
-The standard benchmark currently covers 18 applications:
+The standard benchmark currently covers 17 applications plus a cross-application set:
 
 | App | Tasks |
 |---|---:|
@@ -27,13 +27,12 @@ The standard benchmark currently covers 18 applications:
 | Chrome | 17 |
 | CloudCompare | 23 |
 | draw.io | 15 |
-| FreeCAD | 26 |
+| FreeCAD | 30 |
 | GIMP | 19 |
-| Godot 4 | 19 |
 | Krita | 17 |
-| LibreOffice Calc | 36 |
-| LibreOffice Impress | 32 |
-| LibreOffice Writer | 39 |
+| LibreOffice Calc | 40 |
+| LibreOffice Impress | 36 |
+| LibreOffice Writer | 44 |
 | MuseScore 3 | 25 |
 | OBS Studio | 18 |
 | Obsidian | 23 |
@@ -41,6 +40,7 @@ The standard benchmark currently covers 18 applications:
 | Shotcut | 20 |
 | Zoom | 20 |
 | Zotero | 26 |
+| Cross-app (multi-application workflows) | 18 |
 
 ## Repository Layout
 
@@ -55,7 +55,7 @@ unified-gui-cli-desktop-benchmark/
 │   ├── run_eval.py            # GUI evaluation runner
 │   └── run_cli_eval.py        # CLI evaluation runner
 ├── task_generator/
-│   ├── tasks/                 # 440 standard benchmark task directories
+│   ├── tasks/                 # 456 standard benchmark task directories
 │   └── tasks_grounding/       # 176 grounded-prompt task directories
 ├── verifiers/                 # App-specific verifier CLIs
 ├── E2B/                       # Vendored E2B Python SDK dependency

@@ -1,0 +1,10 @@
+{
+  "task_id": "gimp_sa_square_thumbs",
+  "files": [
+    {
+      "filename": "big_photo.png",
+      "sandbox_path": "/home/user/Documents/big_photo.png",
+      "type": "png"
+    }
+  ]
+}

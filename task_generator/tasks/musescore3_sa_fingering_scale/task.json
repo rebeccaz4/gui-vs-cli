@@ -1,0 +1,62 @@
+{
+  "id": "musescore3_sa_fingering_scale",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/finger_study.mscz (a rising C major scale, 16 quarter notes in 4 measures). Add one fingering number to every note, in this order: measure 1: 1 2 3 1, measure 2: 2 3 4 1, measure 3: 2 3 1 2, measure 4: 3 4 1 2. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "finger_study.mscz",
+        "sandbox_path": "/home/user/Documents/finger_study.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-fingering-count-in-measure /home/user/Documents/finger_study.mscz 1 4",
+      "key": "match",
+      "expected": true,
+      "description": "four fingerings in measure 1"
+    },
+    {
+      "command": "check-fingering-count-in-measure /home/user/Documents/finger_study.mscz 2 4",
+      "key": "match",
+      "expected": true,
+      "description": "four fingerings in measure 2"
+    },
+    {
+      "command": "check-fingering-count-in-measure /home/user/Documents/finger_study.mscz 3 4",
+      "key": "match",
+      "expected": true,
+      "description": "four fingerings in measure 3"
+    },
+    {
+      "command": "check-fingering-count-in-measure /home/user/Documents/finger_study.mscz 4 4",
+      "key": "match",
+      "expected": true,
+      "description": "four fingerings in measure 4"
+    },
+    {
+      "command": "fingerings /home/user/Documents/finger_study.mscz",
+      "eval": "[f['text'] for f in result] == ['1', '2', '3', '1', '2', '3', '4', '1', '2', '3', '1', '2', '3', '4', '1', '2']",
+      "description": "fingerings in the given order"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_fingering_numbers",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_fingering_numbers",
+        "file": "finger_study.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click first note",
+      "Ctrl+F",
+      "type '1 2 3 1 2 3 4 1 2 3 1 2 3 4 1 2' (Space advances)",
+      "Esc",
+      "Save"
+    ],
+    "gui_step_estimate": 5
+  }
+}

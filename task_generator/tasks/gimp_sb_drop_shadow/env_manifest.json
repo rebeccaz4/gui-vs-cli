@@ -1,0 +1,10 @@
+{
+  "task_id": "gimp_sb_drop_shadow",
+  "files": [
+    {
+      "filename": "icon_rgba.png",
+      "sandbox_path": "/home/user/Documents/icon_rgba.png",
+      "type": "png"
+    }
+  ]
+}

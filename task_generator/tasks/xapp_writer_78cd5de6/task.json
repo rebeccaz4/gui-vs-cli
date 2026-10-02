@@ -1,0 +1,38 @@
+{
+  "id": "xapp_writer_78cd5de6",
+  "app": "libreoffice_writer",
+  "task": "There is a file 'client_feedback.docx' on the Desktop with specific requests for modifying a product mockup image. Please read the client's feedback and update 'mockup.png' on the Desktop, saving the final image as 'mockup_revised.png'.",
+  "env": {
+    "files": [
+      {
+        "filename": "client_feedback.docx",
+        "sandbox_path": "/home/user/Desktop/client_feedback.docx"
+      },
+      {
+        "filename": "mockup.png",
+        "sandbox_path": "/home/user/Desktop/mockup.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "78cd5de6-63af-51b6-8b8f-0cb422454ebe",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "moved_from": "writer_cg_78cd5de6 (LibreOffice single-app pool; user decision 2026-09-29: GIMP image-editing tasks go to Cross-app)"
+  }
+}

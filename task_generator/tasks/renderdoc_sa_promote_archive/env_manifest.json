@@ -1,0 +1,35 @@
+{
+  "task_id": "renderdoc_sa_promote_archive",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "config"
+    },
+    {
+      "filename": "promoted.rdc",
+      "sandbox_path": "/home/user/captures/promoted.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "old_a.rdc",
+      "sandbox_path": "/home/user/captures/old_a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "old_b.rdc",
+      "sandbox_path": "/home/user/captures/old_b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "old_c.rdc",
+      "sandbox_path": "/home/user/captures/old_c.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "old_d.rdc",
+      "sandbox_path": "/home/user/captures/old_d.rdc",
+      "type": "rdc"
+    }
+  ]
+}

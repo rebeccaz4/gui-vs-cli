@@ -1,0 +1,39 @@
+{
+  "id": "calc_cg_479e5e30",
+  "app": "libreoffice_calc",
+  "task": "Create a dependent dropdown system where selecting a Region in column B filters the available Subregions in column C. Use named ranges to support the dependency. The file to work on is /home/user/osworld_calc_data_validation_dropdown_007.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_calc_data_validation_dropdown_007.xlsx",
+        "sandbox_path": "/home/user/osworld_calc_data_validation_dropdown_007.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "479e5e30-0cdb-5335-9ef2-a89fed695249",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "check_edits": [
+      {
+        "reason": "a column-B dropdown whose source is the RegionData cells holding the four regions (the natural choice) was rejected; now a cell-range source is resolved to its values (review 2026-09-30)"
+      },
+      {
+        "reason": "column-B list source is resolved through defined names too, and must list exactly North/South/East/West (a source mixing regions and subregions no longer passes) (review 2026-09-30)"
+      }
+    ]
+  }
+}

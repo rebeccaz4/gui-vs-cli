@@ -1,0 +1,80 @@
+{
+  "id": "cloudcompare_sa_half_ramp_ascii",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/scan_binary.ply in CloudCompare (500 points in 0..20). Keep only the points with X <= 10, compute per-point normals, color the points by height with a height ramp (Z), and save the result with normals and colors as an ASCII PLY at /home/user/Documents/scan_half.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "scan_binary.ply",
+        "sandbox_path": "/home/user/Documents/scan_binary.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/scan_half.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/scan_half.ply 232",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 232 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/scan_half.ply -0.01 -0.01 -0.01 10.01 20.01 20.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/scan_half.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals saved"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/scan_half.ply",
+      "key": "has_color",
+      "expected": true,
+      "description": "colors saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/scan_half.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "PLY ascii"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_ply_binary_to_ascii",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_ply_binary_to_ascii",
+        "file": "scan_binary.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type box limit",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Normals > Compute",
+      "OK",
+      "Edit > Colors > Height Ramp",
+      "choose Z",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 16
+  }
+}

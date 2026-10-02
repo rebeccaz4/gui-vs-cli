@@ -1,0 +1,118 @@
+{
+  "id": "audacity_sa_beep_insert",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/uneven.wav loaded (a 4-second mono tone). Normalize it to a peak of -1.0 dB. Then insert a 0.5-second 880 Hz sine beep at 2.0 s, so that everything after 2.0 s moves 0.5 s later (do not mix the beep on top). Finally fade out the last 1.5 s of the result to silence. Export as a mono 44100 Hz 16-bit WAV file to /home/user/Music/uneven_edit.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "uneven.wav",
+        "sandbox_path": "/home/user/Music/uneven.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/uneven_edit.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/uneven_edit.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM WAV"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/uneven_edit.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/uneven_edit.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/uneven_edit.wav 4.45",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 4.45 s"
+    },
+    {
+      "command": "export-info /home/user/Music/uneven_edit.wav",
+      "eval": "float(result['format']['duration']) <= 4.55",
+      "description": "length <= 4.55 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/uneven_edit.wav 1.0 1.9 330 3",
+      "key": "match",
+      "expected": true,
+      "description": "tone before the beep (330 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/uneven_edit.wav 2.1 2.4 880 3",
+      "key": "match",
+      "expected": true,
+      "description": "beep inserted at 2.0-2.5 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/uneven_edit.wav 2.6 2.9 330 3",
+      "key": "match",
+      "expected": true,
+      "description": "tone resumes after the beep"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/uneven_edit.wav 0.2 1.8 -5.5 -2.5",
+      "key": "match",
+      "expected": true,
+      "description": "normalized to -1 dB peak (~-4 dBFS RMS)"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/uneven_edit.wav 4.42 4.5 -25",
+      "key": "match",
+      "expected": true,
+      "description": "faded out at the end"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/uneven_edit.wav 2.95 3.0 -6.5 -2.0",
+      "key": "match",
+      "expected": true,
+      "description": "fade covers only the last 1.5 s"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_normalize_export",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_gap_normalize_export",
+        "file": "uneven.wav"
+      }
+    ],
+    "gui_plan": [
+      "Select All",
+      "Effect > Normalize",
+      "set -1.0 dB",
+      "OK",
+      "click selection start field",
+      "type 2.0",
+      "Generate > Tone",
+      "type 880 Hz, 0.5 s",
+      "OK",
+      "click selection start field",
+      "type start time",
+      "Shift+End (select to end)",
+      "Effect > Fade Out",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 19
+  }
+}

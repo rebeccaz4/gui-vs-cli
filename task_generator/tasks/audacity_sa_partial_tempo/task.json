@@ -1,0 +1,104 @@
+{
+  "id": "audacity_sa_partial_tempo",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/beat.wav loaded (a 4-second mono tone). Change the tempo of 2.0-4.0 s only, so that this part lasts 1.0 s while its pitch stays the same; the first 2 s stay unchanged. Then add 0.5 s of silence at the end. Export as a mono 44100 Hz 16-bit WAV file to /home/user/Music/beat_edit.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "beat.wav",
+        "sandbox_path": "/home/user/Music/beat.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/beat_edit.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/beat_edit.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM WAV"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/beat_edit.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/beat_edit.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/beat_edit.wav 3.45",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 3.45 s"
+    },
+    {
+      "command": "export-info /home/user/Music/beat_edit.wav",
+      "eval": "float(result['format']['duration']) <= 3.55",
+      "description": "length <= 3.55 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/beat_edit.wav 0.2 1.8 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "first 2 s unchanged"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/beat_edit.wav 2.1 2.9 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "sped-up part keeps its pitch (440 Hz)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/beat_edit.wav 2.1 2.9 -10.5 -7.5",
+      "key": "match",
+      "expected": true,
+      "description": "sped-up part keeps its level"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/beat_edit.wav 3.05 3.45 -40",
+      "key": "match",
+      "expected": true,
+      "description": "0.5 s of silence at the end"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_tempo_change",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_gap_tempo_change",
+        "file": "beat.wav"
+      }
+    ],
+    "gui_plan": [
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Effect > Change Tempo",
+      "type +100 %",
+      "OK",
+      "End",
+      "Generate > Silence",
+      "type 0.5 s",
+      "OK",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 17
+  }
+}

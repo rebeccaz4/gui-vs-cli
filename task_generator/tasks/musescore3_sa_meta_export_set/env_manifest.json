@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_sa_meta_export_set",
+  "files": [
+    {
+      "filename": "fanfare.mscz",
+      "sandbox_path": "/home/user/Documents/fanfare.mscz",
+      "type": "mscz"
+    }
+  ]
+}

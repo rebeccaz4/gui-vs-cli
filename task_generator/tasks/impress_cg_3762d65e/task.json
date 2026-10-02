@@ -1,0 +1,35 @@
+{
+  "id": "impress_cg_3762d65e",
+  "app": "libreoffice_impress",
+  "task": "Insert an image '/home/user/logos/company_logo.png' on the slide master so it appears on every slide at the bottom-right corner, 2cm x 2cm. The file to work on is /home/user/impress_tm_073.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_tm_073.pptx",
+        "sandbox_path": "/home/user/impress_tm_073.pptx"
+      },
+      {
+        "filename": "company_logo.png",
+        "sandbox_path": "/home/user/logos/company_logo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "3762d65e-a970-50df-bc7c-02b65668adfe",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "gimp_sb_hue_band",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/colorful.png in GIMP (600x400: horizontal bands, red y 0-99, green 100-199, blue 200-299, yellow 300-399). Rotate the hue of the blue band by +60 degrees and the hue of the yellow band by -30 degrees (on the usual hue circle: red 0, yellow 60, green 120, blue 240 degrees), keeping saturation and lightness; the red and green bands must not change. Export the result as PNG to /home/user/Documents/hue_band.png (600x400).",
+  "env": {
+    "files": [
+      {
+        "filename": "colorful.png",
+        "sandbox_path": "/home/user/Documents/colorful.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/hue_band.png",
+      "key": "exists",
+      "expected": true,
+      "description": "hue_band.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/hue_band.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/hue_band.png 600 400",
+      "key": "match",
+      "expected": true,
+      "description": "600x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/hue_band.png 300 50 255 0 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "red band unchanged"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/hue_band.png 300 150 0 255 0 15",
+      "key": "match",
+      "expected": true,
+      "description": "green band unchanged"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/hue_band.png 300 250 255 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "blue band -> magenta (300 degrees)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/hue_band.png 20 290 255 0 255 15",
+      "key": "match",
+      "expected": true,
+      "description": "whole blue band changed (left, bottom row)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/hue_band.png 300 350",
+      "eval": "240 <= result.get('r', -1) <= 255 and 110 <= result.get('g', -1) <= 145 and 0 <= result.get('b', -1) <= 15",
+      "description": "yellow band -> orange (30 degrees, ~255,128,0)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/hue_band.png 580 395",
+      "eval": "240 <= result.get('r', -1) <= 255 and 110 <= result.get('g', -1) <= 145 and 0 <= result.get('b', -1) <= 15",
+      "description": "whole yellow band changed (right, bottom row)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_gap_select_by_color_replace",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_grayscale_export",
+        "file": "colorful.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Colors > Hue-Saturation",
+      "type Hue 60",
+      "OK",
+      "tool options: type position 0, 300",
+      "Colors > Hue-Saturation",
+      "type Hue -30",
+      "OK",
+      "Select > None",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 19
+  }
+}

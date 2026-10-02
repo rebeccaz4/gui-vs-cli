@@ -1,0 +1,52 @@
+{
+  "id": "xapp_calc_a4dac5a7",
+  "app": "libreoffice_calc",
+  "task": "I need to track payment confirmation emails. Find the first email in the Thunderbird local folder 'Finance' (its mailbox file is /home/user/.thunderbird/default.default/Mail/Local Folders/Finance) and copy its subject line into cell A2 of /home/user/finance_tracker.ods in LibreOffice Calc. Note: despite the .ods extension, the file contains Excel (.xlsx) data; save it in place in that same Excel format.",
+  "env": {
+    "files": [
+      {
+        "filename": "finance_tracker.ods",
+        "sandbox_path": "/home/user/finance_tracker.ods"
+      },
+      {
+        "filename": "Finance",
+        "sandbox_path": "/home/user/.thunderbird/default.default/Mail/Local Folders/Finance"
+      },
+      {
+        "filename": "Inbox",
+        "sandbox_path": "/home/user/.thunderbird/default.default/Mail/Local Folders/Inbox"
+      },
+      {
+        "filename": "profiles.ini",
+        "sandbox_path": "/home/user/.thunderbird/profiles.ini"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNqtV+uOGjcU/j9PccpqBaOys0AipRppKxEgCU2UXQFtIrXVyAxmcXawR7ZZ4F8fok/YJ+k5ngszQO5B2gXGx+fyfd+xD41Gw5vwLdMLmMZapDaEmWbxA6Rsv+bSQqzkUug1s0JJ4GsmEuPNmHmA8TAEZbZKJ4tovUmsiFiamsiZRAtmWdTp9Lyhwu8yhETMNVfLpYh5FLMkhtbtcApLkXD4759/QUjLtWRJsof3b6bvYakopO+5UCHcplzCbLWRC67nAnN9ISSTMUe7BB+10ZFcgF3hA6GNzfJsY+7pHoQ1YDbzDzy2HrhXIiSniApiniTQ74FawvVKrfn1xnB9vcycR5aA4DpQCxN43jRWWsh7mGzmWsQh+hqodaokgdQNyYswIJW84uvU7qHF7mllq5XlYNC3XdFuF7bf86F4UfWd4Amk1tRc9pxLRN8ifsbVxncstkUtlPNRwXWXz3KXtVercZfzOqjyegVj+aiQG7jodXpPrzq/PH3W8HHzTFmWhNANOp73FisJ4Qw4VHiFQCZzDpHcIE/gHS/IAKyfQbBLzA4LslwaSmDOkXEOiWILQmkr7AoUkp7ud0ngNVCknkBkNJZtik9mtbEiKZ/n1p737nbyejiewA00D6Q2vVl/+joaD+nxZ2Xb9FCd0V1/9grNlQlSZlfBByVkK3fehuYZIJoo2At4qdWG1Kg3dhVW6apSJT6lZ2/0/m40mI2G0fT357/hJ0r6i4lrep634Et45Fos95HFDmphchEV4YeOEAKU3v9wJkAmyM86Tbjz6uBPtbrX3BjxiPrNtJ+xOeF2o6VBKSBdFqmzW47t2Qk6SP3CaaUaw5KEIvLAsYwOKYkeX2D9PDsA6vKp9D8suEkF9o9TWamWIHcwIEWhnK7tOs1yPpaVUaUuIEZdkr5Qg5kD3OUwcULBL8d9H2l3LkbxiscPznMz26f3YdlXmQgDEncJcrt07Ts7vot5amHk3igthsUcXKQIrW01BpPxbDzovwlhwKRUNmsYB9Clgatf8X+Ifw24hDOR2sB9/9jlZPSuP8FjGkFvHBa14+/ARK2e7ZwUX3Qe4RVhrzzMlXpo/ZCqHAV5VWU9P6CKrcHEt/MAj0hUbKGxO83xCF0Il+A9owMsawtYcYadZoBpdxfQydrqd2+mWbu24Tl+5tJdLoPuzRC3+qdosS4FNX82+93m38EjSza8XJsXa89P1+JibXC6Jpbk9icUZZ5LE5Qmb+6RS8k9ibMnlFkzrJ3zJ9C/ymsl/PNa6Y7Aci+1q/Qyq/JSOzZYt43x8PrsVsj4LCFHpBztedmfjeCuP50esqmgfpyGfz6Pb5ScxoAF34Xk+DfK7OLTtz7Bev7ib7lLHq8Qa/zyAMS9L/rjN1PAWoRElbIE8ejdvMUAvjtNCbKRW7+nq0HSMqywbpoMMM45UfYip6hCmr2zEiuMRCYLiugCGqtbxaIf4DeRtnyntPMqyzitgJJJ63gacv4QfO3nSCAMxEMZqua7emf8TJfGk3KZJ4afTYSA/FgieRJ8l2I/8QWNKNk1XNzOeB3jUNb4GpmNJpPbyWnAUl4ncvmWia7l5rgj1fDjSYJ21ScIJ5HcbwhfMfR9pzRvSojz4D9Sn3Xa0QLViU7OKrZmmvlz1jdwPFuFxzPyx5TdKwSF+OFMQANJvdaMzmRPMs+ZO6gco/snkU50/qxmcqr1T+i9TC/DDVNYKJ6B5xI+pFsc8y6p9gkglUP/i5utV2k2oqpdRgvzcCdRvqfVemdajaa3w5y5xlm9gm6bxtIsZO7zL0k/6OhIMte4Rp4q9jXT4mbI4lXiZFb5FVF5jgM4So6QL3478J0w1rSKXxX5GF6ASdMQWS/ph0MRp7T1PnpJHeipzvqHjf8DZ8m8WA==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+thunderbird",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a4dac5a7-c074-55f0-a165-137413336f92",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "easy",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "I need to track payment confirmation emails. Open Thunderbird, go to the folder 'Finance'. Find the first email in that folder and copy its subject line into cell A2 of `/home/user/finance_tracker.ods` in LibreOffice Calc.",
+        "reason": "the .ods file contains XLSX data and the check reads it with openpyxl; saving real ODS scores 0 (wording review 2026-09-30)"
+      },
+      {
+        "replaced": "I need to track payment confirmation emails. Open Thunderbird, go to the folder 'Finance'. Find the first email in that folder and copy its subject line into cell A2 of `/home/user/finance_tracker.ods` in LibreOffice Calc. Note: despite the .ods extension, the file contains Excel (.xlsx) data; save it in place in that same Excel format.",
+        "reason": "mailbox path was not given and the wording prescribed GUI steps ('Open Thunderbird, go to the folder') (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

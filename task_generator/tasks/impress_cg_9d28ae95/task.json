@@ -1,0 +1,43 @@
+{
+  "id": "impress_cg_9d28ae95",
+  "app": "libreoffice_impress",
+  "task": "Create an onboarding presentation for new employees. 14 slides: Slide 1: 'Welcome to Acme Corp'. Slide 2: agenda/table of contents with hyperlinks. Slide 3: company history timeline (horizontal shapes). Slide 4: mission and values (3 columns). Slide 5: organization chart using connected shapes. Slide 6: your first week checklist (checkbox-style bullets). Slide 7: IT setup instructions with numbered steps. Slide 8: benefits overview table. Slide 9: office map (placeholder rectangle). Slide 10: key contacts table. Slide 11: company policies summary. Slide 12: FAQ. Slide 13: resources and links. Slide 14: 'Welcome aboard!' closing. Apply consistent branding: green (#388E3C) headers, light gray (#FAFAFA) backgrounds. Work on /home/user/impress_wf_032.pptx and save it in place as /home/user/impress_wf_032.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_wf_032.pptx",
+        "sandbox_path": "/home/user/impress_wf_032.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "9d28ae95-4a52-5689-9a5b-be572dc3b8fb",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Save as 'Onboarding.pptx' on the Desktop. The file to work on is /home/user/impress_wf_032.pptx.",
+        "with": "Work on /home/user/impress_wf_032.pptx and save it in place as /home/user/impress_wf_032.pptx.",
+        "reason": "reward grades /home/user/impress_wf_032.pptx whenever it exists (it always does), so the Desktop/Onboarding.pptx named in the instruction is never read; the instruction must name the graded output file"
+      }
+    ],
+    "check_edits": [
+      {
+        "reason": "background set on the slide master (the natural way to apply it to all slides) was not counted; now the slide's effective background (own, else layout, else master) is checked (review 2026-09-30)"
+      }
+    ]
+  }
+}

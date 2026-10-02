@@ -1,0 +1,73 @@
+{
+  "id": "freecad_cw_part_045",
+  "app": "freecad",
+  "task": "Create one Part Design body. Create a circular base disk centered on the global Z axis with radius 26 mm and height 5 mm, spanning Z = 0 to 5. Create one raised cylindrical boss on the top face with radius 3 mm and height 6 mm, axis along global Z, centered at (16, 0) and spanning Z = 5 to 11. Make the disk an additive cylinder (FreeCAD's default name 'Cylinder') and the boss a Pad (default name 'Pad') of a circle sketch (default name 'Sketch'). Use Part Design Polar Pattern around the global Z axis through the origin to create 8 total boss occurrences evenly spaced through 360 degrees, so the boss centers lie on a 16 mm radius circle at 45 degree intervals. Save the completed model to /home/user/Unnamed.FCStd.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Unnamed.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "Output model saved at /home/user/Unnamed.FCStd"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "eval": "result.get('checks', {}).get('required_type_contains') is True",
+      "description": "CADWorld check: required_type_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "eval": "result.get('checks', {}).get('object_0') is True",
+      "description": "CADWorld check: object_0"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "eval": "result.get('checks', {}).get('object_1') is True",
+      "description": "CADWorld check: object_1"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "eval": "result.get('checks', {}).get('object_2') is True",
+      "description": "CADWorld check: object_2"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "eval": "result.get('checks', {}).get('object_3') is True",
+      "description": "CADWorld check: object_3"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsX2NvbnRhaW5zIjoiQm9keSIsInByb3BlcnRpZXMiOnsiR3JvdXAiOnsiY29udGFpbnMiOlsiQ3lsaW5kZXIiLCJTa2V0Y2giLCJQYWQiLCJQb2xhclBhdHRlcm4iXX0sIlRpcCI6eyJlcXVhbHMiOiJQb2xhclBhdHRlcm4ifX0sInR5cGUiOiJQYXJ0RGVzaWduOjpCb2R5In0seyJiYm94Ijp7InJlbGF0aXZlX3RvbGVyYW5jZSI6MC4wMSwidG9sZXJhbmNlIjowLjI1LCJ4Ijo1Mi4wLCJ4bWF4IjoyNi4wLCJ4bWluIjotMjYuMCwieSI6NTIuMCwieW1heCI6MjYuMCwieW1pbiI6LTI2LjAsInoiOjUuMCwiem1heCI6NS4wLCJ6bWluIjowfSwiY2VudGVyX29mX21hc3MiOnsicmVsYXRpdmVfdG9sZXJhbmNlIjowLjAxLCJ0b2xlcmFuY2UiOjAuMywieCI6MCwieSI6MCwieiI6Mi41fSwibmFtZSI6IkN5bGluZGVyIiwicHJvcGVydGllcyI6eyJIZWlnaHQiOnsiZXhwZWN0ZWQiOjUsInRvbGVyYW5jZSI6MC4xNX0sIlJhZGl1cyI6eyJleHBlY3RlZCI6MjYsInRvbGVyYW5jZSI6MC4xNX19LCJzdXJmYWNlX2FyZWEiOnsiZXhwZWN0ZWQiOjUwNjQuMjQ3LCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6NTAuNjQyNDczNTc1ODY3NDd9LCJ0eXBlX2NvbnRhaW5zIjoiQWRkaXRpdmVDeWxpbmRlciIsInZvbHVtZSI6eyJleHBlY3RlZCI6MTA2MTguNTgzLCJyZWxhdGl2ZV90b2xlcmFuY2UiOjAuMDIsInRvbGVyYW5jZSI6MTA2LjE4NTgzMTY5MTMzNTAxfX0seyJsYWJlbF9jb250YWlucyI6IlBhZCIsInByb3BlcnRpZXMiOnsiQmFzZUZlYXR1cmUiOnsiZXF1YWxzIjoiQ3lsaW5kZXIifSwiTGVuZ3RoIjp7ImV4cGVjdGVkIjo2LCJ0b2xlcmFuY2UiOjAuMTV9LCJQcm9maWxlIjp7ImVxdWFscyI6IlNrZXRjaCJ9fSwidHlwZV9jb250YWlucyI6IlBhZCJ9LHsibGFiZWxfY29udGFpbnMiOiJQb2xhciIsInByb3BlcnRpZXMiOnsiQW5nbGUiOnsiZXhwZWN0ZWQiOjM2MCwidG9sZXJhbmNlIjowLjV9LCJCYXNlRmVhdHVyZSI6eyJlcXVhbHMiOiJQYWQifSwiT2NjdXJyZW5jZXMiOnsiZXhwZWN0ZWQiOjgsInRvbGVyYW5jZSI6MC4xfX0sInR5cGVfY29udGFpbnMiOiJQb2xhclBhdHRlcm4ifV0sInJlcXVpcmVkX3R5cGVfY29udGFpbnMiOlsiQm9keSIsIkFkZGl0aXZlQ3lsaW5kZXIiLCJQYWQiLCJQb2xhclBhdHRlcm4iXX19",
+      "key": "passed",
+      "expected": true,
+      "description": "CADWorld all-checks verdict (source benchmark's binary success)"
+    }
+  ],
+  "metadata": {
+    "source": "CADWorld (ICLR 2026), https://github.com/Zdong104/CADWORLD",
+    "source_task_id": "freecad-part-045",
+    "source_license": "Apache-2.0",
+    "source_domain": "part",
+    "source_subsets": "60+small",
+    "source_evaluator_criteria": [
+      "The saved file must exist at /home/user/Unnamed.FCStd.",
+      "The model should contain a circular base disk with radius 26 mm and height 5 mm, axis on global Z.",
+      "The original boss should be a raised cylinder with radius 3 mm and height 6 mm centered at (16, 0) on the top face.",
+      "The model should contain a Part Design Polar Pattern with 8 total occurrences around global Z over 360 degrees.",
+      "Because no golden answer FCStd is available for this task, complex geometry is scored structurally rather than by exact BRep comparison."
+    ],
+    "fc019_compat": "yes",
+    "fc019_compat_note": "",
+    "instruction_edits": [
+      {
+        "replaced": "Create one Part Design body. Create a circular base disk centered on the global Z axis with radius 26 mm and height 5 mm, spanning Z = 0 to 5. Create one raised cylindrical boss on the top face with radius 3 mm and height 6 mm, axis along global Z, centered at (16, 0) and spanning Z = 5 to 11. Use Part Design Polar Pattern around the global Z axis through the origin to create 8 total boss occurrences evenly spaced through 360 degrees, so the boss centers lie on a 16 mm radius circle at 45 degree intervals. Save the completed model to /home/user/Unnamed.FCStd.",
+        "reason": "the check requires the disk to be an additive 'Cylinder' and the boss a 'Pad' of 'Sketch' (wording review 2026-09-30)"
+      }
+    ]
+  },
+  "cli_feasibility": {
+    "feasible": "needs-skill-fix",
+    "reason": "cli-anything-freecad exposes the needed operations, but its `export render --preset fcstd` writes a synthetic Document.xml (no sketch geometry, generic Part::Feature/PartDesign::Feature types), so CADWorld structure checks fail; see update/validation/README.md section 3"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_e37f90ef",
+  "app": "libreoffice_writer",
+  "task": "I wrote a heartfelt letter to my late grandfather that I want to read at the family memorial. Format it so it's easy to read aloud \u2014 larger font, generous line spacing, and mark the paragraphs where I want to pause with a special symbol. Also make it look dignified with a simple border and nice margins. The file to work on is /home/user/Desktop/memorial_letter.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "memorial_letter.docx",
+        "sandbox_path": "/home/user/Desktop/memorial_letter.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "e37f90ef-1ecb-57b5-a052-d51fa35a30ef",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

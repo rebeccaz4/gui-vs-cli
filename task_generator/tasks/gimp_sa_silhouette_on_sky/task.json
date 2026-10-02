@@ -1,0 +1,101 @@
+{
+  "id": "gimp_sa_silhouette_on_sky",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/landscape_base.png in GIMP (800x600: sky above y=300, grass below). Add /home/user/Documents/silhouette.png (300x300, a black shape on a white background) as a new layer, remove its white background so that only the black shape covers the landscape, and position that layer so its top-left corner is at (400, 250) on the canvas. Flatten the image and export it as PNG to /home/user/Documents/silhouette_scene.png (800x600).",
+  "env": {
+    "files": [
+      {
+        "filename": "landscape_base.png",
+        "sandbox_path": "/home/user/Documents/landscape_base.png"
+      },
+      {
+        "filename": "silhouette.png",
+        "sandbox_path": "/home/user/Documents/silhouette.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/silhouette_scene.png",
+      "key": "exists",
+      "expected": true,
+      "description": "silhouette_scene.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/silhouette_scene.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/silhouette_scene.png 800 600",
+      "key": "match",
+      "expected": true,
+      "description": "800x600"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/silhouette_scene.png 550 400 0 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "shape centre at (550,400): layer placed at (400,250)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/silhouette_scene.png 410 260 135 206 235 20",
+      "key": "match",
+      "expected": true,
+      "description": "white corner of the layer removed: sky shows"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/silhouette_scene.png 690 540 34 139 34 20",
+      "key": "match",
+      "expected": true,
+      "description": "white corner of the layer removed: grass shows"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/silhouette_scene.png 150 150 135 206 235 20",
+      "key": "match",
+      "expected": true,
+      "description": "sky elsewhere unchanged"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/silhouette_scene.png 200 500 34 139 34 20",
+      "key": "match",
+      "expected": true,
+      "description": "grass elsewhere unchanged"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_gap_alpha_channel_threshold_cutout",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_composite_two_images_flatten",
+        "file": "landscape_base.png"
+      },
+      {
+        "from_task": "gimp_gap_alpha_channel_threshold_cutout",
+        "file": "silhouette.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "File > Open as Layers (Ctrl+Alt+O)",
+      "type layer file path",
+      "Open",
+      "Colors > Color to Alpha",
+      "OK (white)",
+      "Layer > Layer Attributes",
+      "type Offset X 400",
+      "type Offset Y 250",
+      "OK",
+      "Image > Flatten Image",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 17
+  }
+}

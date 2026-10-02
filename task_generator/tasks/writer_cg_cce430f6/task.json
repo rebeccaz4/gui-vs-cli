@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_cce430f6",
+  "app": "libreoffice_writer",
+  "task": "I need to create a direct mail piece for our top-tier customers. The document should have a personalized salutation area, a highlighted offer box in the center ('50% off annual Enterprise plan \u2014 offer expires April 30, 2026'), and a tear-off response section at the bottom separated by a dashed line. Set it up as a single-page layout. The file to work on is /home/user/writer_mktg_055.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "writer_mktg_055.docx",
+        "sandbox_path": "/home/user/writer_mktg_055.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "cce430f6-d0c6-51e5-bb99-9a6b82107571",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_upper_half_ramp",
+  "files": [
+    {
+      "filename": "plain.ply",
+      "sandbox_path": "/home/user/Documents/plain.ply",
+      "type": "ply"
+    }
+  ]
+}

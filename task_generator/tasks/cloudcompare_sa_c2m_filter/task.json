@@ -1,0 +1,78 @@
+{
+  "id": "cloudcompare_sa_c2m_filter",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/cloud.ply and /home/user/Documents/plane.obj in CloudCompare. Compute the cloud-to-mesh distance from every point of cloud.ply to the plane, keep only the points whose distance is at least 1.2, and save them together with the distance scalar field (its name must contain 'C2M' as in CloudCompare's default 'C2M absolute distances') as a binary little-endian PLY at /home/user/Documents/cloud_far.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "cloud.ply",
+        "sandbox_path": "/home/user/Documents/cloud.ply"
+      },
+      {
+        "filename": "plane.obj",
+        "sandbox_path": "/home/user/Documents/plane.obj"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/cloud_far.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/cloud_far.ply 241",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 241 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/cloud_far.ply -5.01 -5.01 1.19 5.01 5.01 1.51",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/cloud_far.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/cloud_far.ply",
+      "eval": "any('c2m' in p.lower() for p in result['properties'])",
+      "description": "scalar field 'c2m' saved"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_cloud_mesh_distance",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_cloud_mesh_distance",
+        "file": "cloud.ply"
+      },
+      {
+        "from_task": "cloudcompare_gap_cloud_mesh_distance",
+        "file": "plane.obj"
+      }
+    ],
+    "gui_plan": [
+      "select cloud and mesh",
+      "Tools > Distances > Cloud/Mesh Dist.",
+      "Compute",
+      "OK",
+      "Edit > Scalar fields > Filter by value",
+      "type min 1.2",
+      "Export",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 13
+  }
+}

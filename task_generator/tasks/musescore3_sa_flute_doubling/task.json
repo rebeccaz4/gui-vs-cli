@@ -1,0 +1,78 @@
+{
+  "id": "musescore3_sa_flute_doubling",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/piano_only.mscz (one Piano part, 4 measures). Add a Flute part below the Piano. Copy measures 1-2 of the Piano part into the Flute part (same notes in the same measures) and leave Flute measures 3-4 as rests. Put a staccato on every Flute note (and on no Piano note). Save the score in place and export it as MusicXML to /home/user/Documents/piano_flute.musicxml.",
+  "env": {
+    "files": [
+      {
+        "filename": "piano_only.mscz",
+        "sandbox_path": "/home/user/Documents/piano_only.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-part-count /home/user/Documents/piano_only.mscz 2",
+      "key": "match",
+      "expected": true,
+      "description": "two parts"
+    },
+    {
+      "command": "check-instrument /home/user/Documents/piano_only.mscz Flute",
+      "key": "exists",
+      "expected": true,
+      "description": "Flute added"
+    },
+    {
+      "command": "check-note-count /home/user/Documents/piano_only.mscz 24",
+      "key": "match",
+      "expected": true,
+      "description": "16 Piano notes + 8 copied Flute notes"
+    },
+    {
+      "command": "check-articulation-count /home/user/Documents/piano_only.mscz staccato 8",
+      "key": "match",
+      "expected": true,
+      "description": "8 staccatos"
+    },
+    {
+      "command": "articulations /home/user/Documents/piano_only.mscz",
+      "eval": "all(a['staff'] == 1 and a['measure'] in (1, 2) for a in result)",
+      "description": "staccatos only on Flute measures 1-2"
+    },
+    {
+      "command": "check-musicxml-parts /home/user/Documents/piano_flute.musicxml 2",
+      "key": "match",
+      "expected": true,
+      "description": "MusicXML with both parts"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_add_flute_instrument",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_add_flute_instrument",
+        "file": "piano_only.mscz"
+      }
+    ],
+    "gui_plan": [
+      "I (Instruments)",
+      "search Flute",
+      "Add",
+      "OK",
+      "select Piano m1-2",
+      "Ctrl+C",
+      "click Flute m1",
+      "Ctrl+V",
+      "select Flute m1-2",
+      "S (staccato)",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 15
+  }
+}

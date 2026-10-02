@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_d853218b",
+  "app": "libreoffice_writer",
+  "task": "Set up the header with the document title 'Environmental Impact Assessment' on the left and the date field on the right, all on the same line. The file to work on is /home/user/Desktop/env_assessment.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "env_assessment.docx",
+        "sandbox_path": "/home/user/Desktop/env_assessment.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNq1WNtu4zYQfddXDLwPspCt7I3TPggwUDd2do3NXuC43Ye2ELgSZRGRRIGk4wSBgX5Ev7Bf0iF1teRN0mTrF8PkcObM7ZDjwWBgreiOiBCuAsFy5cEVVbDNIaYkpAJ2TMUQ8mCb0kyBYiqhkNBIAclCCImiEDGahCDYJlbWmshrWM492AmmqPBzsqH++OxHa85TwjIPEvZVUB5FLKB+IWNdBVywbONZAOc8zXmmDb2B4dg9czx4V8AIeKZQgQRFbxXYi+yGCZ5pTCSBZZqTQMFMSiqlXrMPdJ1qXZMjukiB+geSsE1GQ1DkK0jFcxhGXHT2tKvOgdrJt9XOZ+tFGZeAhxSGuKzEWkM38bS1gA3X9G7HRehYa45uePDGHVsDTIjF0IZQwKVlRYKnOv63UC7Oy1w0Oy7NtqlrAlPKfJn769kv/uxy+fbjh8XHtWV9+bR6P1+uYAr2KOYpHW0lFaM5ldfor22tZ1fv/eVcb3cyZ1sXy8uF/3m2foe7kX1fatqPaHbjkzrkrkZiW5YV0ghuqGDRna+wGoYRSyhqU7GjMwygHdTfvxkZUDHBsoppXW9EYsyEoIFK7kAWtVgE7QlJB+CZ0VaXKGkXablpMgvDG/bNAjhppdBxjeIVVVuRSQ+ihCPkr1TtKM1g7I6NHZ27tntKp9SX6ArFuKGUVSyLuyIM+oMhw70qoa1IGQl6G9BcwcJ8MYSOkaHN4RybBs8MzlfL9fJ8dunBOckyrgDhhaB1wX2tce/BPd0PnM7pwWrxZbbCdkV8rU1hXG1Av4LPmA+ehUzj8Bo6SLdSQUxuKGBEEkrwF/YGZi3Qgn2HWQQaIZ53SxnZbLZgNT595JU2CRHfYqBZVtt3W5gfdarjWLVUasc8tFH9Pv7zRTkQWMw18BfGvkWKR+gQy7nDzo/2iaFWyDmikE5pZB0zDDBhidRNwjLMNJYvtjgMy8bEfZrm6s4x5Z6bzteyG56ENNOibj/h5dlpFQu3WOjs+9E2SXxDYFMo+0d/NAvnRBCd80LS1T83guRxp3B6ik6m5qihRasWpbc5AqGhX4QKrT0SrEG7djuna1SN2WPVHA0+z66uvIPL7Z+//u6l0r4/1L+vEoVZ6tRxm1xONLucNR4mkh5HcTFbXvZRLEqbx8zXDr4ueg8LWdBcDLteO1V1P7FdFqvVp1UfStElvao/rau+Tj5yzkO3N17Lx8qbIYEFeBkUXZOQO77F507rSXNidJz0njVuqeXiaH9kvDYtm5A5z+gGE2TfmPS1yilaxHQ+px+0qDJwTBfUYj5upES5qN43iA+PlX6yBJ8AgDc52SYKLhcX65+LW+78cjFbFa72zmGDKOmabBg2mk577xDXnO+b1B/dByzb0mfp1RANQJTMuWQFpWNn/A+2Vsu379bH9fYTuBZHrDzEDaemFVbHK7u4AfGurX28bzm8h8WHX8vq73NG9cH3N7m2Ok53gPe9K05ZTz3SI6jJowTV46ciEvgAEA8Fo26Fhh1eSEanD5HR5EnP/WMERNu0gmykmZRK1Ik+IbIoCc9jIvBduUGXTqCZGAaFftd1B7heydEsdB+/u5GbGlxtdvqel3hRCdo7vzDW5S0M0hTu7Z3tgR0rlXujkQximhLp8pxmt2lSsBL+FJuRHolywQO8gXEsTJPR6Xj800iPj/beeg4XvsKRloggbsWUJlT3t4mIvgzqo4eNoeX9WrZ8UVQLboQXCkmSoe2ORjuvVm6/RoedHhubfW3vUKt3jIOMSDHR6TyV42J11my42zynYug8REQHKfnPTDQxfdCt7U7XVU+CBpizfwkFNZCfzkHfOvM9SGhSkdAjcYBh9XpqVVlJEVjFZQqdF1LTpEtNWIKtKTNl2bDl9Gs9lBYGK41/ZPrfFopZa8ntR2/qEaQSrIaT+5aF6pVXjiitHRz7y9GO43WE86ZLb5lUclj/d1DWaf0W1eOplq/elbXg/gBIZ0hq0tb+h6ExYv0LP3GuYg==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "d853218b-38cb-5b02-a05e-5d16b2579f32",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

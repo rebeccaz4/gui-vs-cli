@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_aeef5353",
+  "app": "libreoffice_writer",
+  "task": "Apply different line spacing to different parts of the document: the cover page title and subtitle should have proportional 150% spacing, the table of contents should have fixed 0.6cm line spacing, the executive summary should have exactly 20pt line spacing, and the main body should have proportional 115% line spacing. Add 30pt spacing after the title and 18pt after the subtitle. The file to work on is /home/user/wrpara_050.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "wrpara_050.docx",
+        "sandbox_path": "/home/user/wrpara_050.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "aeef5353-6ab9-53b8-9865-38945c7204a0",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

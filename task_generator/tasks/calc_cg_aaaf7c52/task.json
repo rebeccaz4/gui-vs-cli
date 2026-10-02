@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_aaaf7c52",
+  "app": "libreoffice_calc",
+  "task": "Prepare the monthly executive sales report. I need a clean, print-ready summary page showing: total revenue vs target, top 5 deals closed, regional breakdown with mini bar chart, and MoM growth. Merge header cells, apply professional formatting with the company color scheme (dark blue headers, white text), and set up print headers with the report date. The file to work on is /home/user/calc_sales_report_executive_043_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_sales_report_executive_043_initial.xlsx",
+        "sandbox_path": "/home/user/calc_sales_report_executive_043_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "aaaf7c52-34e6-5991-8852-f1501dbd7958",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

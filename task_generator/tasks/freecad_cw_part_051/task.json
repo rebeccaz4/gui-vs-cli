@@ -1,0 +1,67 @@
+{
+  "id": "freecad_cw_part_051",
+  "app": "freecad",
+  "task": "The precondition file is saved at /home/user/Precondition_Unnamed.FCStd. Open that file; it contains two separate horizontal line sketches on the XY plane. Sketch Line_A runs from (-20, 0, 0) to (20, 0, 0), and Sketch Line_B runs from (-20, 20, 0) to (20, 20, 0). Use the Part workbench Ruled Surface tool to create one ruled surface directly between these two supplied line sketches. Do not close the two lines into a planar face; the result should be an open rectangular surface spanning the two parallel lines. Save the completed model to /home/user/Unnamed.FCStd.",
+  "env": {
+    "files": [
+      {
+        "filename": "Precondition_Unnamed.FCStd",
+        "sandbox_path": "/home/user/Precondition_Unnamed.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Unnamed.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "Output model saved at /home/user/Unnamed.FCStd"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsIjoiTGluZV9BIiwicHJvcGVydGllcyI6eyJHZW9tZXRyeSI6eyJjb3VudCI6eyJleHBlY3RlZCI6MSwidG9sZXJhbmNlIjowLjF9fX0sInR5cGUiOiJTa2V0Y2hlcjo6U2tldGNoT2JqZWN0In0seyJsYWJlbCI6IkxpbmVfQiIsInByb3BlcnRpZXMiOnsiR2VvbWV0cnkiOnsiY291bnQiOnsiZXhwZWN0ZWQiOjEsInRvbGVyYW5jZSI6MC4xfX19LCJ0eXBlIjoiU2tldGNoZXI6OlNrZXRjaE9iamVjdCJ9LHsibGFiZWxfY29udGFpbnMiOiJSdWxlZCIsInByb3BlcnRpZXMiOnsiQ3VydmUxIjp7ImVxdWFscyI6IlNrZXRjaCJ9LCJDdXJ2ZTIiOnsiZXF1YWxzIjoiU2tldGNoMDAxIn19LCJ0eXBlIjoiUGFydDo6UnVsZWRTdXJmYWNlIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlJ1bGVkU3VyZmFjZSJdfX0=",
+      "eval": "result.get('checks', {}).get('required_type_contains') is True",
+      "description": "CADWorld check: required_type_contains"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsIjoiTGluZV9BIiwicHJvcGVydGllcyI6eyJHZW9tZXRyeSI6eyJjb3VudCI6eyJleHBlY3RlZCI6MSwidG9sZXJhbmNlIjowLjF9fX0sInR5cGUiOiJTa2V0Y2hlcjo6U2tldGNoT2JqZWN0In0seyJsYWJlbCI6IkxpbmVfQiIsInByb3BlcnRpZXMiOnsiR2VvbWV0cnkiOnsiY291bnQiOnsiZXhwZWN0ZWQiOjEsInRvbGVyYW5jZSI6MC4xfX19LCJ0eXBlIjoiU2tldGNoZXI6OlNrZXRjaE9iamVjdCJ9LHsibGFiZWxfY29udGFpbnMiOiJSdWxlZCIsInByb3BlcnRpZXMiOnsiQ3VydmUxIjp7ImVxdWFscyI6IlNrZXRjaCJ9LCJDdXJ2ZTIiOnsiZXF1YWxzIjoiU2tldGNoMDAxIn19LCJ0eXBlIjoiUGFydDo6UnVsZWRTdXJmYWNlIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlJ1bGVkU3VyZmFjZSJdfX0=",
+      "eval": "result.get('checks', {}).get('object_0') is True",
+      "description": "CADWorld check: object_0"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsIjoiTGluZV9BIiwicHJvcGVydGllcyI6eyJHZW9tZXRyeSI6eyJjb3VudCI6eyJleHBlY3RlZCI6MSwidG9sZXJhbmNlIjowLjF9fX0sInR5cGUiOiJTa2V0Y2hlcjo6U2tldGNoT2JqZWN0In0seyJsYWJlbCI6IkxpbmVfQiIsInByb3BlcnRpZXMiOnsiR2VvbWV0cnkiOnsiY291bnQiOnsiZXhwZWN0ZWQiOjEsInRvbGVyYW5jZSI6MC4xfX19LCJ0eXBlIjoiU2tldGNoZXI6OlNrZXRjaE9iamVjdCJ9LHsibGFiZWxfY29udGFpbnMiOiJSdWxlZCIsInByb3BlcnRpZXMiOnsiQ3VydmUxIjp7ImVxdWFscyI6IlNrZXRjaCJ9LCJDdXJ2ZTIiOnsiZXF1YWxzIjoiU2tldGNoMDAxIn19LCJ0eXBlIjoiUGFydDo6UnVsZWRTdXJmYWNlIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlJ1bGVkU3VyZmFjZSJdfX0=",
+      "eval": "result.get('checks', {}).get('object_1') is True",
+      "description": "CADWorld check: object_1"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsIjoiTGluZV9BIiwicHJvcGVydGllcyI6eyJHZW9tZXRyeSI6eyJjb3VudCI6eyJleHBlY3RlZCI6MSwidG9sZXJhbmNlIjowLjF9fX0sInR5cGUiOiJTa2V0Y2hlcjo6U2tldGNoT2JqZWN0In0seyJsYWJlbCI6IkxpbmVfQiIsInByb3BlcnRpZXMiOnsiR2VvbWV0cnkiOnsiY291bnQiOnsiZXhwZWN0ZWQiOjEsInRvbGVyYW5jZSI6MC4xfX19LCJ0eXBlIjoiU2tldGNoZXI6OlNrZXRjaE9iamVjdCJ9LHsibGFiZWxfY29udGFpbnMiOiJSdWxlZCIsInByb3BlcnRpZXMiOnsiQ3VydmUxIjp7ImVxdWFscyI6IlNrZXRjaCJ9LCJDdXJ2ZTIiOnsiZXF1YWxzIjoiU2tldGNoMDAxIn19LCJ0eXBlIjoiUGFydDo6UnVsZWRTdXJmYWNlIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlJ1bGVkU3VyZmFjZSJdfX0=",
+      "eval": "result.get('checks', {}).get('object_2') is True",
+      "description": "CADWorld check: object_2"
+    },
+    {
+      "command": "cadworld-check /home/user/Unnamed.FCStd eyJmdW5jIjoiY2hlY2tfZnJlZWNhZF9wYXJ0X21vZGVsIiwicmVzdWx0X3R5cGUiOiJmcmVlY2FkX21vZGVsX2luZm8iLCJydWxlcyI6eyJleGlzdHMiOnRydWUsIm9iamVjdHMiOlt7ImxhYmVsIjoiTGluZV9BIiwicHJvcGVydGllcyI6eyJHZW9tZXRyeSI6eyJjb3VudCI6eyJleHBlY3RlZCI6MSwidG9sZXJhbmNlIjowLjF9fX0sInR5cGUiOiJTa2V0Y2hlcjo6U2tldGNoT2JqZWN0In0seyJsYWJlbCI6IkxpbmVfQiIsInByb3BlcnRpZXMiOnsiR2VvbWV0cnkiOnsiY291bnQiOnsiZXhwZWN0ZWQiOjEsInRvbGVyYW5jZSI6MC4xfX19LCJ0eXBlIjoiU2tldGNoZXI6OlNrZXRjaE9iamVjdCJ9LHsibGFiZWxfY29udGFpbnMiOiJSdWxlZCIsInByb3BlcnRpZXMiOnsiQ3VydmUxIjp7ImVxdWFscyI6IlNrZXRjaCJ9LCJDdXJ2ZTIiOnsiZXF1YWxzIjoiU2tldGNoMDAxIn19LCJ0eXBlIjoiUGFydDo6UnVsZWRTdXJmYWNlIn1dLCJyZXF1aXJlZF90eXBlX2NvbnRhaW5zIjpbIlJ1bGVkU3VyZmFjZSJdfX0=",
+      "key": "passed",
+      "expected": true,
+      "description": "CADWorld all-checks verdict (source benchmark's binary success)"
+    }
+  ],
+  "metadata": {
+    "source": "CADWorld (ICLR 2026), https://github.com/Zdong104/CADWORLD",
+    "source_task_id": "freecad-part-051",
+    "source_license": "Apache-2.0",
+    "source_domain": "part",
+    "source_subsets": "60+small",
+    "source_evaluator_criteria": [
+      "The saved file must exist at /home/user/Unnamed.FCStd.",
+      "The submitted file should use the two supplied line sketches from the precondition file.",
+      "The model should contain a Part Ruled Surface spanning directly between Line_A and Line_B.",
+      "The surface should remain open; it should not be converted into a closed face or solid.",
+      "Because no golden answer FCStd is available for this task, complex geometry is scored structurally rather than by exact BRep comparison."
+    ],
+    "fc019_compat": "yes",
+    "fc019_compat_note": ""
+  },
+  "cli_feasibility": {
+    "feasible": "needs-skill-fix",
+    "reason": "cli-anything-freecad exposes the needed operations, but its `export render --preset fcstd` writes a synthetic Document.xml (no sketch geometry, generic Part::Feature/PartDesign::Feature types), so CADWorld structure checks fail; see update/validation/README.md section 3"
+  }
+}

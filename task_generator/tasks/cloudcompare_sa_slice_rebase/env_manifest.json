@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_slice_rebase",
+  "files": [
+    {
+      "filename": "tower.ply",
+      "sandbox_path": "/home/user/Documents/tower.ply",
+      "type": "ply"
+    }
+  ]
+}

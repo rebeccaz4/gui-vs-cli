@@ -1,6 +1,0 @@
-{
-  "task_id": "audacity_gap_cut_middle_export",
-  "files": [
-    {"filename": "long.wav", "sandbox_path": "/home/user/Music/long.wav", "type": "wav"}
-  ]
-}

@@ -1,0 +1,39 @@
+{
+  "id": "calc_cg_6d922d9a",
+  "app": "libreoffice_calc",
+  "task": "Create a daily operations standup report template that auto-populates today's date and pulls KPIs from linked data sheets. The report should show yesterday's actual performance vs target for: orders dispatched ('Orders Dispatched'), on-time dispatch rate, picking accuracy, and outstanding backlog. Format it for printing as a single-page handout. The file to work on is /home/user/calc_ops_operations_daily_standup_075_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_ops_operations_daily_standup_075_initial.xlsx",
+        "sandbox_path": "/home/user/calc_ops_operations_daily_standup_075_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "6d922d9a-95ad-5c9d-83c7-7e5d31f22d41",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ],
+    "instruction_edits": [
+      {
+        "replaced": "Create a daily operations standup report template that auto-populates today's date and pulls KPIs from linked data sheets. The report should show yesterday's actual performance vs target for: orders processed, on-time dispatch rate, picking accuracy, and outstanding backlog. Format it for printing as a single-page handout. The file to work on is /home/user/calc_ops_operations_daily_standup_075_initial.xlsx.",
+        "reason": "instruction said 'orders processed' but the check requires 'Orders Dispatched' (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "gimp_sb_collage",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/quadrants.png in GIMP (400x400: red top-left, green top-right, blue bottom-left, yellow bottom-right). Extend the canvas to 800x400 so that the original stays at the left (x 0-399) and the new area on the right is white. Then add /home/user/Documents/red_top_green_bottom.png (400x400: red top half, green bottom half) in that area, rotated 90 degrees clockwise and scaled to 200x200, with its top-left corner at (500,100). Flatten the image and export it as PNG to /home/user/Documents/collage.png (800x400).",
+  "env": {
+    "files": [
+      {
+        "filename": "quadrants.png",
+        "sandbox_path": "/home/user/Documents/quadrants.png"
+      },
+      {
+        "filename": "red_top_green_bottom.png",
+        "sandbox_path": "/home/user/Documents/red_top_green_bottom.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/collage.png",
+      "key": "exists",
+      "expected": true,
+      "description": "collage.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/collage.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/collage.png 800 400",
+      "key": "match",
+      "expected": true,
+      "description": "800x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 100 100 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "original kept at the left: red top-left"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 300 300 255 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "original: yellow bottom-right"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 450 200 255 255 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "new area white"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 505 105 0 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "added image top-left corner at (500,100): green (rotated clockwise)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 525 200 0 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "added image: green on its left half"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 675 200 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "added image: red on its right half"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 695 295 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "added image bottom-right corner at (699,299)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 495 200 255 255 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "white left of the added image"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 710 200 255 255 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "white right of the added image (200 px wide)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 600 310 255 255 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "white below the added image (200 px high)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/collage.png 600 90 255 255 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "white above the added image"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_flip_both_directions",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_rotate_180_tiff_export",
+        "file": "quadrants.png"
+      },
+      {
+        "from_task": "gimp_flip_both_directions",
+        "file": "red_top_green_bottom.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Image > Canvas Size",
+      "unlink chain, type width 800",
+      "Resize",
+      "File > Open as Layers (Ctrl+Alt+O)",
+      "type layer file path",
+      "Open",
+      "Layer > Transform > Rotate 90 clockwise",
+      "Layer > Scale Layer",
+      "type 200 (chain linked)",
+      "Scale",
+      "Layer > Layer Attributes",
+      "type Offset X 500",
+      "type Offset Y 100",
+      "OK",
+      "Image > Flatten Image (BG white)",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 22
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "writer_cg_b583013a",
+  "app": "libreoffice_writer",
+  "task": "In /home/user/Desktop/old_report.docx, replace every run of two or more consecutive spaces with a single space, so that no double spaces remain anywhere in the document. Save the file in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "old_report.docx",
+        "sandbox_path": "/home/user/Desktop/old_report.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "b583013a-fa7f-5030-bc3d-4d9e5fe73f1e",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Use Find & Replace to find all double spaces in the document and replace them with single spaces, then repeat the process until no double spaces remain (to handle triple or quadruple spaces as well). The file to work on is /home/user/Desktop/old_report.docx.",
+        "reason": "prescribed the GUI route (Find & Replace, repeat); state the end result only (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "id": "renderdoc_sa_archive_old",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set Comments_ShowOnLoad = false, Comments_FontSize = 14, Comments_Monospaced = true and CommentsPanel_History = [2, 4, 6]. In /home/user/captures, move old_c.rdc and old_d.rdc into a new folder /home/user/captures/archive/, and set the recent capture list to exactly: /home/user/captures/promoted.rdc, /home/user/captures/old_a.rdc, /home/user/captures/old_b.rdc (in this order). Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "promoted.rdc",
+        "sandbox_path": "/home/user/captures/promoted.rdc"
+      },
+      {
+        "filename": "old_a.rdc",
+        "sandbox_path": "/home/user/captures/old_a.rdc"
+      },
+      {
+        "filename": "old_b.rdc",
+        "sandbox_path": "/home/user/captures/old_b.rdc"
+      },
+      {
+        "filename": "old_c.rdc",
+        "sandbox_path": "/home/user/captures/old_c.rdc"
+      },
+      {
+        "filename": "old_d.rdc",
+        "sandbox_path": "/home/user/captures/old_d.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting Comments_ShowOnLoad false",
+      "key": "match",
+      "expected": true,
+      "description": "Comments_ShowOnLoad = false"
+    },
+    {
+      "command": "check-setting Comments_FontSize 14",
+      "key": "match",
+      "expected": true,
+      "description": "Comments_FontSize = 14"
+    },
+    {
+      "command": "check-setting Comments_Monospaced true",
+      "key": "match",
+      "expected": true,
+      "description": "Comments_Monospaced = true"
+    },
+    {
+      "command": "check-setting CommentsPanel_History '[2,4,6]'",
+      "key": "match",
+      "expected": true,
+      "description": "CommentsPanel_History = [2,4,6]"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/archive/old_c.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/archive/old_c.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/archive/old_d.rdc",
+      "key": "exists",
+      "expected": true,
+      "description": "exists: /home/user/captures/archive/old_d.rdc"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "three captures left at the top level"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/promoted.rdc', '/home/user/captures/old_a.rdc', '/home/user/captures/old_b.rdc']",
+      "description": "RecentCaptureFiles = promoted.rdc, old_a.rdc, old_b.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_capture_comments_export",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_capture_comments_export",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_recent_capture_history_promote",
+        "file": "promoted.rdc"
+      },
+      {
+        "from_task": "renderdoc_recent_capture_history_promote",
+        "file": "old_a.rdc"
+      },
+      {
+        "from_task": "renderdoc_recent_capture_history_promote",
+        "file": "old_b.rdc"
+      },
+      {
+        "from_task": "renderdoc_recent_capture_history_promote",
+        "file": "old_c.rdc"
+      },
+      {
+        "from_task": "renderdoc_recent_capture_history_promote",
+        "file": "old_d.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "select files (click / Ctrl+click)",
+      "Ctrl+X",
+      "open target folder",
+      "Ctrl+V",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 13
+  }
+}

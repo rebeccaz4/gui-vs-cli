@@ -1,0 +1,46 @@
+{
+  "id": "impress_osw_3b27600c",
+  "app": "libreoffice_impress",
+  "task": "Please make the background pure blue (#0000FF) on all my slides. I was stuck by finding the entrance to do that for a while... The presentation is /home/user/Desktop/lec17-gui-events.pptx; save it in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "lec17-gui-events.pptx",
+        "sandbox_path": "/home/user/Desktop/lec17-gui-events.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check eNotT9sKgzAM/RXps85tIIM97y+GlFpj7eza0qYiSP99jQ7ycJJzSbIzOYNcIntW751NycqCGKzCJIHAfYAIFgVqZ/mkjeHoeFADH3VEYSWwumJFkwySr53dF9oUIbQviAs63xqQt0ejkm5gLUnx4j1u5HKeQmnxnksLmweJMFLPQjIQT6QGOu1aV6XuXdeTM2ilrTD8T5bxwZ2CnDOJpLMfOknYkZ3xLuDxZp9/cx5QAA==",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): evaluate_presentation_fill_to_rgb_distance"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/libreoffice_impress",
+    "source_task_id": "3b27600c-3668-4abd-8f84-7bcdebbccbdb",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "1.0",
+      "sonnet46_opus47_agent": "1.0",
+      "holo3_35b": "0.592",
+      "kimi_k26": "0.669",
+      "opus45": "0.036",
+      "evocua_32b": "0.0",
+      "qwen35": "0.599"
+    },
+    "save_sentence_appended": true,
+    "instruction_edits": [
+      {
+        "replaced": "Please make the background blue on all my slides. I was stuck by finding the entrance to do that for a while... Save the file in place.",
+        "reason": "the file to edit was not named (wording review 2026-09-30)"
+      },
+      {
+        "replaced": "Please make the background blue on all my slides. I was stuck by finding the entrance to do that for a while... The presentation is /home/user/Desktop/lec17-gui-events.pptx; save it in place.",
+        "reason": "the check needs exactly #0000FF; LibreOffice's palette 'Blue' is #2A6099 and scores 0.669 (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

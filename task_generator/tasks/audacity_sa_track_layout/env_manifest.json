@@ -1,0 +1,10 @@
+{
+  "task_id": "audacity_sa_track_layout",
+  "files": [
+    {
+      "filename": "empty.aup",
+      "sandbox_path": "/home/user/Music/empty.aup",
+      "type": "aup"
+    }
+  ]
+}

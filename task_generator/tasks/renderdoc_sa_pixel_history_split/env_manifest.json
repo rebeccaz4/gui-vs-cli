@@ -1,0 +1,35 @@
+{
+  "task_id": "renderdoc_sa_pixel_history_split",
+  "files": [
+    {
+      "filename": "UI.config",
+      "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config",
+      "type": "config"
+    },
+    {
+      "filename": "frame_a.rdc",
+      "sandbox_path": "/home/user/captures/frame_a.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_b.rdc",
+      "sandbox_path": "/home/user/captures/frame_b.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_c.rdc",
+      "sandbox_path": "/home/user/captures/frame_c.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_bad1.rdc",
+      "sandbox_path": "/home/user/captures/frame_bad1.rdc",
+      "type": "rdc"
+    },
+    {
+      "filename": "frame_bad2.rdc",
+      "sandbox_path": "/home/user/captures/frame_bad2.rdc",
+      "type": "rdc"
+    }
+  ]
+}

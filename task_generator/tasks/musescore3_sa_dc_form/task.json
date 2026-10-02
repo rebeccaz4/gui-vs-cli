@@ -1,0 +1,76 @@
+{
+  "id": "musescore3_sa_dc_form",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/sonatina_dc.mscz (4 measures). Append two empty measures (6 in total). Put a 'Fine' marker at measure 4 and a 'D.C. al Fine' at the end of measure 6, mf on the first note of measure 1 and p on the first note of measure 3. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "sonatina_dc.mscz",
+        "sandbox_path": "/home/user/Documents/sonatina_dc.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-measure-count /home/user/Documents/sonatina_dc.mscz 6",
+      "key": "match",
+      "expected": true,
+      "description": "6 measures"
+    },
+    {
+      "command": "check-note-count /home/user/Documents/sonatina_dc.mscz 16",
+      "key": "match",
+      "expected": true,
+      "description": "original notes kept"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/sonatina_dc.mscz",
+      "eval": "any(m['measure'] == 4 and 'fine' in (m['text'] + m['label']).lower() for m in result['markers'])",
+      "description": "Fine at measure 4"
+    },
+    {
+      "command": "jumps-markers /home/user/Documents/sonatina_dc.mscz",
+      "eval": "any(j['measure'] == 6 and j['jumpTo'] == 'start' for j in result['jumps'])",
+      "description": "D.C. al Fine at measure 6"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/sonatina_dc.mscz 1 mf",
+      "key": "match",
+      "expected": true,
+      "description": "mf in measure 1"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/sonatina_dc.mscz 3 p",
+      "key": "match",
+      "expected": true,
+      "description": "p in measure 3"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_dc_al_fine",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_dc_al_fine",
+        "file": "sonatina_dc.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click last measure",
+      "Ctrl+B",
+      "Ctrl+B",
+      "open Repeats & Jumps palette",
+      "click m4",
+      "Fine",
+      "click m6",
+      "D.C. al Fine",
+      "open Dynamics palette",
+      "click m1 first note",
+      "mf",
+      "click m3 first note",
+      "p",
+      "Save"
+    ],
+    "gui_step_estimate": 14
+  }
+}

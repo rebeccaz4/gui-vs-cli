@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_f1b12f20",
+  "app": "libreoffice_writer",
+  "task": "The spacing between paragraphs in this resume is inconsistent. Set space before to 0pt and space after to 6pt for all content paragraphs, but keep 12pt space before each section heading. The file to work on is /home/user/Desktop/resume_draft.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "resume_draft.docx",
+        "sandbox_path": "/home/user/Desktop/resume_draft.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f1b12f20-add5-5686-8ddc-96e06cbc365a",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_f4e93d30",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Desktop/client_feedback.docx in LibreOffice Writer to understand the requested changes to a product image. Apply those changes to /home/user/Desktop/product.png in GIMP and save the final version as /home/user/Desktop/product_revised.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "client_feedback.docx",
+        "sandbox_path": "/home/user/Desktop/client_feedback.docx"
+      },
+      {
+        "filename": "product.png",
+        "sandbox_path": "/home/user/Desktop/product.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f4e93d30-d118-5782-a764-dac993f2534f",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "medium",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Open 'client_feedback.docx' in LibreOffice Writer to understand the requested changes to a product image. Apply those changes to 'product.png' in GIMP and save the final version as 'product_revised.png'.",
+        "reason": "input and output files had no directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

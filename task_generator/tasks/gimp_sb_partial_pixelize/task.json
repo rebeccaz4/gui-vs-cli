@@ -1,0 +1,116 @@
+{
+  "id": "gimp_sb_partial_pixelize",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/silhouette.png in GIMP (300x300, a black shape on a white background). Pixelize only the left half of the image (x < 150) with 20x20-pixel blocks aligned to the image's top-left corner, so each block is filled with one average colour; the right half (x >= 150) must stay unchanged. Export the result as PNG to /home/user/Documents/partial_pixelize.png (300x300).",
+  "env": {
+    "files": [
+      {
+        "filename": "silhouette.png",
+        "sandbox_path": "/home/user/Documents/silhouette.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/partial_pixelize.png",
+      "key": "exists",
+      "expected": true,
+      "description": "partial_pixelize.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/partial_pixelize.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/partial_pixelize.png 300 300",
+      "key": "match",
+      "expected": true,
+      "description": "300x300"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 122 102",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (120,100): one mid grey (was white here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 137 117",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (120,100): same grey (was black here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 137 102",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (120,100): same grey (was black here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 122 117",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (120,100): same grey (was white here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 62 122",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (60,120): mid grey (was black here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 77 137",
+      "eval": "90 <= result.get('r', -1) <= 190 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (60,120): mid grey (was white here)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 145 105",
+      "eval": "0 <= result.get('r', -1) <= 10 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "block (140,100) is all black -> stays black on the 20-px grid (30/60-px blocks give ~157/133)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 162 102",
+      "eval": "0 <= result.get('r', -1) <= 10 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "right half: black pixel unchanged"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 177 117",
+      "eval": "245 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "right half: white pixel unchanged"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 222 122",
+      "eval": "0 <= result.get('r', -1) <= 10 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "right half: black pixel unchanged"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/partial_pixelize.png 237 137",
+      "eval": "245 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "right half: white pixel unchanged"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_multi_output_format_mode",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_gap_alpha_channel_threshold_cutout",
+        "file": "silhouette.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Filters > Blur > Pixelize",
+      "type block size 20 (chain linked)",
+      "OK",
+      "Select > None",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 15
+  }
+}

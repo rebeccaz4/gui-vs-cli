@@ -1,0 +1,82 @@
+{
+  "id": "audacity_sa_track_layout",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/empty.aup (no tracks). Create three mono audio tracks named, from top to bottom, 'Drums', 'Bass' and 'Synth'. Set the gain of 'Bass' to -3 dB, pan 'Synth' 50% to the right, and mute 'Drums'. Save the project to /home/user/Music/empty.aup.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.aup",
+        "sandbox_path": "/home/user/Music/empty.aup"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/empty.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "project valid"
+    },
+    {
+      "command": "check-track-count /home/user/Music/empty.aup 3",
+      "key": "match",
+      "expected": true,
+      "description": "three tracks"
+    },
+    {
+      "command": "tracks /home/user/Music/empty.aup",
+      "eval": "[t.get('name') for t in result] == ['Drums', 'Bass', 'Synth']",
+      "description": "names in order"
+    },
+    {
+      "command": "check-track-gain /home/user/Music/empty.aup 1 0.708",
+      "key": "match",
+      "expected": true,
+      "description": "Bass gain -3 dB (linear 0.708)"
+    },
+    {
+      "command": "check-track-pan /home/user/Music/empty.aup 2 0.5",
+      "key": "match",
+      "expected": true,
+      "description": "Synth panned 50% right"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/empty.aup 0 true",
+      "key": "match",
+      "expected": true,
+      "description": "Drums muted"
+    },
+    {
+      "command": "check-track-mute /home/user/Music/empty.aup 1 false",
+      "key": "match",
+      "expected": true,
+      "description": "Bass not muted"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_multi_track_project_setup",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_multi_track_project_setup",
+        "file": "empty.aup"
+      }
+    ],
+    "gui_plan": [
+      "Tracks > Add New > Mono Track",
+      "again",
+      "again",
+      "track 1 menu > Name...",
+      "type Drums + OK",
+      "track 2 menu > Name...",
+      "type Bass + OK",
+      "track 3 menu > Name...",
+      "type Synth + OK",
+      "Bass gain slider -3 dB",
+      "Synth pan slider 50% R",
+      "Drums Mute",
+      "File > Save Project"
+    ],
+    "gui_step_estimate": 13
+  }
+}

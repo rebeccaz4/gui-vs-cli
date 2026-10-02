@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_63e1cce9",
+  "app": "libreoffice_writer",
+  "task": "Set up the document for professional book printing: A5 page size, mirrored margins with inner 2.5cm, outer 1.5cm, top 2.0cm, bottom 2.0cm, header with book title 'The Art of Coding' centered, footer with page numbers centered, and different first page header/footer. The file to work on is /home/user/Desktop/book_manuscript.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "book_manuscript.docx",
+        "sandbox_path": "/home/user/Desktop/book_manuscript.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "63e1cce9-695a-56d0-a081-bd74f6d76e07",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

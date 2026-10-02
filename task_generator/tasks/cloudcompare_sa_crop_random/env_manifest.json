@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_crop_random",
+  "files": [
+    {
+      "filename": "thick.ply",
+      "sandbox_path": "/home/user/Documents/thick.ply",
+      "type": "ply"
+    }
+  ]
+}

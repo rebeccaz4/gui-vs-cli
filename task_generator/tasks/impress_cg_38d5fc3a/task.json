@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_38d5fc3a",
+  "app": "libreoffice_impress",
+  "task": "Bold ALL text in the presentation (every textbox on every slide), set ALL title font sizes to 48pt, AND underline the title on slide 1. Do not change font family or color. The file to work on is /home/user/osworld_impress_bold_all_title_size_underline_007.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_impress_bold_all_title_size_underline_007.pptx",
+        "sandbox_path": "/home/user/osworld_impress_bold_all_title_size_underline_007.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "38d5fc3a-ad6c-5478-b5a4-de1d2c152c44",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

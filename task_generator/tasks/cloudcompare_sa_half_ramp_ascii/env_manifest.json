@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_half_ramp_ascii",
+  "files": [
+    {
+      "filename": "scan_binary.ply",
+      "sandbox_path": "/home/user/Documents/scan_binary.ply",
+      "type": "ply"
+    }
+  ]
+}

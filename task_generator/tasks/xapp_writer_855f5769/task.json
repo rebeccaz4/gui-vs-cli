@@ -1,0 +1,38 @@
+{
+  "id": "xapp_writer_855f5769",
+  "app": "libreoffice_writer",
+  "task": "There's a document called 'banner_instructions.docx' on the Desktop describing how to create a banner image. Read the instructions and modify 'banner_template.png' on the Desktop accordingly, saving the result as 'banner_final.png'.",
+  "env": {
+    "files": [
+      {
+        "filename": "banner_instructions.docx",
+        "sandbox_path": "/home/user/Desktop/banner_instructions.docx"
+      },
+      {
+        "filename": "banner_template.png",
+        "sandbox_path": "/home/user/Desktop/banner_template.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNq9WV9v28gRf+enGMgoQjayLMl/riCqAIotx8I5sSGp9QHXA7GWlhJhksuSlCVHENDH9r2f8D5JZ5akuEsxjq+JwwfL4s7Mzvzm764ajYYx4isWz2A8jb0otWHE2QzuWRjy2PHCJI2X09QTYdKaiekaWDiDQMw896mgSXkQ+SzlrSicNyFhj144B5YUy64XMp/WjAlLHmB4YYNIViL2Z06w9FPPYVGUOKvYS0mWcOZeEDnt9plxIQLmhTaUVGD63n3Mhet6U56zwFsgDsswhoquYLqxCL5ohWUbAOOUR9AhexPvM4dUAF+zaeo/QafbbsMaTvBv5K25nxTUXRvOFyycc5Q8fZjHYoloIONBp989/mkA5ozFDxCyRwTHX3LowejDe+ieNeH4tIliz6xC0rEN/dkMGuO/ffw4GMG4fz1oQMrXKUx5iGbxGSxE7H0WYcp8VIlgf+Rx6k3paxNcXACp90/dJqwWCAWYB5fy2W1yYsOYPfI6Z4AI4YInD6mIUGsBn24mIHADCWqdZxHg8RQ1QtbR8j72pgThuQgiEaLChOPeFnztJWkCKy9dALLGfJrCzAt4mGQuIpjXCLIFv//rv9BuHSPcaaKJRcDfl0hPhS9i8BKowGzm+FvAUtoJ1UgAviwVwb+TiEnAYz5HfUhsFPOE1glsDf2dT+A5sSd2HXAkeBnKlPFQgoly5wQR/AWtP8YQIy8WEHQKqROBO9vQabWNBqaogSEu4hQzp/gveUoM4+5m9PPFcIRx9uZoIQJ+tEx4fJT79Y0x6Y9/doYXtPyilHtjGJfDT/1r57Y/uSJTe+C+2eSbbI+qDsYNBh9vr/uTQcZQS61CgfIPYLCOMBAQiUeGvktAJmpKpUFNU2Pwy+3gfDK4cO6GF1KZnkzL8v3VYPjhakLvT9TX7z84lHP42lTzDgUcFGlqIM3k5now6n86H0BmZ+cUtOcAIh4fThdkhI8p7vOYhVOOeReruZ9F5HTBpw9k203h28JqJd5LsG5Gww+FWT0Kg8pSblkPMDoMw5hxl1IfK65DMJmyeAFQWNDn3+VShuAUY9HnBGCWdVEs5hjTiYdFIMmytyWZRjxdxmFig+sLzJl7nq44DzEA2zL4KezUPdL4KduUHumw2+E15JE4DNic71bzl+EyiJ6o8ISRXOLrKY+IllYHcYyo4SIvpUaoXGq6jfPRcDI871/b8NFDxTF/Yv7PpUfJR8WfoSaw4duGVeFsjAZ3/RE2F7RBWYylofTSyCyhvHIIC6rOu9cHcIvlSYQzT4I3R9fVFLRgmaRZVaOinwlh4VO6QDWlGM+FUFCWtiKWLlpe4no+N8ucsvbtvewPr2u2IjGuDDF0z6aUUGP4P0IqzFxaftTRrP9D0BzAtcDOny4wymUQezvHav73gjlCJ73eEhEPVft2RCyOnXh+j4SfsDiScJ99fpIBuky5GhID+UGofy0gzhEkQhf33APsC0Hx/bA5/LYnl/ItDTMXoT3m3qhiqQ1KoInJdzRAi4OVN0sXTVhwb75I0dEYFy3qZWWguBkN9HpQKeeyw+aMymJW+cot1Di47Y/HtgqgtFOZJ3LEMBLkrtv1JtthC2bRri3FxdVq8LYnQdutI5a8XpMsZaua8KKvbXRbUY+KfdsmNAzYe9zGHKO7qnyu8QuTZTAa3Yz2dcty45Ui+f+f0eoiejceUBf//T//rrbxHxTcZf0KoxZ+YU8mxTe2CJrCsWx8eN+wymBC5ztxU37Msw9irQwlhlFOF2NGnRpO16eArQIHiIRwwWGTqn6sAURPMdT2YKNFTgPnvEOfu2nDVtX+1Ua87NPfmvvEMUVVRq0SH57aVep7kaYi2EkvqJGyTnZOXYjXqHXhW6NqlhOxhGwrk4/GrJAFvJmhg6NhQdvCoTVITEtPzYCzEAVI4hZ9MRnW0p7ZxrCx9JyPHfGApOw+MYnw1/ZvcJj5z4K/9kCdDTW+eYWvU/DNn+e7r/B1C7775/mwekpVqVTOi39ImL1XOzQYsY51NIr9QqZWDEANcgGwIci3NlAdwnjtmZscIbvVdrfNTW63+q2bfbNqK1pW1YrCiMlsbiTQyCyByz/vt1ZRnXLD9bjACf9lLaErq8PeeF6czjF5XS8O+KxItZNdXr1yh8gUEyEeJTeqbdujUoVAloHZTtvSjG9sAd3XbwG1B+qvnqZrBxr9RmS1k9osD+Eou7g6gCkLH1li1Yn6QZ0Cw7VoFtj1aNrVY+KFnUTpDcMZWiov2GQ1BTPkLD6UUFj5lCeNw0k94Yh2ATRN7tIBdJHjsydFZOkdW0Z+frBN4B3QobogvLsa4iF0cjUajK9uruniQF3N1HECOmlm1vi+WZj3rsrcBFmCu1aVf4oxTfOiIq6VLANTwYAUdWY8zSaBHlwyTDV9dRcN1VVkY57vBAmdUujqRHGUpsE7OG23bQkP1gOfMzzW4ZsC9RzoHiQiyHEtr4j0Cl9IFfEsyZBZLVA3U7FQryprJ/DCEoKMEytrC1+be6RsXUvK1hVSBReHWMxsm7eZDAuOoNtq6z0mmJcMsDelSwYJ0Fl7dxQqHpnSjnDdhKd5f9MVONTE66oeQN/3xQqWEZ2kT/8Ews2Om/mJwTzDtEWVUfxhJkFjPx98mgxGZeN0bn/Z1/7PdHw7NfYhUgJrEi95tetqhmGHrtlsv51WY3JP8F5oYqnOfZpFWm+jRucXzgh6Z9Xw7m20r3ar427hMdGc0Nuo3yTJS/bJsOhtVGQkc7SutMv6WaNqt0wmOsoXgNnwrBVf1xDtLM9fNTa+zIJ97TXNUXEhwOWrSokwdc9ld7nSxoBhEecQ5DdZNNSi1bKS64VJj0vqmFpAvWz8OZYbly2z6ANaJ97FqLkpjUOdX3kCynRTt/zGqeb49aeaE7u80H3BxX5+n//MLNL5AbNIzf2jdktvvcxfJ/kovW91EczyGjj/qeHZHEqRWb8w1BXSiVdNoBsjyaVfJxWpsqITQd1lukybxf5q3a3Sc3n0ZdtlIsWP2Qli90POJl1t15t0IS+aOrVJVJtInfYfOKe93EErzKAiKu1nzmXytqlQvanUzxpskagO029N4pPXSuJLcsx3lCjvaHc/G8hTmUmzmuLTJv1qYjUhH3gLm3c30BuF1m513a1yH10QF5fRG2W/AuP8SlpZMQwD88Fx6NTuOBT3Dceh38wdp5GBr/1sZPwPgFsPYw==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "855f5769-1257-5688-9517-37081fed1c0b",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "moved_from": "writer_cg_855f5769 (LibreOffice single-app pool; user decision 2026-09-29: GIMP image-editing tasks go to Cross-app)"
+  }
+}

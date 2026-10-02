@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_885e96d6",
+  "app": "libreoffice_writer",
+  "task": "I'm formatting a mission statement document and want each sentence in the first paragraph to stand out. Instead of using empty lines, please add 12pt spacing after each paragraph for every sentence in the first paragraph. Split the paragraph into sentences first, then set the 'Space After' to 12pt for each. The file to work on is /home/user/osworld_writer_spacing_006.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_writer_spacing_006.docx",
+        "sandbox_path": "/home/user/osworld_writer_spacing_006.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "885e96d6-8c99-5742-a8f4-032611e13a14",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

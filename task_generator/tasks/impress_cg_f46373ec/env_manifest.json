@@ -1,0 +1,20 @@
+{
+  "task_id": "impress_cg_f46373ec",
+  "files": [
+    {
+      "filename": "Research_Collab.pptx",
+      "sandbox_path": "/home/user/Desktop/Research_Collab.pptx",
+      "type": "pptx"
+    },
+    {
+      "filename": "collab_notes.docx",
+      "sandbox_path": "/home/user/Desktop/collab_notes.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "slide_assignments.txt",
+      "sandbox_path": "/home/user/Desktop/slide_assignments.txt",
+      "type": "txt"
+    }
+  ]
+}

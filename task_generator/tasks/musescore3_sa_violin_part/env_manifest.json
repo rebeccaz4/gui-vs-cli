@@ -1,0 +1,10 @@
+{
+  "task_id": "musescore3_sa_violin_part",
+  "files": [
+    {
+      "filename": "prelude.mscz",
+      "sandbox_path": "/home/user/Documents/prelude.mscz",
+      "type": "mscz"
+    }
+  ]
+}

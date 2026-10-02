@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_91f9c3d3",
+  "files": [
+    {
+      "filename": "editing_checklist.docx",
+      "sandbox_path": "/home/user/Desktop/editing_checklist.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "landscape.jpg",
+      "sandbox_path": "/home/user/Desktop/landscape.jpg",
+      "type": "jpg"
+    }
+  ]
+}

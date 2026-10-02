@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_ce9a5302",
+  "app": "libreoffice_impress",
+  "task": "Set the text direction in the text box on slide 3 to vertical (top to bottom, letters stacked) and change the text box shape to a tall narrow rectangle. The file to work on is /home/user/impress_tct_095.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_tct_095.pptx",
+        "sandbox_path": "/home/user/impress_tct_095.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "ce9a5302-c58a-55de-a5cf-37bcb44897ec",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

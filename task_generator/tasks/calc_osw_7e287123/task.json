@@ -1,0 +1,114 @@
+{
+  "id": "calc_osw_7e287123",
+  "app": "libreoffice_calc",
+  "task": "I am an assistant professor of CS at HKU, I want to apply for the General Research Fund next year, I need to get some insights, so I need you to help me to organise the data. First please help me to organise the pass rate of the GRF applications of the CS departments of each school for 2019~2023 in percentage form with 2 decimal digits in a table, which I can use subsequently. Set the headers as \"Year\", \"#Applied\", \"#Supported\", and \"Success Rate\". The materials (GRF PDF files) are in /home/user/Documents/Fundings/grf/. Save the result table in the first sheet, named 'Sheet1', of /home/user/Desktop/GRF-p5y.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "ecs15.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs15.pdf"
+      },
+      {
+        "filename": "ecs16.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs16.pdf"
+      },
+      {
+        "filename": "ecs17.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs17.pdf"
+      },
+      {
+        "filename": "ecs23.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs23.pdf"
+      },
+      {
+        "filename": "ecs22.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs22.pdf"
+      },
+      {
+        "filename": "ecs21.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs21.pdf"
+      },
+      {
+        "filename": "ecs20.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs20.pdf"
+      },
+      {
+        "filename": "ecs19.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs19.pdf"
+      },
+      {
+        "filename": "ecs18.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/ecs/ecs18.pdf"
+      },
+      {
+        "filename": "customer-information-sheet-for-inward-payments-to-hong-kong.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/customer-information-sheet-for-inward-payments-to-hong-kong.pdf"
+      },
+      {
+        "filename": "grf15.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf15.pdf"
+      },
+      {
+        "filename": "grf16.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf16.pdf"
+      },
+      {
+        "filename": "grf17.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf17.pdf"
+      },
+      {
+        "filename": "grf18.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf18.pdf"
+      },
+      {
+        "filename": "grf19.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf19.pdf"
+      },
+      {
+        "filename": "grf20.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf20.pdf"
+      },
+      {
+        "filename": "grf21.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf21.pdf"
+      },
+      {
+        "filename": "grf22.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf22.pdf"
+      },
+      {
+        "filename": "grf23.pdf",
+        "sandbox_path": "/home/user/Documents/Fundings/grf/grf23.pdf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check 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",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): compare_table"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/multi_apps",
+    "source_task_id": "7e287123-70ca-47b9-8521-47db09b69b14",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "0.0",
+      "sonnet46_opus47_agent": "1.0",
+      "holo3_35b": "0.0",
+      "kimi_k26": "0.0",
+      "opus45": "0.0",
+      "evocua_32b": "0.0",
+      "qwen35": "0.0"
+    },
+    "save_sentence_appended": false,
+    "instruction_edits": [
+      {
+        "replaced": "I am an assistant professor of CS at HKU, I want to apply for the General Research Fund next year, I need to get some insights, so I need you to help me to organise the data. First please help me to organise the pass rate of the GRF applications of the CS departments of each school for 2019~2023 in percentage form with 2 decimal digits in a table, which I can use subsequently. Set the headers as \"Year\", \"#Applied\", \"#Supported\", and \"Success Rate\". The materials are saved under Documents/Fundings. And please save the result table as \"GRF-p5y.xlsx\" on my desktop.",
+        "reason": "paths only given in words; the check reads the sheet named 'Sheet1' (LibreOffice's default, not openpyxl's 'Sheet') (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

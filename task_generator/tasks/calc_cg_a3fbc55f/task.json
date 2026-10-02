@@ -1,0 +1,33 @@
+{
+  "id": "calc_cg_a3fbc55f",
+  "app": "libreoffice_calc",
+  "task": "Set up a fully locked-down shared spreadsheet: lock all cells except the data entry range E2:E30, hide the formulas in column F, then protect the sheet with password 'SharedLock1'. Team members should only be able to fill in column E. The file to work on is /home/user/calc_adv_protect_combined_055_initial.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_adv_protect_combined_055_initial.xlsx",
+        "sandbox_path": "/home/user/calc_adv_protect_combined_055_initial.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNrFWG1v4kYQ/u5fMeU+YHScQ4hS6SxRCRFoo7tLToDuPlxP1oLXsIrZpV47JEJI/RH9hf0lnd218ToYkrapGinixbOzM88887CzjUbDGdMNSUKYzBO2Tn2Y0BSyNcRifkfDd6HYcJBLktAQ5DqhJJRLihYbli4h48YKQpISoDxNHiEhfEHbsGRhSDlEIlllMZFtIDyENZFyI3CvdSJSOk+Z4M6UyDu4vvJhTuJ5QML7IH8YzMVqxjgNg87lpXMlVoRxH2I2S6iIIjangVrhTOYiYXzhOwDvYCBWa8ExEDj3Ydj1hxcdmNM4loAJlOG65rU3IrGkLfjz9z+g411cwlownsonnro+jLr+aO9pSe5pnl5vmmQU3DxJmJEkf/CczwuEWcPYnBhoR+iiCUwWyOBXGmFSYpZ77BQepyIlsQ/nXsdpYBUdhs6TFITcv1tTvn58iB3n6+34w9X1GHrQPFuKFT3LJE2aAG/gyyfcAPdRzkkcQ2K4IDUXJCQZB8EhXVK0dKb9yYfg+kq5OVmspjP5ZTicBjf9T0NlbOfoOE5II7inCYsegxSL70YspoGKoqWKCKCyUa9ftA0oG0D365gqwhhccNtFQqVkWAtpGOA5etVgqQgogT6sDY4zmm4oUpFxljISayIuRIxVMtupyhiq+Dnp87LmC1rw7iewCQOuWd7aLzf88AtW5Fb2+gpfni43VCh7woeQSTKLFVNtJ5SbLw0CBS9yeD9ihOfN0rn2PqZplnDpQxQLku6h6HgdDYPijo14qigVKDwp1g2tjBds6wIqgM0MHxXU8tBtGGAYdzMh7Epqc/owp+sUhvpFlY5gWUpPa6xa6kaNwfh6ej3of/RhQDgXKSinoHzBdu9x58OW7hqtJ6sb4+HX/hjVA4O1HiY67zKDN/A5oXPBQ6bjWJCUouAs6fxOczuhv2VMK5yuBH1gUrcsAIvA4rIKjiEDZ5425GRF5al88h7fli52Te0kEhkPPejfExarmmJyFaf/ONGNxOpsZt/KHb8XCLyWNipfUwRN92WOnISUkhWs6GpGE/wgVPlihdVcxNmKw7ANUhS7rjKpuLjf08u9XucdKlNdH6VH+QqtuVZzFit+1mR/ZoHOxDtkcrE9aleGqCDhS5Ingi8Cg04Pvn3fP0Cph0RsVGb6h87ttuHivOWrYPB7CV2VPAbA+DzOtDy53fcG57Jq6k99pWolPfXOxcU9/G/ngPUuW8plgV5lJXJSLfFKwfDy2vV6oJP1K/Y1ub7twXnFhtausmDwyBp7PkR6D7cYpyKoYwX0FMsedN9X/RXd8bk/mfg2GTXF+ghGgZMCNy/jKWa6hpapbDWqyNoq9ran2escz7OIa9S//ngY1y2PH2FbzW539kykHjQOoETqNCapagpjozq+RPebf/l9t216ntdUaMaUu9bTFvwElzp0aDYLaXihuA7H49vxYV4DkcWhliKjgnkWKraim4zcHojHax2H6mUE7fGnXP0WYgI0JXigVD/9JGFSlKdJS1hGECVipVXc2veEouTB22FbAlEnKTUrSg2qKIp5elpPguh/UpQfbUUZPaco+fkdG1nleigNlVT/vpwEUSkoozpBqUL5cjnp1srJkRLWc/U/FpauJSx2llVZOUa6I9Jyg51szKrCEkSnpSWIXlVcurXiUuRiKHVaXl5jMjomLgW9UWCUXliDbP1h+oiKWF2iXRj9aGPCez/1YnKwUFW0XW6+JHKpMpUYlju6HIywWxMMHKEJ9aGqEl2r2OQrzccpH1zSytMq91Ie88mhDf2bK3BnLRu9Ylcc7iVWoEbWlC8jLNbcvu9VGZSV6Wlbk12hHaU6EjQtds0t958xAEWYG2SBuSqoPP0Bp8hmRR8q26oFtveXScWFJk7tGf0k3VyFGBK4EuLO6EbnZbrRsXSjLhkFxfMJPVWWlyY0yxDoW7CxR8odk5ZhMUgfmTiRl3iWRzWPGR59rNRfLomnA7+5nZbBH4vyoLe2JRN3ZY/1nlTtX+rdRa3eyYN53hK7iHFrxk7UIOiuGHctkrTVYN5qQ9cEV+z+K1d3XUo6Ldvd2fl+ICwMi1Fxa+1VZJoPjNYTx3HewBWNSBanPs5xOJuRBWEcX81dghnFXX1PhNB8+dRy9mM5phA1t/n90u5sm18R7YL83sJ7iOVD00GOK3gEKggu8syAfXDxs6eH2m8/Jvv2LUAl0yczccm3+tsl5y+8cnOu",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "a3fbc55f-bcd4-5e59-8914-2faf1b645895",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "config-open",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "_initial.xlsx"
+    ]
+  }
+}

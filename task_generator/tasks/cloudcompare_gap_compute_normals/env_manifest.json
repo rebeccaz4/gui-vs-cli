@@ -1,6 +1,0 @@
-{
-  "task_id": "cloudcompare_gap_compute_normals",
-  "files": [
-    {"filename": "surface.ply", "sandbox_path": "/home/user/Documents/surface.ply", "type": "ply"}
-  ]
-}

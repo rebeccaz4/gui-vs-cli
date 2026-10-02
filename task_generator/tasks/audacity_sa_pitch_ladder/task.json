@@ -1,0 +1,113 @@
+{
+  "id": "audacity_sa_pitch_ladder",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/source.wav loaded. The folder /home/user/Music also contains voice.wav and input.wav; each of the three files is a steady tone at a different pitch. Build one piece that plays the three clips back to back, with no gaps, ordered from the lowest-pitched clip to the highest-pitched clip and starting at 0 s. Export the result as a mono FLAC file at 44100 Hz to /home/user/Music/ladder.flac.",
+  "env": {
+    "files": [
+      {
+        "filename": "source.wav",
+        "sandbox_path": "/home/user/Music/source.wav"
+      },
+      {
+        "filename": "voice.wav",
+        "sandbox_path": "/home/user/Music/voice.wav"
+      },
+      {
+        "filename": "input.wav",
+        "sandbox_path": "/home/user/Music/input.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/ladder.flac",
+      "key": "exists",
+      "expected": true,
+      "description": "ladder.flac exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/ladder.flac flac",
+      "key": "match",
+      "expected": true,
+      "description": "FLAC codec"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/ladder.flac 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/ladder.flac 8.45",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 8.45 s (3 + 2.5 + 3 s)"
+    },
+    {
+      "command": "export-info /home/user/Music/ladder.flac",
+      "eval": "float(result['format']['duration']) <= 8.55",
+      "description": "length <= 8.55 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/ladder.flac 0.3 2.7 262 3",
+      "key": "match",
+      "expected": true,
+      "description": "0-3 s: lowest clip (voice.wav, 262 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/ladder.flac 3.3 5.2 349 3",
+      "key": "match",
+      "expected": true,
+      "description": "3-5.5 s: input.wav (349 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/ladder.flac 5.8 8.2 523 3",
+      "key": "match",
+      "expected": true,
+      "description": "5.5-8.5 s: highest clip (source.wav, 523 Hz)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_mix_two_files_export",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_export_mp3_stereo",
+        "file": "source.wav"
+      },
+      {
+        "from_task": "audacity_export_ogg_vorbis",
+        "file": "voice.wav"
+      },
+      {
+        "from_task": "audacity_export_flac_mono",
+        "file": "input.wav"
+      }
+    ],
+    "gui_plan": [
+      "File > Import > Audio (Ctrl+Shift+I)",
+      "type the two file names",
+      "Open",
+      "select track 1 (click track panel)",
+      "Analyze > Plot Spectrum",
+      "read peak, close",
+      "select track 2",
+      "Analyze > Plot Spectrum",
+      "read peak, close",
+      "select track 3",
+      "Analyze > Plot Spectrum",
+      "read peak, close",
+      "track menu > Move Track Up/Down (reorder by pitch)",
+      "second reorder",
+      "Select All (Ctrl+A)",
+      "Tracks > Align Tracks > Align End to End",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 22
+  }
+}

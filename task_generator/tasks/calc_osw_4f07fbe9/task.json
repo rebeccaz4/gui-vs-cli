@@ -1,0 +1,42 @@
+{
+  "id": "calc_osw_4f07fbe9",
+  "app": "libreoffice_calc",
+  "task": "Here I want to use the numerical value from a cell in the text. I can set its number of decimal digits to 2 in the original value cell but don't know how to fix it in the text as well. Please help me to do this. Finish the work and don't touch irrelevant regions, even if they are blank. The file is /home/user/Padding_Decimals_In_Formular.xlsx; save it in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "Padding_Decimals_In_Formular.xlsx",
+        "sandbox_path": "/home/user/Padding_Decimals_In_Formular.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check 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",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): compare_table"
+    }
+  ],
+  "metadata": {
+    "source": "OSWorld V1 (https://github.com/xlang-ai/OSWorld), evaluation_examples/examples/libreoffice_calc",
+    "source_task_id": "4f07fbe9-70de-4927-a4d5-bb28bc12c52c",
+    "source_license": "Apache-2.0",
+    "osworld_verified_results": {
+      "opus5": "1.0",
+      "sonnet46_opus47_agent": "1.0",
+      "holo3_35b": "1.0",
+      "kimi_k26": "0.0",
+      "opus45": "1.0",
+      "evocua_32b": "1.0",
+      "qwen35": "0.0"
+    },
+    "save_sentence_appended": true,
+    "instruction_edits": [
+      {
+        "replaced": "Here I want to use the numerical value from a cell in the text. I can set its number of decimal digits to 2 in the original value cell but don't know how to fix it in the text as well. Please help me to do this. Finish the work and don't touch irrelevant regions, even if they are blank. Save the file in place.",
+        "reason": "the file to edit was not named (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

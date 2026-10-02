@@ -1,0 +1,40 @@
+{
+  "id": "impress_cg_68abd91b",
+  "app": "libreoffice_impress",
+  "task": "Export the presentation as a PDF/A-2b compliant file for long-term archival. The file to work on is /home/user/archive_presentation.pptx. Save the result as /home/user/Desktop/archive.pdf.",
+  "env": {
+    "files": [
+      {
+        "filename": "archive_presentation.pptx",
+        "sandbox_path": "/home/user/archive_presentation.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "68abd91b-8051-5f8f-a128-007c6281c863",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [
+      "/home/user/Desktop/archive.pdf",
+      "archive.pdf"
+    ],
+    "instruction_edits": [
+      {
+        "appended": "Save the result as /home/user/Desktop/archive.pdf.",
+        "reason": "state every file the reward reads (benchmark convention)"
+      }
+    ]
+  }
+}

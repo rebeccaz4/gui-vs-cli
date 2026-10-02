@@ -1,0 +1,111 @@
+{
+  "id": "gimp_sa_square_thumbs",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/big_photo.png in GIMP (1200x800). Crop it to the centred 800x800 square (x from 200 to 1000), scale that square to 256x256 and export it as WebP to /home/user/Documents/thumb_square.webp. Then scale the same square down to 64x64, convert it to Grayscale mode and export it as PNG to /home/user/Documents/icon_64.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "big_photo.png",
+        "sandbox_path": "/home/user/Documents/big_photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/thumb_square.webp",
+      "key": "exists",
+      "expected": true,
+      "description": "thumb_square.webp exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/thumb_square.webp WEBP",
+      "key": "match",
+      "expected": true,
+      "description": "WEBP file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/thumb_square.webp 256 256",
+      "key": "match",
+      "expected": true,
+      "description": "256x256"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/thumb_square.webp 5 128",
+      "eval": "75 <= result.get('r', -1) <= 99",
+      "description": "left edge = original x~215 (value ~87; uncropped would be ~66)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/thumb_square.webp 250 128",
+      "eval": "156 <= result.get('r', -1) <= 180",
+      "description": "right edge = original x~980 (value ~168; uncropped would be ~191)"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/icon_64.png",
+      "key": "exists",
+      "expected": true,
+      "description": "icon_64.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/icon_64.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/icon_64.png 64 64",
+      "key": "match",
+      "expected": true,
+      "description": "64x64"
+    },
+    {
+      "command": "check-file-mode /home/user/Documents/icon_64.png L",
+      "key": "match",
+      "expected": true,
+      "description": "mode L"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/icon_64.png 32 32",
+      "eval": "115 <= result.get('r', -1) <= 140",
+      "description": "icon centre ~127"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/icon_64.png 2 32",
+      "eval": "75 <= result.get('r', -1) <= 100",
+      "description": "icon left edge from the cropped square (~88)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_scale_thumbnail_webp",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_scale_thumbnail_webp",
+        "file": "big_photo.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Image > Canvas Size",
+      "unlink chain, type width 800",
+      "type offset X -200",
+      "Resize",
+      "Image > Scale Image",
+      "type 256",
+      "Scale",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)",
+      "Image > Scale Image",
+      "type 64",
+      "Scale",
+      "Image > Mode > Grayscale",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export"
+    ],
+    "gui_step_estimate": 21
+  }
+}

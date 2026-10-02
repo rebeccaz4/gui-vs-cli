@@ -1,0 +1,15 @@
+{
+  "task_id": "cloudcompare_sa_register_merge",
+  "files": [
+    {
+      "filename": "reference.ply",
+      "sandbox_path": "/home/user/Documents/reference.ply",
+      "type": "ply"
+    },
+    {
+      "filename": "misaligned.ply",
+      "sandbox_path": "/home/user/Documents/misaligned.ply",
+      "type": "ply"
+    }
+  ]
+}

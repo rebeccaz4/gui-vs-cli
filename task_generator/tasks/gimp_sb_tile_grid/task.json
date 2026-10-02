@@ -1,0 +1,108 @@
+{
+  "id": "gimp_sb_tile_grid",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/icon_bg.png in GIMP (200x200, a red circle on a white background). Make a 400x400 image that is a 4x4 grid of copies of the icon, each copy scaled down to 100x100 (the copy in column i and row j covers x 100i-100i+99 and y 100j-100j+99). Export it as JPEG to /home/user/Documents/tile_grid.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "icon_bg.png",
+        "sandbox_path": "/home/user/Documents/icon_bg.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/tile_grid.jpg",
+      "key": "exists",
+      "expected": true,
+      "description": "tile_grid.jpg exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/tile_grid.jpg JPEG",
+      "key": "match",
+      "expected": true,
+      "description": "JPEG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/tile_grid.jpg 400 400",
+      "key": "match",
+      "expected": true,
+      "description": "400x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 50 50 255 0 0 30",
+      "key": "match",
+      "expected": true,
+      "description": "tile (0,0): circle centre red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 350 50 255 0 0 30",
+      "key": "match",
+      "expected": true,
+      "description": "tile (3,0) red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 150 250 255 0 0 30",
+      "key": "match",
+      "expected": true,
+      "description": "tile (1,2) red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 350 350 255 0 0 30",
+      "key": "match",
+      "expected": true,
+      "description": "tile (3,3) red"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 100 100 255 255 255 30",
+      "key": "match",
+      "expected": true,
+      "description": "white between tiles at (100,100)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 200 200 255 255 255 30",
+      "key": "match",
+      "expected": true,
+      "description": "white between tiles at (200,200)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 300 300 255 255 255 30",
+      "key": "match",
+      "expected": true,
+      "description": "white between tiles at (300,300)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/tile_grid.jpg 50 5 255 255 255 30",
+      "key": "match",
+      "expected": true,
+      "description": "white above the first circle"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_indexed_gif_export_16colors",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_add_alpha_transparent",
+        "file": "icon_bg.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Image > Scale Image",
+      "type 100 (chain linked)",
+      "Scale",
+      "Filters > Map > Tile",
+      "unlink chain, type width 400",
+      "type height 400 (new image)",
+      "OK",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 14
+  }
+}

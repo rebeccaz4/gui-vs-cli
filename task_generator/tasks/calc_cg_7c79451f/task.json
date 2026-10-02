@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_7c79451f",
+  "app": "libreoffice_calc",
+  "task": "On the 'Invoice' sheet, I need cells E2:E50 to show the calculated totals but hide the formulas from view. Also make these cells non-editable. The rest of column B (B2:B50) should remain editable for entering quantities. Protect the sheet with password 'inv789'. The file to work on is /home/user/calc_ps_013.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_ps_013.xlsx",
+        "sandbox_path": "/home/user/calc_ps_013.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNq9V02P4kYQvftXVMgByDLGmOEQS0SCGVZCu9pdwSh7SCJk7DZYa7qt7vYwI8R/T7XdNv5gGHYmChfAro/3qqqfXa1Wy1iQvct9WHo8jKUD3ziTxJMwp48s9AiILSESbmAb+gQCxndJ5AoIKcxsZzayepDQiHk/YGo7U/U31v6Z3z6UW4hdIfaM+8aDK37A/N4Bz428VSxW1mBo3LOdG1IHonDNCQsCTLpS942lx3hIN44BcMd2MaOEShg4OjF4JIoEbN1HorD5hIIrJQ/XiUTQmLpjmcMRxFJ0KwFsR0PVAVxONAXipz5W02fowDKlE4qcX2ZsnzG+zY21ZcgoosRERR1yeAMNr4VdMEL05xKYKH7FhMbPT5FhfP+6+HQ/X8AY2v0t25F+IghvGw+T5afV/F5dLtWzbRiGTwJ4JDwMnlcSS94JwoisYlduu6qYACqh+v4ztQFlAx4SiEiKNmsaZxtOhAixviLrhJk6LYhMOBUOBBFzJayJ3BMsvmVa4FIfBqZVySGZdKOVikAQKVoZ2WX+nGFRn/0ab+V8TQzrr7BOP9aMlbGn5uTJI7GEWfqlwGJlySlSjDhlJ2jdLeYP87vJZwfuXEqZBBUUVCw4FBGPDhzIsdWtebcWs++TBU4pgi3d5CnvE4Nf4W5LcPDlFqvQ1selreeePIVCCujEnHiM+mEKdeNKksULg5KHgofnab82U1/q7oioMyoRqqdS7gFLqP9WInuB1d+v/yoC/1MQfPuxYwhAdHWcOUWCWAMcBEIfe+BGEcyakcYf3UgQU5lvWIQXMmudWGxZEvkV+weeELM5TtndlYdFkWrmihvZLKK8pJnHcPu7QjezsYecJZstYJ7CGLUOuGoMd+mGdOwejAbdUxL1UXFU7YSpfnU42495D09SlOzoeNTNSqj+wKzih+1XDuZJIcwMczV8g8uHMQwMoxSlynRcJVgNlp+Mb5Pl0il3Fm5uYKIa8kJ/0ypD51DOdewfKqmO3ZLclkatLgAflAIMR8V9EtVJ/AFWDbfL1eBA5gm/Qadi369y7r7AefEwT8WgSvsyp9OIZnPeOWgsjjkMjldQ1eYltoKcb8rHybyJ7gu7/sw1+tH6KbmcLRZfF83ypOLY0IJrnqCvHv9pmVTmqwcNH15uEsluQwd00rIOaMdMN5pCkKN6UQrWNSmYnqRg+h9KgV2WgmldCpSA1+Ugw92UgxqjhiDUGY+rRK+TBDuXhAttPlQzFYdnXREE6zpBsKqCUCNxWRIsJQk1j36V9dWikBJ/jVkxuqVi/G/CYGthuHQAG614pxbYF7Tg4pvxRREQ9XdkjHD++R/K/MyvCbzwyMepwaNXOkBp+OvGfaj4Lc/AIdRdR5UX/dcm2bbe0NMX8yth0Bje2cLhhRb+3L5ysaeFA4L/gtEbrTxFLBqaxsZ8W+J3zzQ23vuZrJZ6W+yTpe4rO10ylTldRdS1X3A7al83B7dn+1DmVGDFxQGDZyI3uO6tZzB6w2i8DkkRTmE9ulFCclzvHJfb2rgEIS3tcFwtG51dSDslkj21+HV7YGeZ89B/U7XFK1ylGMf+oFhIcsN8VanYaRu9sJTu4I6L7+0UJyWbSKPY6RBf0D7ojRm1Wy/JR/MpEk9tQz9uGc4TGpvZmtbYj4t2qH2x2K+c8upYgV9btE79Pb+EG/8CBsw9Fg==",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "7c79451f-0370-5c16-a2a8-598e79e971c6",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

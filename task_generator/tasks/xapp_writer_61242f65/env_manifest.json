@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_61242f65",
+  "files": [
+    {
+      "filename": "my_notes.docx",
+      "sandbox_path": "/home/user/Desktop/my_notes.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "screenshot.png",
+      "sandbox_path": "/home/user/Desktop/screenshot.png",
+      "type": "png"
+    }
+  ]
+}

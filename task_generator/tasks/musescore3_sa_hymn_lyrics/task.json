@@ -1,0 +1,57 @@
+{
+  "id": "musescore3_sa_hymn_lyrics",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/hymn.mscz (12 notes in 3 measures). Enter the lyric line 'Glo-ry to God in the high-est and peace on earth' with one syllable under each note, in order, entering Glo-ry and high-est as connected syllables. Set the Lyricist in the Score Properties to 'Luke 2:14'. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "hymn.mscz",
+        "sandbox_path": "/home/user/Documents/hymn.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "lyrics /home/user/Documents/hymn.mscz",
+      "eval": "len(result) == 12",
+      "description": "one syllable per note (12)"
+    },
+    {
+      "command": "lyrics /home/user/Documents/hymn.mscz",
+      "eval": "[l['text'] for l in result] == ['Glo', 'ry', 'to', 'God', 'in', 'the', 'high', 'est', 'and', 'peace', 'on', 'earth']",
+      "description": "syllables in order"
+    },
+    {
+      "command": "lyrics /home/user/Documents/hymn.mscz",
+      "eval": "[l.get('syllabic') or 'single' for l in result] == ['begin', 'end', 'single', 'single', 'single', 'single', 'begin', 'end', 'single', 'single', 'single', 'single']",
+      "description": "Glo-ry and high-est connected"
+    },
+    {
+      "command": "check-meta-tag /home/user/Documents/hymn.mscz lyricist Luke 2:14",
+      "key": "match",
+      "expected": true,
+      "description": "lyricist = Luke 2:14"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_add_three_word_lyrics",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_add_three_word_lyrics",
+        "file": "hymn.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click first note",
+      "Ctrl+L",
+      "type the lyric line",
+      "Esc",
+      "File > Score Properties",
+      "type lyricist",
+      "OK",
+      "Save"
+    ],
+    "gui_step_estimate": 8
+  }
+}

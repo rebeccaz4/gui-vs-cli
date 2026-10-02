@@ -1,0 +1,75 @@
+{
+  "id": "musescore3_sa_dynamic_terraces",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/dynamic_arc.mscz (4 measures). Build terraced dynamics: pp on the first note of measure 1, mp on the first note of measure 2, mf on the first note of measure 3, ff on the first note of measure 4, and sfz on the last note of measure 4. Add no other dynamics. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "dynamic_arc.mscz",
+        "sandbox_path": "/home/user/Documents/dynamic_arc.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/dynamic_arc.mscz 1 pp",
+      "key": "match",
+      "expected": true,
+      "description": "pp in measure 1"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/dynamic_arc.mscz 2 mp",
+      "key": "match",
+      "expected": true,
+      "description": "mp in measure 2"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/dynamic_arc.mscz 3 mf",
+      "key": "match",
+      "expected": true,
+      "description": "mf in measure 3"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/dynamic_arc.mscz 4 ff",
+      "key": "match",
+      "expected": true,
+      "description": "ff in measure 4"
+    },
+    {
+      "command": "check-dynamic-in-measure /home/user/Documents/dynamic_arc.mscz 4 sfz",
+      "key": "match",
+      "expected": true,
+      "description": "sfz in measure 4"
+    },
+    {
+      "command": "dynamics /home/user/Documents/dynamic_arc.mscz",
+      "eval": "len(result) == 5",
+      "description": "exactly five dynamics"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_dynamics_mf_ff",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_dynamics_mf_ff",
+        "file": "dynamic_arc.mscz"
+      }
+    ],
+    "gui_plan": [
+      "open Dynamics palette",
+      "click m1 first note",
+      "pp",
+      "click m2 first note",
+      "mp",
+      "click m3 first note",
+      "mf",
+      "click m4 first note",
+      "ff",
+      "click m4 last note",
+      "sfz",
+      "Save"
+    ],
+    "gui_step_estimate": 12
+  }
+}

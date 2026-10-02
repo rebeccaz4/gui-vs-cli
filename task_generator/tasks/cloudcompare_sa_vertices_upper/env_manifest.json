@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_vertices_upper",
+  "files": [
+    {
+      "filename": "shape.obj",
+      "sandbox_path": "/home/user/Documents/shape.obj",
+      "type": "obj"
+    }
+  ]
+}

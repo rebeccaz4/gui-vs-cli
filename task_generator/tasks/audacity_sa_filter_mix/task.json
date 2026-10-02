@@ -1,0 +1,99 @@
+{
+  "id": "audacity_sa_filter_mix",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/tone44.wav loaded (a 2-second mono tone). Generate a 2-second 3000 Hz sine tone with amplitude 0.8 on a second track, mix both tracks into one by summing them at their original levels (neither is scaled down), and then apply a low-pass filter with a 1000 Hz cutoff (48 dB per octave) to the mix so that the 3000 Hz tone is removed. Export as a mono 22050 Hz 16-bit WAV file to /home/user/Music/filtered.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "tone44.wav",
+        "sandbox_path": "/home/user/Music/tone44.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/filtered.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/filtered.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM WAV"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/filtered.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/filtered.wav 22050",
+      "key": "match",
+      "expected": true,
+      "description": "22050 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/filtered.wav 1.95",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 1.95 s"
+    },
+    {
+      "command": "export-info /home/user/Music/filtered.wav",
+      "eval": "float(result['format']['duration']) <= 2.05",
+      "description": "length <= 2.05 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/filtered.wav 0.2 1.8 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "original tone kept (440 Hz)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/filtered.wav 0.2 1.8 -15.5 -10.5",
+      "key": "match",
+      "expected": true,
+      "description": "original tone level kept"
+    },
+    {
+      "command": "check-export-band-energy-ratio-max /home/user/Music/filtered.wav 1500 0.2",
+      "key": "match",
+      "expected": true,
+      "description": "3000 Hz tone filtered out (the unfiltered 440 Hz source already measures ~0.08 here; with the tone ~0.9)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_resample_export_22050",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_resample_export_22050",
+        "file": "tone44.wav"
+      }
+    ],
+    "gui_plan": [
+      "Tracks > Add New > Mono Track",
+      "Generate > Tone",
+      "type 3000 Hz, amplitude 0.8, 2 s",
+      "OK",
+      "Select All",
+      "Tracks > Mix > Mix and Render",
+      "Effect > Low-Pass Filter",
+      "type 1000 Hz",
+      "choose 48 dB rolloff",
+      "OK",
+      "project rate dropdown",
+      "choose 22050",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 18
+  }
+}

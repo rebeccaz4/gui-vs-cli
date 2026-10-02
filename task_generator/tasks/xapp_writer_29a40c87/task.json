@@ -1,0 +1,45 @@
+{
+  "id": "xapp_writer_29a40c87",
+  "app": "libreoffice_writer",
+  "task": "A detailed photo processing request is stored in /home/user/Desktop/processing_request.docx. Read the request and process /home/user/Desktop/event_photo.jpg in GIMP as instructed, saving the output as /home/user/Desktop/event_photo_processed.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "processing_request.docx",
+        "sandbox_path": "/home/user/Desktop/processing_request.docx"
+      },
+      {
+        "filename": "event_photo.jpg",
+        "sandbox_path": "/home/user/Desktop/event_photo.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward eNrFWP9u20YS/p9PMZBRiGxlWpLjtqeeAii2kgh1bUNWLgVygbAml9LWFJclV5Z8hoN7iHvCe5Kb2SWppSQnbovgBCSWuMtvZ775vY1GwxnzFctCuA4ykaoeXGUy4HkO/I4naprOpZL+b+kMlrlIZvBm9MsVsBxEkqtsGSge4ldIzTu4YZrx35c8V34og7UzYfktjM56IPOVzOJwuljGSkxZmubTVSYUz6ZKTmdikU7bnbZzJhdMJD3Y7AI3FjcZl1EkAl68At8BveE5Bv56uViw7L7nAEzmHNgMxYaMszCH5hNyNUEmoHDzGc9vlUxbsJqLYA55ygMRCZ4TGEDHhzHPxb/4DhdKAl+zQMX30Plbt73utH9sg5tIZAYh8HimhERWeM6zO/qeeBqx68MoCVC4nMNNJmZzlRDVN/fAIEI8mYGM8NxjvfvYh0EYwoqh0qjiLSi+VtAYkjDQbXdPGsQ96XEjlZKLQ40IgcwSZMlFnRRvQc4X4lBlLMlTluGbJMnlUqVLhTznCm445OwO7YhWbVqKTgvyeEgqb1PmO841HkQuMV6iKgFRdioXqUxIuk6vPCMSMfK3FrnKgSUhzPEYfDEjmkKx4EmO7KCdKx49gP/++z/Q9o9PIFV5Dbbbg9ECLWyTJ3LIxSxBuwUsIYuIguEQ3E9I5dqD6vMk8HEP3lc01xi+E7m4QRWQ6X0s14HbBfBEKhb30JBtx7mQive0a4pEKMFiyBUepYm4uIQnGUfLSWIcXSWY8+A2Rw8RMZmhwJny5M53GhjBDoaDzBRGmRNlcgFXo3MoHmm6WubPNZ5bbk2Wi/SeTJ6kjvP+cvzz2WgMfWgezeWCHy3Rb48KSzedyeD65+nojJafFcdNxzmACctmHEWyvCBlau5cvptcvZtMX4/Ohwgoc5+e+r9JkbiFGK3PuaFH2JdoApEQk3KZBdxCv758Nz4dPh99gzlcU+Si01hOySJKN5nOAcjC+M1wMn0/Opu8RWzy1/LZ2+HozdsJPUT/JbBXG/cswrpMLWEZspiHlniQcl6N6eWL4fX19PXgdHJJZqAMsEdPse377gIdfZkh6g06fCwS5IIcwPIQz8YxAG735HuMtRcvMNbmLLQBP3Xabb99jO8MLN114FIoWVt7GNQFY586x23nEtUYXQzOp5Y+g6ur8eWvmhdEBTiA20SuEkC/yeQahcEwuGPxcldqZ/jr1fB0Mjyz4X4ZXRBWp8Ay1iGxWlUmC2LOMswB7EbecZCF3vvRBiRZt5RsmaaIdiOXqCqm99mSaiKbMSp0gGDZodGdJ5QqMyXIsLnjOCGPAJdFdD9VWI9czxQPikv6+w+9BLSEOWORxpzKAayEmlPZnGVUn1DW3GRTX7805mqZJchxFEtGiqkV5wmQqMYU7doZitLNlBA4qtSmrEOPD7CW80AmoaAje3BKaaQWkSYv680igkSqKmREThtcK1oLveiToqTKjRqvB6PzeqIniIg47MGD9e5jw9t5mcoHJkaU9gj12bNhPHw/GJ/pHdZqpqmxlTyX6MMUUoVm2skNL6YtMB+xmCE5OhH6MuVJTTcfaUIjKrcxfvOqOI2vA54qTAz0h2yG2ZLvknA6Hk1GpwMk4pQlpH9M8tgs15hAYvhXpeNLRVh73p4KbDUypkRi0lS5V6BO5lhnyd7XWxVItz1P5uvi0BrK1eD6eqhhZjIOeWJQnoYQlmzerl1XIlTzFsy5Lst9srOvE3Zl+MjsgX4faklctyPFa9WSyeUbeNsEJHnPJljX/dNdLh/0gY/rBwP/WFKKTFi22w7d7/q6OanWeZzz/YKYwNsWpCphD7aaKEVNtceWidAdIf+Y2w/H48vxrgzGuXdc8Q82btgQF3WTOri9DrlV0yzcFTN1rGVVCMjnchmHVCJ0tTIY74vWCrMHZllKIZXnbQmKRRs7aDznA5afFlWNj88KjA2eFYLorOh6sdEztVK0KVvPCJZaxe7+4J+0dFijlFVR1uLuCZdZxu6LKClzXvO8uXFKC7q/aRt9+s+ldz0fe47kQ6F/EV9PVeu/9208/PVEIX5euHW1h1m91YPVjvjd6LGwVJ0DaNTAzSdqfHh4QmiMj4cnxHz8+LUD+csqUoX5ujr+xTzQ/Vwe+NNzlmumq62axK3hGG2vJ96j7YFXj80+BXvIFSVqgR1VEREHcIj9g7ylOTbCdGPYhlSs0WbgvuxgOUSJWBxjpsDyjk+9vUN3xmfIUYVJopXd587tAfXcbSNsedIzIU0OKFIeDZAa5FDk8xJIN9KqRgyp/+VkVUlLsJi56kxsWeUZKWpzPiV1xfPnIG43bFOWZZiGktTHL+zexUdebb0o/vR1twGodh7AGY9oONrnWYZmcGOGjX735JuyodC/O/jbANsZcrqe4gyf6cMwCCpB4FuM+x9Oalvvd7YWgtLeH+t7C1H6peofNu/3Wta5vY+2bleG0HL0KcaUjIqa8aqcLSpHozKBvSmwjYP4m8bBOFa/nDfN9KfnIcSxjiy6W1pt4eTCilqmXXiTu2h4gmpCLe6PlEwPYx4p+B0nLBLTjVi2x209ff8hlHXqSmZ0C4JhypJ7+6AFR6VC3c/RCo1ZMkffxqDGHBBwvwLJs2Dbp6yJwLo92EwETZwImp5vuHDdvV7nFTcs/qvR6Tv8h79DdZ/yvp7fNjZG3orjCwv76GS4z93ap2Lc4uaxCLjbrrn30RF0iRp7yfieXtlAaPL75YkfVPxRF27XgyNYsLVbMGEttKDDD7/fIFQlRpMVxCItX0LfJfgWUCt0cuJ9xk/rbcV0QWNwnxqYwtnrBBhJGHZJ/a6HOa8Uofbcg5fwor2NrP17GmBnq4zA+XLhWqda5OpKjRIUIdHfhJ6fz1nKsblBDbcfdnaUMbe8/X0SGI63TkKCPTtwt1pYSrzt3Sz5avyTlcxZGOZVrawyu8EbYAShm84xC9M1Ms6E7RMqnCffeICTCUYhxiRPlpQJTfXRF8qYwk1h5KHd09WUfNk3cM9r1I51C7Ap9CX8U8V9f/fi1qnQgvTKhsjI1fNfRNjLaM43S5YhHr2yc3hOx9b+Ex2b0fVCWjb6f6r70xPoVYpvbpquprF/JfhfbPyOtxu/iJy7upbKaOh0FyJxLeJbdJeFmadrji6x/5kU1yEP1t5H62Jk+1LkwTqrHGSLqxFrxXGc2k2d8z/pKYmb",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "29a40c87-9553-5238-85aa-8fe48d93356f",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "A detailed photo processing request is stored in 'processing_request.docx' on the Desktop. Read the request and process 'event_photo.jpg' in GIMP as instructed, saving the output as 'event_photo_processed.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ],
+    "check_edits": [
+      {
+        "reason": "watermark detection required pixels >200 on a background whose darkest channel is ~39, so a natural 50% semi-transparent white watermark failed (60-70% passed only with GIMP's linear-light compositing). Now: pixels in the bottom-right region that are >40 brighter than the expected un-watermarked image (source resized, brightness matched on the top-left quarter) (review 2026-09-30)"
+      }
+    ]
+  }
+}

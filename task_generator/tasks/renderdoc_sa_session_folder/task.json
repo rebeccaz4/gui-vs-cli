@@ -1,0 +1,98 @@
+{
+  "id": "renderdoc_sa_session_folder",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Switch to the Dark UI style with a global font scale of 1.25. Create /home/user/captures/session1/, move triangle.rdc and draw_call.rdc from /home/user/captures into it, make it the default capture save directory, and set the recent capture list to the two moved captures (absolute paths): draw_call.rdc first, then triangle.rdc. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "triangle.rdc",
+        "sandbox_path": "/home/user/captures/triangle.rdc"
+      },
+      {
+        "filename": "draw_call.rdc",
+        "sandbox_path": "/home/user/captures/draw_call.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-theme Dark",
+      "key": "match",
+      "expected": true,
+      "description": "UIStyle Dark"
+    },
+    {
+      "command": "check-font-scale 1.25",
+      "key": "match",
+      "expected": true,
+      "description": "font scale 1.25"
+    },
+    {
+      "command": "check-capture-count /home/user/captures/session1 2",
+      "key": "match",
+      "expected": true,
+      "description": "both captures moved"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 0",
+      "key": "match",
+      "expected": true,
+      "description": "nothing left at the top level"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/captures/session1",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory = /home/user/captures/session1"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/session1/draw_call.rdc', '/home/user/captures/session1/triangle.rdc']",
+      "description": "RecentCaptureFiles = draw_call.rdc, triangle.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_set_dark_theme",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_set_dark_theme",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_add_recent_captures",
+        "file": "triangle.rdc"
+      },
+      {
+        "from_task": "renderdoc_add_recent_captures",
+        "file": "draw_call.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "new folder (Ctrl+Shift+N)",
+      "type name + Enter",
+      "select files (click / Ctrl+click)",
+      "Ctrl+X",
+      "open target folder",
+      "Ctrl+V",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 13
+  }
+}

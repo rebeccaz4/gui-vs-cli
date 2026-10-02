@@ -1,0 +1,98 @@
+{
+  "id": "musescore3_sa_duet_arrangement",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/duet.mscz, a duet for Flute (top staff) and Cello (bottom staff). Arrange it as follows: from measure 3 onward the bottom part is played by a Bassoon (a mid-score instrument change on the Cello staff at the start of measure 3); put a staccato on every note of measure 2 in the Flute part only; and change the tempo marking at the start of the score to 132 BPM (quarter note). Keep both parts. Save the score in place and export it as MusicXML to /home/user/Documents/duet.musicxml.",
+  "env": {
+    "files": [
+      {
+        "filename": "duet.mscz",
+        "sandbox_path": "/home/user/Documents/duet.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/duet.mscz",
+      "key": "exists",
+      "expected": true,
+      "description": "score saved"
+    },
+    {
+      "command": "check-part-count /home/user/Documents/duet.mscz 2",
+      "key": "match",
+      "expected": true,
+      "description": "two parts kept"
+    },
+    {
+      "command": "check-instrument-change-at /home/user/Documents/duet.mscz 3 Bassoon",
+      "key": "match",
+      "expected": true,
+      "description": "instrument change to Bassoon at measure 3"
+    },
+    {
+      "command": "instrument-changes /home/user/Documents/duet.mscz",
+      "eval": "len(result) == 1",
+      "description": "only one instrument change"
+    },
+    {
+      "command": "check-articulation-count /home/user/Documents/duet.mscz staccato 3",
+      "key": "match",
+      "expected": true,
+      "description": "three staccatos"
+    },
+    {
+      "command": "articulations /home/user/Documents/duet.mscz",
+      "eval": "all(a['staff'] == 0 and a['measure'] == 2 for a in result if 'staccato' in a['subtype'].lower())",
+      "description": "staccatos only on the Flute staff, measure 2"
+    },
+    {
+      "command": "check-tempo /home/user/Documents/duet.mscz 132",
+      "key": "match",
+      "expected": true,
+      "description": "tempo 132 BPM"
+    },
+    {
+      "command": "check-file-exists /home/user/Documents/duet.musicxml",
+      "key": "exists",
+      "expected": true,
+      "description": "MusicXML exported"
+    },
+    {
+      "command": "check-musicxml-parts /home/user/Documents/duet.musicxml 2",
+      "key": "match",
+      "expected": true,
+      "description": "MusicXML has both parts"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_export_musicxml",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_export_musicxml",
+        "file": "duet.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click Cello m3 first note",
+      "Add > Text > Instrument Change",
+      "Esc",
+      "right-click the text > Change Instrument",
+      "search Bassoon",
+      "select Bassoon",
+      "OK",
+      "click Flute m2",
+      "S (staccato)",
+      "double-click tempo text",
+      "select text",
+      "type 132",
+      "Esc",
+      "Save",
+      "File > Export",
+      "choose format",
+      "type output path",
+      "Save"
+    ],
+    "gui_step_estimate": 18
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "cloudcompare_sa_gear_rotate",
+  "files": [
+    {
+      "filename": "gear.obj",
+      "sandbox_path": "/home/user/Documents/gear.obj",
+      "type": "obj"
+    }
+  ]
+}

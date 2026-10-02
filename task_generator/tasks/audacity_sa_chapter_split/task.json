@@ -1,0 +1,132 @@
+{
+  "id": "audacity_sa_chapter_split",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/audiobook.aup loaded (one 5-second narration track, no labels). Add a label track with two point labels, 'Part A' at 0.0 s and 'Part B' at 2.0 s, and save the project to /home/user/Music/audiobook.aup. Then split the audio at these labels and export each part as its own mono 44100 Hz 16-bit WAV file in the folder /home/user/Music/chapters/, named after its label (Part A.wav, Part B.wav). Each file must contain exactly the audio from its label to the next label; the last one runs to the end of the recording.",
+  "env": {
+    "files": [
+      {
+        "filename": "audiobook.aup",
+        "sandbox_path": "/home/user/Music/audiobook.aup"
+      },
+      {
+        "filename": "audiobook_data/e00/d00/e000001.au",
+        "sandbox_path": "/home/user/Music/audiobook_data/e00/d00/e000001.au"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/audiobook.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "project valid"
+    },
+    {
+      "command": "check-labeltrack-count /home/user/Music/audiobook.aup 1",
+      "key": "match",
+      "expected": true,
+      "description": "one label track"
+    },
+    {
+      "command": "check-label-count /home/user/Music/audiobook.aup 2",
+      "key": "match",
+      "expected": true,
+      "description": "two labels"
+    },
+    {
+      "command": "labels /home/user/Music/audiobook.aup",
+      "eval": "any(l['title'] == 'Part A' and abs(float(l['t']) - 0.0) <= 0.02 for l in result)",
+      "description": "label 'Part A' at 0.0 s"
+    },
+    {
+      "command": "labels /home/user/Music/audiobook.aup",
+      "eval": "any(l['title'] == 'Part B' and abs(float(l['t']) - 2.0) <= 0.02 for l in result)",
+      "description": "label 'Part B' at 2.0 s"
+    },
+    {
+      "command": "check-file-exists \"/home/user/Music/chapters/Part A.wav\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Part A.wav exported"
+    },
+    {
+      "command": "check-export-channels \"/home/user/Music/chapters/Part A.wav\" 1",
+      "key": "match",
+      "expected": true,
+      "description": "Part A.wav mono"
+    },
+    {
+      "command": "check-export-duration-min \"/home/user/Music/chapters/Part A.wav\" 1.98",
+      "key": "match",
+      "expected": true,
+      "description": "Part A.wav >= 1.98 s"
+    },
+    {
+      "command": "export-info \"/home/user/Music/chapters/Part A.wav\"",
+      "eval": "float(result['format']['duration']) <= 2.02",
+      "description": "Part A.wav <= 2.02 s"
+    },
+    {
+      "command": "check-file-exists \"/home/user/Music/chapters/Part B.wav\"",
+      "key": "exists",
+      "expected": true,
+      "description": "Part B.wav exported"
+    },
+    {
+      "command": "check-export-channels \"/home/user/Music/chapters/Part B.wav\" 1",
+      "key": "match",
+      "expected": true,
+      "description": "Part B.wav mono"
+    },
+    {
+      "command": "check-export-duration-min \"/home/user/Music/chapters/Part B.wav\" 2.98",
+      "key": "match",
+      "expected": true,
+      "description": "Part B.wav >= 2.98 s"
+    },
+    {
+      "command": "export-info \"/home/user/Music/chapters/Part B.wav\"",
+      "eval": "float(result['format']['duration']) <= 3.02",
+      "description": "Part B.wav <= 3.02 s"
+    },
+    {
+      "command": "check-export-dominant-freq \"/home/user/Music/chapters/Part B.wav\" 0.2 2.8 180 3",
+      "key": "match",
+      "expected": true,
+      "description": "Part B holds the narration (180 Hz)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_add_chapter_labels",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_add_chapter_labels",
+        "file": "audiobook.aup"
+      },
+      {
+        "from_task": "audacity_add_chapter_labels",
+        "file": "audiobook_data/e00/d00/e000001.au"
+      }
+    ],
+    "gui_plan": [
+      "Tracks > Add New > Label Track",
+      "click at 0 s",
+      "Ctrl+B",
+      "type Part A + Enter",
+      "click selection start field",
+      "type 2.0",
+      "Ctrl+B",
+      "type Part B + Enter",
+      "File > Save Project (Ctrl+S)",
+      "File > Export > Export Multiple",
+      "type folder path",
+      "choose WAV 16-bit",
+      "split by labels / name by label (defaults)",
+      "Export",
+      "confirm metadata",
+      "close result dialog"
+    ],
+    "gui_step_estimate": 16
+  }
+}

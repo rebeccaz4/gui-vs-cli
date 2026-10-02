@@ -1,0 +1,41 @@
+{
+  "id": "writer_cg_ee7010dd",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Documents/legal_brief_style_manual.odt. It specifies 11 requirements for a court brief. Apply all to /home/user/Documents/motion_draft.odt: use Courier New 12pt, number lines in the left margin, set margins to 1 inch all sides, use double spacing, apply bold to all section headings, format the certificate of service at the end, add a table of authorities, ensure blockquotes are indented 1.27 cm on both sides, page-number format as 'Page X of Y', and limit total length to 25 pages. Save the file in place. Note: despite the .odt extension, the file contains Word (.docx) data; save it in place in that same Word format.",
+  "env": {
+    "files": [
+      {
+        "filename": "legal_brief_style_manual.odt",
+        "sandbox_path": "/home/user/Documents/legal_brief_style_manual.odt"
+      },
+      {
+        "filename": "motion_draft.odt",
+        "sandbox_path": "/home/user/Documents/motion_draft.odt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "ee7010dd-e0cc-5f54-aeff-a99d05f00256",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "replaced": "Open 'legal_brief_style_manual.odt' from Documents. It specifies 11 requirements for a court brief. Apply all to 'motion_draft.odt': use Courier New 12pt, number lines in the left margin, set margins to 1 inch all sides, use double spacing, apply bold to all section headings, format the certificate of service at the end, add a table of authorities, ensure blockquotes are indented 1.27 cm on both sides, page-number format as 'Page X of Y', and limit total length to 25 pages. Save the file.",
+        "reason": "motion_draft.odt had no path; the .odt files contain DOCX data and the check reads them with python-docx (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

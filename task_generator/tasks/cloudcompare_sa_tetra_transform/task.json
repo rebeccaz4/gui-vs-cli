@@ -1,0 +1,74 @@
+{
+  "id": "cloudcompare_sa_tetra_transform",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/tetra.ply in CloudCompare (a unit tetrahedron mesh with corners in 0..1). First scale it uniformly by 3 about the origin, then move it by (+1, +1, +1), and save the mesh (all 4 triangles) as an OBJ file at /home/user/Documents/tetra_big.obj.",
+  "env": {
+    "files": [
+      {
+        "filename": "tetra.ply",
+        "sandbox_path": "/home/user/Documents/tetra.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/tetra_big.obj",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/tetra_big.obj 4",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 4 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/tetra_big.obj 0.99 0.99 0.99 4.01 4.01 4.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/tetra_big.obj x 2.99",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 2.99"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/tetra_big.obj",
+      "eval": "result['face_count'] == 4",
+      "description": "4 faces"
+    },
+    {
+      "command": "check-format /home/user/Documents/tetra_big.obj obj",
+      "key": "match",
+      "expected": true,
+      "description": "obj file"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_ply_mesh_to_obj",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_ply_mesh_to_obj",
+        "file": "tetra.ply"
+      }
+    ],
+    "gui_plan": [
+      "select mesh",
+      "Edit > Multiply/Scale",
+      "type factor",
+      "OK",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "File > Save",
+      "type output path",
+      "choose OBJ",
+      "Save"
+    ],
+    "gui_step_estimate": 11
+  }
+}

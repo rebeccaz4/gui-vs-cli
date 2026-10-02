@@ -1,0 +1,15 @@
+{
+  "task_id": "impress_cg_3762d65e",
+  "files": [
+    {
+      "filename": "impress_tm_073.pptx",
+      "sandbox_path": "/home/user/impress_tm_073.pptx",
+      "type": "pptx"
+    },
+    {
+      "filename": "company_logo.png",
+      "sandbox_path": "/home/user/logos/company_logo.png",
+      "type": "png"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "impress_osw_eb303e01",
+  "files": [
+    {
+      "filename": "lecture1-2021-with-ink.pptx",
+      "sandbox_path": "/home/user/Desktop/lecture1-2021-with-ink.pptx",
+      "type": "pptx"
+    },
+    {
+      "filename": "notes.docx",
+      "sandbox_path": "/home/user/Desktop/notes.docx",
+      "type": "docx"
+    }
+  ]
+}

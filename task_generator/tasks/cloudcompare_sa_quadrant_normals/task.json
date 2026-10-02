@@ -1,0 +1,72 @@
+{
+  "id": "cloudcompare_sa_quadrant_normals",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/surface.ply in CloudCompare (1500 points on a paraboloid over -5..5 in X and Y). Keep only the part with X >= 1 and Y >= 1, compute per-point normals for it, and save it as a binary big-endian PLY at /home/user/Documents/surface_quadrant.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "surface.ply",
+        "sandbox_path": "/home/user/Documents/surface.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/surface_quadrant.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/surface_quadrant.ply 269",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 269 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/surface_quadrant.ply 0.99 0.99 -0.01 5.01 5.01 2.5",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/surface_quadrant.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/surface_quadrant.ply binary_big_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_big_endian"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_compute_normals",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_compute_normals",
+        "file": "surface.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Tools > Segmentation > Cross Section",
+      "type X min 1",
+      "type Y min 1",
+      "Export section as new entity",
+      "close tool",
+      "Edit > Normals > Compute",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 14
+  }
+}

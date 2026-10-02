@@ -1,0 +1,77 @@
+{
+  "id": "musescore3_sa_articulation_pattern",
+  "app": "musescore3",
+  "task": "MuseScore 3 is open with /home/user/Documents/expression_study.mscz (4 measures, 4 quarter notes each). Put a staccato on every note of measures 1 and 3, an accent on the first note of every measure, and a tenuto on the last note of measure 4. Add no other articulations. Save the score in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "expression_study.mscz",
+        "sandbox_path": "/home/user/Documents/expression_study.mscz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-articulation-count /home/user/Documents/expression_study.mscz staccato 8",
+      "key": "match",
+      "expected": true,
+      "description": "8 staccatos"
+    },
+    {
+      "command": "articulations /home/user/Documents/expression_study.mscz",
+      "eval": "all(a['measure'] in (1, 3) for a in result if 'staccato' in a['subtype'].lower())",
+      "description": "staccatos only in measures 1 and 3"
+    },
+    {
+      "command": "check-articulation-count /home/user/Documents/expression_study.mscz accent 4",
+      "key": "match",
+      "expected": true,
+      "description": "4 accents"
+    },
+    {
+      "command": "articulations /home/user/Documents/expression_study.mscz",
+      "eval": "sorted(a['measure'] for a in result if 'accent' in a['subtype'].lower()) == [1, 2, 3, 4]",
+      "description": "one accent in each measure"
+    },
+    {
+      "command": "check-articulation-count /home/user/Documents/expression_study.mscz tenuto 1",
+      "key": "match",
+      "expected": true,
+      "description": "one tenuto"
+    },
+    {
+      "command": "check-articulation-in-measure /home/user/Documents/expression_study.mscz 4 tenuto",
+      "key": "match",
+      "expected": true,
+      "description": "tenuto in measure 4"
+    },
+    {
+      "command": "articulations /home/user/Documents/expression_study.mscz",
+      "eval": "len(result) == 13",
+      "description": "no other articulations"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "musescore3_gap_accent_tenuto_mix",
+    "reused_inputs": [
+      {
+        "from_task": "musescore3_gap_accent_tenuto_mix",
+        "file": "expression_study.mscz"
+      }
+    ],
+    "gui_plan": [
+      "click m1",
+      "Shift+click... S (staccato)",
+      "click m3",
+      "S",
+      "click m1 first note",
+      "Ctrl+click first notes of m2-m4",
+      "Shift+V (accent)",
+      "click last note of m4",
+      "Shift+N (tenuto)",
+      "Save"
+    ],
+    "gui_step_estimate": 10
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_ec1261d7",
+  "app": "libreoffice_impress",
+  "task": "Create a poster-style single slide in landscape orientation (48x36 inches) for my research poster session. Include: title area at top ('The Impact of Social Media on Academic Performance' in 60pt bold), authors line ('J. Park, A. Rivera, M. Chen - PSY 400' in 28pt), three column layout below with sections: 'Introduction', 'Methods', 'Results' (with a placeholder area for a chart), and 'Conclusions'. Add a colored header bar in #003366 behind the title. The file to work on is /home/user/impress_stu_051.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_stu_051.pptx",
+        "sandbox_path": "/home/user/impress_stu_051.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "ec1261d7-4df3-5e68-8297-4d106e7616fd",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_78cd5de6",
+  "files": [
+    {
+      "filename": "client_feedback.docx",
+      "sandbox_path": "/home/user/Desktop/client_feedback.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "mockup.png",
+      "sandbox_path": "/home/user/Desktop/mockup.png",
+      "type": "png"
+    }
+  ]
+}

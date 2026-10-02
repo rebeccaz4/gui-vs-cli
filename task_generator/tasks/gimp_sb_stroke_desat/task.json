@@ -1,0 +1,140 @@
+{
+  "id": "gimp_sb_stroke_desat",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/colorful.png in GIMP (600x400: horizontal bands, red y 0-99, green 100-199, blue 200-299, yellow 300-399). Keep the original colours only inside the rectangle from (150,50) to (450,350) (300x300) and make everything outside it grayscale (desaturated by luminosity; the image stays RGB). Then draw a 6-pixel-wide white outline along the border of that rectangle, centred on its edge (3 pixels inside and 3 pixels outside). Export the result as PNG to /home/user/Documents/stroke_frame.png (600x400).",
+  "env": {
+    "files": [
+      {
+        "filename": "colorful.png",
+        "sandbox_path": "/home/user/Documents/colorful.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/stroke_frame.png",
+      "key": "exists",
+      "expected": true,
+      "description": "stroke_frame.png exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/stroke_frame.png PNG",
+      "key": "match",
+      "expected": true,
+      "description": "PNG file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/stroke_frame.png 600 400",
+      "key": "match",
+      "expected": true,
+      "description": "600x400"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/stroke_frame.png 300 75 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "inside: red band kept"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/stroke_frame.png 300 150 0 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "inside: green band kept"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/stroke_frame.png 300 325 255 255 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "inside: yellow band kept"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/stroke_frame.png 155 250 0 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "just inside the outline: blue kept"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 50 150",
+      "eval": "60 <= result.get('r', -1) <= 235 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outside: green band grey (GIMP luminance 220, Rec.601 150, average 85)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 50 250",
+      "eval": "10 <= result.get('r', -1) <= 135 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outside: blue band grey (GIMP luminance 70, Rec.601 29, lightness 127)"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 520 250",
+      "eval": "10 <= result.get('r', -1) <= 135 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outside right: blue band grey"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 144 250",
+      "eval": "10 <= result.get('r', -1) <= 135 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "just outside the outline: grey, not white"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 147 250",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: 3 px outside the left edge is white"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 152 250",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: 3 px inside the left edge is white"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 300 47",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: top edge, outside"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 300 52",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: top edge, inside"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 447 250",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: right edge, inside"
+    },
+    {
+      "command": "pixel-color-file /home/user/Documents/stroke_frame.png 452 250",
+      "eval": "240 <= result.get('r', -1) <= 255 and abs(result.get('r', 0) - result.get('g', 99)) <= 6 and abs(result.get('g', 0) - result.get('b', 99)) <= 6",
+      "description": "outline: right edge, outside"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_grayscale_export",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_grayscale_export",
+        "file": "colorful.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Select > Invert (Ctrl+I)",
+      "Colors > Desaturate > Desaturate",
+      "OK",
+      "Select > Invert (Ctrl+I)",
+      "set FG white: press D, then X",
+      "Edit > Stroke Selection",
+      "type line width 6",
+      "Stroke",
+      "Select > None",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 20
+  }
+}

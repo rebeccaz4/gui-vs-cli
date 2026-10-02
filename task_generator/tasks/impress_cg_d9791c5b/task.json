@@ -1,0 +1,37 @@
+{
+  "id": "impress_cg_d9791c5b",
+  "app": "libreoffice_impress",
+  "task": "Export the slides as PNG images with a transparent background instead of the white slide background. The file to work on is /home/user/impress_el_042.pptx. Save one PNG per slide as /home/user/impress_el_042_slide1.png, /home/user/impress_el_042_slide2.png, ..., /home/user/impress_el_042_slide5.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "impress_el_042.pptx",
+        "sandbox_path": "/home/user/impress_el_042.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "d9791c5b-3a33-54e5-91fe-7ce80d1e9b7e",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": [],
+    "instruction_edits": [
+      {
+        "appended": "Save one PNG per slide as /home/user/impress_el_042_slide1.png, /home/user/impress_el_042_slide2.png, ..., /home/user/impress_el_042_slide5.png.",
+        "reason": "state the output files the reward reads (benchmark convention); names are the reward's first-choice pattern"
+      }
+    ]
+  }
+}

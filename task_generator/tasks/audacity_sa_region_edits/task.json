@@ -1,0 +1,131 @@
+{
+  "id": "audacity_sa_region_edits",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/voiceover.wav loaded (a 6-second mono recording). Make the following edits, each applied only to the stated time range: (1) raise the pitch of 3.0-4.0 s by one octave (12 semitones) without changing its length; (2) replace 5.0-5.5 s with silence without changing the total length. Every other part of the recording must stay exactly as it is. Export the result to /home/user/Music/voiceover_edit.wav as WAV (signed 16-bit PCM), mono, 22050 Hz.",
+  "env": {
+    "files": [
+      {
+        "filename": "voiceover.wav",
+        "sandbox_path": "/home/user/Music/voiceover.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/voiceover_edit.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "voiceover_edit.wav exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/voiceover_edit.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/voiceover_edit.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/voiceover_edit.wav 22050",
+      "key": "match",
+      "expected": true,
+      "description": "22050 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/voiceover_edit.wav 5.95",
+      "key": "match",
+      "expected": true,
+      "description": "length kept (>= 5.95 s)"
+    },
+    {
+      "command": "export-info /home/user/Music/voiceover_edit.wav",
+      "eval": "float(result['format']['duration']) <= 6.05",
+      "description": "length kept (<= 6.05 s)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/voiceover_edit.wav 0.2 0.8 -8.5 -5.5",
+      "key": "match",
+      "expected": true,
+      "description": "0-1 s untouched (~-7 dBFS)"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/voiceover_edit.wav 1.2 1.8 -8.5 -5.5",
+      "key": "match",
+      "expected": true,
+      "description": "1-2 s untouched"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/voiceover_edit.wav 2.2 2.8 -8.5 -5.5",
+      "key": "match",
+      "expected": true,
+      "description": "2-3 s untouched"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/voiceover_edit.wav 0.2 0.8 330 3",
+      "key": "match",
+      "expected": true,
+      "description": "0-1 s still 330 Hz"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/voiceover_edit.wav 3.2 3.8 660 3",
+      "key": "match",
+      "expected": true,
+      "description": "3-4 s one octave up (660 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/voiceover_edit.wav 4.2 4.8 330 3",
+      "key": "match",
+      "expected": true,
+      "description": "4-5 s still 330 Hz"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/voiceover_edit.wav 5.05 5.45 -40",
+      "key": "match",
+      "expected": true,
+      "description": "5.0-5.5 s silent"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/voiceover_edit.wav 5.6 5.9 -8.5 -5.5",
+      "key": "match",
+      "expected": true,
+      "description": "5.5-6 s untouched"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_fade_in_out",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_gap_silence_region",
+        "file": "voiceover.wav"
+      }
+    ],
+    "gui_plan": [
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Effect > Change Pitch",
+      "type +12 semitones",
+      "OK",
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Edit > Remove Special > Silence Audio (Ctrl+L)",
+      "project rate dropdown",
+      "choose 22050",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 20
+  }
+}

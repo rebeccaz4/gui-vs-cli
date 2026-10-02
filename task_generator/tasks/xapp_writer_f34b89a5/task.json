@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_f34b89a5",
+  "app": "libreoffice_writer",
+  "task": "Read the multi-step processing instructions in /home/user/Desktop/workflow.docx (open in LibreOffice Writer) and apply each step to /home/user/Desktop/raw_photo.jpg in GIMP. The document lists noise reduction, skin tone correction, and background blur steps. Save the result as /home/user/Desktop/processed_photo.jpg.",
+  "env": {
+    "files": [
+      {
+        "filename": "workflow.docx",
+        "sandbox_path": "/home/user/Desktop/workflow.docx"
+      },
+      {
+        "filename": "raw_photo.jpg",
+        "sandbox_path": "/home/user/Desktop/raw_photo.jpg"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f34b89a5-e4af-536b-bd5d-1efb0cc51cf1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Read the multi-step processing instructions in 'workflow.docx' (open in LibreOffice Writer) and apply each step to 'raw_photo.jpg' in GIMP. The document lists noise reduction, skin tone correction, and background blur steps. Save the result as 'processed_photo.jpg'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

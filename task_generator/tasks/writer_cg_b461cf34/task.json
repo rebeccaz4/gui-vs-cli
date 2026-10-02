@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_b461cf34",
+  "app": "libreoffice_writer",
+  "task": "I'm creating a script document where each line of dialogue has a character name (first two words) and the spoken line. I want the character name left-aligned and the spoken text right-aligned at 12cm using tabstops. Please set this up \u2014 there are too many lines to format one by one. The file to work on is /home/user/play_script_draft.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "play_script_draft.docx",
+        "sandbox_path": "/home/user/play_script_draft.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "b461cf34-80c8-5f2b-a658-a450c4a4d69a",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

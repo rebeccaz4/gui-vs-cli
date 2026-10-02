@@ -1,0 +1,86 @@
+{
+  "id": "cloudcompare_sa_register_merge",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/reference.ply and /home/user/Documents/misaligned.ply in CloudCompare. misaligned.ply is a scan of the same object in a shifted frame. Register misaligned.ply onto reference.ply (reference.ply must not move), then merge the registered cloud and reference.ply into a single cloud, compute per-point normals on the merged cloud, and save it as an ASCII PLY at /home/user/Documents/aligned_merged.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "reference.ply",
+        "sandbox_path": "/home/user/Documents/reference.ply"
+      },
+      {
+        "filename": "misaligned.ply",
+        "sandbox_path": "/home/user/Documents/misaligned.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/aligned_merged.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/aligned_merged.ply 2400",
+      "key": "match",
+      "expected": true,
+      "description": "both clouds merged (1200 + 1200 points)"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/aligned_merged.ply -2.1 -2.12 -2.12 4.65 2.15 2.11",
+      "key": "match",
+      "expected": true,
+      "description": "registered: merged bbox stays within the reference bbox (+-0.1)"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/aligned_merged.ply x 6.4",
+      "key": "match",
+      "expected": true,
+      "description": "reference extent kept (not collapsed)"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/aligned_merged.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals computed"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/aligned_merged.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "ASCII PLY"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_icp_fine_registration",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_icp_fine_registration",
+        "file": "reference.ply"
+      },
+      {
+        "from_task": "cloudcompare_gap_icp_fine_registration",
+        "file": "misaligned.ply"
+      }
+    ],
+    "gui_plan": [
+      "select both clouds",
+      "Tools > Registration > Fine Registration (ICP)",
+      "set misaligned as 'aligned'",
+      "OK",
+      "close report",
+      "select both clouds",
+      "Edit > Merge",
+      "Edit > Normals > Compute",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 14
+  }
+}

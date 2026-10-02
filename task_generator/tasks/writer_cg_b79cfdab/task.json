@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_b79cfdab",
+  "app": "libreoffice_writer",
+  "task": "I'm writing a comparative literature essay and need to format block quotes properly. In ~/Documents/comp_lit_essay.docx, there are 4 long quotes (each more than 40 words) that are currently just in regular paragraph format with quotation marks. Convert them to proper block quote format: remove the quotation marks, indent the entire paragraph 0.5 inches from the left margin, single-space the block quote, and reduce the font size to 11pt.",
+  "env": {
+    "files": [
+      {
+        "filename": "comp_lit_essay.docx",
+        "sandbox_path": "/home/user/Documents/comp_lit_essay.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "b79cfdab-faaf-5dd8-bea4-10e373799f1f",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

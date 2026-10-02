@@ -1,0 +1,10 @@
+{
+  "task_id": "gimp_sb_levels_range",
+  "files": [
+    {
+      "filename": "gradient.png",
+      "sandbox_path": "/home/user/Documents/gradient.png",
+      "type": "png"
+    }
+  ]
+}

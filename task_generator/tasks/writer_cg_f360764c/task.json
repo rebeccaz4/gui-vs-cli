@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_f360764c",
+  "app": "libreoffice_writer",
+  "task": "The internal comms team wants a 'Quick Reference Card' that's formatted as a 2-page document with key company facts on the front and brand messaging on the back. Set up page 1 with a 2x4 grid of fact boxes (Founded, HQ, Employees, Revenue, Customers, Products, Markets, Awards) and page 2 with our elevator pitch, mission statement, and three key messages. The file to work on is /home/user/Desktop/company_quick_reference.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "company_quick_reference.docx",
+        "sandbox_path": "/home/user/Desktop/company_quick_reference.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f360764c-b7d6-585b-bd62-e3cc58d7e6ac",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "xapp_writer_5804b4f5",
+  "app": "libreoffice_writer",
+  "task": "Open /home/user/Desktop/art_direction.docx in LibreOffice Writer and read the art direction brief. The document specifies a series of GIMP operations to transform /home/user/Desktop/concept.png into a stylized version for a campaign. Apply all specified filters and adjustments, then save as /home/user/Desktop/concept_styled.png.",
+  "env": {
+    "files": [
+      {
+        "filename": "art_direction.docx",
+        "sandbox_path": "/home/user/Desktop/art_direction.docx"
+      },
+      {
+        "filename": "concept.png",
+        "sandbox_path": "/home/user/Desktop/concept.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "category": "cross_app",
+    "apps_involved": "libreoffice+gimp",
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "5804b4f5-f13d-5bd4-aced-7f12f4519d31",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "instruction_edits": [
+      {
+        "replaced": "Open 'art_direction.docx' in LibreOffice Writer and read the art direction brief. The document specifies a series of GIMP operations to transform 'concept.png' into a stylized version for a campaign. Apply all specified filters and adjustments, then save as 'concept_styled.png'.",
+        "reason": "input/output files were named without their directory (wording review 2026-09-30)"
+      }
+    ]
+  }
+}

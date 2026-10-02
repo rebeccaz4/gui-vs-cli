@@ -1,0 +1,71 @@
+{
+  "id": "cloudcompare_sa_georef",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/survey.xyz in CloudCompare (600 points). Move the cloud so that the minimum corner of its bounding box is exactly at (100, 200, 0), color it by height with a height ramp (Z), and save it as a binary big-endian PLY with colors at /home/user/Documents/survey_geo.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "survey.xyz",
+        "sandbox_path": "/home/user/Documents/survey.xyz"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/survey_geo.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/survey_geo.ply 600",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 600 points"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/survey_geo.ply",
+      "key": "has_color",
+      "expected": true,
+      "description": "colors saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/survey_geo.ply binary_big_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_big_endian"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/survey_geo.ply",
+      "eval": "abs(result['bbox'][0][0] - 100) < 0.005 and abs(result['bbox'][0][1] - 200) < 0.005 and abs(result['bbox'][0][2]) < 0.005",
+      "description": "bbox minimum at (100, 200, 0)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_xyz_to_binary_ply",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_xyz_to_binary_ply",
+        "file": "survey.xyz"
+      }
+    ],
+    "gui_plan": [
+      "confirm ASCII import",
+      "read bbox min in Properties",
+      "select cloud",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "Edit > Colors > Height Ramp",
+      "choose Z",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 14
+  }
+}

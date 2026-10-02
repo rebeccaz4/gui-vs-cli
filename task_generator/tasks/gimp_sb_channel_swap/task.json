@@ -1,0 +1,106 @@
+{
+  "id": "gimp_sb_channel_swap",
+  "app": "gimp",
+  "task": "Open /home/user/Documents/photo.png in GIMP (800x600: red top-left, green top-right, blue bottom-left, yellow bottom-right quadrants). In the left half of the image (x < 400) swap the red and blue colour channels (green unchanged). In the right half (x >= 400) swap the green and blue colour channels (red unchanged). Export the result as TIFF to /home/user/Documents/channel_swap.tiff (800x600).",
+  "env": {
+    "files": [
+      {
+        "filename": "photo.png",
+        "sandbox_path": "/home/user/Documents/photo.png"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/channel_swap.tiff",
+      "key": "exists",
+      "expected": true,
+      "description": "channel_swap.tiff exists"
+    },
+    {
+      "command": "check-file-format /home/user/Documents/channel_swap.tiff TIFF",
+      "key": "match",
+      "expected": true,
+      "description": "TIFF file"
+    },
+    {
+      "command": "check-file-dimensions /home/user/Documents/channel_swap.tiff 800 600",
+      "key": "match",
+      "expected": true,
+      "description": "800x600"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 200 150 0 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "top-left: red became blue (R<->B)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 200 450 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-left: blue became red (R<->B)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 395 450 255 0 0 20",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-left up to x=399"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 600 150 0 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "top-right: green became blue (G<->B)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 600 450 255 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-right: yellow became magenta (G<->B)"
+    },
+    {
+      "command": "check-pixel-color-file /home/user/Documents/channel_swap.tiff 405 450 255 0 255 20",
+      "key": "match",
+      "expected": true,
+      "description": "bottom-right from x=400"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "gimp_multi_format_export",
+    "reused_inputs": [
+      {
+        "from_task": "gimp_crop_rotate_export",
+        "file": "photo.png"
+      }
+    ],
+    "gui_plan": [
+      "File > Open (Ctrl+O)",
+      "type input path",
+      "Open",
+      "Rectangle Select tool (R)",
+      "drag a rough rectangle",
+      "tool options: type position x, y",
+      "type size w x h",
+      "Colors > Components > Channel Mixer",
+      "Red channel: type Red 0",
+      "Red channel: type Blue 1",
+      "Blue channel: type Red 1",
+      "Blue channel: type Blue 0",
+      "OK",
+      "Select > Invert (Ctrl+I)",
+      "Colors > Components > Channel Mixer",
+      "Green channel: type Green 0",
+      "Green channel: type Blue 1",
+      "Blue channel: type Green 1",
+      "Blue channel: type Blue 0",
+      "OK",
+      "File > Export As (Shift+Ctrl+E)",
+      "type output path (extension picks the format)",
+      "Export",
+      "confirm format options (Export)"
+    ],
+    "gui_step_estimate": 24
+  }
+}

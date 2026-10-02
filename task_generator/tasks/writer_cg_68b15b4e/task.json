@@ -1,0 +1,31 @@
+{
+  "id": "writer_cg_68b15b4e",
+  "app": "libreoffice_writer",
+  "task": "I'm working on a short story manuscript and need it in standard submission format. Set the whole document to 12pt Courier New, double-spaced, 1-inch margins on all sides. The title 'The Lighthouse Keeper' should be centered about a third of the way down the first page, with my name 'Sarah J. Mitchell' centered below it. Add a header with my last name and page number on the right side, starting from page 2. The file to work on is /home/user/Desktop/lighthouse_keeper.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "lighthouse_keeper.docx",
+        "sandbox_path": "/home/user/Desktop/lighthouse_keeper.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "68b15b4e-aa9b-56e1-b2fe-d7c5486523b1",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

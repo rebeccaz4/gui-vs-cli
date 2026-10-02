@@ -1,0 +1,31 @@
+{
+  "id": "calc_cg_826a90a9",
+  "app": "libreoffice_calc",
+  "task": "Design a quiz/test generator and grader. Create a question bank with answers on a hidden sheet, a test sheet that randomly selects 10 questions, an answer input area, and auto-grading formulas that compare answers and calculate the score. Add conditional formatting to show correct (green) and incorrect (red) answers, and display the final grade. The file to work on is /home/user/calc_wf_058.xlsx.",
+  "env": {
+    "files": [
+      {
+        "filename": "calc_wf_058.xlsx",
+        "sandbox_path": "/home/user/calc_wf_058.xlsx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "826a90a9-43ba-58e5-987c-5ef07c9ca178",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "audacity_sa_speed_tone",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/voice.wav loaded (a 3-second mono clip). Change its speed so that it lasts exactly 2.0 s (the pitch rises with the speed, as on a tape machine). Directly after it, add a 1.0-second 1000 Hz sine tone. Export the result as a mono Ogg Vorbis file to /home/user/Music/voice_fast.ogg.",
+  "env": {
+    "files": [
+      {
+        "filename": "voice.wav",
+        "sandbox_path": "/home/user/Music/voice.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/voice_fast.ogg",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/voice_fast.ogg vorbis",
+      "key": "match",
+      "expected": true,
+      "description": "Ogg Vorbis"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/voice_fast.ogg 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/voice_fast.ogg 2.95",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 2.95 s"
+    },
+    {
+      "command": "export-info /home/user/Music/voice_fast.ogg",
+      "eval": "float(result['format']['duration']) <= 3.05",
+      "description": "length <= 3.05 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/voice_fast.ogg 0.2 1.8 393 3",
+      "key": "match",
+      "expected": true,
+      "description": "clip sped up 1.5x (262 -> 393 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/voice_fast.ogg 2.2 2.8 1000 3",
+      "key": "match",
+      "expected": true,
+      "description": "1000 Hz tone after the clip"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_export_ogg_vorbis",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_export_ogg_vorbis",
+        "file": "voice.wav"
+      }
+    ],
+    "gui_plan": [
+      "Select All",
+      "Effect > Change Speed",
+      "type multiplier 1.5",
+      "OK",
+      "press End (cursor to end)",
+      "Generate > Tone",
+      "type 1000 Hz",
+      "type 1 s",
+      "OK",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 15
+  }
+}

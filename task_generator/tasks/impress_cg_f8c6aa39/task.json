@@ -1,0 +1,31 @@
+{
+  "id": "impress_cg_f8c6aa39",
+  "app": "libreoffice_impress",
+  "task": "Apply bold to all text in the presentation, change all title font sizes to 38pt, and underline the title on slide 1 with a solid underline. The file to work on is /home/user/osworld_impress_bold_all_title_size_underline_010.pptx.",
+  "env": {
+    "files": [
+      {
+        "filename": "osworld_impress_bold_all_title_size_underline_010.pptx",
+        "sandbox_path": "/home/user/osworld_impress_bold_all_title_size_underline_010.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ],
+  "metadata": {
+    "source": "CUA-Gym (arXiv 2605.25624), https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "source_task_id": "f8c6aa39-68d8-53b7-a7af-2b2fa25c18f4",
+    "source_license": "CC-BY-4.0",
+    "source_difficulty": "hard",
+    "initial_state_reward": 0.0,
+    "main_file_rule": "setup-launch",
+    "main_file_type_matches_app": true,
+    "reward_outputs_not_named_in_task": []
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "audacity_sa_pitch_speed_parts",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/source_a4.wav loaded (a 3-second mono A4 tone). Lower the pitch of 1.0-2.0 s by 5 semitones without changing its length, and play the last second (2.0-3.0 s) at double speed so that it becomes 0.5 s long and one octave higher. The first second stays unchanged. Export as a mono 44100 Hz 16-bit WAV file to /home/user/Music/a4_edit.wav.",
+  "env": {
+    "files": [
+      {
+        "filename": "source_a4.wav",
+        "sandbox_path": "/home/user/Music/source_a4.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/a4_edit.wav",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/a4_edit.wav pcm_s16le",
+      "key": "match",
+      "expected": true,
+      "description": "16-bit PCM WAV"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/a4_edit.wav 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/a4_edit.wav 44100",
+      "key": "match",
+      "expected": true,
+      "description": "44100 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/a4_edit.wav 2.45",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 2.45 s"
+    },
+    {
+      "command": "export-info /home/user/Music/a4_edit.wav",
+      "eval": "float(result['format']['duration']) <= 2.55",
+      "description": "length <= 2.55 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/a4_edit.wav 0.2 0.8 440 3",
+      "key": "match",
+      "expected": true,
+      "description": "0-1 s unchanged (440 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/a4_edit.wav 1.2 1.8 329.6 3",
+      "key": "match",
+      "expected": true,
+      "description": "1-2 s down 5 semitones (329.6 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/a4_edit.wav 2.1 2.4 880 3",
+      "key": "match",
+      "expected": true,
+      "description": "last part at double speed (880 Hz)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_pitch_change",
+    "reused_inputs": [
+      {
+        "from_task": "audacity_gap_pitch_change",
+        "file": "source_a4.wav"
+      }
+    ],
+    "gui_plan": [
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Effect > Change Pitch",
+      "type -5 semitones",
+      "OK",
+      "click selection start field",
+      "type start time",
+      "click selection end field",
+      "type end time",
+      "Effect > Change Speed",
+      "type 100 %",
+      "OK",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 20
+  }
+}

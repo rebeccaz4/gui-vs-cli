@@ -1,0 +1,102 @@
+{
+  "id": "audacity_sa_chirp_sequence",
+  "app": "audacity",
+  "task": "Audacity is open with an empty project. Set the project rate to 48000 Hz. Generate a 4.0-second linear sine chirp from 200 Hz to 4000 Hz with amplitude 0.8 (start and end), then append 1.0 s of silence, then append a 1.0-second 1000 Hz sine tone with amplitude 0.5, all in one mono track (6.0 s in total). Export it as a mono FLAC file at 48000 Hz to /home/user/Music/chirp_seq.flac.",
+  "env": {
+    "files": []
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Music/chirp_seq.flac",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-export-codec /home/user/Music/chirp_seq.flac flac",
+      "key": "match",
+      "expected": true,
+      "description": "FLAC"
+    },
+    {
+      "command": "check-export-channels /home/user/Music/chirp_seq.flac 1",
+      "key": "match",
+      "expected": true,
+      "description": "mono"
+    },
+    {
+      "command": "check-export-sample-rate /home/user/Music/chirp_seq.flac 48000",
+      "key": "match",
+      "expected": true,
+      "description": "48000 Hz"
+    },
+    {
+      "command": "check-export-duration-min /home/user/Music/chirp_seq.flac 5.95",
+      "key": "match",
+      "expected": true,
+      "description": "length >= 5.95 s"
+    },
+    {
+      "command": "export-info /home/user/Music/chirp_seq.flac",
+      "eval": "float(result['format']['duration']) <= 6.05",
+      "description": "length <= 6.05 s"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/chirp_seq.flac 1.95 2.05 2100 10",
+      "key": "match",
+      "expected": true,
+      "description": "chirp is linear (2100 Hz half-way; exponential would be ~890 Hz)"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/chirp_seq.flac 3.85 3.95 3860 5",
+      "key": "match",
+      "expected": true,
+      "description": "chirp near 4000 Hz at its end"
+    },
+    {
+      "command": "check-export-region-silent /home/user/Music/chirp_seq.flac 4.05 4.95 -40",
+      "key": "match",
+      "expected": true,
+      "description": "1 s of silence after the chirp"
+    },
+    {
+      "command": "check-export-dominant-freq /home/user/Music/chirp_seq.flac 5.1 5.9 1000 3",
+      "key": "match",
+      "expected": true,
+      "description": "1000 Hz tone at the end"
+    },
+    {
+      "command": "check-export-region-rms-db /home/user/Music/chirp_seq.flac 5.1 5.9 -10.5 -7.5",
+      "key": "match",
+      "expected": true,
+      "description": "tone amplitude 0.5 (~-9 dBFS RMS)"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "audacity_gap_generate_silence_chirp",
+    "reused_inputs": [],
+    "gui_plan": [
+      "project rate dropdown",
+      "choose 48000",
+      "Generate > Chirp",
+      "type 200 / 4000 Hz",
+      "amplitudes 0.8",
+      "Linear, 4 s",
+      "OK",
+      "Generate > Silence",
+      "type 1 s",
+      "OK",
+      "Generate > Tone",
+      "type 1000 Hz, 0.5, 1 s",
+      "OK",
+      "File > Export > Export Audio (Ctrl+Shift+E)",
+      "type output path",
+      "choose file type",
+      "set format options",
+      "Save",
+      "confirm metadata dialog"
+    ],
+    "gui_step_estimate": 19
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "renderdoc_sa_mesh_prefs_size",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set Mesh_CurrentStage = 'GSOut', Mesh_ShowNormals = true, Mesh_Wireframe = false and Mesh_SolidShadeMode = 'flat'. In /home/user/captures, delete the smallest capture file, and set the recent capture list to the remaining captures (absolute paths) from largest to smallest. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "tiny.rdc",
+        "sandbox_path": "/home/user/captures/tiny.rdc"
+      },
+      {
+        "filename": "medium.rdc",
+        "sandbox_path": "/home/user/captures/medium.rdc"
+      },
+      {
+        "filename": "large.rdc",
+        "sandbox_path": "/home/user/captures/large.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting Mesh_CurrentStage GSOut",
+      "key": "match",
+      "expected": true,
+      "description": "Mesh_CurrentStage = GSOut"
+    },
+    {
+      "command": "check-setting Mesh_ShowNormals true",
+      "key": "match",
+      "expected": true,
+      "description": "Mesh_ShowNormals = true"
+    },
+    {
+      "command": "check-setting Mesh_Wireframe false",
+      "key": "match",
+      "expected": true,
+      "description": "Mesh_Wireframe = false"
+    },
+    {
+      "command": "check-setting Mesh_SolidShadeMode flat",
+      "key": "match",
+      "expected": true,
+      "description": "Mesh_SolidShadeMode = flat"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/tiny.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/tiny.rdc"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 2",
+      "key": "match",
+      "expected": true,
+      "description": "two captures left"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/large.rdc', '/home/user/captures/medium.rdc']",
+      "description": "RecentCaptureFiles = large.rdc, medium.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_mesh_output_view",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_mesh_output_view",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "tiny.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "medium.rdc"
+      },
+      {
+        "from_task": "renderdoc_capture_size_audit",
+        "file": "large.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "list view (sizes)",
+      "select the smallest",
+      "Delete",
+      "confirm",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 11
+  }
+}

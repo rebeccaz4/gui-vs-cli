@@ -1,0 +1,15 @@
+{
+  "task_id": "xapp_writer_f34b89a5",
+  "files": [
+    {
+      "filename": "workflow.docx",
+      "sandbox_path": "/home/user/Desktop/workflow.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "raw_photo.jpg",
+      "sandbox_path": "/home/user/Desktop/raw_photo.jpg",
+      "type": "jpg"
+    }
+  ]
+}

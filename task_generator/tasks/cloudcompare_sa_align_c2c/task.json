@@ -1,0 +1,81 @@
+{
+  "id": "cloudcompare_sa_align_c2c",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/compared.ply and /home/user/Documents/reference.ply in CloudCompare. reference.ply is the same planar patch as compared.ply, shifted along Z. Move compared.ply along Z so that it lies on reference.ply, then compute the cloud-to-cloud distances from compared.ply to reference.ply, and save compared.ply (moved, with the distance scalar field, whose name must contain 'C2C' as in CloudCompare's default 'C2C absolute distances') as an ASCII PLY at /home/user/Documents/compared_aligned.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "compared.ply",
+        "sandbox_path": "/home/user/Documents/compared.ply"
+      },
+      {
+        "filename": "reference.ply",
+        "sandbox_path": "/home/user/Documents/reference.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/compared_aligned.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/compared_aligned.ply 1000",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 1000 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/compared_aligned.ply -5.01 -5.01 1.9 5.01 5.01 2.1",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/compared_aligned.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "PLY ascii"
+    },
+    {
+      "command": "cloud-info /home/user/Documents/compared_aligned.ply",
+      "eval": "any('c2c' in p.lower() for p in result['properties'])",
+      "description": "scalar field 'c2c' saved"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_gap_cloud_cloud_distance",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_gap_cloud_cloud_distance",
+        "file": "compared.ply"
+      },
+      {
+        "from_task": "cloudcompare_gap_cloud_cloud_distance",
+        "file": "reference.ply"
+      }
+    ],
+    "gui_plan": [
+      "read Z ranges in Properties",
+      "select compared.ply",
+      "Edit > Apply transformation",
+      "type translation / rotation values",
+      "OK",
+      "select both",
+      "Tools > Distances > Cloud/Cloud Dist.",
+      "set reference",
+      "Compute",
+      "OK",
+      "select entity",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 16
+  }
+}

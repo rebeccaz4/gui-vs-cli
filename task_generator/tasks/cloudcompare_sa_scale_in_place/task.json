@@ -1,0 +1,76 @@
+{
+  "id": "cloudcompare_sa_scale_in_place",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/small.ply in CloudCompare (250 points, bounding box (0, 0, 0)..(22, 22, 22)). Scale it uniformly by 2 about the center of its bounding box (not about the origin), compute per-point normals, and save it as an ASCII PLY at /home/user/Documents/small_big.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "small.ply",
+        "sandbox_path": "/home/user/Documents/small.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/small_big.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/small_big.ply 250",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 250 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/small_big.ply -11.01 -11.01 -11.01 33.01 33.01 33.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/small_big.ply x 43.9",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 43.9"
+    },
+    {
+      "command": "check-has-normals /home/user/Documents/small_big.ply",
+      "key": "has_normals",
+      "expected": true,
+      "description": "normals saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/small_big.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "PLY ascii"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "cloudcompare_scale_cloud_2x",
+    "reused_inputs": [
+      {
+        "from_task": "cloudcompare_scale_cloud_2x",
+        "file": "small.ply"
+      }
+    ],
+    "gui_plan": [
+      "select cloud",
+      "Edit > Multiply/Scale",
+      "type factor",
+      "set 'keep in place' option",
+      "OK",
+      "Edit > Normals > Compute",
+      "OK",
+      "File > Save (Ctrl+S)",
+      "type output path",
+      "choose PLY file type",
+      "Save",
+      "choose PLY encoding and confirm"
+    ],
+    "gui_step_estimate": 12
+  }
+}

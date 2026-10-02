@@ -1,0 +1,133 @@
+{
+  "id": "renderdoc_sa_privacy_cleanup",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Turn off analytics completely (total opt-out, no manual check) and automatic update checks, and disallow process injection. In /home/user/captures, delete every corrupt capture (a file that does not start with RenderDoc's 4-byte capture signature 'RDOC'; RenderDoc reports its file format as unrecognised), and set the recent capture list to the remaining captures (absolute paths) in alphabetical order. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "scene_a.rdc",
+        "sandbox_path": "/home/user/captures/scene_a.rdc"
+      },
+      {
+        "filename": "scene_b.rdc",
+        "sandbox_path": "/home/user/captures/scene_b.rdc"
+      },
+      {
+        "filename": "scene_c.rdc",
+        "sandbox_path": "/home/user/captures/scene_c.rdc"
+      },
+      {
+        "filename": "broken_x.rdc",
+        "sandbox_path": "/home/user/captures/broken_x.rdc"
+      },
+      {
+        "filename": "broken_y.rdc",
+        "sandbox_path": "/home/user/captures/broken_y.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting Analytics_TotalOptOut true",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_TotalOptOut = true"
+    },
+    {
+      "command": "check-setting Analytics_ManualCheck false",
+      "key": "match",
+      "expected": true,
+      "description": "Analytics_ManualCheck = false"
+    },
+    {
+      "command": "check-setting CheckUpdate_AllowChecks false",
+      "key": "match",
+      "expected": true,
+      "description": "CheckUpdate_AllowChecks = false"
+    },
+    {
+      "command": "check-setting AllowProcessInject false",
+      "key": "match",
+      "expected": true,
+      "description": "AllowProcessInject = false"
+    },
+    {
+      "command": "check-capture-count /home/user/captures 3",
+      "key": "match",
+      "expected": true,
+      "description": "three captures left"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/broken_x.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/broken_x.rdc"
+    },
+    {
+      "command": "check-file-exists /home/user/captures/broken_y.rdc",
+      "key": "exists",
+      "expected": false,
+      "description": "removed: /home/user/captures/broken_y.rdc"
+    },
+    {
+      "command": "recent-captures",
+      "eval": "result['files'] == ['/home/user/captures/scene_a.rdc', '/home/user/captures/scene_b.rdc', '/home/user/captures/scene_c.rdc']",
+      "description": "RecentCaptureFiles = scene_a.rdc, scene_b.rdc, scene_c.rdc"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_disable_telemetry",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_disable_telemetry",
+        "file": "UI.config"
+      },
+      {
+        "from_task": "renderdoc_cleanup_broken_captures",
+        "file": "scene_a.rdc"
+      },
+      {
+        "from_task": "renderdoc_cleanup_broken_captures",
+        "file": "scene_b.rdc"
+      },
+      {
+        "from_task": "renderdoc_cleanup_broken_captures",
+        "file": "scene_c.rdc"
+      },
+      {
+        "from_task": "renderdoc_cleanup_broken_captures",
+        "file": "broken_x.rdc"
+      },
+      {
+        "from_task": "renderdoc_cleanup_broken_captures",
+        "file": "broken_y.rdc"
+      }
+    ],
+    "gui_plan": [
+      "open file manager at /home/user/captures (Ctrl+L)",
+      "type path + Enter",
+      "RenderDoc: File > Open a suspect capture",
+      "dismiss error",
+      "select the corrupt files",
+      "Delete",
+      "confirm",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 12
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "task_id": "xapp_tb_osw_d9b7c649",
+  "files": [
+    {
+      "filename": "thunderbird-profile.tar.gz",
+      "sandbox_path": "/home/user/thunderbird-profile.tar.gz",
+      "type": "gz"
+    }
+  ]
+}

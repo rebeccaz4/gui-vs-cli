@@ -1,0 +1,10 @@
+{
+  "task_id": "gimp_sb_gradient_stripe",
+  "files": [
+    {
+      "filename": "three_stripes.png",
+      "sandbox_path": "/home/user/Documents/three_stripes.png",
+      "type": "png"
+    }
+  ]
+}

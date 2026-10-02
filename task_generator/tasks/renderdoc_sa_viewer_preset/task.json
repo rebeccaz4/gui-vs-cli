@@ -1,0 +1,101 @@
+{
+  "id": "renderdoc_sa_viewer_preset",
+  "app": "renderdoc",
+  "task": "RenderDoc settings are stored in /home/user/.local/share/qrenderdoc/UI.config. Set the buffer formatter to show hex, use a fixed stride of 48 and show byte ranges. Then save capture settings for launching /usr/bin/glxgears with working directory /home/user, command-line arguments '-fullscreen', and the options Capture Callstacks and Ref All Resources enabled, to the file /home/user/captures/viewer.cap, and make it the only entry of the recent capture-settings list. Keep rdocConfigData = 1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData kept"
+    },
+    {
+      "command": "check-setting BufferFormatter_ShowHex true",
+      "key": "match",
+      "expected": true,
+      "description": "BufferFormatter_ShowHex = true"
+    },
+    {
+      "command": "check-setting BufferFormatter_FixedStride 48",
+      "key": "match",
+      "expected": true,
+      "description": "BufferFormatter_FixedStride = 48"
+    },
+    {
+      "command": "check-setting BufferFormatter_ShowByteRange true",
+      "key": "match",
+      "expected": true,
+      "description": "BufferFormatter_ShowByteRange = true"
+    },
+    {
+      "command": "check-cap-executable /home/user/captures/viewer.cap /usr/bin/glxgears",
+      "key": "match",
+      "expected": true,
+      "description": "preset executable"
+    },
+    {
+      "command": "check-cap-working-dir /home/user/captures/viewer.cap /home/user",
+      "key": "match",
+      "expected": true,
+      "description": "preset working directory"
+    },
+    {
+      "command": "check-cap-command-line /home/user/captures/viewer.cap -fullscreen",
+      "key": "match",
+      "expected": true,
+      "description": "preset arguments"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/viewer.cap captureCallstacks true",
+      "key": "match",
+      "expected": true,
+      "description": "Capture Callstacks on"
+    },
+    {
+      "command": "check-cap-option /home/user/captures/viewer.cap refAllResources true",
+      "key": "match",
+      "expected": true,
+      "description": "Ref All Resources on"
+    },
+    {
+      "command": "check-setting RecentCaptureSettings '[\"/home/user/captures/viewer.cap\"]'",
+      "key": "match",
+      "expected": true,
+      "description": "RecentCaptureSettings = [\"/home/user/captures/viewer.cap\"]"
+    }
+  ],
+  "metadata": {
+    "source": "self-authored (update/SELF_AUTHORED_PLAN.md)",
+    "replaces": "renderdoc_gap_buffer_viewer_defaults",
+    "reused_inputs": [
+      {
+        "from_task": "renderdoc_gap_buffer_viewer_defaults",
+        "file": "UI.config"
+      }
+    ],
+    "gui_plan": [
+      "RenderDoc: Window > Launch Application",
+      "type executable",
+      "type working directory / arguments",
+      "set option checkboxes",
+      "Save Settings",
+      "type .cap path",
+      "Save",
+      "close RenderDoc (writes UI.config)",
+      "open UI.config in the text editor (file manager: Ctrl+L, path, Open With)",
+      "confirm",
+      "Ctrl+A",
+      "type the edited JSON",
+      "Ctrl+S"
+    ],
+    "gui_step_estimate": 13
+  }
+}
