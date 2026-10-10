@@ -1,7 +1,7 @@
 {
   "id": "obs_scene_split_refactor",
   "app": "obs",
-  "task": "The scene collection already contains one scene named 'Everything' with 6 sources: 'Webcam', 'Desktop', 'Game Capture', 'Intro Logo', 'BRB Text', 'End Card'. Your task is to refactor this monolithic scene into three focused scenes: 1. Create a new scene named exactly 'Playing'. Add sources named exactly 'Webcam', 'Desktop', 'Game Capture' to it. 2. Create a new scene named exactly 'BRB'. Add a source named exactly 'BRB Text' to it. 3. Create a new scene named exactly 'End'. Add sources named exactly 'End Card' and 'Intro Logo' to it. 4. Delete the original 'Everything' scene. 5. The final collection must have exactly 3 scenes: 'Playing', 'BRB', 'End'. All sources must be visible. 6. You may use any source type from the Add Source menu when re-creating sources; only the names matter. 7.",
+  "task": "The scene collection already contains one scene named 'Everything' with 6 sources: 'Webcam', 'Desktop', 'Game Capture', 'Intro Logo', 'BRB Text', 'End Card'. Your task is to refactor this monolithic scene into three focused scenes: 1. Create a new scene named exactly 'Playing'. Add sources named exactly 'Webcam', 'Desktop', 'Game Capture' to it. 2. Create a new scene named exactly 'BRB'. Add a source named exactly 'BRB Text' to it. 3. Create a new scene named exactly 'End'. Add sources named exactly 'End Card' and 'Intro Logo' to it. 4. Delete the original 'Everything' scene. 5. The final collection must have exactly 3 scenes: 'Playing', 'BRB', 'End'. All sources must be visible. 6. You may use any source type from the Add Source menu when re-creating sources; only the names matter. 7. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {

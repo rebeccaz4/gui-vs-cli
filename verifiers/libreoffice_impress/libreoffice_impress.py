@@ -119,6 +119,25 @@ def _elem_all_text(elem) -> str:
     return "".join(elem.itertext())
 
 
+def _page_display_flag(root, page, attr: str):
+    """[fix 2026-10-09] Effective presentation:display-* flag of a slide ('true'/'false'/None).
+
+    LibreOffice writes the Header and Footer dialog state ("Footer", "Slide number",
+    "Do not show on first slide") on the slide's drawing-page style in content.xml, e.g.
+    <style:drawing-page-properties presentation:display-footer="false" .../>.
+    """
+    style_ns, pres_ns, draw_ns = ODF_NS["style"], ODF_NS["presentation"], ODF_NS["draw"]
+    sname = page.get(f"{{{draw_ns}}}style-name")
+    if not sname:
+        return None
+    for st in root.iter(f"{{{style_ns}}}style"):
+        if st.get(f"{{{style_ns}}}name") == sname and st.get(f"{{{style_ns}}}family") == "drawing-page":
+            props = st.find(f"{{{style_ns}}}drawing-page-properties")
+            if props is not None:
+                return props.get(f"{{{pres_ns}}}{attr}")
+    return None
+
+
 def _find_odp_file() -> str | None:
     """Try to find a recently saved .odp file in common locations."""
     search_dirs = [
@@ -670,6 +689,14 @@ class LibreOfficeImpressVerifier:
         page_layouts = root.findall(
             ".//{urn:oasis:names:tc:opendocument:xmlns:style:1.0}page-layout"
         )
+        # [fix 2026-10-09] LibreOffice writes the handout layout (A4 portrait, "PM0") first; the slide
+        # size is the page layout referenced by the slide master (style:master-page/@style:page-layout-name).
+        _sns = "{urn:oasis:names:tc:opendocument:xmlns:style:1.0}"
+        _master = root.find(f".//{_sns}master-page")
+        _ml = _master.get(f"{_sns}page-layout-name") if _master is not None else None
+        if _ml:
+            page_layouts = ([pl for pl in page_layouts if pl.get(f"{_sns}name") == _ml]
+                            + [pl for pl in page_layouts if pl.get(f"{_sns}name") != _ml])
         for pl in page_layouts:
             props = pl.find(
                 "{urn:oasis:names:tc:opendocument:xmlns:style:1.0}page-layout-properties"
@@ -758,6 +785,8 @@ class LibreOfficeImpressVerifier:
                 "index": i,
                 "name": page.get(f"{{{ODF_NS['draw']}}}name", f"Slide{i+1}"),
                 "use_footer": page.get(f"{{{pres_ns}}}use-footer-name"),
+                "display_footer": _page_display_flag(root, page, "display-footer"),
+                "display_page_number": _page_display_flag(root, page, "display-page-number"),
                 "use_header": page.get(f"{{{pres_ns}}}use-header-name"),
                 "use_date_time": page.get(f"{{{pres_ns}}}use-date-time-name"),
                 "visibility": page.get(f"{{{pres_ns}}}visibility", "visible"),
@@ -776,7 +805,9 @@ class LibreOfficeImpressVerifier:
             return {"error": f"Slide index {slide_index} out of range (have {len(pages)})"}
         page = pages[slide_index]
         footer_name = page.get("use_footer")
-        has_footer = bool(footer_name)
+        # [fix 2026-10-09] a footer declaration hidden by display-footer="false" ("Do not show on
+        # first slide") is not shown on the slide
+        has_footer = bool(footer_name) and page.get("display_footer") != "false"
         text_match = True
         actual_text = None
         if expected_text is not None:
@@ -808,7 +839,13 @@ class LibreOfficeImpressVerifier:
         page = pages[slide_index]
         # Look for <text:page-number> anywhere within the slide
         has_pn = len(page.findall(".//text:page-number", ODF_NS)) > 0
-        return {"match": has_pn, "has_page_number": has_pn, "index": slide_index}
+        # [fix 2026-10-09] the Header and Footer dialog's "Slide number" is stored as
+        # presentation:display-page-number="true" on the slide's drawing-page style (the number itself
+        # is the master's page-number placeholder)
+        display_pn = _page_display_flag(root, page, "display-page-number")
+        has_pn = has_pn or display_pn == "true"
+        return {"match": has_pn, "has_page_number": has_pn, "display_page_number": display_pn,
+                "index": slide_index}
 
     def parse_slide_animations(self, file_path: str, slide_index: int) -> dict:
         """Parse <anim:*> elements inside a slide's <draw:page> to list animations."""
@@ -889,12 +926,38 @@ class LibreOfficeImpressVerifier:
 
         pres_ns = ODF_NS["presentation"]
         xlink_ns = ODF_NS["xlink"]
+        # [fix 2026-10-09] slide lookup used to resolve "#page2" / "#Slide 2" / "#<slide name>" hrefs
+        slide_names = [pg.get(f"{{{ODF_NS['draw']}}}name") for pg in pages]
+        slide_titles = []
+        for pg in pages:
+            t = None
+            for fr in pg.iter():
+                if fr.get(f"{{{pres_ns}}}class") == "title":
+                    t = _elem_all_text(fr).strip()
+                    break
+            slide_titles.append(t)
+
+        def _resolve(href):
+            if not href or not href.startswith("#"):
+                return None
+            name = href[1:]
+            if name in slide_names:
+                return slide_names.index(name)
+            import re as _re
+            m = _re.fullmatch(r"(?:page|slide)\s*(\d+)", name.strip(), _re.I)
+            if m and 1 <= int(m.group(1)) <= len(pages):
+                return int(m.group(1)) - 1
+            return None
+
         shapes_info = []
         # Iterate all direct-and-nested shapes that can host event-listener
         for shape_tag in ("draw:custom-shape", "draw:rect", "draw:frame",
                           "draw:text-box", "draw:ellipse", "draw:polygon"):
             for shape in page.findall(f".//{shape_tag}", ODF_NS):
                 ev = shape.find("presentation:event-listener", ODF_NS)
+                if ev is None:
+                    # [fix 2026-10-09] LibreOffice writes <office:event-listeners><presentation:event-listener .../>
+                    ev = shape.find("office:event-listeners/presentation:event-listener", ODF_NS)
                 text = _elem_all_text(shape).strip()
                 info = {
                     "shape_tag": shape_tag,
@@ -912,6 +975,11 @@ class LibreOfficeImpressVerifier:
                         # Sometimes stored via xlink:href attribute on the shape wrapper
                         info["jump_target"] = shape.get(f"{{{xlink_ns}}}href")
                     info["href"] = info["jump_target"]
+                    ti = _resolve(info["jump_target"])
+                    if ti is not None:
+                        info["target_index"] = ti
+                        info["target_name"] = slide_names[ti]
+                        info["target_title"] = slide_titles[ti]
                 shapes_info.append(info)
         return {"index": slide_index, "shapes": shapes_info, "count": len(shapes_info),
                 "file": file_path}
@@ -940,6 +1008,15 @@ class LibreOfficeImpressVerifier:
                 href_norm = href.lstrip("#").lower().strip()
                 if target_norm and (target_norm == href_norm or target_norm in href_norm):
                     return {"match": True, "shape_text": txt, "href": href, "action": action}
+                # [fix 2026-10-09] href resolved to a slide: compare the target with that slide's title
+                # or name, or with its number ("Slide 2" / "2")
+                if sh.get("target_index") is not None and target_norm:
+                    ti = sh["target_index"]
+                    title = " ".join((sh.get("target_title") or "").split()).lower()
+                    name = (sh.get("target_name") or "").lower().strip()
+                    if target_norm in (title, name, f"slide {ti + 1}", str(ti + 1)):
+                        return {"match": True, "shape_text": txt, "href": href, "action": action,
+                                "target_index": ti, "target_title": sh.get("target_title")}
         return {
             "match": False,
             "shape_text": shape_text,
@@ -971,14 +1048,16 @@ class LibreOfficeImpressVerifier:
 
         OOR_NS = "http://openoffice.org/2001/registry"
         matches = []
-        for item in root.findall(f"{{{OOR_NS}}}item"):
+        # LibreOffice writes <item>/<prop>/<value> without a namespace (only the oor:*
+        # attributes are namespaced). Accept both forms.
+        for item in root.findall(f"{{{OOR_NS}}}item") + root.findall("item"):
             path = item.get(f"{{{OOR_NS}}}path")
             if path != item_path:
                 continue
-            for prop in item.findall(f"{{{OOR_NS}}}prop"):
+            for prop in item.findall(f"{{{OOR_NS}}}prop") + item.findall("prop"):
                 name = prop.get(f"{{{OOR_NS}}}name")
                 op = prop.get(f"{{{OOR_NS}}}op")
-                value_elems = prop.findall(f"{{{OOR_NS}}}value")
+                value_elems = prop.findall(f"{{{OOR_NS}}}value") + prop.findall("value")
                 value_texts = [_elem_all_text(v).strip() for v in value_elems]
                 value = value_texts[0] if len(value_texts) == 1 else value_texts
                 if prop_name is None or name == prop_name:
@@ -1014,6 +1093,24 @@ class LibreOfficeImpressVerifier:
             "expected": expected,
             "matches": info.get("matches", []),
         }
+
+    def check_registry_effective_value(self, item_path: str, prop_name: str, expected: str,
+                                       default: str, config_path: str | None = None) -> dict:
+        """Check the value LibreOffice actually uses: the user-profile override if one is
+        written, otherwise `default` (the value from LibreOffice's built-in schema)."""
+        info = self.parse_registry_value(item_path, prop_name, config_path)
+        if "error" in info:
+            return info
+        matches = info.get("matches", [])
+        if matches:
+            val = matches[-1].get("value")
+            actual = ",".join(val) if isinstance(val, list) else ("" if val is None else str(val))
+            source = "registry"
+        else:
+            actual, source = default, "schema-default"
+        return {"match": actual.strip().lower() == expected.strip().lower(),
+                "path": item_path, "prop": prop_name, "expected": expected,
+                "actual": actual, "source": source}
 
     def check_registry_prop_exists(self, item_path: str, prop_name: str,
                                    config_path: str | None = None) -> dict:
@@ -1213,6 +1310,9 @@ COMMANDS = {
     "check-registry-value": ("Check a registry prop has expected value (case-insensitive)",
         lambda v, args: v.check_registry_value(args[0], args[1], args[2],
                                                args[3] if len(args) > 3 else None)),
+    "check-registry-effective-value": ("Check a registry prop's effective value (override or schema default)",
+        lambda v, args: v.check_registry_effective_value(args[0], args[1], args[2], args[3],
+                                                         args[4] if len(args) > 4 else None)),
     "check-registry-prop-exists": ("Check a registry prop entry exists",
         lambda v, args: v.check_registry_prop_exists(args[0], args[1],
                                                      args[2] if len(args) > 2 else None)),

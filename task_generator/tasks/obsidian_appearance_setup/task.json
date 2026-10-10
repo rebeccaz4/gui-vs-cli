@@ -1,9 +1,18 @@
 {
   "id": "obsidian_appearance_setup",
   "app": "obsidian",
-  "task": "Open Obsidian with the vault at /home/user/Documents/ThemeVault. Using the Settings dialog, configure the appearance:\n\nChange the base theme to light mode (set theme to 'moonstone'), set the base font size to 18\n, set the accent color to '#E11D48' (a rose color).\n\nThen create a note called 'ThemeTest.md' in the vault root with body:\n\n# Theme Test\nThis note verifies the theme was changed.\nThe editor should now show light mode with larger text.\n#test #appearance",
+  "task": "Open Obsidian with the vault at /home/user/Documents/ThemeVault. Configure the appearance:\n\nChange the base theme to light mode (set theme to 'moonstone'), set the base font size to 18, and set the accent color to '#E11D48' (a rose color).\n\nThen create a note called 'ThemeTest.md' in the vault root with body:\n\n# Theme Test\nThis note verifies the theme was changed.\nThe editor should now show light mode with larger text.\n#test #appearance",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/ThemeVault/.obsidian/app.json"
+      },
+      {
+        "filename": "appearance.json",
+        "sandbox_path": "/home/user/Documents/ThemeVault/.obsidian/appearance.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -18,8 +27,8 @@
     },
     {
       "command": "appearance /home/user/Documents/ThemeVault accentColor",
-      "eval": "result.get('value') == '#E11D48'",
-      "description": "Accent color set to rose"
+      "eval": "(result.get('value') or '').lower() == '#e11d48'",
+      "description": "Accent color set to rose (#E11D48, case-insensitive)"
     },
     {
       "command": "check-note-exists /home/user/Documents/ThemeVault ThemeTest",
@@ -43,7 +52,7 @@
   "cli_feasibility": {
     "feasible": "yes",
     "is_gui_oriented": "yes",
-    "translation": "1) \u4f7f\u7528 Python \u6216\u76f4\u63a5\u7f16\u8f91 .obsidian/app.json \u8bbe\u7f6e theme='moonstone', baseFontSize=18, accentColor='#E11D48'; 2) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa ThemeTest.md",
-    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Using the Settings dialog'\u3001'Go to Settings > Appearance'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u76f4\u63a5\u4fee\u6539\u914d\u7f6e\u6587\u4ef6.json\u5e76\u521b\u5efanote"
+    "translation": "1) 使用 Python 或直接编辑 .obsidian/app.json 设置 theme='moonstone', baseFontSize=18, accentColor='#E11D48'; 2) 使用 cli-anything-obsidian vault create 创建 ThemeTest.md",
+    "reason": "任务描述包含'Using the Settings dialog'、'Go to Settings > Appearance'等GUI术语，但CLI agent可以直接修改配置文件.json并创建note"
   }
 }

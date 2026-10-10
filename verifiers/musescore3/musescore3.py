@@ -114,6 +114,19 @@ def _get_first_child_text(parent: ET.Element, tag_name: str) -> str | None:
     return None
 
 
+def _tpc_to_name(tpc_text: str) -> str | None:
+    """MuseScore tonal pitch class (-1..33, C=14, G=15, F=13) -> note name like 'C', 'Bb', 'F#'."""
+    try:
+        tpc = int(tpc_text)
+    except (TypeError, ValueError):
+        return None
+    if not -1 <= tpc <= 33:
+        return None
+    step = "FCGDAEB"[(tpc + 1) % 7]
+    acc = (tpc + 1) // 7 - 2
+    return step + ("#" * acc if acc > 0 else "b" * (-acc))
+
+
 def _iter_children(parent: ET.Element, tag_name: str):
     for child in parent:
         if _local(child.tag) == tag_name:
@@ -438,7 +451,7 @@ class MuseScoreVerifier:
             return [{"error": f"Cannot parse MuseScore XML in {path}"}]
         out = []
         for elem in root.iter():
-            if _local(elem.tag) != "Hairpin":
+            if _local(elem.tag).lower() != "hairpin":  # MuseScore 3 writes <HairPin>
                 continue
             sub = _get_first_child_text(elem, "subtype") or ""
             out.append({"subtype": sub})
@@ -468,9 +481,17 @@ class MuseScoreVerifier:
                 if _local(h.tag) != "Harmony":
                     continue
                 name = _get_first_child_text(h, "name") or ""
+                root_tpc = _get_first_child_text(h, "root") or ""
+                root_name = _tpc_to_name(root_tpc)
+                if root_name is not None:
+                    # MuseScore 3 stores the root as a TPC number (C=14) and only the
+                    # extension in <name> (e.g. '7'): rebuild the displayed symbol.
+                    name = root_name + name
+                    base_name = _tpc_to_name(_get_first_child_text(h, "base") or "")
+                    if base_name is not None:
+                        name += "/" + base_name
                 # Fallback: build from root + extension tags
                 if not name:
-                    root_tpc = _get_first_child_text(h, "root") or ""
                     name = root_tpc
                 out.append({"staff": si, "measure": mi, "text": name})
         return out

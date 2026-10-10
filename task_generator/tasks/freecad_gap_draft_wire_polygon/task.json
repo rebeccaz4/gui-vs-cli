@@ -1,7 +1,7 @@
 {
   "id": "freecad_gap_draft_wire_polygon",
   "app": "freecad",
-  "task": "FreeCAD is open with /home/user/Documents/draft_start.FCStd (empty document). Switch to the Draft workbench. Create a closed Draft Wire named exactly 'HexPath' whose 6 vertices form a regular hexagon on the XY plane, centered at the origin, with circumradius 50 mm (the first vertex at (50, 0, 0); vertices spaced 60 degrees apart). Then create a Draft Circle named exactly 'CenterHole' on the XY plane, centered at the origin, with radius 15 mm. Save the file.",
+  "task": "FreeCAD is open with /home/user/Documents/draft_start.FCStd (empty document). Create a closed Draft Wire named exactly 'HexPath' whose 6 vertices form a regular hexagon on the XY plane, centered at the origin, with circumradius 50 mm (the first vertex at (50, 0, 0); vertices spaced 60 degrees apart). Then create a Draft Circle named exactly 'CenterHole' on the XY plane, centered at the origin, with radius 15 mm. Save the file.",
   "env": {
     "files": [
       {

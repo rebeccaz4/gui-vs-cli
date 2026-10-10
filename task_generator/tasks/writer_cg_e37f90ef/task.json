@@ -1,7 +1,7 @@
 {
   "id": "writer_cg_e37f90ef",
   "app": "libreoffice_writer",
-  "task": "I wrote a heartfelt letter to my late grandfather that I want to read at the family memorial. Format it so it's easy to read aloud \u2014 larger font, generous line spacing, and mark the paragraphs where I want to pause with a special symbol. Also make it look dignified with a simple border and nice margins. The file to work on is /home/user/Desktop/memorial_letter.docx.",
+  "task": "I wrote a heartfelt letter to my late grandfather that I want to read at the family memorial. Format it so it's easy to read aloud — larger font, generous line spacing, and mark the paragraphs where I want to pause with a special symbol. Also make it look dignified with a simple border and nice margins. The file to work on is /home/user/Desktop/memorial_letter.docx.\n\nRequirements (save the file in place, keeping the Word .docx format):\n- Title 'For Grandpa Henry': Liberation Serif, 22 pt, bold, centered. Apply the font, size and bold to the title text itself, not only to a paragraph style.\n- Body: the six letter paragraphs (everything except the title, the byline 'Read by his grandson, Daniel Walker' and the date 'March 8, 2026') use 14 pt text and proportional line spacing of 1.8 (180%).\n- Pause marks: no '[PAUSE]' text may remain. After each paragraph that had a '[PAUSE]' tag, add a separate centered paragraph that contains only a short decorative symbol line of at most 20 characters, e.g. '— ✦ —'. There must be at least 3 of these marker lines.\n- Margins: 1.25 inch on all four sides.\n- Page border: a single-line border on all four sides of the page.",
   "env": {
     "files": [
       {

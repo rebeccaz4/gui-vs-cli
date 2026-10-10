@@ -104,7 +104,7 @@ def _collect_layers(element: ET.Element, prefix: str = "", parent: str = "") -> 
     sources = [element]
     for child in element:
         tag = child.tag.split("}")[-1] if "}" in child.tag else child.tag
-        if tag == "layers":
+        if tag in ("layers", "masks"):  # Krita 5 saves masks in a <masks> container
             sources.append(child)
 
     seen = set()

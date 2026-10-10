@@ -1,7 +1,7 @@
 {
   "id": "zotero_gap_advanced_search_export_results",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Find every item whose 'Item Type' is exactly 'Book'. Once the results appear, select all results and export them as BibTeX to the exact path /home/user/Documents/books_only.bib. After export the file must exist, contain exactly 1 BibTeX entry, and that entry's title must contain 'Deep Learning'. Leave Zotero running.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Export every item whose 'Item Type' is exactly 'Book' (and no other items) as BibTeX to the exact path /home/user/Documents/books_only.bib. After export the file must exist, contain exactly 1 BibTeX entry, and that entry's title must contain 'Deep Learning'. Leave Zotero running.",
   "env": {
     "files": [
       {

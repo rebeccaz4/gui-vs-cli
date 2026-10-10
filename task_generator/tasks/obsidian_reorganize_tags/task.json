@@ -3,7 +3,36 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/TagVault. The vault contains 6 notes that have no frontmatter or tags. Edit each note to add proper metadata:\n\n1. Edit 'Meeting Notes.md': Add frontmatter with type: meeting and date: 2025-03-01 at the top of the file. Add #meeting #work tags at the end of the note body on a new line.\n2. Edit 'Project Plan.md': Add frontmatter with type: project and status: active. Add #project #planning tags at the end.\n3. Edit 'Reading List.md': Add frontmatter with type: list and category: books. Add #reading #books tags at the end.\n4. Edit 'Quick Ideas.md': Add frontmatter with type: fleeting and priority: low. Add #ideas #fleeting tags at the end.\n5. Edit 'Weekly Review.md': Add frontmatter with type: review and week: 10. Add #review #weekly tags at the end.\n6. Edit 'Contacts.md': Add frontmatter with type: reference and category: people. Add #contacts #reference tags at the end.\n\nThen create 'Tag Index.md' in root with body:\n\n# Tag Index\n## By Type\n- meeting: [[Meeting Notes]]\n- project: [[Project Plan]]\n- list: [[Reading List]]\n- fleeting: [[Quick Ideas]]\n- review: [[Weekly Review]]\n- reference: [[Contacts]]\n#index #tags",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/TagVault/.obsidian/app.json"
+      },
+      {
+        "filename": "Contacts.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Contacts.md"
+      },
+      {
+        "filename": "Meeting Notes.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Meeting Notes.md"
+      },
+      {
+        "filename": "Project Plan.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Project Plan.md"
+      },
+      {
+        "filename": "Quick Ideas.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Quick Ideas.md"
+      },
+      {
+        "filename": "Reading List.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Reading List.md"
+      },
+      {
+        "filename": "Weekly Review.md",
+        "sandbox_path": "/home/user/Documents/TagVault/Weekly Review.md"
+      }
+    ]
   },
   "verification": [
     {

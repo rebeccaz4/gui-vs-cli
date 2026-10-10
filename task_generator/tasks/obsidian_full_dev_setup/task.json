@@ -1,9 +1,22 @@
 {
   "id": "obsidian_full_dev_setup",
   "app": "obsidian",
-  "task": "Open Obsidian with the vault at /home/user/Documents/FullDevVault. Perform a complete developer vault setup:\n\n1.Enable 'Vim key bindings' (vimMode), enable 'Show line number' (showLineNumber), enable 'Show frontmatter' (showFrontmatter), disable 'Readable line length' (readableLineLength), enable 'Strict line breaks' (strictLineBreaks).\n2. Set base font size to 15, set theme to 'obsidian' (dark mode).\n3. Set hotkeys for 'Toggle bold' (editor:toggle-bold), 'Open command palette' (command-palette:open), and 'Open quick switcher' (switcher:open).\n4. Create folders: 'Projects', 'TIL', 'Snippets'.\n5. Create 'Projects/API-Service.md' with frontmatter 'type: project', 'language: python', 'status: active' and body:\n\n# API Service\nREST API built with FastAPI.\n\n## Architecture\n- FastAPI framework\n- PostgreSQL database\n- Redis cache\n\n## Tasks\n- Implement auth endpoints\n- Add rate limiting\n- Set up CI/CD\n\nLearnings: [[TIL-FastAPI]], [[TIL-Docker]]\n#project #python #api\n\n6. Create 'TIL/TIL-FastAPI.md' with frontmatter 'type: til', 'date: 2025-03-14' and body:\n\n# TIL: FastAPI Dependency Injection\nFastAPI uses Depends for clean DI.\n\nFrom working on [[API-Service]].\n\n#til #python #fastapi\n\n7. Create 'TIL/TIL-Docker.md' with frontmatter 'type: til', 'date: 2025-03-15' and body:\n\n# TIL: Docker Multi-stage Builds\nReduce image size by 70% with multi-stage builds.\n\nApplied to [[API-Service]].\n\n#til #docker #devops\n\n8. Create 'Snippets/Python-Decorator.md' with frontmatter 'type: snippet', 'language: python' and body:\n\n# Python Decorator Pattern\n\nUseful in [[API-Service]] for auth middleware.\n\n#snippet #python",
+  "task": "Open Obsidian with the vault at /home/user/Documents/FullDevVault. Perform a complete developer vault setup:\n\n1. Enable 'Vim key bindings' (vimMode), enable 'Show line number' (showLineNumber), enable 'Show frontmatter' (showFrontmatter), disable 'Readable line length' (readableLineLength), enable 'Strict line breaks' (strictLineBreaks).\n2. Set base font size to 15, set theme to 'obsidian' (dark mode).\n3. Set custom hotkeys: 'Toggle bold' (editor:toggle-bold) to Ctrl+Alt+B, 'Open command palette' (command-palette:open) to Ctrl+Alt+P, and 'Open quick switcher' (switcher:open) to Ctrl+Alt+O.\n4. Create folders: 'Projects', 'TIL', 'Snippets'.\n5. Create 'Projects/API-Service.md' with frontmatter 'type: project', 'language: python', 'status: active' and body:\n\n# API Service\nREST API built with FastAPI.\n\n## Architecture\n- FastAPI framework\n- PostgreSQL database\n- Redis cache\n\n## Tasks\n- Implement auth endpoints\n- Add rate limiting\n- Set up CI/CD\n\nLearnings: [[TIL-FastAPI]], [[TIL-Docker]]\n#project #python #api\n\n6. Create 'TIL/TIL-FastAPI.md' with frontmatter 'type: til', 'date: 2025-03-14' and body:\n\n# TIL: FastAPI Dependency Injection\nFastAPI uses Depends for clean DI.\n\nFrom working on [[API-Service]].\n\n#til #python #fastapi\n\n7. Create 'TIL/TIL-Docker.md' with frontmatter 'type: til', 'date: 2025-03-15' and body:\n\n# TIL: Docker Multi-stage Builds\nReduce image size by 70% with multi-stage builds.\n\nApplied to [[API-Service]].\n\n#til #docker #devops\n\n8. Create 'Snippets/Python-Decorator.md' with frontmatter 'type: snippet', 'language: python' and body:\n\n# Python Decorator Pattern\n\nUseful in [[API-Service]] for auth middleware.\n\n#snippet #python",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/FullDevVault/.obsidian/app.json"
+      },
+      {
+        "filename": "appearance.json",
+        "sandbox_path": "/home/user/Documents/FullDevVault/.obsidian/appearance.json"
+      },
+      {
+        "filename": "hotkeys.json",
+        "sandbox_path": "/home/user/Documents/FullDevVault/.obsidian/hotkeys.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -48,21 +61,18 @@
     },
     {
       "command": "check-hotkey /home/user/Documents/FullDevVault editor:toggle-bold",
-      "key": "has_hotkey",
-      "expected": true,
-      "description": "Bold hotkey set"
+      "description": "Bold hotkey set to Ctrl+Alt+B",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'B' for b in (result.get('bindings') or []))"
     },
     {
       "command": "check-hotkey /home/user/Documents/FullDevVault command-palette:open",
-      "key": "has_hotkey",
-      "expected": true,
-      "description": "Command palette hotkey set"
+      "description": "Command palette hotkey set to Ctrl+Alt+P",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'P' for b in (result.get('bindings') or []))"
     },
     {
       "command": "check-hotkey /home/user/Documents/FullDevVault switcher:open",
-      "key": "has_hotkey",
-      "expected": true,
-      "description": "Quick switcher hotkey set"
+      "description": "Quick switcher hotkey set to Ctrl+Alt+O",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'O' for b in (result.get('bindings') or []))"
     },
     {
       "command": "check-folder-exists /home/user/Documents/FullDevVault Projects",

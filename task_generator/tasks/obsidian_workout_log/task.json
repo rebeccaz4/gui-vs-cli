@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/FitnessVault. Create a workout tracking system:\n\n1. Create folders: 'Workouts', 'Exercises', 'Programs'.\n2. Create 'Exercises/Squat.md' with frontmatter 'muscle_group: legs', 'type: strength', 'difficulty: intermediate' and body containing heading 'Squat', description, form tips, and tags #exercise #compound #legs\n3. Create 'Exercises/BenchPress.md' with frontmatter 'muscle_group: chest', 'equipment: barbell', 'difficulty: intermediate' and body containing heading 'Bench Press', description, form tips, and tags #exercise #compound #chest\n4. Create 'Programs/StrongLifts.md' with frontmatter 'frequency: 3x_per_week', 'level: beginner', 'duration: 12_weeks' and body containing heading 'StrongLifts 5x5', program description, links to [[Squat]] and [[BenchPress]], and tags #program #beginner #strength\n5. Create 'Workouts/2025-03-10.md' with frontmatter 'program: StrongLifts', 'duration: 60', 'mood: good' and body containing heading 'Workout - March 10, 2025', exercise log with sets/reps, links to [[Squat]] and [[BenchPress]], and tags #workout #stronglifts\n6. Create 'Workouts/2025-03-12.md' with frontmatter 'program: StrongLifts', 'duration: 55', 'mood: great' and body containing heading 'Workout - March 12, 2025', exercise log with sets/reps, links to [[Squat]] and [[BenchPress]], and tags #workout #stronglifts",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/FitnessVault/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {

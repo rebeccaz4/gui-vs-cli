@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/SpanishVault. Create a Spanish vocabulary learning vault:\n\n1. Create folders: 'Vocabulary', 'Grammar', 'Lessons'.\n2. Create 'Vocabulary/Greetings.md' with frontmatter 'type: vocabulary', 'level: A1' and body with heading 'Greetings', a vocabulary table with Spanish-English pairs including 'Hola' (Hello), 'Buenos d\u00edas' (Good morning), 'Adi\u00f3s' (Goodbye), a link to [[Lesson 1]], and tags #vocabulary #A1 #greetings\n3. Create 'Vocabulary/Food.md' with frontmatter 'type: vocabulary', 'level: A1' and body with heading 'Food', a vocabulary table with Spanish-English pairs including 'Manzana' (Apple), 'Pan' (Bread), 'Agua' (Water), links to [[Lesson 2]] and [[Greetings]], and tags #vocabulary #A1 #food\n4. Create 'Grammar/Present Tense.md' with frontmatter 'type: grammar', 'level: A1' and body with heading 'Present Tense', conjugation rules, examples, links to [[Lesson 1]] and [[Lesson 2]], and tags #grammar #A1 #verbs\n5. Create 'Lessons/Lesson 1.md' with frontmatter 'type: lesson', 'order: 1' and body with heading 'Lesson 1', lesson overview, links to [[Greetings]] and [[Present Tense]], and tags #lesson #A1\n6. Create 'Lessons/Lesson 2.md' with frontmatter 'type: lesson', 'order: 2' and body with heading 'Lesson 2', lesson overview, links to [[Food]] and [[Greetings]], and tags #lesson #A1",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/SpanishVault/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {

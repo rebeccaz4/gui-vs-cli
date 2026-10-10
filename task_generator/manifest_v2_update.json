@@ -1,0 +1,3020 @@
+{
+ "description": "v2 update: 340-task GUI-vs-CLI benchmark. Task list with workflow category, and git blob ids of every task and verifier file, for checking that another server runs identical tasks.",
+ "num_tasks": 340,
+ "environment_image": {
+  "docker": "docker://rebeccazzzz/gpt-plus-ready:latest",
+  "apptainer_sif_sha256": "2257e750318895a8509a2bf421fb211bc37be3cbc5b9fcff3d3d712f531806f1",
+  "apptainer_sif_bytes": 3388350464
+ },
+ "tasks": [
+  {
+   "id": "audacity_gap_silence_region",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_mute_solo_configuration",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_beep_insert",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_chapter_split",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_chirp_rearrange",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_chirp_sequence",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_cut_splice",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_filter_mix",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_half_amplify",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_join_normalize",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_label_regions",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_loop_fades",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_mix_session",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_noise_shape",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_octave_canon",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_partial_tempo",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_pitch_ladder",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_pitch_speed_parts",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_region_edits",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_speed_tone",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_sa_track_layout",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "audacity_stereo_to_mono_export",
+   "app": "audacity",
+   "category": "Audio"
+  },
+  {
+   "id": "calc_budget_multi_sheet",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_479e5e30",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_630a8bde",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_69760751",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_6d922d9a",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_7c79451f",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_7cc28048",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_826a90a9",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_8eb6e93b",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_a2fca097",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_a3fbc55f",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_a8ebe673",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_aaaf7c52",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_b99ac46d",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_cf2e3046",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_cf78eed7",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_cg_d421e418",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_competition_rank_percentile",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_export_contacts_multi_format",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_inventory_reorder_flags",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_month_over_month_growth",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_osw_04d9aeaf",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_osw_21df9241",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_osw_7e287123",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_osw_881deb30",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_pref_default_sheets_and_save_format",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_pref_sheet_count_3_odf_format",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_pref_sheet_count_4_xlsx_cm",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_pref_sheet_count_6_odf_100th_mm",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "calc_pref_sheet_count_7_excel2003",
+   "app": "libreoffice_calc",
+   "category": "Spreadsheets"
+  },
+  {
+   "id": "chrome_dom_inspection_wikipedia",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_download_attention_paper",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_download_httpbin_file",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_download_httpbin_file2",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_download_resnet_paper",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_five_tabs_organize",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_form_fill_httpbin",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_form_fill_httpbin2",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_form_fill_httpbin3",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_httpbin_query_params_chain",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "chrome_page_text_verification",
+   "app": "chrome",
+   "category": "Web"
+  },
+  {
+   "id": "cloudcompare_gap_csf_ground_filter",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_align_c2c",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_c2m_filter",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_colored_lower",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_crop_random",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_gear_rotate",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_half_ramp_ascii",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_intensity_filter",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_isolate_small_cluster",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_merge_scale",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_register_merge",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_scale_in_place",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_stack_merge",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_tetra_transform",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_two_slabs",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_upper_half_ramp",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "cloudcompare_sa_vertices_upper",
+   "app": "cloudcompare",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "drawio_aws_cloud_arch",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_bpmn_payment",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_edit_existing",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_er_diagram",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_fix_and_color_workflow",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_floorplan_office",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_incident_runbook",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_kubernetes_cluster",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_multipage_microservices",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_network_topology",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_restyle_erd",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_state_machine",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_styled_data_pipeline",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_swimlane_process",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "drawio_uml_class_diagram",
+   "app": "drawio",
+   "category": "Visual Design"
+  },
+  {
+   "id": "freecad_change_unit_schema",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_013",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_019",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_025",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_027",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_045",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_050",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_051",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_056",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_057",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_part_060",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_sketch_006",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_sketch_007",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_sketch_008",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_sketch_012",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_cw_techdraw_002",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_gap_draft_wire_polygon",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_gap_partdesign_revolve_bottle",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_gap_spreadsheet_parametric",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_preferences_multi_tune",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_set_theme_preference",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "freecad_sphere_stl_export_high_res",
+   "app": "freecad",
+   "category": "CAD & 3D"
+  },
+  {
+   "id": "gimp_brightness_contrast",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_gap_layer_mask_gradient_reveal",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sa_silhouette_on_sky",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sa_square_thumbs",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_blend_halves",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_channel_swap",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_collage",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_drop_shadow",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_ellipse_reveal",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_gradient_stripe",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_hue_band",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_invert_half",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_levels_range",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_logo_pair",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_partial_pixelize",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_radial_spotlight",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_stroke_desat",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "gimp_sb_tile_grid",
+   "app": "gimp",
+   "category": "Visual Design"
+  },
+  {
+   "id": "impress_cg_3339444d",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_3762d65e",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_38d5fc3a",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_6540f8e6",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_90cf6d70",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_97764e68",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_9adf8ac9",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_9d28ae95",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_ce9a5302",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_cfab2aa0",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_d6161939",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_d9791c5b",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_ec1261d7",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_ec99ce42",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_f46373ec",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_f8c6aa39",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_fdf3feb2",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_cg_fe33f3ca",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_nonprofit_pitch_deck",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_3b27600c",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_841b50aa",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_986fc832",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_ac9bb6cb",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_b8adbc24",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_bf4e9888",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_osw_eb303e01",
+   "app": "libreoffice_impress",
+   "category": "Cross-app"
+  },
+  {
+   "id": "impress_product_roadmap_deck",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "impress_webinar_followup_deck",
+   "app": "libreoffice_impress",
+   "category": "Presentations"
+  },
+  {
+   "id": "krita_add_document_metadata",
+   "app": "krita",
+   "category": "Visual Design"
+  },
+  {
+   "id": "krita_crop_and_add_border",
+   "app": "krita",
+   "category": "Visual Design"
+  },
+  {
+   "id": "krita_export_multiple_formats",
+   "app": "krita",
+   "category": "Visual Design"
+  },
+  {
+   "id": "krita_resize_export_jpeg",
+   "app": "krita",
+   "category": "Visual Design"
+  },
+  {
+   "id": "krita_transform_mask_rotation",
+   "app": "krita",
+   "category": "Visual Design"
+  },
+  {
+   "id": "libreoffice_writer_bug_triage_report_v2",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "libreoffice_writer_employee_directory",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "libreoffice_writer_test_plan_v2",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "musescore3_sa_catalog_movement",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_dc_form",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_ds_al_coda",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_duet_arrangement",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_dynamic_terraces",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_export_parts_set",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_fingering_scale",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_page_setup",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_pedal_sections",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_png_midi_dynamics",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_publishing_credits",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_register_landmarks",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_repeat_form",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_transpose_eflat",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_violin_part",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "musescore3_sa_waltz_rebuild",
+   "app": "musescore3",
+   "category": "Audio"
+  },
+  {
+   "id": "obs_add_sources_to_existing",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_consolidate_into_single_scene",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_delete_unused_scenes",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_event_multicam_six_scenes",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_five_scene_broadcast",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_gaming_stream_layout",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_gap_chroma_key_filter",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_gap_color_correction_lut",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_hide_but_keep_sources",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_multi_collection_profiles",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_multi_source_scene",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_news_broadcast_layout",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_podcast_two_person",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_relocate_sources_across_scenes",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_rename_and_reorganize_scenes",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obs_scene_split_refactor",
+   "app": "obs",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "obsidian_add_links_to_existing",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_appearance_setup",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_bookmarks_curation",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_bug_tracker",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_configure_editor",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_custom_hotkeys",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_daily_notes_week",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_digital_garden",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_enable_core_plugins",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_fleeting_to_permanent",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_frontmatter_normalize",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_full_dev_setup",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_interview_prep",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_language_vocab",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_music_collection",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_personal_crm",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_project_tracker_kanban",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_recipe_vault",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_reorganize_tags",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_research_papers",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_toggle_core_features",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_workout_log",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "obsidian_zettelkasten_atomic",
+   "app": "obsidian",
+   "category": "Knowledge"
+  },
+  {
+   "id": "renderdoc_add_recent_captures",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_cap_extended_frames",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_cap_launcher_hook",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_cap_perf_profile",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_cap_single_env_layer",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_cap_triple_api_comparison",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_capture_archive_partition",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_capture_version_prefix_rename",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_deduplicate_captures",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_default_save_dir_and_recents",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_gap_capture_settings_cap_file",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_gap_pipeline_state_export",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_multi_cap_presets",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_project_save_dir_and_presets",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_archive_old",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_counters_preset",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_event_browser_triage",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_hardening_preset",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_keep_largest",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_pixel_history_split",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_privacy_cleanup",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_promote_archive",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_python_setup",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_rename_review",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_session_folder",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_shader_bundle",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_texture_dedupe",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_valid_by_size",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_sa_viewer_preset",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_verify_capture_integrity",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "renderdoc_workspace_bootstrap",
+   "app": "renderdoc",
+   "category": "Graphics Debugging"
+  },
+  {
+   "id": "shotcut_720p_project_single_clip",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_add_two_clips_hd",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_default_profile_atsc",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_multi_track_audio_video",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_set_theme_dark",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_three_clip_sequence",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_two_clips_with_luma_transition",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_default_profile_dv_pal",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_default_profile_uhd_2160p_30",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_five_clip_sequence",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_four_track_layered_composite",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_transition_and_fadein_filter",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "shotcut_v2_uhd_4k_project",
+   "app": "shotcut",
+   "category": "Video & Streaming"
+  },
+  {
+   "id": "writer_cg_10c36365",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_29e9bf1c",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_34c044ea",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_3f4dc430",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_5d1130a4",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_63e1cce9",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_68b15b4e",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_6c6160f8",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_810109ec",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_83a4c2a9",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_885e96d6",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_9b90581d",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_a1a2e369",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_a3e1bb58",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_aeef5353",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_b461cf34",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_b583013a",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_b79cfdab",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_c82cf7e5",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_cce430f6",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_d853218b",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_e37f90ef",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_ee7010dd",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_f1b12f20",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_f360764c",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_cg_ff001478",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_osw_51f5801c",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "writer_osw_5bc63fb9",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_osw_8472fece",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_osw_88fe4b2d",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "writer_osw_adf5e2c3",
+   "app": "libreoffice_writer",
+   "category": "Documents"
+  },
+  {
+   "id": "xapp_calc_a4dac5a7",
+   "app": "libreoffice_calc",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_tb_osw_d9b7c649",
+   "app": "thunderbird",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_29a40c87",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_47239d6e",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_4b7faf96",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_61242f65",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_78cd5de6",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_8150e3dc",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_855f5769",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_91f9c3d3",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_97468db6",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_d522e7a5",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_f34b89a5",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "xapp_writer_f4e93d30",
+   "app": "libreoffice_writer",
+   "category": "Cross-app"
+  },
+  {
+   "id": "zoom_accessibility_bundle",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_audio_device_swap",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_audio_settings_bundle",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_change_language_german",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_change_recording_path",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_chat_client_preferences",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_chat_dark_theme",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_general_meetings_ui_bundle",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_language_chinese_and_recording",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_multi_section_hardening",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_privacy_lockdown",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_recording_storage_bundle",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_video_off_on_join",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_video_quality_full_bundle",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zoom_virtual_background_setup",
+   "app": "zoom",
+   "category": "Communication"
+  },
+  {
+   "id": "zotero_add_author_to_survey",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_add_note_to_item",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_bulk_tag_multiple_items",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_edit_multiple_fields_bert",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_export_collection_bibtex",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_export_two_collection_bibtex_with_publisher",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_gap_advanced_search_export_results",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_rename_collection",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_subcollection_neural",
+   "app": "zotero",
+   "category": "Knowledge"
+  },
+  {
+   "id": "zotero_tag_bert_important",
+   "app": "zotero",
+   "category": "Knowledge"
+  }
+ ],
+ "files": {
+  "task_generator/tasks/audacity_gap_silence_region/env/voiceover.wav": "23fbe7478fdd234ef09482cc54e2aa9c905a27da",
+  "task_generator/tasks/audacity_gap_silence_region/env_manifest.json": "962a825d7942450e6a91efb821e4e6596a9c2cc1",
+  "task_generator/tasks/audacity_gap_silence_region/task.json": "41546bc0822c8772edbe7249ac3ee447fb5ca074",
+  "task_generator/tasks/audacity_mute_solo_configuration/env/mix.aup": "374a0345c06a6c7647379ecff1597c3027cae4fc",
+  "task_generator/tasks/audacity_mute_solo_configuration/env/mix_data/e00/d00/e000001.au": "b1f8446497ff35e119c8c81ef86d7b261581273e",
+  "task_generator/tasks/audacity_mute_solo_configuration/env/mix_data/e00/d00/e000002.au": "fda86402968c2d0f078f32e7b4f77ce291aebc35",
+  "task_generator/tasks/audacity_mute_solo_configuration/env/mix_data/e00/d00/e000003.au": "fba08d14117ce0c6001bc3b192e35f1e287b12e5",
+  "task_generator/tasks/audacity_mute_solo_configuration/env_manifest.json": "bc62ccbe62c19c674920b5fb6d1f44c3e09b91a5",
+  "task_generator/tasks/audacity_mute_solo_configuration/task.json": "f2b76f8aee95b582dae750590cd86293af15e928",
+  "task_generator/tasks/audacity_sa_beep_insert/env/uneven.wav": "b059d20f1ffe4409c6bb99c87016145cfbf34216",
+  "task_generator/tasks/audacity_sa_beep_insert/env_manifest.json": "7867641a45bb1e1989cf91446298d05aadf61e6e",
+  "task_generator/tasks/audacity_sa_beep_insert/task.json": "b9c5905f6e25eeb02037a7c8ee3fb92bd5a4e999",
+  "task_generator/tasks/audacity_sa_chapter_split/env/audiobook.aup": "610fc3c023a887fe0cdd1bb619250d757454cbeb",
+  "task_generator/tasks/audacity_sa_chapter_split/env/audiobook_data/e00/d00/e000001.au": "cc46b0364a4a231a86f391dc0177f60247a51470",
+  "task_generator/tasks/audacity_sa_chapter_split/env_manifest.json": "7b55359f95b68d51ffa4016a35ceb20088a1bcb6",
+  "task_generator/tasks/audacity_sa_chapter_split/task.json": "dbb8a3862f54a5e6be757439766a7b239826903f",
+  "task_generator/tasks/audacity_sa_chirp_rearrange/env/phrase.wav": "756796e3bae38cd6742d4344198c297cef043bd3",
+  "task_generator/tasks/audacity_sa_chirp_rearrange/env_manifest.json": "570c2c4f382a93f1245696fe776304b339f97ac9",
+  "task_generator/tasks/audacity_sa_chirp_rearrange/task.json": "445d9de327713e8221b81acf72a16ea116138d69",
+  "task_generator/tasks/audacity_sa_chirp_sequence/env_manifest.json": "1e610e1f0f9cc9ecb1d1d29bd5ba3696b561f4cd",
+  "task_generator/tasks/audacity_sa_chirp_sequence/task.json": "343f9d3bb21a9bdda515c351fbca2b1ec488ff36",
+  "task_generator/tasks/audacity_sa_cut_splice/env/long.wav": "b13a81ea7478caf0f7115ad71bc3ececb97f0763",
+  "task_generator/tasks/audacity_sa_cut_splice/env_manifest.json": "8f64500a82c84896c35ad9d2c6ff0bfec9fbc112",
+  "task_generator/tasks/audacity_sa_cut_splice/task.json": "4e8d2a0a2a30430c38da41dbc3edd0e69c0f11a1",
+  "task_generator/tasks/audacity_sa_filter_mix/env/tone44.wav": "5ba92b83f0bf0b2f0c768830b9f0d14073683f07",
+  "task_generator/tasks/audacity_sa_filter_mix/env_manifest.json": "3b323254d448836b8f2be59f5341e56eb0e6a4de",
+  "task_generator/tasks/audacity_sa_filter_mix/task.json": "d1799c6f0b6a7c54a5a7870282f501800e7cb156",
+  "task_generator/tasks/audacity_sa_half_amplify/env/quiet.wav": "b89692f350975c502f33ea3d3df8efe07937bc14",
+  "task_generator/tasks/audacity_sa_half_amplify/env_manifest.json": "04293f27a4631da9770a1bc7b348f7019959e349",
+  "task_generator/tasks/audacity_sa_half_amplify/task.json": "6e384301007a9980ddd11a603fe5fcbcfe96fc5c",
+  "task_generator/tasks/audacity_sa_join_normalize/env/source.wav": "f817cddcc914e10ee98c32253276aa56452119f5",
+  "task_generator/tasks/audacity_sa_join_normalize/env/voice.wav": "8af6e138bd3d8427a0a563f36b10fd5172a75ea6",
+  "task_generator/tasks/audacity_sa_join_normalize/env_manifest.json": "306e36b4d277b0786b3236deff7aedf1f780751e",
+  "task_generator/tasks/audacity_sa_join_normalize/task.json": "4b1a2e46693d98ff0a904b55be4f66f69632cc96",
+  "task_generator/tasks/audacity_sa_label_regions/env/podcast.wav": "f1ddd324c72f281d5c29f5025a96523cc3ce0ddf",
+  "task_generator/tasks/audacity_sa_label_regions/env_manifest.json": "2cee21df2733e56103063ae2f801697d42029c85",
+  "task_generator/tasks/audacity_sa_label_regions/task.json": "82a54c70332acc4b1df1e65ecce546dc98f36364",
+  "task_generator/tasks/audacity_sa_loop_fades/env/input.wav": "a600db349bf9211e387b8c6fac85745a77f23fff",
+  "task_generator/tasks/audacity_sa_loop_fades/env_manifest.json": "f4ab31abe0892f7a86a92d484528d3486ee20863",
+  "task_generator/tasks/audacity_sa_loop_fades/task.json": "3fdc0eaa0b89f01c0e0b895e84af64b9dabbccc7",
+  "task_generator/tasks/audacity_sa_mix_session/env/mix.aup": "374a0345c06a6c7647379ecff1597c3027cae4fc",
+  "task_generator/tasks/audacity_sa_mix_session/env/mix_data/e00/d00/e000001.au": "b1f8446497ff35e119c8c81ef86d7b261581273e",
+  "task_generator/tasks/audacity_sa_mix_session/env/mix_data/e00/d00/e000002.au": "fda86402968c2d0f078f32e7b4f77ce291aebc35",
+  "task_generator/tasks/audacity_sa_mix_session/env/mix_data/e00/d00/e000003.au": "fba08d14117ce0c6001bc3b192e35f1e287b12e5",
+  "task_generator/tasks/audacity_sa_mix_session/env_manifest.json": "b77a26864133751b0dff06eb71d6b1939f11a483",
+  "task_generator/tasks/audacity_sa_mix_session/task.json": "5f763c2c6a4116d04e7ec386c2c2fa7260957e0c",
+  "task_generator/tasks/audacity_sa_noise_shape/env_manifest.json": "ec6e40a3473f1757e29112d3f7f41b015bdf2bd6",
+  "task_generator/tasks/audacity_sa_noise_shape/task.json": "a3fa3a83ce19f55c6fc252cdef25a5e8335d59c9",
+  "task_generator/tasks/audacity_sa_octave_canon/env/single.wav": "3c638feb4acf1eb2674a1415b5f454b25ea81ce9",
+  "task_generator/tasks/audacity_sa_octave_canon/env_manifest.json": "902150c1bf75a0ee576e6a1afb02aee6e064dfb2",
+  "task_generator/tasks/audacity_sa_octave_canon/task.json": "09723b57b4266b48204c258ffe89043fed3afe5b",
+  "task_generator/tasks/audacity_sa_partial_tempo/env/beat.wav": "33b6e9f72dee14d8f5e2f32f3905e53c1ca4311d",
+  "task_generator/tasks/audacity_sa_partial_tempo/env_manifest.json": "fdb4d3f1e45a6aaf1501dc6e95a63d2e5a21f4b7",
+  "task_generator/tasks/audacity_sa_partial_tempo/task.json": "15353ad3fcf28909c8538fca00bc53c7465cd93d",
+  "task_generator/tasks/audacity_sa_pitch_ladder/env/input.wav": "a600db349bf9211e387b8c6fac85745a77f23fff",
+  "task_generator/tasks/audacity_sa_pitch_ladder/env/source.wav": "f817cddcc914e10ee98c32253276aa56452119f5",
+  "task_generator/tasks/audacity_sa_pitch_ladder/env/voice.wav": "8af6e138bd3d8427a0a563f36b10fd5172a75ea6",
+  "task_generator/tasks/audacity_sa_pitch_ladder/env_manifest.json": "b95ebeb8094bd4bc7094e171da8f176fc1662d3b",
+  "task_generator/tasks/audacity_sa_pitch_ladder/task.json": "fe38caae44cf87ff56028200d606003523f99ca4",
+  "task_generator/tasks/audacity_sa_pitch_speed_parts/env/source_a4.wav": "ae582ea6428524164b7a8665c6fe2a3e893078dc",
+  "task_generator/tasks/audacity_sa_pitch_speed_parts/env_manifest.json": "418a4c666839750ea5c4f6457140811fe4f7951d",
+  "task_generator/tasks/audacity_sa_pitch_speed_parts/task.json": "3402a93b2a850822425ba294900ab335a7be7e18",
+  "task_generator/tasks/audacity_sa_region_edits/env/voiceover.wav": "23fbe7478fdd234ef09482cc54e2aa9c905a27da",
+  "task_generator/tasks/audacity_sa_region_edits/env_manifest.json": "e657e5134b34c537460c42ecdac422a64d7b8717",
+  "task_generator/tasks/audacity_sa_region_edits/task.json": "cefd021982b9fcbb1250ef3542faf31af5e380a8",
+  "task_generator/tasks/audacity_sa_speed_tone/env/voice.wav": "8af6e138bd3d8427a0a563f36b10fd5172a75ea6",
+  "task_generator/tasks/audacity_sa_speed_tone/env_manifest.json": "7e8b48392e9790e558af9edc307737e64e28cefd",
+  "task_generator/tasks/audacity_sa_speed_tone/task.json": "e5e80dffd682640023b787dfb852f94e7d3da677",
+  "task_generator/tasks/audacity_sa_track_layout/env/empty.aup": "448c9eeca2b5b70759c2388888c36dea4e34e69e",
+  "task_generator/tasks/audacity_sa_track_layout/env_manifest.json": "4aecb64c06c38f585c09d71d08a669e6c17b9132",
+  "task_generator/tasks/audacity_sa_track_layout/task.json": "e3f229c5be7b78252ddb799f20c0f05c6199dc0e",
+  "task_generator/tasks/audacity_stereo_to_mono_export/env/stereo.wav": "bc3564d420619eef41dca32a5705dc988546c32e",
+  "task_generator/tasks/audacity_stereo_to_mono_export/env_manifest.json": "2b9883993a05c77043484a9b6c2d57c86338537e",
+  "task_generator/tasks/audacity_stereo_to_mono_export/task.json": "b596b62d928d127187de9b03543aa57c0ca78007",
+  "task_generator/tasks/calc_budget_multi_sheet/env/budget.xlsx": "4c2799384b061d1524c04495e6d5889972c91a8e",
+  "task_generator/tasks/calc_budget_multi_sheet/env_manifest.json": "8b04af74bea474b5d867e7194fc508bbf4f9cbb8",
+  "task_generator/tasks/calc_budget_multi_sheet/task.json": "93b5b5d9f6ba48bdd1378370c8fe107d565dfcdb",
+  "task_generator/tasks/calc_cg_479e5e30/env/osworld_calc_data_validation_dropdown_007.xlsx": "e334d77c352314ed2ebe39c8151c5a640c60bd77",
+  "task_generator/tasks/calc_cg_479e5e30/env_manifest.json": "093d4a04fe4fffad5a179d751335c13b90bf08bd",
+  "task_generator/tasks/calc_cg_479e5e30/task.json": "096530baf9242c4f15f9756423a6241f6c289c1e",
+  "task_generator/tasks/calc_cg_630a8bde/env/calc_wf_063.xlsx": "a4996c43c4d7dc8ee2add6d9bd9aef5b655737d8",
+  "task_generator/tasks/calc_cg_630a8bde/env_manifest.json": "6847ea992dcfb8e2774f59f9d1d84094a2fecb38",
+  "task_generator/tasks/calc_cg_630a8bde/task.json": "c69bbaccc99182180b8e21a0df7085a4817b79ce",
+  "task_generator/tasks/calc_cg_69760751/env/calc_gpm_093.xlsx": "2fde921fd9b8c5cf2c56a8fbb1d2ccb99a2fc7f4",
+  "task_generator/tasks/calc_cg_69760751/env_manifest.json": "63f2fe8c87a0202163611b49c08024e12686c9ce",
+  "task_generator/tasks/calc_cg_69760751/task.json": "74ad0ccd538746f97f58c5f8f8c9f8ce499b9fb2",
+  "task_generator/tasks/calc_cg_6d922d9a/env/calc_ops_operations_daily_standup_075_initial.xlsx": "647aa2b983370b07f8d9184868d5f17a67b1b221",
+  "task_generator/tasks/calc_cg_6d922d9a/env_manifest.json": "9d769d1fc5ca0b332be56c9ab42209b942a36f55",
+  "task_generator/tasks/calc_cg_6d922d9a/task.json": "2cff58688d2f28922832b4ed6d9468d57aa04048",
+  "task_generator/tasks/calc_cg_7c79451f/env/calc_ps_013.xlsx": "3a97923f2409694f859360b98604a22ac06e1084",
+  "task_generator/tasks/calc_cg_7c79451f/env_manifest.json": "12455526a6fe678ce16e1b2c25c0f51c49e8a425",
+  "task_generator/tasks/calc_cg_7c79451f/task.json": "2feecdbcd773724f97e2d625b55dde24479ce177",
+  "task_generator/tasks/calc_cg_7cc28048/env/calc_edu_comprehensive_annual_report_070_initial.xlsx": "a7dab4213600ad2e2971d243951c7e18607b42db",
+  "task_generator/tasks/calc_cg_7cc28048/env_manifest.json": "f2a0e2009081d33fe87922ec266ab467239c5099",
+  "task_generator/tasks/calc_cg_7cc28048/task.json": "3963af3e4756b82cd6e96782753f967c2458aea6",
+  "task_generator/tasks/calc_cg_826a90a9/env/calc_wf_058.xlsx": "ecf7dc8ac2786f78ccbd7c24e0d56ccdf112465e",
+  "task_generator/tasks/calc_cg_826a90a9/env_manifest.json": "8dd8c6985d8f8976306d9745393f4fc78866e3f6",
+  "task_generator/tasks/calc_cg_826a90a9/task.json": "f7a0cae1ed9651fc80d63b836f04779b8124a172",
+  "task_generator/tasks/calc_cg_8eb6e93b/env/calc_sht_multiop_003_initial.xlsx": "788679517ba11dd176c5c2711bce579779f0257d",
+  "task_generator/tasks/calc_cg_8eb6e93b/env_manifest.json": "72b36df7fcd2b4847bdc6df3e329b23779bce6a7",
+  "task_generator/tasks/calc_cg_8eb6e93b/task.json": "7dc12e095478acf902a0ea377ac37fdcef8b65cb",
+  "task_generator/tasks/calc_cg_a2fca097/env/calc_mcp_049.xlsx": "63e33ab68276164f4fdd5f2ab1b9849ff12e4082",
+  "task_generator/tasks/calc_cg_a2fca097/env_manifest.json": "0d08af27349fe04f3790b0d6b6b12b557eaa7ead",
+  "task_generator/tasks/calc_cg_a2fca097/task.json": "620cbd1015822b5e93c8744b4296aff990430422",
+  "task_generator/tasks/calc_cg_a3fbc55f/env/calc_adv_protect_combined_055_initial.xlsx": "a76e9dddc0f19b9338156c60f9dec90b701659c2",
+  "task_generator/tasks/calc_cg_a3fbc55f/env_manifest.json": "677a66008897d6ecc9922c1f70906548a2ee4c4e",
+  "task_generator/tasks/calc_cg_a3fbc55f/task.json": "95779e97d06f7a701aa13a349551e2341c749298",
+  "task_generator/tasks/calc_cg_a8ebe673/env/calc_gao_006.xlsx": "d93b11b7b109a29f78432b8fa1f30c6a3ce68276",
+  "task_generator/tasks/calc_cg_a8ebe673/env_manifest.json": "18f306084e4fe5900faafa77557b33d8f63cddac",
+  "task_generator/tasks/calc_cg_a8ebe673/task.json": "21c881549aefee49a8518e8a6a3a116f519916c2",
+  "task_generator/tasks/calc_cg_aaaf7c52/env/calc_sales_report_executive_043_initial.xlsx": "b7a649dcb8df35b8852ce526d5b9e7989ba04633",
+  "task_generator/tasks/calc_cg_aaaf7c52/env_manifest.json": "4be2dd554d5e0013c2e78e3d190bd6aed64dca2d",
+  "task_generator/tasks/calc_cg_aaaf7c52/task.json": "f79cef7896fa52f421f922acc32ad4ebff8159bc",
+  "task_generator/tasks/calc_cg_b99ac46d/env/calc_fin_weekly_flash_report_080_initial.xlsx": "fb484c296f2d36c126fada7e2270eece42cce381",
+  "task_generator/tasks/calc_cg_b99ac46d/env_manifest.json": "8d77162d61e7f25c43c470b567608164508bc10f",
+  "task_generator/tasks/calc_cg_b99ac46d/task.json": "142c89722cb55068bd9b3fee1a480dc6256ee254",
+  "task_generator/tasks/calc_cg_cf2e3046/env/calc_sht_multiop_006_initial.xlsx": "34a5e17b4756d3029bffa0f91e664de1fc35de2a",
+  "task_generator/tasks/calc_cg_cf2e3046/env_manifest.json": "76438118e83f5594595f73c98f8a05915dae7dbd",
+  "task_generator/tasks/calc_cg_cf2e3046/task.json": "e8b67241cb3be327438b49787c0e1031680483d8",
+  "task_generator/tasks/calc_cg_cf78eed7/env/calc_ops_warehouse_shipping_manifest_019_initial.xlsx": "81e4b6962a41b7ea917b49edbf6747bf05b3eb56",
+  "task_generator/tasks/calc_cg_cf78eed7/env_manifest.json": "ab14a64f2f109f062ff8da686d7046cf885e57f1",
+  "task_generator/tasks/calc_cg_cf78eed7/task.json": "f9844f4beddf865cd6ed1c5d6dda114df7181037",
+  "task_generator/tasks/calc_cg_d421e418/env/calc_fin_invoice_template_016_initial.xlsx": "31179a8a4d5d8b3fe4f5af65b48ffbc8c871aa8d",
+  "task_generator/tasks/calc_cg_d421e418/env_manifest.json": "ec74e592aa4c3f896633598f07f1022061510c8d",
+  "task_generator/tasks/calc_cg_d421e418/task.json": "e3a2cb3c47407ff80a6657fe97255b84f17871b5",
+  "task_generator/tasks/calc_competition_rank_percentile/env/competition.xlsx": "a87da2e59dacbe7a69888c3b1eb4936a0b6584c0",
+  "task_generator/tasks/calc_competition_rank_percentile/env_manifest.json": "122249f77d488c1dde8e51e300d012db4a320281",
+  "task_generator/tasks/calc_competition_rank_percentile/task.json": "03c398853ae5042e7639498ae7a9a8e295cdfbe2",
+  "task_generator/tasks/calc_export_contacts_multi_format/env/contacts.xlsx": "66b08fb2a5cb28d1d25bb92a521d2cdad40e14f9",
+  "task_generator/tasks/calc_export_contacts_multi_format/env_manifest.json": "6c88d105c3c35d5218f1becf94745e2cccfbb429",
+  "task_generator/tasks/calc_export_contacts_multi_format/task.json": "4332123e895de31e05d47dacff71385d431b9ba3",
+  "task_generator/tasks/calc_inventory_reorder_flags/env/stock.xlsx": "4b28834d2ab958a919077a769aff0582ae6d8ad3",
+  "task_generator/tasks/calc_inventory_reorder_flags/env_manifest.json": "6982ec0c45f74520db1fc76de5d7808174a32432",
+  "task_generator/tasks/calc_inventory_reorder_flags/task.json": "92f7b82447fe61e70b8e33d1acc84741d72abf44",
+  "task_generator/tasks/calc_month_over_month_growth/env/revenue.xlsx": "3e6ad6c7b21eec5d87c3af705783b470a720662a",
+  "task_generator/tasks/calc_month_over_month_growth/env_manifest.json": "248fd63e615e9f1d3285af6f3de54d143373d92d",
+  "task_generator/tasks/calc_month_over_month_growth/task.json": "1c26c1006567f1b0b38ee79fba5270f87271316d",
+  "task_generator/tasks/calc_osw_04d9aeaf/env/SmallBalanceSheet.xlsx": "5fd28e5c0cdc8f3ab637a3d6f9de3fd8967c3cb0",
+  "task_generator/tasks/calc_osw_04d9aeaf/env_manifest.json": "679bb58c54fcf8462180af17a7d4de39c8f820ef",
+  "task_generator/tasks/calc_osw_04d9aeaf/task.json": "4cddfbce9af212c29b70f29dd11a444f22cfa426",
+  "task_generator/tasks/calc_osw_21df9241/env/Represent_in_millions_billions.xlsx": "c5e3ca5a6b0ad93949706f94f8354d9f937f484c",
+  "task_generator/tasks/calc_osw_21df9241/env_manifest.json": "3aec4953c0634a42cfc5787b98ddf32ae8d28f93",
+  "task_generator/tasks/calc_osw_21df9241/task.json": "9d8cc712a524bd1184e1dcd22a56e36804c7d73d",
+  "task_generator/tasks/calc_osw_7e287123/env/customer-information-sheet-for-inward-payments-to-hong-kong.pdf": "3fee1b606261d32225ce3f501d268abd2dd44333",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs15.pdf": "2a4f613c98af04263807abf91f283c4f0de2808b",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs16.pdf": "e31a69d5d717dd4424abf06ee8112deab923c12e",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs17.pdf": "ea10e9a10686e1e4afeb807ec207d0532ad3e751",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs18.pdf": "c67a1debb78fe72d33936f9ad9f02584ef262407",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs19.pdf": "b0cffd2aa474937e791519f9e0eadb484a3978ae",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs20.pdf": "89f7ae55c870c074a8b15af088e8aa41cce2295f",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs21.pdf": "6b2e4356036995fcde31daae72e7bb37e4f7f1ce",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs22.pdf": "34e6ad2a90d7bf80c01871d07d089fbf93ef9fc6",
+  "task_generator/tasks/calc_osw_7e287123/env/ecs23.pdf": "4d01e1a1bafb08edcb5a7c6d8593987790e88f74",
+  "task_generator/tasks/calc_osw_7e287123/env/grf15.pdf": "96007570f5a792837507cc3f372272ced1ee9398",
+  "task_generator/tasks/calc_osw_7e287123/env/grf16.pdf": "c54c07aba33a1ebd50b5973b816162f4a0880c2e",
+  "task_generator/tasks/calc_osw_7e287123/env/grf17.pdf": "9135fa3a382a8f567c21af7e0ba6c84513375f23",
+  "task_generator/tasks/calc_osw_7e287123/env/grf18.pdf": "183f010703f88f87669f4c69f9f7293b823cb5ad",
+  "task_generator/tasks/calc_osw_7e287123/env/grf19.pdf": "6e1097bce73273823d186a37d1e152b29bbe4b5c",
+  "task_generator/tasks/calc_osw_7e287123/env/grf20.pdf": "b3710207a0319051d01140ef46efab6c5929f0d4",
+  "task_generator/tasks/calc_osw_7e287123/env/grf21.pdf": "e007ea96847061c13a79f59323f10afd84bd78a0",
+  "task_generator/tasks/calc_osw_7e287123/env/grf22.pdf": "3722033d554a42d92c5fa67874156d8a01483644",
+  "task_generator/tasks/calc_osw_7e287123/env/grf23.pdf": "40d4ac85c0891b70449968d3e161caa9d1a7907f",
+  "task_generator/tasks/calc_osw_7e287123/env_manifest.json": "0bcfeffd0480d5f0992d0f2c2de8b9322880d55d",
+  "task_generator/tasks/calc_osw_7e287123/task.json": "9d15024d65300332ac9c4dd0711062a869e5d840",
+  "task_generator/tasks/calc_osw_881deb30/env/customer-information-sheet-for-inward-payments-to-hong-kong.pdf": "3fee1b606261d32225ce3f501d268abd2dd44333",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs15.pdf": "2a4f613c98af04263807abf91f283c4f0de2808b",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs16.pdf": "e31a69d5d717dd4424abf06ee8112deab923c12e",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs17.pdf": "ea10e9a10686e1e4afeb807ec207d0532ad3e751",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs18.pdf": "c67a1debb78fe72d33936f9ad9f02584ef262407",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs19.pdf": "b0cffd2aa474937e791519f9e0eadb484a3978ae",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs20.pdf": "89f7ae55c870c074a8b15af088e8aa41cce2295f",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs21.pdf": "6b2e4356036995fcde31daae72e7bb37e4f7f1ce",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs22.pdf": "34e6ad2a90d7bf80c01871d07d089fbf93ef9fc6",
+  "task_generator/tasks/calc_osw_881deb30/env/ecs23.pdf": "4d01e1a1bafb08edcb5a7c6d8593987790e88f74",
+  "task_generator/tasks/calc_osw_881deb30/env/grf15.pdf": "96007570f5a792837507cc3f372272ced1ee9398",
+  "task_generator/tasks/calc_osw_881deb30/env/grf16.pdf": "c54c07aba33a1ebd50b5973b816162f4a0880c2e",
+  "task_generator/tasks/calc_osw_881deb30/env/grf17.pdf": "9135fa3a382a8f567c21af7e0ba6c84513375f23",
+  "task_generator/tasks/calc_osw_881deb30/env/grf18.pdf": "183f010703f88f87669f4c69f9f7293b823cb5ad",
+  "task_generator/tasks/calc_osw_881deb30/env/grf19.pdf": "6e1097bce73273823d186a37d1e152b29bbe4b5c",
+  "task_generator/tasks/calc_osw_881deb30/env/grf20.pdf": "b3710207a0319051d01140ef46efab6c5929f0d4",
+  "task_generator/tasks/calc_osw_881deb30/env/grf21.pdf": "e007ea96847061c13a79f59323f10afd84bd78a0",
+  "task_generator/tasks/calc_osw_881deb30/env/grf22.pdf": "3722033d554a42d92c5fa67874156d8a01483644",
+  "task_generator/tasks/calc_osw_881deb30/env/grf23.pdf": "40d4ac85c0891b70449968d3e161caa9d1a7907f",
+  "task_generator/tasks/calc_osw_881deb30/env/supported_rate.xlsx": "39ce40381d40227ecaeb9785f933598a1cfae898",
+  "task_generator/tasks/calc_osw_881deb30/env_manifest.json": "b2e993460cda27d202629f10b5acb7f3d4f8c649",
+  "task_generator/tasks/calc_osw_881deb30/task.json": "ad065eac039bfa46902a914c94b5b4b73373bfba",
+  "task_generator/tasks/calc_pref_default_sheets_and_save_format/env/blank.xlsx": "8b91427a777cf6709d56654d101a4422e99fca8a",
+  "task_generator/tasks/calc_pref_default_sheets_and_save_format/env_manifest.json": "54ab6a3bbd87609b20dd0d3a26524c677e83f367",
+  "task_generator/tasks/calc_pref_default_sheets_and_save_format/task.json": "4e4bce098680c9b7d3822a263303357588be8661",
+  "task_generator/tasks/calc_pref_sheet_count_3_odf_format/env/attendance.xlsx": "69437595de9ce370a067a52ab261f9571b93c70c",
+  "task_generator/tasks/calc_pref_sheet_count_3_odf_format/env_manifest.json": "66c99f004849f3f7c10b782537133ad07ebca1b7",
+  "task_generator/tasks/calc_pref_sheet_count_3_odf_format/task.json": "f8fee99a02df8d130bbd7b2358f4fd263961f235",
+  "task_generator/tasks/calc_pref_sheet_count_4_xlsx_cm/env/quarters.xlsx": "bc3e8030016443e41b5eab8c8b6d139aef655b89",
+  "task_generator/tasks/calc_pref_sheet_count_4_xlsx_cm/env_manifest.json": "09bc60d34a5e848727124bc62140dfa1a39b03d3",
+  "task_generator/tasks/calc_pref_sheet_count_4_xlsx_cm/task.json": "3693bfb792760890aac3cc66a0c208700576552c",
+  "task_generator/tasks/calc_pref_sheet_count_6_odf_100th_mm/env/employees.xlsx": "9efd9e55efe243a0408c1166b2f9bb4f519d57f0",
+  "task_generator/tasks/calc_pref_sheet_count_6_odf_100th_mm/env_manifest.json": "82e22c1aff962e98e81ee4e87d6d4d7b953ff276",
+  "task_generator/tasks/calc_pref_sheet_count_6_odf_100th_mm/task.json": "1a4488b26561125b4d4c1c2d1a495baf7332ee3c",
+  "task_generator/tasks/calc_pref_sheet_count_7_excel2003/env/contacts.xlsx": "66b08fb2a5cb28d1d25bb92a521d2cdad40e14f9",
+  "task_generator/tasks/calc_pref_sheet_count_7_excel2003/env_manifest.json": "67ea74486c0295a3118892dd4bb0d9f0ecff44f8",
+  "task_generator/tasks/calc_pref_sheet_count_7_excel2003/task.json": "843a47aa542790cd0d6d673062b33b92d8371ae0",
+  "task_generator/tasks/chrome_dom_inspection_wikipedia/task.json": "fed28e8bf5c2976e33bc6b3c60a827da5488755c",
+  "task_generator/tasks/chrome_download_attention_paper/task.json": "f47530f887ced266e00434223376515bd64c88ff",
+  "task_generator/tasks/chrome_download_httpbin_file/env_manifest.json": "fb96d3723bd6458356ad8beb59f1d5bf83ec8058",
+  "task_generator/tasks/chrome_download_httpbin_file/task.json": "92a6f6965ec64c975e7c5ce607a0393687f1e67b",
+  "task_generator/tasks/chrome_download_httpbin_file2/env_manifest.json": "d405000fb1a44646815affe553633d4c60bd9d75",
+  "task_generator/tasks/chrome_download_httpbin_file2/task.json": "2bd84f1849f95f494433dc1a4a8fad6c9a40257a",
+  "task_generator/tasks/chrome_download_resnet_paper/task.json": "7bd042d4557befdf52d07adece4e5f371a415989",
+  "task_generator/tasks/chrome_five_tabs_organize/env_manifest.json": "1af517112127873885fc0bf3d4f0488d412555f9",
+  "task_generator/tasks/chrome_five_tabs_organize/task.json": "9df0a31682e5f890cd90eb8e978a640ec1461d65",
+  "task_generator/tasks/chrome_form_fill_httpbin/task.json": "4a1c5216529c0c9558e5c385419319df627014ad",
+  "task_generator/tasks/chrome_form_fill_httpbin2/task.json": "29c96940d51423a4ea59c834d398686effe29a13",
+  "task_generator/tasks/chrome_form_fill_httpbin3/task.json": "7c667bf2b1724267cf338c0225d495ab06ae58c8",
+  "task_generator/tasks/chrome_httpbin_query_params_chain/task.json": "5d96eed96b85d841e0f3eee3e98f7d268e76f872",
+  "task_generator/tasks/chrome_page_text_verification/env_manifest.json": "1820efb350e9fc8d83a7a2c82b9d42c88fc85ad1",
+  "task_generator/tasks/chrome_page_text_verification/task.json": "40226f90c6434d83562cc882dcaeafc7fb09575e",
+  "task_generator/tasks/cloudcompare_gap_csf_ground_filter/env/scene.ply": "fe85fd93a2ac634d17465a746b156f1ec9ae758d",
+  "task_generator/tasks/cloudcompare_gap_csf_ground_filter/env_manifest.json": "ca8762bcddaede7a642e7f22f374d11c73b65e7f",
+  "task_generator/tasks/cloudcompare_gap_csf_ground_filter/task.json": "a584e416834aa39adfe730153edfb68735f7557f",
+  "task_generator/tasks/cloudcompare_sa_align_c2c/env/compared.ply": "ddf2bdd3bcc43e15254bcc5640f00c431ea46ece",
+  "task_generator/tasks/cloudcompare_sa_align_c2c/env/reference.ply": "5955cd5e69585f369d9cc6be9249045e0a030fd4",
+  "task_generator/tasks/cloudcompare_sa_align_c2c/env_manifest.json": "95a1773543a511e1b7b8de194edc26d8b0a25775",
+  "task_generator/tasks/cloudcompare_sa_align_c2c/task.json": "83634fb282a7d959082f8adf54e7066af6fb7d97",
+  "task_generator/tasks/cloudcompare_sa_c2m_filter/env/cloud.ply": "883b3ae75e64c49597f2f98af2bd6f6266bb46b6",
+  "task_generator/tasks/cloudcompare_sa_c2m_filter/env/plane.obj": "32f23b30d95408a65c6f509b3451b83e97ff99c2",
+  "task_generator/tasks/cloudcompare_sa_c2m_filter/env_manifest.json": "9fe573cfbe774f82d426215986e0101230419513",
+  "task_generator/tasks/cloudcompare_sa_c2m_filter/task.json": "ae2629d003486a61e6f3d36181d93152df573a47",
+  "task_generator/tasks/cloudcompare_sa_colored_lower/env/colored.ply": "e7f991677c05a7a05f3b4cdfcde343c0d2fe3485",
+  "task_generator/tasks/cloudcompare_sa_colored_lower/env_manifest.json": "fdca5dc882f10349058f302e734f1be3ec1b53d9",
+  "task_generator/tasks/cloudcompare_sa_colored_lower/task.json": "b9e316bb6cf6442d476d7a18a5358905ab307749",
+  "task_generator/tasks/cloudcompare_sa_crop_random/env/thick.ply": "7faf1e16b5475a3f5e735a295a63bf0670eb0840",
+  "task_generator/tasks/cloudcompare_sa_crop_random/env_manifest.json": "1901aba09e49af7cdd1581fe10e425a8bbde29b2",
+  "task_generator/tasks/cloudcompare_sa_crop_random/task.json": "7ceed8d6587ec65c89caf0cdbd4a78bf3f2e8e3e",
+  "task_generator/tasks/cloudcompare_sa_gear_rotate/env/gear.obj": "b2a40dc881c1de47d3ea04a87e77da7bac564ec3",
+  "task_generator/tasks/cloudcompare_sa_gear_rotate/env_manifest.json": "1d20a6f6b3a2005571820fda2ab189b3d6f30054",
+  "task_generator/tasks/cloudcompare_sa_gear_rotate/task.json": "b6f92743bbeaf52a147f49f8c718503f1a8416e9",
+  "task_generator/tasks/cloudcompare_sa_half_ramp_ascii/env/scan_binary.ply": "bf742a21b03bd27f00316239528c9a497dce4194",
+  "task_generator/tasks/cloudcompare_sa_half_ramp_ascii/env_manifest.json": "cdcb8d5e86cb7719857fb959de225ea069c272f4",
+  "task_generator/tasks/cloudcompare_sa_half_ramp_ascii/task.json": "522e6423b61b1c6844df0d2f693228b649ac4026",
+  "task_generator/tasks/cloudcompare_sa_intensity_filter/env/lidar_intensity.xyz": "3ac48bc75122d357bf17d5fdc982221e01e89d0a",
+  "task_generator/tasks/cloudcompare_sa_intensity_filter/env_manifest.json": "4273e9435b82448f6c119e08e1b29c1e7a12b776",
+  "task_generator/tasks/cloudcompare_sa_intensity_filter/task.json": "f42773492f37cf5c611b4c76517db4ddb5bb529e",
+  "task_generator/tasks/cloudcompare_sa_isolate_small_cluster/env/two_clusters.ply": "513b638b9ae05fbe1cce5c4196a4b374f9034302",
+  "task_generator/tasks/cloudcompare_sa_isolate_small_cluster/env_manifest.json": "bbaec5fcc6afb4b3eae1b7a6ec5ad7ab8b1df511",
+  "task_generator/tasks/cloudcompare_sa_isolate_small_cluster/task.json": "5668249141b1207291f312148da255f8b3094030",
+  "task_generator/tasks/cloudcompare_sa_merge_scale/env/left.xyz": "a070f70e2d79d34a26ce5ca82a05344d2edfb3b0",
+  "task_generator/tasks/cloudcompare_sa_merge_scale/env/right.xyz": "d17eb41fe05dcee71b28bafefec73356ebaf76b4",
+  "task_generator/tasks/cloudcompare_sa_merge_scale/env_manifest.json": "c70266ba61b869ecd8af75f31a667f869041ac6c",
+  "task_generator/tasks/cloudcompare_sa_merge_scale/task.json": "915781affae22e44215053aea336e5a8e27aa59e",
+  "task_generator/tasks/cloudcompare_sa_register_merge/env/misaligned.ply": "765c53ef315bf2c486fa96f8f010755267de8dd4",
+  "task_generator/tasks/cloudcompare_sa_register_merge/env/reference.ply": "e0daac3648c39d32c186b603ed24d699e784bbde",
+  "task_generator/tasks/cloudcompare_sa_register_merge/env_manifest.json": "8dfb5ed491dfa1a9017fbf14262151d6d3daaa07",
+  "task_generator/tasks/cloudcompare_sa_register_merge/task.json": "20d315d2497ba4a687cd91c76e3fb8817cc078ae",
+  "task_generator/tasks/cloudcompare_sa_scale_in_place/env/small.ply": "5136147b5cdf147352549da7b884d7b002d30fb2",
+  "task_generator/tasks/cloudcompare_sa_scale_in_place/env_manifest.json": "0e628ffab2999e3cca5f6c45832acb180ee19341",
+  "task_generator/tasks/cloudcompare_sa_scale_in_place/task.json": "77d4c2d40770f8ea27e8bcf9e5414f4b8756a783",
+  "task_generator/tasks/cloudcompare_sa_stack_merge/env/east.xyz": "95e0b1316f41376d8557dbb51066e63d99fc8952",
+  "task_generator/tasks/cloudcompare_sa_stack_merge/env/north.xyz": "cad1e660839f4ad77c6f520758095d98ab7aad6a",
+  "task_generator/tasks/cloudcompare_sa_stack_merge/env/south.xyz": "5c68961845d89b78db8bd355c5b49d479def6d67",
+  "task_generator/tasks/cloudcompare_sa_stack_merge/env_manifest.json": "94cf5aeb93d742b399dc6f8ef353661097652f50",
+  "task_generator/tasks/cloudcompare_sa_stack_merge/task.json": "757780b6271bf1d758bfde79019ffde6d9775653",
+  "task_generator/tasks/cloudcompare_sa_tetra_transform/env/tetra.ply": "8c0d061b2b1c1ffbd1b6b44e0f2a31ba36104118",
+  "task_generator/tasks/cloudcompare_sa_tetra_transform/env_manifest.json": "24f20bebdfe81e6e530001b88eab1e82dfd51a5a",
+  "task_generator/tasks/cloudcompare_sa_tetra_transform/task.json": "fc9c9f2c80a963a8e0d2049b1fa5962dbaa54868",
+  "task_generator/tasks/cloudcompare_sa_two_slabs/env/city.ply": "ce3c28c1c648157fee23557ac364e3c49e30890a",
+  "task_generator/tasks/cloudcompare_sa_two_slabs/env_manifest.json": "ffef07961f479379c1cb773e4a0b60e87a539483",
+  "task_generator/tasks/cloudcompare_sa_two_slabs/task.json": "cced7788e8cb4b3157d3236306901de99876b53f",
+  "task_generator/tasks/cloudcompare_sa_upper_half_ramp/env/plain.ply": "2b14c7b61f659e1eae930361d352a866a0225e9d",
+  "task_generator/tasks/cloudcompare_sa_upper_half_ramp/env_manifest.json": "4e9e661f3b7577aa965eb40cfdc76e1f12b84997",
+  "task_generator/tasks/cloudcompare_sa_upper_half_ramp/task.json": "29c8cf4f016c95a13be21abb810ffedebcc2bd24",
+  "task_generator/tasks/cloudcompare_sa_vertices_upper/env/shape.obj": "d34e24184533362be952adad62db2343929b7c0f",
+  "task_generator/tasks/cloudcompare_sa_vertices_upper/env_manifest.json": "5f59a5a835eba6ccc7e27daacc17f35caf7140f5",
+  "task_generator/tasks/cloudcompare_sa_vertices_upper/task.json": "5330caaeeded17301d2bac3f2f397c405891d5d3",
+  "task_generator/tasks/drawio_aws_cloud_arch/env/aws_arch.drawio": "9ad24521e8d889b1481b7bb21bd5d3e994b01d3d",
+  "task_generator/tasks/drawio_aws_cloud_arch/env_manifest.json": "720ed3390c8acd9f7d63f87963186832b8af023c",
+  "task_generator/tasks/drawio_aws_cloud_arch/task.json": "0bb4fc5d471e7dbc46747d038e7b4133dd74bfeb",
+  "task_generator/tasks/drawio_bpmn_payment/env/payment_bpmn.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_bpmn_payment/env_manifest.json": "3996c841bd2e8b7e06cb19a56114c3b872613034",
+  "task_generator/tasks/drawio_bpmn_payment/task.json": "309e12e4dd8d2b88d556d258a8ea389ebf318098",
+  "task_generator/tasks/drawio_edit_existing/env/network.drawio": "6e22f0d3d9b65943a702417aaa75d94db74e98d2",
+  "task_generator/tasks/drawio_edit_existing/env_manifest.json": "b133e27aa080b6837867305f7af963ea917ab5be",
+  "task_generator/tasks/drawio_edit_existing/task.json": "7b2d9dfd7086a9cf30c39f9007211b38350da8c6",
+  "task_generator/tasks/drawio_er_diagram/env/er_diagram.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_er_diagram/task.json": "72b16cdd46f3a098ad31782c44dfb385d4f4f14f",
+  "task_generator/tasks/drawio_fix_and_color_workflow/env/wf_fix.drawio": "69868d59336568f22139f8e9047cd9b626f4954c",
+  "task_generator/tasks/drawio_fix_and_color_workflow/env_manifest.json": "3a002120f3a5ad5ab6262dadf8e99a18c9bdf10d",
+  "task_generator/tasks/drawio_fix_and_color_workflow/task.json": "0da73f121700d949150908b697ea8edb32ea79c4",
+  "task_generator/tasks/drawio_floorplan_office/env/floorplan.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_floorplan_office/env_manifest.json": "cf35f62693b441b701bdaf3a2ffac6bfd8d4ddf2",
+  "task_generator/tasks/drawio_floorplan_office/task.json": "83ffb4a853f969f961c8b4f62d12854c50a71429",
+  "task_generator/tasks/drawio_incident_runbook/env/runbook.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_incident_runbook/env_manifest.json": "d27a8911c13c3bd88c9de9c90c17d9b63f604d55",
+  "task_generator/tasks/drawio_incident_runbook/task.json": "bf46d148039ddce32d645b8cfa3dc0cf0a46eea4",
+  "task_generator/tasks/drawio_kubernetes_cluster/env/k8s_cluster.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_kubernetes_cluster/env_manifest.json": "87b5afe044dea7a601e4b08e70eb2ae6ba5e9cc9",
+  "task_generator/tasks/drawio_kubernetes_cluster/task.json": "a128f780793784e662ac20b6b2e768070d07d0d6",
+  "task_generator/tasks/drawio_multipage_microservices/env/microservices.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_multipage_microservices/env_manifest.json": "5b583e04ed0c73618d4ee0db5b057e9bac502bd4",
+  "task_generator/tasks/drawio_multipage_microservices/task.json": "ba59be8bbab039343b44474917caec779e8ae0bf",
+  "task_generator/tasks/drawio_network_topology/env/network_topology.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_network_topology/task.json": "0658c682faefb64bfdcdbba1b4de557c3acfbc59",
+  "task_generator/tasks/drawio_restyle_erd/env/erd.drawio": "d15f7f8a77fbfe6d2d0dc85ae2dfea6175e07893",
+  "task_generator/tasks/drawio_restyle_erd/env_manifest.json": "6f34ef63c86466e505dce8c300ddfd4b09886c7e",
+  "task_generator/tasks/drawio_restyle_erd/task.json": "7e294daa9e1305e6b247afee8a16834622e86714",
+  "task_generator/tasks/drawio_state_machine/env/state_machine.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_state_machine/task.json": "8120db1ae5a05430368bb54b0fc0f0c5c9c95b39",
+  "task_generator/tasks/drawio_styled_data_pipeline/env/data_pipeline.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_styled_data_pipeline/env_manifest.json": "bcb1d5ad691266c7af1c1c6329ef82fcbdabf3e8",
+  "task_generator/tasks/drawio_styled_data_pipeline/task.json": "728dabc02c6e3a63cb563ee608b3d2736acef48c",
+  "task_generator/tasks/drawio_swimlane_process/env/swimlane_process.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_swimlane_process/env_manifest.json": "733db83ba1e5eea9e5a400ada0f3ca3dd1b78d84",
+  "task_generator/tasks/drawio_swimlane_process/task.json": "0d19f1628d87696033c73bfc3620756c24dbfb98",
+  "task_generator/tasks/drawio_uml_class_diagram/env/uml_classes.drawio": "b64db5ff1169d69d304c98bdf60dc58952c7861f",
+  "task_generator/tasks/drawio_uml_class_diagram/task.json": "fd9c1a3453c8bcfdc80a9f2e24bc5369474c057c",
+  "task_generator/tasks/freecad_change_unit_schema/env/empty.FCStd": "e92f58c7cb70f7e73273f98f1ddb7d78ddd9ff59",
+  "task_generator/tasks/freecad_change_unit_schema/env_manifest.json": "fc243dc0fc2174d8d13902843ca23c2a645db9d4",
+  "task_generator/tasks/freecad_change_unit_schema/task.json": "ccdff37159da199df6c4e9b72f9f4895df8b35fa",
+  "task_generator/tasks/freecad_cw_part_013/env_manifest.json": "a98e5af1fa17d96c15774f54417eabf288e4e2a2",
+  "task_generator/tasks/freecad_cw_part_013/task.json": "a462c03b2bef15de47373d0db4ce63e96a7fa5a6",
+  "task_generator/tasks/freecad_cw_part_019/env_manifest.json": "7daa2f94f264983cebe4785aeefdd2530e336cbd",
+  "task_generator/tasks/freecad_cw_part_019/task.json": "90a2947e56085ce0e25761f0df2ecf509bd9f9e5",
+  "task_generator/tasks/freecad_cw_part_025/env_manifest.json": "35ca6df8b98943d14bc4f8c4ea4210fdc517a364",
+  "task_generator/tasks/freecad_cw_part_025/task.json": "75060e0a95f1ce236853f0f8baddcaae172d3918",
+  "task_generator/tasks/freecad_cw_part_027/env_manifest.json": "04f3e6c280bccd3dd110ed183dc9001d9f2493c7",
+  "task_generator/tasks/freecad_cw_part_027/task.json": "b18177df5d4c0192e252c10458b2c8625f63b5ee",
+  "task_generator/tasks/freecad_cw_part_045/env_manifest.json": "2a56f9714339e515e990e64632118bc893e66b94",
+  "task_generator/tasks/freecad_cw_part_045/task.json": "42b25bd76f9d2d6b8b640727e95811a31b03dbda",
+  "task_generator/tasks/freecad_cw_part_050/env/Precondition_Unnamed.FCStd": "66e60b0d9785e67dabc036b2c8c6bf87273f0eb6",
+  "task_generator/tasks/freecad_cw_part_050/env_manifest.json": "50586594c6388a0c7cfb1cd6d99f9018985a6c2c",
+  "task_generator/tasks/freecad_cw_part_050/task.json": "2debdbf7eb821223f84812bdf9629b6d2d971e75",
+  "task_generator/tasks/freecad_cw_part_051/env/Precondition_Unnamed.FCStd": "66e60b0d9785e67dabc036b2c8c6bf87273f0eb6",
+  "task_generator/tasks/freecad_cw_part_051/env_manifest.json": "b9e036bd28cee1001d68bccc4f26032817dd1716",
+  "task_generator/tasks/freecad_cw_part_051/task.json": "6d6c6b8bace36e2146fb1d3e5ea735aa921c26e8",
+  "task_generator/tasks/freecad_cw_part_056/env_manifest.json": "4e985eeb208506890c5e9fc25ea4379b0885da7c",
+  "task_generator/tasks/freecad_cw_part_056/task.json": "4e5b7600b943a07dbe7a3cedf328991175c866fa",
+  "task_generator/tasks/freecad_cw_part_057/env_manifest.json": "98e988d23603da1a49646acb09e8d7a20f6d1903",
+  "task_generator/tasks/freecad_cw_part_057/task.json": "4b0e2f5bb0871367f9b15a76f6a4786a5d3e30b7",
+  "task_generator/tasks/freecad_cw_part_060/env_manifest.json": "63217d8734a38968b5ef0f68a9c1ac89d09ee4a0",
+  "task_generator/tasks/freecad_cw_part_060/task.json": "4b4ed74671fbf07c2df09adaf2cb054e1f51d7f4",
+  "task_generator/tasks/freecad_cw_sketch_006/env_manifest.json": "0d87374c1c873647d777f4d2f0488d17e7e3708c",
+  "task_generator/tasks/freecad_cw_sketch_006/task.json": "4938cd3027afbe9eb47a8b967f48052e27250a5f",
+  "task_generator/tasks/freecad_cw_sketch_007/env_manifest.json": "eb83aa7430103464d8296c196d1ac2c40bcc21fd",
+  "task_generator/tasks/freecad_cw_sketch_007/task.json": "83c8a6cbab77c77fe8ffa28116263215e47f120a",
+  "task_generator/tasks/freecad_cw_sketch_008/env_manifest.json": "e66b31479b73f811591a684f24b1183871fcd005",
+  "task_generator/tasks/freecad_cw_sketch_008/task.json": "d39be58179efe417cce730e7730fc6cd265b1f2b",
+  "task_generator/tasks/freecad_cw_sketch_012/env_manifest.json": "a503123cbcd392d96da4f1fa8a342966b69af1d4",
+  "task_generator/tasks/freecad_cw_sketch_012/task.json": "fd2f37ac09e70ac8ed702bef78a8b9369d736590",
+  "task_generator/tasks/freecad_cw_techdraw_002/env/Precondition_Unnamed.FCStd": "db92e5b051d057704fe444a153e36f74026892e5",
+  "task_generator/tasks/freecad_cw_techdraw_002/env_manifest.json": "5b2bd6640a776e011652aded62548316ebb9f418",
+  "task_generator/tasks/freecad_cw_techdraw_002/task.json": "8eab9254e7d8ae08996c557579f8186bd9b5ed1f",
+  "task_generator/tasks/freecad_gap_draft_wire_polygon/env/draft_start.FCStd": "7271c10c530587188f204faa201b15453b88e6d2",
+  "task_generator/tasks/freecad_gap_draft_wire_polygon/env_manifest.json": "24619fa17dcc46d516ca9902aa04db0f82abcf5f",
+  "task_generator/tasks/freecad_gap_draft_wire_polygon/task.json": "503c15cf51b6fd863890c4f4155d21c12eebb465",
+  "task_generator/tasks/freecad_gap_partdesign_revolve_bottle/env/bottle_start.FCStd": "7397ef71c2e7ce994a5d0b665b00fc95cf429519",
+  "task_generator/tasks/freecad_gap_partdesign_revolve_bottle/env_manifest.json": "f2afb0ffcf7b9716dd50f76e9926525287947262",
+  "task_generator/tasks/freecad_gap_partdesign_revolve_bottle/task.json": "2c0669c90f530a06cae14abe333514de82d8ec69",
+  "task_generator/tasks/freecad_gap_spreadsheet_parametric/env/spreadsheet_start.FCStd": "6f480ed4cb868b0a9d393e2539b185fae4ee5157",
+  "task_generator/tasks/freecad_gap_spreadsheet_parametric/env_manifest.json": "391eece55759e9d5d19fde781a04333c1c3702fa",
+  "task_generator/tasks/freecad_gap_spreadsheet_parametric/task.json": "52481497561ef92360a531b6baa19ecf7a500c7e",
+  "task_generator/tasks/freecad_preferences_multi_tune/env/empty_prefs.FCStd": "341c8066225e20ddc45a524384df0795db664202",
+  "task_generator/tasks/freecad_preferences_multi_tune/env_manifest.json": "d82c72ec1fb31d798ae0b03fddaf976d2dcb64b3",
+  "task_generator/tasks/freecad_preferences_multi_tune/task.json": "a63e6b161dd526355034e5a1a1a3d8a18fc7edda",
+  "task_generator/tasks/freecad_set_theme_preference/env/empty.FCStd": "e92f58c7cb70f7e73273f98f1ddb7d78ddd9ff59",
+  "task_generator/tasks/freecad_set_theme_preference/env_manifest.json": "36dc5b80346d4fff24db86c67b65e3874ab1eb08",
+  "task_generator/tasks/freecad_set_theme_preference/task.json": "90e107fe9cf849f683583d92cc5f7a91cf0e69be",
+  "task_generator/tasks/freecad_sphere_stl_export_high_res/env/ball.FCStd": "bddf4e031863dbca35dbc4f12cabee5195fe7449",
+  "task_generator/tasks/freecad_sphere_stl_export_high_res/env_manifest.json": "9387714fde246c340256efb1ebac530dec01d364",
+  "task_generator/tasks/freecad_sphere_stl_export_high_res/task.json": "b657a73bd5d8a52a841d8e911660da6bf64b6f24",
+  "task_generator/tasks/gimp_brightness_contrast/env/dark_photo.png": "5695313532171ce16ed8a8c48e4043b045f4f8ff",
+  "task_generator/tasks/gimp_brightness_contrast/env_manifest.json": "003c67ef2503566eaa788eb2b157e3b4763a38df",
+  "task_generator/tasks/gimp_brightness_contrast/task.json": "9ed9f0a647940e19b60052dc35383924d43afb9b",
+  "task_generator/tasks/gimp_gap_layer_mask_gradient_reveal/env/blue_bg.png": "6500ff0d47f371e801749a52ddd1bca77f1dbe40",
+  "task_generator/tasks/gimp_gap_layer_mask_gradient_reveal/env/red_fg.png": "b1e5ef4c2092214dd1fe9e769daabff1055fc12a",
+  "task_generator/tasks/gimp_gap_layer_mask_gradient_reveal/env_manifest.json": "0f043188aff2b850f7065454b8533095b281170d",
+  "task_generator/tasks/gimp_gap_layer_mask_gradient_reveal/task.json": "ba9bf265ef8457c42dea37109a7f94068881b17a",
+  "task_generator/tasks/gimp_sa_silhouette_on_sky/env/landscape_base.png": "9ca83f3bc1d6082a69eb80a7105150b97ff82305",
+  "task_generator/tasks/gimp_sa_silhouette_on_sky/env/silhouette.png": "99e26dace1351a9b8de0f382e9d3df34d1c90a63",
+  "task_generator/tasks/gimp_sa_silhouette_on_sky/env_manifest.json": "e2aa21b96838bb81ee68f1807f364340ad76ec34",
+  "task_generator/tasks/gimp_sa_silhouette_on_sky/task.json": "592b8c591512fd85889369d42bfa71c19a6059db",
+  "task_generator/tasks/gimp_sa_square_thumbs/env/big_photo.png": "504b32ff65d65c5a48ac8ac2da261a85dbc397c2",
+  "task_generator/tasks/gimp_sa_square_thumbs/env_manifest.json": "2e9584c0da583c988a9cc0c795b85d0586aecc9d",
+  "task_generator/tasks/gimp_sa_square_thumbs/task.json": "5992b85ff04cd3bb6e405d919e0c752ff24c2f2a",
+  "task_generator/tasks/gimp_sb_blend_halves/env/photo_base.png": "9fc0d725c7b997feca7afbe41abca970286a2253",
+  "task_generator/tasks/gimp_sb_blend_halves/env/texture_overlay.png": "97d369ce6949bad714a1e71baaecacb2351b6161",
+  "task_generator/tasks/gimp_sb_blend_halves/env_manifest.json": "54dc7774d545cc0f2a60f06fe7d97f851ecb49f2",
+  "task_generator/tasks/gimp_sb_blend_halves/task.json": "404da56850b328a6707b4ace42a3381439c213f0",
+  "task_generator/tasks/gimp_sb_channel_swap/env/photo.png": "23c68c075c00978ac614c06ee2cab9a59e6b41cd",
+  "task_generator/tasks/gimp_sb_channel_swap/env_manifest.json": "3a77c61771a19e5a3ea9fb085afbaf9779b95f01",
+  "task_generator/tasks/gimp_sb_channel_swap/task.json": "250fa93697483a2a8d06fe260775dd642950904f",
+  "task_generator/tasks/gimp_sb_collage/env/quadrants.png": "8f017f8550618cc040708370d3526cf98fafbd23",
+  "task_generator/tasks/gimp_sb_collage/env/red_top_green_bottom.png": "39d5c983c221931e5c685f803cfe7441128313b3",
+  "task_generator/tasks/gimp_sb_collage/env_manifest.json": "eaf90ad7d2ce1ba31aa4084a7e40f00f31f8d7ab",
+  "task_generator/tasks/gimp_sb_collage/task.json": "0f0da0ea14644b4022a95cf76b0d07e1d64090ce",
+  "task_generator/tasks/gimp_sb_drop_shadow/env/icon_rgba.png": "e1e3e4f0164c53afdbd0c579cc99a826e4e99f1f",
+  "task_generator/tasks/gimp_sb_drop_shadow/env_manifest.json": "52903fe1fc0a2ceba56d11daa21576beee2db880",
+  "task_generator/tasks/gimp_sb_drop_shadow/task.json": "de86bf05520cf3818e1fbcd737652479af92b871",
+  "task_generator/tasks/gimp_sb_ellipse_reveal/env/blue_bg.png": "6500ff0d47f371e801749a52ddd1bca77f1dbe40",
+  "task_generator/tasks/gimp_sb_ellipse_reveal/env/red_fg.png": "b1e5ef4c2092214dd1fe9e769daabff1055fc12a",
+  "task_generator/tasks/gimp_sb_ellipse_reveal/env_manifest.json": "db3a3984ab583003d5a220bcf720b6fbca046e74",
+  "task_generator/tasks/gimp_sb_ellipse_reveal/task.json": "ee7c82680a35958b8c4efb88b48f485f0e9b6087",
+  "task_generator/tasks/gimp_sb_gradient_stripe/env/three_stripes.png": "b640273280f5819269ce6df6838d4f4b19172de2",
+  "task_generator/tasks/gimp_sb_gradient_stripe/env_manifest.json": "3329053320e21a39f61f836ccbd0f209c65d70e4",
+  "task_generator/tasks/gimp_sb_gradient_stripe/task.json": "73f7948501abacd66ca3cf89242d228d3b9ed042",
+  "task_generator/tasks/gimp_sb_hue_band/env/colorful.png": "44f27946f608922108b919872d9aeb25a4d2fc0a",
+  "task_generator/tasks/gimp_sb_hue_band/env_manifest.json": "30850d0a3e9af78ddeb962a3cbb84ec39f3b0faa",
+  "task_generator/tasks/gimp_sb_hue_band/task.json": "0ff860e3128f851a8f70997246ed36610832202a",
+  "task_generator/tasks/gimp_sb_invert_half/env/red_top_green_bottom.png": "39d5c983c221931e5c685f803cfe7441128313b3",
+  "task_generator/tasks/gimp_sb_invert_half/env_manifest.json": "2415e05c89f33584034012b1be0500631d9e62f3",
+  "task_generator/tasks/gimp_sb_invert_half/task.json": "d0c2c3d4c5ee36d0329fd42f77122f26891b2626",
+  "task_generator/tasks/gimp_sb_levels_range/env/gradient.png": "5224fe6d3a68de9c976dc61934f189b59e8f795f",
+  "task_generator/tasks/gimp_sb_levels_range/env_manifest.json": "9dac786a3a9bf9a977c2e1058a0c4361937d1d49",
+  "task_generator/tasks/gimp_sb_levels_range/task.json": "36e141720966f82c4c3601a73eb9b71882bfb0c9",
+  "task_generator/tasks/gimp_sb_logo_pair/env/landscape_base.png": "9ca83f3bc1d6082a69eb80a7105150b97ff82305",
+  "task_generator/tasks/gimp_sb_logo_pair/env/logo_overlay.png": "7296313bcd08c0e6fdf6749f999771f959b4c55c",
+  "task_generator/tasks/gimp_sb_logo_pair/env_manifest.json": "a8cf7b104deeeec98bf97ed34ea036a71cebfae9",
+  "task_generator/tasks/gimp_sb_logo_pair/task.json": "4ec10198547c6ccaf67c2a5f74b3b5d73adbac01",
+  "task_generator/tasks/gimp_sb_partial_pixelize/env/silhouette.png": "99e26dace1351a9b8de0f382e9d3df34d1c90a63",
+  "task_generator/tasks/gimp_sb_partial_pixelize/env_manifest.json": "ace9e7e6b1901157812690c134fabaa758f7a83a",
+  "task_generator/tasks/gimp_sb_partial_pixelize/task.json": "172c097dca478f6285a767a2d3b09c43506a8233",
+  "task_generator/tasks/gimp_sb_radial_spotlight/env/dark_photo.png": "5695313532171ce16ed8a8c48e4043b045f4f8ff",
+  "task_generator/tasks/gimp_sb_radial_spotlight/env_manifest.json": "d4466d17e7ee5f33666f68fb8e9578759d18df69",
+  "task_generator/tasks/gimp_sb_radial_spotlight/task.json": "450d8c8af09e791740b6a3db0bc6585ca17a7d99",
+  "task_generator/tasks/gimp_sb_stroke_desat/env/colorful.png": "44f27946f608922108b919872d9aeb25a4d2fc0a",
+  "task_generator/tasks/gimp_sb_stroke_desat/env_manifest.json": "db99b7d8b5a8692e73b6807b6a4d3402e01254db",
+  "task_generator/tasks/gimp_sb_stroke_desat/task.json": "997304cfb899d7ae68d4fd976fbfec6a44c29498",
+  "task_generator/tasks/gimp_sb_tile_grid/env/icon_bg.png": "d3e2fd0b035d2d04312dc1accc2b20f07517af41",
+  "task_generator/tasks/gimp_sb_tile_grid/env_manifest.json": "83bf1cc1f545acdebd3a4b01ef33b069bb3b3939",
+  "task_generator/tasks/gimp_sb_tile_grid/task.json": "587f7a188927b38733628dab12695ca18938851f",
+  "task_generator/tasks/impress_cg_3339444d/env/impress_sales_068.pptx": "c78cbaba8c0fc024c6e8b847f89f42db992554d0",
+  "task_generator/tasks/impress_cg_3339444d/env_manifest.json": "499362eb5659037926518e027884f3defa40f4d3",
+  "task_generator/tasks/impress_cg_3339444d/task.json": "b1786ea1481a9b06aeea123f3b13991e90ac1360",
+  "task_generator/tasks/impress_cg_3762d65e/env/company_logo.png": "0fd26c087d041835349530474115569738db5037",
+  "task_generator/tasks/impress_cg_3762d65e/env/impress_tm_073.pptx": "a5526d34ccba89bed2b2d9c3f7585027ceefa9fe",
+  "task_generator/tasks/impress_cg_3762d65e/env_manifest.json": "4961aa274c4795be35e3d41ef8baf7612734f17a",
+  "task_generator/tasks/impress_cg_3762d65e/task.json": "c362168dda4dba67855de8c3889de1e8068a4de9",
+  "task_generator/tasks/impress_cg_38d5fc3a/env/osworld_impress_bold_all_title_size_underline_007.pptx": "4fda63bc50598ccb02c93491e67fbdaf20b4db08",
+  "task_generator/tasks/impress_cg_38d5fc3a/env_manifest.json": "4fa20407e04747030c25c56429a4846ca4e1f08e",
+  "task_generator/tasks/impress_cg_38d5fc3a/task.json": "85353f30e826c0f414c765975358cc3a503eb7d0",
+  "task_generator/tasks/impress_cg_6540f8e6/env/osworld_impress_image_top_underline_text_007.pptx": "953407ef1ed3cf7203e268747475a8bc494beb94",
+  "task_generator/tasks/impress_cg_6540f8e6/env_manifest.json": "3ba11ab878a1fe3619e1070ff60c2a549bf340a7",
+  "task_generator/tasks/impress_cg_6540f8e6/task.json": "4db0a412324b8f3ae410c25f4d94dc2330fc3395",
+  "task_generator/tasks/impress_cg_90cf6d70/env/impress_wf_071.pptx": "0e0154ddf6c8c9f79e31d4ae2e1d062bc0ed47d9",
+  "task_generator/tasks/impress_cg_90cf6d70/env_manifest.json": "7a715c739520acf427dd8c6effb74b4deb01bf61",
+  "task_generator/tasks/impress_cg_90cf6d70/task.json": "ee412fd6508ec15ef7c43799a75ea5a8805f7772",
+  "task_generator/tasks/impress_cg_97764e68/env/impress_sales_081.pptx": "5cf7ded591ff36502351dfc00e07e49baa98e1dd",
+  "task_generator/tasks/impress_cg_97764e68/env_manifest.json": "a269509f575b43aff857d0b8698b4c47ceeccfca",
+  "task_generator/tasks/impress_cg_97764e68/task.json": "44293151efdef90b9f9fe20883976ad87031bbaa",
+  "task_generator/tasks/impress_cg_9adf8ac9/env/impress_tct_019.pptx": "9157c95da5ed3b5ea3c871b03476d30671f9cc68",
+  "task_generator/tasks/impress_cg_9adf8ac9/env_manifest.json": "9cb081b9f5915415d8a9a554535fc4bb5391d445",
+  "task_generator/tasks/impress_cg_9adf8ac9/task.json": "bdba33f29c5c331c3120959bd48837c511df9987",
+  "task_generator/tasks/impress_cg_9d28ae95/env/impress_wf_032.pptx": "42aabe8fee5de417ba8c0147d989baa241bcd887",
+  "task_generator/tasks/impress_cg_9d28ae95/env_manifest.json": "92ba8bf3ef7cf9d1e22bee82a8dd32a579cafdee",
+  "task_generator/tasks/impress_cg_9d28ae95/task.json": "b4f0b3327c4869e22cc6ab7501e317fc1c26908f",
+  "task_generator/tasks/impress_cg_ce9a5302/env/impress_tct_095.pptx": "d88ec817141bd09e51a790b02d9ed263788b3b7c",
+  "task_generator/tasks/impress_cg_ce9a5302/env_manifest.json": "61d995790259fae0abeff64a030c2a86e5b5e508",
+  "task_generator/tasks/impress_cg_ce9a5302/task.json": "89dd0bd49eb7be618d287ff058b88e37f16f5552",
+  "task_generator/tasks/impress_cg_cfab2aa0/env/impress_exec_034.pptx": "8b0ecb72ddbc7782944b7d447ce78aaf05209419",
+  "task_generator/tasks/impress_cg_cfab2aa0/env_manifest.json": "26c30626c4735949a15cd76d7c6dd4836d0c9803",
+  "task_generator/tasks/impress_cg_cfab2aa0/task.json": "1dd42968dadbeadc5f99f5fc43de396325c5a916",
+  "task_generator/tasks/impress_cg_d6161939/env/impress_ps_019.pptx": "caa4cc460985b056f71a4a103363b35828b7edfa",
+  "task_generator/tasks/impress_cg_d6161939/env_manifest.json": "d10e716b29cfa69d62325d0f5c1fe68642017db4",
+  "task_generator/tasks/impress_cg_d6161939/task.json": "687175226252e59dfd1be62024aeab2413939aee",
+  "task_generator/tasks/impress_cg_d9791c5b/env/impress_el_042.pptx": "e0095616ad4546afc1c2ab1b14b6393e3311c240",
+  "task_generator/tasks/impress_cg_d9791c5b/env_manifest.json": "92252a6ea11b2323f64ed68aa3f51d4557227563",
+  "task_generator/tasks/impress_cg_d9791c5b/task.json": "60307f10d3e7df4008471e95bff40cc7321f6552",
+  "task_generator/tasks/impress_cg_ec1261d7/env/impress_stu_051.pptx": "e589b4f65d21a3df3a5af0d2394a4019dbd3e100",
+  "task_generator/tasks/impress_cg_ec1261d7/env_manifest.json": "2ddcbb6cd55e6345020025c95bda4b4a1c1445c4",
+  "task_generator/tasks/impress_cg_ec1261d7/task.json": "7fc2007aa247108eb20c5c5b3a7086414722200b",
+  "task_generator/tasks/impress_cg_ec99ce42/env/impress_el_075.pptx": "6d77cbe26e4cc2715af32385d39cbb569c3159e0",
+  "task_generator/tasks/impress_cg_ec99ce42/env/logo.png": "4aecad03d01aed8ef550345a2d036773fe320a37",
+  "task_generator/tasks/impress_cg_ec99ce42/env_manifest.json": "5e9b954a4a813a771801060f192dac2640daebcf",
+  "task_generator/tasks/impress_cg_ec99ce42/task.json": "0509595b1f12ab29f448ae4255acb03d9b4dbe14",
+  "task_generator/tasks/impress_cg_f46373ec/env/Research_Collab.pptx": "90e0dd359bbb2e9361330a8f5e50a6cafd3885fa",
+  "task_generator/tasks/impress_cg_f46373ec/env/collab_notes.docx": "ba8fcf25465c8f4e7d67606ddfaf3e2809c348d9",
+  "task_generator/tasks/impress_cg_f46373ec/env/slide_assignments.txt": "9b2dad899c1b9b8fd8eff697a6cf046f139cdd0d",
+  "task_generator/tasks/impress_cg_f46373ec/env_manifest.json": "1d3d599c9d69786e6a1fdaf19b22389ff9c16491",
+  "task_generator/tasks/impress_cg_f46373ec/task.json": "a0b7d198726791f99b410ca432a49d0c5f1301df",
+  "task_generator/tasks/impress_cg_f8c6aa39/env/osworld_impress_bold_all_title_size_underline_010.pptx": "71dfb2c0307d2471aaa7fb5a3d02e09e429e959b",
+  "task_generator/tasks/impress_cg_f8c6aa39/env_manifest.json": "3360ae89f52137ef789ec46d26e80700afe63d12",
+  "task_generator/tasks/impress_cg_f8c6aa39/task.json": "9acf651350a9307feb8a079091989c59fa74f2bc",
+  "task_generator/tasks/impress_cg_fdf3feb2/env/osworld_impress_title_selective_formatting_008.pptx": "7e649f30a37896a3c756d1242ac0b377d6d8f150",
+  "task_generator/tasks/impress_cg_fdf3feb2/env_manifest.json": "f3fae378de7dd7054bc1abe238f32586c9077307",
+  "task_generator/tasks/impress_cg_fdf3feb2/task.json": "332befa293a677d888e8d5ed38edbbb4da78e83c",
+  "task_generator/tasks/impress_cg_fe33f3ca/env/impress_teach_052.pptx": "f764db7b5039981175299dbb31d70b57902271c2",
+  "task_generator/tasks/impress_cg_fe33f3ca/env_manifest.json": "3b6d22f9283169ce41a7532d5be041a814173afa",
+  "task_generator/tasks/impress_cg_fe33f3ca/task.json": "0a21f6b04b45602ae2465de589d3784d36617a84",
+  "task_generator/tasks/impress_nonprofit_pitch_deck/env_manifest.json": "19824701d5e60c7af1762dae04026f37ce1d3d5a",
+  "task_generator/tasks/impress_nonprofit_pitch_deck/task.json": "b0627ee810d6b2ca05b3e466fb9d977df490a772",
+  "task_generator/tasks/impress_osw_3b27600c/env/lec17-gui-events.pptx": "fca31b9a39d5b7c7d2912af6d8a8786dd74889cf",
+  "task_generator/tasks/impress_osw_3b27600c/env_manifest.json": "c7d25025407e4578667adacf129dbf5830a32fde",
+  "task_generator/tasks/impress_osw_3b27600c/task.json": "612c516bfc4700bbc442141153ebb9ae125c83f1",
+  "task_generator/tasks/impress_osw_841b50aa/env/181_2.pptx": "f120d800a295c085a4e7609f8545dc49dce3ef6b",
+  "task_generator/tasks/impress_osw_841b50aa/env_manifest.json": "df9cf9a8363123ec916ec51d05e64aeaa5c8be5c",
+  "task_generator/tasks/impress_osw_841b50aa/task.json": "93e0b57b1869ddfd510c6842f26e1253407ea66a",
+  "task_generator/tasks/impress_osw_986fc832/env/154_3.pptx": "c61d162d4dd4ce65231d390ee14f5541847fc8cf",
+  "task_generator/tasks/impress_osw_986fc832/env_manifest.json": "d580602f2d3ec773f563118d17e2579e6c3c83d2",
+  "task_generator/tasks/impress_osw_986fc832/task.json": "23db6a07405d06acc3e6fda01333fe246c38072e",
+  "task_generator/tasks/impress_osw_ac9bb6cb/env/saa-format-guide.pptx": "0bfc381146b7004260235b903ce39d17a24bb1a0",
+  "task_generator/tasks/impress_osw_ac9bb6cb/env_manifest.json": "fa8401be81c019e006dd7ebe02e1b1878890cfd5",
+  "task_generator/tasks/impress_osw_ac9bb6cb/task.json": "449826c5550dbe12a10958a873ed2a40413d2643",
+  "task_generator/tasks/impress_osw_b8adbc24/env/189_4.pptx": "4cd708faa6c8660b238bb4ca1a514e383ec7441f",
+  "task_generator/tasks/impress_osw_b8adbc24/env_manifest.json": "fd1226d3f8d37838cbfdc0b66113f58797e84916",
+  "task_generator/tasks/impress_osw_b8adbc24/task.json": "10a6ab8398f72be9fa53a93ac9bc7894033a6deb",
+  "task_generator/tasks/impress_osw_bf4e9888/env/4.3-Template_4.29.2016.pptx": "5fb66c8cb830259e83cbc4453823210681815065",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic1.png": "8d99af040c51dae298301f3d911193ea913461fd",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic2.png": "9968c7b6f71b885584158b7f33a626f6de6519c7",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic3.png": "1c77b0c0e11004b86579edeb7a10be507aba64fb",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic4.png": "8153ff5570305244417639d3c8bfa255a84a2f36",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic5.png": "bf2eff8be3ae7165311b287f4fc7ce9b691e217e",
+  "task_generator/tasks/impress_osw_bf4e9888/env/pic6.png": "414fe661de6939d9149bbdb28879542ddc18fb97",
+  "task_generator/tasks/impress_osw_bf4e9888/env_manifest.json": "f411b2361adfc89b09ef5c71457fa28aac935258",
+  "task_generator/tasks/impress_osw_bf4e9888/task.json": "52d7717673109fd92a6095e36fdf34f161400688",
+  "task_generator/tasks/impress_osw_eb303e01/env/lecture1-2021-with-ink.pptx": "0e1a3c836f1ef1824f0570b681ae1769a8cf9dfb",
+  "task_generator/tasks/impress_osw_eb303e01/env/notes.docx": "5eda8e2dc762cf847d41d0a77e1b6c85965aec67",
+  "task_generator/tasks/impress_osw_eb303e01/env_manifest.json": "e5870b6a769f428fd678eadf6bc8f1e5e683ae76",
+  "task_generator/tasks/impress_osw_eb303e01/task.json": "d5ad5aaa74b165055161f1c4cdc73dd63d70db85",
+  "task_generator/tasks/impress_product_roadmap_deck/env_manifest.json": "c408380fa11a96373b8d869cdeee918abff46462",
+  "task_generator/tasks/impress_product_roadmap_deck/task.json": "c2e6a501159e1f5e521255ea69d0123babde9b3d",
+  "task_generator/tasks/impress_webinar_followup_deck/env_manifest.json": "e02303f07bc1ea00dc481330edbb8bb56b0435e3",
+  "task_generator/tasks/impress_webinar_followup_deck/task.json": "e7c4801846543f34d2a70d8fed69dc12dd54544f",
+  "task_generator/tasks/krita_add_document_metadata/env/artwork.kra": "41935a269de0e689c9e0570732afe52d96258cae",
+  "task_generator/tasks/krita_add_document_metadata/env_manifest.json": "68d86db540bf911e7571d29e7ee8f7023d9a0632",
+  "task_generator/tasks/krita_add_document_metadata/task.json": "ce5318972442efbc56e1464f1e1d695ec0788b0c",
+  "task_generator/tasks/krita_crop_and_add_border/env/photo_crop.kra": "c22182ee5cc276ec3cf8da8221205c31aebf2a22",
+  "task_generator/tasks/krita_crop_and_add_border/env_manifest.json": "237f082edbba23d1e5abc9ebf9ff8d9d2b7a9b55",
+  "task_generator/tasks/krita_crop_and_add_border/task.json": "40a8a9c8875463ec62f43dd40459b23103aa5ea7",
+  "task_generator/tasks/krita_export_multiple_formats/env/logo.kra": "80841e660fe81f01d0d71b7d3829c0fd52d8c455",
+  "task_generator/tasks/krita_export_multiple_formats/env/pictures_dir.keep": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+  "task_generator/tasks/krita_export_multiple_formats/env_manifest.json": "bc13e17afe6a97ce78f3a517f391a9246ae0ba39",
+  "task_generator/tasks/krita_export_multiple_formats/task.json": "b6270f36767733200df3cac7358dea135471f374",
+  "task_generator/tasks/krita_resize_export_jpeg/env/photo.kra": "735cff4825b667a916b37d87fae3aefa7cda4158",
+  "task_generator/tasks/krita_resize_export_jpeg/env_manifest.json": "e6796afd53cdd218f86b8568d66f9cda6e0aa7ac",
+  "task_generator/tasks/krita_resize_export_jpeg/task.json": "d1b02ed46181eb6b9b4b1d35cd17146eec5fca68",
+  "task_generator/tasks/krita_transform_mask_rotation/env/transform.kra": "c475f236ecb80a5caeae15178de2c00982993e21",
+  "task_generator/tasks/krita_transform_mask_rotation/env_manifest.json": "8f4f36f32904d0f4cdacabdc45db07ad6ec4f0f7",
+  "task_generator/tasks/krita_transform_mask_rotation/task.json": "0bde8a68378d9f83dad1377dbe26bc33b435d288",
+  "task_generator/tasks/libreoffice_writer_bug_triage_report_v2/env_manifest.json": "3d6eb6019e7ab178784023e79df3c3bdf8c22912",
+  "task_generator/tasks/libreoffice_writer_bug_triage_report_v2/task.json": "c7aabe84092d4bef540c8b12ab4a8cfa015e8e13",
+  "task_generator/tasks/libreoffice_writer_employee_directory/task.json": "fed8882b55a2fb6ae4c4f3e1c9dcb150b31f0018",
+  "task_generator/tasks/libreoffice_writer_test_plan_v2/env/test_plan_draft.odt": "94f8862515b7da598e93d00647352f57093e657d",
+  "task_generator/tasks/libreoffice_writer_test_plan_v2/env_manifest.json": "2010191b43c3384ba5432dab5b69bc8dce884523",
+  "task_generator/tasks/libreoffice_writer_test_plan_v2/task.json": "22fd03707d4d8291c9e5c425bbfee425b0f4f40b",
+  "task_generator/tasks/musescore3_sa_catalog_movement/env/catalog_entry.mscz": "a727e1de9be865a4228ff8e04f2ef543830e53ab",
+  "task_generator/tasks/musescore3_sa_catalog_movement/env_manifest.json": "2b7c6d973f5c7bda1b4a4b4a366a4b0009e69b3c",
+  "task_generator/tasks/musescore3_sa_catalog_movement/task.json": "23f0738fdfa149813ac99488badb3fc0960402fa",
+  "task_generator/tasks/musescore3_sa_dc_form/env/sonatina_dc.mscz": "4538d4888dc644bdd1057f315dea974aa991f87b",
+  "task_generator/tasks/musescore3_sa_dc_form/env_manifest.json": "437078d353268d300c515a14e6a8e06eef2100d9",
+  "task_generator/tasks/musescore3_sa_dc_form/task.json": "82c9771e3093928215b8cfdf3901afc523a7d796",
+  "task_generator/tasks/musescore3_sa_ds_al_coda/env/folk_tune.mscz": "4a8945b5ea3a41b9e81e6c5feeff1af072f7d567",
+  "task_generator/tasks/musescore3_sa_ds_al_coda/env_manifest.json": "24d3164248a149132b4bf0bd72a2c64d69bdab77",
+  "task_generator/tasks/musescore3_sa_ds_al_coda/task.json": "157ad00bfdfc83aa7b48c2c4c2fe581727f6fec8",
+  "task_generator/tasks/musescore3_sa_duet_arrangement/env/duet.mscz": "68d4ad067f11edd101d57c2c2ed2abe1f46597b6",
+  "task_generator/tasks/musescore3_sa_duet_arrangement/env_manifest.json": "3f973c19f4395c0f6b90d2abb6ceb7f2e4810cf5",
+  "task_generator/tasks/musescore3_sa_duet_arrangement/task.json": "ff0d9ba9202f49f36cd4e4646facae84029ee858",
+  "task_generator/tasks/musescore3_sa_dynamic_terraces/env/dynamic_arc.mscz": "18876c4ec175dfd347c92fbc7e1105053de397ee",
+  "task_generator/tasks/musescore3_sa_dynamic_terraces/env_manifest.json": "5ec155b9dbb345b14895d48a6287a497e3d4ac78",
+  "task_generator/tasks/musescore3_sa_dynamic_terraces/task.json": "2bd05951af82bf09d60c1074a5f31e2e7f7a767f",
+  "task_generator/tasks/musescore3_sa_export_parts_set/env/suite.mscz": "4519f95aa1edd90e7dd5714b40b55f1e081a9d03",
+  "task_generator/tasks/musescore3_sa_export_parts_set/env_manifest.json": "40a529ab1c650e87e4df95c9f1a4ae05e15b3ae2",
+  "task_generator/tasks/musescore3_sa_export_parts_set/task.json": "f9a32b1465b7a0ef9a3db7f76a9e4d92edab252b",
+  "task_generator/tasks/musescore3_sa_fingering_scale/env/finger_study.mscz": "4bb4853556245e8a11324457a8ac1a7e14a88204",
+  "task_generator/tasks/musescore3_sa_fingering_scale/env_manifest.json": "b818b21d59b67bdff28f6c03b05a2b15d0acdae5",
+  "task_generator/tasks/musescore3_sa_fingering_scale/task.json": "258fbb1a0d714d6db68f1f3142f0a85ba961b536",
+  "task_generator/tasks/musescore3_sa_page_setup/env/score_layout.mscz": "1c8b7e0692214074c7b8c21b3403b38b417208d8",
+  "task_generator/tasks/musescore3_sa_page_setup/env_manifest.json": "8154b37bb67d817a9dfe439160f69df8239a7405",
+  "task_generator/tasks/musescore3_sa_page_setup/task.json": "7a7171e21a1b1a388323bc4b27444583dbae56ee",
+  "task_generator/tasks/musescore3_sa_pedal_sections/env/pedal_study.mscz": "db3ddeef3ccab51c9f7c09339ffd6b1ffd90dab7",
+  "task_generator/tasks/musescore3_sa_pedal_sections/env_manifest.json": "07698ac27dbf5546d2ac02f5a581944d294ebb0e",
+  "task_generator/tasks/musescore3_sa_pedal_sections/task.json": "9c0c887775b9fb294d8b064344e2c446a7059675",
+  "task_generator/tasks/musescore3_sa_png_midi_dynamics/env/chorale.mscz": "b2f90395e44b45c8eb998b4c84c515f841500c40",
+  "task_generator/tasks/musescore3_sa_png_midi_dynamics/env_manifest.json": "97cbc0dc8df7655f6c31fb64d931eb0a8a3bba3b",
+  "task_generator/tasks/musescore3_sa_png_midi_dynamics/task.json": "848b3a30583b39fa819d3f67ef170e10f87f2a71",
+  "task_generator/tasks/musescore3_sa_publishing_credits/env/draft_song.mscz": "2b45ffb19f5a915941b24b924611aee28269d6bd",
+  "task_generator/tasks/musescore3_sa_publishing_credits/env_manifest.json": "6a2fbe637eb3631a543c32e7b860c6cc2c3af413",
+  "task_generator/tasks/musescore3_sa_publishing_credits/task.json": "414c50ec4e6853b4fdb7f12f0e26f762b5febbfa",
+  "task_generator/tasks/musescore3_sa_register_landmarks/env/jig.mscz": "6d35c744ee941c911d41f6be572a0b1ad6a4a5d2",
+  "task_generator/tasks/musescore3_sa_register_landmarks/env_manifest.json": "449a6fc8cd65cee9cb1dd901fdaa978c4fdb9ac7",
+  "task_generator/tasks/musescore3_sa_register_landmarks/task.json": "cf81ac9962a02f865af754fbdd7340c94560093b",
+  "task_generator/tasks/musescore3_sa_repeat_form/env/allegretto.mscz": "94479fa0f980389b614bee3916ad595b6dc63b83",
+  "task_generator/tasks/musescore3_sa_repeat_form/env_manifest.json": "3db2b72eca68c4491dfb34683f17d3d61ba76280",
+  "task_generator/tasks/musescore3_sa_repeat_form/task.json": "0eff85304ef4f16a344c2ee4f72cd33226cd0fd8",
+  "task_generator/tasks/musescore3_sa_transpose_eflat/env/etude_c.mscz": "ea6ce1a1dee51fdf51a859b003b862390722b3ad",
+  "task_generator/tasks/musescore3_sa_transpose_eflat/env_manifest.json": "052d8178f2c94f60df5968c016d135fc7fc4b15d",
+  "task_generator/tasks/musescore3_sa_transpose_eflat/task.json": "e24431b6de439708cc27495543d688427daddfb0",
+  "task_generator/tasks/musescore3_sa_violin_part/env/prelude.mscz": "8fcc4f4beff8a889b245eea060ebb72ee1059ee5",
+  "task_generator/tasks/musescore3_sa_violin_part/env_manifest.json": "78549943fdf6ced3640aa1559f281b3b6d10bff2",
+  "task_generator/tasks/musescore3_sa_violin_part/task.json": "2c8afd208447c8476b51cc52bdbd26a7194c1264",
+  "task_generator/tasks/musescore3_sa_waltz_rebuild/env/waltz_draft.mscz": "4c5795fbd388664bd83c0dbe9b53738c3f7412d5",
+  "task_generator/tasks/musescore3_sa_waltz_rebuild/env_manifest.json": "1663573a0a2d1f0f67781a99d2d863cbf80f1470",
+  "task_generator/tasks/musescore3_sa_waltz_rebuild/task.json": "c951286aacd2e887da944039ec6b6e8122f7494f",
+  "task_generator/tasks/obs_add_sources_to_existing/env/channel_logo.png": "6aac1399c3901252dabec40bd1d1407069f8320a",
+  "task_generator/tasks/obs_add_sources_to_existing/env/scene_collection.json": "620f3185027976fafa79f0d2e5514e4801ca32c4",
+  "task_generator/tasks/obs_add_sources_to_existing/env_manifest.json": "b699070968e9ba5885d289e7e6e2f1ab06267fab",
+  "task_generator/tasks/obs_add_sources_to_existing/task.json": "45727fe2bb4f81a584f53877150c89ddfa3a9004",
+  "task_generator/tasks/obs_consolidate_into_single_scene/env/scene_collection.json": "57ef5cdda7562d9d627fc68c39445fb072b6dfe4",
+  "task_generator/tasks/obs_consolidate_into_single_scene/env_manifest.json": "3757345b802705b93b5c5f927126fde711426c28",
+  "task_generator/tasks/obs_consolidate_into_single_scene/task.json": "dd2b656c888f7022741e418d0075b3c2384d7f8a",
+  "task_generator/tasks/obs_delete_unused_scenes/env/scene_collection.json": "46e8fac79116f96b00320ae2de0436a6daf4c496",
+  "task_generator/tasks/obs_delete_unused_scenes/env_manifest.json": "afd32ea47d6f00826812d065269dfeff43415da8",
+  "task_generator/tasks/obs_delete_unused_scenes/task.json": "78328035b293dce3d6bed11449454b9b2ccf8efb",
+  "task_generator/tasks/obs_event_multicam_six_scenes/env/countdown.png": "4c9fc0085e67bb122ea5ada8447e1aea0cc891d0",
+  "task_generator/tasks/obs_event_multicam_six_scenes/env_manifest.json": "9deade1e1587c6d2ab0ec6ee17ee964ef5d8b2e3",
+  "task_generator/tasks/obs_event_multicam_six_scenes/task.json": "a7e43587587628cc5e1501393de380478949ae6a",
+  "task_generator/tasks/obs_five_scene_broadcast/env/brb.png": "20dc00be28f3e3a37387c5ce198ab6c033d4e0d3",
+  "task_generator/tasks/obs_five_scene_broadcast/env_manifest.json": "36f11f97eb5f945f7a8ad93fea5bf60616617d86",
+  "task_generator/tasks/obs_five_scene_broadcast/task.json": "705f674aedcbed16cba8108f2831571522e0b58d",
+  "task_generator/tasks/obs_gaming_stream_layout/env/frame.png": "3663ec9098a4559cf52e7bad8ab5e1120b4527df",
+  "task_generator/tasks/obs_gaming_stream_layout/env/starting.png": "9b92324dc7b6d48202117ff51ec812d3e8e4c526",
+  "task_generator/tasks/obs_gaming_stream_layout/env_manifest.json": "60d379916b9d192095f41db14d1f3aceb1b579f2",
+  "task_generator/tasks/obs_gaming_stream_layout/task.json": "a3a88b2b183a41c1988ac3ad4a5147e2a76f0488",
+  "task_generator/tasks/obs_gap_chroma_key_filter/env/green_plate.png": "064bfad0b723261571b711ae04300b2e8c0e4a59",
+  "task_generator/tasks/obs_gap_chroma_key_filter/env_manifest.json": "b2e91c4e1323f40986fb11323976315b9f8754d3",
+  "task_generator/tasks/obs_gap_chroma_key_filter/task.json": "bd06a65ea26ec1f0c412f510faff939da6ae929f",
+  "task_generator/tasks/obs_gap_color_correction_lut/env/raw_footage.png": "98b98587151d330cb988f6ce59de5e2c04dfc3d8",
+  "task_generator/tasks/obs_gap_color_correction_lut/env/warm_lut.png": "45696856b453086de1e6bc1575a378fc61a8da3e",
+  "task_generator/tasks/obs_gap_color_correction_lut/env_manifest.json": "c23a25b6e11cf39331638a81dacaeba2bcb2977f",
+  "task_generator/tasks/obs_gap_color_correction_lut/task.json": "992096fe225eaa6bb061d417e102e3a3163a95d3",
+  "task_generator/tasks/obs_hide_but_keep_sources/env/scene_collection.json": "e903e9cccf905e4d460ee78d5ee99cf0e56649af",
+  "task_generator/tasks/obs_hide_but_keep_sources/env_manifest.json": "d870845057af0c8785e836f4a9ea8fecbaa43a13",
+  "task_generator/tasks/obs_hide_but_keep_sources/task.json": "5e90ca10ac7fb56a244fea2a23f5e91117baeeb1",
+  "task_generator/tasks/obs_multi_collection_profiles/env/banner.png": "c1eced5aae0ee0538173822f3f56bf86c769a2e8",
+  "task_generator/tasks/obs_multi_collection_profiles/env_manifest.json": "b696a8ef7c7487fa714b2943cd0794d3f37afee4",
+  "task_generator/tasks/obs_multi_collection_profiles/task.json": "8c8909d468237683f49a561de2d79d86b0370b02",
+  "task_generator/tasks/obs_multi_source_scene/env/logo.png": "ed906e82875f5ee245691ee32e9df00555594d2a",
+  "task_generator/tasks/obs_multi_source_scene/env_manifest.json": "e51d388d630655f6f2e9921456d5d1ff92170716",
+  "task_generator/tasks/obs_multi_source_scene/task.json": "81bf4f0daa5b08db0f075b20d5408fedb9d7ffd9",
+  "task_generator/tasks/obs_news_broadcast_layout/env/news_logo.png": "e7e166afc923b41031a8c89654f35e2266d739dd",
+  "task_generator/tasks/obs_news_broadcast_layout/env/weather_map.png": "e535c482fbd0cca03d90e20645d2f9182534e67e",
+  "task_generator/tasks/obs_news_broadcast_layout/env_manifest.json": "33cdd9df68a5aa41bb4fec12b3330850906150c9",
+  "task_generator/tasks/obs_news_broadcast_layout/task.json": "05eb38a3eda4cb68af76261df831e2d597125a34",
+  "task_generator/tasks/obs_podcast_two_person/env/break.png": "d3c4cc0297a2f8f1dac4944f43f28ef1ee55a1c3",
+  "task_generator/tasks/obs_podcast_two_person/env_manifest.json": "0a82ae16e7e2bc99dc82f107f50c1b00b3e04ab8",
+  "task_generator/tasks/obs_podcast_two_person/task.json": "daa2712eddfce4854931d5b928dcb742af914e95",
+  "task_generator/tasks/obs_relocate_sources_across_scenes/env/scene_collection.json": "08becbbbee00286b5a8c0659f99d4c8fa8e55ce9",
+  "task_generator/tasks/obs_relocate_sources_across_scenes/env_manifest.json": "ac9e9fca7e57afac06786cd58a611cc30eb890c5",
+  "task_generator/tasks/obs_relocate_sources_across_scenes/task.json": "a2833fe631278ca5dfb8887877bed519c7d6b8f5",
+  "task_generator/tasks/obs_rename_and_reorganize_scenes/env/scene_collection.json": "d73b097b50361c82635701ab8e41cc2df6b8806f",
+  "task_generator/tasks/obs_rename_and_reorganize_scenes/env_manifest.json": "dcecf794a0f0e60d96076eea6a455fc77f48d303",
+  "task_generator/tasks/obs_rename_and_reorganize_scenes/task.json": "14c7a7df9aa10bfc271c6efeb6bbd7b1143460fd",
+  "task_generator/tasks/obs_scene_split_refactor/env/scene_collection.json": "ef2d1c180f189ba06a8e4ea024d8d4f4c973f60a",
+  "task_generator/tasks/obs_scene_split_refactor/env_manifest.json": "4fb278b09179f8efd33e726b4269284a379edd06",
+  "task_generator/tasks/obs_scene_split_refactor/task.json": "a0cd290d115eced65e004c5a9673a80831a3b384",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/Git.md": "9d54d9220ef192a1d0d95477342ff8aa28973cff",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/JavaScript.md": "f352e17a251db7c45281036e9b04962712a5d155",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/Python.md": "03afe2db99ff9f65d792cbe5422cd0c2b1f614bc",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/React.md": "9b01f6cef2f7e81d77bf7c42604fab884bc30144",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/TypeScript.md": "33cc9937e66d8382605d721560c83d9ad2a8666a",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_add_links_to_existing/env/create_vault.py": "d60c9b6f0e47b717c3f3f3c00e1fd0c312df86bd",
+  "task_generator/tasks/obsidian_add_links_to_existing/task.json": "b00815f79a0e7911cb4f3a817b73313d1e85e73a",
+  "task_generator/tasks/obsidian_appearance_setup/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_appearance_setup/env/appearance.json": "e6859bea02ec94372f79e4eb10222cc58d003d82",
+  "task_generator/tasks/obsidian_appearance_setup/env/create_vault.py": "05220558ee3bb001568a615c4b4737c76423711c",
+  "task_generator/tasks/obsidian_appearance_setup/task.json": "363862485461cf4d166223e83f6a6422d953c5b2",
+  "task_generator/tasks/obsidian_bookmarks_curation/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_bookmarks_curation/env_manifest.json": "e6631466988a064bbb50e6712633f1a86e99d832",
+  "task_generator/tasks/obsidian_bookmarks_curation/task.json": "3f16460201f55d6dbc2955ebba80020cfd9b06ba",
+  "task_generator/tasks/obsidian_bug_tracker/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_bug_tracker/env/create_vault.py": "fcbef9fc144b87e5b906efbc427a4ffc78a61293",
+  "task_generator/tasks/obsidian_bug_tracker/task.json": "aba8bc810c4406eafc49ba9d8c13ab0e8db27783",
+  "task_generator/tasks/obsidian_configure_editor/env/app.json": "b2e1f2636a8a5b0296e9b01af0934f73f0185271",
+  "task_generator/tasks/obsidian_configure_editor/env/create_vault.py": "bf5281f86e2e0390800e7d60a8735d91f1aa2959",
+  "task_generator/tasks/obsidian_configure_editor/task.json": "af74ae35e59298e6777b2484ea058bbbf05bc352",
+  "task_generator/tasks/obsidian_custom_hotkeys/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_custom_hotkeys/env/create_vault.py": "cc244a61757daae280575e203fb09ead0ae476ef",
+  "task_generator/tasks/obsidian_custom_hotkeys/env/hotkeys.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_custom_hotkeys/task.json": "48d83153ed582c9a315ca8a7c255ae5a19603382",
+  "task_generator/tasks/obsidian_daily_notes_week/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_daily_notes_week/env/core-plugins.json": "da042f33cedda52c55269b7e7915ba55382ae6d6",
+  "task_generator/tasks/obsidian_daily_notes_week/env_manifest.json": "d164111ea28f8da3bd7f6321811ac47e8030a245",
+  "task_generator/tasks/obsidian_daily_notes_week/task.json": "0d55880518875f9ce29c6a7a19cd9f20bb940921",
+  "task_generator/tasks/obsidian_digital_garden/env/app.json": "7b40a4b2def701e4653571f471c1694d077c71c8",
+  "task_generator/tasks/obsidian_digital_garden/env/appearance.json": "990f3376e969444ec77fd8051742ad60218d4adc",
+  "task_generator/tasks/obsidian_digital_garden/env/create_vault.py": "96673355dac74788302b031b962c75a1ad99682d",
+  "task_generator/tasks/obsidian_digital_garden/env/hotkeys.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_digital_garden/task.json": "cb6b48d82f4880f8e657d82da7c232efb19e1720",
+  "task_generator/tasks/obsidian_enable_core_plugins/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_enable_core_plugins/env/core-plugins.json": "f85c047a952023320935943fb0fbdddbb5ea46de",
+  "task_generator/tasks/obsidian_enable_core_plugins/env/create_vault.py": "957e86dd700d82bfbcf6aee4723f884f85bbf0ea",
+  "task_generator/tasks/obsidian_enable_core_plugins/task.json": "8f56129d3ccef7d7583275502cc52ee2d865fd4f",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/Fleeting-Focus.md": "48461ebfa699b44d936ebfa935772cfb3f036a2d",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/Fleeting-Habits.md": "6717d62f11054e806b1cd26f93f6d7fae85b0c82",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/Fleeting-Learning.md": "8741a06d9a46fd559bee8460b14dcfba0047c18a",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/Fleeting-Systems.md": "759d14da9aa47f6b923790f33bb4ba56c698c0a3",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/Fleeting-Writing.md": "3be891ed31821a284264d8f78e492062ed47a5a6",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/env_manifest.json": "ae8d62108ae343dd0adfa77849f75438f5432ca9",
+  "task_generator/tasks/obsidian_fleeting_to_permanent/task.json": "a9eaa24dd6dce5ac9ed68041ac79d2e7d589d1e6",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Idea-DarkMode.md": "7fc710e91ed40dc785a95c9173ff7cc64b4b3b80",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Log-Sprint3.md": "f30c899185fc51d38d5037c6620e88aaaf38986d",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Meeting-Kickoff.md": "4d767a443b49cf46a661bb3e3479aad9caf37f91",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Project-Alpha.md": "1aa48b3f71a557900e84e69073f2720aee82b4ff",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Reference-Style.md": "95b14fb993ae6394a82e91ef621d78cde3c5c46d",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/Task-Launch.md": "2f3fd78ebca5df0875e8c93ecc7a02048b9850ba",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_frontmatter_normalize/env_manifest.json": "827cd04850aff33a6aaebc5ff0bdcc7820cc1c77",
+  "task_generator/tasks/obsidian_frontmatter_normalize/task.json": "8176df9832f10cd99c7beced2f579c0cfe0f7096",
+  "task_generator/tasks/obsidian_full_dev_setup/env/app.json": "b1b380d14285d3f157c30ed8258f9fb3fc7e2b44",
+  "task_generator/tasks/obsidian_full_dev_setup/env/appearance.json": "1e13eddfa2b70992cfc8dc273350df248279f667",
+  "task_generator/tasks/obsidian_full_dev_setup/env/create_vault.py": "bad384c837463ec24e57b06874317bf44d14e57a",
+  "task_generator/tasks/obsidian_full_dev_setup/env/hotkeys.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_full_dev_setup/task.json": "ce9d1b1e297b2b60eaae680272c6908ba25c5f01",
+  "task_generator/tasks/obsidian_interview_prep/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_interview_prep/env/create_vault.py": "f893b7bf3d4957d9ca30c262869c85614e971442",
+  "task_generator/tasks/obsidian_interview_prep/task.json": "f116742ae5422398ea0f1e3bfcce2d1ba288b413",
+  "task_generator/tasks/obsidian_language_vocab/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_language_vocab/env/create_vault.py": "e511e9871c789a9e1e24f465e72efc110248a807",
+  "task_generator/tasks/obsidian_language_vocab/task.json": "70f64e0f57fdb883cc0381b9c85479a0914611db",
+  "task_generator/tasks/obsidian_music_collection/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_music_collection/env/create_vault.py": "3ac5eb172e75784a3415e684ca6acfba760e465b",
+  "task_generator/tasks/obsidian_music_collection/task.json": "59d1ea5134c1e9715f847178441966d04f6adbf9",
+  "task_generator/tasks/obsidian_personal_crm/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_personal_crm/env/create_vault.py": "5a3e5bf1a077ed96a373b854eb72f4d23d1ba311",
+  "task_generator/tasks/obsidian_personal_crm/task.json": "87a3bc5be69a11b7592081542613df3e4229ae2c",
+  "task_generator/tasks/obsidian_project_tracker_kanban/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_project_tracker_kanban/env_manifest.json": "84b12dbfe6c4334a1204a79e993dd5dc017756cd",
+  "task_generator/tasks/obsidian_project_tracker_kanban/task.json": "9b776a42474b8de3b95fa7415aaa45054318d880",
+  "task_generator/tasks/obsidian_recipe_vault/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_recipe_vault/env/create_vault.py": "45888b8f7516f29b472054d5ff6ab2cdceee0b58",
+  "task_generator/tasks/obsidian_recipe_vault/task.json": "826890b5f8fddd417ca2245b50c1e94d7f713ced",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Contacts.md": "a6a71d5291f37b5ca7719615cc61247fc5a123ea",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Meeting Notes.md": "16d563960f4f39ebd45b98efd7090a3298138f88",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Project Plan.md": "1caba337364507144330135a3ea60ff65303abad",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Quick Ideas.md": "9d448a330e8738db318508f2154950cd42cfffc4",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Reading List.md": "29d1e5365282eac4c335d87e5e76651bcc4a7957",
+  "task_generator/tasks/obsidian_reorganize_tags/env/Weekly Review.md": "6974126d8e82f9130d4d28ab81933cd68f0e8d32",
+  "task_generator/tasks/obsidian_reorganize_tags/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_reorganize_tags/env/create_vault.py": "0a8c4b8fafa6d591d4edce85e76a48c96b8af627",
+  "task_generator/tasks/obsidian_reorganize_tags/task.json": "3130b1f6816272b3dcc69c0be7de5acc278692b0",
+  "task_generator/tasks/obsidian_research_papers/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_research_papers/env_manifest.json": "5ca5e0d16dc2624d1ff7b9b23b3a7286bbc41637",
+  "task_generator/tasks/obsidian_research_papers/task.json": "e29705e3f7d50738e9ef997d67ab6a677c6f4617",
+  "task_generator/tasks/obsidian_toggle_core_features/env/app.json": "1c77789f0603c01360eb89a91bff24891bb90899",
+  "task_generator/tasks/obsidian_toggle_core_features/env/core-plugins.json": "65dde8ef3ecddc5fe61fb47410cddf64788af235",
+  "task_generator/tasks/obsidian_toggle_core_features/env/create_vault.py": "d18bc135e79e34bcc2dec3792e23ea508fc5cab9",
+  "task_generator/tasks/obsidian_toggle_core_features/task.json": "a89230c677b98893aaf11f658a8dd4541c34ffcb",
+  "task_generator/tasks/obsidian_workout_log/env/app.json": "9e26dfeeb6e641a33dae4961196235bdb965b21b",
+  "task_generator/tasks/obsidian_workout_log/env/create_vault.py": "d5ed7b1dccb2b26d289f7b2e06f670aa419dbda4",
+  "task_generator/tasks/obsidian_workout_log/task.json": "5125f9ac22f0765bbfdb1bf91caf8242f23566ac",
+  "task_generator/tasks/obsidian_zettelkasten_atomic/env/app.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+  "task_generator/tasks/obsidian_zettelkasten_atomic/env_manifest.json": "cb14d0355690c91911d353c19c3becc087d1caa8",
+  "task_generator/tasks/obsidian_zettelkasten_atomic/task.json": "4bc15cc672454a19de118f6620e114bda2f106c8",
+  "task_generator/tasks/renderdoc_add_recent_captures/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_add_recent_captures/env/draw_call.rdc": "14466a0df394d56e508b431bf18631094040303d",
+  "task_generator/tasks/renderdoc_add_recent_captures/env/triangle.rdc": "517b807055a136cd25cf3fb7322fa95e97640d36",
+  "task_generator/tasks/renderdoc_add_recent_captures/env_manifest.json": "344feaa275c88c1514c7afa1355be0cff50ef52b",
+  "task_generator/tasks/renderdoc_add_recent_captures/task.json": "fd5fe2cd514b8f711d5f0c33b47de64131a58ead",
+  "task_generator/tasks/renderdoc_cap_extended_frames/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_cap_extended_frames/env_manifest.json": "efbbcff39ccbf93216efcb2c6e5eb33dff0d0ad4",
+  "task_generator/tasks/renderdoc_cap_extended_frames/task.json": "c9c0a3edd5bc0959a39f269e2316a8c77ea1a6cd",
+  "task_generator/tasks/renderdoc_cap_launcher_hook/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_cap_launcher_hook/env_manifest.json": "809d74d6a93852f0500c9a7bd5a276eb7edba579",
+  "task_generator/tasks/renderdoc_cap_launcher_hook/task.json": "6d1e671a93ed0f3fb34ced16d1c98da0be578846",
+  "task_generator/tasks/renderdoc_cap_perf_profile/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_cap_perf_profile/env_manifest.json": "c5ae6d463fed262f698706ee5db21ee6bba9a49a",
+  "task_generator/tasks/renderdoc_cap_perf_profile/task.json": "232b7761d208a403349bbf628df8674ab9faf590",
+  "task_generator/tasks/renderdoc_cap_single_env_layer/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_cap_single_env_layer/env_manifest.json": "17e01ab6081275ede96794fe892f72bbbcb969d9",
+  "task_generator/tasks/renderdoc_cap_single_env_layer/task.json": "615bb26729c109cb49586a6cd9450c3158c881ad",
+  "task_generator/tasks/renderdoc_cap_triple_api_comparison/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_cap_triple_api_comparison/env_manifest.json": "2ae35654f8b72732ac96dbea6efb3ae04a81e6dd",
+  "task_generator/tasks/renderdoc_cap_triple_api_comparison/task.json": "af5ca25a556adf70ad157804b034bbc294f426f8",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env/frame_a.rdc": "f24dabcb85f91c17ea8cfd7cc9d54988471ab702",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env/frame_b.rdc": "89dbf642ba43f7b6ac301865b87c7d313c679465",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env/frame_bad1.rdc": "ea13fb840254476d472d08aff2264923c9fad0ae",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env/frame_bad2.rdc": "85f2b7569cab3ce92089e96bbbc74f37128f0a7b",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env/frame_c.rdc": "a6b7fa0263439cec0a86dd2767625d6b1f34e4d8",
+  "task_generator/tasks/renderdoc_capture_archive_partition/env_manifest.json": "cb44ec54b65cecc0fde667f710dbf41cd0e71f11",
+  "task_generator/tasks/renderdoc_capture_archive_partition/task.json": "c79e1ac0db58da786dbcb5748ab6d8c05e1a6ee6",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/env/lighting.rdc": "d4bb8c621d8ae184a65617476f79a0c67f752b7a",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/env/post.rdc": "d4bb8c621d8ae184a65617476f79a0c67f752b7a",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/env/shadow.rdc": "d4bb8c621d8ae184a65617476f79a0c67f752b7a",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/env_manifest.json": "32f407cccc2df3014dd7f03a9677ddbe60d102d1",
+  "task_generator/tasks/renderdoc_capture_version_prefix_rename/task.json": "8c90ea078800789c675e647cd0e598d6fb8e4a17",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/draw1.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/draw2.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/draw3.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/frameA.rdc": "63c99a200371b590b942287f086c5ba5c066e708",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/frameB.rdc": "63c99a200371b590b942287f086c5ba5c066e708",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env/unique.rdc": "efa999a9e4c1db5be0e43d3f96906c136a39aaf5",
+  "task_generator/tasks/renderdoc_deduplicate_captures/env_manifest.json": "0a99a5723b46fe1a766d55f9bed4735929756083",
+  "task_generator/tasks/renderdoc_deduplicate_captures/task.json": "4babe843520e6aad59219dcdcdd20c3cd6d3ca0b",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/env/alpha_test.rdc": "75d8b6c1ab0b81cc933959c3064ca37a167e0920",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/env/beta_test.rdc": "65d75af9d4437abb9ed6b4cdbe078505c08e0085",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/env/gamma_test.rdc": "a5b30e2173e51f82f861ff8c4de5a28ad7c83d2d",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/env_manifest.json": "a419304116c790c9ad11da451f79a5b2589b9b50",
+  "task_generator/tasks/renderdoc_default_save_dir_and_recents/task.json": "46a81561f8638d39f1b837a045efa09a8f6f37e9",
+  "task_generator/tasks/renderdoc_gap_capture_settings_cap_file/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_gap_capture_settings_cap_file/env_manifest.json": "55d5246b9e39b1cce138c0c7f54d8ab57a1e3798",
+  "task_generator/tasks/renderdoc_gap_capture_settings_cap_file/task.json": "59910fb197352f903a37702ee68f8951365aa308",
+  "task_generator/tasks/renderdoc_gap_pipeline_state_export/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_gap_pipeline_state_export/env_manifest.json": "92245346127474f4223bfff4b1c6dcc86ab4b88c",
+  "task_generator/tasks/renderdoc_gap_pipeline_state_export/task.json": "202b0c4fdec9e8a8ce3721961548b1b2264a7938",
+  "task_generator/tasks/renderdoc_multi_cap_presets/env/UI.config": "98910cf5b72e3f8b4dbf99ffa0c8a26b83f7ffe6",
+  "task_generator/tasks/renderdoc_multi_cap_presets/env_manifest.json": "412a3c430462b9581debfb4634904ef95bfc738f",
+  "task_generator/tasks/renderdoc_multi_cap_presets/task.json": "7b5183bf5198cdf2451cb0d380b03a7d33cd9a23",
+  "task_generator/tasks/renderdoc_project_save_dir_and_presets/env/UI.config": "f42691b6ce8689ca0fd682bc5736ed83a2555675",
+  "task_generator/tasks/renderdoc_project_save_dir_and_presets/env_manifest.json": "b3a5c82006e66a68c960a532fd82641f8f7ffa6b",
+  "task_generator/tasks/renderdoc_project_save_dir_and_presets/task.json": "eccb6f7ad42f9bd450021d5619db2311bb940146",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/old_a.rdc": "3f636eed2acfc60d349149dd71b3ba5d76c34dc3",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/old_b.rdc": "5864e9109d5e982409279e6d47cd15a30e4563f1",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/old_c.rdc": "a3343638bde74a9fe595f161f80aaa79d59be592",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/old_d.rdc": "5cc626c8265531ecef4c71db1ab1aac2de338bf2",
+  "task_generator/tasks/renderdoc_sa_archive_old/env/promoted.rdc": "3e3bc1052160c09c759d9064db3912b73fc32b8c",
+  "task_generator/tasks/renderdoc_sa_archive_old/env_manifest.json": "a37ac1d133b332f7d617099319553d5bbe5df69a",
+  "task_generator/tasks/renderdoc_sa_archive_old/task.json": "1b4d161ce664f60b88fa0b05abcd9fd5b84d74e7",
+  "task_generator/tasks/renderdoc_sa_counters_preset/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_counters_preset/env_manifest.json": "884849ed35b5a2d9c9d10e36d5006432a2073f03",
+  "task_generator/tasks/renderdoc_sa_counters_preset/task.json": "74933fbaa56da07ebbe68450639073abcb5e8e24",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/alpha.rdc": "5d15d58dba0953f78d62e3314aae1caf65ead398",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/beta.rdc": "171ab50b03acbea51629913f19651cdd9b2af146",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/bogus.rdc": "39f527259d5ec26c0cdf7574d9f4dbef148c2411",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/delta.rdc": "e5d0dcdff3d8321d7a7c55ee7bb338372c252add",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/epsilon.rdc": "0a8693726ecfc169fe42b837e1c6a78bfaaa9cd7",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/gamma.rdc": "5b1a43fbabb86ada2a1b1484c5d22574747b472a",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env/zeta.rdc": "5dc11b5195c6c93b7b028d23465b82a9614534c7",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/env_manifest.json": "be3dd38002605ad5644168e157f783ec2162a34e",
+  "task_generator/tasks/renderdoc_sa_event_browser_triage/task.json": "e7aff028b5928d02d97a78bb8a1689c7aff5dac4",
+  "task_generator/tasks/renderdoc_sa_hardening_preset/env/UI.config": "e1a424ac08212cbfb8f6f1c9a1da8b63c312c24c",
+  "task_generator/tasks/renderdoc_sa_hardening_preset/env_manifest.json": "f2133cf8e246edb2eca79b10c458cfe5ba705a5e",
+  "task_generator/tasks/renderdoc_sa_hardening_preset/task.json": "79a7b58e1913e6b902dc02e8681787628a0a62fe",
+  "task_generator/tasks/renderdoc_sa_keep_largest/env/UI.config": "c464cea1b4f4877adbc48c2076af295fe6b1e6d4",
+  "task_generator/tasks/renderdoc_sa_keep_largest/env/large.rdc": "a80bcd163200e286919dfdfffd3bb2ff64782cb9",
+  "task_generator/tasks/renderdoc_sa_keep_largest/env/medium.rdc": "1a9473858e7de540fa235d75bbd8360a84cecb91",
+  "task_generator/tasks/renderdoc_sa_keep_largest/env/tiny.rdc": "20f9261efc695de894ad4516c6ad4b65ad32f645",
+  "task_generator/tasks/renderdoc_sa_keep_largest/env_manifest.json": "326023a8cf897d0a621bd04806ae6105d79b1f06",
+  "task_generator/tasks/renderdoc_sa_keep_largest/task.json": "e3f9a29b9494b0e193d841807c3ceafae973e349",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/frame_a.rdc": "f24dabcb85f91c17ea8cfd7cc9d54988471ab702",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/frame_b.rdc": "89dbf642ba43f7b6ac301865b87c7d313c679465",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/frame_bad1.rdc": "ea13fb840254476d472d08aff2264923c9fad0ae",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/frame_bad2.rdc": "85f2b7569cab3ce92089e96bbbc74f37128f0a7b",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env/frame_c.rdc": "a6b7fa0263439cec0a86dd2767625d6b1f34e4d8",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/env_manifest.json": "452408d7ca55eb73524669b3701aab6ed75c8a37",
+  "task_generator/tasks/renderdoc_sa_pixel_history_split/task.json": "9f65f22768b0d513590c296326dd06a339dc4ee4",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/broken_x.rdc": "39f527259d5ec26c0cdf7574d9f4dbef148c2411",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/broken_y.rdc": "39f527259d5ec26c0cdf7574d9f4dbef148c2411",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/scene_a.rdc": "f6ceded9276078a8a87eb7ff5b66846d365e39c8",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/scene_b.rdc": "42d1b9afd5ecf14754dfe2f347b3a9e138f61540",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env/scene_c.rdc": "1f457d0a70fa1f745cdd58f8f8a2bae6162e2d08",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/env_manifest.json": "2d9c09f7d836d2cc0d8e3e471aee573389ef8aa3",
+  "task_generator/tasks/renderdoc_sa_privacy_cleanup/task.json": "7af3c050411aac1c133ad0c740345a0fe4d7f759",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/UI.config": "b87f968caa6fdeb590cb6f3dc25e9fb51ae4cee3",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/old_a.rdc": "3f636eed2acfc60d349149dd71b3ba5d76c34dc3",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/old_b.rdc": "5864e9109d5e982409279e6d47cd15a30e4563f1",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/old_c.rdc": "a3343638bde74a9fe595f161f80aaa79d59be592",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/old_d.rdc": "5cc626c8265531ecef4c71db1ab1aac2de338bf2",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env/promoted.rdc": "3e3bc1052160c09c759d9064db3912b73fc32b8c",
+  "task_generator/tasks/renderdoc_sa_promote_archive/env_manifest.json": "b15cae578fa9b29ff02c0a2b14b0f4c7d3868364",
+  "task_generator/tasks/renderdoc_sa_promote_archive/task.json": "ca20aa70dd9e25697e792129e3583466366df8c4",
+  "task_generator/tasks/renderdoc_sa_python_setup/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_python_setup/env_manifest.json": "191655d5d4b38fa4c0fd792ff1dd04c6ecd21045",
+  "task_generator/tasks/renderdoc_sa_python_setup/task.json": "c23fe01e730b9ecd1b9cf378a684facbd3b62385",
+  "task_generator/tasks/renderdoc_sa_rename_review/env/backup_old.rdc": "8f3e56416a6c8b9cce9fee43fde58911893c4784",
+  "task_generator/tasks/renderdoc_sa_rename_review/env/john_ok.rdc": "1313cb12c4798b4e03cdc8e6824fd8a848a07365",
+  "task_generator/tasks/renderdoc_sa_rename_review/env/snapshot_final2.rdc": "e3e4aeadde418885b9af4b7e3c2e72c81063f33e",
+  "task_generator/tasks/renderdoc_sa_rename_review/env/unnamed.rdc": "0e12decea3d2f8c8227524e67d6624b702a0728a",
+  "task_generator/tasks/renderdoc_sa_rename_review/env/wip_trial.rdc": "85941c71532d8fe09d289892a37db9ce1415aadf",
+  "task_generator/tasks/renderdoc_sa_rename_review/env_manifest.json": "7513572ddc9ae3434ca278e387aad7d62a6c6576",
+  "task_generator/tasks/renderdoc_sa_rename_review/task.json": "83d28a6a1aa7f4e8b92238efc37e7cbf3a7ef9b0",
+  "task_generator/tasks/renderdoc_sa_session_folder/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_sa_session_folder/env/draw_call.rdc": "14466a0df394d56e508b431bf18631094040303d",
+  "task_generator/tasks/renderdoc_sa_session_folder/env/triangle.rdc": "517b807055a136cd25cf3fb7322fa95e97640d36",
+  "task_generator/tasks/renderdoc_sa_session_folder/env_manifest.json": "a206fe828d33825c7b52c281162e98ebe93baf40",
+  "task_generator/tasks/renderdoc_sa_session_folder/task.json": "a7248d565a2bbfc481522358419bc10e34065ce8",
+  "task_generator/tasks/renderdoc_sa_shader_bundle/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_sa_shader_bundle/env_manifest.json": "ff88dc420f1fb7b3c709cd5061d487a47d100301",
+  "task_generator/tasks/renderdoc_sa_shader_bundle/task.json": "50b11633ced13ee0254855f92dff6e5da9a5b07c",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/draw1.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/draw2.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/draw3.rdc": "767c7b6cf3a7d88abf75f5ccd94bfd1bd6242d9f",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/frameA.rdc": "63c99a200371b590b942287f086c5ba5c066e708",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/frameB.rdc": "63c99a200371b590b942287f086c5ba5c066e708",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env/unique.rdc": "efa999a9e4c1db5be0e43d3f96906c136a39aaf5",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/env_manifest.json": "87364e36af6421d7224e5baf07497848528ca871",
+  "task_generator/tasks/renderdoc_sa_texture_dedupe/task.json": "8fd5edc2ff19c059ea9c22aa8d94a18883435bd2",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/frame_a.rdc": "f24dabcb85f91c17ea8cfd7cc9d54988471ab702",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/frame_b.rdc": "89dbf642ba43f7b6ac301865b87c7d313c679465",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/frame_bad1.rdc": "ea13fb840254476d472d08aff2264923c9fad0ae",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/frame_bad2.rdc": "85f2b7569cab3ce92089e96bbbc74f37128f0a7b",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env/frame_c.rdc": "a6b7fa0263439cec0a86dd2767625d6b1f34e4d8",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/env_manifest.json": "977d4e86616c1292947dcd457fe84c859905700c",
+  "task_generator/tasks/renderdoc_sa_valid_by_size/task.json": "7a41d01a68363d53c56c2505edbacec26a20ad47",
+  "task_generator/tasks/renderdoc_sa_viewer_preset/env/UI.config": "92d84b7d859fe51cb2893ac0e67f6a78e194556e",
+  "task_generator/tasks/renderdoc_sa_viewer_preset/env_manifest.json": "53871a75daa649af32d7141186d415d273275306",
+  "task_generator/tasks/renderdoc_sa_viewer_preset/task.json": "5dc00b3300335bc46364a30166d8f4e461a9b781",
+  "task_generator/tasks/renderdoc_verify_capture_integrity/env/bad_frame.rdc": "a9d66597df8a6b74149dcc55f9a7e31cf25f7a8b",
+  "task_generator/tasks/renderdoc_verify_capture_integrity/env/good_frame.rdc": "d19c77ee49b9babfad53618bcb72e94753211341",
+  "task_generator/tasks/renderdoc_verify_capture_integrity/env_manifest.json": "1f93402b441a1a02366ee5312734f6a02180d9c6",
+  "task_generator/tasks/renderdoc_verify_capture_integrity/task.json": "52c95031d7643b561e71ad772e1278c55155221d",
+  "task_generator/tasks/renderdoc_workspace_bootstrap/env/UI.config": "bbe103afb03456085062f9b5df8f069c00314100",
+  "task_generator/tasks/renderdoc_workspace_bootstrap/env/project_frame1.rdc": "ace097b12a21fbe5850209745a7d2f3923c24c89",
+  "task_generator/tasks/renderdoc_workspace_bootstrap/env/project_frame2.rdc": "ace097b12a21fbe5850209745a7d2f3923c24c89",
+  "task_generator/tasks/renderdoc_workspace_bootstrap/env_manifest.json": "322a3bc20938d833f9ace98cebe7b8f9e1073e89",
+  "task_generator/tasks/renderdoc_workspace_bootstrap/task.json": "12c95430fb56d0d1523957b7e7a17a5f13726e3e",
+  "task_generator/tasks/shotcut_720p_project_single_clip/env/beach.mp4": "4798b273af5c1e897924b69e8d7754851ff120d9",
+  "task_generator/tasks/shotcut_720p_project_single_clip/env/travel.mlt": "65d6bbb7cf2c96ec3db29b7a4ed70038847fd87b",
+  "task_generator/tasks/shotcut_720p_project_single_clip/env_manifest.json": "8e8c58490b1410d00ef5afe4c4d651860a28bc5b",
+  "task_generator/tasks/shotcut_720p_project_single_clip/task.json": "bd1fe1a7ebf85f3435a8d80397cb1d8dc785d5a6",
+  "task_generator/tasks/shotcut_add_two_clips_hd/env/clip_a.mp4": "a40e7ed6c7ff77d098ecd4c72737f44b806c61c4",
+  "task_generator/tasks/shotcut_add_two_clips_hd/env/clip_b.mp4": "7bcfcfca82764657ed5c0392bc625c75cabab0d7",
+  "task_generator/tasks/shotcut_add_two_clips_hd/env/my_project.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_add_two_clips_hd/env_manifest.json": "6f61efdd63e4b137b299997a9faa5ab4608ba108",
+  "task_generator/tasks/shotcut_add_two_clips_hd/task.json": "0d6f8e3ce9923aa0b8689fe5e02b9f1aace9e9ad",
+  "task_generator/tasks/shotcut_default_profile_atsc/env/empty.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_default_profile_atsc/env_manifest.json": "98adc04e0c02bc267fdd04e14da746a34fe48bb2",
+  "task_generator/tasks/shotcut_default_profile_atsc/task.json": "1fc73fb468a18b8cb41ce533c9bdaca703a2bb21",
+  "task_generator/tasks/shotcut_multi_track_audio_video/env/audio1.mp3": "5c9b0831c3f91a741215950e86784d51d19efd03",
+  "task_generator/tasks/shotcut_multi_track_audio_video/env/multi_track.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_multi_track_audio_video/env/video1.mp4": "a043316a2600178c9a73945be2bdc95c235cd0cc",
+  "task_generator/tasks/shotcut_multi_track_audio_video/env/video2.mp4": "4798b273af5c1e897924b69e8d7754851ff120d9",
+  "task_generator/tasks/shotcut_multi_track_audio_video/env_manifest.json": "575585cd0298fb1464f26785f4d39d25fd8bb1dc",
+  "task_generator/tasks/shotcut_multi_track_audio_video/task.json": "8fb15c14c36e057f682dba0e449ea8a85c025ac5",
+  "task_generator/tasks/shotcut_set_theme_dark/env/empty.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_set_theme_dark/env_manifest.json": "7ea74ed28368aeaa741358085323af368ea31922",
+  "task_generator/tasks/shotcut_set_theme_dark/task.json": "cd3f0edc035ea7c98fd2fc2521d92790689c3ecc",
+  "task_generator/tasks/shotcut_three_clip_sequence/env/sequence.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_three_clip_sequence/env/shot1.mp4": "a40e7ed6c7ff77d098ecd4c72737f44b806c61c4",
+  "task_generator/tasks/shotcut_three_clip_sequence/env/shot2.mp4": "7bcfcfca82764657ed5c0392bc625c75cabab0d7",
+  "task_generator/tasks/shotcut_three_clip_sequence/env/shot3.mp4": "25a8a1c22c060918c87a729da385a4cc9d7dd167",
+  "task_generator/tasks/shotcut_three_clip_sequence/env_manifest.json": "c23107cc8c76cd755e270f227bb3a0c88d748795",
+  "task_generator/tasks/shotcut_three_clip_sequence/task.json": "ad7eef8820d675e77729ae8763fd8e91a7d4e5ac",
+  "task_generator/tasks/shotcut_two_clips_with_luma_transition/env/alpha.mp4": "a40e7ed6c7ff77d098ecd4c72737f44b806c61c4",
+  "task_generator/tasks/shotcut_two_clips_with_luma_transition/env/beta.mp4": "3b86c3241b769485c5f475acab9b442b6f366a67",
+  "task_generator/tasks/shotcut_two_clips_with_luma_transition/env/transition_project.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_two_clips_with_luma_transition/env_manifest.json": "0c88db9b7b46d29bb758649a263db42e1099ec40",
+  "task_generator/tasks/shotcut_two_clips_with_luma_transition/task.json": "b3a871f36c10876e2848cac7e3abf3f179c27371",
+  "task_generator/tasks/shotcut_v2_default_profile_dv_pal/env/pal_prefs.mlt": "84c7e54bc2ef74c703ae46fbb69d37034752d0b7",
+  "task_generator/tasks/shotcut_v2_default_profile_dv_pal/env_manifest.json": "c1a22e65e85225ae9014a27920d95c64584d6fb2",
+  "task_generator/tasks/shotcut_v2_default_profile_dv_pal/task.json": "f56c7e7a17dcc930157851d377d1b7e57646c908",
+  "task_generator/tasks/shotcut_v2_default_profile_uhd_2160p_30/env/prefs_uhd.mlt": "84c7e54bc2ef74c703ae46fbb69d37034752d0b7",
+  "task_generator/tasks/shotcut_v2_default_profile_uhd_2160p_30/env_manifest.json": "b8fc6b70942f2ac02bdc946d27dc3c5d2f54f0b5",
+  "task_generator/tasks/shotcut_v2_default_profile_uhd_2160p_30/task.json": "e4eb3ffd2d48fabf82f9c9dff33a91128d6f43ed",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/clip1.mp4": "d55228431a0a1c40ca94c16313b45e66fc29647e",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/clip2.mp4": "d4abf02c54ac31c679f00ce214f029f52bf440af",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/clip3.mp4": "452e54dc9f21ac91a34a449128cb57d4976beeec",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/clip4.mp4": "a2a4e4ab9676ba359d8c31ecb1d786bd12f62dc3",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/clip5.mp4": "2979fc3c6838c6243ab15b24bb8325a3a3b93675",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env/montage.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/env_manifest.json": "32511be5f2c13ae1dc0a204c1299e42967739bc2",
+  "task_generator/tasks/shotcut_v2_five_clip_sequence/task.json": "7e03a60e7686dda4e2dcc4248e5d0b8167fa3f23",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env/bg.mp4": "d4abf02c54ac31c679f00ce214f029f52bf440af",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env/layered.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env/music.mp3": "8084a4a61182d5d63b6d78e329f583643da68d86",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env/overlay.mp4": "d55228431a0a1c40ca94c16313b45e66fc29647e",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env/voiceover.mp3": "b9a9b7189e13eb39194b31ba63a44749135d428b",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/env_manifest.json": "3db6abbf443ae80930f68fdaffdaf914483c5d5f",
+  "task_generator/tasks/shotcut_v2_four_track_layered_composite/task.json": "aa54e3ce57f260ff4ef934cc1f7b50eaa5566f6b",
+  "task_generator/tasks/shotcut_v2_transition_and_fadein_filter/env/combo.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_v2_transition_and_fadein_filter/env/intro.mp4": "ad5b1416979533a2cab4b179dcb1b6a490e9a158",
+  "task_generator/tasks/shotcut_v2_transition_and_fadein_filter/env/outro.mp4": "3f81d200b0e7860874864ef9b9df087c26aa82fc",
+  "task_generator/tasks/shotcut_v2_transition_and_fadein_filter/env_manifest.json": "1d4bf780260839939655cb6ca7791a9ec48507ab",
+  "task_generator/tasks/shotcut_v2_transition_and_fadein_filter/task.json": "8e4627590ba6dce46bc44ac413bcf4fe3d647169",
+  "task_generator/tasks/shotcut_v2_uhd_4k_project/env/drone.mp4": "d8f52a9d469f2f9576ff4e668fadc39458d95bad",
+  "task_generator/tasks/shotcut_v2_uhd_4k_project/env/uhd_project.mlt": "2f8700ed35679a1bd983daae25b90fe669ed2e90",
+  "task_generator/tasks/shotcut_v2_uhd_4k_project/env_manifest.json": "16d978ebbc782db4fd509b636e8822195deb7dd1",
+  "task_generator/tasks/shotcut_v2_uhd_4k_project/task.json": "90483f1afa559410c3a3fa3fb4350b80fba328ef",
+  "task_generator/tasks/writer_cg_10c36365/env/wrpara_033.docx": "2788cbaaa33dbfbbce84847dacc142cb3ecf33da",
+  "task_generator/tasks/writer_cg_10c36365/env_manifest.json": "a0e521b75700aa23515af22cb26e0ce9bda3fb71",
+  "task_generator/tasks/writer_cg_10c36365/task.json": "bd9dc45af38fb5bb54ff71e87d14166abc330891",
+  "task_generator/tasks/writer_cg_29e9bf1c/env/sustainability_report.docx": "cea682ac61a12ad82ecaf344442bd9f3b51fad8a",
+  "task_generator/tasks/writer_cg_29e9bf1c/env_manifest.json": "1e64ebc7b91981affe6798bd82281e22d3e4e0e4",
+  "task_generator/tasks/writer_cg_29e9bf1c/task.json": "1fbd0dc0d4f612408ef087cb55dd376fa49ee4d9",
+  "task_generator/tasks/writer_cg_34c044ea/env/osworld_writer_tabstop_004.docx": "427b1e3a600928437ac56dc992e246b347d4c658",
+  "task_generator/tasks/writer_cg_34c044ea/env_manifest.json": "76041a89cffb9ae3237ccfda36eae6d0868c42c2",
+  "task_generator/tasks/writer_cg_34c044ea/task.json": "73120da074e39d4c0e44e369bb3e7ff9ec2b5c18",
+  "task_generator/tasks/writer_cg_3f4dc430/env/writer_bs_015.docx": "203ccab0eecafa1f00eb7d690c7c5820800a6f5c",
+  "task_generator/tasks/writer_cg_3f4dc430/env_manifest.json": "a402349a632ffc66f39ef3071c6ea88783f1a373",
+  "task_generator/tasks/writer_cg_3f4dc430/task.json": "05dd10ab7ad0229f36c7cc792e600601382d423f",
+  "task_generator/tasks/writer_cg_5d1130a4/env/osworld_multi_apps_calc_to_writer_007.docx": "de95e947f44d6d54a1d181500c01642b5b477c3b",
+  "task_generator/tasks/writer_cg_5d1130a4/env/project_tracker.xlsx": "8b08706d47c6762a6f40016ad6839f8dca59d943",
+  "task_generator/tasks/writer_cg_5d1130a4/env_manifest.json": "4b4f0759a58ac5a28cbd43e803782bc64feb2c5d",
+  "task_generator/tasks/writer_cg_5d1130a4/task.json": "b74f7b339299e38845c27070ac541bd7f5570508",
+  "task_generator/tasks/writer_cg_63e1cce9/env/book_manuscript.docx": "4d759428ee8fc9ecfdd5832b1765fa5f451f47f2",
+  "task_generator/tasks/writer_cg_63e1cce9/env_manifest.json": "39e2692cc3fdcd8f7ac335d5180eddb38414883b",
+  "task_generator/tasks/writer_cg_63e1cce9/task.json": "d32e625ae8e53680672bc5c11696b6bc5975fb52",
+  "task_generator/tasks/writer_cg_68b15b4e/env/lighthouse_keeper.docx": "4d25d086f180e5e68f2779783be6b7bcb8a16420",
+  "task_generator/tasks/writer_cg_68b15b4e/env_manifest.json": "ccce7013f562207da44e6ce464bf4e26f88cec32",
+  "task_generator/tasks/writer_cg_68b15b4e/task.json": "88298c2b3b1b438687989a21bb2012d535a3a252",
+  "task_generator/tasks/writer_cg_6c6160f8/env/journal_submission_checklist.odt": "c57fb4e91470a608556716a501dbea5b139e0571",
+  "task_generator/tasks/writer_cg_6c6160f8/env/research_paper.odt": "9a29b7dc2fb96045345e235e84465d75b22dc6dd",
+  "task_generator/tasks/writer_cg_6c6160f8/env_manifest.json": "af33a36b6b1a4432a583daa75cad53f42345ecfc",
+  "task_generator/tasks/writer_cg_6c6160f8/task.json": "d5d67c16e1baf59d3c4125c376c972660eea2bec",
+  "task_generator/tasks/writer_cg_810109ec/env/analysis_report.docx": "4846bafe820958c9151299b8c431f2235ec0776c",
+  "task_generator/tasks/writer_cg_810109ec/env_manifest.json": "a9e275905fcc74b5b21c93b9a4020e3af42f7c0e",
+  "task_generator/tasks/writer_cg_810109ec/task.json": "f868109a6326e8d7a6bfbf480ee63fe2ebe14eb6",
+  "task_generator/tasks/writer_cg_83a4c2a9/env/osworld_writer_line_spacing_per_paragraph_007.docx": "a277de523c78fdf0e46ccfee851e14bb5b434132",
+  "task_generator/tasks/writer_cg_83a4c2a9/env_manifest.json": "1c92d8933e957a4834e83d5da90cf16fd8f28440",
+  "task_generator/tasks/writer_cg_83a4c2a9/task.json": "52dbfc6506c219d122aec8b7ebeb5032f388da2c",
+  "task_generator/tasks/writer_cg_885e96d6/env/osworld_writer_spacing_006.docx": "69a06ecd25d008a0f8853ae04b86f1e9f749c2e2",
+  "task_generator/tasks/writer_cg_885e96d6/env_manifest.json": "a30d1cc65e4740058a283eeaaaa1af8cba9a1cb1",
+  "task_generator/tasks/writer_cg_885e96d6/task.json": "e5bcbf0883bc7dce5bc8ed571024a10de32f22b6",
+  "task_generator/tasks/writer_cg_9b90581d/env/citation_counts.xlsx": "e75c9fae4bcb7f8f9a9221f1b58f0086b68e605b",
+  "task_generator/tasks/writer_cg_9b90581d/env/osworld_multi_apps_calc_to_writer_015.docx": "07300416c765922bc543f099807cf3943a0a1f08",
+  "task_generator/tasks/writer_cg_9b90581d/env_manifest.json": "7ce741e549dbdb51e062c9babce69feb449dd75f",
+  "task_generator/tasks/writer_cg_9b90581d/task.json": "92fe2ca07ee091dcc6af8f6d14a01cb0e139d711",
+  "task_generator/tasks/writer_cg_a1a2e369/env/lab_notebook.docx": "f432288cf82e9e147e5fb92c539a6a4a900d735c",
+  "task_generator/tasks/writer_cg_a1a2e369/env_manifest.json": "1218562fa3ae78bd0613e8941004ef14edfe3046",
+  "task_generator/tasks/writer_cg_a1a2e369/task.json": "4de50a9a2cfb44b98d48607fb81e10c685f7691b",
+  "task_generator/tasks/writer_cg_a3e1bb58/env/osworld_writer_duplicate_line_removal_007.docx": "8dc84da8d4cf3c677057f3008eb44229f0193a1a",
+  "task_generator/tasks/writer_cg_a3e1bb58/env_manifest.json": "d1ac56f8262ef12517eeecf194c8840e239838cc",
+  "task_generator/tasks/writer_cg_a3e1bb58/task.json": "0248653421e8482fd04efea906ec52bae308af09",
+  "task_generator/tasks/writer_cg_aeef5353/env/wrpara_050.docx": "4c255845464e3e90f37bac46efd13d6d8bf316a8",
+  "task_generator/tasks/writer_cg_aeef5353/env_manifest.json": "f1d866aac6bd59dd48555c38d19ca019870a8e65",
+  "task_generator/tasks/writer_cg_aeef5353/task.json": "2be71cb87cdc974ef9c05b9277d909bb8e5a3957",
+  "task_generator/tasks/writer_cg_b461cf34/env/play_script_draft.docx": "fc82ed24d0e62d1286919c0e157adc40753588e6",
+  "task_generator/tasks/writer_cg_b461cf34/env_manifest.json": "461a7dcf1da6233298cb7a7c2889c43eb6d29cbc",
+  "task_generator/tasks/writer_cg_b461cf34/task.json": "6491c0f51f0196a47c8045cabf6a98c59af7af24",
+  "task_generator/tasks/writer_cg_b583013a/env/old_report.docx": "cdb4b7f1b48683ef94f1716ff8cc166484938234",
+  "task_generator/tasks/writer_cg_b583013a/env_manifest.json": "c7e5ab6e32182960c384a270d4793768157403d1",
+  "task_generator/tasks/writer_cg_b583013a/task.json": "0455497d3c3b4e0aed02724eac8d1c1dfa842455",
+  "task_generator/tasks/writer_cg_b79cfdab/env/comp_lit_essay.docx": "def950ff6b729f2c12907f44b0617ae9c7cb7ee7",
+  "task_generator/tasks/writer_cg_b79cfdab/env_manifest.json": "95cd72a67c94ed78764122cefc6487e5a3beb217",
+  "task_generator/tasks/writer_cg_b79cfdab/task.json": "37ccfb2d83ce8091e040051948102532fd13b9f8",
+  "task_generator/tasks/writer_cg_c82cf7e5/env/safety_procedures.docx": "c3ab1ac5df4cf80e2641be5b60b909948ae3f63a",
+  "task_generator/tasks/writer_cg_c82cf7e5/env/writer_txtfmt_062.docx": "c3ab1ac5df4cf80e2641be5b60b909948ae3f63a",
+  "task_generator/tasks/writer_cg_c82cf7e5/env_manifest.json": "2ef1a934096f73a0e743409737875999ba930173",
+  "task_generator/tasks/writer_cg_c82cf7e5/task.json": "efd9df39d59aecd7951f50d3c8e91afe795b653e",
+  "task_generator/tasks/writer_cg_cce430f6/env/writer_mktg_055.docx": "29aaaf7a95ce09d06ea4ed5be2ee137ecb0a65c4",
+  "task_generator/tasks/writer_cg_cce430f6/env_manifest.json": "65bde46fece32b6ac961b6e9fa2a19e2a71ce91e",
+  "task_generator/tasks/writer_cg_cce430f6/task.json": "fc0c18091034f3c63b92ed551feb11ef78da8ddb",
+  "task_generator/tasks/writer_cg_d853218b/env/env_assessment.docx": "faf433ea072342f033a11bb4c5b11914f9bdf715",
+  "task_generator/tasks/writer_cg_d853218b/env_manifest.json": "ba5e72d6b839bfef3f78c58120fbf8271df848cc",
+  "task_generator/tasks/writer_cg_d853218b/task.json": "9d6fc7f46584e53c0dc470a62e0e75a178751d48",
+  "task_generator/tasks/writer_cg_e37f90ef/env/memorial_letter.docx": "c39b3d96a0606f7a8cb90563f38bddbf15ebe6b7",
+  "task_generator/tasks/writer_cg_e37f90ef/env_manifest.json": "a805cb109a8d3c27a1506b2ed678d69e2230fb38",
+  "task_generator/tasks/writer_cg_e37f90ef/task.json": "0a8088432deb751c172feca12656d64a89be2fa1",
+  "task_generator/tasks/writer_cg_ee7010dd/env/legal_brief_style_manual.docx": "80e88f1ee56615d151060773c05b728fbaef1865",
+  "task_generator/tasks/writer_cg_ee7010dd/env/motion_draft.docx": "617e09149626edda4af5c9d7e5b52045354e7bd3",
+  "task_generator/tasks/writer_cg_ee7010dd/env_manifest.json": "d239db54026fc964d91303a610ce0ac7fa19bbaf",
+  "task_generator/tasks/writer_cg_ee7010dd/task.json": "99d177439e3a9140340a4141fa8263f3c67062f8",
+  "task_generator/tasks/writer_cg_f1b12f20/env/resume_draft.docx": "97344612ef9652f596dcd95811644d477e850094",
+  "task_generator/tasks/writer_cg_f1b12f20/env_manifest.json": "2ecb595ebe880510a7f300f2506a62ede5e7e90d",
+  "task_generator/tasks/writer_cg_f1b12f20/task.json": "dc3a30c63377b6cd75754686bbc1895368b5edc4",
+  "task_generator/tasks/writer_cg_f360764c/env/company_quick_reference.docx": "bfcedc0cbee44bbff611f890ba3efe41d04dfbbc",
+  "task_generator/tasks/writer_cg_f360764c/env_manifest.json": "b4e2a1c36fc12ea7a7dec536ec74275f076934d2",
+  "task_generator/tasks/writer_cg_f360764c/task.json": "b3d78ccf70c9e4e1bd75e667766af7bd55a2e267",
+  "task_generator/tasks/writer_cg_ff001478/env/writer_bs_089.docx": "305229eb9503b1350bba8ae46dea3fa632651d4e",
+  "task_generator/tasks/writer_cg_ff001478/env_manifest.json": "96c26ce8ae9e741fbecc4421c048deb5c5661285",
+  "task_generator/tasks/writer_cg_ff001478/task.json": "4a9a390d564a468540162ba71068bc64560a8345",
+  "task_generator/tasks/writer_osw_51f5801c/env/Dickinson_Slides.pptx": "e680c90b3b422244bf5396943c7ea2f06d4adea1",
+  "task_generator/tasks/writer_osw_51f5801c/env_manifest.json": "0cac260c5709b2de3e463ba6a7934377ae80df5b",
+  "task_generator/tasks/writer_osw_51f5801c/task.json": "3e8e967eff5385071e796e7e5acf3a9d5756f264",
+  "task_generator/tasks/writer_osw_5bc63fb9/env/llm_answers.json": "8ded4771f7a189591e50e2b1cd3701815ff0f9a9",
+  "task_generator/tasks/writer_osw_5bc63fb9/env_manifest.json": "348b163be405599b72c4350242da4380ba648611",
+  "task_generator/tasks/writer_osw_5bc63fb9/task.json": "30c7582ddff4a23cd2d75cf472e664f79a21ab8e",
+  "task_generator/tasks/writer_osw_8472fece/env/Dolch_Sight_Words_Primer.docx": "d79ed4485c280b59dc1faf7cdb5c327ce63cecd4",
+  "task_generator/tasks/writer_osw_8472fece/env_manifest.json": "8924d0232474f8fabcd14c48b756a388c7f01167",
+  "task_generator/tasks/writer_osw_8472fece/task.json": "81097fddee0ecc911b87dbf101eb676b1fcd14e2",
+  "task_generator/tasks/writer_osw_88fe4b2d/env/CCCH9003_Tutorial_guidelines.docx": "680136b0c5d992da7ae3731284dc844199ee8b57",
+  "task_generator/tasks/writer_osw_88fe4b2d/env_manifest.json": "473fe67155493b3f1b46d31c220aa56c978dd0ed",
+  "task_generator/tasks/writer_osw_88fe4b2d/task.json": "9a0d3dac9caec39044a38a151943516e954df565",
+  "task_generator/tasks/writer_osw_adf5e2c3/env/Essay_Writing_English_for_uni.docx": "a5315f50c6d6e6bd1c366c8d567c499fb02ba5a9",
+  "task_generator/tasks/writer_osw_adf5e2c3/env_manifest.json": "9f00a405dbb71af086d58c427e84ae14b1cb53c1",
+  "task_generator/tasks/writer_osw_adf5e2c3/task.json": "6cde8b7e34062abfa04af5a069fd171ca7b24924",
+  "task_generator/tasks/xapp_calc_a4dac5a7/env/Finance": "5c69610d5af13cc17b7f44b64f6e4f8cd0c6de44",
+  "task_generator/tasks/xapp_calc_a4dac5a7/env/Inbox": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+  "task_generator/tasks/xapp_calc_a4dac5a7/env/finance_tracker.ods": "0444002b3e3f2941a5cc3d78ea48116e88fa3496",
+  "task_generator/tasks/xapp_calc_a4dac5a7/env/profiles.ini": "21650fbbd0c753c96123472cca0223c6708f6fb7",
+  "task_generator/tasks/xapp_calc_a4dac5a7/env_manifest.json": "82fdf53bc38bc2d9e2e2ee71d0e94ed1c5536dfc",
+  "task_generator/tasks/xapp_calc_a4dac5a7/task.json": "0dacb0c9c84e290d53eab9e6440f31ee61e3ef9e",
+  "task_generator/tasks/xapp_tb_osw_d9b7c649/env/thunderbird-profile.tar.gz": "b85d8805b3b97429857dc92ce30783b4b523f35b",
+  "task_generator/tasks/xapp_tb_osw_d9b7c649/env_manifest.json": "f9d62643ee24ca675d9634696fd8b05b0be1f0bf",
+  "task_generator/tasks/xapp_tb_osw_d9b7c649/task.json": "6cd46172ea53e78ca01c60432b29e8a9ce4e089a",
+  "task_generator/tasks/xapp_writer_29a40c87/env/event_photo.jpg": "43cda5942e3e2f2a0abc20708bf92d941efc22da",
+  "task_generator/tasks/xapp_writer_29a40c87/env/processing_request.docx": "1c59f63ae6946459176bae42380c5824efe6f4c8",
+  "task_generator/tasks/xapp_writer_29a40c87/env_manifest.json": "0163ceb5ac68ec2c52e0403d1fdd99f5712a46d1",
+  "task_generator/tasks/xapp_writer_29a40c87/task.json": "99af41ebeaaf9b9fcdf41ac590554f1b3c5350e4",
+  "task_generator/tasks/xapp_writer_47239d6e/env/artwork.jpg": "a5013d8877e8e57374fd13d6aceba52d3c147416",
+  "task_generator/tasks/xapp_writer_47239d6e/env/print_requirements.docx": "5c6a0564fc2bd824972d73f3c3730cce8aa52820",
+  "task_generator/tasks/xapp_writer_47239d6e/env_manifest.json": "e35bf7be81d9c6728051f6443e7fedc155269b6e",
+  "task_generator/tasks/xapp_writer_47239d6e/task.json": "b3459cf0778f3cb0fa463c98d60d26cb54020a72",
+  "task_generator/tasks/xapp_writer_4b7faf96/env/poster.png": "b6e3c36f2138b0f1c672b3ede03503949872fdfc",
+  "task_generator/tasks/xapp_writer_4b7faf96/env/print_prep.docx": "3811b6f8bb31b38086e90ee7f1dd2ff30b81bf3d",
+  "task_generator/tasks/xapp_writer_4b7faf96/env_manifest.json": "f0dac3b71f8bc87db4e39133dc55e9242b6dc9e0",
+  "task_generator/tasks/xapp_writer_4b7faf96/task.json": "56af4d9560de76ae32c0b31a642e64ef75b8577a",
+  "task_generator/tasks/xapp_writer_61242f65/env/my_notes.docx": "5b098ee8f0f4b650228ad3b54f52596e9c26cc63",
+  "task_generator/tasks/xapp_writer_61242f65/env/screenshot.png": "6a181b8bcf439a665c1cd028d6feed7f37efd409",
+  "task_generator/tasks/xapp_writer_61242f65/env_manifest.json": "f00e98973206aaabcaeab800250b6abd3b3d204d",
+  "task_generator/tasks/xapp_writer_61242f65/task.json": "17c84dc1a2bbf60bed52fbb8240a36c9b2473969",
+  "task_generator/tasks/xapp_writer_78cd5de6/env/client_feedback.docx": "fdbf1d6b227dd71ce6ca0c03fb311739be6c1bc8",
+  "task_generator/tasks/xapp_writer_78cd5de6/env/mockup.png": "7a79e7b3e426835a92ee5ca50f585a38e0307965",
+  "task_generator/tasks/xapp_writer_78cd5de6/env_manifest.json": "354e30313ca2fd9fb284ed7e5fd505421d4840de",
+  "task_generator/tasks/xapp_writer_78cd5de6/task.json": "49a6c823c550ceae40d4b03e160394cc7c232cff",
+  "task_generator/tasks/xapp_writer_8150e3dc/env/color_correction_brief.docx": "de0151488f1025bb89e5130ce378fc772406b8a1",
+  "task_generator/tasks/xapp_writer_8150e3dc/env/food_photo.jpg": "46ac056c70cd813498c4f872cfe25c976015057d",
+  "task_generator/tasks/xapp_writer_8150e3dc/env_manifest.json": "ffa5bb1d7749a8a12dd707aa2769199161d4e23d",
+  "task_generator/tasks/xapp_writer_8150e3dc/task.json": "4581b39b12ff298a3f2c38be28bade8a3ff3b5f0",
+  "task_generator/tasks/xapp_writer_855f5769/env/banner_instructions.docx": "0f36207c395b3b6aa45fcee0bb664c74c2170473",
+  "task_generator/tasks/xapp_writer_855f5769/env/banner_template.png": "04b6c288a265c2fac1d5e2b0a04ac2d0bdb4a417",
+  "task_generator/tasks/xapp_writer_855f5769/env_manifest.json": "b8c70926018b67ab173fcd669c0a0baade41ae86",
+  "task_generator/tasks/xapp_writer_855f5769/task.json": "e303bf2622dea6c2539b47db16365e1851f92f82",
+  "task_generator/tasks/xapp_writer_91f9c3d3/env/editing_checklist.docx": "adace0e278003738ef47b600f3ad44e3774cf421",
+  "task_generator/tasks/xapp_writer_91f9c3d3/env/landscape.jpg": "578932fd01be83073b6e92459c7396ffc3787d82",
+  "task_generator/tasks/xapp_writer_91f9c3d3/env_manifest.json": "ec4fbc542c56558e69e9d2c15bafe8dbef699561",
+  "task_generator/tasks/xapp_writer_91f9c3d3/task.json": "0b055ac3829dc05f30943eb129fd2e3e258fe023",
+  "task_generator/tasks/xapp_writer_97468db6/env/photo_tasks.docx": "172338b6944945f86b01262689a65cbe3c2a48b0",
+  "task_generator/tasks/xapp_writer_97468db6/env/scenery.jpg": "d54b5002e3a4ab5c897e35eac9d55e68d8370110",
+  "task_generator/tasks/xapp_writer_97468db6/env_manifest.json": "f2ddf206655a9f58413c64c5bbabdd3233019076",
+  "task_generator/tasks/xapp_writer_97468db6/task.json": "e9941103a9ef83df2abcd7b50eadf899a9064270",
+  "task_generator/tasks/xapp_writer_d522e7a5/env/edit_specs.docx": "11e1749c0e563f160afe3bfc5b4312961f183ece",
+  "task_generator/tasks/xapp_writer_d522e7a5/env/product_photo.png": "502073f0d65ced3b31a7803f6975c5f17a228be2",
+  "task_generator/tasks/xapp_writer_d522e7a5/env_manifest.json": "a22991763b974026c39024e336389889c5cea246",
+  "task_generator/tasks/xapp_writer_d522e7a5/task.json": "7ef533401091a3ca12255104107a48daacf0815c",
+  "task_generator/tasks/xapp_writer_f34b89a5/env/raw_photo.jpg": "190dc51fa45c5d93ed22c568afa322d7dd09037c",
+  "task_generator/tasks/xapp_writer_f34b89a5/env/workflow.docx": "bbf3d3956ed88873247e799426a54284e3e6b60e",
+  "task_generator/tasks/xapp_writer_f34b89a5/env_manifest.json": "9ce3efceb8b3d3be9b86fb35753fc2769629fe19",
+  "task_generator/tasks/xapp_writer_f34b89a5/task.json": "aecf228c7b5b26d1042a57bc4e0aa2779509fc33",
+  "task_generator/tasks/xapp_writer_f4e93d30/env/client_feedback.docx": "f35deb69d57c5dd177e7b04869f0e25ff3731e14",
+  "task_generator/tasks/xapp_writer_f4e93d30/env/product.png": "0c139d3c499edce58813cd47e42ce7f5300cf648",
+  "task_generator/tasks/xapp_writer_f4e93d30/env_manifest.json": "b7b1316d6ea181f8dd8b3b3a7b5dc33c9338a425",
+  "task_generator/tasks/xapp_writer_f4e93d30/task.json": "f129280cd65db3b67a86294ecdc73f21684fffb2",
+  "task_generator/tasks/zoom_accessibility_bundle/env/zoomus.conf": "04ba1e4192c39684c9f02a5ecc26725a73c1d0b1",
+  "task_generator/tasks/zoom_accessibility_bundle/env_manifest.json": "f8aee612e3dbf649ff404dfcf15ff0c10eb4ad04",
+  "task_generator/tasks/zoom_accessibility_bundle/task.json": "a30b960c13c1a1ab12cf8e70f19ef9216766c297",
+  "task_generator/tasks/zoom_audio_device_swap/env/zoomus.conf": "24a62e56d691e1394e495fef2dfb3018ccf95ce7",
+  "task_generator/tasks/zoom_audio_device_swap/env_manifest.json": "6b135ab9a34c88f75b0c86256388427130247579",
+  "task_generator/tasks/zoom_audio_device_swap/task.json": "c02606450d4b017dabc01a0b1c92014bc2e8c15c",
+  "task_generator/tasks/zoom_audio_settings_bundle/env/zoomus.conf": "27c9ff0952309e8acdd92fad2e1464ec46c435e1",
+  "task_generator/tasks/zoom_audio_settings_bundle/env_manifest.json": "55ff56c12bed0147bf868c08a4ff605c806ce8f8",
+  "task_generator/tasks/zoom_audio_settings_bundle/task.json": "ce3ac2782daf49255c3b1ab947f496536b94299b",
+  "task_generator/tasks/zoom_change_language_german/env/zoomus.conf": "27c9ff0952309e8acdd92fad2e1464ec46c435e1",
+  "task_generator/tasks/zoom_change_language_german/env_manifest.json": "96b3485162af0bce54a57124a37ea277d57f8db5",
+  "task_generator/tasks/zoom_change_language_german/task.json": "5fab1806f8ed1af744a46cd55f67c4f7a8060945",
+  "task_generator/tasks/zoom_change_recording_path/env/zoomus.conf": "27c9ff0952309e8acdd92fad2e1464ec46c435e1",
+  "task_generator/tasks/zoom_change_recording_path/env_manifest.json": "f494abbfe40351335c1d54e1920ce1826319dfa1",
+  "task_generator/tasks/zoom_change_recording_path/task.json": "00f92f95e408308cf4b8e5fb931e0d58a643e3cb",
+  "task_generator/tasks/zoom_chat_client_preferences/env/zoomus.conf": "5a5fca84f46fe1434b4b71a1d7046587b82b19e4",
+  "task_generator/tasks/zoom_chat_client_preferences/env_manifest.json": "5dbd62df04aa342bb4ce09a673acde33ea7dc3bc",
+  "task_generator/tasks/zoom_chat_client_preferences/task.json": "7708f4c0c8b5fc9740878cba6ff2e0d3f3bafc5c",
+  "task_generator/tasks/zoom_chat_dark_theme/env/zoomus.conf": "27c9ff0952309e8acdd92fad2e1464ec46c435e1",
+  "task_generator/tasks/zoom_chat_dark_theme/env_manifest.json": "24ec9d2cfc8ce0b20bd9a49f790c3d05825f6199",
+  "task_generator/tasks/zoom_chat_dark_theme/task.json": "2a4895e369758566c7f6e39c20cba957d9e3655a",
+  "task_generator/tasks/zoom_general_meetings_ui_bundle/env/zoomus.conf": "4470cf65e7d595705fda978baed56132a7e66b62",
+  "task_generator/tasks/zoom_general_meetings_ui_bundle/env_manifest.json": "d1585bf2b84ce631f96fb08bc864b9997ef2ff4f",
+  "task_generator/tasks/zoom_general_meetings_ui_bundle/task.json": "43e0333dfafd561b3b54905a881fc9e62f0b2bb2",
+  "task_generator/tasks/zoom_language_chinese_and_recording/env/zoomus.conf": "2aca0ea4a602ab5363c4cd8afa3cbf12e20ecb06",
+  "task_generator/tasks/zoom_language_chinese_and_recording/env_manifest.json": "500ec68b921f62e90e6781f28ae86d84af0792cd",
+  "task_generator/tasks/zoom_language_chinese_and_recording/task.json": "821da10fe1cd398e247f0c3de827dd0f6fb88a8e",
+  "task_generator/tasks/zoom_multi_section_hardening/env/zoomus.conf": "22758322c92578bbf8127a344a389d41fd68d9a5",
+  "task_generator/tasks/zoom_multi_section_hardening/env_manifest.json": "633731e443307e8066e80f492c8a770e4d08eefb",
+  "task_generator/tasks/zoom_multi_section_hardening/task.json": "134b47dfb3e38ae29a40118ac2dbe94e084f68bf",
+  "task_generator/tasks/zoom_privacy_lockdown/env/zoomus.conf": "b8e056b5c13ad9ff8e841b2339e1b5bafd34da29",
+  "task_generator/tasks/zoom_privacy_lockdown/env_manifest.json": "4bcb983e13c2d1616159d39aa3555572062bea46",
+  "task_generator/tasks/zoom_privacy_lockdown/task.json": "566d5f22950d78d307769977c51bdc82cce50640",
+  "task_generator/tasks/zoom_recording_storage_bundle/env/zoomus.conf": "b80dbdcb10bb0613aa2a98c6f16a5c1d6e601787",
+  "task_generator/tasks/zoom_recording_storage_bundle/env_manifest.json": "6b1f437c86866f9548e8cc3f6373b9afa0903b58",
+  "task_generator/tasks/zoom_recording_storage_bundle/task.json": "ab5cb0bfdf55b1dc212e8cfcef79eb5297064457",
+  "task_generator/tasks/zoom_video_off_on_join/env/zoomus.conf": "27c9ff0952309e8acdd92fad2e1464ec46c435e1",
+  "task_generator/tasks/zoom_video_off_on_join/env_manifest.json": "7e80a77445ad92652eec05313632efd4b0d4ea63",
+  "task_generator/tasks/zoom_video_off_on_join/task.json": "d64f72434ad83787e3d1151af5a1c81e641bb312",
+  "task_generator/tasks/zoom_video_quality_full_bundle/env/zoomus.conf": "bd50869e13e2ec75f083d51dd4d2ee0c21625689",
+  "task_generator/tasks/zoom_video_quality_full_bundle/env_manifest.json": "2ba2c6fed1f600fedecf21a1de147f4e5756baf9",
+  "task_generator/tasks/zoom_video_quality_full_bundle/task.json": "85bfc317a7651af23fd5bc1f6b34d8d9e8877470",
+  "task_generator/tasks/zoom_virtual_background_setup/env/zoomus.conf": "a7b7cee915d4c75bb72bd69b5c0815496b79b284",
+  "task_generator/tasks/zoom_virtual_background_setup/env_manifest.json": "cedee97f52f2679357d2bca10fa0516ec80531f6",
+  "task_generator/tasks/zoom_virtual_background_setup/task.json": "f4da2fc56fb8a8b8f055332457f889d0d9bb3067",
+  "task_generator/tasks/zotero_add_author_to_survey/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_add_author_to_survey/env_manifest.json": "502cfdcc7f1786d132d2d3837767e5560ed574e6",
+  "task_generator/tasks/zotero_add_author_to_survey/task.json": "fe522d5eaa17f82781d954f55b98bda4dbf2cf7e",
+  "task_generator/tasks/zotero_add_note_to_item/env/zotero.sqlite": "74b34c48268deae93b9af9f602c391c9267996c1",
+  "task_generator/tasks/zotero_add_note_to_item/env_manifest.json": "9a2050265793c4e24a27f0068e5da3f8ef172a6b",
+  "task_generator/tasks/zotero_add_note_to_item/task.json": "1e5ad7b03d45251ae7027ac332a7457c666a1557",
+  "task_generator/tasks/zotero_bulk_tag_multiple_items/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_bulk_tag_multiple_items/env_manifest.json": "c222335b9ec591db47d2654f2000d372b6d3ec11",
+  "task_generator/tasks/zotero_bulk_tag_multiple_items/task.json": "96eb7c3980036e3c3dc47b1d1dadfba0317cb4da",
+  "task_generator/tasks/zotero_edit_multiple_fields_bert/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_edit_multiple_fields_bert/env_manifest.json": "3bd2e92cfd22cf24586e8243f4c228c8f9bf7198",
+  "task_generator/tasks/zotero_edit_multiple_fields_bert/task.json": "b97c1690c88265a0bc94e087b30ad208d4d544cc",
+  "task_generator/tasks/zotero_export_collection_bibtex/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_export_collection_bibtex/env_manifest.json": "9cd572093628c5506b8fce995e6634de08733f09",
+  "task_generator/tasks/zotero_export_collection_bibtex/task.json": "edf3f9bc2ec137e8afc3ae0db790bd91fd5fefe0",
+  "task_generator/tasks/zotero_export_two_collection_bibtex_with_publisher/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_export_two_collection_bibtex_with_publisher/env_manifest.json": "e3d7796ae2901b10d21864610eda06acb6a512cd",
+  "task_generator/tasks/zotero_export_two_collection_bibtex_with_publisher/task.json": "ea86e76aa748b41374eea63ae57ab4ce5cee4b58",
+  "task_generator/tasks/zotero_gap_advanced_search_export_results/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_gap_advanced_search_export_results/env_manifest.json": "fd8ce20f8efadcbcfdf237b9aaeabb5b9febd35b",
+  "task_generator/tasks/zotero_gap_advanced_search_export_results/task.json": "1d150040b66081faed7241472441f7117cbc1d03",
+  "task_generator/tasks/zotero_rename_collection/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_rename_collection/env_manifest.json": "64a5a9745f729b8583b32f5167b9020921635893",
+  "task_generator/tasks/zotero_rename_collection/task.json": "9fd843c9f0646331b9aee389987e45aa5fb67d57",
+  "task_generator/tasks/zotero_subcollection_neural/env/zotero.sqlite": "74b34c48268deae93b9af9f602c391c9267996c1",
+  "task_generator/tasks/zotero_subcollection_neural/env_manifest.json": "3cfbb3abe24ac73252b444a004efbeff62d6affa",
+  "task_generator/tasks/zotero_subcollection_neural/task.json": "31144ad4e96e8c52e8864b37f71fc97fdc31f990",
+  "task_generator/tasks/zotero_tag_bert_important/env/zotero.sqlite": "995dfa263ce270ad2c165716a1fe5ac00623f06f",
+  "task_generator/tasks/zotero_tag_bert_important/env_manifest.json": "7084f5f259bec17b12a8d7c301dbe46cedd89d24",
+  "task_generator/tasks/zotero_tag_bert_important/task.json": "c50f8493056943fb8f97f01cf33c23a100ab9283",
+  "verifiers/CLAUDE.md": "876f97dace68320d9f30faeb35020fa5eac588c6",
+  "verifiers/__init__.py": "c72bf2a3d8f867e65ead7ffc41c43804ac59098c",
+  "verifiers/audacity/README.md": "158b5a27a64e8d3155170e4a887433a4f1893b99",
+  "verifiers/audacity/Test.md": "25c92ecb52864d8082bb4eae0295c4754ce12de3",
+  "verifiers/audacity/audacity.py": "d3202ff2431e0e4ed0ef702809458c3231b431a6",
+  "verifiers/audacity/test_audacity.py": "8815dbff71676885d6db26325f54b048c58893f4",
+  "verifiers/blender/README.md": "106ef424992fa4ce269cf11481d62d55c3736a2a",
+  "verifiers/blender/blender.py": "110dc28391441ac12dc26de810c9a009c9f116ae",
+  "verifiers/blender/test_blender.py": "9bdfdbbd62c4247b9da7481fbddaacb806949b89",
+  "verifiers/brave/README.md": "8e41c52cd960735a40396b20c52a22b12cf36d17",
+  "verifiers/brave/brave.py": "0265db745854d7c834d463ad50396093266c7869",
+  "verifiers/brave/test_brave.py": "a5bea350d09a037b113b3cf1ad0be3674d4b4d04",
+  "verifiers/chrome/README.md": "2446d7c29f97d7c8f1a22f3dc72bca93b5d819c7",
+  "verifiers/chrome/chrome.py": "995845b626e181ddb6fe9155b4979e3cf37609b4",
+  "verifiers/chrome/demo_chrome.py": "9de45b91a2688dafa2479365add67a205a601024",
+  "verifiers/chrome/test_chrome.py": "24de07f2ecc52a7f285aa735174ac8b5b6c99891",
+  "verifiers/cloudcompare/README.md": "3e4e54643482aa6dc77ca7d1744be3cd0f60e2dc",
+  "verifiers/cloudcompare/Test.md": "82542f1d280ac9dec8c6a814e5e1bd660cf0b704",
+  "verifiers/cloudcompare/cloudcompare.py": "e94d011a6620bd76578f2e9c84c2447698d011db",
+  "verifiers/cloudcompare/test_cloudcompare.py": "674cce339d045471b21597ebf3dc43de99480f28",
+  "verifiers/darktable/README.md": "bc30381ed803d9783dc329cae2ca5901d47383b7",
+  "verifiers/darktable/darktable.py": "39298f65a53947c3744ff75639ef2be8888704c5",
+  "verifiers/darktable/test_darktable.py": "21ae46c78c0ddcc67587782abdbc270640020014",
+  "verifiers/drawio/README.md": "7173531bf5fae35aa368a223e4cbe1bc826196c2",
+  "verifiers/drawio/drawio.py": "c89e76f632ead82f7820c9924fe68ffa2be14b61",
+  "verifiers/drawio/test_drawio.py": "cf06d52fd9b7a97e4b262502eb8194318c5a9c17",
+  "verifiers/eclipse/README.md": "cd0fbde39288ecf9a3b5c8d59731c54b0aa64a32",
+  "verifiers/eclipse/eclipse.py": "f537000f0610d6f8281cc30298f390244904fc5b",
+  "verifiers/eclipse/test_eclipse.py": "4b829d3575931c39a1e2acb13b0fd67735f6cbd8",
+  "verifiers/firefox/README.md": "22fde912abaf560249673ce00673702b9c5a6870",
+  "verifiers/firefox/firefox.py": "3be7aa575d62b1726d055bc8ad2766328ef21b87",
+  "verifiers/firefox/test_firefox.py": "7b9d2016f452fc119935c8612675db8d948e4488",
+  "verifiers/freecad/README.md": "3c69e34596388deae8d0fdd22855f30269dd787a",
+  "verifiers/freecad/Test.md": "9a080a4f12c3f8d706488c911a39660c6a6f7e15",
+  "verifiers/freecad/freecad.py": "f44a7408d3d6b121a0ba71b9ce63407239b2ce59",
+  "verifiers/freecad/test_freecad.py": "fb0b977a5a74446ee0d1b4cc6c7ee14b25488fc4",
+  "verifiers/galculator/README.md": "14d95e6f2ea97a8361e89b5fc67943e867aee139",
+  "verifiers/galculator/galculator.py": "010ca2fdf31054e6c94c543a34c4db64ea5349e6",
+  "verifiers/galculator/test_galculator.py": "f9f929d466e5ead527a9bc43bcd1fe5ed8c3ffb3",
+  "verifiers/gedit/README.md": "845474c9225da9823932735ad2e98a6cb0a446e2",
+  "verifiers/gedit/gedit.py": "3e861386307c3d73342bd3be8e0a6f66ef03c8b2",
+  "verifiers/gedit/test_gedit.py": "9c8e56bd65fcb60ba145ecfd49616d633c6d302b",
+  "verifiers/gimp/README.md": "1bdfbd8d81ad3ea424dd846923d59d1039e9a1d4",
+  "verifiers/gimp/Test.md": "b3c2cd95f720090c0ad15cd0a43979aad931564f",
+  "verifiers/gimp/gimp.py": "310baa79afe69eb00858bbcee20a0b4b99e3e178",
+  "verifiers/gimp/test_gimp.py": "a92ce038c098146707d2d74e76d8e0025fada721",
+  "verifiers/godot4/README.md": "633441e11ab5821f784f10ecb240f96d25723319",
+  "verifiers/godot4/Test.md": "a186f070d3347eaac868a7a9b5238737545e0b0e",
+  "verifiers/godot4/godot4.py": "df1e7ed230e1042dfcb61c113b10ebf246eceff4",
+  "verifiers/godot4/test_godot4.py": "fd3b096f43641a1b706eeff4e2a40bbf1773c306",
+  "verifiers/inkscape/README.md": "54185c0869f3a9cb1a0d4725ab9e1cef7ddcdffd",
+  "verifiers/inkscape/inkscape.py": "985170ff5c058c50d367c96d2b980ffe8d9a8b6d",
+  "verifiers/inkscape/test_inkscape.py": "4594e0afb237d7549cafee0341e53f99d4e0af09",
+  "verifiers/kdenlive/README.md": "c50b55114bbac9eb643c2071a3513ca9449646c7",
+  "verifiers/kdenlive/kdenlive.py": "07faeac39f847ef2ae78b6125b4765228417abda",
+  "verifiers/kdenlive/test_kdenlive.py": "d8f220f43b4dcb774fdde250bc703d0ba825f85d",
+  "verifiers/krita/README.md": "02e0760d782c9a1e6d21813e7d658a0b15184d9f",
+  "verifiers/krita/krita.py": "cf1b7a016877ca1397f92c00516c6b7cb6abc2f6",
+  "verifiers/krita/test_krita.py": "ab060de0580a7b14dd4c7ad5e779b52a6078cb74",
+  "verifiers/libreoffice_calc/README.md": "5e283e17b02d581f1915b05d2d9a09678e8fdd41",
+  "verifiers/libreoffice_calc/libreoffice_calc.py": "21202a4b743e4ea1948d9d0edfd31feefbccbd19",
+  "verifiers/libreoffice_calc/test_libreoffice_calc.py": "e6d2f4d59b9177bd1371aa6da1b8d3fe812485dd",
+  "verifiers/libreoffice_draw/README.md": "284e0fa411d944de3e1f80071d87182fac6a4346",
+  "verifiers/libreoffice_draw/libreoffice_draw.py": "a6d1d80c711a9563415d385788436708a82f3649",
+  "verifiers/libreoffice_draw/test_libreoffice_draw.py": "27e03d284c3f9971f1665316c2e46141fa88adb8",
+  "verifiers/libreoffice_draw/test_offline_extensions.py": "4cde4216b6b1fe0836a6b35eeaef4cdf537a0c71",
+  "verifiers/libreoffice_impress/README.md": "f9e17aac316f5a2193f950e3a038d35d051e3e7e",
+  "verifiers/libreoffice_impress/libreoffice_impress.py": "6cbbb2551ab251c78fae8a1b1ae9028f7943f70f",
+  "verifiers/libreoffice_impress/test_libreoffice_impress.py": "7cbb75b1de057ac32c93a007148e90943313e33c",
+  "verifiers/libreoffice_writer/README.md": "86498ac84e5125c48f236af6c19a7edd34a0d6fb",
+  "verifiers/libreoffice_writer/libreoffice_writer.py": "71326156814ed1048e4ea26f68403ca87e21ac95",
+  "verifiers/libreoffice_writer/test_libreoffice_writer.py": "12e35e2cc9f30a106f9f14d1d3289aadfcf1dc2f",
+  "verifiers/musescore3/README.md": "349334cfd33a00df9ed37e5f179203f6b878fb41",
+  "verifiers/musescore3/Test.md": "b38393f21cdd34389b662ed1e5df1f085ebf4b44",
+  "verifiers/musescore3/musescore3.py": "dae9e48283a27988600a7559e60f0a20c19d0bfe",
+  "verifiers/musescore3/test_musescore3.py": "4ddac4d4d38321f70bf6404a9193dc14efd960d3",
+  "verifiers/obs/README.md": "43040b6a01c30365b77cc5111f8a0ed90284b415",
+  "verifiers/obs/obs.py": "779b54d616e9885de1a66121adacb8ef5c981aac",
+  "verifiers/obs/test_obs.py": "53cbace691ffbbbdaa04fcec8f176daef9e9d11d",
+  "verifiers/obsidian/README.md": "e0714830addfee4534b11eaa17199cc4fae4fa81",
+  "verifiers/obsidian/Test.md": "53e0381cf08b9850e7818352dbe46f9591df1794",
+  "verifiers/obsidian/obsidian.py": "0b0ea333a3eecf180a6d82da6c5687628bed1d50",
+  "verifiers/obsidian/test_obsidian.py": "cc615fefec2a480f6e9da3894ce402a04ccfc23c",
+  "verifiers/pcmanfm/README.md": "3daf991714aa5a4a30b1af64feb583daa66ba29f",
+  "verifiers/pcmanfm/Test.md": "00a505c0106cb1d000fedc896c35289fe5383695",
+  "verifiers/pcmanfm/pcmanfm.py": "8df9bed5c1b3960830bbfef452b41d6ddba68340",
+  "verifiers/pcmanfm/test_pcmanfm.py": "fd63dd61904911f2f0f5c4756809b43e16c1cfe2",
+  "verifiers/renderdoc/README.md": "a2cbecba73d7dea5bb1bb314a60a7bb5ebe1c632",
+  "verifiers/renderdoc/Test.md": "18f0c110d696b6f0d369a8a8f90bce395e68d5da",
+  "verifiers/renderdoc/renderdoc.py": "9e044d65a25fd6f5ad6ff135cafa428d26cf0f50",
+  "verifiers/renderdoc/test_renderdoc.py": "d20300e9bbfd60c1c6abd4ad504811b03a42f7c0",
+  "verifiers/shotcut/README.md": "b55d9dd9411f9f4143148f5ff31418ae7f650497",
+  "verifiers/shotcut/Test.md": "b1f694f5eb886e8ca5c60eca08ac1e04eb634611",
+  "verifiers/shotcut/shotcut.py": "0ee9886c2e8fe2b003cac7037449ca2f9b7a119b",
+  "verifiers/shotcut/test_shotcut.py": "1d490add1514e060235e0ce955a0a256aa1dff81",
+  "verifiers/thunderbird/README.md": "458345ca3909f9f8cce9ff75b3fa0bcf9b23f81a",
+  "verifiers/thunderbird/Test.md": "54753e73eabaafcc4af22b6b491b219a302c557e",
+  "verifiers/thunderbird/test_thunderbird.py": "368bda34a9ff47ae485316d640e8f09b8dd39ae4",
+  "verifiers/thunderbird/thunderbird.py": "34b0fcd1dc6508fc008be53630e629d1e3093b55",
+  "verifiers/vlc/README.md": "8e1227d72c29b01c7db7463127ce98b0e7744e0d",
+  "verifiers/vlc/test_vlc.py": "30ff9fab44ffcdb3a24c4b1638c5cbbc4f357a8f",
+  "verifiers/vlc/vlc.py": "45b49b03563090f393e1ae896933fd750e3839f9",
+  "verifiers/vscode/README.md": "b3ac3f989245e3fd30443c54ef3e5978d111142d",
+  "verifiers/vscode/test_vscode.py": "ed872e3f8fa233bfe48f71ac96db04da64598259",
+  "verifiers/vscode/vscode.py": "e6d44ffc82a54607e5da125c6589cf3d5aa37e23",
+  "verifiers/zoom/README.md": "340fde18937720ce0d878985b312fc0646b7bb3e",
+  "verifiers/zoom/Test.md": "1bec619414efc21c492a3be6fe6b20665cfac95c",
+  "verifiers/zoom/test_zoom.py": "5bf7865b8325bceb78a581d18bdd51d958eb73d8",
+  "verifiers/zoom/zoom.py": "e5fea4fa9b8c4e5b669bbacacd550ebc3b82b173",
+  "verifiers/zotero/README.md": "c9e03a9e7dd3b773a2756321399c03451c353ab8",
+  "verifiers/zotero/Test.md": "4f99f7d0ff2f7f166b1edf9e94e99ef62769cc66",
+  "verifiers/zotero/test_zotero.py": "54be76c5dd1f71cb047511253a155344f509630b",
+  "verifiers/zotero/zotero.py": "ca41fa93f9cd75330d168c9327d4a879ae460aa3"
+ }
+}

@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/BugTracker. Create a bug tracking system:\n\n1. Create folders: 'Open', 'InProgress', 'Closed'.\n2. Create 'Open/BUG-001.md' with frontmatter 'type: bug', 'severity: high', 'component: auth', 'status: open' and body with heading 'BUG-001: Authentication Failure on Login', description of the bug, a link to [[BUG-003]], and tags #bug #open #high #auth\n3. Create 'InProgress/BUG-002.md' with frontmatter 'type: bug', 'severity: medium', 'component: api', 'status: inprogress' and body with heading 'BUG-002: API Rate Limiting Not Enforced', description, and tags #bug #inprogress #medium #api\n4. Create 'Closed/BUG-003.md' with frontmatter 'type: bug', 'severity: critical', 'component: auth', 'status: closed', 'resolved: 2025-03-01' and body with heading 'BUG-003: SQL Injection in Login Form', description, resolution notes, a link to [[BUG-001]], and tags #bug #closed #critical\n5. Create 'Overview.md' in root with body with heading 'Bug Tracker Overview', summary of all bugs, links to [[BUG-001]], [[BUG-002]], and [[BUG-003]], and tags #tracker #overview",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/BugTracker/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {

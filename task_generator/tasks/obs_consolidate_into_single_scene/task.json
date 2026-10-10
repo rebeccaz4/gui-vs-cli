@@ -1,7 +1,7 @@
 {
   "id": "obs_consolidate_into_single_scene",
   "app": "obs",
-  "task": "The scene collection already contains three scenes, each with one source: - 'Cam A' scene containing source 'Webcam A' - 'Cam B' scene containing source 'Webcam B' - 'Graphics' scene containing source 'Lower Third' Your task is to consolidate everything into one new scene named 'Unified'. 1. Create a new scene named exactly 'Unified'. 2. Add three sources to the 'Unified' scene with these exact names: 'Webcam A', 'Webcam B', 'Lower Third'. (You may use any source type from the Add Source menu; only the names matter.) 3. Delete the original three scenes: 'Cam A', 'Cam B', 'Graphics'. 4. The final collection must have exactly 1 scene, 'Unified', containing those three sources, all visible. 5.",
+  "task": "The scene collection already contains three scenes, each with one source: - 'Cam A' scene containing source 'Webcam A' - 'Cam B' scene containing source 'Webcam B' - 'Graphics' scene containing source 'Lower Third' Your task is to consolidate everything into one new scene named 'Unified'. 1. Create a new scene named exactly 'Unified'. 2. Add three sources to the 'Unified' scene with these exact names: 'Webcam A', 'Webcam B', 'Lower Third'. (You may use any source type from the Add Source menu; only the names matter.) 3. Delete the original three scenes: 'Cam A', 'Cam B', 'Graphics'. 4. The final collection must have exactly 1 scene, 'Unified', containing those three sources, all visible. 5. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {

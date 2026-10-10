@@ -1,6 +1,0 @@
-{
-  "task_id": "cloudcompare_gap_delaunay_2_5d",
-  "files": [
-    {"filename": "terrain.ply", "sandbox_path": "/home/user/Documents/terrain.ply", "type": "ply"}
-  ]
-}

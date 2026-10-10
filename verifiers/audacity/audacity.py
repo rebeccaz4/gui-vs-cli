@@ -228,7 +228,11 @@ def _load_cfg(path: Path | None = None) -> tuple[configparser.ConfigParser | Non
     cfg.optionxform = str  # preserve case
     try:
         with open(p, "r", encoding="utf-8", errors="replace") as f:
-            cfg.read_file(f)
+            text = f.read()
+        # audacity.cfg starts with top-level keys before the first [section]; give them a section so configparser can read the file
+        if not text.lstrip().startswith("["):
+            text = "[__root__]\n" + text
+        cfg.read_string(text)
     except configparser.Error as e:
         return None, f"Cannot parse {p}: {e}"
     return cfg, None

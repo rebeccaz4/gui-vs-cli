@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/RecipeVault. Create a recipe collection:\n\n1. Create folders: 'Italian', 'Asian', 'Desserts'.\n2. Create 'Italian/Carbonara.md' with frontmatter 'cuisine: italian', 'servings: 4', 'time: 30' and body containing heading 'Carbonara', ingredient list, instructions, a link to [[Cacio e Pepe]], and tags #recipe #italian #pasta\n3. Create 'Italian/Cacio e Pepe.md' with frontmatter 'cuisine: italian', 'servings: 2', 'time: 20' and body containing heading, ingredients, instructions, a link to [[Carbonara]], and tags #recipe #italian #pasta\n4. Create 'Asian/PadThai.md' with frontmatter 'cuisine: thai', 'servings: 2', 'time: 25' and body containing heading, ingredients, instructions, and tags #recipe #thai #noodles\n5. Create 'Desserts/Tiramisu.md' with frontmatter 'cuisine: italian', 'servings: 6', 'time: 45' and body containing heading, ingredients, instructions, a link to [[Carbonara]], and tags #recipe #italian #dessert\n6. Create 'Index.md' in root with body containing heading 'Recipe Index', links to [[Carbonara]], [[Cacio e Pepe]], [[PadThai]], [[Tiramisu]], and tags #index #recipes",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/RecipeVault/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {

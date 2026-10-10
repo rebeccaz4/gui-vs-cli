@@ -1,7 +1,7 @@
 {
   "id": "shotcut_v2_default_profile_dv_pal",
   "app": "shotcut",
-  "task": "Shotcut is open with a placeholder project /home/user/Documents/pal_prefs.mlt. Your task is to set Shotcut's default Video Mode to 'PAL' (dv_pal).\n\nSteps:\n1. Open the Settings menu in the top menu bar.\n2. Hover the 'Video Mode' submenu.\n3. Under the 'SD' or 'Non-Broadcast' section, click the 'PAL' video mode so it becomes the selected default.\n4. Give Shotcut a moment, then press Ctrl+S on the project so the application flushes its configuration.\n\nShotcut persists this in ~/.config/Meltytech/Shotcut.conf under the [Settings] section as defaultProfile=dv_pal.",
+  "task": "Shotcut is open with a placeholder project /home/user/Documents/pal_prefs.mlt. Your task is to set Shotcut's default Video Mode to 'PAL' (dv_pal).\n\nShotcut should persist this setting.",
   "env": {
     "files": [
       {
@@ -18,10 +18,10 @@
       "description": "Shotcut configuration file exists"
     },
     {
-      "command": "check-config-value Settings defaultProfile dv_pal",
+      "command": "check-config-value player profile dv_pal",
       "key": "match",
       "expected": true,
-      "description": "Settings.defaultProfile equals 'dv_pal'"
+      "description": "player.profile equals 'dv_pal'"
     }
   ],
   "metadata": {

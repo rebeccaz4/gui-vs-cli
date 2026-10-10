@@ -1,7 +1,7 @@
 {
   "id": "obs_gap_chroma_key_filter",
   "app": "obs",
-  "task": "Set up a green-screen keyed layout. 1. OBS may start with a default 'Scene'. 2. Create a scene named exactly 'Live'. 3. In the 'Live' scene, add an Image source named exactly 'WebCam' whose file is /home/user/Pictures/green_plate.png. 4. Apply a Chroma Key filter to the 'WebCam' source. Name the filter exactly 'Green Screen'. 5. Configure the filter: Key Color Type = Green, Similarity = 420, Smoothness = 100. 6. The 'WebCam' source must be visible. 7..",
+  "task": "Set up a green-screen keyed layout. 1. OBS may start with a default 'Scene'. 2. Create a scene named exactly 'Live'. 3. In the 'Live' scene, add an Image source named exactly 'WebCam' whose file is /home/user/Pictures/green_plate.png. 4. Apply a Chroma Key filter to the 'WebCam' source. Name the filter exactly 'Green Screen'. 5. Configure the filter: Key Color Type = Green, Similarity = 420, Smoothness = 100. 6. The 'WebCam' source must be visible. 7. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {
@@ -37,9 +37,8 @@
     },
     {
       "command": "source-filter-info WebCam 'Green Screen'",
-      "eval": "str(result.get('settings', {}).get('key_color_type', '')).lower() == 'green'",
-      "expected": true,
-      "description": "Chroma key color type set to green"
+      "eval": "isinstance(result.get('settings'), dict) and str(result['settings'].get('key_color_type', 'green')).lower() == 'green'",
+      "description": "Chroma key color type is green (OBS omits the default 'green' from the saved settings)"
     },
     {
       "command": "source-filter-info WebCam 'Green Screen'",

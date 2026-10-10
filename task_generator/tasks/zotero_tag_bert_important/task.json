@@ -1,7 +1,7 @@
 {
   "id": "zotero_tag_bert_important",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The library already has a tag named 'important' (used on one other item). Find the item whose title starts with 'BERT' (full title: 'BERT: Pre-training of Deep Bidirectional Transformers') and add the existing 'important' tag to it via the Tags tab on the right-hand pane. You can pick the tag from autocomplete so no new tag is created. Leave Zotero running.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The library already has a tag named 'important' (used on one other item). Find the item whose title starts with 'BERT' (full title: 'BERT: Pre-training of Deep Bidirectional Transformers') and add the existing 'important' tag to it; reuse the existing tag, do not create a new one. Leave Zotero running.",
   "env": {
     "files": [
       {

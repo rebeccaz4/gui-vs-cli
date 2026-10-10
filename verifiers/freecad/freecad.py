@@ -137,6 +137,12 @@ def _properties_of(obj_elem) -> dict:
     return props
 
 
+def _object_label(obj: dict):
+    """Return the Label (user-visible name) of an object summary, or None."""
+    label = (obj.get("properties") or {}).get("Label")
+    return label.get("value") if isinstance(label, dict) else None
+
+
 def _document_properties(tree) -> dict:
     """Parse the <Properties> child of the top <Document>."""
     root = tree.getroot()
@@ -240,6 +246,11 @@ class FreeCADVerifier:
         for o in data["objects"]:
             if o["name"] == name:
                 return o
+        # Renaming an object in the GUI only changes its Label; the internal Name stays the
+        # default (e.g. 'Sketch', 'Box'). Fall back to a Label match.
+        for o in data["objects"]:
+            if _object_label(o) == name:
+                return o
         return {"error": f"Object '{name}' not found"}
 
     def get_object_types(self, fcstd: str) -> dict:
@@ -289,6 +300,12 @@ class FreeCADVerifier:
     # === Settings / preferences =========================================
 
     def _default_user_cfg(self) -> str:
+        # FreeCAD 0.19 (the version in the image) resolves its home from passwd, so under
+        # apptainer --fakeroot it writes /root/.FreeCAD/user.cfg. Newer FreeCAD as a normal
+        # user writes ~/.config/FreeCAD/user.cfg (the original path, kept as fallback).
+        root_cfg = "/root/.FreeCAD/user.cfg"
+        if os.path.isfile(root_cfg):
+            return root_cfg
         return os.path.expanduser("~/.config/FreeCAD/user.cfg")
 
     def get_preferences(self, cfg_path: str | None = None) -> dict:
@@ -321,6 +338,9 @@ class FreeCADVerifier:
             if elem.tag in ("FCInt", "FCFloat", "FCText", "FCBool", "FCUInt"):
                 pname = elem.get("Name")
                 raw = elem.get("Value")
+                if raw is None and elem.tag == "FCText":
+                    # FreeCAD writes strings as element text: <FCText Name="StyleSheet">Dark-blue.qss</FCText>
+                    raw = elem.text or ""
                 if elem.tag == "FCInt" or elem.tag == "FCUInt":
                     try:
                         val = int(raw)
@@ -463,6 +483,12 @@ class FreeCADVerifier:
         if "error" in data:
             return {"exists": False, "error": data["error"]}
         names = [o["name"] for o in data["objects"]]
+        if name not in names:
+            labels = [_object_label(o) for o in data["objects"]]
+            if name in labels:
+                # GUI rename sets the Label only; accept the Label as the object's name.
+                return {"exists": True, "name": name, "all_names": names,
+                        "matched_by": "label", "all_labels": labels}
         return {"exists": name in names, "name": name, "all_names": names}
 
     def check_object_type(self, fcstd: str, name: str, expected: str) -> dict:
@@ -504,6 +530,9 @@ class FreeCADVerifier:
                     "expected": e, "actual": a}
         except (TypeError, ValueError):
             match = str(actual) == str(expected)
+            if not match and isinstance(actual, bool):
+                # Bool properties parse to Python True/False; tasks write "true"/"false".
+                match = str(actual).lower() == str(expected).strip().lower()
             return {"match": match, "object": name, "parameter": parameter,
                     "expected": expected, "actual": actual}
 

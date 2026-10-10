@@ -1,7 +1,7 @@
 {
   "id": "obs_hide_but_keep_sources",
   "app": "obs",
-  "task": "The scene collection already contains a single scene named 'Live' with 6 sources, all currently visible: 'Camera A', 'Camera B', 'Screen', 'Title Text', 'Logo', 'Alert Box'. Your task is to toggle the eye (visibility) icon OFF for exactly 3 sources while leaving them in the scene, and leave the other 3 visible. Rules: 1. Hide (eye icon OFF) these 3 sources: 'Camera B', 'Logo', 'Alert Box'. 2. Keep these 3 sources visible (eye icon ON): 'Camera A', 'Screen', 'Title Text'. 3. Do NOT delete any source. All 6 sources must still be in the 'Live' scene. 4. Do NOT add, rename, or move any source. Do NOT create or delete any scene — the collection must still have exactly 1 scene named 'Live'. 5.",
+  "task": "The scene collection already contains a single scene named 'Live' with 6 sources, all currently visible: 'Camera A', 'Camera B', 'Screen', 'Title Text', 'Logo', 'Alert Box'. Your task is to hide (set visibility off for) exactly 3 sources while leaving them in the scene, and leave the other 3 visible. Rules: 1. Hide these 3 sources: 'Camera B', 'Logo', 'Alert Box'. 2. Keep these 3 sources visible: 'Camera A', 'Screen', 'Title Text'. 3. Do NOT delete any source. All 6 sources must still be in the 'Live' scene. 4. Do NOT add, rename, or move any source. Do NOT create or delete any scene — the collection must still have exactly 1 scene named 'Live'. 5. Close OBS when you are done so the scene collection is saved to disk.",
   "env": {
     "files": [
       {

@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/PeopleCRM. Build a personal CRM system:\n\n1. Create folders: 'Contacts', 'Companies', 'Interactions'.\n2. Create 'Companies/Acme.md' with frontmatter 'type: company', 'industry: technology', 'founded: 2010' and body containing heading 'Acme Corp', description, a link to [[Alice Chen]], and tags #company #technology\n3. Create 'Contacts/Alice Chen.md' with frontmatter 'role: CTO', 'company: Acme', 'email: alice@acme.com' and body containing heading, bio, links to [[Acme]] and [[Meeting-2025-02-15]], and tags #contact #leadership\n4. Create 'Interactions/Meeting-2025-02-15.md' with frontmatter 'date: 2025-02-15', 'type: meeting', 'location: Office' and body containing heading, meeting notes, links to [[Alice Chen]] and [[Acme]], and tags #meeting #followup\n5. Create 'Contacts/Bob Martinez.md' with frontmatter 'role: Designer', 'company: Acme', 'email: bob@acme.com' and body containing heading, bio, links to [[Acme]] and [[Alice Chen]], and tags #contact #design\n6. Create 'Dashboard.md' in root with body containing heading 'CRM Dashboard', links to [[Acme]], [[Alice Chen]], [[Bob Martinez]], [[Meeting-2025-02-15]], and tags #dashboard #overview",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/PeopleCRM/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {

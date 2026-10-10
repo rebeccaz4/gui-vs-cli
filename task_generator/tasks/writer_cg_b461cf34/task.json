@@ -1,7 +1,7 @@
 {
   "id": "writer_cg_b461cf34",
   "app": "libreoffice_writer",
-  "task": "I'm creating a script document where each line of dialogue has a character name (first two words) and the spoken line. I want the character name left-aligned and the spoken text right-aligned at 12cm using tabstops. Please set this up \u2014 there are too many lines to format one by one. The file to work on is /home/user/play_script_draft.docx.",
+  "task": "I'm creating a script document where each line of dialogue has a character name (first two words) and the spoken line. I want the character name left-aligned and the spoken text right-aligned at 12cm using tabstops. Please set this up — there are too many lines to format one by one. The file to work on is /home/user/play_script_draft.docx.\n\nRequirements (save the file in place, keeping the Word .docx format):\n- Every paragraph has a right-aligned tab stop at 12 cm and a left-aligned tab stop at 0 cm. Set both tab stops on the paragraphs themselves, not only in their paragraph style.\n- In every paragraph, a tab character replaces the space after the two-word character name, so the text before the first tab is exactly the two words of the name.",
   "env": {
     "files": [
       {

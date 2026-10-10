@@ -1,7 +1,7 @@
 {
   "id": "shotcut_v2_uhd_4k_project",
   "app": "shotcut",
-  "task": "Shotcut is already open with /home/user/Documents/uhd_project.mlt (currently a 1920x1080 30 fps project). A source video exists at /home/user/Videos/drone.mp4.\n\nSteps:\n1. Open Settings > Video Mode > Custom > Add... and create a new custom video mode with resolution 3840x2160, frame rate 30 fps, aspect ratio 16:9, progressive. Select it so it becomes the active project video mode.\n2. Import /home/user/Videos/drone.mp4 into the project.\n3. Drag drone.mp4 onto the V1 timeline track so it becomes the only clip on the timeline.\n4. Press Ctrl+S to save the project.\n\nThe saved project at /home/user/Documents/uhd_project.mlt must have a 3840x2160 profile at 30 fps and reference drone.mp4.",
+  "task": "Shotcut is already open with /home/user/Documents/uhd_project.mlt (currently a 1920x1080 30 fps project). A source video exists at /home/user/Videos/drone.mp4.\n\n1. Make the project use a custom video mode with resolution 3840x2160, frame rate 30 fps, aspect ratio 16:9, progressive.\n2. Put /home/user/Videos/drone.mp4 on the V1 timeline track as the only clip on the timeline.\n3. Save the project in place.\n\nThe saved project at /home/user/Documents/uhd_project.mlt must have a 3840x2160 profile at 30 fps and reference drone.mp4.",
   "env": {
     "files": [
       {

@@ -100,9 +100,8 @@ def _cdp_send(ws_url: str, method: str, params: dict | None = None, timeout: flo
     try:
         import websocket
     except ImportError:
-        # Fallback: use the CDP HTTP evaluate endpoint if available,
-        # or report that websocket module is needed
-        return {"error": "websocket-client not installed. Run: pip install websocket-client"}
+        # websocket-client is not installed in the sandbox image: use the stdlib client below
+        return _cdp_send_stdlib(ws_url, method, params, timeout)
 
     msg_id = 1
     payload = json.dumps({"id": msg_id, "method": method, "params": params or {}})
@@ -117,6 +116,67 @@ def _cdp_send(ws_url: str, method: str, params: dict | None = None, timeout: flo
                 return data.get("result", data)
     finally:
         ws.close()
+
+
+def _cdp_send_stdlib(ws_url: str, method: str, params: dict | None = None, timeout: float = 10.0) -> dict:
+    """Minimal RFC 6455 client (stdlib only) for one CDP request/response on a local ws:// URL."""
+    import base64, os, socket, struct, urllib.parse
+    u = urllib.parse.urlparse(ws_url)
+    sock = socket.create_connection((u.hostname, u.port or 80), timeout=timeout)
+    try:
+        key = base64.b64encode(os.urandom(16)).decode()
+        path = u.path + (("?" + u.query) if u.query else "")
+        sock.sendall((f"GET {path} HTTP/1.1\r\nHost: {u.hostname}:{u.port}\r\nUpgrade: websocket\r\n"
+                      f"Connection: Upgrade\r\nSec-WebSocket-Key: {key}\r\nSec-WebSocket-Version: 13\r\n\r\n").encode())
+        resp = b""
+        while b"\r\n\r\n" not in resp:
+            chunk = sock.recv(4096)
+            if not chunk:
+                return {"error": "WebSocket handshake failed"}
+            resp += chunk
+        head, buf = resp.split(b"\r\n\r\n", 1)
+        if b" 101 " not in head.split(b"\r\n", 1)[0]:
+            return {"error": f"WebSocket handshake rejected: {head[:100]!r}"}
+
+        def recv_exact(n: int) -> bytes:
+            nonlocal buf
+            while len(buf) < n:
+                chunk = sock.recv(65536)
+                if not chunk:
+                    raise ConnectionError("WebSocket closed")
+                buf += chunk
+            out, buf = buf[:n], buf[n:]
+            return out
+
+        msg_id = 1
+        data = json.dumps({"id": msg_id, "method": method, "params": params or {}}).encode()
+        mask = os.urandom(4)
+        n = len(data)
+        hdr = bytes([0x81]) + (bytes([0x80 | n]) if n < 126 else
+                               bytes([0x80 | 126]) + struct.pack(">H", n) if n < 65536 else
+                               bytes([0x80 | 127]) + struct.pack(">Q", n))
+        sock.sendall(hdr + mask + bytes(b ^ mask[i % 4] for i, b in enumerate(data)))
+        message = b""
+        while True:
+            b0, b1 = recv_exact(2)
+            length = b1 & 0x7F
+            if length == 126:
+                length = struct.unpack(">H", recv_exact(2))[0]
+            elif length == 127:
+                length = struct.unpack(">Q", recv_exact(8))[0]
+            payload = recv_exact(length)
+            opcode = b0 & 0x0F
+            if opcode == 0x8:
+                return {"error": "WebSocket closed by Chrome"}
+            if opcode in (0x1, 0x0):
+                message += payload
+                if b0 & 0x80:
+                    reply = json.loads(message.decode("utf-8", "replace"))
+                    message = b""
+                    if reply.get("id") == msg_id:
+                        return reply.get("result", reply)
+    finally:
+        sock.close()
 
 
 # ---------------------------------------------------------------------------
@@ -705,6 +765,23 @@ class ChromeVerifier:
                 start = max(0, idx - 50)
                 end = min(len(content), idx + len(text) + 50)
                 snippet = content[start:end]
+            elif content.startswith("%PDF"):
+                # [GUI_synth fix 2026-10-09] PDF page text lives in compressed (FlateDecode) streams, so the
+                # raw bytes never contain it: search the extracted page text (whitespace-normalised) instead.
+                import re as _re
+                pdf_text = _re.sub(r"\s+", " ", _pdf_extract_text(p.read_bytes()))
+                query = _re.sub(r"\s+", " ", text).strip().lower()
+                idx = pdf_text.lower().find(query)
+                if query and idx >= 0:
+                    found = True
+                    snippet = pdf_text[max(0, idx - 50):idx + len(query) + 50]
+                return {
+                    "contains": found,
+                    "path": str(p.absolute()),
+                    "search_text": text,
+                    "snippet": snippet,
+                    "pdf_text_extracted": True,
+                }
 
             return {
                 "contains": found,
@@ -714,6 +791,65 @@ class ChromeVerifier:
             }
         except Exception as e:
             return {"contains": False, "path": path, "search_text": text, "error": str(e)}
+
+
+# ---------------------------------------------------------------------------
+# PDF text extraction for check-file-contains (added 2026-10-09; no external tools in the image)
+# ---------------------------------------------------------------------------
+import re
+import zlib
+
+_PDF_STREAM_RE = re.compile(rb"stream\r?\n")
+_PDF_TEXT_OP_RE = re.compile(rb"\[((?:\\.|[^\]\\])*)\]\s*TJ|\(((?:\\.|[^)\\])*)\)\s*(?:Tj|'|\")|(T\*|Td|TD|Tm|ET)")
+_PDF_STR_RE = re.compile(rb"\(((?:\\.|[^)\\])*)\)|(-?\d+(?:\.\d+)?)")
+_PDF_ESC = {b"n": b"\n", b"r": b"\r", b"t": b"\t", b"b": b"\b", b"f": b"\f", b"(": b"(", b")": b")", b"\\": b"\\"}
+
+
+def _pdf_unescape(s):
+    out, i = bytearray(), 0
+    while i < len(s):
+        c = s[i:i + 1]
+        if c == b"\\" and i + 1 < len(s):
+            n = s[i + 1:i + 2]
+            if n in _PDF_ESC:
+                out += _PDF_ESC[n]; i += 2; continue
+            m = re.match(rb"[0-7]{1,3}", s[i + 1:i + 4])
+            if m:
+                out.append(int(m.group(0), 8) & 0xFF); i += 1 + len(m.group(0)); continue
+            i += 1; continue
+        out += c; i += 1
+    return bytes(out)
+
+
+def _pdf_extract_text(data, max_bytes=50_000_000):
+    """Best-effort text of a PDF without external tools: inflate every FlateDecode stream and read the
+    strings of the text-showing operators (Tj, TJ, ', "). A TJ kerning gap larger than 200/1000 em and
+    a text-positioning operator count as a space."""
+    chunks, total = [], 0
+    view = memoryview(data)
+    for m in _PDF_STREAM_RE.finditer(data):
+        try:
+            end = data.find(b"endstream", m.end())
+            raw = zlib.decompressobj().decompress(view[m.end():end if end > 0 else len(data)])
+        except Exception:
+            continue
+        total += len(raw)
+        if total > max_bytes:
+            break
+        if b"T" not in raw:
+            continue
+        for op in _PDF_TEXT_OP_RE.finditer(raw):
+            if op.group(1) is not None:
+                for part in _PDF_STR_RE.finditer(op.group(1)):
+                    if part.group(1) is not None:
+                        chunks.append(_pdf_unescape(part.group(1)))
+                    elif float(part.group(2)) < -200:
+                        chunks.append(b" ")
+            elif op.group(2) is not None:
+                chunks.append(_pdf_unescape(op.group(2)))
+            else:
+                chunks.append(b" ")
+    return b"".join(chunks).decode("latin-1")
 
 
 # ---------------------------------------------------------------------------

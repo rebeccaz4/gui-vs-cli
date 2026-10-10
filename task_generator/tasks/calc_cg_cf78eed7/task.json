@@ -1,7 +1,7 @@
 {
   "id": "calc_cg_cf78eed7",
   "app": "libreoffice_calc",
-  "task": "Build a shipping manifest template for outbound orders. Merge cells for the header section containing company info and shipment details, add a table for line items with auto-calculated total weight and declared value, and set up print formatting for a single-page manifest. The file to work on is /home/user/calc_ops_warehouse_shipping_manifest_019_initial.xlsx.",
+  "task": "Build a shipping manifest template for outbound orders. Merge cells for the header section containing company info and shipment details, add a table for line items with auto-calculated total weight and declared value, and set up print formatting for a single-page manifest. The file to work on is /home/user/calc_ops_warehouse_shipping_manifest_019_initial.xlsx.\n\nRequirements (every item is checked; work on the existing sheet ShipManifest):\n1. Merge A1:H3 (company header), A4:D6 (shipper block) and E4:H6 (consignee block).\n2. A1 contains the company name \"Acme Logistics Ltd\", bold, font size at least 14 pt, horizontally centered.\n3. Row 8 headers in A8:H8, exactly: Line # | SKU | Description | Qty | Unit Weight kg | Total Weight | Unit Value | Total Value.\n4. Line items occupy rows 9-23. For every row r from 9 to 23, cell F<r> is exactly =D<r>*E<r> and cell H<r> is exactly =D<r>*G<r> (e.g. F9 =D9*E9, H9 =D9*G9; relative references in this order).\n5. Totals in row 24: F24 =SUM(F9:F23) and H24 =SUM(H9:H23).\n6. Print setup: print area A1:H24, landscape orientation, scaled to fit on one page.\n7. Save the workbook in place at the same path, keeping the .xlsx format.",
   "env": {
     "files": [
       {

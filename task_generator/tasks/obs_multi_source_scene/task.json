@@ -1,7 +1,7 @@
 {
   "id": "obs_multi_source_scene",
   "app": "obs",
-  "task": "Create a scene with multiple source types. 1. Delete any existing default scenes so you start fresh. 2. Create a scene named exactly 'Presentation'. 3. With 'Presentation' selected, add the following three sources: a. A 'Display Capture' source named exactly 'Screen'. b. An 'Image' source named exactly 'Logo'. Point it to the file /home/user/Pictures/logo.png. c. A 'Text (FreeType 2)' source (or 'Text' source) named exactly 'Title'. Set the text content to anything you like. 4. Make sure all three sources are visible in the scene. 5. The scene collection should contain exactly 1 scene ('Presentation') with all 3 sources. 6. Remove any other scenes besides 'Presentation'.",
+  "task": "Create a scene with multiple source types. 1. Delete any existing default scenes so you start fresh. 2. Create a scene named exactly 'Presentation'. 3. In the 'Presentation' scene, add the following three sources: a. A 'Display Capture' source named exactly 'Screen'. b. An 'Image' source named exactly 'Logo'. Point it to the file /home/user/Pictures/logo.png. c. A 'Text (FreeType 2)' source (or 'Text' source) named exactly 'Title'. Set the text content to anything you like. 4. Make sure all three sources are visible in the scene. 5. The scene collection should contain exactly 1 scene ('Presentation') with all 3 sources. 6. Remove any other scenes besides 'Presentation'. 7. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {

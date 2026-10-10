@@ -1,7 +1,7 @@
 {
   "id": "krita_transform_mask_rotation",
   "app": "krita",
-  "task": "Open /home/user/Documents/transform.kra in Krita. It contains one paint layer named 'Subject'. Add a Transform Mask named exactly 'Rotate15' as a child of the 'Subject' layer, and apply a rotation of roughly 15 degrees via the transform tool on the mask. Save the file in place (Ctrl+S).",
+  "task": "Open /home/user/Documents/transform.kra in Krita. It contains one paint layer named 'Subject'. Add a Transform Mask named exactly 'Rotate15' as a child of the 'Subject' layer, whose transform rotates the layer by roughly 15 degrees. Save the file in place.",
   "env": {
     "files": [
       {

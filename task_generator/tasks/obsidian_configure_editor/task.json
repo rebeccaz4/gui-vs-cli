@@ -1,9 +1,14 @@
 {
   "id": "obsidian_configure_editor",
   "app": "obsidian",
-  "task": "Open Obsidian with the vault at /home/user/Documents/EditorVault. Using the Obsidian Settings dialog, configure the following editor settings:\n\n1. Enable 'Spell check' (the spellcheck toggle in Settings > Editor)\n2. Enable 'Strict line breaks' (strictLineBreaks)\n3. Disable 'Readable line length' (readableLineLength)\n4. Enable 'Fold heading' (foldHeading)\n5. Enable 'Fold indent' (foldIndent)\n6. Enable 'Show line number' (showLineNumber)\n\nAfter changing all settings, close the Settings dialog.",
+  "task": "Open Obsidian with the vault at /home/user/Documents/EditorVault. Configure the following editor settings:\n\n1. Enable 'Spell check' (spellcheck)\n2. Enable 'Strict line breaks' (strictLineBreaks)\n3. Disable 'Readable line length' (readableLineLength)\n4. Enable 'Fold heading' (foldHeading)\n5. Enable 'Fold indent' (foldIndent)\n6. Enable 'Show line number' (showLineNumber)",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/EditorVault/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -52,7 +57,7 @@
   "cli_feasibility": {
     "feasible": "yes",
     "is_gui_oriented": "yes",
-    "translation": "\u76f4\u63a5\u7f16\u8f91 .obsidian/app.json \u6587\u4ef6\uff0c\u8bbe\u7f6e spellcheck=true, strictLineBreaks=true, readableLineLength=false, foldHeading=true, foldIndent=true, showLineNumber=true",
-    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Using the Obsidian Settings dialog'\u3001'configure the following editor settings'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ea\u9700\u4fee\u6539JSON\u914d\u7f6e\u6587\u4ef6"
+    "translation": "直接编辑 .obsidian/app.json 文件，设置 spellcheck=true, strictLineBreaks=true, readableLineLength=false, foldHeading=true, foldIndent=true, showLineNumber=true",
+    "reason": "任务描述包含'Using the Obsidian Settings dialog'、'configure the following editor settings'等GUI术语，但CLI agent只需修改JSON配置文件"
   }
 }

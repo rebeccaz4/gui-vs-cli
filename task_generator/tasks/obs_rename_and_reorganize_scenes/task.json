@@ -1,7 +1,7 @@
 {
   "id": "obs_rename_and_reorganize_scenes",
   "app": "obs",
-  "task": "A scene collection has already been set up with three scenes: 'Scene 1', 'Scene 2', and 'Scene 3', each with a basic source. Your task is to rename the scenes and add new sources: 1. Rename 'Scene 1' to exactly 'Main View'. (Right-click the scene name and select Rename.) 2. Rename 'Scene 2' to exactly 'Closeup'. 3. Rename 'Scene 3' to exactly 'Wide Shot'. 4. Select the 'Main View' scene. Add a Text (FreeType 2) source named exactly 'Overlay Text'. 5. Select the 'Wide Shot' scene. Add a Color Source named exactly 'Stage Light'. 6. Make sure all sources (old and new) are visible. 7. Do NOT create or delete any scenes. The collection should still have exactly 3 scenes. 8.",
+  "task": "A scene collection has already been set up with three scenes: 'Scene 1', 'Scene 2', and 'Scene 3', each with a basic source. Your task is to rename the scenes and add new sources: 1. Rename 'Scene 1' to exactly 'Main View'. 2. Rename 'Scene 2' to exactly 'Closeup'. 3. Rename 'Scene 3' to exactly 'Wide Shot'. 4. Add a Text (FreeType 2) source named exactly 'Overlay Text' to the 'Main View' scene. 5. Add a Color Source named exactly 'Stage Light' to the 'Wide Shot' scene. 6. Make sure all sources (old and new) are visible. 7. Do NOT create or delete any scenes. The collection should still have exactly 3 scenes. 8. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {

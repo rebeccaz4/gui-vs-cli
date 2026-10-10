@@ -1,3 +1,0 @@
-Frame capture notes:
-- triangle.rdc: hello-triangle sample
-- raw_dump*.rdc: old debug dumps

@@ -1,7 +1,7 @@
 {
   "id": "zotero_edit_multiple_fields_bert",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'BERT: Pre-training of Deep Bidirectional Transformers' in the middle pane and click it so its metadata appears. The item currently has a publicationTitle of 'NAACL' and a DOI but its Pages, Volume, and Publisher fields are empty. Set the following fields to the exact values shown: Pages = 4171-4186, Volume = 1, Publisher = Association for Computational Linguistics. Make sure each value is saved. Leave Zotero running so the edits persist.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The item titled 'BERT: Pre-training of Deep Bidirectional Transformers' currently has a publicationTitle of 'NAACL' and a DOI but its Pages, Volume, and Publisher fields are empty. Set the following fields to the exact values shown: Pages = 4171-4186, Volume = 1, Publisher = Association for Computational Linguistics. Make sure each value is saved. Leave Zotero running so the edits persist.",
   "env": {
     "files": [
       {

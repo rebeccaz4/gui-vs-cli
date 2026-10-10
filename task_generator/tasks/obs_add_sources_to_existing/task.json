@@ -1,7 +1,7 @@
 {
   "id": "obs_add_sources_to_existing",
   "app": "obs",
-  "task": "A scene collection has already been set up with a single scene named 'Live Stream' containing one Display Capture source named 'Screen'. Your task is to add four more sources to the 'Live Stream' scene WITHOUT creating any new scenes: 1. Add a Video Capture Device source named exactly 'Camera'. 2. Add a Text (FreeType 2) source named exactly 'Now Playing'. 3. Add an Image source named exactly 'Channel Logo'. Set its file path to /home/user/Pictures/channel_logo.png. 4. Add a Color Source named exactly 'Lower Third BG'. 5. All five sources must be visible. 6. Do NOT create or delete any scenes. The collection should still have exactly 1 scene. 7.",
+  "task": "A scene collection has already been set up with a single scene named 'Live Stream' containing one Display Capture source named 'Screen'. Your task is to add four more sources to the 'Live Stream' scene WITHOUT creating any new scenes: 1. Add a Video Capture Device source named exactly 'Camera'. 2. Add a Text (FreeType 2) source named exactly 'Now Playing'. 3. Add an Image source named exactly 'Channel Logo'. Set its file path to /home/user/Pictures/channel_logo.png. 4. Add a Color Source named exactly 'Lower Third BG'. 5. All five sources must be visible. 6. Do NOT create or delete any scenes. The collection should still have exactly 1 scene. 7. Close OBS or let it auto-save.",
   "env": {
     "files": [
       {

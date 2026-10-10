@@ -1,7 +1,7 @@
 {
   "id": "freecad_preferences_multi_tune",
   "app": "freecad",
-  "task": "Configure multiple FreeCAD preferences in ~/.config/FreeCAD/user.cfg: (1) Set the Theme to exactly 'Dark', (2) Ensure auto-save is enabled and set its interval to 180 seconds, (3) Set the User system to 'Imperial from SI (in, in/s^2)' which corresponds to schema index 2.",
+  "task": "Configure multiple FreeCAD preferences in FreeCAD's user.cfg (/root/.FreeCAD/user.cfg): (1) Set the Style sheet to exactly 'Dark-blue', (2) Ensure auto-save is enabled and set its interval to 180 seconds (3 minutes), (3) Set the User system to 'Imperial from SI (in, in/s^2)' which corresponds to schema index 2.",
   "env": {
     "files": [
       {
@@ -12,22 +12,22 @@
   },
   "verification": [
     {
-      "command": "check-preference BaseApp/Preferences/General/ThemeName Dark",
+      "command": "check-preference BaseApp/Preferences/MainWindow/StyleSheet Dark-blue.qss",
       "key": "match",
       "expected": true,
-      "description": "Theme set to Dark"
+      "description": "Style sheet set to Dark-blue"
     },
     {
-      "command": "check-preference BaseApp/Preferences/General/AutoSaveEnabled true",
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveEnabled true",
       "key": "match",
       "expected": true,
       "description": "Auto-save enabled"
     },
     {
-      "command": "check-preference BaseApp/Preferences/General/AutoSaveInterval 180",
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveTimeout 3",
       "key": "match",
       "expected": true,
-      "description": "Auto-save interval == 180"
+      "description": "Auto-save interval == 3 minutes (180 seconds)"
     },
     {
       "command": "check-preference BaseApp/Preferences/Units/UserSchema 2",

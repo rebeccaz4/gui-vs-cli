@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/InterviewPrep. Create a technical interview preparation vault:\n\n1. Create folders: 'Topics', 'Problems', 'Companies'.\n2. Create 'Topics/Arrays.md' with frontmatter 'type: topic', 'difficulty: easy-medium' and body with heading 'Arrays', key concepts (two pointer, sliding window, prefix sums), links to [[Two Sum]] and [[Maximum Subarray]], and tags #topic #arrays #fundamentals\n3. Create 'Topics/DynamicProgramming.md' with frontmatter 'type: topic', 'difficulty: medium-hard' and body with heading 'Dynamic Programming', patterns list, link to [[Climbing Stairs]], link to [[Arrays]], and tags #topic #dp #advanced\n4. Create 'Problems/Two Sum.md' with frontmatter 'type: problem', 'difficulty: easy', 'pattern: hash-map' and body with heading, topic link to [[Arrays]], solution description, complexity analysis, and tags #problem #easy #arrays\n5. Create 'Problems/Maximum Subarray.md' with frontmatter 'type: problem', 'difficulty: medium', 'pattern: kadane' and body with heading, topic links to [[Arrays]] and [[DynamicProgramming]], solution, and tags #problem #medium #arrays #dp\n6. Create 'Problems/Climbing Stairs.md' with frontmatter 'type: problem', 'difficulty: easy', 'pattern: fibonacci' and body with heading, link to [[DynamicProgramming]], solution, and tags #problem #easy #dp\n7. Create 'Companies/Google.md' with frontmatter 'type: company', 'focus: algorithms' and body with heading, focus areas linking to [[Arrays]] and [[DynamicProgramming]], key problems linking to [[Two Sum]] and [[Maximum Subarray]], and tags #company #faang",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/InterviewPrep/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -98,8 +103,8 @@
     },
     {
       "command": "list-notes /home/user/Documents/InterviewPrep",
-      "eval": "result.get('count') == 7",
-      "description": "Vault has exactly 7 notes"
+      "eval": "result.get('count') == 6",
+      "description": "Vault has exactly 6 notes"
     }
   ],
   "metadata": {

@@ -1,9 +1,18 @@
 {
   "id": "obsidian_enable_core_plugins",
   "app": "obsidian",
-  "task": "Open Obsidian with the vault at /home/user/Documents/PluginVault. In Settings > Core plugins, enable the following core plugins:\n\n1. Graph view (graph)\n2. Tag pane (tag-pane)\n3. Daily notes (daily-notes)\n4. Templates (templates)\n5. Outline (outline)\n6. Word count (word-count)\n7. Backlinks (backlinks)\n\nAfter configuring plugins, create a note 'PluginConfig.md' with body:\n\n# Plugin Configuration\n## Enabled Core Plugins\n- Graph view\n- Tag pane\n- Daily notes\n- Templates\n- Outline\n- Word count\n- Backlinks\n#config #plugins",
+  "task": "Open Obsidian with the vault at /home/user/Documents/PluginVault. Enable the following core plugins:\n\n1. Graph view (graph)\n2. Tag pane (tag-pane)\n3. Daily notes (daily-notes)\n4. Templates (templates)\n5. Outline (outline)\n6. Word count (word-count)\n7. Backlinks (backlink)\n\nAfter configuring plugins, create a note 'PluginConfig.md' with body:\n\n# Plugin Configuration\n## Enabled Core Plugins\n- Graph view\n- Tag pane\n- Daily notes\n- Templates\n- Outline\n- Word count\n- Backlinks\n#config #plugins",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/PluginVault/.obsidian/app.json"
+      },
+      {
+        "filename": "core-plugins.json",
+        "sandbox_path": "/home/user/Documents/PluginVault/.obsidian/core-plugins.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -43,7 +52,7 @@
       "description": "Word count enabled"
     },
     {
-      "command": "check-plugin-enabled /home/user/Documents/PluginVault backlinks core",
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault backlink core",
       "key": "enabled",
       "expected": true,
       "description": "Backlinks enabled"
@@ -70,7 +79,7 @@
   "cli_feasibility": {
     "feasible": "yes",
     "is_gui_oriented": "yes",
-    "translation": "1) \u4fee\u6539 .obsidian/core-plugins.json \u542f\u75287\u4e2acore plugins; 2) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa PluginConfig.md",
-    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'In Settings > Core plugins, enable'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ea\u9700\u4fee\u6539core-plugins.json\u914d\u7f6e\u6587\u4ef6"
+    "translation": "1) 修改 .obsidian/core-plugins.json 启用7个core plugins; 2) 使用 cli-anything-obsidian vault create 创建 PluginConfig.md",
+    "reason": "任务描述包含'In Settings > Core plugins, enable'等GUI术语，但CLI agent只需修改core-plugins.json配置文件"
   }
 }

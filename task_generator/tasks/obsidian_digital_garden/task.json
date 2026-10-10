@@ -1,9 +1,22 @@
 {
   "id": "obsidian_digital_garden",
   "app": "obsidian",
-  "task": "Open Obsidian with the vault at /home/user/Documents/GardenVault. Build a digital garden with full configuration:\n\n1. Enable 'Show frontmatter' (showFrontmatter), enable 'Fold heading' (foldHeading), enable 'Spell check' (spellcheck).\n2. Set base font size to 17.\n3. Set hotkeys for 'Toggle bold' (editor:toggle-bold) and 'Toggle italic' (editor:toggle-italic).\n4. Create folders: 'Seeds', 'Budding', 'Evergreen'.\n5. Create 'Seeds/Thinking in Systems.md' with frontmatter 'type: seed', 'planted: 2025-03-01' and body:\n\n# Thinking in Systems\nEarly thoughts on systems thinking.\n\nA system is more than the sum of its parts.\nFeedback loops create emergent behavior.\n\nRelated: [[Mental Models]], [[Feedback Loops]]\n#seed #systems\n\n6. Create 'Budding/Mental Models.md' with frontmatter 'type: budding', 'planted: 2025-02-15' and body:\n\n# Mental Models\nFrameworks for understanding the world.\n\n## Key Models\n- First principles thinking\n- Inversion\n- Circle of competence\n\nGrows from: [[Thinking in Systems]]\nLeads to: [[Decision Making]]\n#budding #thinking\n\n7. Create 'Budding/Feedback Loops.md' with frontmatter 'type: budding', 'planted: 2025-02-20' and body:\n\n# Feedback Loops\nPositive and negative feedback in systems.\n\n## Types\n- Reinforcing (positive): growth spirals\n- Balancing (negative): homeostasis\n\nSource: [[Thinking in Systems]]\n#budding #systems\n\n8. Create 'Evergreen/Decision Making.md' with frontmatter 'type: evergreen', 'planted: 2025-01-10', 'confidence: high' and body:\n\n# Decision Making\nA well-developed note on making better decisions.\n\n## Framework\n1. Define the problem clearly\n2. Apply [[Mental Models]]\n3. Consider second-order effects via [[Feedback Loops]]\n4. Decide and commit\n\n## Key Insight\nMost bad decisions come from rushing step 1.\n#evergreen #thinking #decisions",
+  "task": "Open Obsidian with the vault at /home/user/Documents/GardenVault. Build a digital garden with full configuration:\n\n1. Enable 'Show frontmatter' (showFrontmatter), enable 'Fold heading' (foldHeading), enable 'Spell check' (spellcheck).\n2. Set base font size to 17.\n3. Set custom hotkeys: 'Toggle bold' (editor:toggle-bold) to Ctrl+Alt+B and 'Toggle italic' (editor:toggle-italics) to Ctrl+Alt+I.\n4. Create folders: 'Seeds', 'Budding', 'Evergreen'.\n5. Create 'Seeds/Thinking in Systems.md' with frontmatter 'type: seed', 'planted: 2025-03-01' and body:\n\n# Thinking in Systems\nEarly thoughts on systems thinking.\n\nA system is more than the sum of its parts.\nFeedback loops create emergent behavior.\n\nRelated: [[Mental Models]], [[Feedback Loops]]\n#seed #systems\n\n6. Create 'Budding/Mental Models.md' with frontmatter 'type: budding', 'planted: 2025-02-15' and body:\n\n# Mental Models\nFrameworks for understanding the world.\n\n## Key Models\n- First principles thinking\n- Inversion\n- Circle of competence\n\nGrows from: [[Thinking in Systems]]\nLeads to: [[Decision Making]]\n#budding #thinking\n\n7. Create 'Budding/Feedback Loops.md' with frontmatter 'type: budding', 'planted: 2025-02-20' and body:\n\n# Feedback Loops\nPositive and negative feedback in systems.\n\n## Types\n- Reinforcing (positive): growth spirals\n- Balancing (negative): homeostasis\n\nSource: [[Thinking in Systems]]\n#budding #systems\n\n8. Create 'Evergreen/Decision Making.md' with frontmatter 'type: evergreen', 'planted: 2025-01-10', 'confidence: high' and body:\n\n# Decision Making\nA well-developed note on making better decisions.\n\n## Framework\n1. Define the problem clearly\n2. Apply [[Mental Models]]\n3. Consider second-order effects via [[Feedback Loops]]\n4. Decide and commit\n\n## Key Insight\nMost bad decisions come from rushing step 1.\n#evergreen #thinking #decisions",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/GardenVault/.obsidian/app.json"
+      },
+      {
+        "filename": "appearance.json",
+        "sandbox_path": "/home/user/Documents/GardenVault/.obsidian/appearance.json"
+      },
+      {
+        "filename": "hotkeys.json",
+        "sandbox_path": "/home/user/Documents/GardenVault/.obsidian/hotkeys.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -31,15 +44,13 @@
     },
     {
       "command": "check-hotkey /home/user/Documents/GardenVault editor:toggle-bold",
-      "key": "has_hotkey",
-      "expected": true,
-      "description": "Bold hotkey set"
+      "description": "Bold hotkey set to Ctrl+Alt+B",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'B' for b in (result.get('bindings') or []))"
     },
     {
-      "command": "check-hotkey /home/user/Documents/GardenVault editor:toggle-italic",
-      "key": "has_hotkey",
-      "expected": true,
-      "description": "Italic hotkey set"
+      "command": "check-hotkey /home/user/Documents/GardenVault editor:toggle-italics",
+      "description": "Italic hotkey set to Ctrl+Alt+I",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'I' for b in (result.get('bindings') or []))"
     },
     {
       "command": "check-folder-exists /home/user/Documents/GardenVault Seeds",

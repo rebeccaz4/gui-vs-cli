@@ -1,7 +1,7 @@
 {
   "id": "zotero_bulk_tag_multiple_items",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Perform two tagging operations: (1) Create a new tag named exactly 'transformer-arch' (lowercase, with hyphen) and add it to BOTH 'Attention Is All You Need' and 'BERT: Pre-training of Deep Bidirectional Transformers'. After adding it on the first item it will appear in autocomplete for the second. (2) Add the existing tag 'important' to the BERT item (it currently has 'nlp' but not 'important'). Use the Tags tab on the right-hand pane for each item. Leave Zotero running.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Perform two tagging operations: (1) Create a new tag named exactly 'transformer-arch' (lowercase, with hyphen) and add it to BOTH 'Attention Is All You Need' and 'BERT: Pre-training of Deep Bidirectional Transformers'. (2) Add the existing tag 'important' to the BERT item. Leave Zotero running.",
   "env": {
     "files": [
       {

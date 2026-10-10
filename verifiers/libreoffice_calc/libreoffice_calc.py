@@ -310,6 +310,16 @@ def _find_ods_file() -> str | None:
 # LibreOfficeCalcVerifier class
 # ---------------------------------------------------------------------------
 
+
+# Display names used by tasks for Calc's "Always save as" -> LibreOffice internal filter
+# names stored in ooSetupFactoryDefaultFilter (lower-case).
+_CALC_SAVE_FILTER_ALIASES = {
+    "odf spreadsheet": ("calc8",),
+    "ms excel 2007": ("calc ms excel 2007 xml",),
+    "excel 2007-365": ("calc ms excel 2007 xml",),
+    "excel 97-2003": ("ms excel 97",),
+}
+
 class LibreOfficeCalcVerifier:
     """Stateless verifier — each method call is independent.
 
@@ -1271,11 +1281,15 @@ class LibreOfficeCalcVerifier:
             "measurement_unit_calc": None,
             "raw": [],
         }
-        for item in root.findall(f"{ns}item"):
+        # <item>/<prop>/<value> are written WITHOUT a namespace by LibreOffice (only the
+        # oor:path / oor:name attributes are namespaced). Accept both forms.
+        for item in root.findall(f"{ns}item") + root.findall("item"):
             path = item.get(f"{ns}path", "")
-            for prop in item.findall(f"{ns}prop"):
+            for prop in item.findall(f"{ns}prop") + item.findall("prop"):
                 prop_name = prop.get(f"{ns}name", "")
                 value_elem = prop.find(f"{ns}value")
+                if value_elem is None:
+                    value_elem = prop.find("value")
                 value_text = None
                 if value_elem is not None:
                     value_text = "".join(value_elem.itertext()).strip()
@@ -1288,6 +1302,11 @@ class LibreOfficeCalcVerifier:
                         result["default_sheet_count"] = value_text
                 # Default save filter for Calc documents
                 if "Save/Document" in path and prop_name == "Calc":
+                    result["default_save_filter_calc"] = value_text
+                # Where LibreOffice actually stores Tools > Options > Load/Save > General >
+                # "Always save as" for Spreadsheet documents.
+                if (path.endswith("Factory['com.sun.star.sheet.SpreadsheetDocument']")
+                        and prop_name == "ooSetupFactoryDefaultFilter"):
                     result["default_save_filter_calc"] = value_text
                 # Measurement unit for Calc
                 if "Layout/Other/MeasureUnit" in path and "Calc" in path:
@@ -1306,6 +1325,10 @@ class LibreOfficeCalcVerifier:
         if "error" in prefs:
             return {"match": False, **prefs}
         actual = prefs.get(key)
+        if actual is None and key == "default_save_filter_calc":
+            # No override in the user profile: LibreOffice uses its built-in default
+            # Spreadsheet filter, "calc8" (ODF Spreadsheet).
+            actual = "calc8"
         match = False
         if actual is not None:
             if key == "default_sheet_count":
@@ -1316,6 +1339,9 @@ class LibreOfficeCalcVerifier:
             elif key == "default_save_filter_calc":
                 # Accept any variant that includes the expected substring (case-insensitive)
                 match = expected.lower() in str(actual).lower()
+                # LibreOffice stores internal filter names, not the dialog's display names.
+                aliases = _CALC_SAVE_FILTER_ALIASES.get(expected.strip().lower(), ())
+                match = match or str(actual).strip().lower() in aliases
             elif key == "measurement_unit_calc":
                 # Numeric representation (e.g. "2" for Inch) or string like "INCH"
                 match = str(actual).strip().lower() == str(expected).strip().lower()
@@ -1381,7 +1407,8 @@ class LibreOfficeCalcVerifier:
         if err:
             return {"error": err}
         try:
-            names = doc.getNamedRanges()
+            # NamedRanges is a document property (pyuno has no getNamedRanges())
+            names = doc.NamedRanges
             if not names.hasByName(name):
                 return {"match": False, "name": name, "exists": False}
             nr = names.getByName(name)
@@ -1605,6 +1632,12 @@ class LibreOfficeCalcVerifier:
                     # If we can read it and it has commas or tabs, likely CSV
                     if len(first_row) > 1:
                         return "csv"
+                    # Single-column CSV (a one-column sheet exported as CSV has no separator in any row):
+                    # accept a .csv-named text file whose every row parses as at most one field.
+                    if file_path.lower().endswith(".csv") and len(first_row) == 1:
+                        rest = list(reader)
+                        if all(len(r) <= 1 for r in rest):
+                            return "csv"
             except Exception:
                 pass
 

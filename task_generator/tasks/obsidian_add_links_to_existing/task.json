@@ -3,7 +3,32 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/LinkVault. The vault has 5 isolated notes with no links between them. Edit each note to add cross-references by appending a '## Related' section at the end:\n\n1. Edit 'Python.md': Add '## Related' section with links to [[JavaScript]] and [[Git]].\n2. Edit 'JavaScript.md': Add '## Related' section with links to [[Python]] and [[React]].\n3. Edit 'React.md': Add '## Related' section with links to [[JavaScript]] and [[TypeScript]].\n4. Edit 'TypeScript.md': Add '## Related' section with links to [[JavaScript]] and [[React]].\n5. Edit 'Git.md': Add '## Related' section with links to [[Python]] and [[JavaScript]].\n\nThen create 'Map of Content.md' in root with body:\n\n# Map of Content\n\n## Languages\n- [[Python]]\n- [[JavaScript]]\n- [[TypeScript]]\n\n## Frameworks\n- [[React]]\n\n## Tools\n- [[Git]]\n\n#moc #overview",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/LinkVault/.obsidian/app.json"
+      },
+      {
+        "filename": "Git.md",
+        "sandbox_path": "/home/user/Documents/LinkVault/Git.md"
+      },
+      {
+        "filename": "JavaScript.md",
+        "sandbox_path": "/home/user/Documents/LinkVault/JavaScript.md"
+      },
+      {
+        "filename": "Python.md",
+        "sandbox_path": "/home/user/Documents/LinkVault/Python.md"
+      },
+      {
+        "filename": "React.md",
+        "sandbox_path": "/home/user/Documents/LinkVault/React.md"
+      },
+      {
+        "filename": "TypeScript.md",
+        "sandbox_path": "/home/user/Documents/LinkVault/TypeScript.md"
+      }
+    ]
   },
   "verification": [
     {

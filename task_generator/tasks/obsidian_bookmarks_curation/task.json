@@ -1,7 +1,7 @@
 {
   "id": "obsidian_bookmarks_curation",
   "app": "obsidian",
-  "task": "Open the Obsidian vault at /home/user/Documents/BookmarkVault. Create a reference library and pin the most important notes as bookmarks:\n\n1. Create 6 reference notes in the vault root. Each note must have a level-1 heading matching its title, a short body paragraph, and the inline tag #reference.\n   - 'Guide.md' \u2014 heading 'Guide'\n   - 'Cheatsheet.md' \u2014 heading 'Cheatsheet'\n   - 'FAQ.md' \u2014 heading 'FAQ'\n   - 'Glossary.md' \u2014 heading 'Glossary'\n   - 'Changelog.md' \u2014 heading 'Changelog'\n   - 'README.md' \u2014 heading 'README'\n2. Enable the 'Bookmarks' core plugin in Settings > Core plugins.\n3. Using the Bookmarks panel (or by editing .obsidian/bookmarks.json directly), add exactly 4 file bookmarks pointing to: Guide.md, Cheatsheet.md, FAQ.md, Glossary.md. The other two notes (Changelog.md, README.md) must NOT be bookmarked.\n4. Create 'BookmarkIndex.md' in the root with a level-1 heading 'Bookmark Index', a bulleted list of wikilinks to the 4 bookmarked notes ([[Guide]], [[Cheatsheet]], [[FAQ]], [[Glossary]]), and the inline tag #index.\n\nThe vault must contain exactly 7 notes.",
+  "task": "Open the Obsidian vault at /home/user/Documents/BookmarkVault. Create a reference library and pin the most important notes as bookmarks:\n\n1. Create 6 reference notes in the vault root. Each note must have a level-1 heading matching its title, a short body paragraph, and the inline tag #reference.\n   - 'Guide.md' — heading 'Guide'\n   - 'Cheatsheet.md' — heading 'Cheatsheet'\n   - 'FAQ.md' — heading 'FAQ'\n   - 'Glossary.md' — heading 'Glossary'\n   - 'Changelog.md' — heading 'Changelog'\n   - 'README.md' — heading 'README'\n2. Enable the 'Bookmarks' core plugin.\n3. Add exactly 4 file bookmarks pointing to: Guide.md, Cheatsheet.md, FAQ.md, Glossary.md. The other two notes (Changelog.md, README.md) must NOT be bookmarked.\n4. Create 'BookmarkIndex.md' in the root with a level-1 heading 'Bookmark Index', a bulleted list of wikilinks to the 4 bookmarked notes ([[Guide]], [[Cheatsheet]], [[FAQ]], [[Glossary]]), and the inline tag #index.\n\nThe vault must contain exactly 7 notes.",
   "env": {
     "files": [
       {
@@ -123,7 +123,7 @@
   "cli_feasibility": {
     "feasible": "yes",
     "is_gui_oriented": "yes",
-    "translation": "1) \u4fee\u6539 .obsidian/core-plugins.json \u542f\u7528 bookmarks plugin; 2) \u4fee\u6539 .obsidian/bookmarks.json \u6dfb\u52a04\u4e2abookmarks; 3) \u4f7f\u7528 cli-anything-obsidian vault create \u521b\u5efa6\u4e2areference notes\u548c BookmarkIndex.md",
-    "reason": "\u4efb\u52a1\u63cf\u8ff0\u5305\u542b'Enable the Bookmarks core plugin in Settings'\u3001'Using the Bookmarks panel'\u7b49GUI\u672f\u8bed\uff0c\u4f46CLI agent\u53ef\u4ee5\u901a\u8fc7\u4fee\u6539JSON\u914d\u7f6e\u6587\u4ef6\u5b8c\u6210\u6240\u6709\u64cd\u4f5c"
+    "translation": "1) 修改 .obsidian/core-plugins.json 启用 bookmarks plugin; 2) 修改 .obsidian/bookmarks.json 添加4个bookmarks; 3) 使用 cli-anything-obsidian vault create 创建6个reference notes和 BookmarkIndex.md",
+    "reason": "任务描述包含'Enable the Bookmarks core plugin in Settings'、'Using the Bookmarks panel'等GUI术语，但CLI agent可以通过修改JSON配置文件完成所有操作"
   }
 }

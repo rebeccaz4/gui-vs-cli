@@ -1,7 +1,7 @@
 {
   "id": "zotero_add_author_to_survey",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Locate the item titled 'A Survey of RL Methods' (currently has a single author, Sutton) and select it. Add a SECOND author with first name exactly 'Andrew' and last name exactly 'Barto'. Make sure the existing Sutton author remains. After saving, the item must have exactly 2 creators total: Sutton and Barto. Leave Zotero running.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The item titled 'A Survey of RL Methods' currently has a single author, Sutton. Add a SECOND author with first name exactly 'Andrew' and last name exactly 'Barto'. Make sure the existing Sutton author remains. After saving, the item must have exactly 2 creators total: Sutton and Barto. Leave Zotero running.",
   "env": {
     "files": [
       {

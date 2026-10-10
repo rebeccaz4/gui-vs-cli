@@ -3,7 +3,12 @@
   "app": "obsidian",
   "task": "Open the Obsidian vault at /home/user/Documents/MusicVault. Create a music collection:\n\n1. Create folders: 'Artists', 'Albums', 'Playlists'.\n2. Create 'Artists/Radiohead.md' with frontmatter 'type: artist', 'genre: alternative rock' and body with heading 'Radiohead', description, links to [[OK Computer]] and [[Kid A]], and tags #artist #alternative-rock\n3. Create 'Artists/Daft Punk.md' with frontmatter 'type: artist', 'genre: electronic' and body with heading 'Daft Punk', description, a link to [[Discovery]], and tags #artist #electronic\n4. Create 'Albums/OK Computer.md' with frontmatter 'type: album', 'year: 1997', 'rating: 10' and body with heading 'OK Computer', description, a link to [[Radiohead]], track list, and tags #album #alternative-rock\n5. Create 'Albums/Kid A.md' with frontmatter 'type: album', 'year: 2000', 'rating: 9' and body with heading 'Kid A', description, a link to [[Radiohead]], track list, and tags #album #experimental\n6. Create 'Albums/Discovery.md' with frontmatter 'type: album', 'year: 2001', 'rating: 9' and body with heading 'Discovery', description, a link to [[Daft Punk]], track list, and tags #album #electronic\n7. Create 'Playlists/Late Night Coding.md' with frontmatter 'type: playlist' and body with heading 'Late Night Coding', description, links to [[OK Computer]], [[Kid A]], and [[Discovery]], and tags #playlist #coding #latenight",
   "env": {
-    "files": []
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/MusicVault/.obsidian/app.json"
+      }
+    ]
   },
   "verification": [
     {
@@ -92,8 +97,8 @@
     },
     {
       "command": "list-notes /home/user/Documents/MusicVault",
-      "eval": "result.get('count') == 7",
-      "description": "Vault has exactly 7 notes"
+      "eval": "result.get('count') == 6",
+      "description": "Vault has exactly 6 notes"
     }
   ],
   "metadata": {

@@ -1,7 +1,7 @@
 {
   "id": "krita_add_document_metadata",
   "app": "krita",
-  "task": "Open /home/user/Documents/artwork.kra in Krita. Edit document information dialog and set the following fields exactly: Title = 'Sunset Study', Subject = 'Landscape', Keywords = 'sunset, landscape, study', Author full name = 'Jane Painter', and Description / Abstract containing the phrase 'sunset scene'. Save the file in place at /home/user/Documents/artwork.kra.",
+  "task": "Open /home/user/Documents/artwork.kra in Krita. Set the following document information (metadata) fields exactly: Title = 'Sunset Study', Subject = 'Landscape', Keywords = 'sunset, landscape, study', Author full name = 'Jane Painter', and Description / Abstract containing the phrase 'sunset scene'. Save the file in place at /home/user/Documents/artwork.kra.",
   "env": {
     "files": [
       {

@@ -194,6 +194,58 @@ EXCLUDE_NON_REGULAR = (
 NOT_DELETED = "items.itemID NOT IN (SELECT itemID FROM deletedItems)"
 
 
+
+def _parse_bibtex_fields(body: str) -> dict[str, str]:
+    """Parse `name = value` pairs of one BibTeX entry body. Values in braces are read up to the
+    *matching* closing brace (Zotero protects capitals as in `title = {A {Survey} of {RL} Methods}`),
+    quoted values up to the closing quote at brace depth 0, bare values (numbers, macros) up to the
+    next comma. Inner protective braces are removed and whitespace is collapsed.
+    [GUI_synth fix 2026-10-09: the old regex stopped at the first `}` followed by `,`/`}`.]"""
+    fields: dict[str, str] = {}
+    i, n = 0, len(body)
+    name_re = re.compile(r"\s*,?\s*(\w[\w-]*)\s*=\s*")
+    while i < n:
+        m = name_re.match(body, i)
+        if not m:
+            i += 1
+            continue
+        fname, j = m.group(1).lower(), m.end()
+        if j < n and body[j] == "{":
+            depth, k = 0, j
+            while k < n:
+                if body[k] == "\\":
+                    k += 2
+                    continue
+                if body[k] == "{":
+                    depth += 1
+                elif body[k] == "}":
+                    depth -= 1
+                    if depth == 0:
+                        break
+                k += 1
+            raw, i = body[j + 1:k], k + 1
+        elif j < n and body[j] == '"':
+            depth, k = 0, j + 1
+            while k < n:
+                if body[k] == "\\":
+                    k += 2
+                    continue
+                if body[k] == "{":
+                    depth += 1
+                elif body[k] == "}":
+                    depth -= 1
+                elif body[k] == '"' and depth == 0:
+                    break
+                k += 1
+            raw, i = body[j + 1:k], k + 1
+        else:
+            k = body.find(",", j)
+            k = n if k < 0 else k
+            raw, i = body[j:k], k
+        fields[fname] = re.sub(r"\s+", " ", re.sub(r"(?<!\\)[{}]", "", raw)).strip()
+    return fields
+
+
 class ZoteroVerifier:
     """Stateless verifier — each method call is independent."""
 
@@ -754,13 +806,7 @@ class ZoteroVerifier:
                 i += 1
             body = text[start:i]
 
-            fields: dict[str, str] = {}
-            for fm in re.finditer(r"(\w+)\s*=\s*[{\"](.+?)[}\"]\s*[,}]", body, flags=re.DOTALL):
-                fname = fm.group(1).strip().lower()
-                fval = fm.group(2).strip()
-                # collapse whitespace
-                fval = re.sub(r"\s+", " ", fval)
-                fields[fname] = fval
+            fields: dict[str, str] = _parse_bibtex_fields(body)
             entries.append({"type": entry_type, "key": entry_key, "fields": fields})
 
         return {"count": len(entries), "entries": entries, "path": str(p)}

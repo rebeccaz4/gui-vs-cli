@@ -1,7 +1,7 @@
 {
   "id": "zotero_add_note_to_item",
   "app": "zotero",
-  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Find the book item titled 'Deep Learning' (by Goodfellow and Bengio) in the middle pane and select it. Add a child note to this item with the following text: 'foundational textbook on deep learning'. Save the note. Leave Zotero running so the note is persisted.",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Add a child note with the following text to the book item titled 'Deep Learning' (by Goodfellow and Bengio): 'foundational textbook on deep learning'. The note must be saved in the library as a child of that item. Leave Zotero running so the note is persisted.",
   "env": {
     "files": [
       {

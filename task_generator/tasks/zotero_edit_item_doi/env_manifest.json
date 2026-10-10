@@ -1,6 +1,0 @@
-{
-  "task_id": "zotero_edit_item_doi",
-  "files": [
-    {"filename": "zotero.sqlite", "sandbox_path": "/home/user/Zotero/zotero.sqlite", "type": "sqlite"}
-  ]
-}

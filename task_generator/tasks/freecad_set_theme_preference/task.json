@@ -1,7 +1,7 @@
 {
   "id": "freecad_set_theme_preference",
   "app": "freecad",
-  "task": "Configure FreeCAD so that the theme is set to Dark and the auto-save interval is set to 120 seconds. Ensure the changes are saved to /home/user/.config/FreeCAD/user.cfg while preserving unrelated settings.",
+  "task": "Configure FreeCAD so that the style sheet is set to Dark-blue and the auto-save interval is set to 120 seconds (2 minutes). Ensure the changes are saved to FreeCAD's user.cfg (/root/.FreeCAD/user.cfg) while preserving unrelated settings.",
   "env": {
     "files": [
       {
@@ -12,16 +12,16 @@
   },
   "verification": [
     {
-      "command": "check-preference BaseApp/Preferences/General/ThemeName Dark",
+      "command": "check-preference BaseApp/Preferences/MainWindow/StyleSheet Dark-blue.qss",
       "key": "match",
       "expected": true,
-      "description": "Theme set to Dark"
+      "description": "Style sheet set to Dark-blue"
     },
     {
-      "command": "check-preference BaseApp/Preferences/General/AutoSaveInterval 120",
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveTimeout 2",
       "key": "match",
       "expected": true,
-      "description": "AutoSaveInterval == 120"
+      "description": "Auto-save interval == 2 minutes (120 seconds)"
     }
   ],
   "metadata": {
